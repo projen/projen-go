@@ -1,364 +1,405 @@
 package github
 
 import (
-	_jsii_ "github.com/aws-cdk/jsii/jsii-experimental"
+	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
-	"reflect"
+
 	"github.com/projen/projen-go/projen"
+	"github.com/projen/projen-go/projen/github/internal"
+	"github.com/projen/projen-go/projen/github/workflows"
+	"github.com/projen/projen-go/projen/vscode"
 )
 
-// Class interface
-type AutoMergeIface interface {
-	GetProject() projen.ProjectIface
-	GetAutoMergeLabel() string
+// Auto approve pull requests that meet a criteria.
+// Experimental.
+type AutoApprove interface {
+	projen.Component
+	Label() *string
+	Project() projen.Project
 	PostSynthesize()
 	PreSynthesize()
 	Synthesize()
+}
+
+// The jsii proxy struct for AutoApprove
+type jsiiProxy_AutoApprove struct {
+	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_AutoApprove) Label() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"label",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AutoApprove) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewAutoApprove(github GitHub, options *AutoApproveOptions) AutoApprove {
+	_init_.Initialize()
+
+	j := jsiiProxy_AutoApprove{}
+
+	_jsii_.Create(
+		"projen.github.AutoApprove",
+		[]interface{}{github, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewAutoApprove_Override(a AutoApprove, github GitHub, options *AutoApproveOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.github.AutoApprove",
+		[]interface{}{github, options},
+		a,
+	)
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (a *jsiiProxy_AutoApprove) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (a *jsiiProxy_AutoApprove) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (a *jsiiProxy_AutoApprove) Synthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Options for 'AutoApprove'.
+// Experimental.
+type AutoApproveOptions struct {
+	// A GitHub secret name which contains a GitHub Access Token with write permissions for the `pull_request` scope.
+	//
+	// This token is used to approve pull requests.
+	//
+	// Github forbids an identity to approve its own pull request.
+	// If your project produces automated pull requests using the Github default token -
+	// {@link https://docs.github.com/en/actions/reference/authentication-in-a-workflow `GITHUB_TOKEN` }
+	// - that you would like auto approved, such as when using the `depsUpgrade` property in
+	// `NodeProjectOptions`, then you must use a different token here.
+	// Experimental.
+	Secret *string `json:"secret"`
+	// Only pull requests authored by these Github usernames will be auto-approved.
+	// Experimental.
+	AllowedUsernames *[]*string `json:"allowedUsernames"`
+	// Only pull requests with this label will be auto-approved.
+	// Experimental.
+	Label *string `json:"label"`
+	// Github Runner selection labels.
+	// Experimental.
+	RunsOn *[]*string `json:"runsOn"`
 }
 
 // Sets up mergify to merging approved pull requests.
-// 
+//
 // If `buildJob` is specified, the specified GitHub workflow job ID is required
 // to succeed in order for the PR to be merged.
-// 
+//
 // `approvedReviews` specified the number of code review approvals required for
 // the PR to be merged.
 // Experimental.
-// Struct proxy
-type AutoMerge struct {
-	// Experimental.
-	Project projen.ProjectIface `json:"project"`
-	// Experimental.
-	AutoMergeLabel string `json:"autoMergeLabel"`
-}
-
-func (a *AutoMerge) GetProject() projen.ProjectIface {
-	var returns projen.ProjectIface
-	_jsii_.Get(
-		a,
-		"project",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*projen.ProjectIface)(nil)).Elem(): reflect.TypeOf((*projen.Project)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (a *AutoMerge) GetAutoMergeLabel() string {
-	var returns string
-	_jsii_.Get(
-		a,
-		"autoMergeLabel",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-
-func NewAutoMerge(project projen.ProjectIface, options AutoMergeOptionsIface) AutoMergeIface {
-	_init_.Initialize()
-	self := AutoMerge{}
-	_jsii_.Create(
-		"projen.github.AutoMerge",
-		[]interface{}{project, options},
-		[]_jsii_.FQN{},
-		[]_jsii_.Override{},
-		&self,
-	)
-	return &self
-}
-
-func (a *AutoMerge) PostSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		a,
-		"postSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (a *AutoMerge) PreSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		a,
-		"preSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (a *AutoMerge) Synthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		a,
-		"synthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-// AutoMergeOptionsIface is the public interface for the custom type AutoMergeOptions
-// Experimental.
-type AutoMergeOptionsIface interface {
-	GetApprovedReviews() float64
-	GetAutoMergeLabel() string
-	GetBuildJob() string
-}
-
-// Experimental.
-// Struct proxy
-type AutoMergeOptions struct {
-	// Number of approved code reviews.
-	// Experimental.
-	ApprovedReviews float64 `json:"approvedReviews"`
-	// Automatically merge PRs that build successfully and have this label.
-	// 
-	// To disable, set this value to an empty string.
-	// Experimental.
-	AutoMergeLabel string `json:"autoMergeLabel"`
-	// The GitHub job ID of the build workflow.
-	// Experimental.
-	BuildJob string `json:"buildJob"`
-}
-
-func (a *AutoMergeOptions) GetApprovedReviews() float64 {
-	var returns float64
-	_jsii_.Get(
-		a,
-		"approvedReviews",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (a *AutoMergeOptions) GetAutoMergeLabel() string {
-	var returns string
-	_jsii_.Get(
-		a,
-		"autoMergeLabel",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (a *AutoMergeOptions) GetBuildJob() string {
-	var returns string
-	_jsii_.Get(
-		a,
-		"buildJob",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-
-// Class interface
-type DependabotIface interface {
-	GetProject() projen.ProjectIface
-	GetConfig() interface{}
+type AutoMerge interface {
+	projen.Component
+	Project() projen.Project
 	PostSynthesize()
 	PreSynthesize()
 	Synthesize()
-	AddIgnore(dependencyName string, versions string)
+}
+
+// The jsii proxy struct for AutoMerge
+type jsiiProxy_AutoMerge struct {
+	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_AutoMerge) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewAutoMerge(github GitHub, options *AutoMergeOptions) AutoMerge {
+	_init_.Initialize()
+
+	j := jsiiProxy_AutoMerge{}
+
+	_jsii_.Create(
+		"projen.github.AutoMerge",
+		[]interface{}{github, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewAutoMerge_Override(a AutoMerge, github GitHub, options *AutoMergeOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.github.AutoMerge",
+		[]interface{}{github, options},
+		a,
+	)
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (a *jsiiProxy_AutoMerge) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (a *jsiiProxy_AutoMerge) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (a *jsiiProxy_AutoMerge) Synthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Experimental.
+type AutoMergeOptions struct {
+	// Number of approved code reviews.
+	// Experimental.
+	ApprovedReviews *float64 `json:"approvedReviews"`
+	// List of labels that will prevent auto-merging.
+	// Experimental.
+	BlockingLabels *[]*string `json:"blockingLabels"`
+	// The GitHub job ID of the build workflow.
+	// Experimental.
+	BuildJob *string `json:"buildJob"`
 }
 
 // Defines dependabot configuration for node projects.
-// 
+//
 // Since module versions are managed in projen, the versioning strategy will be
 // configured to "lockfile-only" which means that only updates that can be done
 // on the lockfile itself will be proposed.
 // Experimental.
-// Struct proxy
-type Dependabot struct {
-	// Experimental.
-	Project projen.ProjectIface `json:"project"`
-	// The raw dependabot configuration.
-	// See: https://docs.github.com/en/github/administering-a-repository/configuration-options-for-dependency-updates
-	//
-	// Experimental.
-	Config interface{} `json:"config"`
+type Dependabot interface {
+	projen.Component
+	Config() interface{}
+	IgnoresProjen() *bool
+	Project() projen.Project
+	AddIgnore(dependencyName *string, versions ...*string)
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
 }
 
-func (d *Dependabot) GetProject() projen.ProjectIface {
-	var returns projen.ProjectIface
-	_jsii_.Get(
-		d,
-		"project",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*projen.ProjectIface)(nil)).Elem(): reflect.TypeOf((*projen.Project)(nil)).Elem(),
-		},
-	)
-	return returns
+// The jsii proxy struct for Dependabot
+type jsiiProxy_Dependabot struct {
+	internal.Type__projenComponent
 }
 
-func (d *Dependabot) GetConfig() interface{} {
+func (j *jsiiProxy_Dependabot) Config() interface{} {
 	var returns interface{}
 	_jsii_.Get(
-		d,
+		j,
 		"config",
 		&returns,
-		map[reflect.Type]reflect.Type{},
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Dependabot) IgnoresProjen() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ignoresProjen",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Dependabot) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
 	)
 	return returns
 }
 
 
-func NewDependabot(github GitHubIface, options DependabotOptionsIface) DependabotIface {
+// Experimental.
+func NewDependabot(github GitHub, options *DependabotOptions) Dependabot {
 	_init_.Initialize()
-	self := Dependabot{}
+
+	j := jsiiProxy_Dependabot{}
+
 	_jsii_.Create(
 		"projen.github.Dependabot",
 		[]interface{}{github, options},
-		[]_jsii_.FQN{},
-		[]_jsii_.Override{},
-		&self,
+		&j,
 	)
-	return &self
+
+	return &j
 }
 
-func (d *Dependabot) PostSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
+// Experimental.
+func NewDependabot_Override(d Dependabot, github GitHub, options *DependabotOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.github.Dependabot",
+		[]interface{}{github, options},
 		d,
-		"postSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 }
 
-func (d *Dependabot) PreSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		d,
-		"preSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
+// Ignores a dependency from automatic updates.
+// Experimental.
+func (d *jsiiProxy_Dependabot) AddIgnore(dependencyName *string, versions ...*string) {
+	args := []interface{}{dependencyName}
+	for _, a := range versions {
+		args = append(args, a)
+	}
 
-func (d *Dependabot) Synthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		d,
-		"synthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (d *Dependabot) AddIgnore(dependencyName string, versions string) {
-	var returns interface{}
-	_jsii_.Invoke(
+	_jsii_.InvokeVoid(
 		d,
 		"addIgnore",
-		[]interface{}{dependencyName, versions},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
+		args,
 	)
 }
 
-// DependabotIgnoreIface is the public interface for the custom type DependabotIgnore
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
 // Experimental.
-type DependabotIgnoreIface interface {
-	GetDependencyName() string
-	GetVersions() []string
+func (d *jsiiProxy_Dependabot) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		d,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (d *jsiiProxy_Dependabot) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		d,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (d *jsiiProxy_Dependabot) Synthesize() {
+	_jsii_.InvokeVoid(
+		d,
+		"synthesize",
+		nil, // no parameters
+	)
 }
 
 // You can use the `ignore` option to customize which dependencies are updated.
-// 
+//
 // The ignore option supports the following options.
 // Experimental.
-// Struct proxy
 type DependabotIgnore struct {
 	// Use to ignore updates for dependencies with matching names, optionally using `*` to match zero or more characters.
-	// 
+	//
 	// For Java dependencies, the format of the dependency-name attribute is:
 	// `groupId:artifactId`, for example: `org.kohsuke:github-api`.
 	// Experimental.
-	DependencyName string `json:"dependencyName"`
+	DependencyName *string `json:"dependencyName"`
 	// Use to ignore specific versions or ranges of versions.
-	// 
+	//
 	// If you want to
 	// define a range, use the standard pattern for the package manager (for
 	// example: `^1.0.0` for npm, or `~> 2.0` for Bundler).
 	// Experimental.
-	Versions []string `json:"versions"`
-}
-
-func (d *DependabotIgnore) GetDependencyName() string {
-	var returns string
-	_jsii_.Get(
-		d,
-		"dependencyName",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (d *DependabotIgnore) GetVersions() []string {
-	var returns []string
-	_jsii_.Get(
-		d,
-		"versions",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*string)(nil)).Elem(): reflect.TypeOf((*string)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-
-// DependabotOptionsIface is the public interface for the custom type DependabotOptions
-// Experimental.
-type DependabotOptionsIface interface {
-	GetAutoMerge() bool
-	GetIgnore() []DependabotIgnoreIface
-	GetIgnoreProjen() bool
-	GetScheduleInterval() DependabotScheduleInterval
-	GetVersioningStrategy() VersioningStrategy
+	Versions *[]*string `json:"versions"`
 }
 
 // Experimental.
-// Struct proxy
 type DependabotOptions struct {
-	// Automatically merge dependabot PRs if build CI build passes.
-	// Experimental.
-	AutoMerge bool `json:"autoMerge"`
 	// You can use the `ignore` option to customize which dependencies are updated.
-	// 
+	//
 	// The ignore option supports the following options.
 	// Experimental.
-	Ignore []DependabotIgnoreIface `json:"ignore"`
+	Ignore *[]*DependabotIgnore `json:"ignore"`
 	// Ignores updates to `projen`.
-	// 
+	//
 	// This is required since projen updates may cause changes in committed files
 	// and anti-tamper checks will fail.
-	// 
+	//
 	// Projen upgrades are covered through the `ProjenUpgrade` class.
 	// Experimental.
-	IgnoreProjen bool `json:"ignoreProjen"`
+	IgnoreProjen *bool `json:"ignoreProjen"`
+	// List of labels to apply to the created PR's.
+	// Experimental.
+	Labels *[]*string `json:"labels"`
+	// Map of package registries to use.
+	// Experimental.
+	Registries *map[string]*DependabotRegistry `json:"registries"`
 	// How often to check for new versions and raise pull requests.
 	// Experimental.
 	ScheduleInterval DependabotScheduleInterval `json:"scheduleInterval"`
@@ -367,748 +408,1975 @@ type DependabotOptions struct {
 	VersioningStrategy VersioningStrategy `json:"versioningStrategy"`
 }
 
-func (d *DependabotOptions) GetAutoMerge() bool {
-	var returns bool
-	_jsii_.Get(
-		d,
-		"autoMerge",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
+// Use to add private registry support for dependabot.
+// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#configuration-options-for-private-registries
+//
+// Experimental.
+type DependabotRegistry struct {
+	// Registry type e.g. 'npm-registry' or 'docker-registry'.
+	// Experimental.
+	Type DependabotRegistryType `json:"type"`
+	// Url for the registry e.g. 'https://npm.pkg.github.com' or 'registry.hub.docker.com'.
+	// Experimental.
+	Url *string `json:"url"`
+	// A reference to a Dependabot secret containing an access key for this registry.
+	// Experimental.
+	Key *string `json:"key"`
+	// Used with the hex-organization registry type.
+	// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#hex-organization
+	//
+	// Experimental.
+	Organization *string `json:"organization"`
+	// A reference to a Dependabot secret containing the password for the specified user.
+	// Experimental.
+	Password *string `json:"password"`
+	// For registries with type: python-index, if the boolean value is true, pip esolves dependencies by using the specified URL rather than the base URL of the Python Package Index (by default https://pypi.org/simple).
+	// Experimental.
+	ReplacesBase *bool `json:"replacesBase"`
+	// Secret token for dependabot access e.g. '${{ secrets.DEPENDABOT_PACKAGE_TOKEN }}'.
+	// Experimental.
+	Token *string `json:"token"`
+	// The username that Dependabot uses to access the registry.
+	// Experimental.
+	Username *string `json:"username"`
 }
 
-func (d *DependabotOptions) GetIgnore() []DependabotIgnoreIface {
-	var returns []DependabotIgnoreIface
-	_jsii_.Get(
-		d,
-		"ignore",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*DependabotIgnoreIface)(nil)).Elem(): reflect.TypeOf((*DependabotIgnore)(nil)).Elem(),
-		},
-	)
-	return returns
-}
+// Each configuration type requires you to provide particular settings.
+//
+// Some types allow more than one way to connect
+// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#configuration-options-for-private-registries
+//
+// Experimental.
+type DependabotRegistryType string
 
-func (d *DependabotOptions) GetIgnoreProjen() bool {
-	var returns bool
-	_jsii_.Get(
-		d,
-		"ignoreProjen",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (d *DependabotOptions) GetScheduleInterval() DependabotScheduleInterval {
-	var returns DependabotScheduleInterval
-	_jsii_.Get(
-		d,
-		"scheduleInterval",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*DependabotScheduleInterval)(nil)).Elem(): reflect.TypeOf((*DependabotScheduleInterval)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (d *DependabotOptions) GetVersioningStrategy() VersioningStrategy {
-	var returns VersioningStrategy
-	_jsii_.Get(
-		d,
-		"versioningStrategy",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*VersioningStrategy)(nil)).Elem(): reflect.TypeOf((*VersioningStrategy)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
+const (
+	DependabotRegistryType_COMPOSER_REGISTRY DependabotRegistryType = "COMPOSER_REGISTRY"
+	DependabotRegistryType_DOCKER_REGISTRY DependabotRegistryType = "DOCKER_REGISTRY"
+	DependabotRegistryType_GIT DependabotRegistryType = "GIT"
+	DependabotRegistryType_HEX_ORGANIZATION DependabotRegistryType = "HEX_ORGANIZATION"
+	DependabotRegistryType_MAVEN_REPOSITORY DependabotRegistryType = "MAVEN_REPOSITORY"
+	DependabotRegistryType_NPM_REGISTRY DependabotRegistryType = "NPM_REGISTRY"
+	DependabotRegistryType_NUGET_FEED DependabotRegistryType = "NUGET_FEED"
+	DependabotRegistryType_PYTHON_INDEX DependabotRegistryType = "PYTHON_INDEX"
+	DependabotRegistryType_RUBYGEMS_SERVER DependabotRegistryType = "RUBYGEMS_SERVER"
+	DependabotRegistryType_TERRAFORM_REGISTRY DependabotRegistryType = "TERRAFORM_REGISTRY"
+)
 
 // How often to check for new versions and raise pull requests for version updates.
 // Experimental.
 type DependabotScheduleInterval string
 
 const (
-	DependabotScheduleIntervalDaily DependabotScheduleInterval = "DAILY"
-	DependabotScheduleIntervalWeekly DependabotScheduleInterval = "WEEKLY"
-	DependabotScheduleIntervalMonthly DependabotScheduleInterval = "MONTHLY"
+	DependabotScheduleInterval_DAILY DependabotScheduleInterval = "DAILY"
+	DependabotScheduleInterval_WEEKLY DependabotScheduleInterval = "WEEKLY"
+	DependabotScheduleInterval_MONTHLY DependabotScheduleInterval = "MONTHLY"
 )
 
-// Class interface
-type GitHubIface interface {
-	GetProject() projen.ProjectIface
+// Experimental.
+type GitHub interface {
+	projen.Component
+	Mergify() Mergify
+	Project() projen.Project
+	Workflows() *[]GithubWorkflow
+	WorkflowsEnabled() *bool
+	AddDependabot(options *DependabotOptions) Dependabot
+	AddPullRequestTemplate(content ...*string) PullRequestTemplate
+	AddWorkflow(name *string) GithubWorkflow
 	PostSynthesize()
 	PreSynthesize()
 	Synthesize()
-	AddDependabot(options DependabotOptionsIface) DependabotIface
-	AddMergifyRules(rules MergifyRuleIface)
-	AddPullRequestTemplate(content string) PullRequestTemplateIface
-	AddWorkflow(name string) GithubWorkflowIface
+	TryFindWorkflow(name *string) GithubWorkflow
 }
 
-// Experimental.
-// Struct proxy
-type GitHub struct {
-	// Experimental.
-	Project projen.ProjectIface `json:"project"`
+// The jsii proxy struct for GitHub
+type jsiiProxy_GitHub struct {
+	internal.Type__projenComponent
 }
 
-func (g *GitHub) GetProject() projen.ProjectIface {
-	var returns projen.ProjectIface
+func (j *jsiiProxy_GitHub) Mergify() Mergify {
+	var returns Mergify
 	_jsii_.Get(
-		g,
+		j,
+		"mergify",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHub) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
 		"project",
 		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*projen.ProjectIface)(nil)).Elem(): reflect.TypeOf((*projen.Project)(nil)).Elem(),
-		},
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHub) Workflows() *[]GithubWorkflow {
+	var returns *[]GithubWorkflow
+	_jsii_.Get(
+		j,
+		"workflows",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHub) WorkflowsEnabled() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"workflowsEnabled",
+		&returns,
 	)
 	return returns
 }
 
 
-func NewGitHub(project projen.ProjectIface) GitHubIface {
+// Experimental.
+func NewGitHub(project projen.Project, options *GitHubOptions) GitHub {
 	_init_.Initialize()
-	self := GitHub{}
+
+	j := jsiiProxy_GitHub{}
+
 	_jsii_.Create(
 		"projen.github.GitHub",
-		[]interface{}{project},
-		[]_jsii_.FQN{},
-		[]_jsii_.Override{},
-		&self,
+		[]interface{}{project, options},
+		&j,
 	)
-	return &self
+
+	return &j
 }
 
-func (g *GitHub) PostSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
+// Experimental.
+func NewGitHub_Override(g GitHub, project projen.Project, options *GitHubOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.github.GitHub",
+		[]interface{}{project, options},
 		g,
-		"postSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 }
 
-func (g *GitHub) PreSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		g,
-		"preSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
+// Experimental.
+func (g *jsiiProxy_GitHub) AddDependabot(options *DependabotOptions) Dependabot {
+	var returns Dependabot
 
-func (g *GitHub) Synthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		g,
-		"synthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (g *GitHub) AddDependabot(options DependabotOptionsIface) DependabotIface {
-	var returns DependabotIface
 	_jsii_.Invoke(
 		g,
 		"addDependabot",
 		[]interface{}{options},
-		true,
 		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*DependabotIface)(nil)).Elem(): reflect.TypeOf((*Dependabot)(nil)).Elem(),
-		},
 	)
+
 	return returns
 }
 
-func (g *GitHub) AddMergifyRules(rules MergifyRuleIface) {
-	var returns interface{}
-	_jsii_.Invoke(
-		g,
-		"addMergifyRules",
-		[]interface{}{rules},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
+// Experimental.
+func (g *jsiiProxy_GitHub) AddPullRequestTemplate(content ...*string) PullRequestTemplate {
+	args := []interface{}{}
+	for _, a := range content {
+		args = append(args, a)
+	}
 
-func (g *GitHub) AddPullRequestTemplate(content string) PullRequestTemplateIface {
-	var returns PullRequestTemplateIface
+	var returns PullRequestTemplate
+
 	_jsii_.Invoke(
 		g,
 		"addPullRequestTemplate",
-		[]interface{}{content},
-		true,
+		args,
 		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*PullRequestTemplateIface)(nil)).Elem(): reflect.TypeOf((*PullRequestTemplate)(nil)).Elem(),
-		},
 	)
+
 	return returns
 }
 
-func (g *GitHub) AddWorkflow(name string) GithubWorkflowIface {
-	var returns GithubWorkflowIface
+// Adds a workflow to the project.
+//
+// Returns: a GithubWorkflow instance
+// Experimental.
+func (g *jsiiProxy_GitHub) AddWorkflow(name *string) GithubWorkflow {
+	var returns GithubWorkflow
+
 	_jsii_.Invoke(
 		g,
 		"addWorkflow",
 		[]interface{}{name},
-		true,
 		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*GithubWorkflowIface)(nil)).Elem(): reflect.TypeOf((*GithubWorkflow)(nil)).Elem(),
-		},
 	)
+
 	return returns
 }
 
-// Class interface
-type GithubWorkflowIface interface {
-	GetProject() projen.ProjectIface
-	GetFile() projen.YamlFileIface
-	PostSynthesize()
-	PreSynthesize()
-	Synthesize()
-	AddJobs(jobs map[string]interface{})
-	On(events map[string]interface{})
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (g *jsiiProxy_GitHub) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		g,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (g *jsiiProxy_GitHub) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		g,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (g *jsiiProxy_GitHub) Synthesize() {
+	_jsii_.InvokeVoid(
+		g,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Finds a GitHub workflow by name.
+//
+// Returns `undefined` if the workflow cannot be found.
+// Experimental.
+func (g *jsiiProxy_GitHub) TryFindWorkflow(name *string) GithubWorkflow {
+	var returns GithubWorkflow
+
+	_jsii_.Invoke(
+		g,
+		"tryFindWorkflow",
+		[]interface{}{name},
+		&returns,
+	)
+
+	return returns
 }
 
 // Experimental.
-// Struct proxy
-type GithubWorkflow struct {
+type GitHubOptions struct {
+	// Whether mergify should be enabled on this repository or not.
 	// Experimental.
-	Project projen.ProjectIface `json:"project"`
+	Mergify *bool `json:"mergify"`
+	// Options for Mergify.
 	// Experimental.
-	File projen.YamlFileIface `json:"file"`
+	MergifyOptions *MergifyOptions `json:"mergifyOptions"`
+	// Add a workflow that performs basic checks for pull requests, like validating that PRs follow Conventional Commits.
+	// Experimental.
+	PullRequestLint *bool `json:"pullRequestLint"`
+	// Options for configuring a pull request linter.
+	// Experimental.
+	PullRequestLintOptions *PullRequestLintOptions `json:"pullRequestLintOptions"`
+	// Enables GitHub workflows.
+	//
+	// If this is set to `false`, workflows will not be created.
+	// Experimental.
+	Workflows *bool `json:"workflows"`
 }
 
-func (g *GithubWorkflow) GetProject() projen.ProjectIface {
-	var returns projen.ProjectIface
+// GitHub-based project.
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+type GitHubProject interface {
+	projen.Project
+	AutoApprove() AutoApprove
+	BuildTask() projen.Task
+	CompileTask() projen.Task
+	Components() *[]projen.Component
+	DefaultTask() projen.Task
+	Deps() projen.Dependencies
+	DevContainer() vscode.DevContainer
+	Files() *[]projen.FileBase
+	Gitattributes() projen.GitAttributesFile
+	Github() GitHub
+	Gitignore() projen.IgnoreFile
+	Gitpod() projen.Gitpod
+	InitProject() *projen.InitProject
+	Logger() projen.Logger
+	Name() *string
+	Outdir() *string
+	PackageTask() projen.Task
+	Parent() projen.Project
+	PostCompileTask() projen.Task
+	PreCompileTask() projen.Task
+	ProjectBuild() projen.ProjectBuild
+	ProjectType() projen.ProjectType
+	ProjenCommand() *string
+	Root() projen.Project
+	Tasks() projen.Tasks
+	TestTask() projen.Task
+	Vscode() vscode.VsCode
+	AddExcludeFromCleanup(globs ...*string)
+	AddGitIgnore(pattern *string)
+	AddPackageIgnore(_pattern *string)
+	AddTask(name *string, props *projen.TaskOptions) projen.Task
+	AddTip(message *string)
+	AnnotateGenerated(glob *string)
+	PostSynthesize()
+	PreSynthesize()
+	RemoveTask(name *string) projen.Task
+	RunTaskCommand(task projen.Task) *string
+	Synth()
+	TryFindFile(filePath *string) projen.FileBase
+	TryFindJsonFile(filePath *string) projen.JsonFile
+	TryFindObjectFile(filePath *string) projen.ObjectFile
+}
+
+// The jsii proxy struct for GitHubProject
+type jsiiProxy_GitHubProject struct {
+	internal.Type__projenProject
+}
+
+func (j *jsiiProxy_GitHubProject) AutoApprove() AutoApprove {
+	var returns AutoApprove
 	_jsii_.Get(
-		g,
-		"project",
+		j,
+		"autoApprove",
 		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*projen.ProjectIface)(nil)).Elem(): reflect.TypeOf((*projen.Project)(nil)).Elem(),
-		},
 	)
 	return returns
 }
 
-func (g *GithubWorkflow) GetFile() projen.YamlFileIface {
-	var returns projen.YamlFileIface
+func (j *jsiiProxy_GitHubProject) BuildTask() projen.Task {
+	var returns projen.Task
 	_jsii_.Get(
-		g,
-		"file",
+		j,
+		"buildTask",
 		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*projen.YamlFileIface)(nil)).Elem(): reflect.TypeOf((*projen.YamlFile)(nil)).Elem(),
-		},
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) CompileTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"compileTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Components() *[]projen.Component {
+	var returns *[]projen.Component
+	_jsii_.Get(
+		j,
+		"components",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) DefaultTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"defaultTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Deps() projen.Dependencies {
+	var returns projen.Dependencies
+	_jsii_.Get(
+		j,
+		"deps",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) DevContainer() vscode.DevContainer {
+	var returns vscode.DevContainer
+	_jsii_.Get(
+		j,
+		"devContainer",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Files() *[]projen.FileBase {
+	var returns *[]projen.FileBase
+	_jsii_.Get(
+		j,
+		"files",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Gitattributes() projen.GitAttributesFile {
+	var returns projen.GitAttributesFile
+	_jsii_.Get(
+		j,
+		"gitattributes",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Github() GitHub {
+	var returns GitHub
+	_jsii_.Get(
+		j,
+		"github",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Gitignore() projen.IgnoreFile {
+	var returns projen.IgnoreFile
+	_jsii_.Get(
+		j,
+		"gitignore",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Gitpod() projen.Gitpod {
+	var returns projen.Gitpod
+	_jsii_.Get(
+		j,
+		"gitpod",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) InitProject() *projen.InitProject {
+	var returns *projen.InitProject
+	_jsii_.Get(
+		j,
+		"initProject",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Logger() projen.Logger {
+	var returns projen.Logger
+	_jsii_.Get(
+		j,
+		"logger",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Name() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"name",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Outdir() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"outdir",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) PackageTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"packageTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Parent() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"parent",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) PostCompileTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"postCompileTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) PreCompileTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"preCompileTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) ProjectBuild() projen.ProjectBuild {
+	var returns projen.ProjectBuild
+	_jsii_.Get(
+		j,
+		"projectBuild",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) ProjectType() projen.ProjectType {
+	var returns projen.ProjectType
+	_jsii_.Get(
+		j,
+		"projectType",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) ProjenCommand() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"projenCommand",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Root() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"root",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Tasks() projen.Tasks {
+	var returns projen.Tasks
+	_jsii_.Get(
+		j,
+		"tasks",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) TestTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"testTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Vscode() vscode.VsCode {
+	var returns vscode.VsCode
+	_jsii_.Get(
+		j,
+		"vscode",
+		&returns,
 	)
 	return returns
 }
 
 
-func NewGithubWorkflow(github GitHubIface, name string) GithubWorkflowIface {
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func NewGitHubProject(options *GitHubProjectOptions) GitHubProject {
 	_init_.Initialize()
-	self := GithubWorkflow{}
+
+	j := jsiiProxy_GitHubProject{}
+
 	_jsii_.Create(
-		"projen.github.GithubWorkflow",
-		[]interface{}{github, name},
-		[]_jsii_.FQN{},
-		[]_jsii_.Override{},
-		&self,
+		"projen.github.GitHubProject",
+		[]interface{}{options},
+		&j,
 	)
-	return &self
+
+	return &j
 }
 
-func (g *GithubWorkflow) PostSynthesize() {
-	var returns interface{}
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func NewGitHubProject_Override(g GitHubProject, options *GitHubProjectOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.github.GitHubProject",
+		[]interface{}{options},
+		g,
+	)
+}
+
+func GitHubProject_DEFAULT_TASK() *string {
+	_init_.Initialize()
+	var returns *string
+	_jsii_.StaticGet(
+		"projen.github.GitHubProject",
+		"DEFAULT_TASK",
+		&returns,
+	)
+	return returns
+}
+
+// Exclude the matching files from pre-synth cleanup.
+//
+// Can be used when, for example, some
+// source files include the projen marker and we don't want them to be erased during synth.
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func (g *jsiiProxy_GitHubProject) AddExcludeFromCleanup(globs ...*string) {
+	args := []interface{}{}
+	for _, a := range globs {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		g,
+		"addExcludeFromCleanup",
+		args,
+	)
+}
+
+// Adds a .gitignore pattern.
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func (g *jsiiProxy_GitHubProject) AddGitIgnore(pattern *string) {
+	_jsii_.InvokeVoid(
+		g,
+		"addGitIgnore",
+		[]interface{}{pattern},
+	)
+}
+
+// Exclude these files from the bundled package.
+//
+// Implemented by project types based on the
+// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func (g *jsiiProxy_GitHubProject) AddPackageIgnore(_pattern *string) {
+	_jsii_.InvokeVoid(
+		g,
+		"addPackageIgnore",
+		[]interface{}{_pattern},
+	)
+}
+
+// Adds a new task to this project.
+//
+// This will fail if the project already has
+// a task with this name.
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func (g *jsiiProxy_GitHubProject) AddTask(name *string, props *projen.TaskOptions) projen.Task {
+	var returns projen.Task
+
 	_jsii_.Invoke(
+		g,
+		"addTask",
+		[]interface{}{name, props},
+		&returns,
+	)
+
+	return returns
+}
+
+// Prints a "tip" message during synthesis.
+// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
+func (g *jsiiProxy_GitHubProject) AddTip(message *string) {
+	_jsii_.InvokeVoid(
+		g,
+		"addTip",
+		[]interface{}{message},
+	)
+}
+
+// Marks the provided file(s) as being generated.
+//
+// This is achieved using the
+// github-linguist attributes. Generated files do not count against the
+// repository statistics and language breakdown.
+// See: https://github.com/github/linguist/blob/master/docs/overrides.md
+//
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func (g *jsiiProxy_GitHubProject) AnnotateGenerated(glob *string) {
+	_jsii_.InvokeVoid(
+		g,
+		"annotateGenerated",
+		[]interface{}{glob},
+	)
+}
+
+// Called after all components are synthesized.
+//
+// Order is *not* guaranteed.
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func (g *jsiiProxy_GitHubProject) PostSynthesize() {
+	_jsii_.InvokeVoid(
 		g,
 		"postSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
+		nil, // no parameters
 	)
 }
 
-func (g *GithubWorkflow) PreSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
+// Called before all components are synthesized.
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func (g *jsiiProxy_GitHubProject) PreSynthesize() {
+	_jsii_.InvokeVoid(
 		g,
 		"preSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
+		nil, // no parameters
 	)
 }
 
-func (g *GithubWorkflow) Synthesize() {
-	var returns interface{}
+// Removes a task from a project.
+//
+// Returns: The `Task` that was removed, otherwise `undefined`.
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func (g *jsiiProxy_GitHubProject) RemoveTask(name *string) projen.Task {
+	var returns projen.Task
+
 	_jsii_.Invoke(
 		g,
-		"synthesize",
-		[]interface{}{},
-		false,
+		"removeTask",
+		[]interface{}{name},
 		&returns,
-		map[reflect.Type]reflect.Type{},
+	)
+
+	return returns
+}
+
+// Returns the shell command to execute in order to run a task.
+//
+// By default, this is `npx projen@<version> <task>`
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func (g *jsiiProxy_GitHubProject) RunTaskCommand(task projen.Task) *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		g,
+		"runTaskCommand",
+		[]interface{}{task},
+		&returns,
+	)
+
+	return returns
+}
+
+// Synthesize all project files into `outdir`.
+//
+// 1. Call "this.preSynthesize()"
+// 2. Delete all generated files
+// 3. Synthesize all sub-projects
+// 4. Synthesize all components of this project
+// 5. Call "postSynthesize()" for all components of this project
+// 6. Call "this.postSynthesize()"
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func (g *jsiiProxy_GitHubProject) Synth() {
+	_jsii_.InvokeVoid(
+		g,
+		"synth",
+		nil, // no parameters
 	)
 }
 
-func (g *GithubWorkflow) AddJobs(jobs map[string]interface{}) {
-	var returns interface{}
+// Finds a file at the specified relative path within this project and all its subprojects.
+//
+// Returns: a `FileBase` or undefined if there is no file in that path
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func (g *jsiiProxy_GitHubProject) TryFindFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
 	_jsii_.Invoke(
+		g,
+		"tryFindFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+// Finds a json file by name.
+// Deprecated: use `tryFindObjectFile`
+func (g *jsiiProxy_GitHubProject) TryFindJsonFile(filePath *string) projen.JsonFile {
+	var returns projen.JsonFile
+
+	_jsii_.Invoke(
+		g,
+		"tryFindJsonFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func (g *jsiiProxy_GitHubProject) TryFindObjectFile(filePath *string) projen.ObjectFile {
+	var returns projen.ObjectFile
+
+	_jsii_.Invoke(
+		g,
+		"tryFindObjectFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+// Options for `GitHubProject`.
+// Experimental.
+type GitHubProjectOptions struct {
+	// This is the name of your project.
+	// Experimental.
+	Name *string `json:"name"`
+	// Configure logging options such as verbosity.
+	// Experimental.
+	Logging *projen.LoggerOptions `json:"logging"`
+	// The root directory of the project.
+	//
+	// Relative to this directory, all files are synthesized.
+	//
+	// If this project has a parent, this directory is relative to the parent
+	// directory and it cannot be the same as the parent or any of it's other
+	// sub-projects.
+	// Experimental.
+	Outdir *string `json:"outdir"`
+	// The parent project, if this project is part of a bigger project.
+	// Experimental.
+	Parent projen.Project `json:"parent"`
+	// The shell command to use in order to run the projen CLI.
+	//
+	// Can be used to customize in special environments.
+	// Experimental.
+	ProjenCommand *string `json:"projenCommand"`
+	// Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
+	// Experimental.
+	ProjenrcJson *bool `json:"projenrcJson"`
+	// Options for .projenrc.json.
+	// Experimental.
+	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions"`
+	// Enable and configure the 'auto approve' workflow.
+	// Experimental.
+	AutoApproveOptions *AutoApproveOptions `json:"autoApproveOptions"`
+	// Configure options for automatic merging on GitHub.
+	//
+	// Has no effect if
+	// `github.mergify` is set to false.
+	// Experimental.
+	AutoMergeOptions *AutoMergeOptions `json:"autoMergeOptions"`
+	// Add a `clobber` task which resets the repo to origin.
+	// Experimental.
+	Clobber *bool `json:"clobber"`
+	// Add a VSCode development environment (used for GitHub Codespaces).
+	// Experimental.
+	DevContainer *bool `json:"devContainer"`
+	// Enable GitHub integration.
+	//
+	// Enabled by default for root projects. Disabled for non-root projects.
+	// Experimental.
+	Github *bool `json:"github"`
+	// Options for GitHub integration.
+	// Experimental.
+	GithubOptions *GitHubOptions `json:"githubOptions"`
+	// Add a Gitpod development environment.
+	// Experimental.
+	Gitpod *bool `json:"gitpod"`
+	// Whether mergify should be enabled on this repository or not.
+	// Deprecated: use `githubOptions.mergify` instead
+	Mergify *bool `json:"mergify"`
+	// Options for mergify.
+	// Deprecated: use `githubOptions.mergifyOptions` instead
+	MergifyOptions *MergifyOptions `json:"mergifyOptions"`
+	// Which type of project this is (library/app).
+	// Deprecated: no longer supported at the base project level
+	ProjectType projen.ProjectType `json:"projectType"`
+	// The README setup.
+	//
+	// TODO: EXAMPLE
+	//
+	// Experimental.
+	Readme *projen.SampleReadmeProps `json:"readme"`
+	// Auto-close of stale issues and pull request.
+	//
+	// See `staleOptions` for options.
+	// Experimental.
+	Stale *bool `json:"stale"`
+	// Auto-close stale issues and pull requests.
+	//
+	// To disable set `stale` to `false`.
+	// Experimental.
+	StaleOptions *StaleOptions `json:"staleOptions"`
+	// Enable VSCode integration.
+	//
+	// Enabled by default for root projects. Disabled for non-root projects.
+	// Experimental.
+	Vscode *bool `json:"vscode"`
+}
+
+// Represents the git identity.
+// Experimental.
+type GitIdentity struct {
+	// The email address of the git user.
+	// Experimental.
+	Email *string `json:"email"`
+	// The name of the user.
+	// Experimental.
+	Name *string `json:"name"`
+}
+
+// Workflow for GitHub.
+//
+// A workflow is a configurable automated process made up of one or more jobs.
+// See: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+//
+// Experimental.
+type GithubWorkflow interface {
+	projen.Component
+	Concurrency() *string
+	File() projen.YamlFile
+	Name() *string
+	Project() projen.Project
+	AddJobs(jobs *map[string]*workflows.Job)
+	On(events *workflows.Triggers)
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
+}
+
+// The jsii proxy struct for GithubWorkflow
+type jsiiProxy_GithubWorkflow struct {
+	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_GithubWorkflow) Concurrency() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"concurrency",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GithubWorkflow) File() projen.YamlFile {
+	var returns projen.YamlFile
+	_jsii_.Get(
+		j,
+		"file",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GithubWorkflow) Name() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"name",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GithubWorkflow) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewGithubWorkflow(github GitHub, name *string, options *GithubWorkflowOptions) GithubWorkflow {
+	_init_.Initialize()
+
+	j := jsiiProxy_GithubWorkflow{}
+
+	_jsii_.Create(
+		"projen.github.GithubWorkflow",
+		[]interface{}{github, name, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewGithubWorkflow_Override(g GithubWorkflow, github GitHub, name *string, options *GithubWorkflowOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.github.GithubWorkflow",
+		[]interface{}{github, name, options},
+		g,
+	)
+}
+
+// Add jobs to the workflow.
+// Experimental.
+func (g *jsiiProxy_GithubWorkflow) AddJobs(jobs *map[string]*workflows.Job) {
+	_jsii_.InvokeVoid(
 		g,
 		"addJobs",
 		[]interface{}{jobs},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 }
 
-func (g *GithubWorkflow) On(events map[string]interface{}) {
-	var returns interface{}
-	_jsii_.Invoke(
+// Add events to triggers the workflow.
+// Experimental.
+func (g *jsiiProxy_GithubWorkflow) On(events *workflows.Triggers) {
+	_jsii_.InvokeVoid(
 		g,
 		"on",
 		[]interface{}{events},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 }
 
-// Class interface
-type MergifyIface interface {
-	GetProject() projen.ProjectIface
-	PostSynthesize()
-	PreSynthesize()
-	Synthesize()
-	AddRule(rule MergifyRuleIface)
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (g *jsiiProxy_GithubWorkflow) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		g,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (g *jsiiProxy_GithubWorkflow) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		g,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (g *jsiiProxy_GithubWorkflow) Synthesize() {
+	_jsii_.InvokeVoid(
+		g,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Options for `GithubWorkflow`.
+// Experimental.
+type GithubWorkflowOptions struct {
+	// Concurrency ensures that only a single job or workflow using the same concurrency group will run at a time.
+	//
+	// Currently in beta.
+	// See: https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#concurrency
+	//
+	// Experimental.
+	Concurrency *string `json:"concurrency"`
+	// Force the creation of the workflow even if `workflows` is disabled in `GitHub`.
+	// Experimental.
+	Force *bool `json:"force"`
 }
 
 // Experimental.
-// Struct proxy
-type Mergify struct {
+type IJobProvider interface {
+	// Generates a collection of named GitHub workflow jobs.
 	// Experimental.
-	Project projen.ProjectIface `json:"project"`
+	RenderJobs() *map[string]*workflows.Job
 }
 
-func (m *Mergify) GetProject() projen.ProjectIface {
-	var returns projen.ProjectIface
+// The jsii proxy for IJobProvider
+type jsiiProxy_IJobProvider struct {
+	_ byte // padding
+}
+
+func (i *jsiiProxy_IJobProvider) RenderJobs() *map[string]*workflows.Job {
+	var returns *map[string]*workflows.Job
+
+	_jsii_.Invoke(
+		i,
+		"renderJobs",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
+}
+
+// Experimental.
+type Mergify interface {
+	projen.Component
+	Project() projen.Project
+	AddRule(rule *MergifyRule)
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
+}
+
+// The jsii proxy struct for Mergify
+type jsiiProxy_Mergify struct {
+	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_Mergify) Project() projen.Project {
+	var returns projen.Project
 	_jsii_.Get(
-		m,
+		j,
 		"project",
 		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*projen.ProjectIface)(nil)).Elem(): reflect.TypeOf((*projen.Project)(nil)).Elem(),
-		},
 	)
 	return returns
 }
 
 
-func NewMergify(github GitHubIface, options MergifyOptionsIface) MergifyIface {
+// Experimental.
+func NewMergify(github GitHub, options *MergifyOptions) Mergify {
 	_init_.Initialize()
-	self := Mergify{}
+
+	j := jsiiProxy_Mergify{}
+
 	_jsii_.Create(
 		"projen.github.Mergify",
 		[]interface{}{github, options},
-		[]_jsii_.FQN{},
-		[]_jsii_.Override{},
-		&self,
+		&j,
 	)
-	return &self
+
+	return &j
 }
 
-func (m *Mergify) PostSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
+// Experimental.
+func NewMergify_Override(m Mergify, github GitHub, options *MergifyOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.github.Mergify",
+		[]interface{}{github, options},
 		m,
-		"postSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 }
 
-func (m *Mergify) PreSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		m,
-		"preSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (m *Mergify) Synthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		m,
-		"synthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (m *Mergify) AddRule(rule MergifyRuleIface) {
-	var returns interface{}
-	_jsii_.Invoke(
+// Experimental.
+func (m *jsiiProxy_Mergify) AddRule(rule *MergifyRule) {
+	_jsii_.InvokeVoid(
 		m,
 		"addRule",
 		[]interface{}{rule},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 }
 
-// MergifyOptionsIface is the public interface for the custom type MergifyOptions
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
 // Experimental.
-type MergifyOptionsIface interface {
-	GetRules() []MergifyRuleIface
+func (m *jsiiProxy_Mergify) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		m,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (m *jsiiProxy_Mergify) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		m,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (m *jsiiProxy_Mergify) Synthesize() {
+	_jsii_.InvokeVoid(
+		m,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// The Mergify conditional operators that can be used are: `or` and `and`.
+//
+// Note: The number of nested conditions is limited to 3.
+// See: https://docs.mergify.io/conditions/#combining-conditions-with-operators
+//
+// Experimental.
+type MergifyConditionalOperator struct {
+	// Experimental.
+	And *[]interface{} `json:"and"`
+	// Experimental.
+	Or *[]interface{} `json:"or"`
 }
 
 // Experimental.
-// Struct proxy
 type MergifyOptions struct {
 	// Experimental.
-	Rules []MergifyRuleIface `json:"rules"`
-}
-
-func (m *MergifyOptions) GetRules() []MergifyRuleIface {
-	var returns []MergifyRuleIface
-	_jsii_.Get(
-		m,
-		"rules",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*MergifyRuleIface)(nil)).Elem(): reflect.TypeOf((*MergifyRule)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-
-// MergifyRuleIface is the public interface for the custom type MergifyRule
-// Experimental.
-type MergifyRuleIface interface {
-	GetActions() map[string]interface{}
-	GetConditions() []string
-	GetName() string
+	Rules *[]*MergifyRule `json:"rules"`
 }
 
 // Experimental.
-// Struct proxy
 type MergifyRule struct {
+	// A dictionary made of Actions that will be executed on the matching pull requests.
+	// See: https://docs.mergify.io/actions/#actions
+	//
 	// Experimental.
-	Actions map[string]interface{} `json:"actions"`
+	Actions *map[string]interface{} `json:"actions"`
+	// A list of Conditions string that must match against the pull request for the rule to be applied.
+	// See: https://docs.mergify.io/conditions/#conditions
+	//
 	// Experimental.
-	Conditions []string `json:"conditions"`
+	Conditions *[]interface{} `json:"conditions"`
+	// The name of the rule.
+	//
+	// This is not used by the engine directly,
+	// but is used when reporting information about a rule.
 	// Experimental.
-	Name string `json:"name"`
+	Name *string `json:"name"`
 }
 
-func (m *MergifyRule) GetActions() map[string]interface{} {
-	var returns map[string]interface{}
-	_jsii_.Get(
-		m,
-		"actions",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*interface{})(nil)).Elem(): reflect.TypeOf((*interface{})(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (m *MergifyRule) GetConditions() []string {
-	var returns []string
-	_jsii_.Get(
-		m,
-		"conditions",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*string)(nil)).Elem(): reflect.TypeOf((*string)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (m *MergifyRule) GetName() string {
-	var returns string
-	_jsii_.Get(
-		m,
-		"name",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-
-// Class interface
-type PullRequestTemplateIface interface {
-	GetProject() projen.ProjectIface
-	GetAbsolutePath() string
-	GetPath() string
-	GetExecutable() bool
-	SetExecutable(val bool)
-	GetReadonly() bool
-	SetReadonly(val bool)
+// Configure validations to run on GitHub pull requests.
+//
+// Only generates a file if at least one linter is configured.
+// Experimental.
+type PullRequestLint interface {
+	projen.Component
+	Project() projen.Project
 	PostSynthesize()
 	PreSynthesize()
 	Synthesize()
-	SynthesizeContent(_ projen.IResolverIface) string
-	AddLine(line string)
+}
+
+// The jsii proxy struct for PullRequestLint
+type jsiiProxy_PullRequestLint struct {
+	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_PullRequestLint) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewPullRequestLint(github GitHub, options *PullRequestLintOptions) PullRequestLint {
+	_init_.Initialize()
+
+	j := jsiiProxy_PullRequestLint{}
+
+	_jsii_.Create(
+		"projen.github.PullRequestLint",
+		[]interface{}{github, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewPullRequestLint_Override(p PullRequestLint, github GitHub, options *PullRequestLintOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.github.PullRequestLint",
+		[]interface{}{github, options},
+		p,
+	)
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (p *jsiiProxy_PullRequestLint) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		p,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (p *jsiiProxy_PullRequestLint) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		p,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (p *jsiiProxy_PullRequestLint) Synthesize() {
+	_jsii_.InvokeVoid(
+		p,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Options for PullRequestLint.
+// Experimental.
+type PullRequestLintOptions struct {
+	// Github Runner selection labels.
+	// Experimental.
+	RunsOn *[]*string `json:"runsOn"`
+	// Validate that pull request titles follow Conventional Commits.
+	// See: https://www.conventionalcommits.org/
+	//
+	// Experimental.
+	SemanticTitle *bool `json:"semanticTitle"`
+	// Options for validating the conventional commit title linter.
+	// Experimental.
+	SemanticTitleOptions *SemanticTitleOptions `json:"semanticTitleOptions"`
 }
 
 // Template for GitHub pull requests.
 // Experimental.
-// Struct proxy
-type PullRequestTemplate struct {
-	// Experimental.
-	Project projen.ProjectIface `json:"project"`
-	// The absolute path of this file.
-	// Experimental.
-	AbsolutePath string `json:"absolutePath"`
-	// The file path, relative to the project root.
-	// Experimental.
-	Path string `json:"path"`
-	// Indicates if the file should be marked as executable.
-	// Experimental.
-	Executable bool `json:"executable"`
-	// Indicates if the file should be read-only or read-write.
-	// Experimental.
-	Readonly bool `json:"readonly"`
+type PullRequestTemplate interface {
+	projen.TextFile
+	AbsolutePath() *string
+	Executable() *bool
+	SetExecutable(val *bool)
+	Path() *string
+	Project() projen.Project
+	Readonly() *bool
+	SetReadonly(val *bool)
+	AddLine(line *string)
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
+	SynthesizeContent(_arg projen.IResolver) *string
 }
 
-func (p *PullRequestTemplate) GetProject() projen.ProjectIface {
-	var returns projen.ProjectIface
-	_jsii_.Get(
-		p,
-		"project",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*projen.ProjectIface)(nil)).Elem(): reflect.TypeOf((*projen.Project)(nil)).Elem(),
-		},
-	)
-	return returns
+// The jsii proxy struct for PullRequestTemplate
+type jsiiProxy_PullRequestTemplate struct {
+	internal.Type__projenTextFile
 }
 
-func (p *PullRequestTemplate) GetAbsolutePath() string {
-	var returns string
+func (j *jsiiProxy_PullRequestTemplate) AbsolutePath() *string {
+	var returns *string
 	_jsii_.Get(
-		p,
+		j,
 		"absolutePath",
 		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 	return returns
 }
 
-func (p *PullRequestTemplate) GetPath() string {
-	var returns string
+func (j *jsiiProxy_PullRequestTemplate) Executable() *bool {
+	var returns *bool
 	_jsii_.Get(
-		p,
-		"path",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (p *PullRequestTemplate) GetExecutable() bool {
-	var returns bool
-	_jsii_.Get(
-		p,
+		j,
 		"executable",
 		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 	return returns
 }
 
-func (p *PullRequestTemplate) GetReadonly() bool {
-	var returns bool
+func (j *jsiiProxy_PullRequestTemplate) Path() *string {
+	var returns *string
 	_jsii_.Get(
-		p,
+		j,
+		"path",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_PullRequestTemplate) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_PullRequestTemplate) Readonly() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
 		"readonly",
 		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 	return returns
 }
 
 
-func NewPullRequestTemplate(github GitHubIface, options PullRequestTemplateOptionsIface) PullRequestTemplateIface {
+// Experimental.
+func NewPullRequestTemplate(github GitHub, options *PullRequestTemplateOptions) PullRequestTemplate {
 	_init_.Initialize()
-	self := PullRequestTemplate{}
+
+	j := jsiiProxy_PullRequestTemplate{}
+
 	_jsii_.Create(
 		"projen.github.PullRequestTemplate",
 		[]interface{}{github, options},
-		[]_jsii_.FQN{},
-		[]_jsii_.Override{},
-		&self,
+		&j,
 	)
-	return &self
+
+	return &j
 }
 
-func (p *PullRequestTemplate) SetExecutable(val bool) {
-	_jsii_.Set(
+// Experimental.
+func NewPullRequestTemplate_Override(p PullRequestTemplate, github GitHub, options *PullRequestTemplateOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.github.PullRequestTemplate",
+		[]interface{}{github, options},
 		p,
+	)
+}
+
+func (j *jsiiProxy_PullRequestTemplate) SetExecutable(val *bool) {
+	_jsii_.Set(
+		j,
 		"executable",
 		val,
 	)
 }
 
-func (p *PullRequestTemplate) SetReadonly(val bool) {
+func (j *jsiiProxy_PullRequestTemplate) SetReadonly(val *bool) {
 	_jsii_.Set(
-		p,
+		j,
 		"readonly",
 		val,
 	)
 }
 
-func PullRequestTemplate_ProjenMarker() string {
+func PullRequestTemplate_PROJEN_MARKER() *string {
 	_init_.Initialize()
-	var returns string
+	var returns *string
 	_jsii_.StaticGet(
 		"projen.github.PullRequestTemplate",
 		"PROJEN_MARKER",
 		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 	return returns
 }
 
-func (p *PullRequestTemplate) PostSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		p,
-		"postSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (p *PullRequestTemplate) PreSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		p,
-		"preSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (p *PullRequestTemplate) Synthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		p,
-		"synthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (p *PullRequestTemplate) SynthesizeContent(_ projen.IResolverIface) string {
-	var returns string
-	_jsii_.Invoke(
-		p,
-		"synthesizeContent",
-		[]interface{}{_},
-		true,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (p *PullRequestTemplate) AddLine(line string) {
-	var returns interface{}
-	_jsii_.Invoke(
+// Adds a line to the text file.
+// Experimental.
+func (p *jsiiProxy_PullRequestTemplate) AddLine(line *string) {
+	_jsii_.InvokeVoid(
 		p,
 		"addLine",
 		[]interface{}{line},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 }
 
-// PullRequestTemplateOptionsIface is the public interface for the custom type PullRequestTemplateOptions
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
 // Experimental.
-type PullRequestTemplateOptionsIface interface {
-	GetLines() []string
+func (p *jsiiProxy_PullRequestTemplate) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		p,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (p *jsiiProxy_PullRequestTemplate) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		p,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Writes the file to the project's output directory.
+// Experimental.
+func (p *jsiiProxy_PullRequestTemplate) Synthesize() {
+	_jsii_.InvokeVoid(
+		p,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Implemented by derived classes and returns the contents of the file to emit.
+// Experimental.
+func (p *jsiiProxy_PullRequestTemplate) SynthesizeContent(_arg projen.IResolver) *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		p,
+		"synthesizeContent",
+		[]interface{}{_arg},
+		&returns,
+	)
+
+	return returns
 }
 
 // Options for `PullRequestTemplate`.
 // Experimental.
-// Struct proxy
 type PullRequestTemplateOptions struct {
 	// The contents of the template.
-	// 
+	//
 	// You can use `addLine()` to add additional lines.
 	// Experimental.
-	Lines []string `json:"lines"`
+	Lines *[]*string `json:"lines"`
 }
 
-func (p *PullRequestTemplateOptions) GetLines() []string {
-	var returns []string
+// Options for linting that PR titles follow Conventional Commits.
+// See: https://www.conventionalcommits.org/
+//
+// Experimental.
+type SemanticTitleOptions struct {
+	// Configure that a scope must always be provided.
+	//
+	// e.g. feat(ui), fix(core)
+	// Experimental.
+	RequireScope *bool `json:"requireScope"`
+	// Configure a list of commit types that are allowed.
+	// Experimental.
+	Types *[]*string `json:"types"`
+}
+
+// Warns and then closes issues and PRs that have had no activity for a specified amount of time.
+//
+// The default configuration will:
+//
+//   * Add a "Stale" label to pull requests after 14 days and closed after 2 days
+//   * Add a "Stale" label to issues after 60 days and closed after 7 days
+//   * If a comment is added, the label will be removed and timer is restarted.
+// See: https://github.com/actions/stale
+//
+// Experimental.
+type Stale interface {
+	projen.Component
+	Project() projen.Project
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
+}
+
+// The jsii proxy struct for Stale
+type jsiiProxy_Stale struct {
+	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_Stale) Project() projen.Project {
+	var returns projen.Project
 	_jsii_.Get(
-		p,
-		"lines",
+		j,
+		"project",
 		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*string)(nil)).Elem(): reflect.TypeOf((*string)(nil)).Elem(),
-		},
 	)
 	return returns
 }
 
+
+// Experimental.
+func NewStale(github GitHub, options *StaleOptions) Stale {
+	_init_.Initialize()
+
+	j := jsiiProxy_Stale{}
+
+	_jsii_.Create(
+		"projen.github.Stale",
+		[]interface{}{github, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewStale_Override(s Stale, github GitHub, options *StaleOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.github.Stale",
+		[]interface{}{github, options},
+		s,
+	)
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (s *jsiiProxy_Stale) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		s,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (s *jsiiProxy_Stale) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		s,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (s *jsiiProxy_Stale) Synthesize() {
+	_jsii_.InvokeVoid(
+		s,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Stale behavior.
+// Experimental.
+type StaleBehavior struct {
+	// The comment to add to the issue/PR when it's closed.
+	// Experimental.
+	CloseMessage *string `json:"closeMessage"`
+	// Days until the issue/PR is closed after it is marked as "Stale".
+	//
+	// Set to -1 to disable.
+	// Experimental.
+	DaysBeforeClose *float64 `json:"daysBeforeClose"`
+	// How many days until the issue or pull request is marked as "Stale".
+	//
+	// Set to -1 to disable.
+	// Experimental.
+	DaysBeforeStale *float64 `json:"daysBeforeStale"`
+	// Determines if this behavior is enabled.
+	//
+	// Same as setting `daysBeforeStale` and `daysBeforeClose` to `-1`.
+	// Experimental.
+	Enabled *bool `json:"enabled"`
+	// The label to apply to the issue/PR when it becomes stale.
+	// Experimental.
+	StaleLabel *string `json:"staleLabel"`
+	// The comment to add to the issue/PR when it becomes stale.
+	// Experimental.
+	StaleMessage *string `json:"staleMessage"`
+}
+
+// Options for `Stale`.
+// Experimental.
+type StaleOptions struct {
+	// How to handle stale issues.
+	// Experimental.
+	Issues *StaleBehavior `json:"issues"`
+	// How to handle stale pull requests.
+	// Experimental.
+	PullRequest *StaleBehavior `json:"pullRequest"`
+	// Github Runner selection labels.
+	// Experimental.
+	RunsOn *[]*string `json:"runsOn"`
+}
+
+// A GitHub workflow for common build tasks within a project.
+// Experimental.
+type TaskWorkflow interface {
+	GithubWorkflow
+	Concurrency() *string
+	File() projen.YamlFile
+	JobId() *string
+	Name() *string
+	Project() projen.Project
+	AddJobs(jobs *map[string]*workflows.Job)
+	On(events *workflows.Triggers)
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
+}
+
+// The jsii proxy struct for TaskWorkflow
+type jsiiProxy_TaskWorkflow struct {
+	jsiiProxy_GithubWorkflow
+}
+
+func (j *jsiiProxy_TaskWorkflow) Concurrency() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"concurrency",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TaskWorkflow) File() projen.YamlFile {
+	var returns projen.YamlFile
+	_jsii_.Get(
+		j,
+		"file",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TaskWorkflow) JobId() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"jobId",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TaskWorkflow) Name() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"name",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TaskWorkflow) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewTaskWorkflow(github GitHub, options *TaskWorkflowOptions) TaskWorkflow {
+	_init_.Initialize()
+
+	j := jsiiProxy_TaskWorkflow{}
+
+	_jsii_.Create(
+		"projen.github.TaskWorkflow",
+		[]interface{}{github, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewTaskWorkflow_Override(t TaskWorkflow, github GitHub, options *TaskWorkflowOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.github.TaskWorkflow",
+		[]interface{}{github, options},
+		t,
+	)
+}
+
+// Add jobs to the workflow.
+// Experimental.
+func (t *jsiiProxy_TaskWorkflow) AddJobs(jobs *map[string]*workflows.Job) {
+	_jsii_.InvokeVoid(
+		t,
+		"addJobs",
+		[]interface{}{jobs},
+	)
+}
+
+// Add events to triggers the workflow.
+// Experimental.
+func (t *jsiiProxy_TaskWorkflow) On(events *workflows.Triggers) {
+	_jsii_.InvokeVoid(
+		t,
+		"on",
+		[]interface{}{events},
+	)
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (t *jsiiProxy_TaskWorkflow) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		t,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (t *jsiiProxy_TaskWorkflow) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		t,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (t *jsiiProxy_TaskWorkflow) Synthesize() {
+	_jsii_.InvokeVoid(
+		t,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Experimental.
+type TaskWorkflowOptions struct {
+	// The workflow name.
+	// Experimental.
+	Name *string `json:"name"`
+	// Permissions for the build job.
+	// Experimental.
+	Permissions *workflows.JobPermissions `json:"permissions"`
+	// The main task to be executed.
+	// Experimental.
+	Task projen.Task `json:"task"`
+	// A directory name which contains artifacts to be uploaded (e.g. `dist`). If this is set, the contents of this directory will be uploaded as an artifact at the end of the workflow run, even if other steps fail.
+	// Experimental.
+	ArtifactsDirectory *string `json:"artifactsDirectory"`
+	// Override for the `with` property of the source code checkout step.
+	// Experimental.
+	CheckoutWith *map[string]interface{} `json:"checkoutWith"`
+	// Adds an 'if' condition to the workflow.
+	// Experimental.
+	Condition *string `json:"condition"`
+	// Experimental.
+	Container *workflows.ContainerOptions `json:"container"`
+	// Workflow environment variables.
+	// Experimental.
+	Env *map[string]*string `json:"env"`
+	// The git identity to use in this workflow.
+	// Experimental.
+	GitIdentity *GitIdentity `json:"gitIdentity"`
+	// The primary job id.
+	// Experimental.
+	JobId *string `json:"jobId"`
+	// Mapping of job output names to values/expressions.
+	// Experimental.
+	Outputs *map[string]*workflows.JobStepOutput `json:"outputs"`
+	// Actions to run after the main build step.
+	// Experimental.
+	PostBuildSteps *[]*workflows.JobStep `json:"postBuildSteps"`
+	// Steps to run before the main build step.
+	// Experimental.
+	PreBuildSteps *[]*workflows.JobStep `json:"preBuildSteps"`
+	// Initial steps to run before the source code checkout.
+	// Experimental.
+	PreCheckoutSteps *[]*workflows.JobStep `json:"preCheckoutSteps"`
+	// Github Runner selection labels.
+	// Experimental.
+	RunsOn *[]*string `json:"runsOn"`
+	// The triggers for the workflow.
+	// Experimental.
+	Triggers *workflows.Triggers `json:"triggers"`
+}
 
 // The strategy to use when edits manifest and lock files.
 // Experimental.
 type VersioningStrategy string
 
 const (
-	VersioningStrategyLockfileOnly VersioningStrategy = "LOCKFILE_ONLY"
-	VersioningStrategyAuto VersioningStrategy = "AUTO"
-	VersioningStrategyWiden VersioningStrategy = "WIDEN"
-	VersioningStrategyIncrease VersioningStrategy = "INCREASE"
-	VersioningStrategyIncreaseIfNecessary VersioningStrategy = "INCREASE_IF_NECESSARY"
+	VersioningStrategy_LOCKFILE_ONLY VersioningStrategy = "LOCKFILE_ONLY"
+	VersioningStrategy_AUTO VersioningStrategy = "AUTO"
+	VersioningStrategy_WIDEN VersioningStrategy = "WIDEN"
+	VersioningStrategy_INCREASE VersioningStrategy = "INCREASE"
+	VersioningStrategy_INCREASE_IF_NECESSARY VersioningStrategy = "INCREASE_IF_NECESSARY"
 )
 

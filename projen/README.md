@@ -1,14 +1,15 @@
+# projen
+
+![projen logo](./logo/projen.svg)
+
 [![License](https://img.shields.io/badge/License-Apache%202.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-37-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/projen/projen)
 ![Build](https://github.com/projen/projen/workflows/Build/badge.svg)
 ![Release](https://github.com/projen/projen/workflows/Release/badge.svg)
-
-# projen
-
-![projen logo](/logo/projen.svg)
+![Commit activity](https://img.shields.io/github/commit-activity/w/projen/projen)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-63-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Define and maintain complex project configuration through code.
 
@@ -45,19 +46,23 @@ Currently supported project types (use `npx projen new` without a type for a
 list):
 
 <!-- <macro exec="node ./scripts/readme-projects.js"> -->
-* [awscdk-app-ts](https://github.com/projen/projen/blob/master/API.md#projen-awscdktypescriptapp) - AWS CDK app in TypeScript.
-* [awscdk-construct](https://github.com/projen/projen/blob/master/API.md#projen-awscdkconstructlibrary) - AWS CDK construct library project.
-* [cdk8s-construct](https://github.com/projen/projen/blob/master/API.md#projen-constructlibrarycdk8s) - CDK8s construct library project.
-* [java](https://github.com/projen/projen/blob/master/API.md#projen-java.javaproject) - Java project.
-* [jsii](https://github.com/projen/projen/blob/master/API.md#projen-jsiiproject) - Multi-language jsii library project.
-* [nextjs](https://github.com/projen/projen/blob/master/API.md#projen-web.nextjsproject) - Next.js project without TypeScript.
-* [nextjs-ts](https://github.com/projen/projen/blob/master/API.md#projen-web.nextjstypescriptproject) - Next.js project with TypeScript.
-* [node](https://github.com/projen/projen/blob/master/API.md#projen-nodeproject) - Node.js project.
-* [project](https://github.com/projen/projen/blob/master/API.md#projen-project) - Base project.
-* [react](https://github.com/projen/projen/blob/master/API.md#projen-web.reactproject) - React project without TypeScript.
-* [react-ts](https://github.com/projen/projen/blob/master/API.md#projen-web.reacttypescriptproject) - React project with TypeScript.
-* [typescript](https://github.com/projen/projen/blob/master/API.md#projen-typescriptproject) - TypeScript project.
-* [typescript-app](https://github.com/projen/projen/blob/master/API.md#projen-typescriptappproject) - TypeScript app.
+* [awscdk-app-java](https://github.com/projen/projen/blob/main/API.md#projen-awscdk-awscdkjavaapp) - AWS CDK app in Java.
+* [awscdk-app-ts](https://github.com/projen/projen/blob/main/API.md#projen-awscdk-awscdktypescriptapp) - AWS CDK app in TypeScript.
+* [awscdk-construct](https://github.com/projen/projen/blob/main/API.md#projen-awscdk-awscdkconstructlibrary) - AWS CDK construct library project.
+* [cdk8s-app-ts](https://github.com/projen/projen/blob/main/API.md#projen-cdk8s-cdk8stypescriptapp) - CDK8s app in TypeScript.
+* [cdk8s-construct](https://github.com/projen/projen/blob/main/API.md#projen-cdk8s-constructlibrarycdk8s) - CDK8s construct library project.
+* [cdktf-construct](https://github.com/projen/projen/blob/main/API.md#projen-cdktf-constructlibrarycdktf) - CDKTF construct library project.
+* [java](https://github.com/projen/projen/blob/main/API.md#projen-java-javaproject) - Java project.
+* [jsii](https://github.com/projen/projen/blob/main/API.md#projen-cdk-jsiiproject) - Multi-language jsii library project.
+* [nextjs](https://github.com/projen/projen/blob/main/API.md#projen-web-nextjsproject) - Next.js project without TypeScript.
+* [nextjs-ts](https://github.com/projen/projen/blob/main/API.md#projen-web-nextjstypescriptproject) - Next.js project with TypeScript.
+* [node](https://github.com/projen/projen/blob/main/API.md#projen-javascript-nodeproject) - Node.js project.
+* [project](https://github.com/projen/projen/blob/main/API.md#projen-project) - Base project.
+* [python](https://github.com/projen/projen/blob/main/API.md#projen-python-pythonproject) - Python project.
+* [react](https://github.com/projen/projen/blob/main/API.md#projen-web-reactproject) - React project without TypeScript.
+* [react-ts](https://github.com/projen/projen/blob/main/API.md#projen-web-reacttypescriptproject) - React project with TypeScript.
+* [typescript](https://github.com/projen/projen/blob/main/API.md#projen-typescript-typescriptproject) - TypeScript project.
+* [typescript-app](https://github.com/projen/projen/blob/main/API.md#projen-typescript-typescriptappproject) - TypeScript app.
 <!-- </macro> -->
 
 > Use `npx projen new PROJECT-TYPE --help` to view a list of command line
@@ -122,29 +127,39 @@ time you update `.projenrc.js`:
 alias pj='npx projen'
 ```
 
-Most projects support a `start` command which displays a menu of workflow
-activities:
+Most projects come with an assortment of **tasks** that handle various
+development activities, from compiling to publishing. Tasks can be and composed
+together, and can be run as local commands or turned into GitHub workflows. You
+can list all tasks with `npx projen --help`:
 
 ```shell
-$ yarn start
-? Scripts: (Use arrow keys)
+$ npx projen --help
+projen [command]
 
-  BUILD
-❯ compile          Only compile
-  watch            Watch & compile in the background
-  build            Full release build (test+compile)
-
-  TEST
-  test             Run tests
-  test:watch       Run jest in watch mode
-  eslint           Runs eslint against the codebase
-
-  ...
+Commands:
+  projen new [PROJECT-TYPE-NAME] [OPTIONS]  Creates a new projen project
+  projen clobber                            hard resets to HEAD of origin and cleans the local repo
+  projen compile                            Only compile
+  projen test:compile                       compiles the test code
+  projen test                               Run tests
+  projen build                              Full release build (test+compile)
+  projen upgrade-dependencies               upgrade dependencies
+  projen upgrade-projen                     upgrade projen
+...
 ```
 
-The `build` command is the same command that's executed in your CI builds. It
+The `build` task is the same task that's executed in your CI builds. It
 typically compiles, lints, tests and packages your module for distribution.
 
+### Shell Completions
+If installed as a global package, `projen` includes rich shell tab-completion support. To enable this in your shell, run:
+```shell
+# Bash
+projen completion >> ~/.bashrc
+
+# ZSH
+projen completion >> ~/.zshrc
+```
 ## Features
 
 Some examples for features built-in to project types:
@@ -154,7 +169,7 @@ Some examples for features built-in to project types:
 * eslint
 * Jest
 * jsii: compile, package, api compatibility checks, API.md
-* Bump & release scripts with CHANGELOG generation based on Conventional Commits
+* Bump & release scripts with CHANGELOG generation based on conventional commits (manual releases are currently broken! [#726](https://github.com/projen/projen/issues/726))
 * Automated PR builds
 * Automated releases to npm, maven, NuGet and PyPI
 * Mergify configuration
@@ -229,6 +244,21 @@ project.synth();
 
 See [Vision](./VISION.md).
 
+## FAQ
+
+### Do I have to write my configuration in JavaScript?
+
+Not at all! JavaScript is the default, but it's also possible to write it in
+Java, TypeScript, or even JSON. Python support is also planned. This is made
+possible by the [jsii](https://github.com/aws/jsii) library which allows us
+to write APIs once and generate libraries in several languages. You can choose
+a different language by passing the `--projenrc-ts`, `--projenrc-java`, or
+`--projenrc-json` flags when running `projen new`.
+
+Note: using a `.projenrc.json` file to specify configuration only allows
+accessing a subset of the entire API - the options which are passed to the
+constructor of each project type.
+
 ## Contributions
 
 Contributions of all kinds are welcome! Check out our [contributor's
@@ -297,6 +327,38 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/gwriss"><img src="https://avatars2.githubusercontent.com/u/1842089?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tobias</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=gwriss" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/flyingImer"><img src="https://avatars0.githubusercontent.com/u/1973868?v=4?s=100" width="100px;" alt=""/><br /><sub><b>flyingImer</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=flyingImer" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Hunter-Thompson"><img src="https://avatars.githubusercontent.com/u/20844961?v=4?s=100" width="100px;" alt=""/><br /><sub><b> Aatman </b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=Hunter-Thompson" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/mmcculloh-dms"><img src="https://avatars.githubusercontent.com/u/68597641?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mark McCulloh</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=mmcculloh-dms" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/aisamu"><img src="https://avatars.githubusercontent.com/u/431708?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Samuel Tschiedel</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=aisamu" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/iliapolo"><img src="https://avatars.githubusercontent.com/u/1428812?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eli Polonsky</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=iliapolo" title="Code">💻</a></td>
+    <td align="center"><a href="https://unsubstantiated.blog/"><img src="https://avatars.githubusercontent.com/u/1308885?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alexander Steppke</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=Miradorn" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/kanatti"><img src="https://avatars.githubusercontent.com/u/8623654?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Balagopal Kanattil</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=kanatti" title="Code">💻</a></td>
+    <td align="center"><a href="http://twitter.com/bracki"><img src="https://avatars.githubusercontent.com/u/49786?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jan Brauer</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=bracki" title="Code">💻</a></td>
+    <td align="center"><a href="https://polothy.github.io/"><img src="https://avatars.githubusercontent.com/u/634657?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mark Nielsen</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=polothy" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/MrArnoldPalmer"><img src="https://avatars.githubusercontent.com/u/7221111?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mitchell Valine</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=MrArnoldPalmer" title="Code">💻</a></td>
+    <td align="center"><a href="https://blog.neilkuan.net/"><img src="https://avatars.githubusercontent.com/u/46012524?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Neil Kuan</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=neilkuan" title="Code">💻</a></td>
+    <td align="center"><a href="https://garbe.io/"><img src="https://avatars.githubusercontent.com/u/721899?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Philipp Garbe</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=pgarbe" title="Code">💻</a></td>
+    <td align="center"><a href="https://selfstructured.com/"><img src="https://avatars.githubusercontent.com/u/361689?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shawn MacIntyre</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=smacintyre" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/tobias-bardino"><img src="https://avatars.githubusercontent.com/u/1842089?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tobias</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=tobias-bardino" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/yglcode"><img src="https://avatars.githubusercontent.com/u/11893614?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yigong Liu</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=yglcode" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/eduardomourar"><img src="https://avatars.githubusercontent.com/u/16357187?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eduardo Rodrigues</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=eduardomourar" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/hassanazharkhan"><img src="https://avatars.githubusercontent.com/u/57677979?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Hassan Azhar</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=hassanazharkhan" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/julian-michel-812a223a/"><img src="https://avatars.githubusercontent.com/u/15660169?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Julian Michel</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=jumic" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/lmarsden"><img src="https://avatars.githubusercontent.com/u/51232932?v=4?s=100" width="100px;" alt=""/><br /><sub><b>lmarsden</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=lmarsden" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/adrianmace"><img src="https://avatars.githubusercontent.com/u/5071859?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Adrian Mace</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=adrianmace" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/mKeRix"><img src="https://avatars.githubusercontent.com/u/770596?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Heiko Rothe</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=mKeRix" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/hyandell"><img src="https://avatars.githubusercontent.com/u/477715?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Henri Yandell</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=hyandell" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/mwg-rea"><img src="https://avatars.githubusercontent.com/u/82480228?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Matthew Gamble</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=mwg-rea" title="Code">💻</a></td>
+    <td align="center"><a href="https://willdady.com/"><img src="https://avatars.githubusercontent.com/u/204259?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Will Dady</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=willdady" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/msessa"><img src="https://avatars.githubusercontent.com/u/1912143?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Matteo Sessa</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=msessa" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Hi-Fi"><img src="https://avatars.githubusercontent.com/u/1499780?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Juho Saarinen</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=Hi-Fi" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/njlynch"><img src="https://avatars.githubusercontent.com/u/1376292?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nick Lynch</b></sub></a><br /><a href="https://github.com/projen/projen/commits?author=njlynch" title="Code">💻</a></td>
   </tr>
 </table>
 

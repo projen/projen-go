@@ -1,7 +1,7 @@
 module github.com/projen/projen-go/projen
 
-go 1.15
+go 1.16
 
 require (
-	github.com/aws-cdk/jsii/jsii-experimental v1.16.0 (build 99a3413)
+	github.com/aws/jsii-runtime-go v1.47.0
 )

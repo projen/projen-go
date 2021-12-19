@@ -1,798 +1,450 @@
 package vscode
 
 import (
-	_jsii_ "github.com/aws-cdk/jsii/jsii-experimental"
+	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
-	"reflect"
+
 	"github.com/projen/projen-go/projen"
-	"github.com/projen/projen-go/projen/tasks"
+	"github.com/projen/projen-go/projen/vscode/internal"
 )
 
-// Class interface
-type DevContainerIface interface {
-	projen.IDevEnvironmentIface
-	GetProject() projen.ProjectIface
-	GetConfig() interface{}
-	PostSynthesize()
-	PreSynthesize()
-	Synthesize()
-	AddDockerImage(image projen.DevEnvironmentDockerImageIface)
-	AddPorts(ports string)
-	AddTasks(tasks tasks.TaskIface)
-	AddVscodeExtensions(extensions string)
-}
-
 // A development environment running VSCode in a container;
-// 
+//
 // used by GitHub
 // codespaces.
 // Experimental.
-// Struct proxy
-type DevContainer struct {
-	// Experimental.
-	Project projen.ProjectIface `json:"project"`
-	// Direct access to the devcontainer configuration (escape hatch).
-	// Experimental.
-	Config interface{} `json:"config"`
+type DevContainer interface {
+	projen.Component
+	projen.IDevEnvironment
+	Config() interface{}
+	Project() projen.Project
+	AddDockerImage(image projen.DevEnvironmentDockerImage)
+	AddPorts(ports ...*string)
+	AddTasks(tasks ...projen.Task)
+	AddVscodeExtensions(extensions ...*string)
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
 }
 
-func (d *DevContainer) GetProject() projen.ProjectIface {
-	var returns projen.ProjectIface
-	_jsii_.Get(
-		d,
-		"project",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*projen.ProjectIface)(nil)).Elem(): reflect.TypeOf((*projen.Project)(nil)).Elem(),
-		},
-	)
-	return returns
+// The jsii proxy struct for DevContainer
+type jsiiProxy_DevContainer struct {
+	internal.Type__projenComponent
+	internal.Type__projenIDevEnvironment
 }
 
-func (d *DevContainer) GetConfig() interface{} {
+func (j *jsiiProxy_DevContainer) Config() interface{} {
 	var returns interface{}
 	_jsii_.Get(
-		d,
+		j,
 		"config",
 		&returns,
-		map[reflect.Type]reflect.Type{},
+	)
+	return returns
+}
+
+func (j *jsiiProxy_DevContainer) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
 	)
 	return returns
 }
 
 
-func NewDevContainer(project projen.ProjectIface, options DevContainerOptionsIface) DevContainerIface {
+// Experimental.
+func NewDevContainer(project projen.Project, options *DevContainerOptions) DevContainer {
 	_init_.Initialize()
-	self := DevContainer{}
+
+	j := jsiiProxy_DevContainer{}
+
 	_jsii_.Create(
 		"projen.vscode.DevContainer",
 		[]interface{}{project, options},
-		[]_jsii_.FQN{"projen.IDevEnvironment"},
-		[]_jsii_.Override{},
-		&self,
+		&j,
 	)
-	return &self
+
+	return &j
 }
 
-func (d *DevContainer) PostSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
+// Experimental.
+func NewDevContainer_Override(d DevContainer, project projen.Project, options *DevContainerOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.vscode.DevContainer",
+		[]interface{}{project, options},
 		d,
-		"postSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 }
 
-func (d *DevContainer) PreSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		d,
-		"preSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (d *DevContainer) Synthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		d,
-		"synthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (d *DevContainer) AddDockerImage(image projen.DevEnvironmentDockerImageIface) {
-	var returns interface{}
-	_jsii_.Invoke(
+// Add a custom Docker image or Dockerfile for the container.
+// Experimental.
+func (d *jsiiProxy_DevContainer) AddDockerImage(image projen.DevEnvironmentDockerImage) {
+	_jsii_.InvokeVoid(
 		d,
 		"addDockerImage",
 		[]interface{}{image},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 }
 
-func (d *DevContainer) AddPorts(ports string) {
-	var returns interface{}
-	_jsii_.Invoke(
+// Adds ports that should be exposed (forwarded) from the container.
+// Experimental.
+func (d *jsiiProxy_DevContainer) AddPorts(ports ...*string) {
+	args := []interface{}{}
+	for _, a := range ports {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
 		d,
 		"addPorts",
-		[]interface{}{ports},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
+		args,
 	)
 }
 
-func (d *DevContainer) AddTasks(tasks tasks.TaskIface) {
-	var returns interface{}
-	_jsii_.Invoke(
+// Adds tasks to run when the container starts.
+//
+// Tasks will be run in sequence.
+// Experimental.
+func (d *jsiiProxy_DevContainer) AddTasks(tasks ...projen.Task) {
+	args := []interface{}{}
+	for _, a := range tasks {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
 		d,
 		"addTasks",
-		[]interface{}{tasks},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
+		args,
 	)
 }
 
-func (d *DevContainer) AddVscodeExtensions(extensions string) {
-	var returns interface{}
-	_jsii_.Invoke(
+// Adds a list of VSCode extensions that should be automatically installed in the container.
+// Experimental.
+func (d *jsiiProxy_DevContainer) AddVscodeExtensions(extensions ...*string) {
+	args := []interface{}{}
+	for _, a := range extensions {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
 		d,
 		"addVscodeExtensions",
-		[]interface{}{extensions},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
+		args,
 	)
 }
 
-// DevContainerOptionsIface is the public interface for the custom type DevContainerOptions
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
 // Experimental.
-type DevContainerOptionsIface interface {
-	GetDockerImage() projen.DevEnvironmentDockerImageIface
-	GetPorts() []string
-	GetTasks() []tasks.TaskIface
-	GetVscodeExtensions() []string
+func (d *jsiiProxy_DevContainer) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		d,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (d *jsiiProxy_DevContainer) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		d,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (d *jsiiProxy_DevContainer) Synthesize() {
+	_jsii_.InvokeVoid(
+		d,
+		"synthesize",
+		nil, // no parameters
+	)
 }
 
 // Constructor options for the DevContainer component.
-// 
+//
 // The default docker image used for GitHub Codespaces is defined here:
 // See: https://github.com/microsoft/vscode-dev-containers/tree/master/containers/codespaces-linux
 //
 // Experimental.
-// Struct proxy
 type DevContainerOptions struct {
 	// A Docker image or Dockerfile for the container.
 	// Experimental.
-	DockerImage projen.DevEnvironmentDockerImageIface `json:"dockerImage"`
+	DockerImage projen.DevEnvironmentDockerImage `json:"dockerImage"`
 	// An array of ports that should be exposed from the container.
 	// Experimental.
-	Ports []string `json:"ports"`
+	Ports *[]*string `json:"ports"`
 	// An array of tasks that should be run when the container starts.
 	// Experimental.
-	Tasks []tasks.TaskIface `json:"tasks"`
+	Tasks *[]projen.Task `json:"tasks"`
 	// An array of extension IDs that specify the extensions that should be installed inside the container when it is created.
 	// Experimental.
-	VscodeExtensions []string `json:"vscodeExtensions"`
+	VscodeExtensions *[]*string `json:"vscodeExtensions"`
 }
-
-func (d *DevContainerOptions) GetDockerImage() projen.DevEnvironmentDockerImageIface {
-	var returns projen.DevEnvironmentDockerImageIface
-	_jsii_.Get(
-		d,
-		"dockerImage",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*projen.DevEnvironmentDockerImageIface)(nil)).Elem(): reflect.TypeOf((*projen.DevEnvironmentDockerImage)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (d *DevContainerOptions) GetPorts() []string {
-	var returns []string
-	_jsii_.Get(
-		d,
-		"ports",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*string)(nil)).Elem(): reflect.TypeOf((*string)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (d *DevContainerOptions) GetTasks() []tasks.TaskIface {
-	var returns []tasks.TaskIface
-	_jsii_.Get(
-		d,
-		"tasks",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*tasks.TaskIface)(nil)).Elem(): reflect.TypeOf((*tasks.Task)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (d *DevContainerOptions) GetVscodeExtensions() []string {
-	var returns []string
-	_jsii_.Get(
-		d,
-		"vscodeExtensions",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*string)(nil)).Elem(): reflect.TypeOf((*string)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
 
 // Controls the visibility of the VSCode Debug Console panel during a debugging session Source: https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes.
 // Experimental.
 type InternalConsoleOptions string
 
 const (
-	InternalConsoleOptionsNeverOpen InternalConsoleOptions = "NEVER_OPEN"
-	InternalConsoleOptionsOpenOnFirstSessionStart InternalConsoleOptions = "OPEN_ON_FIRST_SESSION_START"
-	InternalConsoleOptionsOpenOnSessionStart InternalConsoleOptions = "OPEN_ON_SESSION_START"
+	InternalConsoleOptions_NEVER_OPEN InternalConsoleOptions = "NEVER_OPEN"
+	InternalConsoleOptions_OPEN_ON_FIRST_SESSION_START InternalConsoleOptions = "OPEN_ON_FIRST_SESSION_START"
+	InternalConsoleOptions_OPEN_ON_SESSION_START InternalConsoleOptions = "OPEN_ON_SESSION_START"
 )
-
-// PresentationIface is the public interface for the custom type Presentation
-// Experimental.
-type PresentationIface interface {
-	GetGroup() string
-	GetHidden() bool
-	GetOrder() float64
-}
 
 // VSCode launch configuration Presentation interface "using the order, group, and hidden attributes in the presentation object you can sort, group, and hide configurations and compounds in the Debug configuration dropdown and in the Debug quick pick." Source: https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes.
 // Experimental.
-// Struct proxy
 type Presentation struct {
 	// Experimental.
-	Group string `json:"group"`
+	Group *string `json:"group"`
 	// Experimental.
-	Hidden bool `json:"hidden"`
+	Hidden *bool `json:"hidden"`
 	// Experimental.
-	Order float64 `json:"order"`
-}
-
-func (p *Presentation) GetGroup() string {
-	var returns string
-	_jsii_.Get(
-		p,
-		"group",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (p *Presentation) GetHidden() bool {
-	var returns bool
-	_jsii_.Get(
-		p,
-		"hidden",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (p *Presentation) GetOrder() float64 {
-	var returns float64
-	_jsii_.Get(
-		p,
-		"order",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-
-// ServerReadyActionIface is the public interface for the custom type ServerReadyAction
-// Experimental.
-type ServerReadyActionIface interface {
-	GetAction() string
-	GetPattern() string
-	GetUriFormat() string
+	Order *float64 `json:"order"`
 }
 
 // VSCode launch configuration ServerReadyAction interface "if you want to open a URL in a web browser whenever the program under debugging outputs a specific message to the debug console or integrated terminal." Source: https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes.
 // Experimental.
-// Struct proxy
 type ServerReadyAction struct {
 	// Experimental.
-	Action string `json:"action"`
+	Action *string `json:"action"`
 	// Experimental.
-	Pattern string `json:"pattern"`
+	Pattern *string `json:"pattern"`
 	// Experimental.
-	UriFormat string `json:"uriFormat"`
-}
-
-func (s *ServerReadyAction) GetAction() string {
-	var returns string
-	_jsii_.Get(
-		s,
-		"action",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (s *ServerReadyAction) GetPattern() string {
-	var returns string
-	_jsii_.Get(
-		s,
-		"pattern",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (s *ServerReadyAction) GetUriFormat() string {
-	var returns string
-	_jsii_.Get(
-		s,
-		"uriFormat",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-
-// Class interface
-type VsCodeIface interface {
-	GetProject() projen.ProjectIface
-	GetLaunchConfiguration() VsCodeLaunchConfigIface
-	PostSynthesize()
-	PreSynthesize()
-	Synthesize()
+	UriFormat *string `json:"uriFormat"`
 }
 
 // Experimental.
-// Struct proxy
-type VsCode struct {
-	// Experimental.
-	Project projen.ProjectIface `json:"project"`
-	// Experimental.
-	LaunchConfiguration VsCodeLaunchConfigIface `json:"launchConfiguration"`
-}
-
-func (v *VsCode) GetProject() projen.ProjectIface {
-	var returns projen.ProjectIface
-	_jsii_.Get(
-		v,
-		"project",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*projen.ProjectIface)(nil)).Elem(): reflect.TypeOf((*projen.Project)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (v *VsCode) GetLaunchConfiguration() VsCodeLaunchConfigIface {
-	var returns VsCodeLaunchConfigIface
-	_jsii_.Get(
-		v,
-		"launchConfiguration",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*VsCodeLaunchConfigIface)(nil)).Elem(): reflect.TypeOf((*VsCodeLaunchConfig)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-
-func NewVsCode(project projen.ProjectIface) VsCodeIface {
-	_init_.Initialize()
-	self := VsCode{}
-	_jsii_.Create(
-		"projen.vscode.VsCode",
-		[]interface{}{project},
-		[]_jsii_.FQN{},
-		[]_jsii_.Override{},
-		&self,
-	)
-	return &self
-}
-
-func (v *VsCode) PostSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		v,
-		"postSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (v *VsCode) PreSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		v,
-		"preSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (v *VsCode) Synthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		v,
-		"synthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-// Class interface
-type VsCodeLaunchConfigIface interface {
-	GetProject() projen.ProjectIface
+type VsCode interface {
+	projen.Component
+	LaunchConfiguration() VsCodeLaunchConfig
+	Project() projen.Project
 	PostSynthesize()
 	PreSynthesize()
 	Synthesize()
-	AddConfiguration(cfg VsCodeLaunchConfigurationEntryIface)
+}
+
+// The jsii proxy struct for VsCode
+type jsiiProxy_VsCode struct {
+	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_VsCode) LaunchConfiguration() VsCodeLaunchConfig {
+	var returns VsCodeLaunchConfig
+	_jsii_.Get(
+		j,
+		"launchConfiguration",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_VsCode) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewVsCode(project projen.Project) VsCode {
+	_init_.Initialize()
+
+	j := jsiiProxy_VsCode{}
+
+	_jsii_.Create(
+		"projen.vscode.VsCode",
+		[]interface{}{project},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewVsCode_Override(v VsCode, project projen.Project) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.vscode.VsCode",
+		[]interface{}{project},
+		v,
+	)
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (v *jsiiProxy_VsCode) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		v,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (v *jsiiProxy_VsCode) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		v,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (v *jsiiProxy_VsCode) Synthesize() {
+	_jsii_.InvokeVoid(
+		v,
+		"synthesize",
+		nil, // no parameters
+	)
 }
 
 // VSCode launch configuration file (launch.json), useful for enabling in-editor debugger.
 // Experimental.
-// Struct proxy
-type VsCodeLaunchConfig struct {
-	// Experimental.
-	Project projen.ProjectIface `json:"project"`
+type VsCodeLaunchConfig interface {
+	projen.Component
+	Project() projen.Project
+	AddConfiguration(cfg *VsCodeLaunchConfigurationEntry)
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
 }
 
-func (v *VsCodeLaunchConfig) GetProject() projen.ProjectIface {
-	var returns projen.ProjectIface
+// The jsii proxy struct for VsCodeLaunchConfig
+type jsiiProxy_VsCodeLaunchConfig struct {
+	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_VsCodeLaunchConfig) Project() projen.Project {
+	var returns projen.Project
 	_jsii_.Get(
-		v,
+		j,
 		"project",
 		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*projen.ProjectIface)(nil)).Elem(): reflect.TypeOf((*projen.Project)(nil)).Elem(),
-		},
 	)
 	return returns
 }
 
 
-func NewVsCodeLaunchConfig(vscode VsCodeIface) VsCodeLaunchConfigIface {
+// Experimental.
+func NewVsCodeLaunchConfig(vscode VsCode) VsCodeLaunchConfig {
 	_init_.Initialize()
-	self := VsCodeLaunchConfig{}
+
+	j := jsiiProxy_VsCodeLaunchConfig{}
+
 	_jsii_.Create(
 		"projen.vscode.VsCodeLaunchConfig",
 		[]interface{}{vscode},
-		[]_jsii_.FQN{},
-		[]_jsii_.Override{},
-		&self,
+		&j,
 	)
-	return &self
+
+	return &j
 }
 
-func (v *VsCodeLaunchConfig) PostSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
+// Experimental.
+func NewVsCodeLaunchConfig_Override(v VsCodeLaunchConfig, vscode VsCode) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.vscode.VsCodeLaunchConfig",
+		[]interface{}{vscode},
 		v,
-		"postSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 }
 
-func (v *VsCodeLaunchConfig) PreSynthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		v,
-		"preSynthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (v *VsCodeLaunchConfig) Synthesize() {
-	var returns interface{}
-	_jsii_.Invoke(
-		v,
-		"synthesize",
-		[]interface{}{},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-}
-
-func (v *VsCodeLaunchConfig) AddConfiguration(cfg VsCodeLaunchConfigurationEntryIface) {
-	var returns interface{}
-	_jsii_.Invoke(
+// Adds a VsCodeLaunchConfigurationEntry (e.g. a node.js debugger) to `.vscode/launch.json. Each configuration entry has following mandatory fields: type, request and name. See https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes for details.
+// Experimental.
+func (v *jsiiProxy_VsCodeLaunchConfig) AddConfiguration(cfg *VsCodeLaunchConfigurationEntry) {
+	_jsii_.InvokeVoid(
 		v,
 		"addConfiguration",
 		[]interface{}{cfg},
-		false,
-		&returns,
-		map[reflect.Type]reflect.Type{},
 	)
 }
 
-// VsCodeLaunchConfigurationEntryIface is the public interface for the custom type VsCodeLaunchConfigurationEntry
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
 // Experimental.
-type VsCodeLaunchConfigurationEntryIface interface {
-	GetName() string
-	GetRequest() string
-	GetType() string
-	GetArgs() []string
-	GetDebugServer() float64
-	GetInternalConsoleOptions() InternalConsoleOptions
-	GetOutFiles() []string
-	GetPostDebugTask() string
-	GetPreLaunchTask() string
-	GetPresentation() PresentationIface
-	GetProgram() string
-	GetRuntimeArgs() []string
-	GetServerReadyAction() ServerReadyActionIface
-	GetSkipFiles() []string
-	GetUrl() string
-	GetWebRoot() string
+func (v *jsiiProxy_VsCodeLaunchConfig) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		v,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (v *jsiiProxy_VsCodeLaunchConfig) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		v,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (v *jsiiProxy_VsCodeLaunchConfig) Synthesize() {
+	_jsii_.InvokeVoid(
+		v,
+		"synthesize",
+		nil, // no parameters
+	)
 }
 
 // Options for a 'VsCodeLaunchConfigurationEntry' Source: https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes.
 // Experimental.
-// Struct proxy
 type VsCodeLaunchConfigurationEntry struct {
 	// Experimental.
-	Name string `json:"name"`
+	Name *string `json:"name"`
 	// Experimental.
-	Request string `json:"request"`
+	Request *string `json:"request"`
 	// Experimental.
-	Type string `json:"type"`
+	Type *string `json:"type"`
 	// Experimental.
-	Args []string `json:"args"`
+	Args *[]*string `json:"args"`
 	// Experimental.
-	DebugServer float64 `json:"debugServer"`
+	DebugServer *float64 `json:"debugServer"`
 	// Experimental.
 	InternalConsoleOptions InternalConsoleOptions `json:"internalConsoleOptions"`
 	// Experimental.
-	OutFiles []string `json:"outFiles"`
+	OutFiles *[]*string `json:"outFiles"`
 	// Experimental.
-	PostDebugTask string `json:"postDebugTask"`
+	PostDebugTask *string `json:"postDebugTask"`
 	// Experimental.
-	PreLaunchTask string `json:"preLaunchTask"`
+	PreLaunchTask *string `json:"preLaunchTask"`
 	// Experimental.
-	Presentation PresentationIface `json:"presentation"`
+	Presentation *Presentation `json:"presentation"`
 	// Experimental.
-	Program string `json:"program"`
+	Program *string `json:"program"`
 	// Experimental.
-	RuntimeArgs []string `json:"runtimeArgs"`
+	RuntimeArgs *[]*string `json:"runtimeArgs"`
 	// Experimental.
-	ServerReadyAction ServerReadyActionIface `json:"serverReadyAction"`
+	ServerReadyAction *ServerReadyAction `json:"serverReadyAction"`
 	// Experimental.
-	SkipFiles []string `json:"skipFiles"`
+	SkipFiles *[]*string `json:"skipFiles"`
 	// Experimental.
-	Url string `json:"url"`
+	Url *string `json:"url"`
 	// Experimental.
-	WebRoot string `json:"webRoot"`
+	WebRoot *string `json:"webRoot"`
 }
-
-func (v *VsCodeLaunchConfigurationEntry) GetName() string {
-	var returns string
-	_jsii_.Get(
-		v,
-		"name",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetRequest() string {
-	var returns string
-	_jsii_.Get(
-		v,
-		"request",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetType() string {
-	var returns string
-	_jsii_.Get(
-		v,
-		"type",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetArgs() []string {
-	var returns []string
-	_jsii_.Get(
-		v,
-		"args",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*string)(nil)).Elem(): reflect.TypeOf((*string)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetDebugServer() float64 {
-	var returns float64
-	_jsii_.Get(
-		v,
-		"debugServer",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetInternalConsoleOptions() InternalConsoleOptions {
-	var returns InternalConsoleOptions
-	_jsii_.Get(
-		v,
-		"internalConsoleOptions",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*InternalConsoleOptions)(nil)).Elem(): reflect.TypeOf((*InternalConsoleOptions)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetOutFiles() []string {
-	var returns []string
-	_jsii_.Get(
-		v,
-		"outFiles",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*string)(nil)).Elem(): reflect.TypeOf((*string)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetPostDebugTask() string {
-	var returns string
-	_jsii_.Get(
-		v,
-		"postDebugTask",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetPreLaunchTask() string {
-	var returns string
-	_jsii_.Get(
-		v,
-		"preLaunchTask",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetPresentation() PresentationIface {
-	var returns PresentationIface
-	_jsii_.Get(
-		v,
-		"presentation",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*PresentationIface)(nil)).Elem(): reflect.TypeOf((*Presentation)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetProgram() string {
-	var returns string
-	_jsii_.Get(
-		v,
-		"program",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetRuntimeArgs() []string {
-	var returns []string
-	_jsii_.Get(
-		v,
-		"runtimeArgs",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*string)(nil)).Elem(): reflect.TypeOf((*string)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetServerReadyAction() ServerReadyActionIface {
-	var returns ServerReadyActionIface
-	_jsii_.Get(
-		v,
-		"serverReadyAction",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*ServerReadyActionIface)(nil)).Elem(): reflect.TypeOf((*ServerReadyAction)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetSkipFiles() []string {
-	var returns []string
-	_jsii_.Get(
-		v,
-		"skipFiles",
-		&returns,
-		map[reflect.Type]reflect.Type{
-			reflect.TypeOf((*string)(nil)).Elem(): reflect.TypeOf((*string)(nil)).Elem(),
-		},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetUrl() string {
-	var returns string
-	_jsii_.Get(
-		v,
-		"url",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
-func (v *VsCodeLaunchConfigurationEntry) GetWebRoot() string {
-	var returns string
-	_jsii_.Get(
-		v,
-		"webRoot",
-		&returns,
-		map[reflect.Type]reflect.Type{},
-	)
-	return returns
-}
-
 

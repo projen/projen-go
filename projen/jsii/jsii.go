@@ -1,17 +1,21 @@
+// Package jsii contains the functionaility needed for jsii packages to
+// initialize their dependencies and themselves. Users should never need to use this package
+// directly. If you find you need to - please report a bug at
+// https://github.com/aws/jsii/issues/new/choose
 package jsii
 
 import (
-	rt "github.com/aws-cdk/jsii/jsii-experimental"
-	"sync"
+	_      "embed"
+
+	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 )
 
-var once sync.Once
+//go:embed projen-0.45.0.tgz
+var tarball []byte
 
-// Initialize performs the necessary work for the enclosing
-// module to be loaded in the jsii kernel.
+// Initialize loads the necessary packages in the @jsii/kernel to support the enclosing module.
+// The implementation is idempotent (and hence safe to be called over and over).
 func Initialize() {
-	once.Do(func(){
-		// Load this library into the kernel
-		rt.Load("projen", "0.15.15", tarball)
-	})
+	// Load this library into the kernel
+	_jsii_.Load("projen", "0.45.0", tarball)
 }
