@@ -142,6 +142,7 @@ type AwsCdkConstructLibrary interface {
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
 	ArtifactsDirectory() *string
+	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
@@ -259,6 +260,16 @@ func (j *jsiiProxy_AwsCdkConstructLibrary) ArtifactsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkConstructLibrary) ArtifactsJavascriptDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsJavascriptDirectory",
 		&returns,
 	)
 	return returns
@@ -3148,6 +3159,7 @@ type AwsCdkTypeScriptApp interface {
 	Antitamper() *bool
 	AppEntrypoint() *string
 	ArtifactsDirectory() *string
+	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
@@ -3275,6 +3287,16 @@ func (j *jsiiProxy_AwsCdkTypeScriptApp) ArtifactsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkTypeScriptApp) ArtifactsJavascriptDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsJavascriptDirectory",
 		&returns,
 	)
 	return returns
@@ -5196,6 +5218,7 @@ type ConstructLibraryAws interface {
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
 	ArtifactsDirectory() *string
+	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
@@ -5313,6 +5336,16 @@ func (j *jsiiProxy_ConstructLibraryAws) ArtifactsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryAws) ArtifactsJavascriptDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsJavascriptDirectory",
 		&returns,
 	)
 	return returns

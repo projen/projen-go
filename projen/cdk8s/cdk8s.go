@@ -24,6 +24,7 @@ type Cdk8sTypeScriptApp interface {
 	Antitamper() *bool
 	AppEntrypoint() *string
 	ArtifactsDirectory() *string
+	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
@@ -149,6 +150,16 @@ func (j *jsiiProxy_Cdk8sTypeScriptApp) ArtifactsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Cdk8sTypeScriptApp) ArtifactsJavascriptDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsJavascriptDirectory",
 		&returns,
 	)
 	return returns
@@ -1709,6 +1720,7 @@ type ConstructLibraryCdk8s interface {
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
 	ArtifactsDirectory() *string
+	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
@@ -1823,6 +1835,16 @@ func (j *jsiiProxy_ConstructLibraryCdk8s) ArtifactsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryCdk8s) ArtifactsJavascriptDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsJavascriptDirectory",
 		&returns,
 	)
 	return returns

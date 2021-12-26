@@ -129,6 +129,7 @@ type NextJsProject interface {
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
 	ArtifactsDirectory() *string
+	ArtifactsJavascriptDirectory() *string
 	Assetsdir() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
@@ -234,6 +235,16 @@ func (j *jsiiProxy_NextJsProject) ArtifactsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NextJsProject) ArtifactsJavascriptDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsJavascriptDirectory",
 		&returns,
 	)
 	return returns
@@ -1612,6 +1623,7 @@ type NextJsTypeScriptProject interface {
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
 	ArtifactsDirectory() *string
+	ArtifactsJavascriptDirectory() *string
 	Assetsdir() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
@@ -1726,6 +1738,16 @@ func (j *jsiiProxy_NextJsTypeScriptProject) ArtifactsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NextJsTypeScriptProject) ArtifactsJavascriptDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsJavascriptDirectory",
 		&returns,
 	)
 	return returns
@@ -3445,6 +3467,7 @@ type ReactProject interface {
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
 	ArtifactsDirectory() *string
+	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
@@ -3548,6 +3571,16 @@ func (j *jsiiProxy_ReactProject) ArtifactsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ReactProject) ArtifactsJavascriptDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsJavascriptDirectory",
 		&returns,
 	)
 	return returns
@@ -5152,6 +5185,7 @@ type ReactTypeScriptProject interface {
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
 	ArtifactsDirectory() *string
+	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
@@ -5265,6 +5299,16 @@ func (j *jsiiProxy_ReactTypeScriptProject) ArtifactsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ReactTypeScriptProject) ArtifactsJavascriptDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsJavascriptDirectory",
 		&returns,
 	)
 	return returns

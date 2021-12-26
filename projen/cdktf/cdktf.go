@@ -27,6 +27,7 @@ type ConstructLibraryCdktf interface {
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
 	ArtifactsDirectory() *string
+	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
@@ -139,6 +140,16 @@ func (j *jsiiProxy_ConstructLibraryCdktf) ArtifactsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryCdktf) ArtifactsJavascriptDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsJavascriptDirectory",
 		&returns,
 	)
 	return returns

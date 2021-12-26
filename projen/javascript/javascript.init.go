@@ -197,6 +197,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "annotateGenerated", GoMethod: "AnnotateGenerated"},
 			_jsii_.MemberProperty{JsiiProperty: "antitamper", GoGetter: "Antitamper"},
 			_jsii_.MemberProperty{JsiiProperty: "artifactsDirectory", GoGetter: "ArtifactsDirectory"},
+			_jsii_.MemberProperty{JsiiProperty: "artifactsJavascriptDirectory", GoGetter: "ArtifactsJavascriptDirectory"},
 			_jsii_.MemberProperty{JsiiProperty: "autoApprove", GoGetter: "AutoApprove"},
 			_jsii_.MemberProperty{JsiiProperty: "autoMerge", GoGetter: "AutoMerge"},
 			_jsii_.MemberProperty{JsiiProperty: "buildTask", GoGetter: "BuildTask"},

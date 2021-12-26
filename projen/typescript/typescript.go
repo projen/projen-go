@@ -115,6 +115,7 @@ type TypeScriptAppProject interface {
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
 	ArtifactsDirectory() *string
+	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
@@ -227,6 +228,16 @@ func (j *jsiiProxy_TypeScriptAppProject) ArtifactsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptAppProject) ArtifactsJavascriptDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsJavascriptDirectory",
 		&returns,
 	)
 	return returns
@@ -1188,6 +1199,7 @@ type TypeScriptLibraryProject interface {
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
 	ArtifactsDirectory() *string
+	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
@@ -1300,6 +1312,16 @@ func (j *jsiiProxy_TypeScriptLibraryProject) ArtifactsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptLibraryProject) ArtifactsJavascriptDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsJavascriptDirectory",
 		&returns,
 	)
 	return returns
@@ -2790,6 +2812,7 @@ type TypeScriptProject interface {
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
 	ArtifactsDirectory() *string
+	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
@@ -2902,6 +2925,16 @@ func (j *jsiiProxy_TypeScriptProject) ArtifactsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptProject) ArtifactsJavascriptDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsJavascriptDirectory",
 		&returns,
 	)
 	return returns
