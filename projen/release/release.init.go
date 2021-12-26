@@ -16,6 +16,10 @@ func init() {
 		reflect.TypeOf((*CodeArtifactOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.release.CommonPublishOptions",
+		reflect.TypeOf((*CommonPublishOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.release.GitHubReleasesPublishOptions",
 		reflect.TypeOf((*GitHubReleasesPublishOptions)(nil)).Elem(),
 	)
@@ -99,6 +103,7 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addBranch", GoMethod: "AddBranch"},
 			_jsii_.MemberMethod{JsiiMethod: "addJobs", GoMethod: "AddJobs"},
+			_jsii_.MemberProperty{JsiiProperty: "artifactsDirectory", GoGetter: "ArtifactsDirectory"},
 			_jsii_.MemberProperty{JsiiProperty: "branches", GoGetter: "Branches"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},

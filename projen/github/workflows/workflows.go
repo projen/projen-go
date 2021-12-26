@@ -260,6 +260,12 @@ type Job struct {
 	// The maximum number of minutes to let a job run before GitHub automatically cancels it.
 	// Experimental.
 	TimeoutMinutes *float64 `json:"timeoutMinutes"`
+	// Tools required for this job.
+	//
+	// Traslates into `actions/setup-xxx` steps at
+	// the beginning of the job.
+	// Experimental.
+	Tools *Tools `json:"tools"`
 }
 
 // Default settings for all steps in the job.
@@ -622,6 +628,33 @@ type RunSettings struct {
 // The Status event accepts no options.
 // Experimental.
 type StatusOptions struct {
+}
+
+// Version requirement for tools.
+// Experimental.
+type ToolRequirement struct {
+	// Experimental.
+	Version *string `json:"version"`
+}
+
+// Supported tools.
+// Experimental.
+type Tools struct {
+	// Setup .NET Core.
+	// Experimental.
+	Dotnet *ToolRequirement `json:"dotnet"`
+	// Setup golang.
+	// Experimental.
+	Go *ToolRequirement `json:"go"`
+	// Setup java (temurin distribution).
+	// Experimental.
+	Java *ToolRequirement `json:"java"`
+	// Setup node.js.
+	// Experimental.
+	Node *ToolRequirement `json:"node"`
+	// Setup python.
+	// Experimental.
+	Python *ToolRequirement `json:"python"`
 }
 
 // The set of available triggers for GitHub Workflows.

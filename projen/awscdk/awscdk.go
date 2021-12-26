@@ -6,6 +6,7 @@ import (
 
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/awscdk/internal"
+	"github.com/projen/projen-go/projen/build"
 	"github.com/projen/projen-go/projen/cdk"
 	"github.com/projen/projen-go/projen/github"
 	"github.com/projen/projen-go/projen/github/workflows"
@@ -140,10 +141,11 @@ type AwsCdkConstructLibrary interface {
 	cdk.ConstructLibrary
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
+	ArtifactsDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
-	BuildWorkflow() github.TaskWorkflow
+	BuildWorkflow() build.BuildWorkflow
 	BuildWorkflowJobId() *string
 	Bundler() javascript.Bundler
 	CdkDeps() AwsCdkDeps
@@ -193,6 +195,7 @@ type AwsCdkConstructLibrary interface {
 	Tsconfig() javascript.TypescriptConfig
 	TsconfigDev() javascript.TypescriptConfig
 	TsconfigEslint() javascript.TypescriptConfig
+	UpgradeWorkflow() javascript.UpgradeDependencies
 	Version() *string
 	Vscode() vscode.VsCode
 	WatchTask() projen.Task
@@ -251,6 +254,16 @@ func (j *jsiiProxy_AwsCdkConstructLibrary) Antitamper() *bool {
 	return returns
 }
 
+func (j *jsiiProxy_AwsCdkConstructLibrary) ArtifactsDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_AwsCdkConstructLibrary) AutoApprove() github.AutoApprove {
 	var returns github.AutoApprove
 	_jsii_.Get(
@@ -281,8 +294,8 @@ func (j *jsiiProxy_AwsCdkConstructLibrary) BuildTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_AwsCdkConstructLibrary) BuildWorkflow() github.TaskWorkflow {
-	var returns github.TaskWorkflow
+func (j *jsiiProxy_AwsCdkConstructLibrary) BuildWorkflow() build.BuildWorkflow {
+	var returns build.BuildWorkflow
 	_jsii_.Get(
 		j,
 		"buildWorkflow",
@@ -776,6 +789,16 @@ func (j *jsiiProxy_AwsCdkConstructLibrary) TsconfigEslint() javascript.Typescrip
 	_jsii_.Get(
 		j,
 		"tsconfigEslint",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkConstructLibrary) UpgradeWorkflow() javascript.UpgradeDependencies {
+	var returns javascript.UpgradeDependencies
+	_jsii_.Get(
+		j,
+		"upgradeWorkflow",
 		&returns,
 	)
 	return returns
@@ -1510,9 +1533,6 @@ type AwsCdkConstructLibraryOptions struct {
 	// Checks that after build there are no modified files on git.
 	// Experimental.
 	Antitamper *bool `json:"antitamper"`
-	// A directory which will contain artifacts to be published to npm.
-	// Experimental.
-	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -1534,6 +1554,9 @@ type AwsCdkConstructLibraryOptions struct {
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
 	// Experimental.
 	Prerelease *string `json:"prerelease"`
+	// Instead of actually publishing to package managers, just print the publishing command.
+	// Experimental.
+	PublishDryRun *bool `json:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
@@ -1595,6 +1618,9 @@ type AwsCdkConstructLibraryOptions struct {
 	// The name of the main release branch.
 	// Experimental.
 	DefaultReleaseBranch *string `json:"defaultReleaseBranch"`
+	// A directory which will contain build artifacts.
+	// Experimental.
+	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
@@ -1663,6 +1689,9 @@ type AwsCdkConstructLibraryOptions struct {
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
 	// Experimental.
 	NpmignoreEnabled *bool `json:"npmignoreEnabled"`
+	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
+	// Experimental.
+	Package *bool `json:"package"`
 	// Indicates of "projen" should be installed as a devDependency.
 	// Experimental.
 	ProjenDevDependency *bool `json:"projenDevDependency"`
@@ -1739,9 +1768,6 @@ type AwsCdkConstructLibraryOptions struct {
 	// Typescript  artifacts output directory.
 	// Experimental.
 	Libdir *string `json:"libdir"`
-	// Defines a `yarn package` command that will produce a tarball and place it under `dist/js`.
-	// Experimental.
-	Package *bool `json:"package"`
 	// Use TypeScript for your projenrc file (`.projenrc.ts`).
 	// Experimental.
 	ProjenrcTs *bool `json:"projenrcTs"`
@@ -3121,10 +3147,11 @@ type AwsCdkTypeScriptApp interface {
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
 	AppEntrypoint() *string
+	ArtifactsDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
-	BuildWorkflow() github.TaskWorkflow
+	BuildWorkflow() build.BuildWorkflow
 	BuildWorkflowJobId() *string
 	Bundler() javascript.Bundler
 	CdkConfig() CdkConfig
@@ -3176,6 +3203,7 @@ type AwsCdkTypeScriptApp interface {
 	Tsconfig() javascript.TypescriptConfig
 	TsconfigDev() javascript.TypescriptConfig
 	TsconfigEslint() javascript.TypescriptConfig
+	UpgradeWorkflow() javascript.UpgradeDependencies
 	Vscode() vscode.VsCode
 	WatchTask() projen.Task
 	AddBins(bins *map[string]*string)
@@ -3242,6 +3270,16 @@ func (j *jsiiProxy_AwsCdkTypeScriptApp) AppEntrypoint() *string {
 	return returns
 }
 
+func (j *jsiiProxy_AwsCdkTypeScriptApp) ArtifactsDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_AwsCdkTypeScriptApp) AutoApprove() github.AutoApprove {
 	var returns github.AutoApprove
 	_jsii_.Get(
@@ -3272,8 +3310,8 @@ func (j *jsiiProxy_AwsCdkTypeScriptApp) BuildTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_AwsCdkTypeScriptApp) BuildWorkflow() github.TaskWorkflow {
-	var returns github.TaskWorkflow
+func (j *jsiiProxy_AwsCdkTypeScriptApp) BuildWorkflow() build.BuildWorkflow {
+	var returns build.BuildWorkflow
 	_jsii_.Get(
 		j,
 		"buildWorkflow",
@@ -3787,6 +3825,16 @@ func (j *jsiiProxy_AwsCdkTypeScriptApp) TsconfigEslint() javascript.TypescriptCo
 	_jsii_.Get(
 		j,
 		"tsconfigEslint",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkTypeScriptApp) UpgradeWorkflow() javascript.UpgradeDependencies {
+	var returns javascript.UpgradeDependencies
+	_jsii_.Get(
+		j,
+		"upgradeWorkflow",
 		&returns,
 	)
 	return returns
@@ -4493,9 +4541,6 @@ type AwsCdkTypeScriptAppOptions struct {
 	// Checks that after build there are no modified files on git.
 	// Experimental.
 	Antitamper *bool `json:"antitamper"`
-	// A directory which will contain artifacts to be published to npm.
-	// Experimental.
-	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -4517,6 +4562,9 @@ type AwsCdkTypeScriptAppOptions struct {
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
 	// Experimental.
 	Prerelease *string `json:"prerelease"`
+	// Instead of actually publishing to package managers, just print the publishing command.
+	// Experimental.
+	PublishDryRun *bool `json:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
@@ -4578,6 +4626,9 @@ type AwsCdkTypeScriptAppOptions struct {
 	// The name of the main release branch.
 	// Experimental.
 	DefaultReleaseBranch *string `json:"defaultReleaseBranch"`
+	// A directory which will contain build artifacts.
+	// Experimental.
+	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
@@ -4646,6 +4697,9 @@ type AwsCdkTypeScriptAppOptions struct {
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
 	// Experimental.
 	NpmignoreEnabled *bool `json:"npmignoreEnabled"`
+	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
+	// Experimental.
+	Package *bool `json:"package"`
 	// Indicates of "projen" should be installed as a devDependency.
 	// Experimental.
 	ProjenDevDependency *bool `json:"projenDevDependency"`
@@ -4722,9 +4776,6 @@ type AwsCdkTypeScriptAppOptions struct {
 	// Typescript  artifacts output directory.
 	// Experimental.
 	Libdir *string `json:"libdir"`
-	// Defines a `yarn package` command that will produce a tarball and place it under `dist/js`.
-	// Experimental.
-	Package *bool `json:"package"`
 	// Use TypeScript for your projenrc file (`.projenrc.ts`).
 	// Experimental.
 	ProjenrcTs *bool `json:"projenrcTs"`
@@ -5144,10 +5195,11 @@ type ConstructLibraryAws interface {
 	AwsCdkConstructLibrary
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
+	ArtifactsDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
-	BuildWorkflow() github.TaskWorkflow
+	BuildWorkflow() build.BuildWorkflow
 	BuildWorkflowJobId() *string
 	Bundler() javascript.Bundler
 	CdkDeps() AwsCdkDeps
@@ -5197,6 +5249,7 @@ type ConstructLibraryAws interface {
 	Tsconfig() javascript.TypescriptConfig
 	TsconfigDev() javascript.TypescriptConfig
 	TsconfigEslint() javascript.TypescriptConfig
+	UpgradeWorkflow() javascript.UpgradeDependencies
 	Version() *string
 	Vscode() vscode.VsCode
 	WatchTask() projen.Task
@@ -5255,6 +5308,16 @@ func (j *jsiiProxy_ConstructLibraryAws) Antitamper() *bool {
 	return returns
 }
 
+func (j *jsiiProxy_ConstructLibraryAws) ArtifactsDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_ConstructLibraryAws) AutoApprove() github.AutoApprove {
 	var returns github.AutoApprove
 	_jsii_.Get(
@@ -5285,8 +5348,8 @@ func (j *jsiiProxy_ConstructLibraryAws) BuildTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryAws) BuildWorkflow() github.TaskWorkflow {
-	var returns github.TaskWorkflow
+func (j *jsiiProxy_ConstructLibraryAws) BuildWorkflow() build.BuildWorkflow {
+	var returns build.BuildWorkflow
 	_jsii_.Get(
 		j,
 		"buildWorkflow",
@@ -5780,6 +5843,16 @@ func (j *jsiiProxy_ConstructLibraryAws) TsconfigEslint() javascript.TypescriptCo
 	_jsii_.Get(
 		j,
 		"tsconfigEslint",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryAws) UpgradeWorkflow() javascript.UpgradeDependencies {
+	var returns javascript.UpgradeDependencies
+	_jsii_.Get(
+		j,
+		"upgradeWorkflow",
 		&returns,
 	)
 	return returns
@@ -6513,9 +6586,6 @@ type ConstructLibraryAwsOptions struct {
 	// Checks that after build there are no modified files on git.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	Antitamper *bool `json:"antitamper"`
-	// A directory which will contain artifacts to be published to npm.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
-	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -6537,6 +6607,9 @@ type ConstructLibraryAwsOptions struct {
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	Prerelease *string `json:"prerelease"`
+	// Instead of actually publishing to package managers, just print the publishing command.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	PublishDryRun *bool `json:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
@@ -6598,6 +6671,9 @@ type ConstructLibraryAwsOptions struct {
 	// The name of the main release branch.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	DefaultReleaseBranch *string `json:"defaultReleaseBranch"`
+	// A directory which will contain build artifacts.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
@@ -6666,6 +6742,9 @@ type ConstructLibraryAwsOptions struct {
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	NpmignoreEnabled *bool `json:"npmignoreEnabled"`
+	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
+	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	Package *bool `json:"package"`
 	// Indicates of "projen" should be installed as a devDependency.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	ProjenDevDependency *bool `json:"projenDevDependency"`
@@ -6742,9 +6821,6 @@ type ConstructLibraryAwsOptions struct {
 	// Typescript  artifacts output directory.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	Libdir *string `json:"libdir"`
-	// Defines a `yarn package` command that will produce a tarball and place it under `dist/js`.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
-	Package *bool `json:"package"`
 	// Use TypeScript for your projenrc file (`.projenrc.ts`).
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	ProjenrcTs *bool `json:"projenrcTs"`

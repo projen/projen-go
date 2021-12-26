@@ -52,9 +52,32 @@ type CodeArtifactOptions struct {
 	SecretAccessKeySecret *string `json:"secretAccessKeySecret"`
 }
 
+// Common publishing options.
+// Experimental.
+type CommonPublishOptions struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Experimental.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Experimental.
+	PublishTools *workflows.Tools `json:"publishTools"`
+}
+
 // Publishing options for GitHub releases.
 // Experimental.
 type GitHubReleasesPublishOptions struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Experimental.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Experimental.
+	PublishTools *workflows.Tools `json:"publishTools"`
 	// The location of an .md file (relative to `dist/`) that includes the changelog for the release.
 	//
 	// TODO: EXAMPLE
@@ -114,6 +137,21 @@ type GitPublishOptions struct {
 // /**
 // Options for Go releases.
 type GoPublishOptions struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Deprecated: Use `GoPublishOptions` instead.
+	// export interface JsiiReleaseGo extends GoPublishOptions { }
+	// /**
+	// Options for Go releases.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Deprecated: Use `GoPublishOptions` instead.
+	// export interface JsiiReleaseGo extends GoPublishOptions { }
+	// /**
+	// Options for Go releases.
+	PublishTools *workflows.Tools `json:"publishTools"`
 	// Branch to push to.
 	// Deprecated: Use `GoPublishOptions` instead.
 	// export interface JsiiReleaseGo extends GoPublishOptions { }
@@ -154,6 +192,15 @@ type GoPublishOptions struct {
 
 // Deprecated: Use `MavenPublishOptions` instead.
 type JsiiReleaseMaven struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Deprecated: Use `MavenPublishOptions` instead.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Deprecated: Use `MavenPublishOptions` instead.
+	PublishTools *workflows.Tools `json:"publishTools"`
 	// URL of Nexus repository.
 	//
 	// if not set, defaults to https://oss.sonatype.org
@@ -203,6 +250,15 @@ type JsiiReleaseMaven struct {
 
 // Deprecated: Use `NpmPublishOptions` instead.
 type JsiiReleaseNpm struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Deprecated: Use `NpmPublishOptions` instead.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Deprecated: Use `NpmPublishOptions` instead.
+	PublishTools *workflows.Tools `json:"publishTools"`
 	// Options for publishing npm package to AWS CodeArtifact.
 	// Deprecated: Use `NpmPublishOptions` instead.
 	CodeArtifactOptions *CodeArtifactOptions `json:"codeArtifactOptions"`
@@ -239,6 +295,15 @@ type JsiiReleaseNpm struct {
 
 // Deprecated: Use `NugetPublishOptions` instead.
 type JsiiReleaseNuget struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Deprecated: Use `NugetPublishOptions` instead.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Deprecated: Use `NugetPublishOptions` instead.
+	PublishTools *workflows.Tools `json:"publishTools"`
 	// GitHub secret which contains the API key for NuGet.
 	// Deprecated: Use `NugetPublishOptions` instead.
 	NugetApiKeySecret *string `json:"nugetApiKeySecret"`
@@ -246,6 +311,15 @@ type JsiiReleaseNuget struct {
 
 // Deprecated: Use `PyPiPublishOptions` instead.
 type JsiiReleasePyPi struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Deprecated: Use `PyPiPublishOptions` instead.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Deprecated: Use `PyPiPublishOptions` instead.
+	PublishTools *workflows.Tools `json:"publishTools"`
 	// The GitHub secret which contains PyPI password.
 	// Deprecated: Use `PyPiPublishOptions` instead.
 	TwinePasswordSecret *string `json:"twinePasswordSecret"`
@@ -277,6 +351,15 @@ type ManualReleaseOptions struct {
 // Options for Maven releases.
 // Experimental.
 type MavenPublishOptions struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Experimental.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Experimental.
+	PublishTools *workflows.Tools `json:"publishTools"`
 	// URL of Nexus repository.
 	//
 	// if not set, defaults to https://oss.sonatype.org
@@ -327,6 +410,15 @@ type MavenPublishOptions struct {
 // Options for npm release.
 // Experimental.
 type NpmPublishOptions struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Experimental.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Experimental.
+	PublishTools *workflows.Tools `json:"publishTools"`
 	// Options for publishing npm package to AWS CodeArtifact.
 	// Experimental.
 	CodeArtifactOptions *CodeArtifactOptions `json:"codeArtifactOptions"`
@@ -364,6 +456,15 @@ type NpmPublishOptions struct {
 // Options for NuGet releases.
 // Experimental.
 type NugetPublishOptions struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Experimental.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Experimental.
+	PublishTools *workflows.Tools `json:"publishTools"`
 	// GitHub secret which contains the API key for NuGet.
 	// Experimental.
 	NugetApiKeySecret *string `json:"nugetApiKeySecret"`
@@ -603,6 +704,11 @@ type PublisherOptions struct {
 	// A GitHub workflow expression used as a condition for publishers.
 	// Experimental.
 	Condition *string `json:"condition"`
+	// Do not actually publish, only print the commands that would be executed instead.
+	//
+	// Useful if you wish to block all publishing from a single option.
+	// Experimental.
+	DryRun *bool `json:"dryRun"`
 	// Create an issue when a publish task fails.
 	// Experimental.
 	FailureIssue *bool `json:"failureIssue"`
@@ -628,6 +734,15 @@ type PublisherOptions struct {
 // Options for PyPI release.
 // Experimental.
 type PyPiPublishOptions struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Experimental.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Experimental.
+	PublishTools *workflows.Tools `json:"publishTools"`
 	// The GitHub secret which contains PyPI password.
 	// Experimental.
 	TwinePasswordSecret *string `json:"twinePasswordSecret"`
@@ -645,6 +760,7 @@ type PyPiPublishOptions struct {
 // Experimental.
 type Release interface {
 	projen.Component
+	ArtifactsDirectory() *string
 	Branches() *[]*string
 	Project() projen.Project
 	Publisher() Publisher
@@ -658,6 +774,16 @@ type Release interface {
 // The jsii proxy struct for Release
 type jsiiProxy_Release struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_Release) ArtifactsDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsDirectory",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_Release) Branches() *[]*string {
@@ -779,9 +905,6 @@ type ReleaseOptions struct {
 	// Checks that after build there are no modified files on git.
 	// Experimental.
 	Antitamper *bool `json:"antitamper"`
-	// A directory which will contain artifacts to be published to npm.
-	// Experimental.
-	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -803,6 +926,9 @@ type ReleaseOptions struct {
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
 	// Experimental.
 	Prerelease *string `json:"prerelease"`
+	// Instead of actually publishing to package managers, just print the publishing command.
+	// Experimental.
+	PublishDryRun *bool `json:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
@@ -861,6 +987,9 @@ type ReleaseOptions struct {
 	// Github Runner selection labels.
 	// Experimental.
 	WorkflowRunsOn *[]*string `json:"workflowRunsOn"`
+	// A directory which will contain build artifacts.
+	// Experimental.
+	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// The default branch name to release from.
 	//
 	// Use `majorVersion` to restrict this branch to only publish releases with a
@@ -893,9 +1022,6 @@ type ReleaseProjectOptions struct {
 	// Checks that after build there are no modified files on git.
 	// Experimental.
 	Antitamper *bool `json:"antitamper"`
-	// A directory which will contain artifacts to be published to npm.
-	// Experimental.
-	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -917,6 +1043,9 @@ type ReleaseProjectOptions struct {
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
 	// Experimental.
 	Prerelease *string `json:"prerelease"`
+	// Instead of actually publishing to package managers, just print the publishing command.
+	// Experimental.
+	PublishDryRun *bool `json:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this

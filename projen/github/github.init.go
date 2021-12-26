@@ -191,6 +191,7 @@ func init() {
 		"projen.github.GithubWorkflow",
 		reflect.TypeOf((*GithubWorkflow)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addJob", GoMethod: "AddJob"},
 			_jsii_.MemberMethod{JsiiMethod: "addJobs", GoMethod: "AddJobs"},
 			_jsii_.MemberProperty{JsiiProperty: "concurrency", GoGetter: "Concurrency"},
 			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
@@ -324,7 +325,9 @@ func init() {
 		"projen.github.TaskWorkflow",
 		reflect.TypeOf((*TaskWorkflow)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addJob", GoMethod: "AddJob"},
 			_jsii_.MemberMethod{JsiiMethod: "addJobs", GoMethod: "AddJobs"},
+			_jsii_.MemberProperty{JsiiProperty: "artifactsDirectory", GoGetter: "ArtifactsDirectory"},
 			_jsii_.MemberProperty{JsiiProperty: "concurrency", GoGetter: "Concurrency"},
 			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
 			_jsii_.MemberProperty{JsiiProperty: "jobId", GoGetter: "JobId"},

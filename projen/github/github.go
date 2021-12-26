@@ -560,6 +560,23 @@ func NewGitHub_Override(g GitHub, project projen.Project, options *GitHubOptions
 	)
 }
 
+// Returns the `GitHub` component of a project or `undefined` if the project does not have a GitHub component.
+// Experimental.
+func GitHub_Of(project projen.Project) GitHub {
+	_init_.Initialize()
+
+	var returns GitHub
+
+	_jsii_.StaticInvoke(
+		"projen.github.GitHub",
+		"of",
+		[]interface{}{project},
+		&returns,
+	)
+
+	return returns
+}
+
 // Experimental.
 func (g *jsiiProxy_GitHub) AddDependabot(options *DependabotOptions) Dependabot {
 	var returns Dependabot
@@ -1418,6 +1435,7 @@ type GithubWorkflow interface {
 	File() projen.YamlFile
 	Name() *string
 	Project() projen.Project
+	AddJob(id *string, job *workflows.Job)
 	AddJobs(jobs *map[string]*workflows.Job)
 	On(events *workflows.Triggers)
 	PostSynthesize()
@@ -1494,6 +1512,16 @@ func NewGithubWorkflow_Override(g GithubWorkflow, github GitHub, name *string, o
 		"projen.github.GithubWorkflow",
 		[]interface{}{github, name, options},
 		g,
+	)
+}
+
+// Adds a single job to the workflow.
+// Experimental.
+func (g *jsiiProxy_GithubWorkflow) AddJob(id *string, job *workflows.Job) {
+	_jsii_.InvokeVoid(
+		g,
+		"addJob",
+		[]interface{}{id, job},
 	)
 }
 
@@ -2171,11 +2199,13 @@ type StaleOptions struct {
 // Experimental.
 type TaskWorkflow interface {
 	GithubWorkflow
+	ArtifactsDirectory() *string
 	Concurrency() *string
 	File() projen.YamlFile
 	JobId() *string
 	Name() *string
 	Project() projen.Project
+	AddJob(id *string, job *workflows.Job)
 	AddJobs(jobs *map[string]*workflows.Job)
 	On(events *workflows.Triggers)
 	PostSynthesize()
@@ -2186,6 +2216,16 @@ type TaskWorkflow interface {
 // The jsii proxy struct for TaskWorkflow
 type jsiiProxy_TaskWorkflow struct {
 	jsiiProxy_GithubWorkflow
+}
+
+func (j *jsiiProxy_TaskWorkflow) ArtifactsDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsDirectory",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_TaskWorkflow) Concurrency() *string {
@@ -2262,6 +2302,16 @@ func NewTaskWorkflow_Override(t TaskWorkflow, github GitHub, options *TaskWorkfl
 		"projen.github.TaskWorkflow",
 		[]interface{}{github, options},
 		t,
+	)
+}
+
+// Adds a single job to the workflow.
+// Experimental.
+func (t *jsiiProxy_TaskWorkflow) AddJob(id *string, job *workflows.Job) {
+	_jsii_.InvokeVoid(
+		t,
+		"addJob",
+		[]interface{}{id, job},
 	)
 }
 

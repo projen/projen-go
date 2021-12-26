@@ -5,6 +5,7 @@ import (
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
 	"github.com/projen/projen-go/projen"
+	"github.com/projen/projen-go/projen/build"
 	"github.com/projen/projen-go/projen/github"
 	"github.com/projen/projen-go/projen/github/workflows"
 	"github.com/projen/projen-go/projen/javascript"
@@ -113,10 +114,11 @@ type TypeScriptAppProject interface {
 	TypeScriptProject
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
+	ArtifactsDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
-	BuildWorkflow() github.TaskWorkflow
+	BuildWorkflow() build.BuildWorkflow
 	BuildWorkflowJobId() *string
 	Bundler() javascript.Bundler
 	CompileTask() projen.Task
@@ -164,6 +166,7 @@ type TypeScriptAppProject interface {
 	Tsconfig() javascript.TypescriptConfig
 	TsconfigDev() javascript.TypescriptConfig
 	TsconfigEslint() javascript.TypescriptConfig
+	UpgradeWorkflow() javascript.UpgradeDependencies
 	Vscode() vscode.VsCode
 	WatchTask() projen.Task
 	AddBins(bins *map[string]*string)
@@ -219,6 +222,16 @@ func (j *jsiiProxy_TypeScriptAppProject) Antitamper() *bool {
 	return returns
 }
 
+func (j *jsiiProxy_TypeScriptAppProject) ArtifactsDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_TypeScriptAppProject) AutoApprove() github.AutoApprove {
 	var returns github.AutoApprove
 	_jsii_.Get(
@@ -249,8 +262,8 @@ func (j *jsiiProxy_TypeScriptAppProject) BuildTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_TypeScriptAppProject) BuildWorkflow() github.TaskWorkflow {
-	var returns github.TaskWorkflow
+func (j *jsiiProxy_TypeScriptAppProject) BuildWorkflow() build.BuildWorkflow {
+	var returns build.BuildWorkflow
 	_jsii_.Get(
 		j,
 		"buildWorkflow",
@@ -729,6 +742,16 @@ func (j *jsiiProxy_TypeScriptAppProject) TsconfigEslint() javascript.TypescriptC
 	return returns
 }
 
+func (j *jsiiProxy_TypeScriptAppProject) UpgradeWorkflow() javascript.UpgradeDependencies {
+	var returns javascript.UpgradeDependencies
+	_jsii_.Get(
+		j,
+		"upgradeWorkflow",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_TypeScriptAppProject) Vscode() vscode.VsCode {
 	var returns vscode.VsCode
 	_jsii_.Get(
@@ -1164,10 +1187,11 @@ type TypeScriptLibraryProject interface {
 	TypeScriptProject
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
+	ArtifactsDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
-	BuildWorkflow() github.TaskWorkflow
+	BuildWorkflow() build.BuildWorkflow
 	BuildWorkflowJobId() *string
 	Bundler() javascript.Bundler
 	CompileTask() projen.Task
@@ -1215,6 +1239,7 @@ type TypeScriptLibraryProject interface {
 	Tsconfig() javascript.TypescriptConfig
 	TsconfigDev() javascript.TypescriptConfig
 	TsconfigEslint() javascript.TypescriptConfig
+	UpgradeWorkflow() javascript.UpgradeDependencies
 	Vscode() vscode.VsCode
 	WatchTask() projen.Task
 	AddBins(bins *map[string]*string)
@@ -1270,6 +1295,16 @@ func (j *jsiiProxy_TypeScriptLibraryProject) Antitamper() *bool {
 	return returns
 }
 
+func (j *jsiiProxy_TypeScriptLibraryProject) ArtifactsDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_TypeScriptLibraryProject) AutoApprove() github.AutoApprove {
 	var returns github.AutoApprove
 	_jsii_.Get(
@@ -1300,8 +1335,8 @@ func (j *jsiiProxy_TypeScriptLibraryProject) BuildTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_TypeScriptLibraryProject) BuildWorkflow() github.TaskWorkflow {
-	var returns github.TaskWorkflow
+func (j *jsiiProxy_TypeScriptLibraryProject) BuildWorkflow() build.BuildWorkflow {
+	var returns build.BuildWorkflow
 	_jsii_.Get(
 		j,
 		"buildWorkflow",
@@ -1775,6 +1810,16 @@ func (j *jsiiProxy_TypeScriptLibraryProject) TsconfigEslint() javascript.Typescr
 	_jsii_.Get(
 		j,
 		"tsconfigEslint",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptLibraryProject) UpgradeWorkflow() javascript.UpgradeDependencies {
+	var returns javascript.UpgradeDependencies
+	_jsii_.Get(
+		j,
+		"upgradeWorkflow",
 		&returns,
 	)
 	return returns
@@ -2466,9 +2511,6 @@ type TypeScriptLibraryProjectOptions struct {
 	// Checks that after build there are no modified files on git.
 	// Deprecated: use TypeScriptProjectOptions
 	Antitamper *bool `json:"antitamper"`
-	// A directory which will contain artifacts to be published to npm.
-	// Deprecated: use TypeScriptProjectOptions
-	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Deprecated: use TypeScriptProjectOptions
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -2490,6 +2532,9 @@ type TypeScriptLibraryProjectOptions struct {
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
 	// Deprecated: use TypeScriptProjectOptions
 	Prerelease *string `json:"prerelease"`
+	// Instead of actually publishing to package managers, just print the publishing command.
+	// Deprecated: use TypeScriptProjectOptions
+	PublishDryRun *bool `json:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
@@ -2551,6 +2596,9 @@ type TypeScriptLibraryProjectOptions struct {
 	// The name of the main release branch.
 	// Deprecated: use TypeScriptProjectOptions
 	DefaultReleaseBranch *string `json:"defaultReleaseBranch"`
+	// A directory which will contain build artifacts.
+	// Deprecated: use TypeScriptProjectOptions
+	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
@@ -2619,6 +2667,9 @@ type TypeScriptLibraryProjectOptions struct {
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
 	// Deprecated: use TypeScriptProjectOptions
 	NpmignoreEnabled *bool `json:"npmignoreEnabled"`
+	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
+	// Deprecated: use TypeScriptProjectOptions
+	Package *bool `json:"package"`
 	// Indicates of "projen" should be installed as a devDependency.
 	// Deprecated: use TypeScriptProjectOptions
 	ProjenDevDependency *bool `json:"projenDevDependency"`
@@ -2695,9 +2746,6 @@ type TypeScriptLibraryProjectOptions struct {
 	// Typescript  artifacts output directory.
 	// Deprecated: use TypeScriptProjectOptions
 	Libdir *string `json:"libdir"`
-	// Defines a `yarn package` command that will produce a tarball and place it under `dist/js`.
-	// Deprecated: use TypeScriptProjectOptions
-	Package *bool `json:"package"`
 	// Use TypeScript for your projenrc file (`.projenrc.ts`).
 	// Deprecated: use TypeScriptProjectOptions
 	ProjenrcTs *bool `json:"projenrcTs"`
@@ -2741,10 +2789,11 @@ type TypeScriptProject interface {
 	javascript.NodeProject
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
+	ArtifactsDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
-	BuildWorkflow() github.TaskWorkflow
+	BuildWorkflow() build.BuildWorkflow
 	BuildWorkflowJobId() *string
 	Bundler() javascript.Bundler
 	CompileTask() projen.Task
@@ -2792,6 +2841,7 @@ type TypeScriptProject interface {
 	Tsconfig() javascript.TypescriptConfig
 	TsconfigDev() javascript.TypescriptConfig
 	TsconfigEslint() javascript.TypescriptConfig
+	UpgradeWorkflow() javascript.UpgradeDependencies
 	Vscode() vscode.VsCode
 	WatchTask() projen.Task
 	AddBins(bins *map[string]*string)
@@ -2847,6 +2897,16 @@ func (j *jsiiProxy_TypeScriptProject) Antitamper() *bool {
 	return returns
 }
 
+func (j *jsiiProxy_TypeScriptProject) ArtifactsDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_TypeScriptProject) AutoApprove() github.AutoApprove {
 	var returns github.AutoApprove
 	_jsii_.Get(
@@ -2877,8 +2937,8 @@ func (j *jsiiProxy_TypeScriptProject) BuildTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_TypeScriptProject) BuildWorkflow() github.TaskWorkflow {
-	var returns github.TaskWorkflow
+func (j *jsiiProxy_TypeScriptProject) BuildWorkflow() build.BuildWorkflow {
+	var returns build.BuildWorkflow
 	_jsii_.Get(
 		j,
 		"buildWorkflow",
@@ -3352,6 +3412,16 @@ func (j *jsiiProxy_TypeScriptProject) TsconfigEslint() javascript.TypescriptConf
 	_jsii_.Get(
 		j,
 		"tsconfigEslint",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptProject) UpgradeWorkflow() javascript.UpgradeDependencies {
+	var returns javascript.UpgradeDependencies
+	_jsii_.Get(
+		j,
+		"upgradeWorkflow",
 		&returns,
 	)
 	return returns
@@ -4043,9 +4113,6 @@ type TypeScriptProjectOptions struct {
 	// Checks that after build there are no modified files on git.
 	// Experimental.
 	Antitamper *bool `json:"antitamper"`
-	// A directory which will contain artifacts to be published to npm.
-	// Experimental.
-	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -4067,6 +4134,9 @@ type TypeScriptProjectOptions struct {
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
 	// Experimental.
 	Prerelease *string `json:"prerelease"`
+	// Instead of actually publishing to package managers, just print the publishing command.
+	// Experimental.
+	PublishDryRun *bool `json:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
@@ -4128,6 +4198,9 @@ type TypeScriptProjectOptions struct {
 	// The name of the main release branch.
 	// Experimental.
 	DefaultReleaseBranch *string `json:"defaultReleaseBranch"`
+	// A directory which will contain build artifacts.
+	// Experimental.
+	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
@@ -4196,6 +4269,9 @@ type TypeScriptProjectOptions struct {
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
 	// Experimental.
 	NpmignoreEnabled *bool `json:"npmignoreEnabled"`
+	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
+	// Experimental.
+	Package *bool `json:"package"`
 	// Indicates of "projen" should be installed as a devDependency.
 	// Experimental.
 	ProjenDevDependency *bool `json:"projenDevDependency"`
@@ -4272,9 +4348,6 @@ type TypeScriptProjectOptions struct {
 	// Typescript  artifacts output directory.
 	// Experimental.
 	Libdir *string `json:"libdir"`
-	// Defines a `yarn package` command that will produce a tarball and place it under `dist/js`.
-	// Experimental.
-	Package *bool `json:"package"`
 	// Use TypeScript for your projenrc file (`.projenrc.ts`).
 	// Experimental.
 	ProjenrcTs *bool `json:"projenrcTs"`

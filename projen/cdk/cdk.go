@@ -5,6 +5,7 @@ import (
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
 	"github.com/projen/projen-go/projen"
+	"github.com/projen/projen-go/projen/build"
 	"github.com/projen/projen-go/projen/cdk/internal"
 	"github.com/projen/projen-go/projen/github"
 	"github.com/projen/projen-go/projen/github/workflows"
@@ -30,10 +31,11 @@ type ConstructLibrary interface {
 	JsiiProject
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
+	ArtifactsDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
-	BuildWorkflow() github.TaskWorkflow
+	BuildWorkflow() build.BuildWorkflow
 	BuildWorkflowJobId() *string
 	Bundler() javascript.Bundler
 	CompileTask() projen.Task
@@ -81,6 +83,7 @@ type ConstructLibrary interface {
 	Tsconfig() javascript.TypescriptConfig
 	TsconfigDev() javascript.TypescriptConfig
 	TsconfigEslint() javascript.TypescriptConfig
+	UpgradeWorkflow() javascript.UpgradeDependencies
 	Vscode() vscode.VsCode
 	WatchTask() projen.Task
 	AddBins(bins *map[string]*string)
@@ -136,6 +139,16 @@ func (j *jsiiProxy_ConstructLibrary) Antitamper() *bool {
 	return returns
 }
 
+func (j *jsiiProxy_ConstructLibrary) ArtifactsDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_ConstructLibrary) AutoApprove() github.AutoApprove {
 	var returns github.AutoApprove
 	_jsii_.Get(
@@ -166,8 +179,8 @@ func (j *jsiiProxy_ConstructLibrary) BuildTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibrary) BuildWorkflow() github.TaskWorkflow {
-	var returns github.TaskWorkflow
+func (j *jsiiProxy_ConstructLibrary) BuildWorkflow() build.BuildWorkflow {
+	var returns build.BuildWorkflow
 	_jsii_.Get(
 		j,
 		"buildWorkflow",
@@ -641,6 +654,16 @@ func (j *jsiiProxy_ConstructLibrary) TsconfigEslint() javascript.TypescriptConfi
 	_jsii_.Get(
 		j,
 		"tsconfigEslint",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibrary) UpgradeWorkflow() javascript.UpgradeDependencies {
+	var returns javascript.UpgradeDependencies
+	_jsii_.Get(
+		j,
+		"upgradeWorkflow",
 		&returns,
 	)
 	return returns
@@ -1317,9 +1340,6 @@ type ConstructLibraryOptions struct {
 	// Checks that after build there are no modified files on git.
 	// Experimental.
 	Antitamper *bool `json:"antitamper"`
-	// A directory which will contain artifacts to be published to npm.
-	// Experimental.
-	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -1341,6 +1361,9 @@ type ConstructLibraryOptions struct {
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
 	// Experimental.
 	Prerelease *string `json:"prerelease"`
+	// Instead of actually publishing to package managers, just print the publishing command.
+	// Experimental.
+	PublishDryRun *bool `json:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
@@ -1402,6 +1425,9 @@ type ConstructLibraryOptions struct {
 	// The name of the main release branch.
 	// Experimental.
 	DefaultReleaseBranch *string `json:"defaultReleaseBranch"`
+	// A directory which will contain build artifacts.
+	// Experimental.
+	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
@@ -1470,6 +1496,9 @@ type ConstructLibraryOptions struct {
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
 	// Experimental.
 	NpmignoreEnabled *bool `json:"npmignoreEnabled"`
+	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
+	// Experimental.
+	Package *bool `json:"package"`
 	// Indicates of "projen" should be installed as a devDependency.
 	// Experimental.
 	ProjenDevDependency *bool `json:"projenDevDependency"`
@@ -1546,9 +1575,6 @@ type ConstructLibraryOptions struct {
 	// Typescript  artifacts output directory.
 	// Experimental.
 	Libdir *string `json:"libdir"`
-	// Defines a `yarn package` command that will produce a tarball and place it under `dist/js`.
-	// Experimental.
-	Package *bool `json:"package"`
 	// Use TypeScript for your projenrc file (`.projenrc.ts`).
 	// Experimental.
 	ProjenrcTs *bool `json:"projenrcTs"`
@@ -1683,6 +1709,15 @@ func NewJsiiDocgen_Override(j JsiiDocgen, project JsiiProject) {
 
 // Experimental.
 type JsiiDotNetTarget struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Experimental.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Experimental.
+	PublishTools *workflows.Tools `json:"publishTools"`
 	// GitHub secret which contains the API key for NuGet.
 	// Experimental.
 	NugetApiKeySecret *string `json:"nugetApiKeySecret"`
@@ -1695,6 +1730,15 @@ type JsiiDotNetTarget struct {
 // Go target configuration.
 // Experimental.
 type JsiiGoTarget struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Experimental.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Experimental.
+	PublishTools *workflows.Tools `json:"publishTools"`
 	// Branch to push to.
 	// Deprecated.
 	GitBranch *string `json:"gitBranch"`
@@ -1723,6 +1767,15 @@ type JsiiGoTarget struct {
 
 // Experimental.
 type JsiiJavaTarget struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Experimental.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Experimental.
+	PublishTools *workflows.Tools `json:"publishTools"`
 	// URL of Nexus repository.
 	//
 	// if not set, defaults to https://oss.sonatype.org
@@ -1782,10 +1835,11 @@ type JsiiProject interface {
 	typescript.TypeScriptProject
 	AllowLibraryDependencies() *bool
 	Antitamper() *bool
+	ArtifactsDirectory() *string
 	AutoApprove() github.AutoApprove
 	AutoMerge() github.AutoMerge
 	BuildTask() projen.Task
-	BuildWorkflow() github.TaskWorkflow
+	BuildWorkflow() build.BuildWorkflow
 	BuildWorkflowJobId() *string
 	Bundler() javascript.Bundler
 	CompileTask() projen.Task
@@ -1833,6 +1887,7 @@ type JsiiProject interface {
 	Tsconfig() javascript.TypescriptConfig
 	TsconfigDev() javascript.TypescriptConfig
 	TsconfigEslint() javascript.TypescriptConfig
+	UpgradeWorkflow() javascript.UpgradeDependencies
 	Vscode() vscode.VsCode
 	WatchTask() projen.Task
 	AddBins(bins *map[string]*string)
@@ -1888,6 +1943,16 @@ func (j *jsiiProxy_JsiiProject) Antitamper() *bool {
 	return returns
 }
 
+func (j *jsiiProxy_JsiiProject) ArtifactsDirectory() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"artifactsDirectory",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_JsiiProject) AutoApprove() github.AutoApprove {
 	var returns github.AutoApprove
 	_jsii_.Get(
@@ -1918,8 +1983,8 @@ func (j *jsiiProxy_JsiiProject) BuildTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_JsiiProject) BuildWorkflow() github.TaskWorkflow {
-	var returns github.TaskWorkflow
+func (j *jsiiProxy_JsiiProject) BuildWorkflow() build.BuildWorkflow {
+	var returns build.BuildWorkflow
 	_jsii_.Get(
 		j,
 		"buildWorkflow",
@@ -2393,6 +2458,16 @@ func (j *jsiiProxy_JsiiProject) TsconfigEslint() javascript.TypescriptConfig {
 	_jsii_.Get(
 		j,
 		"tsconfigEslint",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_JsiiProject) UpgradeWorkflow() javascript.UpgradeDependencies {
+	var returns javascript.UpgradeDependencies
+	_jsii_.Get(
+		j,
+		"upgradeWorkflow",
 		&returns,
 	)
 	return returns
@@ -3084,9 +3159,6 @@ type JsiiProjectOptions struct {
 	// Checks that after build there are no modified files on git.
 	// Experimental.
 	Antitamper *bool `json:"antitamper"`
-	// A directory which will contain artifacts to be published to npm.
-	// Experimental.
-	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -3108,6 +3180,9 @@ type JsiiProjectOptions struct {
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
 	// Experimental.
 	Prerelease *string `json:"prerelease"`
+	// Instead of actually publishing to package managers, just print the publishing command.
+	// Experimental.
+	PublishDryRun *bool `json:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
@@ -3169,6 +3244,9 @@ type JsiiProjectOptions struct {
 	// The name of the main release branch.
 	// Experimental.
 	DefaultReleaseBranch *string `json:"defaultReleaseBranch"`
+	// A directory which will contain build artifacts.
+	// Experimental.
+	ArtifactsDirectory *string `json:"artifactsDirectory"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
@@ -3237,6 +3315,9 @@ type JsiiProjectOptions struct {
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
 	// Experimental.
 	NpmignoreEnabled *bool `json:"npmignoreEnabled"`
+	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
+	// Experimental.
+	Package *bool `json:"package"`
 	// Indicates of "projen" should be installed as a devDependency.
 	// Experimental.
 	ProjenDevDependency *bool `json:"projenDevDependency"`
@@ -3313,9 +3394,6 @@ type JsiiProjectOptions struct {
 	// Typescript  artifacts output directory.
 	// Experimental.
 	Libdir *string `json:"libdir"`
-	// Defines a `yarn package` command that will produce a tarball and place it under `dist/js`.
-	// Experimental.
-	Package *bool `json:"package"`
 	// Use TypeScript for your projenrc file (`.projenrc.ts`).
 	// Experimental.
 	ProjenrcTs *bool `json:"projenrcTs"`
@@ -3400,6 +3478,15 @@ type JsiiProjectOptions struct {
 
 // Experimental.
 type JsiiPythonTarget struct {
+	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
+	//
+	// These steps are executed after `dist/` has been populated with the build
+	// output.
+	// Experimental.
+	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
+	// Additional tools to install in the publishing job.
+	// Experimental.
+	PublishTools *workflows.Tools `json:"publishTools"`
 	// The GitHub secret which contains PyPI password.
 	// Experimental.
 	TwinePasswordSecret *string `json:"twinePasswordSecret"`
