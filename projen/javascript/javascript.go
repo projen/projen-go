@@ -1517,6 +1517,12 @@ type NodePackageOptions struct {
 	// executable file under `bin` will automatically be added to this section.
 	// Experimental.
 	Bin *map[string]*string `json:"bin"`
+	// The email address to which issues should be reported.
+	// Experimental.
+	BugsEmail *string `json:"bugsEmail"`
+	// The url to your project's issue tracker.
+	// Experimental.
+	BugsUrl *string `json:"bugsUrl"`
 	// List of dependencies to bundle into this module.
 	//
 	// These modules will be
@@ -2747,6 +2753,12 @@ type NodeProjectOptions struct {
 	// executable file under `bin` will automatically be added to this section.
 	// Experimental.
 	Bin *map[string]*string `json:"bin"`
+	// The email address to which issues should be reported.
+	// Experimental.
+	BugsEmail *string `json:"bugsEmail"`
+	// The url to your project's issue tracker.
+	// Experimental.
+	BugsUrl *string `json:"bugsUrl"`
 	// List of dependencies to bundle into this module.
 	//
 	// These modules will be
