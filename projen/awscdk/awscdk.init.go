@@ -382,6 +382,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberProperty{JsiiProperty: "synth", GoGetter: "Synth"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "synthSilent", GoGetter: "SynthSilent"},
 			_jsii_.MemberProperty{JsiiProperty: "watch", GoGetter: "Watch"},
 		},
 		func() interface{} {

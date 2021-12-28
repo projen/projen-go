@@ -3126,7 +3126,7 @@ type AwsCdkJavaAppOptions struct {
 	Cdkout *string `json:"cdkout"`
 	// Additional context to include in `cdk.json`.
 	// Experimental.
-	Context *map[string]*string `json:"context"`
+	Context *map[string]interface{} `json:"context"`
 	// Include all feature flags in cdk.json.
 	// Experimental.
 	FeatureFlags *bool `json:"featureFlags"`
@@ -4857,7 +4857,7 @@ type AwsCdkTypeScriptAppOptions struct {
 	Cdkout *string `json:"cdkout"`
 	// Additional context to include in `cdk.json`.
 	// Experimental.
-	Context *map[string]*string `json:"context"`
+	Context *map[string]interface{} `json:"context"`
 	// Include all feature flags in cdk.json.
 	// Experimental.
 	FeatureFlags *bool `json:"featureFlags"`
@@ -5037,7 +5037,7 @@ type CdkConfigCommonOptions struct {
 	Cdkout *string `json:"cdkout"`
 	// Additional context to include in `cdk.json`.
 	// Experimental.
-	Context *map[string]*string `json:"context"`
+	Context *map[string]interface{} `json:"context"`
 	// Include all feature flags in cdk.json.
 	// Experimental.
 	FeatureFlags *bool `json:"featureFlags"`
@@ -5067,7 +5067,7 @@ type CdkConfigOptions struct {
 	Cdkout *string `json:"cdkout"`
 	// Additional context to include in `cdk.json`.
 	// Experimental.
-	Context *map[string]*string `json:"context"`
+	Context *map[string]interface{} `json:"context"`
 	// Include all feature flags in cdk.json.
 	// Experimental.
 	FeatureFlags *bool `json:"featureFlags"`
@@ -5094,6 +5094,7 @@ type CdkTasks interface {
 	Diff() projen.Task
 	Project() projen.Project
 	Synth() projen.Task
+	SynthSilent() projen.Task
 	Watch() projen.Task
 	PostSynthesize()
 	PreSynthesize()
@@ -5150,6 +5151,16 @@ func (j *jsiiProxy_CdkTasks) Synth() projen.Task {
 	_jsii_.Get(
 		j,
 		"synth",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_CdkTasks) SynthSilent() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"synthSilent",
 		&returns,
 	)
 	return returns
