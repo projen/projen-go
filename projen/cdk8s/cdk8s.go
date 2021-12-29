@@ -21,7 +21,6 @@ import (
 type Cdk8sTypeScriptApp interface {
 	typescript.TypeScriptAppProject
 	AllowLibraryDependencies() *bool
-	Antitamper() *bool
 	AppEntrypoint() *string
 	ArtifactsDirectory() *string
 	ArtifactsJavascriptDirectory() *string
@@ -120,16 +119,6 @@ func (j *jsiiProxy_Cdk8sTypeScriptApp) AllowLibraryDependencies() *bool {
 	_jsii_.Get(
 		j,
 		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_Cdk8sTypeScriptApp) Antitamper() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"antitamper",
 		&returns,
 	)
 	return returns
@@ -1211,6 +1200,12 @@ type Cdk8sTypeScriptAppOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -1404,9 +1399,6 @@ type Cdk8sTypeScriptAppOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability"`
-	// Checks that after build there are no modified files on git.
-	// Experimental.
-	Antitamper *bool `json:"antitamper"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -1592,7 +1584,7 @@ type Cdk8sTypeScriptAppOptions struct {
 	// include workflow updates.
 	//
 	// To create a personal access token see https://github.com/settings/tokens
-	// Experimental.
+	// Deprecated: use `githubTokenSecret` instead.
 	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.
@@ -1724,7 +1716,6 @@ type Cdk8sTypeScriptAppOptions struct {
 type ConstructLibraryCdk8s interface {
 	cdk.ConstructLibrary
 	AllowLibraryDependencies() *bool
-	Antitamper() *bool
 	ArtifactsDirectory() *string
 	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
@@ -1821,16 +1812,6 @@ func (j *jsiiProxy_ConstructLibraryCdk8s) AllowLibraryDependencies() *bool {
 	_jsii_.Get(
 		j,
 		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_ConstructLibraryCdk8s) Antitamper() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"antitamper",
 		&returns,
 	)
 	return returns
@@ -2892,6 +2873,12 @@ type ConstructLibraryCdk8sOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -3085,9 +3072,6 @@ type ConstructLibraryCdk8sOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability"`
-	// Checks that after build there are no modified files on git.
-	// Experimental.
-	Antitamper *bool `json:"antitamper"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -3273,7 +3257,7 @@ type ConstructLibraryCdk8sOptions struct {
 	// include workflow updates.
 	//
 	// To create a personal access token see https://github.com/settings/tokens
-	// Experimental.
+	// Deprecated: use `githubTokenSecret` instead.
 	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.

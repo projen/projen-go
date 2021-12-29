@@ -30,7 +30,6 @@ type Catalog struct {
 type ConstructLibrary interface {
 	JsiiProject
 	AllowLibraryDependencies() *bool
-	Antitamper() *bool
 	ArtifactsDirectory() *string
 	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
@@ -125,16 +124,6 @@ func (j *jsiiProxy_ConstructLibrary) AllowLibraryDependencies() *bool {
 	_jsii_.Get(
 		j,
 		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_ConstructLibrary) Antitamper() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"antitamper",
 		&returns,
 	)
 	return returns
@@ -1161,6 +1150,12 @@ type ConstructLibraryOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -1354,9 +1349,6 @@ type ConstructLibraryOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability"`
-	// Checks that after build there are no modified files on git.
-	// Experimental.
-	Antitamper *bool `json:"antitamper"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -1542,7 +1534,7 @@ type ConstructLibraryOptions struct {
 	// include workflow updates.
 	//
 	// To create a personal access token see https://github.com/settings/tokens
-	// Experimental.
+	// Deprecated: use `githubTokenSecret` instead.
 	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.
@@ -1851,7 +1843,6 @@ type JsiiJavaTarget struct {
 type JsiiProject interface {
 	typescript.TypeScriptProject
 	AllowLibraryDependencies() *bool
-	Antitamper() *bool
 	ArtifactsDirectory() *string
 	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
@@ -1946,16 +1937,6 @@ func (j *jsiiProxy_JsiiProject) AllowLibraryDependencies() *bool {
 	_jsii_.Get(
 		j,
 		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_JsiiProject) Antitamper() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"antitamper",
 		&returns,
 	)
 	return returns
@@ -2997,6 +2978,12 @@ type JsiiProjectOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -3190,9 +3177,6 @@ type JsiiProjectOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability"`
-	// Checks that after build there are no modified files on git.
-	// Experimental.
-	Antitamper *bool `json:"antitamper"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -3378,7 +3362,7 @@ type JsiiProjectOptions struct {
 	// include workflow updates.
 	//
 	// To create a personal access token see https://github.com/settings/tokens
-	// Experimental.
+	// Deprecated: use `githubTokenSecret` instead.
 	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.

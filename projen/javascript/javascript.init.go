@@ -195,7 +195,6 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addTip", GoMethod: "AddTip"},
 			_jsii_.MemberProperty{JsiiProperty: "allowLibraryDependencies", GoGetter: "AllowLibraryDependencies"},
 			_jsii_.MemberMethod{JsiiMethod: "annotateGenerated", GoMethod: "AnnotateGenerated"},
-			_jsii_.MemberProperty{JsiiProperty: "antitamper", GoGetter: "Antitamper"},
 			_jsii_.MemberProperty{JsiiProperty: "artifactsDirectory", GoGetter: "ArtifactsDirectory"},
 			_jsii_.MemberProperty{JsiiProperty: "artifactsJavascriptDirectory", GoGetter: "ArtifactsJavascriptDirectory"},
 			_jsii_.MemberProperty{JsiiProperty: "autoApprove", GoGetter: "AutoApprove"},
@@ -263,10 +262,6 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.NodeProjectOptions",
 		reflect.TypeOf((*NodeProjectOptions)(nil)).Elem(),
-	)
-	_jsii_.RegisterStruct(
-		"projen.javascript.NodeWorkflowSteps",
-		reflect.TypeOf((*NodeWorkflowSteps)(nil)).Elem(),
 	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.NpmAccess",

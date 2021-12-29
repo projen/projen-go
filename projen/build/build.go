@@ -75,6 +75,10 @@ func NewBuildWorkflow_Override(b BuildWorkflow, project projen.Project, options 
 }
 
 // Adds another job to the build workflow which is executed after the build job succeeded.
+//
+// Jobs are executed _only_ if the build did NOT self mutate. If the build
+// self-mutate, the branch will either be updated or the build will fail (in
+// forks), so there is no point in executing the post-build job.
 // Experimental.
 func (b *jsiiProxy_BuildWorkflow) AddPostBuildJob(id *string, job *workflows.Job) {
 	_jsii_.InvokeVoid(
@@ -139,9 +143,6 @@ type BuildWorkflowOptions struct {
 	// The task to execute in order to build the project.
 	// Experimental.
 	BuildTask projen.Task `json:"buildTask"`
-	// Enable anti-tamper check.
-	// Experimental.
-	Antitamper *bool `json:"antitamper"`
 	// The container image to use for builds.
 	// Experimental.
 	ContainerImage *string `json:"containerImage"`
@@ -153,11 +154,14 @@ type BuildWorkflowOptions struct {
 	GitIdentity *github.GitIdentity `json:"gitIdentity"`
 	// Automatically update files modified during builds to pull-request branches.
 	//
-	// This means
-	// that any files synthesized by projen or e.g. test snapshots will always be up-to-date
-	// before a PR is merged.
+	// This means that any files synthesized by projen or e.g. test snapshots will
+	// always be up-to-date before a PR is merged.
 	//
 	// Implies that PR builds do not have anti-tamper checks.
+	//
+	// This is enabled by default only if `githubTokenSecret` is set. Otherwise it
+	// is disabled, which implies that file changes that happen during build will
+	// not be pushed back to the branch.
 	// Experimental.
 	MutableBuild *bool `json:"mutableBuild"`
 	// Steps to execute after build.

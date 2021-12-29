@@ -127,7 +127,6 @@ type NextJsCommonProjectOptions struct {
 type NextJsProject interface {
 	javascript.NodeProject
 	AllowLibraryDependencies() *bool
-	Antitamper() *bool
 	ArtifactsDirectory() *string
 	ArtifactsJavascriptDirectory() *string
 	Assetsdir() *string
@@ -215,16 +214,6 @@ func (j *jsiiProxy_NextJsProject) AllowLibraryDependencies() *bool {
 	_jsii_.Get(
 		j,
 		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NextJsProject) Antitamper() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"antitamper",
 		&returns,
 	)
 	return returns
@@ -1204,6 +1193,12 @@ type NextJsProjectOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -1397,9 +1392,6 @@ type NextJsProjectOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability"`
-	// Checks that after build there are no modified files on git.
-	// Experimental.
-	Antitamper *bool `json:"antitamper"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -1585,7 +1577,7 @@ type NextJsProjectOptions struct {
 	// include workflow updates.
 	//
 	// To create a personal access token see https://github.com/settings/tokens
-	// Experimental.
+	// Deprecated: use `githubTokenSecret` instead.
 	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.
@@ -1627,7 +1619,6 @@ type NextJsProjectOptions struct {
 type NextJsTypeScriptProject interface {
 	typescript.TypeScriptAppProject
 	AllowLibraryDependencies() *bool
-	Antitamper() *bool
 	ArtifactsDirectory() *string
 	ArtifactsJavascriptDirectory() *string
 	Assetsdir() *string
@@ -1724,16 +1715,6 @@ func (j *jsiiProxy_NextJsTypeScriptProject) AllowLibraryDependencies() *bool {
 	_jsii_.Get(
 		j,
 		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NextJsTypeScriptProject) Antitamper() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"antitamper",
 		&returns,
 	)
 	return returns
@@ -2803,6 +2784,12 @@ type NextJsTypeScriptProjectOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -2996,9 +2983,6 @@ type NextJsTypeScriptProjectOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability"`
-	// Checks that after build there are no modified files on git.
-	// Experimental.
-	Antitamper *bool `json:"antitamper"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -3184,7 +3168,7 @@ type NextJsTypeScriptProjectOptions struct {
 	// include workflow updates.
 	//
 	// To create a personal access token see https://github.com/settings/tokens
-	// Experimental.
+	// Deprecated: use `githubTokenSecret` instead.
 	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.
@@ -3477,7 +3461,6 @@ type ReactComponentOptions struct {
 type ReactProject interface {
 	javascript.NodeProject
 	AllowLibraryDependencies() *bool
-	Antitamper() *bool
 	ArtifactsDirectory() *string
 	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
@@ -3563,16 +3546,6 @@ func (j *jsiiProxy_ReactProject) AllowLibraryDependencies() *bool {
 	_jsii_.Get(
 		j,
 		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_ReactProject) Antitamper() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"antitamper",
 		&returns,
 	)
 	return returns
@@ -4524,6 +4497,12 @@ type ReactProjectOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -4717,9 +4696,6 @@ type ReactProjectOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability"`
-	// Checks that after build there are no modified files on git.
-	// Experimental.
-	Antitamper *bool `json:"antitamper"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -4905,7 +4881,7 @@ type ReactProjectOptions struct {
 	// include workflow updates.
 	//
 	// To create a personal access token see https://github.com/settings/tokens
-	// Experimental.
+	// Deprecated: use `githubTokenSecret` instead.
 	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.
@@ -5201,7 +5177,6 @@ type ReactTypeDefOptions struct {
 type ReactTypeScriptProject interface {
 	typescript.TypeScriptAppProject
 	AllowLibraryDependencies() *bool
-	Antitamper() *bool
 	ArtifactsDirectory() *string
 	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
@@ -5297,16 +5272,6 @@ func (j *jsiiProxy_ReactTypeScriptProject) AllowLibraryDependencies() *bool {
 	_jsii_.Get(
 		j,
 		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_ReactTypeScriptProject) Antitamper() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"antitamper",
 		&returns,
 	)
 	return returns
@@ -6358,6 +6323,12 @@ type ReactTypeScriptProjectOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -6551,9 +6522,6 @@ type ReactTypeScriptProjectOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability"`
-	// Checks that after build there are no modified files on git.
-	// Experimental.
-	Antitamper *bool `json:"antitamper"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -6739,7 +6707,7 @@ type ReactTypeScriptProjectOptions struct {
 	// include workflow updates.
 	//
 	// To create a personal access token see https://github.com/settings/tokens
-	// Experimental.
+	// Deprecated: use `githubTokenSecret` instead.
 	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.

@@ -902,9 +902,6 @@ func (r *jsiiProxy_Release) Synthesize() {
 // Options for `Release`.
 // Experimental.
 type ReleaseOptions struct {
-	// Checks that after build there are no modified files on git.
-	// Experimental.
-	Antitamper *bool `json:"antitamper"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -1019,9 +1016,6 @@ type ReleaseOptions struct {
 // Project options for release.
 // Experimental.
 type ReleaseProjectOptions struct {
-	// Checks that after build there are no modified files on git.
-	// Experimental.
-	Antitamper *bool `json:"antitamper"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`

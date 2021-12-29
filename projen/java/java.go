@@ -748,6 +748,12 @@ type JavaProjectCommonOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -932,6 +938,12 @@ type JavaProjectOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE

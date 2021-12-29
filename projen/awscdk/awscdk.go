@@ -140,7 +140,6 @@ type AutoDiscoverOptions struct {
 type AwsCdkConstructLibrary interface {
 	cdk.ConstructLibrary
 	AllowLibraryDependencies() *bool
-	Antitamper() *bool
 	ArtifactsDirectory() *string
 	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
@@ -240,16 +239,6 @@ func (j *jsiiProxy_AwsCdkConstructLibrary) AllowLibraryDependencies() *bool {
 	_jsii_.Get(
 		j,
 		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_AwsCdkConstructLibrary) Antitamper() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"antitamper",
 		&returns,
 	)
 	return returns
@@ -1354,6 +1343,12 @@ type AwsCdkConstructLibraryOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -1547,9 +1542,6 @@ type AwsCdkConstructLibraryOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability"`
-	// Checks that after build there are no modified files on git.
-	// Experimental.
-	Antitamper *bool `json:"antitamper"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -1735,7 +1727,7 @@ type AwsCdkConstructLibraryOptions struct {
 	// include workflow updates.
 	//
 	// To create a personal access token see https://github.com/settings/tokens
-	// Experimental.
+	// Deprecated: use `githubTokenSecret` instead.
 	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.
@@ -2993,6 +2985,12 @@ type AwsCdkJavaAppOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -3162,7 +3160,6 @@ type AwsCdkJavaAppOptions struct {
 type AwsCdkTypeScriptApp interface {
 	typescript.TypeScriptAppProject
 	AllowLibraryDependencies() *bool
-	Antitamper() *bool
 	AppEntrypoint() *string
 	ArtifactsDirectory() *string
 	ArtifactsJavascriptDirectory() *string
@@ -3263,16 +3260,6 @@ func (j *jsiiProxy_AwsCdkTypeScriptApp) AllowLibraryDependencies() *bool {
 	_jsii_.Get(
 		j,
 		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_AwsCdkTypeScriptApp) Antitamper() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"antitamper",
 		&returns,
 	)
 	return returns
@@ -4379,6 +4366,12 @@ type AwsCdkTypeScriptAppOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -4572,9 +4565,6 @@ type AwsCdkTypeScriptAppOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability"`
-	// Checks that after build there are no modified files on git.
-	// Experimental.
-	Antitamper *bool `json:"antitamper"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -4760,7 +4750,7 @@ type AwsCdkTypeScriptAppOptions struct {
 	// include workflow updates.
 	//
 	// To create a personal access token see https://github.com/settings/tokens
-	// Experimental.
+	// Deprecated: use `githubTokenSecret` instead.
 	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.
@@ -5239,7 +5229,6 @@ func (c *jsiiProxy_CdkTasks) Synthesize() {
 type ConstructLibraryAws interface {
 	AwsCdkConstructLibrary
 	AllowLibraryDependencies() *bool
-	Antitamper() *bool
 	ArtifactsDirectory() *string
 	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
@@ -5339,16 +5328,6 @@ func (j *jsiiProxy_ConstructLibraryAws) AllowLibraryDependencies() *bool {
 	_jsii_.Get(
 		j,
 		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_ConstructLibraryAws) Antitamper() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"antitamper",
 		&returns,
 	)
 	return returns
@@ -6452,6 +6431,12 @@ type ConstructLibraryAwsOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -6645,9 +6630,6 @@ type ConstructLibraryAwsOptions struct {
 	// Package's Stability.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	Stability *string `json:"stability"`
-	// Checks that after build there are no modified files on git.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
-	Antitamper *bool `json:"antitamper"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -6833,7 +6815,7 @@ type ConstructLibraryAwsOptions struct {
 	// include workflow updates.
 	//
 	// To create a personal access token see https://github.com/settings/tokens
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `githubTokenSecret` instead.
 	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`

@@ -108,6 +108,15 @@ func (a *jsiiProxy_AutoApprove) Synthesize() {
 // Options for 'AutoApprove'.
 // Experimental.
 type AutoApproveOptions struct {
+	// Only pull requests authored by these Github usernames will be auto-approved.
+	// Experimental.
+	AllowedUsernames *[]*string `json:"allowedUsernames"`
+	// Only pull requests with this label will be auto-approved.
+	// Experimental.
+	Label *string `json:"label"`
+	// Github Runner selection labels.
+	// Experimental.
+	RunsOn *[]*string `json:"runsOn"`
 	// A GitHub secret name which contains a GitHub Access Token with write permissions for the `pull_request` scope.
 	//
 	// This token is used to approve pull requests.
@@ -119,15 +128,6 @@ type AutoApproveOptions struct {
 	// `NodeProjectOptions`, then you must use a different token here.
 	// Experimental.
 	Secret *string `json:"secret"`
-	// Only pull requests authored by these Github usernames will be auto-approved.
-	// Experimental.
-	AllowedUsernames *[]*string `json:"allowedUsernames"`
-	// Only pull requests with this label will be auto-approved.
-	// Experimental.
-	Label *string `json:"label"`
-	// Github Runner selection labels.
-	// Experimental.
-	RunsOn *[]*string `json:"runsOn"`
 }
 
 // Sets up mergify to merging approved pull requests.
@@ -477,6 +477,7 @@ type GitHub interface {
 	projen.Component
 	Mergify() Mergify
 	Project() projen.Project
+	ProjenTokenSecret() *string
 	Workflows() *[]GithubWorkflow
 	WorkflowsEnabled() *bool
 	AddDependabot(options *DependabotOptions) Dependabot
@@ -508,6 +509,16 @@ func (j *jsiiProxy_GitHub) Project() projen.Project {
 	_jsii_.Get(
 		j,
 		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHub) ProjenTokenSecret() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"projenTokenSecret",
 		&returns,
 	)
 	return returns
@@ -684,6 +695,12 @@ type GitHubOptions struct {
 	// Options for Mergify.
 	// Experimental.
 	MergifyOptions *MergifyOptions `json:"mergifyOptions"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// Add a workflow that performs basic checks for pull requests, like validating that PRs follow Conventional Commits.
 	// Experimental.
 	PullRequestLint *bool `json:"pullRequestLint"`
@@ -1389,6 +1406,12 @@ type GitHubProjectOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -1435,6 +1458,7 @@ type GithubWorkflow interface {
 	File() projen.YamlFile
 	Name() *string
 	Project() projen.Project
+	ProjenTokenSecret() *string
 	AddJob(id *string, job *workflows.Job)
 	AddJobs(jobs *map[string]*workflows.Job)
 	On(events *workflows.Triggers)
@@ -1483,6 +1507,16 @@ func (j *jsiiProxy_GithubWorkflow) Project() projen.Project {
 	_jsii_.Get(
 		j,
 		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GithubWorkflow) ProjenTokenSecret() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"projenTokenSecret",
 		&returns,
 	)
 	return returns
@@ -2205,6 +2239,7 @@ type TaskWorkflow interface {
 	JobId() *string
 	Name() *string
 	Project() projen.Project
+	ProjenTokenSecret() *string
 	AddJob(id *string, job *workflows.Job)
 	AddJobs(jobs *map[string]*workflows.Job)
 	On(events *workflows.Triggers)
@@ -2273,6 +2308,16 @@ func (j *jsiiProxy_TaskWorkflow) Project() projen.Project {
 	_jsii_.Get(
 		j,
 		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TaskWorkflow) ProjenTokenSecret() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"projenTokenSecret",
 		&returns,
 	)
 	return returns

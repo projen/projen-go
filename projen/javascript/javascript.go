@@ -1668,7 +1668,6 @@ type NodePackageOptions struct {
 type NodeProject interface {
 	github.GitHubProject
 	AllowLibraryDependencies() *bool
-	Antitamper() *bool
 	ArtifactsDirectory() *string
 	ArtifactsJavascriptDirectory() *string
 	AutoApprove() github.AutoApprove
@@ -1753,16 +1752,6 @@ func (j *jsiiProxy_NodeProject) AllowLibraryDependencies() *bool {
 	_jsii_.Get(
 		j,
 		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NodeProject) Antitamper() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"antitamper",
 		&returns,
 	)
 	return returns
@@ -2704,6 +2693,12 @@ type NodeProjectOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
 	ProjectType projen.ProjectType `json:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
@@ -2897,9 +2892,6 @@ type NodeProjectOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability"`
-	// Checks that after build there are no modified files on git.
-	// Experimental.
-	Antitamper *bool `json:"antitamper"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
@@ -3085,7 +3077,7 @@ type NodeProjectOptions struct {
 	// include workflow updates.
 	//
 	// To create a personal access token see https://github.com/settings/tokens
-	// Experimental.
+	// Deprecated: use `githubTokenSecret` instead.
 	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.
@@ -3114,14 +3106,6 @@ type NodeProjectOptions struct {
 	// The node version to use in GitHub workflows.
 	// Experimental.
 	WorkflowNodeVersion *string `json:"workflowNodeVersion"`
-}
-
-// Experimental.
-type NodeWorkflowSteps struct {
-	// Experimental.
-	Antitamper *[]interface{} `json:"antitamper"`
-	// Experimental.
-	Install *[]interface{} `json:"install"`
 }
 
 // Npm package access level.
@@ -3936,17 +3920,6 @@ type UpgradeDependenciesWorkflowOptions struct {
 	// Labels to apply on the PR.
 	// Experimental.
 	Labels *[]*string `json:"labels"`
-	// Execute 'build' after the upgrade.
-	//
-	// When true, the workflow will run the project build task after the dependency upgrade.
-	// This means that the PR created will include any changes caused by the `build` command,
-	// (e.g project synth changes, test snapshots)
-	//
-	// This is necessary when using the default github token.
-	// See: `secret` for more details.
-	//
-	// Experimental.
-	Rebuild *bool `json:"rebuild"`
 	// Github Runner selection labels.
 	// Experimental.
 	RunsOn *[]*string `json:"runsOn"`
