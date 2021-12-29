@@ -141,6 +141,8 @@ type AutoApproveOptions struct {
 type AutoMerge interface {
 	projen.Component
 	Project() projen.Project
+	AddConditions(conditions ...*string)
+	AddConditionsLater(later IAddConditionsLater)
 	PostSynthesize()
 	PreSynthesize()
 	Synthesize()
@@ -188,6 +190,31 @@ func NewAutoMerge_Override(a AutoMerge, github GitHub, options *AutoMergeOptions
 	)
 }
 
+// Adds conditions to the auto merge rule.
+// Experimental.
+func (a *jsiiProxy_AutoMerge) AddConditions(conditions ...*string) {
+	args := []interface{}{}
+	for _, a := range conditions {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		a,
+		"addConditions",
+		args,
+	)
+}
+
+// Adds conditions that will be rendered only during synthesis.
+// Experimental.
+func (a *jsiiProxy_AutoMerge) AddConditionsLater(later IAddConditionsLater) {
+	_jsii_.InvokeVoid(
+		a,
+		"addConditionsLater",
+		[]interface{}{later},
+	)
+}
+
 // Called after synthesis.
 //
 // Order is *not* guaranteed.
@@ -228,9 +255,6 @@ type AutoMergeOptions struct {
 	// List of labels that will prevent auto-merging.
 	// Experimental.
 	BlockingLabels *[]*string `json:"blockingLabels"`
-	// The GitHub job ID of the build workflow.
-	// Experimental.
-	BuildJob *string `json:"buildJob"`
 }
 
 // Defines dependabot configuration for node projects.
@@ -1624,6 +1648,30 @@ type GithubWorkflowOptions struct {
 	// Force the creation of the workflow even if `workflows` is disabled in `GitHub`.
 	// Experimental.
 	Force *bool `json:"force"`
+}
+
+// Experimental.
+type IAddConditionsLater interface {
+	// Experimental.
+	Render() *[]*string
+}
+
+// The jsii proxy for IAddConditionsLater
+type jsiiProxy_IAddConditionsLater struct {
+	_ byte // padding
+}
+
+func (i *jsiiProxy_IAddConditionsLater) Render() *[]*string {
+	var returns *[]*string
+
+	_jsii_.Invoke(
+		i,
+		"render",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 // Experimental.

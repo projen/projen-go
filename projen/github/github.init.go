@@ -31,6 +31,8 @@ func init() {
 		"projen.github.AutoMerge",
 		reflect.TypeOf((*AutoMerge)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addConditions", GoMethod: "AddConditions"},
+			_jsii_.MemberMethod{JsiiMethod: "addConditionsLater", GoMethod: "AddConditionsLater"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
@@ -213,6 +215,16 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.github.GithubWorkflowOptions",
 		reflect.TypeOf((*GithubWorkflowOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterInterface(
+		"projen.github.IAddConditionsLater",
+		reflect.TypeOf((*IAddConditionsLater)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "render", GoMethod: "Render"},
+		},
+		func() interface{} {
+			return &jsiiProxy_IAddConditionsLater{}
+		},
 	)
 	_jsii_.RegisterInterface(
 		"projen.github.IJobProvider",
