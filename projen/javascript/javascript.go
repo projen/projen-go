@@ -54,6 +54,14 @@ type AddBundleOptions struct {
 	Target *string `json:"target"`
 }
 
+// Experimental.
+type ArrowParens string
+
+const (
+	ArrowParens_ALWAYS ArrowParens = "ALWAYS"
+	ArrowParens_AVOID ArrowParens = "AVOID"
+)
+
 // Automatic bump modes.
 // Experimental.
 type AutoRelease string
@@ -304,6 +312,24 @@ type CoverageThreshold struct {
 	Statements *float64 `json:"statements"`
 }
 
+// Experimental.
+type EmbeddedLanguageFormatting string
+
+const (
+	EmbeddedLanguageFormatting_AUTO EmbeddedLanguageFormatting = "AUTO"
+	EmbeddedLanguageFormatting_OFF EmbeddedLanguageFormatting = "OFF"
+)
+
+// Experimental.
+type EndOfLine string
+
+const (
+	EndOfLine_AUTO EndOfLine = "AUTO"
+	EndOfLine_CR EndOfLine = "CR"
+	EndOfLine_CRLF EndOfLine = "CRLF"
+	EndOfLine_LF EndOfLine = "LF"
+)
+
 // Represents eslint configuration.
 // Experimental.
 type Eslint interface {
@@ -542,6 +568,15 @@ type EslintOverride struct {
 	// Experimental.
 	Rules *map[string]interface{} `json:"rules"`
 }
+
+// Experimental.
+type HTMLWhitespaceSensitivity string
+
+const (
+	HTMLWhitespaceSensitivity_CSS HTMLWhitespaceSensitivity = "CSS"
+	HTMLWhitespaceSensitivity_IGNORE HTMLWhitespaceSensitivity = "IGNORE"
+	HTMLWhitespaceSensitivity_STRICT HTMLWhitespaceSensitivity = "STRICT"
+)
 
 // Experimental.
 type HasteConfig struct {
@@ -1703,6 +1738,8 @@ type NodeProject interface {
 	Parent() projen.Project
 	PostCompileTask() projen.Task
 	PreCompileTask() projen.Task
+	Prettier() Prettier
+	PrettierIgnore() projen.IgnoreFile
 	ProjectBuild() projen.ProjectBuild
 	ProjectType() projen.ProjectType
 	ProjenCommand() *string
@@ -1725,6 +1762,7 @@ type NodeProject interface {
 	AddKeywords(keywords ...*string)
 	AddPackageIgnore(pattern *string)
 	AddPeerDeps(deps ...*string)
+	AddPrettierIgnore(pattern *string)
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
 	AddTestCommand(commands ...*string)
 	AddTip(message *string)
@@ -2107,6 +2145,26 @@ func (j *jsiiProxy_NodeProject) PreCompileTask() projen.Task {
 	return returns
 }
 
+func (j *jsiiProxy_NodeProject) Prettier() Prettier {
+	var returns Prettier
+	_jsii_.Get(
+		j,
+		"prettier",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NodeProject) PrettierIgnore() projen.IgnoreFile {
+	var returns projen.IgnoreFile
+	_jsii_.Get(
+		j,
+		"prettierIgnore",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_NodeProject) ProjectBuild() projen.ProjectBuild {
 	var returns projen.ProjectBuild
 	_jsii_.Get(
@@ -2409,6 +2467,16 @@ func (n *jsiiProxy_NodeProject) AddPeerDeps(deps ...*string) {
 		n,
 		"addPeerDeps",
 		args,
+	)
+}
+
+// Defines Prettier ignore Patterns these patterns will be added to the file .prettierignore.
+// Experimental.
+func (n *jsiiProxy_NodeProject) AddPrettierIgnore(pattern *string) {
+	_jsii_.InvokeVoid(
+		n,
+		"addPrettierIgnore",
+		[]interface{}{pattern},
 	)
 }
 
@@ -3051,6 +3119,15 @@ type NodeProjectOptions struct {
 	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
 	// Experimental.
 	Package *bool `json:"package"`
+	// Setup prettier.
+	// Experimental.
+	Prettier *bool `json:"prettier"`
+	// Defines an .prettierIgnore file.
+	// Experimental.
+	PrettierIgnoreEnabled *bool `json:"prettierIgnoreEnabled"`
+	// Prettier options.
+	// Experimental.
+	PrettierOptions *PrettierOptions `json:"prettierOptions"`
 	// Indicates of "projen" should be installed as a devDependency.
 	// Experimental.
 	ProjenDevDependency *bool `json:"projenDevDependency"`
@@ -3240,6 +3317,439 @@ type PeerDependencyOptions struct {
 	PinnedDevDependency *bool `json:"pinnedDevDependency"`
 }
 
+// Represents prettier configuration.
+// Experimental.
+type Prettier interface {
+	projen.Component
+	Config() *PrettierOptions
+	Overrides() *[]*PrettierOverride
+	Project() projen.Project
+	AddOverride(override *PrettierOverride)
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
+}
+
+// The jsii proxy struct for Prettier
+type jsiiProxy_Prettier struct {
+	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_Prettier) Config() *PrettierOptions {
+	var returns *PrettierOptions
+	_jsii_.Get(
+		j,
+		"config",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Prettier) Overrides() *[]*PrettierOverride {
+	var returns *[]*PrettierOverride
+	_jsii_.Get(
+		j,
+		"overrides",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Prettier) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewPrettier(project NodeProject, options *PrettierOptions) Prettier {
+	_init_.Initialize()
+
+	j := jsiiProxy_Prettier{}
+
+	_jsii_.Create(
+		"projen.javascript.Prettier",
+		[]interface{}{project, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewPrettier_Override(p Prettier, project NodeProject, options *PrettierOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.javascript.Prettier",
+		[]interface{}{project, options},
+		p,
+	)
+}
+
+// Experimental.
+func Prettier_Of(project projen.Project) Prettier {
+	_init_.Initialize()
+
+	var returns Prettier
+
+	_jsii_.StaticInvoke(
+		"projen.javascript.Prettier",
+		"of",
+		[]interface{}{project},
+		&returns,
+	)
+
+	return returns
+}
+
+// Add a prettier override.
+// See: https://prettier.io/docs/en/configuration.html#configuration-overrides
+//
+// Experimental.
+func (p *jsiiProxy_Prettier) AddOverride(override *PrettierOverride) {
+	_jsii_.InvokeVoid(
+		p,
+		"addOverride",
+		[]interface{}{override},
+	)
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (p *jsiiProxy_Prettier) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		p,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (p *jsiiProxy_Prettier) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		p,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (p *jsiiProxy_Prettier) Synthesize() {
+	_jsii_.InvokeVoid(
+		p,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Options to set in Prettier directly or through overrides.
+// Experimental.
+type PrettierBaseOptions struct {
+	// Include parentheses around a sole arrow function parameter.
+	//
+	// Always include parens. Example: `(x) => x`
+	//
+	// Omit parens when possible. Example: `x => x`
+	// Experimental.
+	ArrowParens ArrowParens `json:"arrowParens"`
+	// Put > of opening tags on the last line instead of on a new line.
+	// Experimental.
+	BracketSameLine *bool `json:"bracketSameLine"`
+	// Print spaces between brackets.
+	// Experimental.
+	BracketSpacing *bool `json:"bracketSpacing"`
+	// Print (to stderr) where a cursor at the given position would move to after formatting.
+	//
+	// This option cannot be used with --range-start and --range-end.
+	// Experimental.
+	CursorOffset *float64 `json:"cursorOffset"`
+	// Control how Prettier formats quoted code embedded in the file.
+	//
+	// Format embedded code if Prettier can automatically identify it.
+	//
+	// Never automatically format embedded code.
+	// Experimental.
+	EmbeddedLanguageFormatting EmbeddedLanguageFormatting `json:"embeddedLanguageFormatting"`
+	// Which end of line characters to apply.
+	//
+	// Line Feed only (\n), common on Linux and macOS as well as inside git repos
+	//
+	// Carriage Return + Line Feed characters (\r\n), common on Windows
+	//
+	// Carriage Return character only (\r), used very rarely
+	//
+	// Maintain existing
+	// (mixed values within one file are normalised by looking at what's used after the first
+	// line)
+	// Experimental.
+	EndOfLine EndOfLine `json:"endOfLine"`
+	// Specify the input filepath.
+	//
+	// This will be used to do parser inference.
+	// Experimental.
+	Filepath *string `json:"filepath"`
+	// How to handle whitespaces in HTML.
+	//
+	// Respect the default value of CSS display property.
+	//
+	// Whitespaces are considered sensitive.
+	//
+	// Whitespaces are considered insensitive.
+	// Experimental.
+	HtmlWhitespaceSensitivity HTMLWhitespaceSensitivity `json:"htmlWhitespaceSensitivity"`
+	// Insert @format pragma into file's first docblock comment.
+	// Experimental.
+	InsertPragma *bool `json:"insertPragma"`
+	// Use single quotes in JSX.
+	// Experimental.
+	JsxSingleQuote *bool `json:"jsxSingleQuote"`
+	// Which parser to use.
+	// Experimental.
+	Parser *string `json:"parser"`
+	// Add a plugin.
+	//
+	// Multiple plugins can be passed as separate `--plugin`s.
+	// Experimental.
+	Plugins *[]*string `json:"plugins"`
+	// Custom directory that contains prettier plugins in node_modules subdirectory.
+	//
+	// Overrides default behavior when plugins are searched relatively to the location of
+	// Prettier.
+	// Multiple values are accepted.
+	// Experimental.
+	PluginSearchDirs *[]*string `json:"pluginSearchDirs"`
+	// The line length where Prettier will try wrap.
+	// Experimental.
+	PrintWidth *float64 `json:"printWidth"`
+	// How to wrap prose.
+	//
+	// Wrap prose if it exceeds the print width.
+	//
+	// Do not wrap prose.
+	//
+	// Wrap prose as-is.
+	// Experimental.
+	ProseWrap ProseWrap `json:"proseWrap"`
+	// Change when properties in objects are quoted.
+	//
+	// Only add quotes around object properties where required.
+	//
+	// If at least one property in an object requires quotes, quote all properties.
+	//
+	// Respect the input use of quotes in object properties.
+	// Experimental.
+	QuoteProps QuoteProps `json:"quoteProps"`
+	// Format code ending at a given character offset (exclusive).
+	//
+	// The range will extend forwards to the end of the selected statement.
+	// This option cannot be used with --cursor-offset.
+	// Experimental.
+	RangeEnd *float64 `json:"rangeEnd"`
+	// Format code starting at a given character offset.
+	//
+	// The range will extend backwards to the start of the first line containing the selected
+	// statement.
+	// This option cannot be used with --cursor-offset.
+	// Experimental.
+	RangeStart *float64 `json:"rangeStart"`
+	// Require either '@prettier' or '@format' to be present in the file's first docblock comment in order for it to be formatted.
+	// Experimental.
+	RequirePragma *bool `json:"requirePragma"`
+	// Print semicolons.
+	// Experimental.
+	Semi *bool `json:"semi"`
+	// Use single quotes instead of double quotes.
+	// Experimental.
+	SingleQuote *bool `json:"singleQuote"`
+	// Number of spaces per indentation level.
+	// Experimental.
+	TabWidth *float64 `json:"tabWidth"`
+	// Print trailing commas wherever possible when multi-line.
+	//
+	// Trailing commas where valid in ES5 (objects, arrays, etc.)
+	//
+	// No trailing commas.
+	//
+	// Trailing commas wherever possible (including function arguments).
+	// Experimental.
+	TrailingComma TrailingComma `json:"trailingComma"`
+	// Indent with tabs instead of spaces.
+	// Experimental.
+	UseTabs *bool `json:"useTabs"`
+	// Indent script and style tags in Vue files.
+	// Experimental.
+	VueIndentScriptAndStyle *bool `json:"vueIndentScriptAndStyle"`
+}
+
+// Options for Prettier.
+// See: https://prettier.io/docs/en/options.html
+//
+// Experimental.
+type PrettierOptions struct {
+	// Include parentheses around a sole arrow function parameter.
+	//
+	// Always include parens. Example: `(x) => x`
+	//
+	// Omit parens when possible. Example: `x => x`
+	// Experimental.
+	ArrowParens ArrowParens `json:"arrowParens"`
+	// Put > of opening tags on the last line instead of on a new line.
+	// Experimental.
+	BracketSameLine *bool `json:"bracketSameLine"`
+	// Print spaces between brackets.
+	// Experimental.
+	BracketSpacing *bool `json:"bracketSpacing"`
+	// Print (to stderr) where a cursor at the given position would move to after formatting.
+	//
+	// This option cannot be used with --range-start and --range-end.
+	// Experimental.
+	CursorOffset *float64 `json:"cursorOffset"`
+	// Control how Prettier formats quoted code embedded in the file.
+	//
+	// Format embedded code if Prettier can automatically identify it.
+	//
+	// Never automatically format embedded code.
+	// Experimental.
+	EmbeddedLanguageFormatting EmbeddedLanguageFormatting `json:"embeddedLanguageFormatting"`
+	// Which end of line characters to apply.
+	//
+	// Line Feed only (\n), common on Linux and macOS as well as inside git repos
+	//
+	// Carriage Return + Line Feed characters (\r\n), common on Windows
+	//
+	// Carriage Return character only (\r), used very rarely
+	//
+	// Maintain existing
+	// (mixed values within one file are normalised by looking at what's used after the first
+	// line)
+	// Experimental.
+	EndOfLine EndOfLine `json:"endOfLine"`
+	// Specify the input filepath.
+	//
+	// This will be used to do parser inference.
+	// Experimental.
+	Filepath *string `json:"filepath"`
+	// How to handle whitespaces in HTML.
+	//
+	// Respect the default value of CSS display property.
+	//
+	// Whitespaces are considered sensitive.
+	//
+	// Whitespaces are considered insensitive.
+	// Experimental.
+	HtmlWhitespaceSensitivity HTMLWhitespaceSensitivity `json:"htmlWhitespaceSensitivity"`
+	// Insert @format pragma into file's first docblock comment.
+	// Experimental.
+	InsertPragma *bool `json:"insertPragma"`
+	// Use single quotes in JSX.
+	// Experimental.
+	JsxSingleQuote *bool `json:"jsxSingleQuote"`
+	// Which parser to use.
+	// Experimental.
+	Parser *string `json:"parser"`
+	// Add a plugin.
+	//
+	// Multiple plugins can be passed as separate `--plugin`s.
+	// Experimental.
+	Plugins *[]*string `json:"plugins"`
+	// Custom directory that contains prettier plugins in node_modules subdirectory.
+	//
+	// Overrides default behavior when plugins are searched relatively to the location of
+	// Prettier.
+	// Multiple values are accepted.
+	// Experimental.
+	PluginSearchDirs *[]*string `json:"pluginSearchDirs"`
+	// The line length where Prettier will try wrap.
+	// Experimental.
+	PrintWidth *float64 `json:"printWidth"`
+	// How to wrap prose.
+	//
+	// Wrap prose if it exceeds the print width.
+	//
+	// Do not wrap prose.
+	//
+	// Wrap prose as-is.
+	// Experimental.
+	ProseWrap ProseWrap `json:"proseWrap"`
+	// Change when properties in objects are quoted.
+	//
+	// Only add quotes around object properties where required.
+	//
+	// If at least one property in an object requires quotes, quote all properties.
+	//
+	// Respect the input use of quotes in object properties.
+	// Experimental.
+	QuoteProps QuoteProps `json:"quoteProps"`
+	// Format code ending at a given character offset (exclusive).
+	//
+	// The range will extend forwards to the end of the selected statement.
+	// This option cannot be used with --cursor-offset.
+	// Experimental.
+	RangeEnd *float64 `json:"rangeEnd"`
+	// Format code starting at a given character offset.
+	//
+	// The range will extend backwards to the start of the first line containing the selected
+	// statement.
+	// This option cannot be used with --cursor-offset.
+	// Experimental.
+	RangeStart *float64 `json:"rangeStart"`
+	// Require either '@prettier' or '@format' to be present in the file's first docblock comment in order for it to be formatted.
+	// Experimental.
+	RequirePragma *bool `json:"requirePragma"`
+	// Print semicolons.
+	// Experimental.
+	Semi *bool `json:"semi"`
+	// Use single quotes instead of double quotes.
+	// Experimental.
+	SingleQuote *bool `json:"singleQuote"`
+	// Number of spaces per indentation level.
+	// Experimental.
+	TabWidth *float64 `json:"tabWidth"`
+	// Print trailing commas wherever possible when multi-line.
+	//
+	// Trailing commas where valid in ES5 (objects, arrays, etc.)
+	//
+	// No trailing commas.
+	//
+	// Trailing commas wherever possible (including function arguments).
+	// Experimental.
+	TrailingComma TrailingComma `json:"trailingComma"`
+	// Indent with tabs instead of spaces.
+	// Experimental.
+	UseTabs *bool `json:"useTabs"`
+	// Indent script and style tags in Vue files.
+	// Experimental.
+	VueIndentScriptAndStyle *bool `json:"vueIndentScriptAndStyle"`
+	// Provide a list of patterns to override prettier configuration.
+	// See: https://prettier.io/docs/en/configuration.html#configuration-overrides
+	//
+	// Experimental.
+	Overrides *[]*PrettierOverride `json:"overrides"`
+}
+
+// Experimental.
+type PrettierOverride struct {
+	// Include these files in this override.
+	// Experimental.
+	Files interface{} `json:"files"`
+	// The options to apply for this override.
+	// Experimental.
+	Options *PrettierBaseOptions `json:"options"`
+	// Exclude these files from this override.
+	// Experimental.
+	ExcludeFiles interface{} `json:"excludeFiles"`
+}
+
 // Sets up a javascript project to use TypeScript for projenrc.
 // Experimental.
 type Projenrc interface {
@@ -3330,6 +3840,33 @@ type ProjenrcOptions struct {
 	// Experimental.
 	Filename *string `json:"filename"`
 }
+
+// Experimental.
+type ProseWrap string
+
+const (
+	ProseWrap_ALWAYS ProseWrap = "ALWAYS"
+	ProseWrap_NEVER ProseWrap = "NEVER"
+	ProseWrap_PRESERVE ProseWrap = "PRESERVE"
+)
+
+// Experimental.
+type QuoteProps string
+
+const (
+	QuoteProps_ASNEEDED QuoteProps = "ASNEEDED"
+	QuoteProps_CONSISTENT QuoteProps = "CONSISTENT"
+	QuoteProps_PRESERVE QuoteProps = "PRESERVE"
+)
+
+// Experimental.
+type TrailingComma string
+
+const (
+	TrailingComma_ALL TrailingComma = "ALL"
+	TrailingComma_ES5 TrailingComma = "ES5"
+	TrailingComma_NONE TrailingComma = "NONE"
+)
 
 // Experimental.
 type TypeScriptCompilerOptions struct {

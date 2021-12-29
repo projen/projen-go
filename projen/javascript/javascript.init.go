@@ -12,6 +12,14 @@ func init() {
 		reflect.TypeOf((*AddBundleOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterEnum(
+		"projen.javascript.ArrowParens",
+		reflect.TypeOf((*ArrowParens)(nil)).Elem(),
+		map[string]interface{}{
+			"ALWAYS": ArrowParens_ALWAYS,
+			"AVOID": ArrowParens_AVOID,
+		},
+	)
+	_jsii_.RegisterEnum(
 		"projen.javascript.AutoRelease",
 		reflect.TypeOf((*AutoRelease)(nil)).Elem(),
 		map[string]interface{}{
@@ -58,6 +66,24 @@ func init() {
 		"projen.javascript.CoverageThreshold",
 		reflect.TypeOf((*CoverageThreshold)(nil)).Elem(),
 	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.EmbeddedLanguageFormatting",
+		reflect.TypeOf((*EmbeddedLanguageFormatting)(nil)).Elem(),
+		map[string]interface{}{
+			"AUTO": EmbeddedLanguageFormatting_AUTO,
+			"OFF": EmbeddedLanguageFormatting_OFF,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.EndOfLine",
+		reflect.TypeOf((*EndOfLine)(nil)).Elem(),
+		map[string]interface{}{
+			"AUTO": EndOfLine_AUTO,
+			"CR": EndOfLine_CR,
+			"CRLF": EndOfLine_CRLF,
+			"LF": EndOfLine_LF,
+		},
+	)
 	_jsii_.RegisterClass(
 		"projen.javascript.Eslint",
 		reflect.TypeOf((*Eslint)(nil)).Elem(),
@@ -88,6 +114,15 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.EslintOverride",
 		reflect.TypeOf((*EslintOverride)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.HTMLWhitespaceSensitivity",
+		reflect.TypeOf((*HTMLWhitespaceSensitivity)(nil)).Elem(),
+		map[string]interface{}{
+			"CSS": HTMLWhitespaceSensitivity_CSS,
+			"IGNORE": HTMLWhitespaceSensitivity_IGNORE,
+			"STRICT": HTMLWhitespaceSensitivity_STRICT,
+		},
 	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.HasteConfig",
@@ -190,6 +225,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addKeywords", GoMethod: "AddKeywords"},
 			_jsii_.MemberMethod{JsiiMethod: "addPackageIgnore", GoMethod: "AddPackageIgnore"},
 			_jsii_.MemberMethod{JsiiMethod: "addPeerDeps", GoMethod: "AddPeerDeps"},
+			_jsii_.MemberMethod{JsiiMethod: "addPrettierIgnore", GoMethod: "AddPrettierIgnore"},
 			_jsii_.MemberMethod{JsiiMethod: "addTask", GoMethod: "AddTask"},
 			_jsii_.MemberMethod{JsiiMethod: "addTestCommand", GoMethod: "AddTestCommand"},
 			_jsii_.MemberMethod{JsiiMethod: "addTip", GoMethod: "AddTip"},
@@ -233,6 +269,8 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "preCompileTask", GoGetter: "PreCompileTask"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "prettier", GoGetter: "Prettier"},
+			_jsii_.MemberProperty{JsiiProperty: "prettierIgnore", GoGetter: "PrettierIgnore"},
 			_jsii_.MemberProperty{JsiiProperty: "projectBuild", GoGetter: "ProjectBuild"},
 			_jsii_.MemberProperty{JsiiProperty: "projectType", GoGetter: "ProjectType"},
 			_jsii_.MemberProperty{JsiiProperty: "projenCommand", GoGetter: "ProjenCommand"},
@@ -297,6 +335,36 @@ func init() {
 		reflect.TypeOf((*PeerDependencyOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
+		"projen.javascript.Prettier",
+		reflect.TypeOf((*Prettier)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addOverride", GoMethod: "AddOverride"},
+			_jsii_.MemberProperty{JsiiProperty: "config", GoGetter: "Config"},
+			_jsii_.MemberProperty{JsiiProperty: "overrides", GoGetter: "Overrides"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+		},
+		func() interface{} {
+			j := jsiiProxy_Prettier{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PrettierBaseOptions",
+		reflect.TypeOf((*PrettierBaseOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PrettierOptions",
+		reflect.TypeOf((*PrettierOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PrettierOverride",
+		reflect.TypeOf((*PrettierOverride)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
 		"projen.javascript.Projenrc",
 		reflect.TypeOf((*Projenrc)(nil)).Elem(),
 		[]_jsii_.Member{
@@ -314,6 +382,33 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.ProjenrcOptions",
 		reflect.TypeOf((*ProjenrcOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.ProseWrap",
+		reflect.TypeOf((*ProseWrap)(nil)).Elem(),
+		map[string]interface{}{
+			"ALWAYS": ProseWrap_ALWAYS,
+			"NEVER": ProseWrap_NEVER,
+			"PRESERVE": ProseWrap_PRESERVE,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.QuoteProps",
+		reflect.TypeOf((*QuoteProps)(nil)).Elem(),
+		map[string]interface{}{
+			"ASNEEDED": QuoteProps_ASNEEDED,
+			"CONSISTENT": QuoteProps_CONSISTENT,
+			"PRESERVE": QuoteProps_PRESERVE,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.TrailingComma",
+		reflect.TypeOf((*TrailingComma)(nil)).Elem(),
+		map[string]interface{}{
+			"ALL": TrailingComma_ALL,
+			"ES5": TrailingComma_ES5,
+			"NONE": TrailingComma_NONE,
+		},
 	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.TypeScriptCompilerOptions",

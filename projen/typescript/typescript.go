@@ -152,6 +152,8 @@ type TypeScriptAppProject interface {
 	Parent() projen.Project
 	PostCompileTask() projen.Task
 	PreCompileTask() projen.Task
+	Prettier() javascript.Prettier
+	PrettierIgnore() projen.IgnoreFile
 	ProjectBuild() projen.ProjectBuild
 	ProjectType() projen.ProjectType
 	ProjenCommand() *string
@@ -180,6 +182,7 @@ type TypeScriptAppProject interface {
 	AddKeywords(keywords ...*string)
 	AddPackageIgnore(pattern *string)
 	AddPeerDeps(deps ...*string)
+	AddPrettierIgnore(pattern *string)
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
 	AddTestCommand(commands ...*string)
 	AddTip(message *string)
@@ -602,6 +605,26 @@ func (j *jsiiProxy_TypeScriptAppProject) PreCompileTask() projen.Task {
 	return returns
 }
 
+func (j *jsiiProxy_TypeScriptAppProject) Prettier() javascript.Prettier {
+	var returns javascript.Prettier
+	_jsii_.Get(
+		j,
+		"prettier",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptAppProject) PrettierIgnore() projen.IgnoreFile {
+	var returns projen.IgnoreFile
+	_jsii_.Get(
+		j,
+		"prettierIgnore",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_TypeScriptAppProject) ProjectBuild() projen.ProjectBuild {
 	var returns projen.ProjectBuild
 	_jsii_.Get(
@@ -967,6 +990,16 @@ func (t *jsiiProxy_TypeScriptAppProject) AddPeerDeps(deps ...*string) {
 	)
 }
 
+// Defines Prettier ignore Patterns these patterns will be added to the file .prettierignore.
+// Experimental.
+func (t *jsiiProxy_TypeScriptAppProject) AddPrettierIgnore(pattern *string) {
+	_jsii_.InvokeVoid(
+		t,
+		"addPrettierIgnore",
+		[]interface{}{pattern},
+	)
+}
+
 // Adds a new task to this project.
 //
 // This will fail if the project already has
@@ -1225,6 +1258,8 @@ type TypeScriptLibraryProject interface {
 	Parent() projen.Project
 	PostCompileTask() projen.Task
 	PreCompileTask() projen.Task
+	Prettier() javascript.Prettier
+	PrettierIgnore() projen.IgnoreFile
 	ProjectBuild() projen.ProjectBuild
 	ProjectType() projen.ProjectType
 	ProjenCommand() *string
@@ -1253,6 +1288,7 @@ type TypeScriptLibraryProject interface {
 	AddKeywords(keywords ...*string)
 	AddPackageIgnore(pattern *string)
 	AddPeerDeps(deps ...*string)
+	AddPrettierIgnore(pattern *string)
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
 	AddTestCommand(commands ...*string)
 	AddTip(message *string)
@@ -1675,6 +1711,26 @@ func (j *jsiiProxy_TypeScriptLibraryProject) PreCompileTask() projen.Task {
 	return returns
 }
 
+func (j *jsiiProxy_TypeScriptLibraryProject) Prettier() javascript.Prettier {
+	var returns javascript.Prettier
+	_jsii_.Get(
+		j,
+		"prettier",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptLibraryProject) PrettierIgnore() projen.IgnoreFile {
+	var returns projen.IgnoreFile
+	_jsii_.Get(
+		j,
+		"prettierIgnore",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_TypeScriptLibraryProject) ProjectBuild() projen.ProjectBuild {
 	var returns projen.ProjectBuild
 	_jsii_.Get(
@@ -2037,6 +2093,16 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddPeerDeps(deps ...*string) {
 		t,
 		"addPeerDeps",
 		args,
+	)
+}
+
+// Defines Prettier ignore Patterns these patterns will be added to the file .prettierignore.
+// Deprecated: use `TypeScriptProject`
+func (t *jsiiProxy_TypeScriptLibraryProject) AddPrettierIgnore(pattern *string) {
+	_jsii_.InvokeVoid(
+		t,
+		"addPrettierIgnore",
+		[]interface{}{pattern},
 	)
 }
 
@@ -2679,6 +2745,15 @@ type TypeScriptLibraryProjectOptions struct {
 	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
 	// Deprecated: use TypeScriptProjectOptions
 	Package *bool `json:"package"`
+	// Setup prettier.
+	// Deprecated: use TypeScriptProjectOptions
+	Prettier *bool `json:"prettier"`
+	// Defines an .prettierIgnore file.
+	// Deprecated: use TypeScriptProjectOptions
+	PrettierIgnoreEnabled *bool `json:"prettierIgnoreEnabled"`
+	// Prettier options.
+	// Deprecated: use TypeScriptProjectOptions
+	PrettierOptions *javascript.PrettierOptions `json:"prettierOptions"`
 	// Indicates of "projen" should be installed as a devDependency.
 	// Deprecated: use TypeScriptProjectOptions
 	ProjenDevDependency *bool `json:"projenDevDependency"`
@@ -2836,6 +2911,8 @@ type TypeScriptProject interface {
 	Parent() projen.Project
 	PostCompileTask() projen.Task
 	PreCompileTask() projen.Task
+	Prettier() javascript.Prettier
+	PrettierIgnore() projen.IgnoreFile
 	ProjectBuild() projen.ProjectBuild
 	ProjectType() projen.ProjectType
 	ProjenCommand() *string
@@ -2864,6 +2941,7 @@ type TypeScriptProject interface {
 	AddKeywords(keywords ...*string)
 	AddPackageIgnore(pattern *string)
 	AddPeerDeps(deps ...*string)
+	AddPrettierIgnore(pattern *string)
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
 	AddTestCommand(commands ...*string)
 	AddTip(message *string)
@@ -3286,6 +3364,26 @@ func (j *jsiiProxy_TypeScriptProject) PreCompileTask() projen.Task {
 	return returns
 }
 
+func (j *jsiiProxy_TypeScriptProject) Prettier() javascript.Prettier {
+	var returns javascript.Prettier
+	_jsii_.Get(
+		j,
+		"prettier",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptProject) PrettierIgnore() projen.IgnoreFile {
+	var returns projen.IgnoreFile
+	_jsii_.Get(
+		j,
+		"prettierIgnore",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_TypeScriptProject) ProjectBuild() projen.ProjectBuild {
 	var returns projen.ProjectBuild
 	_jsii_.Get(
@@ -3648,6 +3746,16 @@ func (t *jsiiProxy_TypeScriptProject) AddPeerDeps(deps ...*string) {
 		t,
 		"addPeerDeps",
 		args,
+	)
+}
+
+// Defines Prettier ignore Patterns these patterns will be added to the file .prettierignore.
+// Experimental.
+func (t *jsiiProxy_TypeScriptProject) AddPrettierIgnore(pattern *string) {
+	_jsii_.InvokeVoid(
+		t,
+		"addPrettierIgnore",
+		[]interface{}{pattern},
 	)
 }
 
@@ -4290,6 +4398,15 @@ type TypeScriptProjectOptions struct {
 	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
 	// Experimental.
 	Package *bool `json:"package"`
+	// Setup prettier.
+	// Experimental.
+	Prettier *bool `json:"prettier"`
+	// Defines an .prettierIgnore file.
+	// Experimental.
+	PrettierIgnoreEnabled *bool `json:"prettierIgnoreEnabled"`
+	// Prettier options.
+	// Experimental.
+	PrettierOptions *javascript.PrettierOptions `json:"prettierOptions"`
 	// Indicates of "projen" should be installed as a devDependency.
 	// Experimental.
 	ProjenDevDependency *bool `json:"projenDevDependency"`
