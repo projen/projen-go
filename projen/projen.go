@@ -950,6 +950,7 @@ type DockerComposeVolumeMount struct {
 type FileBase interface {
 	Component
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Path() *string
@@ -972,6 +973,16 @@ func (j *jsiiProxy_FileBase) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_FileBase) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns
@@ -1132,6 +1143,7 @@ type FileBaseOptions struct {
 type GitAttributesFile interface {
 	FileBase
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Path() *string
@@ -1155,6 +1167,16 @@ func (j *jsiiProxy_GitAttributesFile) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitAttributesFile) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns
@@ -1864,6 +1886,7 @@ func (i *jsiiProxy_IResolver) Resolve(value interface{}, options *ResolveOptions
 type IgnoreFile interface {
 	FileBase
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Path() *string
@@ -1890,6 +1913,16 @@ func (j *jsiiProxy_IgnoreFile) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IgnoreFile) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns
@@ -2109,6 +2142,7 @@ func (i *jsiiProxy_IgnoreFile) SynthesizeContent(resolver IResolver) *string {
 type IniFile interface {
 	ObjectFile
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Marker() *bool
@@ -2136,6 +2170,16 @@ func (j *jsiiProxy_IniFile) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IniFile) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns
@@ -2427,6 +2471,7 @@ const (
 type JsonFile interface {
 	ObjectFile
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Marker() *bool
@@ -2454,6 +2499,16 @@ func (j *jsiiProxy_JsonFile) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_JsonFile) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns
@@ -2705,12 +2760,16 @@ type JsonFileOptions struct {
 	// Omits empty objects and arrays.
 	// Experimental.
 	OmitEmpty *bool `json:"omitEmpty"`
+	// Adds a newline at the end of the file.
+	// Experimental.
+	Newline *bool `json:"newline"`
 }
 
 // Experimental.
 type License interface {
 	FileBase
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Path() *string
@@ -2733,6 +2792,16 @@ func (j *jsiiProxy_License) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_License) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns
@@ -3113,6 +3182,7 @@ type LoggerOptions struct {
 type Makefile interface {
 	FileBase
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Path() *string
@@ -3140,6 +3210,16 @@ func (j *jsiiProxy_Makefile) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Makefile) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns
@@ -3398,6 +3478,7 @@ type MakefileOptions struct {
 type ObjectFile interface {
 	FileBase
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Marker() *bool
@@ -3425,6 +3506,16 @@ func (j *jsiiProxy_ObjectFile) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ObjectFile) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns
@@ -5777,6 +5868,7 @@ func Testing_Synth(project Project) *map[string]interface{} {
 type TextFile interface {
 	FileBase
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Path() *string
@@ -5800,6 +5892,16 @@ func (j *jsiiProxy_TextFile) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TextFile) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns
@@ -5989,6 +6091,7 @@ type TextFileOptions struct {
 type TomlFile interface {
 	ObjectFile
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Marker() *bool
@@ -6016,6 +6119,16 @@ func (j *jsiiProxy_TomlFile) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TomlFile) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns
@@ -6444,6 +6557,7 @@ type VersionOptions struct {
 type XmlFile interface {
 	ObjectFile
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Marker() *bool
@@ -6471,6 +6585,16 @@ func (j *jsiiProxy_XmlFile) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_XmlFile) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns
@@ -6729,6 +6853,7 @@ type XmlFileOptions struct {
 type YamlFile interface {
 	ObjectFile
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Marker() *bool
@@ -6756,6 +6881,16 @@ func (j *jsiiProxy_YamlFile) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_YamlFile) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns

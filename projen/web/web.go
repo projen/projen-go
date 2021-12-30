@@ -5110,6 +5110,7 @@ type ReactRewireOptions struct {
 type ReactTypeDef interface {
 	projen.FileBase
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Path() *string
@@ -5132,6 +5133,16 @@ func (j *jsiiProxy_ReactTypeDef) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ReactTypeDef) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns

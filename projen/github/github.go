@@ -1938,6 +1938,7 @@ type PullRequestLintOptions struct {
 type PullRequestTemplate interface {
 	projen.TextFile
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Path() *string
@@ -1961,6 +1962,16 @@ func (j *jsiiProxy_PullRequestTemplate) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_PullRequestTemplate) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns

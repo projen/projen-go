@@ -1865,6 +1865,7 @@ type PythonSampleOptions struct {
 type RequirementsFile interface {
 	projen.FileBase
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Path() *string
@@ -1888,6 +1889,16 @@ func (j *jsiiProxy_RequirementsFile) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_RequirementsFile) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns
@@ -2063,6 +2074,7 @@ type RequirementsFileOptions struct {
 type SetupPy interface {
 	projen.FileBase
 	AbsolutePath() *string
+	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
 	Path() *string
@@ -2085,6 +2097,16 @@ func (j *jsiiProxy_SetupPy) AbsolutePath() *string {
 	_jsii_.Get(
 		j,
 		"absolutePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_SetupPy) Changed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"changed",
 		&returns,
 	)
 	return returns

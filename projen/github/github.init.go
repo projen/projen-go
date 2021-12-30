@@ -289,6 +289,7 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberProperty{JsiiProperty: "absolutePath", GoGetter: "AbsolutePath"},
 			_jsii_.MemberMethod{JsiiMethod: "addLine", GoMethod: "AddLine"},
+			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
