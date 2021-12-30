@@ -59,6 +59,8 @@ type CommonPublishOptions struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
 	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
@@ -73,6 +75,8 @@ type GitHubReleasesPublishOptions struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
 	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
@@ -141,6 +145,8 @@ type GoPublishOptions struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Deprecated: Use `GoPublishOptions` instead.
 	// export interface JsiiReleaseGo extends GoPublishOptions { }
 	// /**
@@ -196,6 +202,8 @@ type JsiiReleaseMaven struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Deprecated: Use `MavenPublishOptions` instead.
 	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
@@ -254,6 +262,8 @@ type JsiiReleaseNpm struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Deprecated: Use `NpmPublishOptions` instead.
 	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
@@ -299,6 +309,8 @@ type JsiiReleaseNuget struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Deprecated: Use `NugetPublishOptions` instead.
 	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
@@ -315,6 +327,8 @@ type JsiiReleasePyPi struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Deprecated: Use `PyPiPublishOptions` instead.
 	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
@@ -355,6 +369,8 @@ type MavenPublishOptions struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
 	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
@@ -414,6 +430,8 @@ type NpmPublishOptions struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
 	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
@@ -460,6 +478,8 @@ type NugetPublishOptions struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
 	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
@@ -481,6 +501,7 @@ type Publisher interface {
 	Condition() *string
 	JsiiReleaseVersion() *string
 	Project() projen.Project
+	AddGitHubPrePublishingSteps(steps ...*workflows.JobStep)
 	PostSynthesize()
 	PreSynthesize()
 	PublishToGit(options *GitPublishOptions) projen.Task
@@ -572,6 +593,21 @@ func NewPublisher_Override(p Publisher, project projen.Project, options *Publish
 		"projen.release.Publisher",
 		[]interface{}{project, options},
 		p,
+	)
+}
+
+// Adds pre publishing steps for the GitHub release job.
+// Experimental.
+func (p *jsiiProxy_Publisher) AddGitHubPrePublishingSteps(steps ...*workflows.JobStep) {
+	args := []interface{}{}
+	for _, a := range steps {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		p,
+		"addGitHubPrePublishingSteps",
+		args,
 	)
 }
 
@@ -738,6 +774,8 @@ type PyPiPublishOptions struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
 	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
 	// Additional tools to install in the publishing job.

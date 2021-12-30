@@ -1764,6 +1764,8 @@ type JsiiDotNetTarget struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
 	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
@@ -1785,6 +1787,8 @@ type JsiiGoTarget struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
 	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
@@ -1822,6 +1826,8 @@ type JsiiJavaTarget struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
 	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
@@ -3584,6 +3590,8 @@ type JsiiPythonTarget struct {
 	//
 	// These steps are executed after `dist/` has been populated with the build
 	// output.
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
 	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
