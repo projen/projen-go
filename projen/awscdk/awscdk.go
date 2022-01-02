@@ -182,7 +182,6 @@ type AwsCdkConstructLibrary interface {
 	PostCompileTask() projen.Task
 	PreCompileTask() projen.Task
 	Prettier() javascript.Prettier
-	PrettierIgnore() projen.IgnoreFile
 	ProjectBuild() projen.ProjectBuild
 	ProjectType() projen.ProjectType
 	ProjenCommand() *string
@@ -214,7 +213,6 @@ type AwsCdkConstructLibrary interface {
 	AddKeywords(keywords ...*string)
 	AddPackageIgnore(pattern *string)
 	AddPeerDeps(deps ...*string)
-	AddPrettierIgnore(pattern *string)
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
 	AddTestCommand(commands ...*string)
 	AddTip(message *string)
@@ -667,16 +665,6 @@ func (j *jsiiProxy_AwsCdkConstructLibrary) Prettier() javascript.Prettier {
 	return returns
 }
 
-func (j *jsiiProxy_AwsCdkConstructLibrary) PrettierIgnore() projen.IgnoreFile {
-	var returns projen.IgnoreFile
-	_jsii_.Get(
-		j,
-		"prettierIgnore",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_AwsCdkConstructLibrary) ProjectBuild() projen.ProjectBuild {
 	var returns projen.ProjectBuild
 	_jsii_.Get(
@@ -1081,16 +1069,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddPeerDeps(deps ...*string) {
 		a,
 		"addPeerDeps",
 		args,
-	)
-}
-
-// Defines Prettier ignore Patterns these patterns will be added to the file .prettierignore.
-// Experimental.
-func (a *jsiiProxy_AwsCdkConstructLibrary) AddPrettierIgnore(pattern *string) {
-	_jsii_.InvokeVoid(
-		a,
-		"addPrettierIgnore",
-		[]interface{}{pattern},
 	)
 }
 
@@ -1737,9 +1715,6 @@ type AwsCdkConstructLibraryOptions struct {
 	// Setup prettier.
 	// Experimental.
 	Prettier *bool `json:"prettier"`
-	// Defines an .prettierIgnore file.
-	// Experimental.
-	PrettierIgnoreEnabled *bool `json:"prettierIgnoreEnabled"`
 	// Prettier options.
 	// Experimental.
 	PrettierOptions *javascript.PrettierOptions `json:"prettierOptions"`
@@ -3247,7 +3222,6 @@ type AwsCdkTypeScriptApp interface {
 	PostCompileTask() projen.Task
 	PreCompileTask() projen.Task
 	Prettier() javascript.Prettier
-	PrettierIgnore() projen.IgnoreFile
 	ProjectBuild() projen.ProjectBuild
 	ProjectType() projen.ProjectType
 	ProjenCommand() *string
@@ -3277,7 +3251,6 @@ type AwsCdkTypeScriptApp interface {
 	AddKeywords(keywords ...*string)
 	AddPackageIgnore(pattern *string)
 	AddPeerDeps(deps ...*string)
-	AddPrettierIgnore(pattern *string)
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
 	AddTestCommand(commands ...*string)
 	AddTip(message *string)
@@ -3760,16 +3733,6 @@ func (j *jsiiProxy_AwsCdkTypeScriptApp) Prettier() javascript.Prettier {
 	return returns
 }
 
-func (j *jsiiProxy_AwsCdkTypeScriptApp) PrettierIgnore() projen.IgnoreFile {
-	var returns projen.IgnoreFile
-	_jsii_.Get(
-		j,
-		"prettierIgnore",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_AwsCdkTypeScriptApp) ProjectBuild() projen.ProjectBuild {
 	var returns projen.ProjectBuild
 	_jsii_.Get(
@@ -4147,16 +4110,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddPeerDeps(deps ...*string) {
 		a,
 		"addPeerDeps",
 		args,
-	)
-}
-
-// Defines Prettier ignore Patterns these patterns will be added to the file .prettierignore.
-// Experimental.
-func (a *jsiiProxy_AwsCdkTypeScriptApp) AddPrettierIgnore(pattern *string) {
-	_jsii_.InvokeVoid(
-		a,
-		"addPrettierIgnore",
-		[]interface{}{pattern},
 	)
 }
 
@@ -4802,9 +4755,6 @@ type AwsCdkTypeScriptAppOptions struct {
 	// Setup prettier.
 	// Experimental.
 	Prettier *bool `json:"prettier"`
-	// Defines an .prettierIgnore file.
-	// Experimental.
-	PrettierIgnoreEnabled *bool `json:"prettierIgnoreEnabled"`
 	// Prettier options.
 	// Experimental.
 	PrettierOptions *javascript.PrettierOptions `json:"prettierOptions"`
@@ -5355,7 +5305,6 @@ type ConstructLibraryAws interface {
 	PostCompileTask() projen.Task
 	PreCompileTask() projen.Task
 	Prettier() javascript.Prettier
-	PrettierIgnore() projen.IgnoreFile
 	ProjectBuild() projen.ProjectBuild
 	ProjectType() projen.ProjectType
 	ProjenCommand() *string
@@ -5387,7 +5336,6 @@ type ConstructLibraryAws interface {
 	AddKeywords(keywords ...*string)
 	AddPackageIgnore(pattern *string)
 	AddPeerDeps(deps ...*string)
-	AddPrettierIgnore(pattern *string)
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
 	AddTestCommand(commands ...*string)
 	AddTip(message *string)
@@ -5840,16 +5788,6 @@ func (j *jsiiProxy_ConstructLibraryAws) Prettier() javascript.Prettier {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryAws) PrettierIgnore() projen.IgnoreFile {
-	var returns projen.IgnoreFile
-	_jsii_.Get(
-		j,
-		"prettierIgnore",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_ConstructLibraryAws) ProjectBuild() projen.ProjectBuild {
 	var returns projen.ProjectBuild
 	_jsii_.Get(
@@ -6254,16 +6192,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddPeerDeps(deps ...*string) {
 		c,
 		"addPeerDeps",
 		args,
-	)
-}
-
-// Defines Prettier ignore Patterns these patterns will be added to the file .prettierignore.
-// Deprecated: use `AwsCdkConstructLibrary`
-func (c *jsiiProxy_ConstructLibraryAws) AddPrettierIgnore(pattern *string) {
-	_jsii_.InvokeVoid(
-		c,
-		"addPrettierIgnore",
-		[]interface{}{pattern},
 	)
 }
 
@@ -6909,9 +6837,6 @@ type ConstructLibraryAwsOptions struct {
 	// Setup prettier.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	Prettier *bool `json:"prettier"`
-	// Defines an .prettierIgnore file.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
-	PrettierIgnoreEnabled *bool `json:"prettierIgnoreEnabled"`
 	// Prettier options.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	PrettierOptions *javascript.PrettierOptions `json:"prettierOptions"`

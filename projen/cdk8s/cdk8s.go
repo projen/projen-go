@@ -65,7 +65,6 @@ type Cdk8sTypeScriptApp interface {
 	PostCompileTask() projen.Task
 	PreCompileTask() projen.Task
 	Prettier() javascript.Prettier
-	PrettierIgnore() projen.IgnoreFile
 	ProjectBuild() projen.ProjectBuild
 	ProjectType() projen.ProjectType
 	ProjenCommand() *string
@@ -94,7 +93,6 @@ type Cdk8sTypeScriptApp interface {
 	AddKeywords(keywords ...*string)
 	AddPackageIgnore(pattern *string)
 	AddPeerDeps(deps ...*string)
-	AddPrettierIgnore(pattern *string)
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
 	AddTestCommand(commands ...*string)
 	AddTip(message *string)
@@ -567,16 +565,6 @@ func (j *jsiiProxy_Cdk8sTypeScriptApp) Prettier() javascript.Prettier {
 	return returns
 }
 
-func (j *jsiiProxy_Cdk8sTypeScriptApp) PrettierIgnore() projen.IgnoreFile {
-	var returns projen.IgnoreFile
-	_jsii_.Get(
-		j,
-		"prettierIgnore",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_Cdk8sTypeScriptApp) ProjectBuild() projen.ProjectBuild {
 	var returns projen.ProjectBuild
 	_jsii_.Get(
@@ -939,16 +927,6 @@ func (c *jsiiProxy_Cdk8sTypeScriptApp) AddPeerDeps(deps ...*string) {
 		c,
 		"addPeerDeps",
 		args,
-	)
-}
-
-// Defines Prettier ignore Patterns these patterns will be added to the file .prettierignore.
-// Experimental.
-func (c *jsiiProxy_Cdk8sTypeScriptApp) AddPrettierIgnore(pattern *string) {
-	_jsii_.InvokeVoid(
-		c,
-		"addPrettierIgnore",
-		[]interface{}{pattern},
 	)
 }
 
@@ -1594,9 +1572,6 @@ type Cdk8sTypeScriptAppOptions struct {
 	// Setup prettier.
 	// Experimental.
 	Prettier *bool `json:"prettier"`
-	// Defines an .prettierIgnore file.
-	// Experimental.
-	PrettierIgnoreEnabled *bool `json:"prettierIgnoreEnabled"`
 	// Prettier options.
 	// Experimental.
 	PrettierOptions *javascript.PrettierOptions `json:"prettierOptions"`
@@ -1800,7 +1775,6 @@ type ConstructLibraryCdk8s interface {
 	PostCompileTask() projen.Task
 	PreCompileTask() projen.Task
 	Prettier() javascript.Prettier
-	PrettierIgnore() projen.IgnoreFile
 	ProjectBuild() projen.ProjectBuild
 	ProjectType() projen.ProjectType
 	ProjenCommand() *string
@@ -1829,7 +1803,6 @@ type ConstructLibraryCdk8s interface {
 	AddKeywords(keywords ...*string)
 	AddPackageIgnore(pattern *string)
 	AddPeerDeps(deps ...*string)
-	AddPrettierIgnore(pattern *string)
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
 	AddTestCommand(commands ...*string)
 	AddTip(message *string)
@@ -2282,16 +2255,6 @@ func (j *jsiiProxy_ConstructLibraryCdk8s) Prettier() javascript.Prettier {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdk8s) PrettierIgnore() projen.IgnoreFile {
-	var returns projen.IgnoreFile
-	_jsii_.Get(
-		j,
-		"prettierIgnore",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_ConstructLibraryCdk8s) ProjectBuild() projen.ProjectBuild {
 	var returns projen.ProjectBuild
 	_jsii_.Get(
@@ -2654,16 +2617,6 @@ func (c *jsiiProxy_ConstructLibraryCdk8s) AddPeerDeps(deps ...*string) {
 		c,
 		"addPeerDeps",
 		args,
-	)
-}
-
-// Defines Prettier ignore Patterns these patterns will be added to the file .prettierignore.
-// Experimental.
-func (c *jsiiProxy_ConstructLibraryCdk8s) AddPrettierIgnore(pattern *string) {
-	_jsii_.InvokeVoid(
-		c,
-		"addPrettierIgnore",
-		[]interface{}{pattern},
 	)
 }
 
@@ -3309,9 +3262,6 @@ type ConstructLibraryCdk8sOptions struct {
 	// Setup prettier.
 	// Experimental.
 	Prettier *bool `json:"prettier"`
-	// Defines an .prettierIgnore file.
-	// Experimental.
-	PrettierIgnoreEnabled *bool `json:"prettierIgnoreEnabled"`
 	// Prettier options.
 	// Experimental.
 	PrettierOptions *javascript.PrettierOptions `json:"prettierOptions"`

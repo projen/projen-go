@@ -88,8 +88,10 @@ func init() {
 		"projen.javascript.Eslint",
 		reflect.TypeOf((*Eslint)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addExtends", GoMethod: "AddExtends"},
 			_jsii_.MemberMethod{JsiiMethod: "addIgnorePattern", GoMethod: "AddIgnorePattern"},
 			_jsii_.MemberMethod{JsiiMethod: "addOverride", GoMethod: "AddOverride"},
+			_jsii_.MemberMethod{JsiiMethod: "addPlugins", GoMethod: "AddPlugins"},
 			_jsii_.MemberMethod{JsiiMethod: "addRules", GoMethod: "AddRules"},
 			_jsii_.MemberMethod{JsiiMethod: "allowDevDeps", GoMethod: "AllowDevDeps"},
 			_jsii_.MemberProperty{JsiiProperty: "config", GoGetter: "Config"},
@@ -225,7 +227,6 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addKeywords", GoMethod: "AddKeywords"},
 			_jsii_.MemberMethod{JsiiMethod: "addPackageIgnore", GoMethod: "AddPackageIgnore"},
 			_jsii_.MemberMethod{JsiiMethod: "addPeerDeps", GoMethod: "AddPeerDeps"},
-			_jsii_.MemberMethod{JsiiMethod: "addPrettierIgnore", GoMethod: "AddPrettierIgnore"},
 			_jsii_.MemberMethod{JsiiMethod: "addTask", GoMethod: "AddTask"},
 			_jsii_.MemberMethod{JsiiMethod: "addTestCommand", GoMethod: "AddTestCommand"},
 			_jsii_.MemberMethod{JsiiMethod: "addTip", GoMethod: "AddTip"},
@@ -270,7 +271,6 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "preCompileTask", GoGetter: "PreCompileTask"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "prettier", GoGetter: "Prettier"},
-			_jsii_.MemberProperty{JsiiProperty: "prettierIgnore", GoGetter: "PrettierIgnore"},
 			_jsii_.MemberProperty{JsiiProperty: "projectBuild", GoGetter: "ProjectBuild"},
 			_jsii_.MemberProperty{JsiiProperty: "projectType", GoGetter: "ProjectType"},
 			_jsii_.MemberProperty{JsiiProperty: "projenCommand", GoGetter: "ProjenCommand"},
@@ -338,12 +338,14 @@ func init() {
 		"projen.javascript.Prettier",
 		reflect.TypeOf((*Prettier)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addIgnorePattern", GoMethod: "AddIgnorePattern"},
 			_jsii_.MemberMethod{JsiiMethod: "addOverride", GoMethod: "AddOverride"},
-			_jsii_.MemberProperty{JsiiProperty: "config", GoGetter: "Config"},
+			_jsii_.MemberProperty{JsiiProperty: "ignoreFile", GoGetter: "IgnoreFile"},
 			_jsii_.MemberProperty{JsiiProperty: "overrides", GoGetter: "Overrides"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberProperty{JsiiProperty: "settings", GoGetter: "Settings"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 		},
 		func() interface{} {
@@ -353,16 +355,16 @@ func init() {
 		},
 	)
 	_jsii_.RegisterStruct(
-		"projen.javascript.PrettierBaseOptions",
-		reflect.TypeOf((*PrettierBaseOptions)(nil)).Elem(),
-	)
-	_jsii_.RegisterStruct(
 		"projen.javascript.PrettierOptions",
 		reflect.TypeOf((*PrettierOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.PrettierOverride",
 		reflect.TypeOf((*PrettierOverride)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PrettierSettings",
+		reflect.TypeOf((*PrettierSettings)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.javascript.Projenrc",
