@@ -1891,17 +1891,19 @@ type AwsCdkConstructLibraryOptions struct {
 	// Minimum version of the AWS CDK to depend on.
 	// Experimental.
 	CdkVersion *string `json:"cdkVersion"`
+	// Warning: NodeJS only.
+	//
 	// Install the @aws-cdk/assert library?
 	// Deprecated: The
 	CdkAssert *bool `json:"cdkAssert"`
-	// Install the @aws-cdk/assertions library?
+	// Install the assertions library?
 	//
 	// Only needed for CDK 1.x. If using CDK 2.x then
 	// assertions is already included in 'aws-cdk-lib'
 	// Experimental.
 	CdkAssertions *bool `json:"cdkAssertions"`
-	// Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed?
-	// Deprecated: For CDK 2.x use 'peerDeps' instead
+	// Which AWS CDKv1 modules this project requires.
+	// Deprecated: For CDK 2.x use "deps" instead. (or "peerDeps" if you're building a library)
 	CdkDependencies *[]*string `json:"cdkDependencies"`
 	// If this is enabled (default), all modules declared in `cdkDependencies` will be also added as normal `dependencies` (as well as `peerDependencies`).
 	//
@@ -1909,14 +1911,16 @@ type AwsCdkConstructLibraryOptions struct {
 	// when using npm < 7 or yarn, where peer dependencies are not automatically installed.
 	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
 	// they are present during development.
+	//
+	// Note: this setting only applies to construct library projects
 	// Deprecated: Not supported in CDK v2.
 	CdkDependenciesAsDeps *bool `json:"cdkDependenciesAsDeps"`
 	// AWS CDK modules required for testing.
-	// Deprecated: For CDK 2.x use 'devDeps' instead
+	// Deprecated: For CDK 2.x use 'devDeps' (in node.js projects) or 'testDeps' (in java projects) instead
 	CdkTestDependencies *[]*string `json:"cdkTestDependencies"`
 	// Use pinned version instead of caret version for CDK.
 	//
-	// You can use this to prevent yarn to mix versions for your CDK dependencies and to prevent auto-updates.
+	// You can use this to prevent mixed versions for your CDK dependencies and to prevent auto-updates.
 	// If you use experimental features this will let you define the moment you include breaking changes.
 	// Experimental.
 	CdkVersionPinning *bool `json:"cdkVersionPinning"`
@@ -1942,6 +1946,7 @@ type AwsCdkDeps interface {
 	Project() projen.Project
 	AddV1Dependencies(deps ...*string)
 	AddV1DevDependencies(deps ...*string)
+	PackageNames() *AwsCdkPackageNames
 	PostSynthesize()
 	PreSynthesize()
 	Synthesize()
@@ -2004,21 +2009,6 @@ func (j *jsiiProxy_AwsCdkDeps) Project() projen.Project {
 
 
 // Experimental.
-func NewAwsCdkDeps(project projen.Project, options *AwsCdkDepsOptions) AwsCdkDeps {
-	_init_.Initialize()
-
-	j := jsiiProxy_AwsCdkDeps{}
-
-	_jsii_.Create(
-		"projen.awscdk.AwsCdkDeps",
-		[]interface{}{project, options},
-		&j,
-	)
-
-	return &j
-}
-
-// Experimental.
 func NewAwsCdkDeps_Override(a AwsCdkDeps, project projen.Project, options *AwsCdkDepsOptions) {
 	_init_.Initialize()
 
@@ -2067,6 +2057,21 @@ func (a *jsiiProxy_AwsCdkDeps) AddV1DevDependencies(deps ...*string) {
 	)
 }
 
+// Return a configuration object with information about package naming in various languages.
+// Experimental.
+func (a *jsiiProxy_AwsCdkDeps) PackageNames() *AwsCdkPackageNames {
+	var returns *AwsCdkPackageNames
+
+	_jsii_.Invoke(
+		a,
+		"packageNames",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
+}
+
 // Called after synthesis.
 //
 // Order is *not* guaranteed.
@@ -2105,17 +2110,19 @@ type AwsCdkDepsCommonOptions struct {
 	// Minimum version of the AWS CDK to depend on.
 	// Experimental.
 	CdkVersion *string `json:"cdkVersion"`
+	// Warning: NodeJS only.
+	//
 	// Install the @aws-cdk/assert library?
 	// Deprecated: The
 	CdkAssert *bool `json:"cdkAssert"`
-	// Install the @aws-cdk/assertions library?
+	// Install the assertions library?
 	//
 	// Only needed for CDK 1.x. If using CDK 2.x then
 	// assertions is already included in 'aws-cdk-lib'
 	// Experimental.
 	CdkAssertions *bool `json:"cdkAssertions"`
-	// Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed?
-	// Deprecated: For CDK 2.x use 'peerDeps' instead
+	// Which AWS CDKv1 modules this project requires.
+	// Deprecated: For CDK 2.x use "deps" instead. (or "peerDeps" if you're building a library)
 	CdkDependencies *[]*string `json:"cdkDependencies"`
 	// If this is enabled (default), all modules declared in `cdkDependencies` will be also added as normal `dependencies` (as well as `peerDependencies`).
 	//
@@ -2123,14 +2130,16 @@ type AwsCdkDepsCommonOptions struct {
 	// when using npm < 7 or yarn, where peer dependencies are not automatically installed.
 	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
 	// they are present during development.
+	//
+	// Note: this setting only applies to construct library projects
 	// Deprecated: Not supported in CDK v2.
 	CdkDependenciesAsDeps *bool `json:"cdkDependenciesAsDeps"`
 	// AWS CDK modules required for testing.
-	// Deprecated: For CDK 2.x use 'devDeps' instead
+	// Deprecated: For CDK 2.x use 'devDeps' (in node.js projects) or 'testDeps' (in java projects) instead
 	CdkTestDependencies *[]*string `json:"cdkTestDependencies"`
 	// Use pinned version instead of caret version for CDK.
 	//
-	// You can use this to prevent yarn to mix versions for your CDK dependencies and to prevent auto-updates.
+	// You can use this to prevent mixed versions for your CDK dependencies and to prevent auto-updates.
 	// If you use experimental features this will let you define the moment you include breaking changes.
 	// Experimental.
 	CdkVersionPinning *bool `json:"cdkVersionPinning"`
@@ -2139,22 +2148,392 @@ type AwsCdkDepsCommonOptions struct {
 	ConstructsVersion *string `json:"constructsVersion"`
 }
 
+// Manages dependencies on the AWS CDK for Java projects.
+// Experimental.
+type AwsCdkDepsJava interface {
+	AwsCdkDeps
+	CdkDependenciesAsDeps() *bool
+	CdkMajorVersion() *float64
+	CdkMinimumVersion() *string
+	CdkVersion() *string
+	Project() projen.Project
+	AddV1Dependencies(deps ...*string)
+	AddV1DevDependencies(deps ...*string)
+	PackageNames() *AwsCdkPackageNames
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
+}
+
+// The jsii proxy struct for AwsCdkDepsJava
+type jsiiProxy_AwsCdkDepsJava struct {
+	jsiiProxy_AwsCdkDeps
+}
+
+func (j *jsiiProxy_AwsCdkDepsJava) CdkDependenciesAsDeps() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"cdkDependenciesAsDeps",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkDepsJava) CdkMajorVersion() *float64 {
+	var returns *float64
+	_jsii_.Get(
+		j,
+		"cdkMajorVersion",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkDepsJava) CdkMinimumVersion() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"cdkMinimumVersion",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkDepsJava) CdkVersion() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"cdkVersion",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkDepsJava) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewAwsCdkDepsJava(project projen.Project, options *AwsCdkDepsOptions) AwsCdkDepsJava {
+	_init_.Initialize()
+
+	j := jsiiProxy_AwsCdkDepsJava{}
+
+	_jsii_.Create(
+		"projen.awscdk.AwsCdkDepsJava",
+		[]interface{}{project, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewAwsCdkDepsJava_Override(a AwsCdkDepsJava, project projen.Project, options *AwsCdkDepsOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.awscdk.AwsCdkDepsJava",
+		[]interface{}{project, options},
+		a,
+	)
+}
+
+// Adds dependencies to AWS CDK modules.
+//
+// The type of dependency is determined by the `dependencyType` option.
+//
+// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
+// `project.addDeps()` as appropriate.
+// Experimental.
+func (a *jsiiProxy_AwsCdkDepsJava) AddV1Dependencies(deps ...*string) {
+	args := []interface{}{}
+	for _, a := range deps {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		a,
+		"addV1Dependencies",
+		args,
+	)
+}
+
+// Adds AWS CDK modules as dev dependencies.
+//
+// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
+// `project.addDeps()` as appropriate.
+// Experimental.
+func (a *jsiiProxy_AwsCdkDepsJava) AddV1DevDependencies(deps ...*string) {
+	args := []interface{}{}
+	for _, a := range deps {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		a,
+		"addV1DevDependencies",
+		args,
+	)
+}
+
+// Return a configuration object with information about package naming in various languages.
+// Experimental.
+func (a *jsiiProxy_AwsCdkDepsJava) PackageNames() *AwsCdkPackageNames {
+	var returns *AwsCdkPackageNames
+
+	_jsii_.Invoke(
+		a,
+		"packageNames",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (a *jsiiProxy_AwsCdkDepsJava) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (a *jsiiProxy_AwsCdkDepsJava) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (a *jsiiProxy_AwsCdkDepsJava) Synthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Manages dependencies on the AWS CDK for Node.js projects.
+// Experimental.
+type AwsCdkDepsJs interface {
+	AwsCdkDeps
+	CdkDependenciesAsDeps() *bool
+	CdkMajorVersion() *float64
+	CdkMinimumVersion() *string
+	CdkVersion() *string
+	Project() projen.Project
+	AddV1Dependencies(deps ...*string)
+	AddV1DevDependencies(deps ...*string)
+	PackageNames() *AwsCdkPackageNames
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
+}
+
+// The jsii proxy struct for AwsCdkDepsJs
+type jsiiProxy_AwsCdkDepsJs struct {
+	jsiiProxy_AwsCdkDeps
+}
+
+func (j *jsiiProxy_AwsCdkDepsJs) CdkDependenciesAsDeps() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"cdkDependenciesAsDeps",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkDepsJs) CdkMajorVersion() *float64 {
+	var returns *float64
+	_jsii_.Get(
+		j,
+		"cdkMajorVersion",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkDepsJs) CdkMinimumVersion() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"cdkMinimumVersion",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkDepsJs) CdkVersion() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"cdkVersion",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkDepsJs) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewAwsCdkDepsJs(project projen.Project, options *AwsCdkDepsOptions) AwsCdkDepsJs {
+	_init_.Initialize()
+
+	j := jsiiProxy_AwsCdkDepsJs{}
+
+	_jsii_.Create(
+		"projen.awscdk.AwsCdkDepsJs",
+		[]interface{}{project, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewAwsCdkDepsJs_Override(a AwsCdkDepsJs, project projen.Project, options *AwsCdkDepsOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.awscdk.AwsCdkDepsJs",
+		[]interface{}{project, options},
+		a,
+	)
+}
+
+// Adds dependencies to AWS CDK modules.
+//
+// The type of dependency is determined by the `dependencyType` option.
+//
+// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
+// `project.addDeps()` as appropriate.
+// Experimental.
+func (a *jsiiProxy_AwsCdkDepsJs) AddV1Dependencies(deps ...*string) {
+	args := []interface{}{}
+	for _, a := range deps {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		a,
+		"addV1Dependencies",
+		args,
+	)
+}
+
+// Adds AWS CDK modules as dev dependencies.
+//
+// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
+// `project.addDeps()` as appropriate.
+// Experimental.
+func (a *jsiiProxy_AwsCdkDepsJs) AddV1DevDependencies(deps ...*string) {
+	args := []interface{}{}
+	for _, a := range deps {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		a,
+		"addV1DevDependencies",
+		args,
+	)
+}
+
+// Return a configuration object with information about package naming in various languages.
+// Experimental.
+func (a *jsiiProxy_AwsCdkDepsJs) PackageNames() *AwsCdkPackageNames {
+	var returns *AwsCdkPackageNames
+
+	_jsii_.Invoke(
+		a,
+		"packageNames",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (a *jsiiProxy_AwsCdkDepsJs) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (a *jsiiProxy_AwsCdkDepsJs) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (a *jsiiProxy_AwsCdkDepsJs) Synthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
 // Experimental.
 type AwsCdkDepsOptions struct {
 	// Minimum version of the AWS CDK to depend on.
 	// Experimental.
 	CdkVersion *string `json:"cdkVersion"`
+	// Warning: NodeJS only.
+	//
 	// Install the @aws-cdk/assert library?
 	// Deprecated: The
 	CdkAssert *bool `json:"cdkAssert"`
-	// Install the @aws-cdk/assertions library?
+	// Install the assertions library?
 	//
 	// Only needed for CDK 1.x. If using CDK 2.x then
 	// assertions is already included in 'aws-cdk-lib'
 	// Experimental.
 	CdkAssertions *bool `json:"cdkAssertions"`
-	// Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed?
-	// Deprecated: For CDK 2.x use 'peerDeps' instead
+	// Which AWS CDKv1 modules this project requires.
+	// Deprecated: For CDK 2.x use "deps" instead. (or "peerDeps" if you're building a library)
 	CdkDependencies *[]*string `json:"cdkDependencies"`
 	// If this is enabled (default), all modules declared in `cdkDependencies` will be also added as normal `dependencies` (as well as `peerDependencies`).
 	//
@@ -2162,14 +2541,16 @@ type AwsCdkDepsOptions struct {
 	// when using npm < 7 or yarn, where peer dependencies are not automatically installed.
 	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
 	// they are present during development.
+	//
+	// Note: this setting only applies to construct library projects
 	// Deprecated: Not supported in CDK v2.
 	CdkDependenciesAsDeps *bool `json:"cdkDependenciesAsDeps"`
 	// AWS CDK modules required for testing.
-	// Deprecated: For CDK 2.x use 'devDeps' instead
+	// Deprecated: For CDK 2.x use 'devDeps' (in node.js projects) or 'testDeps' (in java projects) instead
 	CdkTestDependencies *[]*string `json:"cdkTestDependencies"`
 	// Use pinned version instead of caret version for CDK.
 	//
-	// You can use this to prevent yarn to mix versions for your CDK dependencies and to prevent auto-updates.
+	// You can use this to prevent mixed versions for your CDK dependencies and to prevent auto-updates.
 	// If you use experimental features this will let you define the moment you include breaking changes.
 	// Experimental.
 	CdkVersionPinning *bool `json:"cdkVersionPinning"`
@@ -2190,8 +2571,8 @@ type AwsCdkJavaApp interface {
 	AutoApprove() github.AutoApprove
 	BuildTask() projen.Task
 	CdkConfig() CdkConfig
+	CdkDeps() AwsCdkDeps
 	CdkTasks() CdkTasks
-	CdkVersion() *string
 	Compile() java.MavenCompile
 	CompileTask() projen.Task
 	Components() *[]projen.Component
@@ -2281,21 +2662,21 @@ func (j *jsiiProxy_AwsCdkJavaApp) CdkConfig() CdkConfig {
 	return returns
 }
 
-func (j *jsiiProxy_AwsCdkJavaApp) CdkTasks() CdkTasks {
-	var returns CdkTasks
+func (j *jsiiProxy_AwsCdkJavaApp) CdkDeps() AwsCdkDeps {
+	var returns AwsCdkDeps
 	_jsii_.Get(
 		j,
-		"cdkTasks",
+		"cdkDeps",
 		&returns,
 	)
 	return returns
 }
 
-func (j *jsiiProxy_AwsCdkJavaApp) CdkVersion() *string {
-	var returns *string
+func (j *jsiiProxy_AwsCdkJavaApp) CdkTasks() CdkTasks {
+	var returns CdkTasks
 	_jsii_.Get(
 		j,
-		"cdkVersion",
+		"cdkTasks",
 		&returns,
 	)
 	return returns
@@ -2680,7 +3061,7 @@ func AwsCdkJavaApp_DEFAULT_TASK() *string {
 }
 
 // Adds an AWS CDK module dependencies.
-// Experimental.
+// Deprecated: In CDK 2.x all modules are available by default. Alpha modules should be added using the standard 'deps'
 func (a *jsiiProxy_AwsCdkJavaApp) AddCdkDependency(modules ...*string) {
 	args := []interface{}{}
 	for _, a := range modules {
@@ -3154,22 +3535,71 @@ type AwsCdkJavaAppOptions struct {
 	// Glob patterns to include in `cdk watch`.
 	// Experimental.
 	WatchIncludes *[]*string `json:"watchIncludes"`
-	// AWS CDK version to use (you can use semantic versioning).
+	// Minimum version of the AWS CDK to depend on.
 	// Experimental.
 	CdkVersion *string `json:"cdkVersion"`
+	// Warning: NodeJS only.
+	//
+	// Install the @aws-cdk/assert library?
+	// Deprecated: The
+	CdkAssert *bool `json:"cdkAssert"`
+	// Install the assertions library?
+	//
+	// Only needed for CDK 1.x. If using CDK 2.x then
+	// assertions is already included in 'aws-cdk-lib'
+	// Experimental.
+	CdkAssertions *bool `json:"cdkAssertions"`
+	// Which AWS CDKv1 modules this project requires.
+	// Deprecated: For CDK 2.x use "deps" instead. (or "peerDeps" if you're building a library)
+	CdkDependencies *[]*string `json:"cdkDependencies"`
+	// If this is enabled (default), all modules declared in `cdkDependencies` will be also added as normal `dependencies` (as well as `peerDependencies`).
+	//
+	// This is to ensure that downstream consumers actually have your CDK dependencies installed
+	// when using npm < 7 or yarn, where peer dependencies are not automatically installed.
+	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
+	// they are present during development.
+	//
+	// Note: this setting only applies to construct library projects
+	// Deprecated: Not supported in CDK v2.
+	CdkDependenciesAsDeps *bool `json:"cdkDependenciesAsDeps"`
+	// AWS CDK modules required for testing.
+	// Deprecated: For CDK 2.x use 'devDeps' (in node.js projects) or 'testDeps' (in java projects) instead
+	CdkTestDependencies *[]*string `json:"cdkTestDependencies"`
+	// Use pinned version instead of caret version for CDK.
+	//
+	// You can use this to prevent mixed versions for your CDK dependencies and to prevent auto-updates.
+	// If you use experimental features this will let you define the moment you include breaking changes.
+	// Experimental.
+	CdkVersionPinning *bool `json:"cdkVersionPinning"`
+	// Minimum version of the `constructs` library to depend on.
+	// Experimental.
+	ConstructsVersion *string `json:"constructsVersion"`
 	// The name of the Java class with the static `main()` method.
 	//
 	// This method
 	// should call `app.synth()` on the CDK app.
 	// Experimental.
 	MainClass *string `json:"mainClass"`
-	// Which AWS CDK modules this app uses.
-	//
-	// The `core` module is included by
-	// default and you can add additional modules here by stating only the package
-	// name (e.g. `aws-lambda`).
+}
+
+// Language-specific AWS CDK package names.
+// Experimental.
+type AwsCdkPackageNames struct {
+	// Fully qualified name of the assertions library package.
 	// Experimental.
-	CdkDependencies *[]*string `json:"cdkDependencies"`
+	Assertions *string `json:"assertions"`
+	// Fully qualified name of the constructs library package.
+	// Experimental.
+	Constructs *string `json:"constructs"`
+	// Fully qualified name of the core framework package for CDKv1.
+	// Experimental.
+	CoreV1 *string `json:"coreV1"`
+	// Fully qualified name of the core framework package for CDKv2.
+	// Experimental.
+	CoreV2 *string `json:"coreV2"`
+	// Fully qualified name of the assert library package Can be empty as it's only really available for javascript projects.
+	// Experimental.
+	Assert *string `json:"assert"`
 }
 
 // AWS CDK app in TypeScript.
@@ -4897,17 +5327,19 @@ type AwsCdkTypeScriptAppOptions struct {
 	// Minimum version of the AWS CDK to depend on.
 	// Experimental.
 	CdkVersion *string `json:"cdkVersion"`
+	// Warning: NodeJS only.
+	//
 	// Install the @aws-cdk/assert library?
 	// Deprecated: The
 	CdkAssert *bool `json:"cdkAssert"`
-	// Install the @aws-cdk/assertions library?
+	// Install the assertions library?
 	//
 	// Only needed for CDK 1.x. If using CDK 2.x then
 	// assertions is already included in 'aws-cdk-lib'
 	// Experimental.
 	CdkAssertions *bool `json:"cdkAssertions"`
-	// Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed?
-	// Deprecated: For CDK 2.x use 'peerDeps' instead
+	// Which AWS CDKv1 modules this project requires.
+	// Deprecated: For CDK 2.x use "deps" instead. (or "peerDeps" if you're building a library)
 	CdkDependencies *[]*string `json:"cdkDependencies"`
 	// If this is enabled (default), all modules declared in `cdkDependencies` will be also added as normal `dependencies` (as well as `peerDependencies`).
 	//
@@ -4915,14 +5347,16 @@ type AwsCdkTypeScriptAppOptions struct {
 	// when using npm < 7 or yarn, where peer dependencies are not automatically installed.
 	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
 	// they are present during development.
+	//
+	// Note: this setting only applies to construct library projects
 	// Deprecated: Not supported in CDK v2.
 	CdkDependenciesAsDeps *bool `json:"cdkDependenciesAsDeps"`
 	// AWS CDK modules required for testing.
-	// Deprecated: For CDK 2.x use 'devDeps' instead
+	// Deprecated: For CDK 2.x use 'devDeps' (in node.js projects) or 'testDeps' (in java projects) instead
 	CdkTestDependencies *[]*string `json:"cdkTestDependencies"`
 	// Use pinned version instead of caret version for CDK.
 	//
-	// You can use this to prevent yarn to mix versions for your CDK dependencies and to prevent auto-updates.
+	// You can use this to prevent mixed versions for your CDK dependencies and to prevent auto-updates.
 	// If you use experimental features this will let you define the moment you include breaking changes.
 	// Experimental.
 	CdkVersionPinning *bool `json:"cdkVersionPinning"`
@@ -7013,17 +7447,19 @@ type ConstructLibraryAwsOptions struct {
 	// Minimum version of the AWS CDK to depend on.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	CdkVersion *string `json:"cdkVersion"`
+	// Warning: NodeJS only.
+	//
 	// Install the @aws-cdk/assert library?
 	// Deprecated: The
 	CdkAssert *bool `json:"cdkAssert"`
-	// Install the @aws-cdk/assertions library?
+	// Install the assertions library?
 	//
 	// Only needed for CDK 1.x. If using CDK 2.x then
 	// assertions is already included in 'aws-cdk-lib'
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	CdkAssertions *bool `json:"cdkAssertions"`
-	// Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed?
-	// Deprecated: For CDK 2.x use 'peerDeps' instead
+	// Which AWS CDKv1 modules this project requires.
+	// Deprecated: For CDK 2.x use "deps" instead. (or "peerDeps" if you're building a library)
 	CdkDependencies *[]*string `json:"cdkDependencies"`
 	// If this is enabled (default), all modules declared in `cdkDependencies` will be also added as normal `dependencies` (as well as `peerDependencies`).
 	//
@@ -7031,14 +7467,16 @@ type ConstructLibraryAwsOptions struct {
 	// when using npm < 7 or yarn, where peer dependencies are not automatically installed.
 	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
 	// they are present during development.
+	//
+	// Note: this setting only applies to construct library projects
 	// Deprecated: Not supported in CDK v2.
 	CdkDependenciesAsDeps *bool `json:"cdkDependenciesAsDeps"`
 	// AWS CDK modules required for testing.
-	// Deprecated: For CDK 2.x use 'devDeps' instead
+	// Deprecated: For CDK 2.x use 'devDeps' (in node.js projects) or 'testDeps' (in java projects) instead
 	CdkTestDependencies *[]*string `json:"cdkTestDependencies"`
 	// Use pinned version instead of caret version for CDK.
 	//
-	// You can use this to prevent yarn to mix versions for your CDK dependencies and to prevent auto-updates.
+	// You can use this to prevent mixed versions for your CDK dependencies and to prevent auto-updates.
 	// If you use experimental features this will let you define the moment you include breaking changes.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	CdkVersionPinning *bool `json:"cdkVersionPinning"`

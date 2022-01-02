@@ -149,6 +149,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "cdkMajorVersion", GoGetter: "CdkMajorVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkMinimumVersion", GoGetter: "CdkMinimumVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkVersion", GoGetter: "CdkVersion"},
+			_jsii_.MemberMethod{JsiiMethod: "packageNames", GoMethod: "PackageNames"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
@@ -163,6 +164,50 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.awscdk.AwsCdkDepsCommonOptions",
 		reflect.TypeOf((*AwsCdkDepsCommonOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.awscdk.AwsCdkDepsJava",
+		reflect.TypeOf((*AwsCdkDepsJava)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addV1Dependencies", GoMethod: "AddV1Dependencies"},
+			_jsii_.MemberMethod{JsiiMethod: "addV1DevDependencies", GoMethod: "AddV1DevDependencies"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkDependenciesAsDeps", GoGetter: "CdkDependenciesAsDeps"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkMajorVersion", GoGetter: "CdkMajorVersion"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkMinimumVersion", GoGetter: "CdkMinimumVersion"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkVersion", GoGetter: "CdkVersion"},
+			_jsii_.MemberMethod{JsiiMethod: "packageNames", GoMethod: "PackageNames"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+		},
+		func() interface{} {
+			j := jsiiProxy_AwsCdkDepsJava{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_AwsCdkDeps)
+			return &j
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.awscdk.AwsCdkDepsJs",
+		reflect.TypeOf((*AwsCdkDepsJs)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addV1Dependencies", GoMethod: "AddV1Dependencies"},
+			_jsii_.MemberMethod{JsiiMethod: "addV1DevDependencies", GoMethod: "AddV1DevDependencies"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkDependenciesAsDeps", GoGetter: "CdkDependenciesAsDeps"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkMajorVersion", GoGetter: "CdkMajorVersion"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkMinimumVersion", GoGetter: "CdkMinimumVersion"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkVersion", GoGetter: "CdkVersion"},
+			_jsii_.MemberMethod{JsiiMethod: "packageNames", GoMethod: "PackageNames"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+		},
+		func() interface{} {
+			j := jsiiProxy_AwsCdkDepsJs{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_AwsCdkDeps)
+			return &j
+		},
 	)
 	_jsii_.RegisterStruct(
 		"projen.awscdk.AwsCdkDepsOptions",
@@ -185,8 +230,8 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "autoApprove", GoGetter: "AutoApprove"},
 			_jsii_.MemberProperty{JsiiProperty: "buildTask", GoGetter: "BuildTask"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkConfig", GoGetter: "CdkConfig"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkDeps", GoGetter: "CdkDeps"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkTasks", GoGetter: "CdkTasks"},
-			_jsii_.MemberProperty{JsiiProperty: "cdkVersion", GoGetter: "CdkVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "compile", GoGetter: "Compile"},
 			_jsii_.MemberProperty{JsiiProperty: "compileTask", GoGetter: "CompileTask"},
 			_jsii_.MemberProperty{JsiiProperty: "components", GoGetter: "Components"},
@@ -239,6 +284,10 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.awscdk.AwsCdkJavaAppOptions",
 		reflect.TypeOf((*AwsCdkJavaAppOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.awscdk.AwsCdkPackageNames",
+		reflect.TypeOf((*AwsCdkPackageNames)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.awscdk.AwsCdkTypeScriptApp",
