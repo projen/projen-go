@@ -636,7 +636,6 @@ type Jest interface {
 	AddReporter(reporter interface{})
 	AddSnapshotResolver(file *string)
 	AddTestMatch(pattern *string)
-	AddTypeScriptSupport(tsconfig TypescriptConfig)
 	AddWatchIgnorePattern(pattern *string)
 }
 
@@ -716,16 +715,6 @@ func (j *jsiiProxy_Jest) AddTestMatch(pattern *string) {
 		j,
 		"addTestMatch",
 		[]interface{}{pattern},
-	)
-}
-
-// Configures jest for TypeScript.
-// Experimental.
-func (j *jsiiProxy_Jest) AddTypeScriptSupport(tsconfig TypescriptConfig) {
-	_jsii_.InvokeVoid(
-		j,
-		"addTypeScriptSupport",
-		[]interface{}{tsconfig},
 	)
 }
 

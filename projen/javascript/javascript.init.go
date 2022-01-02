@@ -138,7 +138,6 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addReporter", GoMethod: "AddReporter"},
 			_jsii_.MemberMethod{JsiiMethod: "addSnapshotResolver", GoMethod: "AddSnapshotResolver"},
 			_jsii_.MemberMethod{JsiiMethod: "addTestMatch", GoMethod: "AddTestMatch"},
-			_jsii_.MemberMethod{JsiiMethod: "addTypeScriptSupport", GoMethod: "AddTypeScriptSupport"},
 			_jsii_.MemberMethod{JsiiMethod: "addWatchIgnorePattern", GoMethod: "AddWatchIgnorePattern"},
 			_jsii_.MemberProperty{JsiiProperty: "config", GoGetter: "Config"},
 		},
