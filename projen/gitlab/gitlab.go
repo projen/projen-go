@@ -1549,7 +1549,7 @@ func (n *jsiiProxy_NestedConfiguration) AddServices(services ...*Service) {
 	)
 }
 
-// Add stages to the Nested configuration and the main CI file if not already present.
+// Add stages to the CI configuration if not already present.
 // Experimental.
 func (n *jsiiProxy_NestedConfiguration) AddStages(stages ...*string) {
 	args := []interface{}{}
