@@ -1744,7 +1744,6 @@ type NodeProject interface {
 	Gitignore() projen.IgnoreFile
 	Gitpod() projen.Gitpod
 	InitProject() *projen.InitProject
-	InstallWorkflowSteps() *[]*workflows.JobStep
 	Jest() Jest
 	Logger() projen.Logger
 	Manifest() interface{}
@@ -1791,6 +1790,7 @@ type NodeProject interface {
 	PreSynthesize()
 	RemoveScript(name *string)
 	RemoveTask(name *string) projen.Task
+	RenderWorkflowSetup(options *RenderWorkflowSetupOptions) *[]*workflows.JobStep
 	RunTaskCommand(task projen.Task) *string
 	SetScript(name *string, command *string)
 	Synth()
@@ -2009,16 +2009,6 @@ func (j *jsiiProxy_NodeProject) InitProject() *projen.InitProject {
 	_jsii_.Get(
 		j,
 		"initProject",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NodeProject) InstallWorkflowSteps() *[]*workflows.JobStep {
-	var returns *[]*workflows.JobStep
-	_jsii_.Get(
-		j,
-		"installWorkflowSteps",
 		&returns,
 	)
 	return returns
@@ -2596,6 +2586,23 @@ func (n *jsiiProxy_NodeProject) RemoveTask(name *string) projen.Task {
 		n,
 		"removeTask",
 		[]interface{}{name},
+		&returns,
+	)
+
+	return returns
+}
+
+// Returns the set of workflow steps which should be executed to bootstrap a workflow.
+//
+// Returns: Job steps
+// Experimental.
+func (n *jsiiProxy_NodeProject) RenderWorkflowSetup(options *RenderWorkflowSetupOptions) *[]*workflows.JobStep {
+	var returns *[]*workflows.JobStep
+
+	_jsii_.Invoke(
+		n,
+		"renderWorkflowSetup",
+		[]interface{}{options},
 		&returns,
 	)
 
@@ -3706,6 +3713,14 @@ const (
 	QuoteProps_CONSISTENT QuoteProps = "CONSISTENT"
 	QuoteProps_PRESERVE QuoteProps = "PRESERVE"
 )
+
+// Options for `renderInstallSteps()`.
+// Experimental.
+type RenderWorkflowSetupOptions struct {
+	// Should the pacakge lockfile be updated?
+	// Experimental.
+	Mutable *bool `json:"mutable"`
+}
 
 // Experimental.
 type TrailingComma string

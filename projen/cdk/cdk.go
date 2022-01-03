@@ -53,7 +53,6 @@ type ConstructLibrary interface {
 	Gitignore() projen.IgnoreFile
 	Gitpod() projen.Gitpod
 	InitProject() *projen.InitProject
-	InstallWorkflowSteps() *[]*workflows.JobStep
 	Jest() javascript.Jest
 	Libdir() *string
 	Logger() projen.Logger
@@ -107,6 +106,7 @@ type ConstructLibrary interface {
 	PreSynthesize()
 	RemoveScript(name *string)
 	RemoveTask(name *string) projen.Task
+	RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep
 	RunTaskCommand(task projen.Task) *string
 	SetScript(name *string, command *string)
 	Synth()
@@ -355,16 +355,6 @@ func (j *jsiiProxy_ConstructLibrary) InitProject() *projen.InitProject {
 	_jsii_.Get(
 		j,
 		"initProject",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_ConstructLibrary) InstallWorkflowSteps() *[]*workflows.JobStep {
-	var returns *[]*workflows.JobStep
-	_jsii_.Get(
-		j,
-		"installWorkflowSteps",
 		&returns,
 	)
 	return returns
@@ -997,6 +987,23 @@ func (c *jsiiProxy_ConstructLibrary) RemoveTask(name *string) projen.Task {
 		c,
 		"removeTask",
 		[]interface{}{name},
+		&returns,
+	)
+
+	return returns
+}
+
+// Returns the set of workflow steps which should be executed to bootstrap a workflow.
+//
+// Returns: Job steps
+// Experimental.
+func (c *jsiiProxy_ConstructLibrary) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
+	var returns *[]*workflows.JobStep
+
+	_jsii_.Invoke(
+		c,
+		"renderWorkflowSetup",
+		[]interface{}{options},
 		&returns,
 	)
 
@@ -1889,7 +1896,6 @@ type JsiiProject interface {
 	Gitignore() projen.IgnoreFile
 	Gitpod() projen.Gitpod
 	InitProject() *projen.InitProject
-	InstallWorkflowSteps() *[]*workflows.JobStep
 	Jest() javascript.Jest
 	Libdir() *string
 	Logger() projen.Logger
@@ -1943,6 +1949,7 @@ type JsiiProject interface {
 	PreSynthesize()
 	RemoveScript(name *string)
 	RemoveTask(name *string) projen.Task
+	RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep
 	RunTaskCommand(task projen.Task) *string
 	SetScript(name *string, command *string)
 	Synth()
@@ -2191,16 +2198,6 @@ func (j *jsiiProxy_JsiiProject) InitProject() *projen.InitProject {
 	_jsii_.Get(
 		j,
 		"initProject",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_JsiiProject) InstallWorkflowSteps() *[]*workflows.JobStep {
-	var returns *[]*workflows.JobStep
-	_jsii_.Get(
-		j,
-		"installWorkflowSteps",
 		&returns,
 	)
 	return returns
@@ -2848,6 +2845,23 @@ func (j *jsiiProxy_JsiiProject) RemoveTask(name *string) projen.Task {
 		j,
 		"removeTask",
 		[]interface{}{name},
+		&returns,
+	)
+
+	return returns
+}
+
+// Returns the set of workflow steps which should be executed to bootstrap a workflow.
+//
+// Returns: Job steps
+// Experimental.
+func (j *jsiiProxy_JsiiProject) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
+	var returns *[]*workflows.JobStep
+
+	_jsii_.Invoke(
+		j,
+		"renderWorkflowSetup",
+		[]interface{}{options},
 		&returns,
 	)
 

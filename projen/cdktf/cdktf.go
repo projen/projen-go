@@ -48,7 +48,6 @@ type ConstructLibraryCdktf interface {
 	Gitignore() projen.IgnoreFile
 	Gitpod() projen.Gitpod
 	InitProject() *projen.InitProject
-	InstallWorkflowSteps() *[]*workflows.JobStep
 	Jest() javascript.Jest
 	Libdir() *string
 	Logger() projen.Logger
@@ -102,6 +101,7 @@ type ConstructLibraryCdktf interface {
 	PreSynthesize()
 	RemoveScript(name *string)
 	RemoveTask(name *string) projen.Task
+	RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep
 	RunTaskCommand(task projen.Task) *string
 	SetScript(name *string, command *string)
 	Synth()
@@ -350,16 +350,6 @@ func (j *jsiiProxy_ConstructLibraryCdktf) InitProject() *projen.InitProject {
 	_jsii_.Get(
 		j,
 		"initProject",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_ConstructLibraryCdktf) InstallWorkflowSteps() *[]*workflows.JobStep {
-	var returns *[]*workflows.JobStep
-	_jsii_.Get(
-		j,
-		"installWorkflowSteps",
 		&returns,
 	)
 	return returns
@@ -1007,6 +997,23 @@ func (c *jsiiProxy_ConstructLibraryCdktf) RemoveTask(name *string) projen.Task {
 		c,
 		"removeTask",
 		[]interface{}{name},
+		&returns,
+	)
+
+	return returns
+}
+
+// Returns the set of workflow steps which should be executed to bootstrap a workflow.
+//
+// Returns: Job steps
+// Experimental.
+func (c *jsiiProxy_ConstructLibraryCdktf) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
+	var returns *[]*workflows.JobStep
+
+	_jsii_.Invoke(
+		c,
+		"renderWorkflowSetup",
+		[]interface{}{options},
 		&returns,
 	)
 

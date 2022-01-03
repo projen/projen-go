@@ -165,7 +165,6 @@ type AwsCdkConstructLibrary interface {
 	Gitignore() projen.IgnoreFile
 	Gitpod() projen.Gitpod
 	InitProject() *projen.InitProject
-	InstallWorkflowSteps() *[]*workflows.JobStep
 	Jest() javascript.Jest
 	Libdir() *string
 	Logger() projen.Logger
@@ -222,6 +221,7 @@ type AwsCdkConstructLibrary interface {
 	PreSynthesize()
 	RemoveScript(name *string)
 	RemoveTask(name *string) projen.Task
+	RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep
 	RunTaskCommand(task projen.Task) *string
 	SetScript(name *string, command *string)
 	Synth()
@@ -490,16 +490,6 @@ func (j *jsiiProxy_AwsCdkConstructLibrary) InitProject() *projen.InitProject {
 	_jsii_.Get(
 		j,
 		"initProject",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_AwsCdkConstructLibrary) InstallWorkflowSteps() *[]*workflows.JobStep {
-	var returns *[]*workflows.JobStep
-	_jsii_.Get(
-		j,
-		"installWorkflowSteps",
 		&returns,
 	)
 	return returns
@@ -1189,6 +1179,23 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) RemoveTask(name *string) projen.Task 
 		a,
 		"removeTask",
 		[]interface{}{name},
+		&returns,
+	)
+
+	return returns
+}
+
+// Returns the set of workflow steps which should be executed to bootstrap a workflow.
+//
+// Returns: Job steps
+// Experimental.
+func (a *jsiiProxy_AwsCdkConstructLibrary) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
+	var returns *[]*workflows.JobStep
+
+	_jsii_.Invoke(
+		a,
+		"renderWorkflowSetup",
+		[]interface{}{options},
 		&returns,
 	)
 
@@ -3635,7 +3642,6 @@ type AwsCdkTypeScriptApp interface {
 	Gitignore() projen.IgnoreFile
 	Gitpod() projen.Gitpod
 	InitProject() *projen.InitProject
-	InstallWorkflowSteps() *[]*workflows.JobStep
 	Jest() javascript.Jest
 	Libdir() *string
 	Logger() projen.Logger
@@ -3690,6 +3696,7 @@ type AwsCdkTypeScriptApp interface {
 	PreSynthesize()
 	RemoveScript(name *string)
 	RemoveTask(name *string) projen.Task
+	RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep
 	RunTaskCommand(task projen.Task) *string
 	SetScript(name *string, command *string)
 	Synth()
@@ -3988,16 +3995,6 @@ func (j *jsiiProxy_AwsCdkTypeScriptApp) InitProject() *projen.InitProject {
 	_jsii_.Get(
 		j,
 		"initProject",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_AwsCdkTypeScriptApp) InstallWorkflowSteps() *[]*workflows.JobStep {
-	var returns *[]*workflows.JobStep
-	_jsii_.Get(
-		j,
-		"installWorkflowSteps",
 		&returns,
 	)
 	return returns
@@ -4660,6 +4657,23 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) RemoveTask(name *string) projen.Task {
 		a,
 		"removeTask",
 		[]interface{}{name},
+		&returns,
+	)
+
+	return returns
+}
+
+// Returns the set of workflow steps which should be executed to bootstrap a workflow.
+//
+// Returns: Job steps
+// Experimental.
+func (a *jsiiProxy_AwsCdkTypeScriptApp) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
+	var returns *[]*workflows.JobStep
+
+	_jsii_.Invoke(
+		a,
+		"renderWorkflowSetup",
+		[]interface{}{options},
 		&returns,
 	)
 
@@ -5722,7 +5736,6 @@ type ConstructLibraryAws interface {
 	Gitignore() projen.IgnoreFile
 	Gitpod() projen.Gitpod
 	InitProject() *projen.InitProject
-	InstallWorkflowSteps() *[]*workflows.JobStep
 	Jest() javascript.Jest
 	Libdir() *string
 	Logger() projen.Logger
@@ -5779,6 +5792,7 @@ type ConstructLibraryAws interface {
 	PreSynthesize()
 	RemoveScript(name *string)
 	RemoveTask(name *string) projen.Task
+	RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep
 	RunTaskCommand(task projen.Task) *string
 	SetScript(name *string, command *string)
 	Synth()
@@ -6047,16 +6061,6 @@ func (j *jsiiProxy_ConstructLibraryAws) InitProject() *projen.InitProject {
 	_jsii_.Get(
 		j,
 		"initProject",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_ConstructLibraryAws) InstallWorkflowSteps() *[]*workflows.JobStep {
-	var returns *[]*workflows.JobStep
-	_jsii_.Get(
-		j,
-		"installWorkflowSteps",
 		&returns,
 	)
 	return returns
@@ -6746,6 +6750,23 @@ func (c *jsiiProxy_ConstructLibraryAws) RemoveTask(name *string) projen.Task {
 		c,
 		"removeTask",
 		[]interface{}{name},
+		&returns,
+	)
+
+	return returns
+}
+
+// Returns the set of workflow steps which should be executed to bootstrap a workflow.
+//
+// Returns: Job steps
+// Deprecated: use `AwsCdkConstructLibrary`
+func (c *jsiiProxy_ConstructLibraryAws) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
+	var returns *[]*workflows.JobStep
+
+	_jsii_.Invoke(
+		c,
+		"renderWorkflowSetup",
+		[]interface{}{options},
 		&returns,
 	)
 

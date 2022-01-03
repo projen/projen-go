@@ -252,7 +252,6 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "gitpod", GoGetter: "Gitpod"},
 			_jsii_.MemberMethod{JsiiMethod: "hasScript", GoMethod: "HasScript"},
 			_jsii_.MemberProperty{JsiiProperty: "initProject", GoGetter: "InitProject"},
-			_jsii_.MemberProperty{JsiiProperty: "installWorkflowSteps", GoGetter: "InstallWorkflowSteps"},
 			_jsii_.MemberProperty{JsiiProperty: "jest", GoGetter: "Jest"},
 			_jsii_.MemberProperty{JsiiProperty: "logger", GoGetter: "Logger"},
 			_jsii_.MemberProperty{JsiiProperty: "manifest", GoGetter: "Manifest"},
@@ -277,6 +276,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "release", GoGetter: "Release"},
 			_jsii_.MemberMethod{JsiiMethod: "removeScript", GoMethod: "RemoveScript"},
 			_jsii_.MemberMethod{JsiiMethod: "removeTask", GoMethod: "RemoveTask"},
+			_jsii_.MemberMethod{JsiiMethod: "renderWorkflowSetup", GoMethod: "RenderWorkflowSetup"},
 			_jsii_.MemberProperty{JsiiProperty: "root", GoGetter: "Root"},
 			_jsii_.MemberProperty{JsiiProperty: "runScriptCommand", GoGetter: "RunScriptCommand"},
 			_jsii_.MemberMethod{JsiiMethod: "runTaskCommand", GoMethod: "RunTaskCommand"},
@@ -401,6 +401,10 @@ func init() {
 			"CONSISTENT": QuoteProps_CONSISTENT,
 			"PRESERVE": QuoteProps_PRESERVE,
 		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.RenderWorkflowSetupOptions",
+		reflect.TypeOf((*RenderWorkflowSetupOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.TrailingComma",
