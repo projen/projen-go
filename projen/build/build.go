@@ -10,12 +10,38 @@ import (
 	"github.com/projen/projen-go/projen/github/workflows"
 )
 
+// Options for `BuildWorkflow.addPostBuildJobCommands`.
+// Experimental.
+type AddPostBuildJobCommandsOptions struct {
+	// Check out the repository at the pull request branch before commands are run.
+	// Experimental.
+	CheckoutRepo *bool `json:"checkoutRepo"`
+	// Install project dependencies before running commands. `checkoutRepo` must also be set to true.
+	//
+	// Currently only supported for `NodeProject`.
+	// Experimental.
+	InstallDeps *bool `json:"installDeps"`
+	// Tools that should be installed before the commands are run.
+	// Experimental.
+	Tools *workflows.Tools `json:"tools"`
+}
+
+// Options for `BuildWorkflow.addPostBuildJobTask`.
+// Experimental.
+type AddPostBuildJobTaskOptions struct {
+	// Tools that should be installed before the task is run.
+	// Experimental.
+	Tools *workflows.Tools `json:"tools"`
+}
+
 // Experimental.
 type BuildWorkflow interface {
 	projen.Component
 	BuildJobIds() *[]*string
 	Project() projen.Project
 	AddPostBuildJob(id *string, job *workflows.Job)
+	AddPostBuildJobCommands(id *string, commands *[]*string, options *AddPostBuildJobCommandsOptions)
+	AddPostBuildJobTask(task projen.Task, options *AddPostBuildJobTaskOptions)
 	AddPostBuildSteps(steps ...*workflows.JobStep)
 	PostSynthesize()
 	PreSynthesize()
@@ -85,6 +111,37 @@ func (b *jsiiProxy_BuildWorkflow) AddPostBuildJob(id *string, job *workflows.Job
 		b,
 		"addPostBuildJob",
 		[]interface{}{id, job},
+	)
+}
+
+// Run a sequence of commands as a job within the build workflow which is executed after the build job succeeded.
+//
+// Jobs are executed _only_ if the build did NOT self mutate. If the build
+// self-mutate, the branch will either be updated or the build will fail (in
+// forks), so there is no point in executing the post-build job.
+// Experimental.
+func (b *jsiiProxy_BuildWorkflow) AddPostBuildJobCommands(id *string, commands *[]*string, options *AddPostBuildJobCommandsOptions) {
+	_jsii_.InvokeVoid(
+		b,
+		"addPostBuildJobCommands",
+		[]interface{}{id, commands, options},
+	)
+}
+
+// Run a task as a job within the build workflow which is executed after the build job succeeded.
+//
+// The job will have access to build artifacts and will install project
+// dependencies in order to be able to run any commands used in the tasks.
+//
+// Jobs are executed _only_ if the build did NOT self mutate. If the build
+// self-mutate, the branch will either be updated or the build will fail (in
+// forks), so there is no point in executing the post-build job.
+// Experimental.
+func (b *jsiiProxy_BuildWorkflow) AddPostBuildJobTask(task projen.Task, options *AddPostBuildJobTaskOptions) {
+	_jsii_.InvokeVoid(
+		b,
+		"addPostBuildJobTask",
+		[]interface{}{task, options},
 	)
 }
 

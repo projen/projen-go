@@ -7,11 +7,21 @@ import (
 )
 
 func init() {
+	_jsii_.RegisterStruct(
+		"projen.build.AddPostBuildJobCommandsOptions",
+		reflect.TypeOf((*AddPostBuildJobCommandsOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.build.AddPostBuildJobTaskOptions",
+		reflect.TypeOf((*AddPostBuildJobTaskOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.build.BuildWorkflow",
 		reflect.TypeOf((*BuildWorkflow)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addPostBuildJob", GoMethod: "AddPostBuildJob"},
+			_jsii_.MemberMethod{JsiiMethod: "addPostBuildJobCommands", GoMethod: "AddPostBuildJobCommands"},
+			_jsii_.MemberMethod{JsiiMethod: "addPostBuildJobTask", GoMethod: "AddPostBuildJobTask"},
 			_jsii_.MemberMethod{JsiiMethod: "addPostBuildSteps", GoMethod: "AddPostBuildSteps"},
 			_jsii_.MemberProperty{JsiiProperty: "buildJobIds", GoGetter: "BuildJobIds"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
