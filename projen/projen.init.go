@@ -751,6 +751,7 @@ func init() {
 		reflect.TypeOf((*SourceCode)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "close", GoMethod: "Close"},
+			_jsii_.MemberProperty{JsiiProperty: "filePath", GoGetter: "FilePath"},
 			_jsii_.MemberMethod{JsiiMethod: "line", GoMethod: "Line"},
 			_jsii_.MemberMethod{JsiiMethod: "open", GoMethod: "Open"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},

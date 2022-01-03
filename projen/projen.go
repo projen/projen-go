@@ -5065,6 +5065,7 @@ func Semver_Tilde(version *string) Semver {
 // Experimental.
 type SourceCode interface {
 	Component
+	FilePath() *string
 	Project() Project
 	Close(code *string)
 	Line(code *string)
@@ -5077,6 +5078,16 @@ type SourceCode interface {
 // The jsii proxy struct for SourceCode
 type jsiiProxy_SourceCode struct {
 	jsiiProxy_Component
+}
+
+func (j *jsiiProxy_SourceCode) FilePath() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"filePath",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_SourceCode) Project() Project {
