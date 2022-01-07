@@ -21,6 +21,9 @@ type AddPostBuildJobCommandsOptions struct {
 	// Currently only supported for `NodeProject`.
 	// Experimental.
 	InstallDeps *bool `json:"installDeps" yaml:"installDeps"`
+	// Github Runner selection labels.
+	// Experimental.
+	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
 	// Tools that should be installed before the commands are run.
 	// Experimental.
 	Tools *workflows.Tools `json:"tools" yaml:"tools"`
@@ -29,6 +32,9 @@ type AddPostBuildJobCommandsOptions struct {
 // Options for `BuildWorkflow.addPostBuildJobTask`.
 // Experimental.
 type AddPostBuildJobTaskOptions struct {
+	// Github Runner selection labels.
+	// Experimental.
+	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
 	// Tools that should be installed before the task is run.
 	// Experimental.
 	Tools *workflows.Tools `json:"tools" yaml:"tools"`
@@ -227,5 +233,8 @@ type BuildWorkflowOptions struct {
 	// Steps to execute before the build.
 	// Experimental.
 	PreBuildSteps *[]*workflows.JobStep `json:"preBuildSteps" yaml:"preBuildSteps"`
+	// Github Runner selection labels.
+	// Experimental.
+	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
 }
 
