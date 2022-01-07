@@ -686,10 +686,10 @@ func (j *jsiiProxy_JavaProject) TryFindObjectFile(filePath *string) projen.Objec
 type JavaProjectCommonOptions struct {
 	// This is the name of your project.
 	// Experimental.
-	Name *string `json:"name"`
+	Name *string `json:"name" yaml:"name"`
 	// Configure logging options such as verbosity.
 	// Experimental.
-	Logging *projen.LoggerOptions `json:"logging"`
+	Logging *projen.LoggerOptions `json:"logging" yaml:"logging"`
 	// The root directory of the project.
 	//
 	// Relative to this directory, all files are synthesized.
@@ -698,83 +698,83 @@ type JavaProjectCommonOptions struct {
 	// directory and it cannot be the same as the parent or any of it's other
 	// sub-projects.
 	// Experimental.
-	Outdir *string `json:"outdir"`
+	Outdir *string `json:"outdir" yaml:"outdir"`
 	// The parent project, if this project is part of a bigger project.
 	// Experimental.
-	Parent projen.Project `json:"parent"`
+	Parent projen.Project `json:"parent" yaml:"parent"`
 	// The shell command to use in order to run the projen CLI.
 	//
 	// Can be used to customize in special environments.
 	// Experimental.
-	ProjenCommand *string `json:"projenCommand"`
+	ProjenCommand *string `json:"projenCommand" yaml:"projenCommand"`
 	// Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
 	// Experimental.
-	ProjenrcJson *bool `json:"projenrcJson"`
+	ProjenrcJson *bool `json:"projenrcJson" yaml:"projenrcJson"`
 	// Options for .projenrc.json.
 	// Experimental.
-	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions"`
+	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
 	// Enable and configure the 'auto approve' workflow.
 	// Experimental.
-	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions"`
+	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
 	// Configure options for automatic merging on GitHub.
 	//
 	// Has no effect if
 	// `github.mergify` is set to false.
 	// Experimental.
-	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions"`
+	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions" yaml:"autoMergeOptions"`
 	// Add a `clobber` task which resets the repo to origin.
 	// Experimental.
-	Clobber *bool `json:"clobber"`
+	Clobber *bool `json:"clobber" yaml:"clobber"`
 	// Add a VSCode development environment (used for GitHub Codespaces).
 	// Experimental.
-	DevContainer *bool `json:"devContainer"`
+	DevContainer *bool `json:"devContainer" yaml:"devContainer"`
 	// Enable GitHub integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
 	// Experimental.
-	Github *bool `json:"github"`
+	Github *bool `json:"github" yaml:"github"`
 	// Options for GitHub integration.
 	// Experimental.
-	GithubOptions *github.GitHubOptions `json:"githubOptions"`
+	GithubOptions *github.GitHubOptions `json:"githubOptions" yaml:"githubOptions"`
 	// Add a Gitpod development environment.
 	// Experimental.
-	Gitpod *bool `json:"gitpod"`
+	Gitpod *bool `json:"gitpod" yaml:"gitpod"`
 	// Whether mergify should be enabled on this repository or not.
 	// Deprecated: use `githubOptions.mergify` instead
-	Mergify *bool `json:"mergify"`
+	Mergify *bool `json:"mergify" yaml:"mergify"`
 	// Options for mergify.
 	// Deprecated: use `githubOptions.mergifyOptions` instead
-	MergifyOptions *github.MergifyOptions `json:"mergifyOptions"`
+	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
-	ProjectType projen.ProjectType `json:"projectType"`
+	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
 	// This token needs to have the `repo`, `workflows`
 	// and `packages` scope.
 	// Experimental.
-	ProjenTokenSecret *string `json:"projenTokenSecret"`
+	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
 	//
 	// Experimental.
-	Readme *projen.SampleReadmeProps `json:"readme"`
+	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
 	// Auto-close of stale issues and pull request.
 	//
 	// See `staleOptions` for options.
 	// Experimental.
-	Stale *bool `json:"stale"`
+	Stale *bool `json:"stale" yaml:"stale"`
 	// Auto-close stale issues and pull requests.
 	//
 	// To disable set `stale` to `false`.
 	// Experimental.
-	StaleOptions *github.StaleOptions `json:"staleOptions"`
+	StaleOptions *github.StaleOptions `json:"staleOptions" yaml:"staleOptions"`
 	// Enable VSCode integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
 	// Experimental.
-	Vscode *bool `json:"vscode"`
+	Vscode *bool `json:"vscode" yaml:"vscode"`
 	// The artifactId is generally the name that the project is known by.
 	//
 	// Although
@@ -787,7 +787,7 @@ type JavaProjectCommonOptions struct {
 	// case of the above project, my-project lives in
 	// $M2_REPO/org/codehaus/mojo/my-project.
 	// Experimental.
-	ArtifactId *string `json:"artifactId"`
+	ArtifactId *string `json:"artifactId" yaml:"artifactId"`
 	// This is generally unique amongst an organization or a project.
 	//
 	// For example,
@@ -802,7 +802,7 @@ type JavaProjectCommonOptions struct {
 	// repository. In the example given, the org.codehaus.mojo group lives within
 	// the directory $M2_REPO/org/codehaus/mojo.
 	// Experimental.
-	GroupId *string `json:"groupId"`
+	GroupId *string `json:"groupId" yaml:"groupId"`
 	// This is the last piece of the naming puzzle.
 	//
 	// groupId:artifactId denotes a
@@ -814,61 +814,61 @@ type JavaProjectCommonOptions struct {
 	// my-project version 1.0 files live in the directory structure
 	// $M2_REPO/org/codehaus/mojo/my-project/1.0.
 	// Experimental.
-	Version *string `json:"version"`
+	Version *string `json:"version" yaml:"version"`
 	// Description of a project is always good.
 	//
 	// Although this should not replace
 	// formal documentation, a quick comment to any readers of the POM is always
 	// helpful.
 	// Experimental.
-	Description *string `json:"description"`
+	Description *string `json:"description" yaml:"description"`
 	// Project packaging format.
 	// Experimental.
-	Packaging *string `json:"packaging"`
+	Packaging *string `json:"packaging" yaml:"packaging"`
 	// The URL, like the name, is not required.
 	//
 	// This is a nice gesture for
 	// projects users, however, so that they know where the project lives.
 	// Experimental.
-	Url *string `json:"url"`
+	Url *string `json:"url" yaml:"url"`
 	// Compile options.
 	// Experimental.
-	CompileOptions *MavenCompileOptions `json:"compileOptions"`
+	CompileOptions *MavenCompileOptions `json:"compileOptions" yaml:"compileOptions"`
 	// List of runtime dependencies for this project.
 	//
 	// Dependencies use the format: `<groupId>/<artifactId>@<semver>`
 	//
 	// Additional dependencies can be added via `project.addDependency()`.
 	// Experimental.
-	Deps *[]*string `json:"deps"`
+	Deps *[]*string `json:"deps" yaml:"deps"`
 	// Final artifact output directory.
 	// Experimental.
-	Distdir *string `json:"distdir"`
+	Distdir *string `json:"distdir" yaml:"distdir"`
 	// Include junit tests.
 	// Experimental.
-	Junit *bool `json:"junit"`
+	Junit *bool `json:"junit" yaml:"junit"`
 	// junit options.
 	// Experimental.
-	JunitOptions *JunitOptions `json:"junitOptions"`
+	JunitOptions *JunitOptions `json:"junitOptions" yaml:"junitOptions"`
 	// Packaging options.
 	// Experimental.
-	PackagingOptions *MavenPackagingOptions `json:"packagingOptions"`
+	PackagingOptions *MavenPackagingOptions `json:"packagingOptions" yaml:"packagingOptions"`
 	// Use projenrc in java.
 	//
 	// This will install `projen` as a java dependency and will add a `synth` task which
 	// will compile & execute `main()` from `src/main/java/projenrc.java`.
 	// Experimental.
-	ProjenrcJava *bool `json:"projenrcJava"`
+	ProjenrcJava *bool `json:"projenrcJava" yaml:"projenrcJava"`
 	// Options related to projenrc in java.
 	// Experimental.
-	ProjenrcJavaOptions *ProjenrcOptions `json:"projenrcJavaOptions"`
+	ProjenrcJavaOptions *ProjenrcOptions `json:"projenrcJavaOptions" yaml:"projenrcJavaOptions"`
 	// List of test dependencies for this project.
 	//
 	// Dependencies use the format: `<groupId>/<artifactId>@<semver>`
 	//
 	// Additional dependencies can be added via `project.addTestDependency()`.
 	// Experimental.
-	TestDeps *[]*string `json:"testDeps"`
+	TestDeps *[]*string `json:"testDeps" yaml:"testDeps"`
 }
 
 // Options for `JavaProject`.
@@ -876,10 +876,10 @@ type JavaProjectCommonOptions struct {
 type JavaProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
-	Name *string `json:"name"`
+	Name *string `json:"name" yaml:"name"`
 	// Configure logging options such as verbosity.
 	// Experimental.
-	Logging *projen.LoggerOptions `json:"logging"`
+	Logging *projen.LoggerOptions `json:"logging" yaml:"logging"`
 	// The root directory of the project.
 	//
 	// Relative to this directory, all files are synthesized.
@@ -888,83 +888,83 @@ type JavaProjectOptions struct {
 	// directory and it cannot be the same as the parent or any of it's other
 	// sub-projects.
 	// Experimental.
-	Outdir *string `json:"outdir"`
+	Outdir *string `json:"outdir" yaml:"outdir"`
 	// The parent project, if this project is part of a bigger project.
 	// Experimental.
-	Parent projen.Project `json:"parent"`
+	Parent projen.Project `json:"parent" yaml:"parent"`
 	// The shell command to use in order to run the projen CLI.
 	//
 	// Can be used to customize in special environments.
 	// Experimental.
-	ProjenCommand *string `json:"projenCommand"`
+	ProjenCommand *string `json:"projenCommand" yaml:"projenCommand"`
 	// Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
 	// Experimental.
-	ProjenrcJson *bool `json:"projenrcJson"`
+	ProjenrcJson *bool `json:"projenrcJson" yaml:"projenrcJson"`
 	// Options for .projenrc.json.
 	// Experimental.
-	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions"`
+	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
 	// Enable and configure the 'auto approve' workflow.
 	// Experimental.
-	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions"`
+	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
 	// Configure options for automatic merging on GitHub.
 	//
 	// Has no effect if
 	// `github.mergify` is set to false.
 	// Experimental.
-	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions"`
+	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions" yaml:"autoMergeOptions"`
 	// Add a `clobber` task which resets the repo to origin.
 	// Experimental.
-	Clobber *bool `json:"clobber"`
+	Clobber *bool `json:"clobber" yaml:"clobber"`
 	// Add a VSCode development environment (used for GitHub Codespaces).
 	// Experimental.
-	DevContainer *bool `json:"devContainer"`
+	DevContainer *bool `json:"devContainer" yaml:"devContainer"`
 	// Enable GitHub integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
 	// Experimental.
-	Github *bool `json:"github"`
+	Github *bool `json:"github" yaml:"github"`
 	// Options for GitHub integration.
 	// Experimental.
-	GithubOptions *github.GitHubOptions `json:"githubOptions"`
+	GithubOptions *github.GitHubOptions `json:"githubOptions" yaml:"githubOptions"`
 	// Add a Gitpod development environment.
 	// Experimental.
-	Gitpod *bool `json:"gitpod"`
+	Gitpod *bool `json:"gitpod" yaml:"gitpod"`
 	// Whether mergify should be enabled on this repository or not.
 	// Deprecated: use `githubOptions.mergify` instead
-	Mergify *bool `json:"mergify"`
+	Mergify *bool `json:"mergify" yaml:"mergify"`
 	// Options for mergify.
 	// Deprecated: use `githubOptions.mergifyOptions` instead
-	MergifyOptions *github.MergifyOptions `json:"mergifyOptions"`
+	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
-	ProjectType projen.ProjectType `json:"projectType"`
+	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
 	// This token needs to have the `repo`, `workflows`
 	// and `packages` scope.
 	// Experimental.
-	ProjenTokenSecret *string `json:"projenTokenSecret"`
+	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
 	//
 	// Experimental.
-	Readme *projen.SampleReadmeProps `json:"readme"`
+	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
 	// Auto-close of stale issues and pull request.
 	//
 	// See `staleOptions` for options.
 	// Experimental.
-	Stale *bool `json:"stale"`
+	Stale *bool `json:"stale" yaml:"stale"`
 	// Auto-close stale issues and pull requests.
 	//
 	// To disable set `stale` to `false`.
 	// Experimental.
-	StaleOptions *github.StaleOptions `json:"staleOptions"`
+	StaleOptions *github.StaleOptions `json:"staleOptions" yaml:"staleOptions"`
 	// Enable VSCode integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
 	// Experimental.
-	Vscode *bool `json:"vscode"`
+	Vscode *bool `json:"vscode" yaml:"vscode"`
 	// The artifactId is generally the name that the project is known by.
 	//
 	// Although
@@ -977,7 +977,7 @@ type JavaProjectOptions struct {
 	// case of the above project, my-project lives in
 	// $M2_REPO/org/codehaus/mojo/my-project.
 	// Experimental.
-	ArtifactId *string `json:"artifactId"`
+	ArtifactId *string `json:"artifactId" yaml:"artifactId"`
 	// This is generally unique amongst an organization or a project.
 	//
 	// For example,
@@ -992,7 +992,7 @@ type JavaProjectOptions struct {
 	// repository. In the example given, the org.codehaus.mojo group lives within
 	// the directory $M2_REPO/org/codehaus/mojo.
 	// Experimental.
-	GroupId *string `json:"groupId"`
+	GroupId *string `json:"groupId" yaml:"groupId"`
 	// This is the last piece of the naming puzzle.
 	//
 	// groupId:artifactId denotes a
@@ -1004,67 +1004,67 @@ type JavaProjectOptions struct {
 	// my-project version 1.0 files live in the directory structure
 	// $M2_REPO/org/codehaus/mojo/my-project/1.0.
 	// Experimental.
-	Version *string `json:"version"`
+	Version *string `json:"version" yaml:"version"`
 	// Description of a project is always good.
 	//
 	// Although this should not replace
 	// formal documentation, a quick comment to any readers of the POM is always
 	// helpful.
 	// Experimental.
-	Description *string `json:"description"`
+	Description *string `json:"description" yaml:"description"`
 	// Project packaging format.
 	// Experimental.
-	Packaging *string `json:"packaging"`
+	Packaging *string `json:"packaging" yaml:"packaging"`
 	// The URL, like the name, is not required.
 	//
 	// This is a nice gesture for
 	// projects users, however, so that they know where the project lives.
 	// Experimental.
-	Url *string `json:"url"`
+	Url *string `json:"url" yaml:"url"`
 	// Compile options.
 	// Experimental.
-	CompileOptions *MavenCompileOptions `json:"compileOptions"`
+	CompileOptions *MavenCompileOptions `json:"compileOptions" yaml:"compileOptions"`
 	// List of runtime dependencies for this project.
 	//
 	// Dependencies use the format: `<groupId>/<artifactId>@<semver>`
 	//
 	// Additional dependencies can be added via `project.addDependency()`.
 	// Experimental.
-	Deps *[]*string `json:"deps"`
+	Deps *[]*string `json:"deps" yaml:"deps"`
 	// Final artifact output directory.
 	// Experimental.
-	Distdir *string `json:"distdir"`
+	Distdir *string `json:"distdir" yaml:"distdir"`
 	// Include junit tests.
 	// Experimental.
-	Junit *bool `json:"junit"`
+	Junit *bool `json:"junit" yaml:"junit"`
 	// junit options.
 	// Experimental.
-	JunitOptions *JunitOptions `json:"junitOptions"`
+	JunitOptions *JunitOptions `json:"junitOptions" yaml:"junitOptions"`
 	// Packaging options.
 	// Experimental.
-	PackagingOptions *MavenPackagingOptions `json:"packagingOptions"`
+	PackagingOptions *MavenPackagingOptions `json:"packagingOptions" yaml:"packagingOptions"`
 	// Use projenrc in java.
 	//
 	// This will install `projen` as a java dependency and will add a `synth` task which
 	// will compile & execute `main()` from `src/main/java/projenrc.java`.
 	// Experimental.
-	ProjenrcJava *bool `json:"projenrcJava"`
+	ProjenrcJava *bool `json:"projenrcJava" yaml:"projenrcJava"`
 	// Options related to projenrc in java.
 	// Experimental.
-	ProjenrcJavaOptions *ProjenrcOptions `json:"projenrcJavaOptions"`
+	ProjenrcJavaOptions *ProjenrcOptions `json:"projenrcJavaOptions" yaml:"projenrcJavaOptions"`
 	// List of test dependencies for this project.
 	//
 	// Dependencies use the format: `<groupId>/<artifactId>@<semver>`
 	//
 	// Additional dependencies can be added via `project.addTestDependency()`.
 	// Experimental.
-	TestDeps *[]*string `json:"testDeps"`
+	TestDeps *[]*string `json:"testDeps" yaml:"testDeps"`
 	// Include sample code and test if the relevant directories don't exist.
 	// Experimental.
-	Sample *bool `json:"sample"`
+	Sample *bool `json:"sample" yaml:"sample"`
 	// The java package to use for the code sample.
 	// Experimental.
-	SampleJavaPackage *string `json:"sampleJavaPackage"`
+	SampleJavaPackage *string `json:"sampleJavaPackage" yaml:"sampleJavaPackage"`
 }
 
 // Implements JUnit-based testing.
@@ -1156,13 +1156,13 @@ func (j *jsiiProxy_Junit) Synthesize() {
 type JunitOptions struct {
 	// Java pom.
 	// Experimental.
-	Pom Pom `json:"pom"`
+	Pom Pom `json:"pom" yaml:"pom"`
 	// Java package for test sample.
 	// Experimental.
-	SampleJavaPackage *string `json:"sampleJavaPackage"`
+	SampleJavaPackage *string `json:"sampleJavaPackage" yaml:"sampleJavaPackage"`
 	// Junit version.
 	// Experimental.
-	Version *string `json:"version"`
+	Version *string `json:"version" yaml:"version"`
 }
 
 // Adds the maven-compiler plugin to a POM file and the `compile` task.
@@ -1254,10 +1254,10 @@ func (m *jsiiProxy_MavenCompile) Synthesize() {
 type MavenCompileOptions struct {
 	// Source language version.
 	// Experimental.
-	Source *string `json:"source"`
+	Source *string `json:"source" yaml:"source"`
 	// Target JVM version.
 	// Experimental.
-	Target *string `json:"target"`
+	Target *string `json:"target" yaml:"target"`
 }
 
 // Configures a maven project to produce a .jar archive with sources and javadocs.
@@ -1349,16 +1349,16 @@ func (m *jsiiProxy_MavenPackaging) Synthesize() {
 type MavenPackagingOptions struct {
 	// Where to place the package output?
 	// Experimental.
-	Distdir *string `json:"distdir"`
+	Distdir *string `json:"distdir" yaml:"distdir"`
 	// Include javadocs jar in package.
 	// Experimental.
-	Javadocs *bool `json:"javadocs"`
+	Javadocs *bool `json:"javadocs" yaml:"javadocs"`
 	// Exclude source files from docs.
 	// Experimental.
-	JavadocsExclude *[]*string `json:"javadocsExclude"`
+	JavadocsExclude *[]*string `json:"javadocsExclude" yaml:"javadocsExclude"`
 	// Include sources jar in package.
 	// Experimental.
-	Sources *bool `json:"sources"`
+	Sources *bool `json:"sources" yaml:"sources"`
 }
 
 // Java code sample.
@@ -1449,7 +1449,7 @@ func (m *jsiiProxy_MavenSample) Synthesize() {
 type MavenSampleOptions struct {
 	// Project root java package.
 	// Experimental.
-	Package *string `json:"package"`
+	Package *string `json:"package" yaml:"package"`
 }
 
 // Plugin execution definition.
@@ -1457,10 +1457,10 @@ type MavenSampleOptions struct {
 type PluginExecution struct {
 	// Which Maven goals this plugin should be associated with.
 	// Experimental.
-	Goals *[]*string `json:"goals"`
+	Goals *[]*string `json:"goals" yaml:"goals"`
 	// The ID.
 	// Experimental.
-	Id *string `json:"id"`
+	Id *string `json:"id" yaml:"id"`
 }
 
 // Options for Maven plugins.
@@ -1468,15 +1468,15 @@ type PluginExecution struct {
 type PluginOptions struct {
 	// Plugin key/value configuration.
 	// Experimental.
-	Configuration *map[string]interface{} `json:"configuration"`
+	Configuration *map[string]interface{} `json:"configuration" yaml:"configuration"`
 	// You could configure the dependencies for the plugin.
 	//
 	// Dependencies are in `<groupId>/<artifactId>@<semver>` format.
 	// Experimental.
-	Dependencies *[]*string `json:"dependencies"`
+	Dependencies *[]*string `json:"dependencies" yaml:"dependencies"`
 	// Plugin executions.
 	// Experimental.
-	Executions *[]*PluginExecution `json:"executions"`
+	Executions *[]*PluginExecution `json:"executions" yaml:"executions"`
 }
 
 // A Project Object Model or POM is the fundamental unit of work in Maven.
@@ -1721,7 +1721,7 @@ type PomOptions struct {
 	// case of the above project, my-project lives in
 	// $M2_REPO/org/codehaus/mojo/my-project.
 	// Experimental.
-	ArtifactId *string `json:"artifactId"`
+	ArtifactId *string `json:"artifactId" yaml:"artifactId"`
 	// This is generally unique amongst an organization or a project.
 	//
 	// For example,
@@ -1736,7 +1736,7 @@ type PomOptions struct {
 	// repository. In the example given, the org.codehaus.mojo group lives within
 	// the directory $M2_REPO/org/codehaus/mojo.
 	// Experimental.
-	GroupId *string `json:"groupId"`
+	GroupId *string `json:"groupId" yaml:"groupId"`
 	// This is the last piece of the naming puzzle.
 	//
 	// groupId:artifactId denotes a
@@ -1748,23 +1748,23 @@ type PomOptions struct {
 	// my-project version 1.0 files live in the directory structure
 	// $M2_REPO/org/codehaus/mojo/my-project/1.0.
 	// Experimental.
-	Version *string `json:"version"`
+	Version *string `json:"version" yaml:"version"`
 	// Description of a project is always good.
 	//
 	// Although this should not replace
 	// formal documentation, a quick comment to any readers of the POM is always
 	// helpful.
 	// Experimental.
-	Description *string `json:"description"`
+	Description *string `json:"description" yaml:"description"`
 	// Project packaging format.
 	// Experimental.
-	Packaging *string `json:"packaging"`
+	Packaging *string `json:"packaging" yaml:"packaging"`
 	// The URL, like the name, is not required.
 	//
 	// This is a nice gesture for
 	// projects users, however, so that they know where the project lives.
 	// Experimental.
-	Url *string `json:"url"`
+	Url *string `json:"url" yaml:"url"`
 }
 
 // Allows writing projenrc files in java.
@@ -1871,10 +1871,10 @@ func (p *jsiiProxy_Projenrc) Synthesize() {
 type ProjenrcOptions struct {
 	// The name of the Java class which contains the `main()` method for projen.
 	// Experimental.
-	ClassName *string `json:"className"`
+	ClassName *string `json:"className" yaml:"className"`
 	// The projen version to use.
 	// Experimental.
-	ProjenVersion *string `json:"projenVersion"`
+	ProjenVersion *string `json:"projenVersion" yaml:"projenVersion"`
 	// Defines projenrc under the test scope instead of the main scope, which is reserved to the app.
 	//
 	// This means that projenrc will be under
@@ -1885,6 +1885,6 @@ type ProjenrcOptions struct {
 	// If this is disabled, projenrc should be under
 	// `src/main/java/projenrc.java`.
 	// Experimental.
-	TestScope *bool `json:"testScope"`
+	TestScope *bool `json:"testScope" yaml:"testScope"`
 }
 

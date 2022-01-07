@@ -178,16 +178,16 @@ func (d *jsiiProxy_DevContainer) Synthesize() {
 type DevContainerOptions struct {
 	// A Docker image or Dockerfile for the container.
 	// Experimental.
-	DockerImage projen.DevEnvironmentDockerImage `json:"dockerImage"`
+	DockerImage projen.DevEnvironmentDockerImage `json:"dockerImage" yaml:"dockerImage"`
 	// An array of ports that should be exposed from the container.
 	// Experimental.
-	Ports *[]*string `json:"ports"`
+	Ports *[]*string `json:"ports" yaml:"ports"`
 	// An array of tasks that should be run when the container starts.
 	// Experimental.
-	Tasks *[]projen.Task `json:"tasks"`
+	Tasks *[]projen.Task `json:"tasks" yaml:"tasks"`
 	// An array of extension IDs that specify the extensions that should be installed inside the container when it is created.
 	// Experimental.
-	VscodeExtensions *[]*string `json:"vscodeExtensions"`
+	VscodeExtensions *[]*string `json:"vscodeExtensions" yaml:"vscodeExtensions"`
 }
 
 // Controls the visibility of the VSCode Debug Console panel during a debugging session Source: https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes.
@@ -204,22 +204,22 @@ const (
 // Experimental.
 type Presentation struct {
 	// Experimental.
-	Group *string `json:"group"`
+	Group *string `json:"group" yaml:"group"`
 	// Experimental.
-	Hidden *bool `json:"hidden"`
+	Hidden *bool `json:"hidden" yaml:"hidden"`
 	// Experimental.
-	Order *float64 `json:"order"`
+	Order *float64 `json:"order" yaml:"order"`
 }
 
 // VSCode launch configuration ServerReadyAction interface "if you want to open a URL in a web browser whenever the program under debugging outputs a specific message to the debug console or integrated terminal." Source: https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes.
 // Experimental.
 type ServerReadyAction struct {
 	// Experimental.
-	Action *string `json:"action"`
+	Action *string `json:"action" yaml:"action"`
 	// Experimental.
-	Pattern *string `json:"pattern"`
+	Pattern *string `json:"pattern" yaml:"pattern"`
 	// Experimental.
-	UriFormat *string `json:"uriFormat"`
+	UriFormat *string `json:"uriFormat" yaml:"uriFormat"`
 }
 
 // Experimental.
@@ -415,36 +415,36 @@ func (v *jsiiProxy_VsCodeLaunchConfig) Synthesize() {
 // Experimental.
 type VsCodeLaunchConfigurationEntry struct {
 	// Experimental.
-	Name *string `json:"name"`
+	Name *string `json:"name" yaml:"name"`
 	// Experimental.
-	Request *string `json:"request"`
+	Request *string `json:"request" yaml:"request"`
 	// Experimental.
-	Type *string `json:"type"`
+	Type *string `json:"type" yaml:"type"`
 	// Experimental.
-	Args *[]*string `json:"args"`
+	Args *[]*string `json:"args" yaml:"args"`
 	// Experimental.
-	DebugServer *float64 `json:"debugServer"`
+	DebugServer *float64 `json:"debugServer" yaml:"debugServer"`
 	// Experimental.
-	InternalConsoleOptions InternalConsoleOptions `json:"internalConsoleOptions"`
+	InternalConsoleOptions InternalConsoleOptions `json:"internalConsoleOptions" yaml:"internalConsoleOptions"`
 	// Experimental.
-	OutFiles *[]*string `json:"outFiles"`
+	OutFiles *[]*string `json:"outFiles" yaml:"outFiles"`
 	// Experimental.
-	PostDebugTask *string `json:"postDebugTask"`
+	PostDebugTask *string `json:"postDebugTask" yaml:"postDebugTask"`
 	// Experimental.
-	PreLaunchTask *string `json:"preLaunchTask"`
+	PreLaunchTask *string `json:"preLaunchTask" yaml:"preLaunchTask"`
 	// Experimental.
-	Presentation *Presentation `json:"presentation"`
+	Presentation *Presentation `json:"presentation" yaml:"presentation"`
 	// Experimental.
-	Program *string `json:"program"`
+	Program *string `json:"program" yaml:"program"`
 	// Experimental.
-	RuntimeArgs *[]*string `json:"runtimeArgs"`
+	RuntimeArgs *[]*string `json:"runtimeArgs" yaml:"runtimeArgs"`
 	// Experimental.
-	ServerReadyAction *ServerReadyAction `json:"serverReadyAction"`
+	ServerReadyAction *ServerReadyAction `json:"serverReadyAction" yaml:"serverReadyAction"`
 	// Experimental.
-	SkipFiles *[]*string `json:"skipFiles"`
+	SkipFiles *[]*string `json:"skipFiles" yaml:"skipFiles"`
 	// Experimental.
-	Url *string `json:"url"`
+	Url *string `json:"url" yaml:"url"`
 	// Experimental.
-	WebRoot *string `json:"webRoot"`
+	WebRoot *string `json:"webRoot" yaml:"webRoot"`
 }
 

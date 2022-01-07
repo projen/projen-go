@@ -30,28 +30,28 @@ type AddBundleOptions struct {
 	// example, the fsevents package contains a native extension, which esbuild
 	// doesn't support.
 	// Experimental.
-	Externals *[]*string `json:"externals"`
+	Externals *[]*string `json:"externals" yaml:"externals"`
 	// Include a source map in the bundle.
 	// Experimental.
-	Sourcemap *bool `json:"sourcemap"`
+	Sourcemap *bool `json:"sourcemap" yaml:"sourcemap"`
 	// In addition to the `bundle:xyz` task, creates `bundle:xyz:watch` task which will invoke the same esbuild command with the `--watch` flag.
 	//
 	// This can be used
 	// to continusouly watch for changes.
 	// Experimental.
-	WatchTask *bool `json:"watchTask"`
+	WatchTask *bool `json:"watchTask" yaml:"watchTask"`
 	// esbuild platform.
 	//
 	// TODO: EXAMPLE
 	//
 	// Experimental.
-	Platform *string `json:"platform"`
+	Platform *string `json:"platform" yaml:"platform"`
 	// esbuild target.
 	//
 	// TODO: EXAMPLE
 	//
 	// Experimental.
-	Target *string `json:"target"`
+	Target *string `json:"target" yaml:"target"`
 }
 
 // Experimental.
@@ -75,13 +75,13 @@ const (
 type Bundle struct {
 	// The task that produces this bundle.
 	// Experimental.
-	BundleTask projen.Task `json:"bundleTask"`
+	BundleTask projen.Task `json:"bundleTask" yaml:"bundleTask"`
 	// Location of the output file (relative to project root).
 	// Experimental.
-	Outfile *string `json:"outfile"`
+	Outfile *string `json:"outfile" yaml:"outfile"`
 	// The "watch" task for this bundle.
 	// Experimental.
-	WatchTask projen.Task `json:"watchTask"`
+	WatchTask projen.Task `json:"watchTask" yaml:"watchTask"`
 }
 
 // Adds support for bundling JavaScript applications and dependencies into a single file.
@@ -245,13 +245,13 @@ func (b *jsiiProxy_Bundler) Synthesize() {
 type BundlerOptions struct {
 	// Install the `bundle` command as a pre-compile phase.
 	// Experimental.
-	AddToPreCompile *bool `json:"addToPreCompile"`
+	AddToPreCompile *bool `json:"addToPreCompile" yaml:"addToPreCompile"`
 	// Output directory for all bundles.
 	// Experimental.
-	AssetsDir *string `json:"assetsDir"`
+	AssetsDir *string `json:"assetsDir" yaml:"assetsDir"`
 	// The semantic version requirement for `esbuild`.
 	// Experimental.
-	EsbuildVersion *string `json:"esbuildVersion"`
+	EsbuildVersion *string `json:"esbuildVersion" yaml:"esbuildVersion"`
 }
 
 // Options for bundling.
@@ -271,16 +271,16 @@ type BundlingOptions struct {
 	// example, the fsevents package contains a native extension, which esbuild
 	// doesn't support.
 	// Experimental.
-	Externals *[]*string `json:"externals"`
+	Externals *[]*string `json:"externals" yaml:"externals"`
 	// Include a source map in the bundle.
 	// Experimental.
-	Sourcemap *bool `json:"sourcemap"`
+	Sourcemap *bool `json:"sourcemap" yaml:"sourcemap"`
 	// In addition to the `bundle:xyz` task, creates `bundle:xyz:watch` task which will invoke the same esbuild command with the `--watch` flag.
 	//
 	// This can be used
 	// to continusouly watch for changes.
 	// Experimental.
-	WatchTask *bool `json:"watchTask"`
+	WatchTask *bool `json:"watchTask" yaml:"watchTask"`
 }
 
 // Experimental.
@@ -289,27 +289,27 @@ type CodeArtifactOptions struct {
 	//
 	// This property must be specified only when publishing to AWS CodeArtifact (`npmRegistryUrl` contains AWS CodeArtifact URL).
 	// Experimental.
-	AccessKeyIdSecret *string `json:"accessKeyIdSecret"`
+	AccessKeyIdSecret *string `json:"accessKeyIdSecret" yaml:"accessKeyIdSecret"`
 	// ARN of AWS role to be assumed prior to get authorization token from AWS CodeArtifact This property must be specified only when publishing to AWS CodeArtifact (`registry` contains AWS CodeArtifact URL).
 	// Experimental.
-	RoleToAssume *string `json:"roleToAssume"`
+	RoleToAssume *string `json:"roleToAssume" yaml:"roleToAssume"`
 	// GitHub secret which contains the AWS secret access key to use when publishing packages to AWS CodeArtifact.
 	//
 	// This property must be specified only when publishing to AWS CodeArtifact (`npmRegistryUrl` contains AWS CodeArtifact URL).
 	// Experimental.
-	SecretAccessKeySecret *string `json:"secretAccessKeySecret"`
+	SecretAccessKeySecret *string `json:"secretAccessKeySecret" yaml:"secretAccessKeySecret"`
 }
 
 // Experimental.
 type CoverageThreshold struct {
 	// Experimental.
-	Branches *float64 `json:"branches"`
+	Branches *float64 `json:"branches" yaml:"branches"`
 	// Experimental.
-	Functions *float64 `json:"functions"`
+	Functions *float64 `json:"functions" yaml:"functions"`
 	// Experimental.
-	Lines *float64 `json:"lines"`
+	Lines *float64 `json:"lines" yaml:"lines"`
 	// Experimental.
-	Statements *float64 `json:"statements"`
+	Statements *float64 `json:"statements" yaml:"statements"`
 }
 
 // Experimental.
@@ -555,39 +555,39 @@ func (e *jsiiProxy_Eslint) Synthesize() {
 type EslintOptions struct {
 	// Directories with source files to lint (e.g. [ "src" ]).
 	// Experimental.
-	Dirs *[]*string `json:"dirs"`
+	Dirs *[]*string `json:"dirs" yaml:"dirs"`
 	// Enable import alias for module paths.
 	// Experimental.
-	AliasExtensions *[]*string `json:"aliasExtensions"`
+	AliasExtensions *[]*string `json:"aliasExtensions" yaml:"aliasExtensions"`
 	// Enable import alias for module paths.
 	// Experimental.
-	AliasMap *map[string]*string `json:"aliasMap"`
+	AliasMap *map[string]*string `json:"aliasMap" yaml:"aliasMap"`
 	// Directories with source files that include tests and build tools.
 	//
 	// These
 	// sources are linted but may also import packages from `devDependencies`.
 	// Experimental.
-	Devdirs *[]*string `json:"devdirs"`
+	Devdirs *[]*string `json:"devdirs" yaml:"devdirs"`
 	// File types that should be linted (e.g. [ ".js", ".ts" ]).
 	// Experimental.
-	FileExtensions *[]*string `json:"fileExtensions"`
+	FileExtensions *[]*string `json:"fileExtensions" yaml:"fileExtensions"`
 	// List of file patterns that should not be linted, using the same syntax as .gitignore patterns.
 	// Experimental.
-	IgnorePatterns *[]*string `json:"ignorePatterns"`
+	IgnorePatterns *[]*string `json:"ignorePatterns" yaml:"ignorePatterns"`
 	// Should we lint .projenrc.js.
 	// Experimental.
-	LintProjenRc *bool `json:"lintProjenRc"`
+	LintProjenRc *bool `json:"lintProjenRc" yaml:"lintProjenRc"`
 	// Enable prettier for code formatting.
 	// Experimental.
-	Prettier *bool `json:"prettier"`
+	Prettier *bool `json:"prettier" yaml:"prettier"`
 	// Always try to resolve types under `<root>@types` directory even it doesn't contain any source code.
 	//
 	// This prevents `import/no-unresolved` eslint errors when importing a `@types/*` module that would otherwise remain unresolved.
 	// Experimental.
-	TsAlwaysTryTypes *bool `json:"tsAlwaysTryTypes"`
+	TsAlwaysTryTypes *bool `json:"tsAlwaysTryTypes" yaml:"tsAlwaysTryTypes"`
 	// Path to `tsconfig.json` which should be used by eslint.
 	// Experimental.
-	TsconfigPath *string `json:"tsconfigPath"`
+	TsconfigPath *string `json:"tsconfigPath" yaml:"tsconfigPath"`
 }
 
 // eslint rules override.
@@ -595,10 +595,10 @@ type EslintOptions struct {
 type EslintOverride struct {
 	// Files or file patterns on which to apply the override.
 	// Experimental.
-	Files *[]*string `json:"files"`
+	Files *[]*string `json:"files" yaml:"files"`
 	// The overriden rules.
 	// Experimental.
-	Rules *map[string]interface{} `json:"rules"`
+	Rules *map[string]interface{} `json:"rules" yaml:"rules"`
 }
 
 // Experimental.
@@ -613,15 +613,15 @@ const (
 // Experimental.
 type HasteConfig struct {
 	// Experimental.
-	ComputeSha1 *bool `json:"computeSha1"`
+	ComputeSha1 *bool `json:"computeSha1" yaml:"computeSha1"`
 	// Experimental.
-	DefaultPlatform *string `json:"defaultPlatform"`
+	DefaultPlatform *string `json:"defaultPlatform" yaml:"defaultPlatform"`
 	// Experimental.
-	HasteImplModulePath *string `json:"hasteImplModulePath"`
+	HasteImplModulePath *string `json:"hasteImplModulePath" yaml:"hasteImplModulePath"`
 	// Experimental.
-	Platforms *[]*string `json:"platforms"`
+	Platforms *[]*string `json:"platforms" yaml:"platforms"`
 	// Experimental.
-	ThrowOnModuleCollision *bool `json:"throwOnModuleCollision"`
+	ThrowOnModuleCollision *bool `json:"throwOnModuleCollision" yaml:"throwOnModuleCollision"`
 }
 
 // Installs the following npm scripts:.
@@ -734,348 +734,348 @@ type JestConfigOptions struct {
 	//
 	// All modules used in your tests will have a replacement implementation, keeping the API surface
 	// Experimental.
-	Automock *bool `json:"automock"`
+	Automock *bool `json:"automock" yaml:"automock"`
 	// By default, Jest runs all tests and produces all errors into the console upon completion.
 	//
 	// The bail config option can be used here to have Jest stop running tests after n failures.
 	// Setting bail to true is the same as setting bail to 1.
 	// Experimental.
-	Bail interface{} `json:"bail"`
+	Bail interface{} `json:"bail" yaml:"bail"`
 	// The directory where Jest should store its cached dependency information.
 	// Experimental.
-	CacheDirectory *string `json:"cacheDirectory"`
+	CacheDirectory *string `json:"cacheDirectory" yaml:"cacheDirectory"`
 	// Automatically clear mock calls and instances before every test.
 	//
 	// Equivalent to calling jest.clearAllMocks() before each test.
 	// This does not remove any mock implementation that may have been provided
 	// Experimental.
-	ClearMocks *bool `json:"clearMocks"`
+	ClearMocks *bool `json:"clearMocks" yaml:"clearMocks"`
 	// Indicates whether the coverage information should be collected while executing the test.
 	//
 	// Because this retrofits all executed files with coverage collection statements,
 	// it may significantly slow down your tests
 	// Experimental.
-	CollectCoverage *bool `json:"collectCoverage"`
+	CollectCoverage *bool `json:"collectCoverage" yaml:"collectCoverage"`
 	// An array of glob patterns indicating a set of files for which coverage information should be collected.
 	// Experimental.
-	CollectCoverageFrom *[]*string `json:"collectCoverageFrom"`
+	CollectCoverageFrom *[]*string `json:"collectCoverageFrom" yaml:"collectCoverageFrom"`
 	// The directory where Jest should output its coverage files.
 	// Experimental.
-	CoverageDirectory *string `json:"coverageDirectory"`
+	CoverageDirectory *string `json:"coverageDirectory" yaml:"coverageDirectory"`
 	// An array of regexp pattern strings that are matched against all file paths before executing the test.
 	//
 	// If the file path matches any of the patterns, coverage information will be skipped
 	// Experimental.
-	CoveragePathIgnorePatterns *[]*string `json:"coveragePathIgnorePatterns"`
+	CoveragePathIgnorePatterns *[]*string `json:"coveragePathIgnorePatterns" yaml:"coveragePathIgnorePatterns"`
 	// Indicates which provider should be used to instrument code for coverage.
 	//
 	// Allowed values are babel (default) or v8
 	// Experimental.
-	CoverageProvider *string `json:"coverageProvider"`
+	CoverageProvider *string `json:"coverageProvider" yaml:"coverageProvider"`
 	// A list of reporter names that Jest uses when writing coverage reports.
 	//
 	// Any istanbul reporter can be used
 	// Experimental.
-	CoverageReporters *[]*string `json:"coverageReporters"`
+	CoverageReporters *[]*string `json:"coverageReporters" yaml:"coverageReporters"`
 	// Specify the global coverage thresholds.
 	//
 	// This will be used to configure minimum threshold enforcement
 	// for coverage results. Thresholds can be specified as global, as a glob, and as a directory or file path.
 	// If thresholds aren't met, jest will fail.
 	// Experimental.
-	CoverageThreshold *CoverageThreshold `json:"coverageThreshold"`
+	CoverageThreshold *CoverageThreshold `json:"coverageThreshold" yaml:"coverageThreshold"`
 	// This option allows the use of a custom dependency extractor.
 	//
 	// It must be a node module that exports an object with an extract function
 	// Experimental.
-	DependencyExtractor *string `json:"dependencyExtractor"`
+	DependencyExtractor *string `json:"dependencyExtractor" yaml:"dependencyExtractor"`
 	// Allows for a label to be printed alongside a test while it is running.
 	// Experimental.
-	DisplayName interface{} `json:"displayName"`
+	DisplayName interface{} `json:"displayName" yaml:"displayName"`
 	// Make calling deprecated APIs throw helpful error messages.
 	//
 	// Useful for easing the upgrade process.
 	// Experimental.
-	ErrorOnDeprecated *bool `json:"errorOnDeprecated"`
+	ErrorOnDeprecated *bool `json:"errorOnDeprecated" yaml:"errorOnDeprecated"`
 	// Test files run inside a vm, which slows calls to global context properties (e.g. Math). With this option you can specify extra properties to be defined inside the vm for faster lookups.
 	// Experimental.
-	ExtraGlobals *[]*string `json:"extraGlobals"`
+	ExtraGlobals *[]*string `json:"extraGlobals" yaml:"extraGlobals"`
 	// Test files are normally ignored from collecting code coverage.
 	//
 	// With this option, you can overwrite this behavior and include otherwise ignored files in code coverage.
 	// Experimental.
-	ForceCoverageMatch *[]*string `json:"forceCoverageMatch"`
+	ForceCoverageMatch *[]*string `json:"forceCoverageMatch" yaml:"forceCoverageMatch"`
 	// A set of global variables that need to be available in all test environments.
 	// Experimental.
-	Globals interface{} `json:"globals"`
+	Globals interface{} `json:"globals" yaml:"globals"`
 	// This option allows the use of a custom global setup module which exports an async function that is triggered once before all test suites.
 	//
 	// This function gets Jest's globalConfig object as a parameter.
 	// Experimental.
-	GlobalSetup *string `json:"globalSetup"`
+	GlobalSetup *string `json:"globalSetup" yaml:"globalSetup"`
 	// This option allows the use of a custom global teardown module which exports an async function that is triggered once after all test suites.
 	//
 	// This function gets Jest's globalConfig object as a parameter.
 	// Experimental.
-	GlobalTeardown *string `json:"globalTeardown"`
+	GlobalTeardown *string `json:"globalTeardown" yaml:"globalTeardown"`
 	// This will be used to configure the behavior of jest-haste-map, Jest's internal file crawler/cache system.
 	// Experimental.
-	Haste *HasteConfig `json:"haste"`
+	Haste *HasteConfig `json:"haste" yaml:"haste"`
 	// Insert Jest's globals (expect, test, describe, beforeEach etc.) into the global environment. If you set this to false, you should import from @jest/globals.
 	// Experimental.
-	InjectGlobals *bool `json:"injectGlobals"`
+	InjectGlobals *bool `json:"injectGlobals" yaml:"injectGlobals"`
 	// A number limiting the number of tests that are allowed to run at the same time when using test.concurrent. Any test above this limit will be queued and executed once a slot is released.
 	// Experimental.
-	MaxConcurrency *float64 `json:"maxConcurrency"`
+	MaxConcurrency *float64 `json:"maxConcurrency" yaml:"maxConcurrency"`
 	// An array of directory names to be searched recursively up from the requiring module's location.
 	//
 	// Setting this option will override the default, if you wish to still search node_modules for packages
 	// include it along with any other options: ["node_modules", "bower_components"]
 	// Experimental.
-	ModuleDirectories *[]*string `json:"moduleDirectories"`
+	ModuleDirectories *[]*string `json:"moduleDirectories" yaml:"moduleDirectories"`
 	// An array of file extensions your modules use.
 	//
 	// If you require modules without specifying a file extension,
 	// these are the extensions Jest will look for, in left-to-right order.
 	// Experimental.
-	ModuleFileExtensions *[]*string `json:"moduleFileExtensions"`
+	ModuleFileExtensions *[]*string `json:"moduleFileExtensions" yaml:"moduleFileExtensions"`
 	// A map from regular expressions to module names or to arrays of module names that allow to stub out resources, like images or styles with a single module.
 	// Experimental.
-	ModuleNameMapper *map[string]interface{} `json:"moduleNameMapper"`
+	ModuleNameMapper *map[string]interface{} `json:"moduleNameMapper" yaml:"moduleNameMapper"`
 	// An array of regexp pattern strings that are matched against all module paths before those paths are to be considered 'visible' to the module loader.
 	//
 	// If a given module's path matches any of the patterns,
 	// it will not be require()-able in the test environment.
 	// Experimental.
-	ModulePathIgnorePatterns *[]*string `json:"modulePathIgnorePatterns"`
+	ModulePathIgnorePatterns *[]*string `json:"modulePathIgnorePatterns" yaml:"modulePathIgnorePatterns"`
 	// An alternative API to setting the NODE_PATH env variable, modulePaths is an array of absolute paths to additional locations to search when resolving modules.
 	//
 	// Use the <rootDir> string token to include
 	// the path to your project's root directory. Example: ["<rootDir>/app/"].
 	// Experimental.
-	ModulePaths *[]*string `json:"modulePaths"`
+	ModulePaths *[]*string `json:"modulePaths" yaml:"modulePaths"`
 	// Activates notifications for test results.
 	// Experimental.
-	Notify *bool `json:"notify"`
+	Notify *bool `json:"notify" yaml:"notify"`
 	// Specifies notification mode.
 	//
 	// Requires notify: true
 	// Experimental.
-	NotifyMode *string `json:"notifyMode"`
+	NotifyMode *string `json:"notifyMode" yaml:"notifyMode"`
 	// A preset that is used as a base for Jest's configuration.
 	//
 	// A preset should point to an npm module
 	// that has a jest-preset.json or jest-preset.js file at the root.
 	// Experimental.
-	Preset *string `json:"preset"`
+	Preset *string `json:"preset" yaml:"preset"`
 	// Sets the path to the prettier node module used to update inline snapshots.
 	// Experimental.
-	PrettierPath *string `json:"prettierPath"`
+	PrettierPath *string `json:"prettierPath" yaml:"prettierPath"`
 	// When the projects configuration is provided with an array of paths or glob patterns, Jest will run tests in all of the specified projects at the same time.
 	//
 	// This is great for monorepos or
 	// when working on multiple projects at the same time.
 	// Experimental.
-	Projects *[]interface{} `json:"projects"`
+	Projects *[]interface{} `json:"projects" yaml:"projects"`
 	// Use this configuration option to add custom reporters to Jest.
 	//
 	// A custom reporter is a class
 	// that implements onRunStart, onTestStart, onTestResult, onRunComplete methods that will be
 	// called when any of those events occurs.
 	// Experimental.
-	Reporters *[]interface{} `json:"reporters"`
+	Reporters *[]interface{} `json:"reporters" yaml:"reporters"`
 	// Automatically reset mock state before every test.
 	//
 	// Equivalent to calling jest.resetAllMocks()
 	// before each test. This will lead to any mocks having their fake implementations removed but
 	// does not restore their initial implementation.
 	// Experimental.
-	ResetMocks *bool `json:"resetMocks"`
+	ResetMocks *bool `json:"resetMocks" yaml:"resetMocks"`
 	// By default, each test file gets its own independent module registry.
 	//
 	// Enabling resetModules
 	// goes a step further and resets the module registry before running each individual test.
 	// Experimental.
-	ResetModules *bool `json:"resetModules"`
+	ResetModules *bool `json:"resetModules" yaml:"resetModules"`
 	// This option allows the use of a custom resolver.
 	//
 	// https://jestjs.io/docs/en/configuration#resolver-string
 	// Experimental.
-	Resolver *string `json:"resolver"`
+	Resolver *string `json:"resolver" yaml:"resolver"`
 	// Automatically restore mock state before every test.
 	//
 	// Equivalent to calling jest.restoreAllMocks()
 	// before each test. This will lead to any mocks having their fake implementations removed and
 	// restores their initial implementation.
 	// Experimental.
-	RestoreMocks *bool `json:"restoreMocks"`
+	RestoreMocks *bool `json:"restoreMocks" yaml:"restoreMocks"`
 	// The root directory that Jest should scan for tests and modules within.
 	//
 	// If you put your Jest
 	// config inside your package.json and want the root directory to be the root of your repo, the
 	// value for this config param will default to the directory of the package.json.
 	// Experimental.
-	RootDir *string `json:"rootDir"`
+	RootDir *string `json:"rootDir" yaml:"rootDir"`
 	// A list of paths to directories that Jest should use to search for files in.
 	// Experimental.
-	Roots *[]*string `json:"roots"`
+	Roots *[]*string `json:"roots" yaml:"roots"`
 	// This option allows you to use a custom runner instead of Jest's default test runner.
 	// Experimental.
-	Runner *string `json:"runner"`
+	Runner *string `json:"runner" yaml:"runner"`
 	// A list of paths to modules that run some code to configure or set up the testing environment.
 	//
 	// Each setupFile will be run once per test file. Since every test runs in its own environment,
 	// these scripts will be executed in the testing environment immediately before executing the
 	// test code itself.
 	// Experimental.
-	SetupFiles *[]*string `json:"setupFiles"`
+	SetupFiles *[]*string `json:"setupFiles" yaml:"setupFiles"`
 	// A list of paths to modules that run some code to configure or set up the testing framework before each test file in the suite is executed.
 	//
 	// Since setupFiles executes before the test
 	// framework is installed in the environment, this script file presents you the opportunity of
 	// running some code immediately after the test framework has been installed in the environment.
 	// Experimental.
-	SetupFilesAfterEnv *[]*string `json:"setupFilesAfterEnv"`
+	SetupFilesAfterEnv *[]*string `json:"setupFilesAfterEnv" yaml:"setupFilesAfterEnv"`
 	// The number of seconds after which a test is considered as slow and reported as such in the results.
 	// Experimental.
-	SlowTestThreshold *float64 `json:"slowTestThreshold"`
+	SlowTestThreshold *float64 `json:"slowTestThreshold" yaml:"slowTestThreshold"`
 	// The path to a module that can resolve test<->snapshot path.
 	//
 	// This config option lets you customize
 	// where Jest stores snapshot files on disk.
 	// Experimental.
-	SnapshotResolver *string `json:"snapshotResolver"`
+	SnapshotResolver *string `json:"snapshotResolver" yaml:"snapshotResolver"`
 	// A list of paths to snapshot serializer modules Jest should use for snapshot testing.
 	// Experimental.
-	SnapshotSerializers *[]*string `json:"snapshotSerializers"`
+	SnapshotSerializers *[]*string `json:"snapshotSerializers" yaml:"snapshotSerializers"`
 	// The test environment that will be used for testing.
 	//
 	// The default environment in Jest is a
 	// browser-like environment through jsdom. If you are building a node service, you can use the node
 	// option to use a node-like environment instead.
 	// Experimental.
-	TestEnvironment *string `json:"testEnvironment"`
+	TestEnvironment *string `json:"testEnvironment" yaml:"testEnvironment"`
 	// Test environment options that will be passed to the testEnvironment.
 	//
 	// The relevant options depend on the environment.
 	// Experimental.
-	TestEnvironmentOptions interface{} `json:"testEnvironmentOptions"`
+	TestEnvironmentOptions interface{} `json:"testEnvironmentOptions" yaml:"testEnvironmentOptions"`
 	// The exit code Jest returns on test failure.
 	// Experimental.
-	TestFailureExitCode *float64 `json:"testFailureExitCode"`
+	TestFailureExitCode *float64 `json:"testFailureExitCode" yaml:"testFailureExitCode"`
 	// The glob patterns Jest uses to detect test files.
 	//
 	// By default it looks for .js, .jsx, .ts and .tsx
 	// files inside of __tests__ folders, as well as any files with a suffix of .test or .spec
 	// (e.g. Component.test.js or Component.spec.js). It will also find files called test.js or spec.js.
 	// Experimental.
-	TestMatch *[]*string `json:"testMatch"`
+	TestMatch *[]*string `json:"testMatch" yaml:"testMatch"`
 	// An array of regexp pattern strings that are matched against all test paths before executing the test.
 	//
 	// If the test path matches any of the patterns, it will be skipped.
 	// Experimental.
-	TestPathIgnorePatterns *[]*string `json:"testPathIgnorePatterns"`
+	TestPathIgnorePatterns *[]*string `json:"testPathIgnorePatterns" yaml:"testPathIgnorePatterns"`
 	// The pattern or patterns Jest uses to detect test files.
 	//
 	// By default it looks for .js, .jsx, .ts and .tsx
 	// files inside of __tests__ folders, as well as any files with a suffix of .test or .spec
 	// (e.g. Component.test.js or Component.spec.js). It will also find files called test.js or spec.js.
 	// Experimental.
-	TestRegex interface{} `json:"testRegex"`
+	TestRegex interface{} `json:"testRegex" yaml:"testRegex"`
 	// This option allows the use of a custom results processor.
 	// Experimental.
-	TestResultsProcessor *string `json:"testResultsProcessor"`
+	TestResultsProcessor *string `json:"testResultsProcessor" yaml:"testResultsProcessor"`
 	// This option allows the use of a custom test runner.
 	//
 	// The default is jasmine2. A custom test runner
 	// can be provided by specifying a path to a test runner implementation.
 	// Experimental.
-	TestRunner *string `json:"testRunner"`
+	TestRunner *string `json:"testRunner" yaml:"testRunner"`
 	// This option allows you to use a custom sequencer instead of Jest's default.
 	//
 	// Sort may optionally return a Promise.
 	// Experimental.
-	TestSequencer *string `json:"testSequencer"`
+	TestSequencer *string `json:"testSequencer" yaml:"testSequencer"`
 	// Default timeout of a test in milliseconds.
 	// Experimental.
-	TestTimeout *float64 `json:"testTimeout"`
+	TestTimeout *float64 `json:"testTimeout" yaml:"testTimeout"`
 	// This option sets the URL for the jsdom environment.
 	//
 	// It is reflected in properties such as location.href.
 	// Experimental.
-	TestURL *string `json:"testURL"`
+	TestURL *string `json:"testURL" yaml:"testURL"`
 	// Setting this value to legacy or fake allows the use of fake timers for functions such as setTimeout.
 	//
 	// Fake timers are useful when a piece of code sets a long timeout that we don't want to wait for in a test.
 	// Experimental.
-	Timers *string `json:"timers"`
+	Timers *string `json:"timers" yaml:"timers"`
 	// A map from regular expressions to paths to transformers.
 	//
 	// A transformer is a module that provides a
 	// synchronous function for transforming source files.
 	// Experimental.
-	Transform *map[string]interface{} `json:"transform"`
+	Transform *map[string]interface{} `json:"transform" yaml:"transform"`
 	// An array of regexp pattern strings that are matched against all source file paths before transformation.
 	//
 	// If the test path matches any of the patterns, it will not be transformed.
 	// Experimental.
-	TransformIgnorePatterns *[]*string `json:"transformIgnorePatterns"`
+	TransformIgnorePatterns *[]*string `json:"transformIgnorePatterns" yaml:"transformIgnorePatterns"`
 	// An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them.
 	//
 	// If a module's path matches any of the patterns in this list, it
 	// will not be automatically mocked by the module loader.
 	// Experimental.
-	UnmockedModulePathPatterns *[]*string `json:"unmockedModulePathPatterns"`
+	UnmockedModulePathPatterns *[]*string `json:"unmockedModulePathPatterns" yaml:"unmockedModulePathPatterns"`
 	// Indicates whether each individual test should be reported during the run.
 	//
 	// All errors will also
 	// still be shown on the bottom after execution. Note that if there is only one test file being run
 	// it will default to true.
 	// Experimental.
-	Verbose *bool `json:"verbose"`
+	Verbose *bool `json:"verbose" yaml:"verbose"`
 	// Whether to use watchman for file crawling.
 	// Experimental.
-	Watchman *bool `json:"watchman"`
+	Watchman *bool `json:"watchman" yaml:"watchman"`
 	// An array of RegExp patterns that are matched against all source file paths before re-running tests in watch mode.
 	//
 	// If the file path matches any of the patterns, when it is updated, it will not trigger
 	// a re-run of tests.
 	// Experimental.
-	WatchPathIgnorePatterns *[]*string `json:"watchPathIgnorePatterns"`
+	WatchPathIgnorePatterns *[]*string `json:"watchPathIgnorePatterns" yaml:"watchPathIgnorePatterns"`
 	// Experimental.
-	WatchPlugins *map[string]interface{} `json:"watchPlugins"`
+	WatchPlugins *map[string]interface{} `json:"watchPlugins" yaml:"watchPlugins"`
 }
 
 // Experimental.
 type JestOptions struct {
 	// Path to JSON config file for Jest.
 	// Experimental.
-	ConfigFilePath *string `json:"configFilePath"`
+	ConfigFilePath *string `json:"configFilePath" yaml:"configFilePath"`
 	// Collect coverage.
 	//
 	// Deprecated
 	// Deprecated: use jestConfig.collectCoverage
-	Coverage *bool `json:"coverage"`
+	Coverage *bool `json:"coverage" yaml:"coverage"`
 	// Include the `text` coverage reporter, which means that coverage summary is printed at the end of the jest execution.
 	// Experimental.
-	CoverageText *bool `json:"coverageText"`
+	CoverageText *bool `json:"coverageText" yaml:"coverageText"`
 	// Defines `testPathIgnorePatterns` and `coveragePathIgnorePatterns`.
 	// Deprecated: use jestConfig.coveragePathIgnorePatterns or jestConfig.testPathIgnorePatterns respectively
-	IgnorePatterns *[]*string `json:"ignorePatterns"`
+	IgnorePatterns *[]*string `json:"ignorePatterns" yaml:"ignorePatterns"`
 	// Jest configuration.
 	// Experimental.
-	JestConfig *JestConfigOptions `json:"jestConfig"`
+	JestConfig *JestConfigOptions `json:"jestConfig" yaml:"jestConfig"`
 	// The version of jest to use.
 	// Experimental.
-	JestVersion *string `json:"jestVersion"`
+	JestVersion *string `json:"jestVersion" yaml:"jestVersion"`
 	// Result processing with jest-junit.
 	//
 	// Output directory is `test-reports/`.
 	// Experimental.
-	JunitReporting *bool `json:"junitReporting"`
+	JunitReporting *bool `json:"junitReporting" yaml:"junitReporting"`
 	// Preserve the default Jest reporter when additional reporters are added.
 	// Experimental.
-	PreserveDefaultReporters *bool `json:"preserveDefaultReporters"`
+	PreserveDefaultReporters *bool `json:"preserveDefaultReporters" yaml:"preserveDefaultReporters"`
 }
 
 // Represents the npm `package.json` file.
@@ -1550,35 +1550,35 @@ type NodePackageOptions struct {
 	// This is normally only allowed for libraries. For apps, there's no meaning
 	// for specifying these.
 	// Experimental.
-	AllowLibraryDependencies *bool `json:"allowLibraryDependencies"`
+	AllowLibraryDependencies *bool `json:"allowLibraryDependencies" yaml:"allowLibraryDependencies"`
 	// Author's e-mail.
 	// Experimental.
-	AuthorEmail *string `json:"authorEmail"`
+	AuthorEmail *string `json:"authorEmail" yaml:"authorEmail"`
 	// Author's name.
 	// Experimental.
-	AuthorName *string `json:"authorName"`
+	AuthorName *string `json:"authorName" yaml:"authorName"`
 	// Author's Organization.
 	// Experimental.
-	AuthorOrganization *bool `json:"authorOrganization"`
+	AuthorOrganization *bool `json:"authorOrganization" yaml:"authorOrganization"`
 	// Author's URL / Website.
 	// Experimental.
-	AuthorUrl *string `json:"authorUrl"`
+	AuthorUrl *string `json:"authorUrl" yaml:"authorUrl"`
 	// Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
 	// Experimental.
-	AutoDetectBin *bool `json:"autoDetectBin"`
+	AutoDetectBin *bool `json:"autoDetectBin" yaml:"autoDetectBin"`
 	// Binary programs vended with your module.
 	//
 	// You can use this option to add/customize how binaries are represented in
 	// your `package.json`, but unless `autoDetectBin` is `false`, every
 	// executable file under `bin` will automatically be added to this section.
 	// Experimental.
-	Bin *map[string]*string `json:"bin"`
+	Bin *map[string]*string `json:"bin" yaml:"bin"`
 	// The email address to which issues should be reported.
 	// Experimental.
-	BugsEmail *string `json:"bugsEmail"`
+	BugsEmail *string `json:"bugsEmail" yaml:"bugsEmail"`
 	// The url to your project's issue tracker.
 	// Experimental.
-	BugsUrl *string `json:"bugsUrl"`
+	BugsUrl *string `json:"bugsUrl" yaml:"bugsUrl"`
 	// List of dependencies to bundle into this module.
 	//
 	// These modules will be
@@ -1592,10 +1592,10 @@ type NodePackageOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	// Experimental.
-	BundledDeps *[]*string `json:"bundledDeps"`
+	BundledDeps *[]*string `json:"bundledDeps" yaml:"bundledDeps"`
 	// Options for publishing npm package to AWS CodeArtifact.
 	// Experimental.
-	CodeArtifactOptions *CodeArtifactOptions `json:"codeArtifactOptions"`
+	CodeArtifactOptions *CodeArtifactOptions `json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Runtime dependencies of this module.
 	//
 	// The recommendation is to only specify the module name here (e.g.
@@ -1608,13 +1608,13 @@ type NodePackageOptions struct {
 	// TODO: EXAMPLE
 	//
 	// Experimental.
-	Deps *[]*string `json:"deps"`
+	Deps *[]*string `json:"deps" yaml:"deps"`
 	// The description is just a string that helps people understand the purpose of the package.
 	//
 	// It can be used when searching for packages in a package manager as well.
 	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
 	// Experimental.
-	Description *string `json:"description"`
+	Description *string `json:"description" yaml:"description"`
 	// Build dependencies for this module.
 	//
 	// These dependencies will only be
@@ -1631,58 +1631,58 @@ type NodePackageOptions struct {
 	// TODO: EXAMPLE
 	//
 	// Experimental.
-	DevDeps *[]*string `json:"devDeps"`
+	DevDeps *[]*string `json:"devDeps" yaml:"devDeps"`
 	// Module entrypoint (`main` in `package.json`).
 	//
 	// Set to an empty string to not include `main` in your package.json
 	// Experimental.
-	Entrypoint *string `json:"entrypoint"`
+	Entrypoint *string `json:"entrypoint" yaml:"entrypoint"`
 	// Package's Homepage / Website.
 	// Experimental.
-	Homepage *string `json:"homepage"`
+	Homepage *string `json:"homepage" yaml:"homepage"`
 	// Keywords to include in `package.json`.
 	// Experimental.
-	Keywords *[]*string `json:"keywords"`
+	Keywords *[]*string `json:"keywords" yaml:"keywords"`
 	// License's SPDX identifier.
 	//
 	// See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
 	// Use the `licensed` option if you want to no license to be specified.
 	// Experimental.
-	License *string `json:"license"`
+	License *string `json:"license" yaml:"license"`
 	// Indicates if a license should be added.
 	// Experimental.
-	Licensed *bool `json:"licensed"`
+	Licensed *bool `json:"licensed" yaml:"licensed"`
 	// Minimum node.js version to require via `engines` (inclusive).
 	// Experimental.
-	MaxNodeVersion *string `json:"maxNodeVersion"`
+	MaxNodeVersion *string `json:"maxNodeVersion" yaml:"maxNodeVersion"`
 	// Minimum Node.js version to require via package.json `engines` (inclusive).
 	// Experimental.
-	MinNodeVersion *string `json:"minNodeVersion"`
+	MinNodeVersion *string `json:"minNodeVersion" yaml:"minNodeVersion"`
 	// Access level of the npm package.
 	// Experimental.
-	NpmAccess NpmAccess `json:"npmAccess"`
+	NpmAccess NpmAccess `json:"npmAccess" yaml:"npmAccess"`
 	// The host name of the npm registry to publish to.
 	//
 	// Cannot be set together with `npmRegistryUrl`.
 	// Deprecated: use `npmRegistryUrl` instead
-	NpmRegistry *string `json:"npmRegistry"`
+	NpmRegistry *string `json:"npmRegistry" yaml:"npmRegistry"`
 	// The base URL of the npm package registry.
 	//
 	// Must be a URL (e.g. start with "https://" or "http://")
 	// Experimental.
-	NpmRegistryUrl *string `json:"npmRegistryUrl"`
+	NpmRegistryUrl *string `json:"npmRegistryUrl" yaml:"npmRegistryUrl"`
 	// GitHub secret which contains the NPM token to use when publishing packages.
 	// Experimental.
-	NpmTokenSecret *string `json:"npmTokenSecret"`
+	NpmTokenSecret *string `json:"npmTokenSecret" yaml:"npmTokenSecret"`
 	// The Node Package Manager used to execute scripts.
 	// Experimental.
-	PackageManager NodePackageManager `json:"packageManager"`
+	PackageManager NodePackageManager `json:"packageManager" yaml:"packageManager"`
 	// The "name" in package.json.
 	// Experimental.
-	PackageName *string `json:"packageName"`
+	PackageName *string `json:"packageName" yaml:"packageName"`
 	// Options for `peerDeps`.
 	// Experimental.
-	PeerDependencyOptions *PeerDependencyOptions `json:"peerDependencyOptions"`
+	PeerDependencyOptions *PeerDependencyOptions `json:"peerDependencyOptions" yaml:"peerDependencyOptions"`
 	// Peer dependencies for this module.
 	//
 	// Dependencies listed here are required to
@@ -1699,24 +1699,24 @@ type NodePackageOptions struct {
 	// pinned version for each peer dependency. This will ensure that you build &
 	// test your module against the lowest peer version required.
 	// Experimental.
-	PeerDeps *[]*string `json:"peerDeps"`
+	PeerDeps *[]*string `json:"peerDeps" yaml:"peerDeps"`
 	// The repository is the location where the actual code for your package lives.
 	//
 	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
 	// Experimental.
-	Repository *string `json:"repository"`
+	Repository *string `json:"repository" yaml:"repository"`
 	// If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
 	// Experimental.
-	RepositoryDirectory *string `json:"repositoryDirectory"`
+	RepositoryDirectory *string `json:"repositoryDirectory" yaml:"repositoryDirectory"`
 	// npm scripts to include.
 	//
 	// If a script has the same name as a standard script,
 	// the standard script will be overwritten.
 	// Experimental.
-	Scripts *map[string]*string `json:"scripts"`
+	Scripts *map[string]*string `json:"scripts" yaml:"scripts"`
 	// Package's Stability.
 	// Experimental.
-	Stability *string `json:"stability"`
+	Stability *string `json:"stability" yaml:"stability"`
 }
 
 // Node.js project.
@@ -2705,10 +2705,10 @@ func (n *jsiiProxy_NodeProject) TryFindObjectFile(filePath *string) projen.Objec
 type NodeProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
-	Name *string `json:"name"`
+	Name *string `json:"name" yaml:"name"`
 	// Configure logging options such as verbosity.
 	// Experimental.
-	Logging *projen.LoggerOptions `json:"logging"`
+	Logging *projen.LoggerOptions `json:"logging" yaml:"logging"`
 	// The root directory of the project.
 	//
 	// Relative to this directory, all files are synthesized.
@@ -2717,117 +2717,117 @@ type NodeProjectOptions struct {
 	// directory and it cannot be the same as the parent or any of it's other
 	// sub-projects.
 	// Experimental.
-	Outdir *string `json:"outdir"`
+	Outdir *string `json:"outdir" yaml:"outdir"`
 	// The parent project, if this project is part of a bigger project.
 	// Experimental.
-	Parent projen.Project `json:"parent"`
+	Parent projen.Project `json:"parent" yaml:"parent"`
 	// The shell command to use in order to run the projen CLI.
 	//
 	// Can be used to customize in special environments.
 	// Experimental.
-	ProjenCommand *string `json:"projenCommand"`
+	ProjenCommand *string `json:"projenCommand" yaml:"projenCommand"`
 	// Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
 	// Experimental.
-	ProjenrcJson *bool `json:"projenrcJson"`
+	ProjenrcJson *bool `json:"projenrcJson" yaml:"projenrcJson"`
 	// Options for .projenrc.json.
 	// Experimental.
-	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions"`
+	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
 	// Enable and configure the 'auto approve' workflow.
 	// Experimental.
-	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions"`
+	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
 	// Configure options for automatic merging on GitHub.
 	//
 	// Has no effect if
 	// `github.mergify` is set to false.
 	// Experimental.
-	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions"`
+	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions" yaml:"autoMergeOptions"`
 	// Add a `clobber` task which resets the repo to origin.
 	// Experimental.
-	Clobber *bool `json:"clobber"`
+	Clobber *bool `json:"clobber" yaml:"clobber"`
 	// Add a VSCode development environment (used for GitHub Codespaces).
 	// Experimental.
-	DevContainer *bool `json:"devContainer"`
+	DevContainer *bool `json:"devContainer" yaml:"devContainer"`
 	// Enable GitHub integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
 	// Experimental.
-	Github *bool `json:"github"`
+	Github *bool `json:"github" yaml:"github"`
 	// Options for GitHub integration.
 	// Experimental.
-	GithubOptions *github.GitHubOptions `json:"githubOptions"`
+	GithubOptions *github.GitHubOptions `json:"githubOptions" yaml:"githubOptions"`
 	// Add a Gitpod development environment.
 	// Experimental.
-	Gitpod *bool `json:"gitpod"`
+	Gitpod *bool `json:"gitpod" yaml:"gitpod"`
 	// Whether mergify should be enabled on this repository or not.
 	// Deprecated: use `githubOptions.mergify` instead
-	Mergify *bool `json:"mergify"`
+	Mergify *bool `json:"mergify" yaml:"mergify"`
 	// Options for mergify.
 	// Deprecated: use `githubOptions.mergifyOptions` instead
-	MergifyOptions *github.MergifyOptions `json:"mergifyOptions"`
+	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
-	ProjectType projen.ProjectType `json:"projectType"`
+	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
 	// This token needs to have the `repo`, `workflows`
 	// and `packages` scope.
 	// Experimental.
-	ProjenTokenSecret *string `json:"projenTokenSecret"`
+	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
 	//
 	// Experimental.
-	Readme *projen.SampleReadmeProps `json:"readme"`
+	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
 	// Auto-close of stale issues and pull request.
 	//
 	// See `staleOptions` for options.
 	// Experimental.
-	Stale *bool `json:"stale"`
+	Stale *bool `json:"stale" yaml:"stale"`
 	// Auto-close stale issues and pull requests.
 	//
 	// To disable set `stale` to `false`.
 	// Experimental.
-	StaleOptions *github.StaleOptions `json:"staleOptions"`
+	StaleOptions *github.StaleOptions `json:"staleOptions" yaml:"staleOptions"`
 	// Enable VSCode integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
 	// Experimental.
-	Vscode *bool `json:"vscode"`
+	Vscode *bool `json:"vscode" yaml:"vscode"`
 	// Allow the project to include `peerDependencies` and `bundledDependencies`.
 	//
 	// This is normally only allowed for libraries. For apps, there's no meaning
 	// for specifying these.
 	// Experimental.
-	AllowLibraryDependencies *bool `json:"allowLibraryDependencies"`
+	AllowLibraryDependencies *bool `json:"allowLibraryDependencies" yaml:"allowLibraryDependencies"`
 	// Author's e-mail.
 	// Experimental.
-	AuthorEmail *string `json:"authorEmail"`
+	AuthorEmail *string `json:"authorEmail" yaml:"authorEmail"`
 	// Author's name.
 	// Experimental.
-	AuthorName *string `json:"authorName"`
+	AuthorName *string `json:"authorName" yaml:"authorName"`
 	// Author's Organization.
 	// Experimental.
-	AuthorOrganization *bool `json:"authorOrganization"`
+	AuthorOrganization *bool `json:"authorOrganization" yaml:"authorOrganization"`
 	// Author's URL / Website.
 	// Experimental.
-	AuthorUrl *string `json:"authorUrl"`
+	AuthorUrl *string `json:"authorUrl" yaml:"authorUrl"`
 	// Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
 	// Experimental.
-	AutoDetectBin *bool `json:"autoDetectBin"`
+	AutoDetectBin *bool `json:"autoDetectBin" yaml:"autoDetectBin"`
 	// Binary programs vended with your module.
 	//
 	// You can use this option to add/customize how binaries are represented in
 	// your `package.json`, but unless `autoDetectBin` is `false`, every
 	// executable file under `bin` will automatically be added to this section.
 	// Experimental.
-	Bin *map[string]*string `json:"bin"`
+	Bin *map[string]*string `json:"bin" yaml:"bin"`
 	// The email address to which issues should be reported.
 	// Experimental.
-	BugsEmail *string `json:"bugsEmail"`
+	BugsEmail *string `json:"bugsEmail" yaml:"bugsEmail"`
 	// The url to your project's issue tracker.
 	// Experimental.
-	BugsUrl *string `json:"bugsUrl"`
+	BugsUrl *string `json:"bugsUrl" yaml:"bugsUrl"`
 	// List of dependencies to bundle into this module.
 	//
 	// These modules will be
@@ -2841,10 +2841,10 @@ type NodeProjectOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	// Experimental.
-	BundledDeps *[]*string `json:"bundledDeps"`
+	BundledDeps *[]*string `json:"bundledDeps" yaml:"bundledDeps"`
 	// Options for publishing npm package to AWS CodeArtifact.
 	// Experimental.
-	CodeArtifactOptions *CodeArtifactOptions `json:"codeArtifactOptions"`
+	CodeArtifactOptions *CodeArtifactOptions `json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Runtime dependencies of this module.
 	//
 	// The recommendation is to only specify the module name here (e.g.
@@ -2857,13 +2857,13 @@ type NodeProjectOptions struct {
 	// TODO: EXAMPLE
 	//
 	// Experimental.
-	Deps *[]*string `json:"deps"`
+	Deps *[]*string `json:"deps" yaml:"deps"`
 	// The description is just a string that helps people understand the purpose of the package.
 	//
 	// It can be used when searching for packages in a package manager as well.
 	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
 	// Experimental.
-	Description *string `json:"description"`
+	Description *string `json:"description" yaml:"description"`
 	// Build dependencies for this module.
 	//
 	// These dependencies will only be
@@ -2880,58 +2880,58 @@ type NodeProjectOptions struct {
 	// TODO: EXAMPLE
 	//
 	// Experimental.
-	DevDeps *[]*string `json:"devDeps"`
+	DevDeps *[]*string `json:"devDeps" yaml:"devDeps"`
 	// Module entrypoint (`main` in `package.json`).
 	//
 	// Set to an empty string to not include `main` in your package.json
 	// Experimental.
-	Entrypoint *string `json:"entrypoint"`
+	Entrypoint *string `json:"entrypoint" yaml:"entrypoint"`
 	// Package's Homepage / Website.
 	// Experimental.
-	Homepage *string `json:"homepage"`
+	Homepage *string `json:"homepage" yaml:"homepage"`
 	// Keywords to include in `package.json`.
 	// Experimental.
-	Keywords *[]*string `json:"keywords"`
+	Keywords *[]*string `json:"keywords" yaml:"keywords"`
 	// License's SPDX identifier.
 	//
 	// See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
 	// Use the `licensed` option if you want to no license to be specified.
 	// Experimental.
-	License *string `json:"license"`
+	License *string `json:"license" yaml:"license"`
 	// Indicates if a license should be added.
 	// Experimental.
-	Licensed *bool `json:"licensed"`
+	Licensed *bool `json:"licensed" yaml:"licensed"`
 	// Minimum node.js version to require via `engines` (inclusive).
 	// Experimental.
-	MaxNodeVersion *string `json:"maxNodeVersion"`
+	MaxNodeVersion *string `json:"maxNodeVersion" yaml:"maxNodeVersion"`
 	// Minimum Node.js version to require via package.json `engines` (inclusive).
 	// Experimental.
-	MinNodeVersion *string `json:"minNodeVersion"`
+	MinNodeVersion *string `json:"minNodeVersion" yaml:"minNodeVersion"`
 	// Access level of the npm package.
 	// Experimental.
-	NpmAccess NpmAccess `json:"npmAccess"`
+	NpmAccess NpmAccess `json:"npmAccess" yaml:"npmAccess"`
 	// The host name of the npm registry to publish to.
 	//
 	// Cannot be set together with `npmRegistryUrl`.
 	// Deprecated: use `npmRegistryUrl` instead
-	NpmRegistry *string `json:"npmRegistry"`
+	NpmRegistry *string `json:"npmRegistry" yaml:"npmRegistry"`
 	// The base URL of the npm package registry.
 	//
 	// Must be a URL (e.g. start with "https://" or "http://")
 	// Experimental.
-	NpmRegistryUrl *string `json:"npmRegistryUrl"`
+	NpmRegistryUrl *string `json:"npmRegistryUrl" yaml:"npmRegistryUrl"`
 	// GitHub secret which contains the NPM token to use when publishing packages.
 	// Experimental.
-	NpmTokenSecret *string `json:"npmTokenSecret"`
+	NpmTokenSecret *string `json:"npmTokenSecret" yaml:"npmTokenSecret"`
 	// The Node Package Manager used to execute scripts.
 	// Experimental.
-	PackageManager NodePackageManager `json:"packageManager"`
+	PackageManager NodePackageManager `json:"packageManager" yaml:"packageManager"`
 	// The "name" in package.json.
 	// Experimental.
-	PackageName *string `json:"packageName"`
+	PackageName *string `json:"packageName" yaml:"packageName"`
 	// Options for `peerDeps`.
 	// Experimental.
-	PeerDependencyOptions *PeerDependencyOptions `json:"peerDependencyOptions"`
+	PeerDependencyOptions *PeerDependencyOptions `json:"peerDependencyOptions" yaml:"peerDependencyOptions"`
 	// Peer dependencies for this module.
 	//
 	// Dependencies listed here are required to
@@ -2948,54 +2948,54 @@ type NodeProjectOptions struct {
 	// pinned version for each peer dependency. This will ensure that you build &
 	// test your module against the lowest peer version required.
 	// Experimental.
-	PeerDeps *[]*string `json:"peerDeps"`
+	PeerDeps *[]*string `json:"peerDeps" yaml:"peerDeps"`
 	// The repository is the location where the actual code for your package lives.
 	//
 	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
 	// Experimental.
-	Repository *string `json:"repository"`
+	Repository *string `json:"repository" yaml:"repository"`
 	// If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
 	// Experimental.
-	RepositoryDirectory *string `json:"repositoryDirectory"`
+	RepositoryDirectory *string `json:"repositoryDirectory" yaml:"repositoryDirectory"`
 	// npm scripts to include.
 	//
 	// If a script has the same name as a standard script,
 	// the standard script will be overwritten.
 	// Experimental.
-	Scripts *map[string]*string `json:"scripts"`
+	Scripts *map[string]*string `json:"scripts" yaml:"scripts"`
 	// Package's Stability.
 	// Experimental.
-	Stability *string `json:"stability"`
+	Stability *string `json:"stability" yaml:"stability"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
-	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
+	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.
 	//
 	// If this is specified, we bump the latest version of this major version line.
 	// If not specified, we bump the global latest version.
 	// Experimental.
-	MajorVersion *float64 `json:"majorVersion"`
+	MajorVersion *float64 `json:"majorVersion" yaml:"majorVersion"`
 	// The npmDistTag to use when publishing from the default branch.
 	//
 	// To set the npm dist-tag for release branches, set the `npmDistTag` property
 	// for each branch.
 	// Experimental.
-	NpmDistTag *string `json:"npmDistTag"`
+	NpmDistTag *string `json:"npmDistTag" yaml:"npmDistTag"`
 	// Steps to execute after build as part of the release workflow.
 	// Experimental.
-	PostBuildSteps *[]*workflows.JobStep `json:"postBuildSteps"`
+	PostBuildSteps *[]*workflows.JobStep `json:"postBuildSteps" yaml:"postBuildSteps"`
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
 	// Experimental.
-	Prerelease *string `json:"prerelease"`
+	Prerelease *string `json:"prerelease" yaml:"prerelease"`
 	// Instead of actually publishing to package managers, just print the publishing command.
 	// Experimental.
-	PublishDryRun *bool `json:"publishDryRun"`
+	PublishDryRun *bool `json:"publishDryRun" yaml:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
 	// in order to create a publishing task for each publishing activity.
 	// Experimental.
-	PublishTasks *bool `json:"publishTasks"`
+	PublishTasks *bool `json:"publishTasks" yaml:"publishTasks"`
 	// Defines additional release branches.
 	//
 	// A workflow will be created for each
@@ -3005,21 +3005,21 @@ type NodeProjectOptions struct {
 	// version. If multiple branches are used, the `majorVersion` field must also
 	// be provided for the default branch.
 	// Experimental.
-	ReleaseBranches *map[string]*release.BranchOptions `json:"releaseBranches"`
+	ReleaseBranches *map[string]*release.BranchOptions `json:"releaseBranches" yaml:"releaseBranches"`
 	// Automatically release new versions every commit to one of branches in `releaseBranches`.
 	// Deprecated: Use `releaseTrigger: ReleaseTrigger.continuous()` instead
-	ReleaseEveryCommit *bool `json:"releaseEveryCommit"`
+	ReleaseEveryCommit *bool `json:"releaseEveryCommit" yaml:"releaseEveryCommit"`
 	// Create a github issue on every failed publishing task.
 	// Experimental.
-	ReleaseFailureIssue *bool `json:"releaseFailureIssue"`
+	ReleaseFailureIssue *bool `json:"releaseFailureIssue" yaml:"releaseFailureIssue"`
 	// The label to apply to issues indicating publish failures.
 	//
 	// Only applies if `releaseFailureIssue` is true.
 	// Experimental.
-	ReleaseFailureIssueLabel *string `json:"releaseFailureIssueLabel"`
+	ReleaseFailureIssueLabel *string `json:"releaseFailureIssueLabel" yaml:"releaseFailureIssueLabel"`
 	// CRON schedule to trigger new releases.
 	// Deprecated: Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
-	ReleaseSchedule *string `json:"releaseSchedule"`
+	ReleaseSchedule *string `json:"releaseSchedule" yaml:"releaseSchedule"`
 	// Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
 	//
 	// Note: this prefix is used to detect the latest tagged version
@@ -3027,86 +3027,86 @@ type NodeProjectOptions struct {
 	// history, you may need to manually tag your latest release
 	// with the new prefix.
 	// Experimental.
-	ReleaseTagPrefix *string `json:"releaseTagPrefix"`
+	ReleaseTagPrefix *string `json:"releaseTagPrefix" yaml:"releaseTagPrefix"`
 	// The release trigger to use.
 	// Experimental.
-	ReleaseTrigger release.ReleaseTrigger `json:"releaseTrigger"`
+	ReleaseTrigger release.ReleaseTrigger `json:"releaseTrigger" yaml:"releaseTrigger"`
 	// The name of the default release workflow.
 	// Experimental.
-	ReleaseWorkflowName *string `json:"releaseWorkflowName"`
+	ReleaseWorkflowName *string `json:"releaseWorkflowName" yaml:"releaseWorkflowName"`
 	// A set of workflow steps to execute in order to setup the workflow container.
 	// Experimental.
-	ReleaseWorkflowSetupSteps *[]*workflows.JobStep `json:"releaseWorkflowSetupSteps"`
+	ReleaseWorkflowSetupSteps *[]*workflows.JobStep `json:"releaseWorkflowSetupSteps" yaml:"releaseWorkflowSetupSteps"`
 	// Custom configuration used when creating changelog with standard-version package.
 	//
 	// Given values either append to default configuration or overwrite values in it.
 	// Experimental.
-	VersionrcOptions *map[string]interface{} `json:"versionrcOptions"`
+	VersionrcOptions *map[string]interface{} `json:"versionrcOptions" yaml:"versionrcOptions"`
 	// Container image to use for GitHub workflows.
 	// Experimental.
-	WorkflowContainerImage *string `json:"workflowContainerImage"`
+	WorkflowContainerImage *string `json:"workflowContainerImage" yaml:"workflowContainerImage"`
 	// Github Runner selection labels.
 	// Experimental.
-	WorkflowRunsOn *[]*string `json:"workflowRunsOn"`
+	WorkflowRunsOn *[]*string `json:"workflowRunsOn" yaml:"workflowRunsOn"`
 	// The name of the main release branch.
 	// Experimental.
-	DefaultReleaseBranch *string `json:"defaultReleaseBranch"`
+	DefaultReleaseBranch *string `json:"defaultReleaseBranch" yaml:"defaultReleaseBranch"`
 	// A directory which will contain build artifacts.
 	// Experimental.
-	ArtifactsDirectory *string `json:"artifactsDirectory"`
+	ArtifactsDirectory *string `json:"artifactsDirectory" yaml:"artifactsDirectory"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
 	// Experimental.
-	AutoApproveProjenUpgrades *bool `json:"autoApproveProjenUpgrades"`
+	AutoApproveProjenUpgrades *bool `json:"autoApproveProjenUpgrades" yaml:"autoApproveProjenUpgrades"`
 	// Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
 	// Experimental.
-	AutoApproveUpgrades *bool `json:"autoApproveUpgrades"`
+	AutoApproveUpgrades *bool `json:"autoApproveUpgrades" yaml:"autoApproveUpgrades"`
 	// Define a GitHub workflow for building PRs.
 	// Experimental.
-	BuildWorkflow *bool `json:"buildWorkflow"`
+	BuildWorkflow *bool `json:"buildWorkflow" yaml:"buildWorkflow"`
 	// Options for `Bundler`.
 	// Experimental.
-	BundlerOptions *BundlerOptions `json:"bundlerOptions"`
+	BundlerOptions *BundlerOptions `json:"bundlerOptions" yaml:"bundlerOptions"`
 	// Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v1 A secret is required for private repos. Configured with @codeCovTokenSecret.
 	// Experimental.
-	CodeCov *bool `json:"codeCov"`
+	CodeCov *bool `json:"codeCov" yaml:"codeCov"`
 	// Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories.
 	// Experimental.
-	CodeCovTokenSecret *string `json:"codeCovTokenSecret"`
+	CodeCovTokenSecret *string `json:"codeCovTokenSecret" yaml:"codeCovTokenSecret"`
 	// License copyright owner.
 	// Experimental.
-	CopyrightOwner *string `json:"copyrightOwner"`
+	CopyrightOwner *string `json:"copyrightOwner" yaml:"copyrightOwner"`
 	// The copyright years to put in the LICENSE file.
 	// Experimental.
-	CopyrightPeriod *string `json:"copyrightPeriod"`
+	CopyrightPeriod *string `json:"copyrightPeriod" yaml:"copyrightPeriod"`
 	// Use dependabot to handle dependency upgrades.
 	//
 	// Cannot be used in conjunction with `depsUpgrade`.
 	// Experimental.
-	Dependabot *bool `json:"dependabot"`
+	Dependabot *bool `json:"dependabot" yaml:"dependabot"`
 	// Options for dependabot.
 	// Experimental.
-	DependabotOptions *github.DependabotOptions `json:"dependabotOptions"`
+	DependabotOptions *github.DependabotOptions `json:"dependabotOptions" yaml:"dependabotOptions"`
 	// Use github workflows to handle dependency upgrades.
 	//
 	// Cannot be used in conjunction with `dependabot`.
 	// Experimental.
-	DepsUpgrade *bool `json:"depsUpgrade"`
+	DepsUpgrade *bool `json:"depsUpgrade" yaml:"depsUpgrade"`
 	// Options for depsUpgrade.
 	// Experimental.
-	DepsUpgradeOptions *UpgradeDependenciesOptions `json:"depsUpgradeOptions"`
+	DepsUpgradeOptions *UpgradeDependenciesOptions `json:"depsUpgradeOptions" yaml:"depsUpgradeOptions"`
 	// Additional entries to .gitignore.
 	// Experimental.
-	Gitignore *[]*string `json:"gitignore"`
+	Gitignore *[]*string `json:"gitignore" yaml:"gitignore"`
 	// Setup jest unit tests.
 	// Experimental.
-	Jest *bool `json:"jest"`
+	Jest *bool `json:"jest" yaml:"jest"`
 	// Jest options.
 	// Experimental.
-	JestOptions *JestOptions `json:"jestOptions"`
+	JestOptions *JestOptions `json:"jestOptions" yaml:"jestOptions"`
 	// Automatically update files modified during builds to pull-request branches.
 	//
 	// This means
@@ -3115,39 +3115,39 @@ type NodeProjectOptions struct {
 	//
 	// Implies that PR builds do not have anti-tamper checks.
 	// Experimental.
-	MutableBuild *bool `json:"mutableBuild"`
+	MutableBuild *bool `json:"mutableBuild" yaml:"mutableBuild"`
 	// Additional entries to .npmignore.
 	// Deprecated: - use `project.addPackageIgnore`
-	Npmignore *[]*string `json:"npmignore"`
+	Npmignore *[]*string `json:"npmignore" yaml:"npmignore"`
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
 	// Experimental.
-	NpmignoreEnabled *bool `json:"npmignoreEnabled"`
+	NpmignoreEnabled *bool `json:"npmignoreEnabled" yaml:"npmignoreEnabled"`
 	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
 	// Experimental.
-	Package *bool `json:"package"`
+	Package *bool `json:"package" yaml:"package"`
 	// Setup prettier.
 	// Experimental.
-	Prettier *bool `json:"prettier"`
+	Prettier *bool `json:"prettier" yaml:"prettier"`
 	// Prettier options.
 	// Experimental.
-	PrettierOptions *PrettierOptions `json:"prettierOptions"`
+	PrettierOptions *PrettierOptions `json:"prettierOptions" yaml:"prettierOptions"`
 	// Indicates of "projen" should be installed as a devDependency.
 	// Experimental.
-	ProjenDevDependency *bool `json:"projenDevDependency"`
+	ProjenDevDependency *bool `json:"projenDevDependency" yaml:"projenDevDependency"`
 	// Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation.
 	// Experimental.
-	ProjenrcJs *bool `json:"projenrcJs"`
+	ProjenrcJs *bool `json:"projenrcJs" yaml:"projenrcJs"`
 	// Options for .projenrc.js.
 	// Experimental.
-	ProjenrcJsOptions *ProjenrcOptions `json:"projenrcJsOptions"`
+	ProjenrcJsOptions *ProjenrcOptions `json:"projenrcJsOptions" yaml:"projenrcJsOptions"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
 	// Deprecated: use `autoApproveProjenUpgrades`.
-	ProjenUpgradeAutoMerge *bool `json:"projenUpgradeAutoMerge"`
+	ProjenUpgradeAutoMerge *bool `json:"projenUpgradeAutoMerge" yaml:"projenUpgradeAutoMerge"`
 	// Customize the projenUpgrade schedule in cron expression.
 	// Experimental.
-	ProjenUpgradeSchedule *[]*string `json:"projenUpgradeSchedule"`
+	ProjenUpgradeSchedule *[]*string `json:"projenUpgradeSchedule" yaml:"projenUpgradeSchedule"`
 	// Periodically submits a pull request for projen upgrades (executes `yarn projen:upgrade`).
 	//
 	// This setting is a GitHub secret name which contains a GitHub Access Token
@@ -3158,34 +3158,34 @@ type NodeProjectOptions struct {
 	//
 	// To create a personal access token see https://github.com/settings/tokens
 	// Deprecated: use `githubTokenSecret` instead.
-	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
+	ProjenUpgradeSecret *string `json:"projenUpgradeSecret" yaml:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.
-	ProjenVersion *string `json:"projenVersion"`
+	ProjenVersion *string `json:"projenVersion" yaml:"projenVersion"`
 	// Include a GitHub pull request template.
 	// Experimental.
-	PullRequestTemplate *bool `json:"pullRequestTemplate"`
+	PullRequestTemplate *bool `json:"pullRequestTemplate" yaml:"pullRequestTemplate"`
 	// The contents of the pull request template.
 	// Experimental.
-	PullRequestTemplateContents *[]*string `json:"pullRequestTemplateContents"`
+	PullRequestTemplateContents *[]*string `json:"pullRequestTemplateContents" yaml:"pullRequestTemplateContents"`
 	// Add release management to this project.
 	// Experimental.
-	Release *bool `json:"release"`
+	Release *bool `json:"release" yaml:"release"`
 	// Automatically release to npm when new versions are introduced.
 	// Experimental.
-	ReleaseToNpm *bool `json:"releaseToNpm"`
+	ReleaseToNpm *bool `json:"releaseToNpm" yaml:"releaseToNpm"`
 	// DEPRECATED: renamed to `release`.
 	// Deprecated: see `release`.
-	ReleaseWorkflow *bool `json:"releaseWorkflow"`
+	ReleaseWorkflow *bool `json:"releaseWorkflow" yaml:"releaseWorkflow"`
 	// Workflow steps to use in order to bootstrap this repo.
 	// Experimental.
-	WorkflowBootstrapSteps *[]interface{} `json:"workflowBootstrapSteps"`
+	WorkflowBootstrapSteps *[]interface{} `json:"workflowBootstrapSteps" yaml:"workflowBootstrapSteps"`
 	// The git identity to use in workflows.
 	// Experimental.
-	WorkflowGitIdentity *github.GitIdentity `json:"workflowGitIdentity"`
+	WorkflowGitIdentity *github.GitIdentity `json:"workflowGitIdentity" yaml:"workflowGitIdentity"`
 	// The node version to use in GitHub workflows.
 	// Experimental.
-	WorkflowNodeVersion *string `json:"workflowNodeVersion"`
+	WorkflowNodeVersion *string `json:"workflowNodeVersion" yaml:"workflowNodeVersion"`
 }
 
 // Npm package access level.
@@ -3310,14 +3310,14 @@ type NpmConfigOptions struct {
 	//
 	// You can change this or add scoped registries using the addRegistry method
 	// Experimental.
-	Registry *string `json:"registry"`
+	Registry *string `json:"registry" yaml:"registry"`
 }
 
 // Experimental.
 type PeerDependencyOptions struct {
 	// Automatically add a pinned dev dependency.
 	// Experimental.
-	PinnedDevDependency *bool `json:"pinnedDevDependency"`
+	PinnedDevDependency *bool `json:"pinnedDevDependency" yaml:"pinnedDevDependency"`
 }
 
 // Represents prettier configuration.
@@ -3482,28 +3482,28 @@ func (p *jsiiProxy_Prettier) Synthesize() {
 type PrettierOptions struct {
 	// Defines an .prettierIgnore file.
 	// Experimental.
-	IgnoreFile *bool `json:"ignoreFile"`
+	IgnoreFile *bool `json:"ignoreFile" yaml:"ignoreFile"`
 	// Provide a list of patterns to override prettier configuration.
 	// See: https://prettier.io/docs/en/configuration.html#configuration-overrides
 	//
 	// Experimental.
-	Overrides *[]*PrettierOverride `json:"overrides"`
+	Overrides *[]*PrettierOverride `json:"overrides" yaml:"overrides"`
 	// Prettier settings.
 	// Experimental.
-	Settings *PrettierSettings `json:"settings"`
+	Settings *PrettierSettings `json:"settings" yaml:"settings"`
 }
 
 // Experimental.
 type PrettierOverride struct {
 	// Include these files in this override.
 	// Experimental.
-	Files interface{} `json:"files"`
+	Files interface{} `json:"files" yaml:"files"`
 	// The options to apply for this override.
 	// Experimental.
-	Settings *PrettierSettings `json:"settings"`
+	Settings *PrettierSettings `json:"settings" yaml:"settings"`
 	// Exclude these files from this override.
 	// Experimental.
-	ExcludeFiles interface{} `json:"excludeFiles"`
+	ExcludeFiles interface{} `json:"excludeFiles" yaml:"excludeFiles"`
 }
 
 // Options to set in Prettier directly or through overrides.
@@ -3513,96 +3513,96 @@ type PrettierOverride struct {
 type PrettierSettings struct {
 	// Include parentheses around a sole arrow function parameter.
 	// Experimental.
-	ArrowParens ArrowParens `json:"arrowParens"`
+	ArrowParens ArrowParens `json:"arrowParens" yaml:"arrowParens"`
 	// Put > of opening tags on the last line instead of on a new line.
 	// Experimental.
-	BracketSameLine *bool `json:"bracketSameLine"`
+	BracketSameLine *bool `json:"bracketSameLine" yaml:"bracketSameLine"`
 	// Print spaces between brackets.
 	// Experimental.
-	BracketSpacing *bool `json:"bracketSpacing"`
+	BracketSpacing *bool `json:"bracketSpacing" yaml:"bracketSpacing"`
 	// Print (to stderr) where a cursor at the given position would move to after formatting.
 	//
 	// This option cannot be used with --range-start and --range-end.
 	// Experimental.
-	CursorOffset *float64 `json:"cursorOffset"`
+	CursorOffset *float64 `json:"cursorOffset" yaml:"cursorOffset"`
 	// Control how Prettier formats quoted code embedded in the file.
 	// Experimental.
-	EmbeddedLanguageFormatting EmbeddedLanguageFormatting `json:"embeddedLanguageFormatting"`
+	EmbeddedLanguageFormatting EmbeddedLanguageFormatting `json:"embeddedLanguageFormatting" yaml:"embeddedLanguageFormatting"`
 	// Which end of line characters to apply.
 	// Experimental.
-	EndOfLine EndOfLine `json:"endOfLine"`
+	EndOfLine EndOfLine `json:"endOfLine" yaml:"endOfLine"`
 	// Specify the input filepath.
 	//
 	// This will be used to do parser inference.
 	// Experimental.
-	Filepath *string `json:"filepath"`
+	Filepath *string `json:"filepath" yaml:"filepath"`
 	// How to handle whitespaces in HTML.
 	// Experimental.
-	HtmlWhitespaceSensitivity HTMLWhitespaceSensitivity `json:"htmlWhitespaceSensitivity"`
+	HtmlWhitespaceSensitivity HTMLWhitespaceSensitivity `json:"htmlWhitespaceSensitivity" yaml:"htmlWhitespaceSensitivity"`
 	// Insert @format pragma into file's first docblock comment.
 	// Experimental.
-	InsertPragma *bool `json:"insertPragma"`
+	InsertPragma *bool `json:"insertPragma" yaml:"insertPragma"`
 	// Use single quotes in JSX.
 	// Experimental.
-	JsxSingleQuote *bool `json:"jsxSingleQuote"`
+	JsxSingleQuote *bool `json:"jsxSingleQuote" yaml:"jsxSingleQuote"`
 	// Which parser to use.
 	// Experimental.
-	Parser *string `json:"parser"`
+	Parser *string `json:"parser" yaml:"parser"`
 	// Add a plugin.
 	//
 	// Multiple plugins can be passed as separate `--plugin`s.
 	// Experimental.
-	Plugins *[]*string `json:"plugins"`
+	Plugins *[]*string `json:"plugins" yaml:"plugins"`
 	// Custom directory that contains prettier plugins in node_modules subdirectory.
 	//
 	// Overrides default behavior when plugins are searched relatively to the location of
 	// Prettier.
 	// Multiple values are accepted.
 	// Experimental.
-	PluginSearchDirs *[]*string `json:"pluginSearchDirs"`
+	PluginSearchDirs *[]*string `json:"pluginSearchDirs" yaml:"pluginSearchDirs"`
 	// The line length where Prettier will try wrap.
 	// Experimental.
-	PrintWidth *float64 `json:"printWidth"`
+	PrintWidth *float64 `json:"printWidth" yaml:"printWidth"`
 	// How to wrap prose.
 	// Experimental.
-	ProseWrap ProseWrap `json:"proseWrap"`
+	ProseWrap ProseWrap `json:"proseWrap" yaml:"proseWrap"`
 	// Change when properties in objects are quoted.
 	// Experimental.
-	QuoteProps QuoteProps `json:"quoteProps"`
+	QuoteProps QuoteProps `json:"quoteProps" yaml:"quoteProps"`
 	// Format code ending at a given character offset (exclusive).
 	//
 	// The range will extend forwards to the end of the selected statement.
 	// This option cannot be used with --cursor-offset.
 	// Experimental.
-	RangeEnd *float64 `json:"rangeEnd"`
+	RangeEnd *float64 `json:"rangeEnd" yaml:"rangeEnd"`
 	// Format code starting at a given character offset.
 	//
 	// The range will extend backwards to the start of the first line containing the selected
 	// statement.
 	// This option cannot be used with --cursor-offset.
 	// Experimental.
-	RangeStart *float64 `json:"rangeStart"`
+	RangeStart *float64 `json:"rangeStart" yaml:"rangeStart"`
 	// Require either '@prettier' or '@format' to be present in the file's first docblock comment in order for it to be formatted.
 	// Experimental.
-	RequirePragma *bool `json:"requirePragma"`
+	RequirePragma *bool `json:"requirePragma" yaml:"requirePragma"`
 	// Print semicolons.
 	// Experimental.
-	Semi *bool `json:"semi"`
+	Semi *bool `json:"semi" yaml:"semi"`
 	// Use single quotes instead of double quotes.
 	// Experimental.
-	SingleQuote *bool `json:"singleQuote"`
+	SingleQuote *bool `json:"singleQuote" yaml:"singleQuote"`
 	// Number of spaces per indentation level.
 	// Experimental.
-	TabWidth *float64 `json:"tabWidth"`
+	TabWidth *float64 `json:"tabWidth" yaml:"tabWidth"`
 	// Print trailing commas wherever possible when multi-line.
 	// Experimental.
-	TrailingComma TrailingComma `json:"trailingComma"`
+	TrailingComma TrailingComma `json:"trailingComma" yaml:"trailingComma"`
 	// Indent with tabs instead of spaces.
 	// Experimental.
-	UseTabs *bool `json:"useTabs"`
+	UseTabs *bool `json:"useTabs" yaml:"useTabs"`
 	// Indent script and style tags in Vue files.
 	// Experimental.
-	VueIndentScriptAndStyle *bool `json:"vueIndentScriptAndStyle"`
+	VueIndentScriptAndStyle *bool `json:"vueIndentScriptAndStyle" yaml:"vueIndentScriptAndStyle"`
 }
 
 // Sets up a javascript project to use TypeScript for projenrc.
@@ -3693,7 +3693,7 @@ func (p *jsiiProxy_Projenrc) Synthesize() {
 type ProjenrcOptions struct {
 	// The name of the projenrc file.
 	// Experimental.
-	Filename *string `json:"filename"`
+	Filename *string `json:"filename" yaml:"filename"`
 }
 
 // Experimental.
@@ -3719,7 +3719,7 @@ const (
 type RenderWorkflowSetupOptions struct {
 	// Should the pacakge lockfile be updated?
 	// Experimental.
-	Mutable *bool `json:"mutable"`
+	Mutable *bool `json:"mutable" yaml:"mutable"`
 }
 
 // Experimental.
@@ -3735,26 +3735,26 @@ const (
 type TypeScriptCompilerOptions struct {
 	// Allow JavaScript files to be compiled.
 	// Experimental.
-	AllowJs *bool `json:"allowJs"`
+	AllowJs *bool `json:"allowJs" yaml:"allowJs"`
 	// Allow default imports from modules with no default export.
 	//
 	// This does not affect code emit, just typechecking.
 	// Experimental.
-	AllowSyntheticDefaultImports *bool `json:"allowSyntheticDefaultImports"`
+	AllowSyntheticDefaultImports *bool `json:"allowSyntheticDefaultImports" yaml:"allowSyntheticDefaultImports"`
 	// Ensures that your files are parsed in the ECMAScript strict mode, and emit “use strict” for each source file.
 	// Experimental.
-	AlwaysStrict *bool `json:"alwaysStrict"`
+	AlwaysStrict *bool `json:"alwaysStrict" yaml:"alwaysStrict"`
 	// Lets you set a base directory to resolve non-absolute module names.
 	//
 	// You can define a root folder where you can do absolute file resolution.
 	// Experimental.
-	BaseUrl *string `json:"baseUrl"`
+	BaseUrl *string `json:"baseUrl" yaml:"baseUrl"`
 	// To be specified along with the above.
 	// Experimental.
-	Declaration *bool `json:"declaration"`
+	Declaration *bool `json:"declaration" yaml:"declaration"`
 	// Offers a way to configure the root directory for where declaration files are emitted.
 	// Experimental.
-	DeclarationDir *string `json:"declarationDir"`
+	DeclarationDir *string `json:"declarationDir" yaml:"declarationDir"`
 	// Enables experimental support for decorators, which is in stage 2 of the TC39 standardization process.
 	//
 	// Decorators are a language feature which hasn’t yet been fully ratified into the JavaScript specification.
@@ -3763,123 +3763,123 @@ type TypeScriptCompilerOptions struct {
 	// See: https://www.typescriptlang.org/docs/handbook/decorators.html
 	//
 	// Experimental.
-	EmitDecoratorMetadata *bool `json:"emitDecoratorMetadata"`
+	EmitDecoratorMetadata *bool `json:"emitDecoratorMetadata" yaml:"emitDecoratorMetadata"`
 	// Emit __importStar and __importDefault helpers for runtime babel ecosystem compatibility and enable --allowSyntheticDefaultImports for typesystem compatibility.
 	// Experimental.
-	EsModuleInterop *bool `json:"esModuleInterop"`
+	EsModuleInterop *bool `json:"esModuleInterop" yaml:"esModuleInterop"`
 	// Enables experimental support for decorators, which is in stage 2 of the TC39 standardization process.
 	// Experimental.
-	ExperimentalDecorators *bool `json:"experimentalDecorators"`
+	ExperimentalDecorators *bool `json:"experimentalDecorators" yaml:"experimentalDecorators"`
 	// Disallow inconsistently-cased references to the same file.
 	// Experimental.
-	ForceConsistentCasingInFileNames *bool `json:"forceConsistentCasingInFileNames"`
+	ForceConsistentCasingInFileNames *bool `json:"forceConsistentCasingInFileNames" yaml:"forceConsistentCasingInFileNames"`
 	// When set, instead of writing out a .js.map file to provide source maps, TypeScript will embed the source map content in the .js files.
 	// Experimental.
-	InlineSourceMap *bool `json:"inlineSourceMap"`
+	InlineSourceMap *bool `json:"inlineSourceMap" yaml:"inlineSourceMap"`
 	// When set, TypeScript will include the original content of the .ts file as an embedded string in the source map. This is often useful in the same cases as inlineSourceMap.
 	// Experimental.
-	InlineSources *bool `json:"inlineSources"`
+	InlineSources *bool `json:"inlineSources" yaml:"inlineSources"`
 	// Perform additional checks to ensure that separate compilation (such as with transpileModule or @babel/plugin-transform-typescript) would be safe.
 	// Experimental.
-	IsolatedModules *bool `json:"isolatedModules"`
+	IsolatedModules *bool `json:"isolatedModules" yaml:"isolatedModules"`
 	// Support JSX in .tsx files: "react", "preserve", "react-native" etc.
 	// Experimental.
-	Jsx TypeScriptJsxMode `json:"jsx"`
+	Jsx TypeScriptJsxMode `json:"jsx" yaml:"jsx"`
 	// Reference for type definitions / libraries to use (eg.
 	//
 	// ES2016, ES5, ES2018).
 	// Experimental.
-	Lib *[]*string `json:"lib"`
+	Lib *[]*string `json:"lib" yaml:"lib"`
 	// Sets the module system for the program.
 	//
 	// See https://www.typescriptlang.org/docs/handbook/modules.html#ambient-modules.
 	// Experimental.
-	Module *string `json:"module"`
+	Module *string `json:"module" yaml:"module"`
 	// Determine how modules get resolved.
 	//
 	// Either "Node" for Node.js/io.js style resolution, or "Classic".
 	// Experimental.
-	ModuleResolution TypeScriptModuleResolution `json:"moduleResolution"`
+	ModuleResolution TypeScriptModuleResolution `json:"moduleResolution" yaml:"moduleResolution"`
 	// Do not emit outputs.
 	// Experimental.
-	NoEmit *bool `json:"noEmit"`
+	NoEmit *bool `json:"noEmit" yaml:"noEmit"`
 	// Do not emit compiler output files like JavaScript source code, source-maps or declarations if any errors were reported.
 	// Experimental.
-	NoEmitOnError *bool `json:"noEmitOnError"`
+	NoEmitOnError *bool `json:"noEmitOnError" yaml:"noEmitOnError"`
 	// Report errors for fallthrough cases in switch statements.
 	//
 	// Ensures that any non-empty
 	// case inside a switch statement includes either break or return. This means you won’t
 	// accidentally ship a case fallthrough bug.
 	// Experimental.
-	NoFallthroughCasesInSwitch *bool `json:"noFallthroughCasesInSwitch"`
+	NoFallthroughCasesInSwitch *bool `json:"noFallthroughCasesInSwitch" yaml:"noFallthroughCasesInSwitch"`
 	// In some cases where no type annotations are present, TypeScript will fall back to a type of any for a variable when it cannot infer the type.
 	// Experimental.
-	NoImplicitAny *bool `json:"noImplicitAny"`
+	NoImplicitAny *bool `json:"noImplicitAny" yaml:"noImplicitAny"`
 	// When enabled, TypeScript will check all code paths in a function to ensure they return a value.
 	// Experimental.
-	NoImplicitReturns *bool `json:"noImplicitReturns"`
+	NoImplicitReturns *bool `json:"noImplicitReturns" yaml:"noImplicitReturns"`
 	// Raise error on ‘this’ expressions with an implied ‘any’ type.
 	// Experimental.
-	NoImplicitThis *bool `json:"noImplicitThis"`
+	NoImplicitThis *bool `json:"noImplicitThis" yaml:"noImplicitThis"`
 	// Raise error on use of the dot syntax to access fields which are not defined.
 	// Experimental.
-	NoPropertyAccessFromIndexSignature *bool `json:"noPropertyAccessFromIndexSignature"`
+	NoPropertyAccessFromIndexSignature *bool `json:"noPropertyAccessFromIndexSignature" yaml:"noPropertyAccessFromIndexSignature"`
 	// Raise error when accessing indexes on objects with unknown keys defined in index signatures.
 	// Experimental.
-	NoUncheckedIndexedAccess *bool `json:"noUncheckedIndexedAccess"`
+	NoUncheckedIndexedAccess *bool `json:"noUncheckedIndexedAccess" yaml:"noUncheckedIndexedAccess"`
 	// Report errors on unused local variables.
 	// Experimental.
-	NoUnusedLocals *bool `json:"noUnusedLocals"`
+	NoUnusedLocals *bool `json:"noUnusedLocals" yaml:"noUnusedLocals"`
 	// Report errors on unused parameters in functions.
 	// Experimental.
-	NoUnusedParameters *bool `json:"noUnusedParameters"`
+	NoUnusedParameters *bool `json:"noUnusedParameters" yaml:"noUnusedParameters"`
 	// Output directory for the compiled files.
 	// Experimental.
-	OutDir *string `json:"outDir"`
+	OutDir *string `json:"outDir" yaml:"outDir"`
 	// A series of entries which re-map imports to lookup locations relative to the baseUrl, there is a larger coverage of paths in the handbook.
 	//
 	// paths lets you declare how TypeScript should resolve an import in your require/imports.
 	// Experimental.
-	Paths *map[string]*[]*string `json:"paths"`
+	Paths *map[string]*[]*string `json:"paths" yaml:"paths"`
 	// Allows importing modules with a ‘.json’ extension, which is a common practice in node projects. This includes generating a type for the import based on the static JSON shape.
 	// Experimental.
-	ResolveJsonModule *bool `json:"resolveJsonModule"`
+	ResolveJsonModule *bool `json:"resolveJsonModule" yaml:"resolveJsonModule"`
 	// Specifies the root directory of input files.
 	//
 	// Only use to control the output directory structure with `outDir`.
 	// Experimental.
-	RootDir *string `json:"rootDir"`
+	RootDir *string `json:"rootDir" yaml:"rootDir"`
 	// Skip type checking of all declaration files (*.d.ts).
 	// Experimental.
-	SkipLibCheck *bool `json:"skipLibCheck"`
+	SkipLibCheck *bool `json:"skipLibCheck" yaml:"skipLibCheck"`
 	// The strict flag enables a wide range of type checking behavior that results in stronger guarantees of program correctness.
 	//
 	// Turning this on is equivalent to enabling all of the strict mode family
 	// options, which are outlined below. You can then turn off individual strict mode family checks as
 	// needed.
 	// Experimental.
-	Strict *bool `json:"strict"`
+	Strict *bool `json:"strict" yaml:"strict"`
 	// When strictNullChecks is false, null and undefined are effectively ignored by the language.
 	//
 	// This can lead to unexpected errors at runtime.
 	// When strictNullChecks is true, null and undefined have their own distinct types and you’ll
 	// get a type error if you try to use them where a concrete value is expected.
 	// Experimental.
-	StrictNullChecks *bool `json:"strictNullChecks"`
+	StrictNullChecks *bool `json:"strictNullChecks" yaml:"strictNullChecks"`
 	// When set to true, TypeScript will raise an error when a class property was declared but not set in the constructor.
 	// Experimental.
-	StrictPropertyInitialization *bool `json:"strictPropertyInitialization"`
+	StrictPropertyInitialization *bool `json:"strictPropertyInitialization" yaml:"strictPropertyInitialization"`
 	// Do not emit declarations for code that has an @internal annotation in it’s JSDoc comment.
 	// Experimental.
-	StripInternal *bool `json:"stripInternal"`
+	StripInternal *bool `json:"stripInternal" yaml:"stripInternal"`
 	// Modern browsers support all ES6 features, so ES6 is a good choice.
 	//
 	// You might choose to set
 	// a lower target if your code is deployed to older environments, or a higher target if your
 	// code is guaranteed to run in newer environments.
 	// Experimental.
-	Target *string `json:"target"`
+	Target *string `json:"target" yaml:"target"`
 }
 
 // Determines how JSX should get transformed into valid JavaScript.
@@ -4022,15 +4022,15 @@ func (t *jsiiProxy_TypescriptConfig) AddInclude(pattern *string) {
 type TypescriptConfigOptions struct {
 	// Compiler options to use.
 	// Experimental.
-	CompilerOptions *TypeScriptCompilerOptions `json:"compilerOptions"`
+	CompilerOptions *TypeScriptCompilerOptions `json:"compilerOptions" yaml:"compilerOptions"`
 	// Filters results from the "include" option.
 	// Experimental.
-	Exclude *[]*string `json:"exclude"`
+	Exclude *[]*string `json:"exclude" yaml:"exclude"`
 	// Experimental.
-	FileName *string `json:"fileName"`
+	FileName *string `json:"fileName" yaml:"fileName"`
 	// Specifies a list of glob patterns that match TypeScript files to be included in compilation.
 	// Experimental.
-	Include *[]*string `json:"include"`
+	Include *[]*string `json:"include" yaml:"include"`
 }
 
 // Upgrade node project dependencies.
@@ -4180,35 +4180,35 @@ func (u *jsiiProxy_UpgradeDependencies) Synthesize() {
 type UpgradeDependenciesOptions struct {
 	// List of package names to exclude during the upgrade.
 	// Experimental.
-	Exclude *[]*string `json:"exclude"`
+	Exclude *[]*string `json:"exclude" yaml:"exclude"`
 	// Whether or not to ignore projen upgrades.
 	// Experimental.
-	IgnoreProjen *bool `json:"ignoreProjen"`
+	IgnoreProjen *bool `json:"ignoreProjen" yaml:"ignoreProjen"`
 	// List of package names to include during the upgrade.
 	// Experimental.
-	Include *[]*string `json:"include"`
+	Include *[]*string `json:"include" yaml:"include"`
 	// Title of the pull request to use (should be all lower-case).
 	// Experimental.
-	PullRequestTitle *string `json:"pullRequestTitle"`
+	PullRequestTitle *string `json:"pullRequestTitle" yaml:"pullRequestTitle"`
 	// Add Signed-off-by line by the committer at the end of the commit log message.
 	// Experimental.
-	Signoff *bool `json:"signoff"`
+	Signoff *bool `json:"signoff" yaml:"signoff"`
 	// The name of the task that will be created.
 	//
 	// This will also be the workflow name.
 	// Experimental.
-	TaskName *string `json:"taskName"`
+	TaskName *string `json:"taskName" yaml:"taskName"`
 	// Include a github workflow for creating PR's that upgrades the required dependencies, either by manual dispatch, or by a schedule.
 	//
 	// If this is `false`, only a local projen task is created, which can be executed manually to
 	// upgrade the dependencies.
 	// Experimental.
-	Workflow *bool `json:"workflow"`
+	Workflow *bool `json:"workflow" yaml:"workflow"`
 	// Options for the github workflow.
 	//
 	// Only applies if `workflow` is true.
 	// Experimental.
-	WorkflowOptions *UpgradeDependenciesWorkflowOptions `json:"workflowOptions"`
+	WorkflowOptions *UpgradeDependenciesWorkflowOptions `json:"workflowOptions" yaml:"workflowOptions"`
 }
 
 // How often to check for new versions and raise pull requests for version upgrades.
@@ -4310,22 +4310,22 @@ func UpgradeDependenciesSchedule_WEEKLY() UpgradeDependenciesSchedule {
 type UpgradeDependenciesWorkflowOptions struct {
 	// List of branches to create PR's for.
 	// Experimental.
-	Branches *[]*string `json:"branches"`
+	Branches *[]*string `json:"branches" yaml:"branches"`
 	// Job container options.
 	// Experimental.
-	Container *workflows.ContainerOptions `json:"container"`
+	Container *workflows.ContainerOptions `json:"container" yaml:"container"`
 	// The git identity to use for commits.
 	// Experimental.
-	GitIdentity *github.GitIdentity `json:"gitIdentity"`
+	GitIdentity *github.GitIdentity `json:"gitIdentity" yaml:"gitIdentity"`
 	// Labels to apply on the PR.
 	// Experimental.
-	Labels *[]*string `json:"labels"`
+	Labels *[]*string `json:"labels" yaml:"labels"`
 	// Github Runner selection labels.
 	// Experimental.
-	RunsOn *[]*string `json:"runsOn"`
+	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
 	// Schedule to run on.
 	// Experimental.
-	Schedule UpgradeDependenciesSchedule `json:"schedule"`
+	Schedule UpgradeDependenciesSchedule `json:"schedule" yaml:"schedule"`
 	// Which secret to use when creating the PR.
 	//
 	// When using the default github token, PR's created by this workflow
@@ -4338,6 +4338,6 @@ type UpgradeDependenciesWorkflowOptions struct {
 	// See: https://github.com/peter-evans/create-pull-request/issues/48
 	//
 	// Experimental.
-	Secret *string `json:"secret"`
+	Secret *string `json:"secret" yaml:"secret"`
 }
 

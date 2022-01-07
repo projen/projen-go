@@ -6,7 +6,7 @@ package workflows
 type BranchProtectionRuleOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Check run options.
@@ -14,7 +14,7 @@ type BranchProtectionRuleOptions struct {
 type CheckRunOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Check suite options.
@@ -22,7 +22,7 @@ type CheckRunOptions struct {
 type CheckSuiteOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Credentials to use to authenticate to Docker registries.
@@ -30,10 +30,10 @@ type CheckSuiteOptions struct {
 type ContainerCredentials struct {
 	// The password.
 	// Experimental.
-	Password *string `json:"password"`
+	Password *string `json:"password" yaml:"password"`
 	// The username.
 	// Experimental.
-	Username *string `json:"username"`
+	Username *string `json:"username" yaml:"username"`
 }
 
 // Options petaining to container environments.
@@ -44,24 +44,24 @@ type ContainerOptions struct {
 	// The value can
 	// be the Docker Hub image name or a registry name.
 	// Experimental.
-	Image *string `json:"image"`
+	Image *string `json:"image" yaml:"image"`
 	// f the image's container registry requires authentication to pull the image, you can use credentials to set a map of the username and password.
 	//
 	// The credentials are the same values that you would provide to the docker
 	// login command.
 	// Experimental.
-	Credentials *ContainerCredentials `json:"credentials"`
+	Credentials *ContainerCredentials `json:"credentials" yaml:"credentials"`
 	// Sets a map of environment variables in the container.
 	// Experimental.
-	Env *map[string]*string `json:"env"`
+	Env *map[string]*string `json:"env" yaml:"env"`
 	// Additional Docker container resource options.
 	// See: https://docs.docker.com/engine/reference/commandline/create/#options
 	//
 	// Experimental.
-	Options *[]*string `json:"options"`
+	Options *[]*string `json:"options" yaml:"options"`
 	// Sets an array of ports to expose on the container.
 	// Experimental.
-	Ports *[]*float64 `json:"ports"`
+	Ports *[]*float64 `json:"ports" yaml:"ports"`
 	// Sets an array of volumes for the container to use.
 	//
 	// You can use volumes to
@@ -72,7 +72,7 @@ type ContainerOptions struct {
 	// To specify a volume, you specify the source and destination path:
 	// `<source>:<destinationPath>`.
 	// Experimental.
-	Volumes *[]*string `json:"volumes"`
+	Volumes *[]*string `json:"volumes" yaml:"volumes"`
 }
 
 // The Create event accepts no options.
@@ -86,7 +86,7 @@ type CronScheduleOptions struct {
 	// See: https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07
 	//
 	// Experimental.
-	Cron *string `json:"cron"`
+	Cron *string `json:"cron" yaml:"cron"`
 }
 
 // The Delete event accepts no options.
@@ -109,7 +109,7 @@ type DeploymentStatusOptions struct {
 type DiscussionCommentOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Discussion options.
@@ -117,7 +117,7 @@ type DiscussionCommentOptions struct {
 type DiscussionOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // The Fork event accepts no options.
@@ -135,7 +135,7 @@ type GollumOptions struct {
 type IssueCommentOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Issues options.
@@ -143,7 +143,7 @@ type IssueCommentOptions struct {
 type IssuesOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // A GitHub Workflow job definition.
@@ -159,7 +159,7 @@ type Job struct {
 	// See: https://docs.github.com/en/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token
 	//
 	// Experimental.
-	Permissions *JobPermissions `json:"permissions"`
+	Permissions *JobPermissions `json:"permissions" yaml:"permissions"`
 	// The type of machine to run the job on.
 	//
 	// The machine can be either a
@@ -168,7 +168,7 @@ type Job struct {
 	// TODO: EXAMPLE
 	//
 	// Experimental.
-	RunsOn *[]*string `json:"runsOn"`
+	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
 	// A job contains a sequence of tasks called steps.
 	//
 	// Steps can run commands,
@@ -180,39 +180,39 @@ type Job struct {
 	// are not preserved between steps. GitHub provides built-in steps to set up
 	// and complete a job.
 	// Experimental.
-	Steps *[]*JobStep `json:"steps"`
+	Steps *[]*JobStep `json:"steps" yaml:"steps"`
 	// Concurrency ensures that only a single job or workflow using the same concurrency group will run at a time.
 	//
 	// A concurrency group can be any
 	// string or expression. The expression can use any context except for the
 	// secrets context.
 	// Experimental.
-	Concurrency interface{} `json:"concurrency"`
+	Concurrency interface{} `json:"concurrency" yaml:"concurrency"`
 	// A container to run any steps in a job that don't already specify a container.
 	//
 	// If you have steps that use both script and container actions,
 	// the container actions will run as sibling containers on the same network
 	// with the same volume mounts.
 	// Experimental.
-	Container *ContainerOptions `json:"container"`
+	Container *ContainerOptions `json:"container" yaml:"container"`
 	// Prevents a workflow run from failing when a job fails.
 	//
 	// Set to true to
 	// allow a workflow run to pass when this job fails.
 	// Experimental.
-	ContinueOnError *bool `json:"continueOnError"`
+	ContinueOnError *bool `json:"continueOnError" yaml:"continueOnError"`
 	// A map of default settings that will apply to all steps in the job.
 	//
 	// You
 	// can also set default settings for the entire workflow.
 	// Experimental.
-	Defaults *JobDefaults `json:"defaults"`
+	Defaults *JobDefaults `json:"defaults" yaml:"defaults"`
 	// A map of environment variables that are available to all steps in the job.
 	//
 	// You can also set environment variables for the entire workflow or an
 	// individual step.
 	// Experimental.
-	Env *map[string]*string `json:"env"`
+	Env *map[string]*string `json:"env" yaml:"env"`
 	// The environment that the job references.
 	//
 	// All environment protection rules
@@ -220,29 +220,29 @@ type Job struct {
 	// See: https://docs.github.com/en/actions/reference/environments
 	//
 	// Experimental.
-	Environment interface{} `json:"environment"`
+	Environment interface{} `json:"environment" yaml:"environment"`
 	// You can use the if conditional to prevent a job from running unless a condition is met.
 	//
 	// You can use any supported context and expression to
 	// create a conditional.
 	// Experimental.
-	If *string `json:"if"`
+	If *string `json:"if" yaml:"if"`
 	// The name of the job displayed on GitHub.
 	// Experimental.
-	Name *string `json:"name"`
+	Name *string `json:"name" yaml:"name"`
 	// Identifies any jobs that must complete successfully before this job will run.
 	//
 	// It can be a string or array of strings. If a job fails, all jobs
 	// that need it are skipped unless the jobs use a conditional expression
 	// that causes the job to continue.
 	// Experimental.
-	Needs *[]*string `json:"needs"`
+	Needs *[]*string `json:"needs" yaml:"needs"`
 	// A map of outputs for a job.
 	//
 	// Job outputs are available to all downstream
 	// jobs that depend on this job.
 	// Experimental.
-	Outputs *map[string]*JobStepOutput `json:"outputs"`
+	Outputs *map[string]*JobStepOutput `json:"outputs" yaml:"outputs"`
 	// Used to host service containers for a job in a workflow.
 	//
 	// Service
@@ -250,22 +250,22 @@ type Job struct {
 	// The runner automatically creates a Docker network and manages the life
 	// cycle of the service containers.
 	// Experimental.
-	Services *map[string]*ContainerOptions `json:"services"`
+	Services *map[string]*ContainerOptions `json:"services" yaml:"services"`
 	// A strategy creates a build matrix for your jobs.
 	//
 	// You can define different
 	// variations to run each job in.
 	// Experimental.
-	Strategy *JobStrategy `json:"strategy"`
+	Strategy *JobStrategy `json:"strategy" yaml:"strategy"`
 	// The maximum number of minutes to let a job run before GitHub automatically cancels it.
 	// Experimental.
-	TimeoutMinutes *float64 `json:"timeoutMinutes"`
+	TimeoutMinutes *float64 `json:"timeoutMinutes" yaml:"timeoutMinutes"`
 	// Tools required for this job.
 	//
 	// Traslates into `actions/setup-xxx` steps at
 	// the beginning of the job.
 	// Experimental.
-	Tools *Tools `json:"tools"`
+	Tools *Tools `json:"tools" yaml:"tools"`
 }
 
 // Default settings for all steps in the job.
@@ -273,7 +273,7 @@ type Job struct {
 type JobDefaults struct {
 	// Default run settings.
 	// Experimental.
-	Run *RunSettings `json:"run"`
+	Run *RunSettings `json:"run" yaml:"run"`
 }
 
 // A job matrix.
@@ -288,20 +288,20 @@ type JobMatrix struct {
 	// matrix.os property as the value of the runs-on keyword to create a job
 	// for each operating system.
 	// Experimental.
-	Domain *map[string]*[]*string `json:"domain"`
+	Domain *map[string]*[]*string `json:"domain" yaml:"domain"`
 	// You can remove a specific configurations defined in the build matrix using the exclude option.
 	//
 	// Using exclude removes a job defined by the
 	// build matrix.
 	// Experimental.
-	Exclude *[]*map[string]*string `json:"exclude"`
+	Exclude *[]*map[string]*string `json:"exclude" yaml:"exclude"`
 	// You can add additional configuration options to a build matrix job that already exists.
 	//
 	// For example, if you want to use a specific version of npm
 	// when the job that uses windows-latest and version 8 of node runs, you can
 	// use include to specify that additional option.
 	// Experimental.
-	Include *[]*map[string]*string `json:"include"`
+	Include *[]*map[string]*string `json:"include" yaml:"include"`
 }
 
 // Access level for workflow permission scopes.
@@ -323,25 +323,25 @@ const (
 // Experimental.
 type JobPermissions struct {
 	// Experimental.
-	Actions JobPermission `json:"actions"`
+	Actions JobPermission `json:"actions" yaml:"actions"`
 	// Experimental.
-	Checks JobPermission `json:"checks"`
+	Checks JobPermission `json:"checks" yaml:"checks"`
 	// Experimental.
-	Contents JobPermission `json:"contents"`
+	Contents JobPermission `json:"contents" yaml:"contents"`
 	// Experimental.
-	Deployments JobPermission `json:"deployments"`
+	Deployments JobPermission `json:"deployments" yaml:"deployments"`
 	// Experimental.
-	Issues JobPermission `json:"issues"`
+	Issues JobPermission `json:"issues" yaml:"issues"`
 	// Experimental.
-	Packages JobPermission `json:"packages"`
+	Packages JobPermission `json:"packages" yaml:"packages"`
 	// Experimental.
-	PullRequests JobPermission `json:"pullRequests"`
+	PullRequests JobPermission `json:"pullRequests" yaml:"pullRequests"`
 	// Experimental.
-	RepositoryProjects JobPermission `json:"repositoryProjects"`
+	RepositoryProjects JobPermission `json:"repositoryProjects" yaml:"repositoryProjects"`
 	// Experimental.
-	SecurityEvents JobPermission `json:"securityEvents"`
+	SecurityEvents JobPermission `json:"securityEvents" yaml:"securityEvents"`
 	// Experimental.
-	Statuses JobPermission `json:"statuses"`
+	Statuses JobPermission `json:"statuses" yaml:"statuses"`
 }
 
 // A job step.
@@ -352,37 +352,37 @@ type JobStep struct {
 	// Set to true to allow a job
 	// to pass when this step fails.
 	// Experimental.
-	ContinueOnError *bool `json:"continueOnError"`
+	ContinueOnError *bool `json:"continueOnError" yaml:"continueOnError"`
 	// Sets environment variables for steps to use in the runner environment.
 	//
 	// You can also set environment variables for the entire workflow or a job.
 	// Experimental.
-	Env *map[string]*string `json:"env"`
+	Env *map[string]*string `json:"env" yaml:"env"`
 	// A unique identifier for the step.
 	//
 	// You can use the id to reference the
 	// step in contexts.
 	// Experimental.
-	Id *string `json:"id"`
+	Id *string `json:"id" yaml:"id"`
 	// You can use the if conditional to prevent a job from running unless a condition is met.
 	//
 	// You can use any supported context and expression to
 	// create a conditional.
 	// Experimental.
-	If *string `json:"if"`
+	If *string `json:"if" yaml:"if"`
 	// A name for your step to display on GitHub.
 	// Experimental.
-	Name *string `json:"name"`
+	Name *string `json:"name" yaml:"name"`
 	// Runs command-line programs using the operating system's shell.
 	//
 	// If you do
 	// not provide a name, the step name will default to the text specified in
 	// the run command.
 	// Experimental.
-	Run *string `json:"run"`
+	Run *string `json:"run" yaml:"run"`
 	// The maximum number of minutes to run the step before killing the process.
 	// Experimental.
-	TimeoutMinutes *float64 `json:"timeoutMinutes"`
+	TimeoutMinutes *float64 `json:"timeoutMinutes" yaml:"timeoutMinutes"`
 	// Selects an action to run as part of a step in your job.
 	//
 	// An action is a
@@ -390,14 +390,14 @@ type JobStep struct {
 	// repository as the workflow, a public repository, or in a published Docker
 	// container image.
 	// Experimental.
-	Uses *string `json:"uses"`
+	Uses *string `json:"uses" yaml:"uses"`
 	// A map of the input parameters defined by the action.
 	//
 	// Each input parameter
 	// is a key/value pair. Input parameters are set as environment variables.
 	// The variable is prefixed with INPUT_ and converted to upper case.
 	// Experimental.
-	With *map[string]interface{} `json:"with"`
+	With *map[string]interface{} `json:"with" yaml:"with"`
 }
 
 // An output binding for a job.
@@ -405,10 +405,10 @@ type JobStep struct {
 type JobStepOutput struct {
 	// The name of the job output that is being bound.
 	// Experimental.
-	OutputName *string `json:"outputName"`
+	OutputName *string `json:"outputName" yaml:"outputName"`
 	// The ID of the step that exposes the output.
 	// Experimental.
-	StepId *string `json:"stepId"`
+	StepId *string `json:"stepId" yaml:"stepId"`
 }
 
 // A strategy creates a build matrix for your jobs.
@@ -421,7 +421,7 @@ type JobStrategy struct {
 	//
 	// Default: true
 	// Experimental.
-	FailFast *bool `json:"failFast"`
+	FailFast *bool `json:"failFast" yaml:"failFast"`
 	// You can define a matrix of different job configurations.
 	//
 	// A matrix allows
@@ -434,14 +434,14 @@ type JobStrategy struct {
 	// A job matrix can generate a maximum of 256 jobs per workflow run. This
 	// limit also applies to self-hosted runners.
 	// Experimental.
-	Matrix *JobMatrix `json:"matrix"`
+	Matrix *JobMatrix `json:"matrix" yaml:"matrix"`
 	// The maximum number of jobs that can run simultaneously when using a matrix job strategy.
 	//
 	// By default, GitHub will maximize the number of jobs
 	// run in parallel depending on the available runners on GitHub-hosted
 	// virtual machines.
 	// Experimental.
-	MaxParallel *float64 `json:"maxParallel"`
+	MaxParallel *float64 `json:"maxParallel" yaml:"maxParallel"`
 }
 
 // label options.
@@ -449,7 +449,7 @@ type JobStrategy struct {
 type LabelOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Milestone options.
@@ -457,7 +457,7 @@ type LabelOptions struct {
 type MilestoneOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // The Page build event accepts no options.
@@ -470,7 +470,7 @@ type PageBuildOptions struct {
 type ProjectCardOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Probject column options.
@@ -478,7 +478,7 @@ type ProjectCardOptions struct {
 type ProjectColumnOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Project options.
@@ -486,7 +486,7 @@ type ProjectColumnOptions struct {
 type ProjectOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // The Public event accepts no options.
@@ -499,7 +499,7 @@ type PublicOptions struct {
 type PullRequestOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Pull request review comment options.
@@ -507,7 +507,7 @@ type PullRequestOptions struct {
 type PullRequestReviewCommentOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Pull request review options.
@@ -515,7 +515,7 @@ type PullRequestReviewCommentOptions struct {
 type PullRequestReviewOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Pull request target options.
@@ -530,7 +530,7 @@ type PullRequestTargetOptions struct {
 	// See: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
 	//
 	// Experimental.
-	Branches *[]*string `json:"branches"`
+	Branches *[]*string `json:"branches" yaml:"branches"`
 	// When using the push and pull_request events, you can configure a workflow to run when at least one file does not match paths-ignore or at least one modified file matches the configured paths.
 	//
 	// Path filters are not
@@ -538,7 +538,7 @@ type PullRequestTargetOptions struct {
 	// See: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
 	//
 	// Experimental.
-	Paths *[]*string `json:"paths"`
+	Paths *[]*string `json:"paths" yaml:"paths"`
 	// When using the push and pull_request events, you can configure a workflow to run on specific branches or tags.
 	//
 	// For a pull_request event, only
@@ -548,10 +548,10 @@ type PullRequestTargetOptions struct {
 	// See: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
 	//
 	// Experimental.
-	Tags *[]*string `json:"tags"`
+	Tags *[]*string `json:"tags" yaml:"tags"`
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Options for push-like events.
@@ -566,7 +566,7 @@ type PushOptions struct {
 	// See: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
 	//
 	// Experimental.
-	Branches *[]*string `json:"branches"`
+	Branches *[]*string `json:"branches" yaml:"branches"`
 	// When using the push and pull_request events, you can configure a workflow to run when at least one file does not match paths-ignore or at least one modified file matches the configured paths.
 	//
 	// Path filters are not
@@ -574,7 +574,7 @@ type PushOptions struct {
 	// See: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
 	//
 	// Experimental.
-	Paths *[]*string `json:"paths"`
+	Paths *[]*string `json:"paths" yaml:"paths"`
 	// When using the push and pull_request events, you can configure a workflow to run on specific branches or tags.
 	//
 	// For a pull_request event, only
@@ -584,7 +584,7 @@ type PushOptions struct {
 	// See: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
 	//
 	// Experimental.
-	Tags *[]*string `json:"tags"`
+	Tags *[]*string `json:"tags" yaml:"tags"`
 }
 
 // Registry package options.
@@ -592,7 +592,7 @@ type PushOptions struct {
 type RegistryPackageOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Release options.
@@ -600,7 +600,7 @@ type RegistryPackageOptions struct {
 type ReleaseOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Repository dispatch options.
@@ -608,7 +608,7 @@ type ReleaseOptions struct {
 type RepositoryDispatchOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // Run settings for a job.
@@ -619,10 +619,10 @@ type RunSettings struct {
 	// TODO: EXAMPLE
 	//
 	// Experimental.
-	Shell *string `json:"shell"`
+	Shell *string `json:"shell" yaml:"shell"`
 	// Working directory to use when running the step.
 	// Experimental.
-	WorkingDirectory *string `json:"workingDirectory"`
+	WorkingDirectory *string `json:"workingDirectory" yaml:"workingDirectory"`
 }
 
 // The Status event accepts no options.
@@ -634,7 +634,7 @@ type StatusOptions struct {
 // Experimental.
 type ToolRequirement struct {
 	// Experimental.
-	Version *string `json:"version"`
+	Version *string `json:"version" yaml:"version"`
 }
 
 // Supported tools.
@@ -642,19 +642,19 @@ type ToolRequirement struct {
 type Tools struct {
 	// Setup .NET Core.
 	// Experimental.
-	Dotnet *ToolRequirement `json:"dotnet"`
+	Dotnet *ToolRequirement `json:"dotnet" yaml:"dotnet"`
 	// Setup golang.
 	// Experimental.
-	Go *ToolRequirement `json:"go"`
+	Go *ToolRequirement `json:"go" yaml:"go"`
 	// Setup java (temurin distribution).
 	// Experimental.
-	Java *ToolRequirement `json:"java"`
+	Java *ToolRequirement `json:"java" yaml:"java"`
 	// Setup node.js.
 	// Experimental.
-	Node *ToolRequirement `json:"node"`
+	Node *ToolRequirement `json:"node" yaml:"node"`
 	// Setup python.
 	// Experimental.
-	Python *ToolRequirement `json:"python"`
+	Python *ToolRequirement `json:"python" yaml:"python"`
 }
 
 // The set of available triggers for GitHub Workflows.
@@ -664,87 +664,87 @@ type Tools struct {
 type Triggers struct {
 	// Runs your workflow anytime the branch_protection_rule event occurs.
 	// Experimental.
-	BranchProtectionRule *BranchProtectionRuleOptions `json:"branchProtectionRule"`
+	BranchProtectionRule *BranchProtectionRuleOptions `json:"branchProtectionRule" yaml:"branchProtectionRule"`
 	// Runs your workflow anytime the check_run event occurs.
 	// Experimental.
-	CheckRun *CheckRunOptions `json:"checkRun"`
+	CheckRun *CheckRunOptions `json:"checkRun" yaml:"checkRun"`
 	// Runs your workflow anytime the check_suite event occurs.
 	// Experimental.
-	CheckSuite *CheckSuiteOptions `json:"checkSuite"`
+	CheckSuite *CheckSuiteOptions `json:"checkSuite" yaml:"checkSuite"`
 	// Runs your workflow anytime someone creates a branch or tag, which triggers the create event.
 	// Experimental.
-	Create *CreateOptions `json:"create"`
+	Create *CreateOptions `json:"create" yaml:"create"`
 	// Runs your workflow anytime someone deletes a branch or tag, which triggers the delete event.
 	// Experimental.
-	Delete *DeleteOptions `json:"delete"`
+	Delete *DeleteOptions `json:"delete" yaml:"delete"`
 	// Runs your workflow anytime someone creates a deployment, which triggers the deployment event.
 	//
 	// Deployments created with a commit SHA may not have
 	// a Git ref.
 	// Experimental.
-	Deployment *DeploymentOptions `json:"deployment"`
+	Deployment *DeploymentOptions `json:"deployment" yaml:"deployment"`
 	// Runs your workflow anytime a third party provides a deployment status, which triggers the deployment_status event.
 	//
 	// Deployments created with a
 	// commit SHA may not have a Git ref.
 	// Experimental.
-	DeploymentStatus *DeploymentStatusOptions `json:"deploymentStatus"`
+	DeploymentStatus *DeploymentStatusOptions `json:"deploymentStatus" yaml:"deploymentStatus"`
 	// Runs your workflow anytime the discussion event occurs.
 	//
 	// More than one activity type triggers this event.
 	// See: https://docs.github.com/en/graphql/guides/using-the-graphql-api-for-discussions
 	//
 	// Experimental.
-	Discussion *DiscussionOptions `json:"discussion"`
+	Discussion *DiscussionOptions `json:"discussion" yaml:"discussion"`
 	// Runs your workflow anytime the discussion_comment event occurs.
 	//
 	// More than one activity type triggers this event.
 	// See: https://docs.github.com/en/graphql/guides/using-the-graphql-api-for-discussions
 	//
 	// Experimental.
-	DiscussionComment *DiscussionCommentOptions `json:"discussionComment"`
+	DiscussionComment *DiscussionCommentOptions `json:"discussionComment" yaml:"discussionComment"`
 	// Runs your workflow anytime when someone forks a repository, which triggers the fork event.
 	// Experimental.
-	Fork *ForkOptions `json:"fork"`
+	Fork *ForkOptions `json:"fork" yaml:"fork"`
 	// Runs your workflow when someone creates or updates a Wiki page, which triggers the gollum event.
 	// Experimental.
-	Gollum *GollumOptions `json:"gollum"`
+	Gollum *GollumOptions `json:"gollum" yaml:"gollum"`
 	// Runs your workflow anytime the issue_comment event occurs.
 	// Experimental.
-	IssueComment *IssueCommentOptions `json:"issueComment"`
+	IssueComment *IssueCommentOptions `json:"issueComment" yaml:"issueComment"`
 	// Runs your workflow anytime the issues event occurs.
 	// Experimental.
-	Issues *IssuesOptions `json:"issues"`
+	Issues *IssuesOptions `json:"issues" yaml:"issues"`
 	// Runs your workflow anytime the label event occurs.
 	// Experimental.
-	Label *LabelOptions `json:"label"`
+	Label *LabelOptions `json:"label" yaml:"label"`
 	// Runs your workflow anytime the milestone event occurs.
 	// Experimental.
-	Milestone *MilestoneOptions `json:"milestone"`
+	Milestone *MilestoneOptions `json:"milestone" yaml:"milestone"`
 	// Runs your workflow anytime someone pushes to a GitHub Pages-enabled branch, which triggers the page_build event.
 	// Experimental.
-	PageBuild *PageBuildOptions `json:"pageBuild"`
+	PageBuild *PageBuildOptions `json:"pageBuild" yaml:"pageBuild"`
 	// Runs your workflow anytime the project event occurs.
 	// Experimental.
-	Project *ProjectOptions `json:"project"`
+	Project *ProjectOptions `json:"project" yaml:"project"`
 	// Runs your workflow anytime the project_card event occurs.
 	// Experimental.
-	ProjectCard *ProjectCardOptions `json:"projectCard"`
+	ProjectCard *ProjectCardOptions `json:"projectCard" yaml:"projectCard"`
 	// Runs your workflow anytime the project_column event occurs.
 	// Experimental.
-	ProjectColumn *ProjectColumnOptions `json:"projectColumn"`
+	ProjectColumn *ProjectColumnOptions `json:"projectColumn" yaml:"projectColumn"`
 	// Runs your workflow anytime someone makes a private repository public, which triggers the public event.
 	// Experimental.
-	Public *PublicOptions `json:"public"`
+	Public *PublicOptions `json:"public" yaml:"public"`
 	// Runs your workflow anytime the pull_request event occurs.
 	// Experimental.
-	PullRequest *PullRequestOptions `json:"pullRequest"`
+	PullRequest *PullRequestOptions `json:"pullRequest" yaml:"pullRequest"`
 	// Runs your workflow anytime the pull_request_review event occurs.
 	// Experimental.
-	PullRequestReview *PullRequestReviewOptions `json:"pullRequestReview"`
+	PullRequestReview *PullRequestReviewOptions `json:"pullRequestReview" yaml:"pullRequestReview"`
 	// Runs your workflow anytime a comment on a pull request's unified diff is modified, which triggers the pull_request_review_comment event.
 	// Experimental.
-	PullRequestReviewComment *PullRequestReviewCommentOptions `json:"pullRequestReviewComment"`
+	PullRequestReviewComment *PullRequestReviewCommentOptions `json:"pullRequestReviewComment" yaml:"pullRequestReviewComment"`
 	// This event runs in the context of the base of the pull request, rather than in the merge commit as the pull_request event does.
 	//
 	// This prevents
@@ -764,19 +764,19 @@ type Triggers struct {
 	// See: https://securitylab.github.com/research/github-actions-preventing-pwn-requests
 	//
 	// Experimental.
-	PullRequestTarget *PullRequestTargetOptions `json:"pullRequestTarget"`
+	PullRequestTarget *PullRequestTargetOptions `json:"pullRequestTarget" yaml:"pullRequestTarget"`
 	// Runs your workflow when someone pushes to a repository branch, which triggers the push event.
 	// Experimental.
-	Push *PushOptions `json:"push"`
+	Push *PushOptions `json:"push" yaml:"push"`
 	// Runs your workflow anytime a package is published or updated.
 	// Experimental.
-	RegistryPackage *RegistryPackageOptions `json:"registryPackage"`
+	RegistryPackage *RegistryPackageOptions `json:"registryPackage" yaml:"registryPackage"`
 	// Runs your workflow anytime the release event occurs.
 	// Experimental.
-	Release *ReleaseOptions `json:"release"`
+	Release *ReleaseOptions `json:"release" yaml:"release"`
 	// You can use the GitHub API to trigger a webhook event called repository_dispatch when you want to trigger a workflow for activity that happens outside of GitHub.
 	// Experimental.
-	RepositoryDispatch *RepositoryDispatchOptions `json:"repositoryDispatch"`
+	RepositoryDispatch *RepositoryDispatchOptions `json:"repositoryDispatch" yaml:"repositoryDispatch"`
 	// You can schedule a workflow to run at specific UTC times using POSIX cron syntax.
 	//
 	// Scheduled workflows run on the latest commit on the default or
@@ -785,31 +785,31 @@ type Triggers struct {
 	// See: https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07
 	//
 	// Experimental.
-	Schedule *[]*CronScheduleOptions `json:"schedule"`
+	Schedule *[]*CronScheduleOptions `json:"schedule" yaml:"schedule"`
 	// Runs your workflow anytime the status of a Git commit changes, which triggers the status event.
 	// Experimental.
-	Status *StatusOptions `json:"status"`
+	Status *StatusOptions `json:"status" yaml:"status"`
 	// Runs your workflow anytime the watch event occurs.
 	// Experimental.
-	Watch *WatchOptions `json:"watch"`
+	Watch *WatchOptions `json:"watch" yaml:"watch"`
 	// Can be called from another workflow.
 	// See: https://docs.github.com/en/actions/learn-github-actions/reusing-workflows
 	//
 	// Experimental.
-	WorkflowCall *WorkflowCallOptions `json:"workflowCall"`
+	WorkflowCall *WorkflowCallOptions `json:"workflowCall" yaml:"workflowCall"`
 	// You can configure custom-defined input properties, default input values, and required inputs for the event directly in your workflow.
 	//
 	// When the
 	// workflow runs, you can access the input values in the github.event.inputs
 	// context.
 	// Experimental.
-	WorkflowDispatch *WorkflowDispatchOptions `json:"workflowDispatch"`
+	WorkflowDispatch *WorkflowDispatchOptions `json:"workflowDispatch" yaml:"workflowDispatch"`
 	// This event occurs when a workflow run is requested or completed, and allows you to execute a workflow based on the finished result of another workflow.
 	//
 	// A workflow run is triggered regardless of the result of the
 	// previous workflow.
 	// Experimental.
-	WorkflowRun *WorkflowRunOptions `json:"workflowRun"`
+	WorkflowRun *WorkflowRunOptions `json:"workflowRun" yaml:"workflowRun"`
 }
 
 // Watch options.
@@ -817,7 +817,7 @@ type Triggers struct {
 type WatchOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 
 // The Workflow Call event accepts no options.
@@ -835,6 +835,6 @@ type WorkflowDispatchOptions struct {
 type WorkflowRunOptions struct {
 	// Which activity types to trigger on.
 	// Experimental.
-	Types *[]*string `json:"types"`
+	Types *[]*string `json:"types" yaml:"types"`
 }
 

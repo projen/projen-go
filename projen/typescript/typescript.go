@@ -102,10 +102,10 @@ func (p *jsiiProxy_Projenrc) Synthesize() {
 type ProjenrcOptions struct {
 	// The name of the projenrc file.
 	// Experimental.
-	Filename *string `json:"filename"`
+	Filename *string `json:"filename" yaml:"filename"`
 	// A directory tree that may contain *.ts files that can be referenced from your projenrc typescript file.
 	// Experimental.
-	ProjenCodeDir *string `json:"projenCodeDir"`
+	ProjenCodeDir *string `json:"projenCodeDir" yaml:"projenCodeDir"`
 }
 
 // TypeScript app.
@@ -2295,10 +2295,10 @@ func (t *jsiiProxy_TypeScriptLibraryProject) TryFindObjectFile(filePath *string)
 type TypeScriptLibraryProjectOptions struct {
 	// This is the name of your project.
 	// Deprecated: use TypeScriptProjectOptions
-	Name *string `json:"name"`
+	Name *string `json:"name" yaml:"name"`
 	// Configure logging options such as verbosity.
 	// Deprecated: use TypeScriptProjectOptions
-	Logging *projen.LoggerOptions `json:"logging"`
+	Logging *projen.LoggerOptions `json:"logging" yaml:"logging"`
 	// The root directory of the project.
 	//
 	// Relative to this directory, all files are synthesized.
@@ -2307,117 +2307,117 @@ type TypeScriptLibraryProjectOptions struct {
 	// directory and it cannot be the same as the parent or any of it's other
 	// sub-projects.
 	// Deprecated: use TypeScriptProjectOptions
-	Outdir *string `json:"outdir"`
+	Outdir *string `json:"outdir" yaml:"outdir"`
 	// The parent project, if this project is part of a bigger project.
 	// Deprecated: use TypeScriptProjectOptions
-	Parent projen.Project `json:"parent"`
+	Parent projen.Project `json:"parent" yaml:"parent"`
 	// The shell command to use in order to run the projen CLI.
 	//
 	// Can be used to customize in special environments.
 	// Deprecated: use TypeScriptProjectOptions
-	ProjenCommand *string `json:"projenCommand"`
+	ProjenCommand *string `json:"projenCommand" yaml:"projenCommand"`
 	// Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
 	// Deprecated: use TypeScriptProjectOptions
-	ProjenrcJson *bool `json:"projenrcJson"`
+	ProjenrcJson *bool `json:"projenrcJson" yaml:"projenrcJson"`
 	// Options for .projenrc.json.
 	// Deprecated: use TypeScriptProjectOptions
-	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions"`
+	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
 	// Enable and configure the 'auto approve' workflow.
 	// Deprecated: use TypeScriptProjectOptions
-	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions"`
+	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
 	// Configure options for automatic merging on GitHub.
 	//
 	// Has no effect if
 	// `github.mergify` is set to false.
 	// Deprecated: use TypeScriptProjectOptions
-	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions"`
+	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions" yaml:"autoMergeOptions"`
 	// Add a `clobber` task which resets the repo to origin.
 	// Deprecated: use TypeScriptProjectOptions
-	Clobber *bool `json:"clobber"`
+	Clobber *bool `json:"clobber" yaml:"clobber"`
 	// Add a VSCode development environment (used for GitHub Codespaces).
 	// Deprecated: use TypeScriptProjectOptions
-	DevContainer *bool `json:"devContainer"`
+	DevContainer *bool `json:"devContainer" yaml:"devContainer"`
 	// Enable GitHub integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
 	// Deprecated: use TypeScriptProjectOptions
-	Github *bool `json:"github"`
+	Github *bool `json:"github" yaml:"github"`
 	// Options for GitHub integration.
 	// Deprecated: use TypeScriptProjectOptions
-	GithubOptions *github.GitHubOptions `json:"githubOptions"`
+	GithubOptions *github.GitHubOptions `json:"githubOptions" yaml:"githubOptions"`
 	// Add a Gitpod development environment.
 	// Deprecated: use TypeScriptProjectOptions
-	Gitpod *bool `json:"gitpod"`
+	Gitpod *bool `json:"gitpod" yaml:"gitpod"`
 	// Whether mergify should be enabled on this repository or not.
 	// Deprecated: use `githubOptions.mergify` instead
-	Mergify *bool `json:"mergify"`
+	Mergify *bool `json:"mergify" yaml:"mergify"`
 	// Options for mergify.
 	// Deprecated: use `githubOptions.mergifyOptions` instead
-	MergifyOptions *github.MergifyOptions `json:"mergifyOptions"`
+	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
-	ProjectType projen.ProjectType `json:"projectType"`
+	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
 	// This token needs to have the `repo`, `workflows`
 	// and `packages` scope.
 	// Deprecated: use TypeScriptProjectOptions
-	ProjenTokenSecret *string `json:"projenTokenSecret"`
+	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
 	//
 	// Deprecated: use TypeScriptProjectOptions
-	Readme *projen.SampleReadmeProps `json:"readme"`
+	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
 	// Auto-close of stale issues and pull request.
 	//
 	// See `staleOptions` for options.
 	// Deprecated: use TypeScriptProjectOptions
-	Stale *bool `json:"stale"`
+	Stale *bool `json:"stale" yaml:"stale"`
 	// Auto-close stale issues and pull requests.
 	//
 	// To disable set `stale` to `false`.
 	// Deprecated: use TypeScriptProjectOptions
-	StaleOptions *github.StaleOptions `json:"staleOptions"`
+	StaleOptions *github.StaleOptions `json:"staleOptions" yaml:"staleOptions"`
 	// Enable VSCode integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
 	// Deprecated: use TypeScriptProjectOptions
-	Vscode *bool `json:"vscode"`
+	Vscode *bool `json:"vscode" yaml:"vscode"`
 	// Allow the project to include `peerDependencies` and `bundledDependencies`.
 	//
 	// This is normally only allowed for libraries. For apps, there's no meaning
 	// for specifying these.
 	// Deprecated: use TypeScriptProjectOptions
-	AllowLibraryDependencies *bool `json:"allowLibraryDependencies"`
+	AllowLibraryDependencies *bool `json:"allowLibraryDependencies" yaml:"allowLibraryDependencies"`
 	// Author's e-mail.
 	// Deprecated: use TypeScriptProjectOptions
-	AuthorEmail *string `json:"authorEmail"`
+	AuthorEmail *string `json:"authorEmail" yaml:"authorEmail"`
 	// Author's name.
 	// Deprecated: use TypeScriptProjectOptions
-	AuthorName *string `json:"authorName"`
+	AuthorName *string `json:"authorName" yaml:"authorName"`
 	// Author's Organization.
 	// Deprecated: use TypeScriptProjectOptions
-	AuthorOrganization *bool `json:"authorOrganization"`
+	AuthorOrganization *bool `json:"authorOrganization" yaml:"authorOrganization"`
 	// Author's URL / Website.
 	// Deprecated: use TypeScriptProjectOptions
-	AuthorUrl *string `json:"authorUrl"`
+	AuthorUrl *string `json:"authorUrl" yaml:"authorUrl"`
 	// Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
 	// Deprecated: use TypeScriptProjectOptions
-	AutoDetectBin *bool `json:"autoDetectBin"`
+	AutoDetectBin *bool `json:"autoDetectBin" yaml:"autoDetectBin"`
 	// Binary programs vended with your module.
 	//
 	// You can use this option to add/customize how binaries are represented in
 	// your `package.json`, but unless `autoDetectBin` is `false`, every
 	// executable file under `bin` will automatically be added to this section.
 	// Deprecated: use TypeScriptProjectOptions
-	Bin *map[string]*string `json:"bin"`
+	Bin *map[string]*string `json:"bin" yaml:"bin"`
 	// The email address to which issues should be reported.
 	// Deprecated: use TypeScriptProjectOptions
-	BugsEmail *string `json:"bugsEmail"`
+	BugsEmail *string `json:"bugsEmail" yaml:"bugsEmail"`
 	// The url to your project's issue tracker.
 	// Deprecated: use TypeScriptProjectOptions
-	BugsUrl *string `json:"bugsUrl"`
+	BugsUrl *string `json:"bugsUrl" yaml:"bugsUrl"`
 	// List of dependencies to bundle into this module.
 	//
 	// These modules will be
@@ -2431,10 +2431,10 @@ type TypeScriptLibraryProjectOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	// Deprecated: use TypeScriptProjectOptions
-	BundledDeps *[]*string `json:"bundledDeps"`
+	BundledDeps *[]*string `json:"bundledDeps" yaml:"bundledDeps"`
 	// Options for publishing npm package to AWS CodeArtifact.
 	// Deprecated: use TypeScriptProjectOptions
-	CodeArtifactOptions *javascript.CodeArtifactOptions `json:"codeArtifactOptions"`
+	CodeArtifactOptions *javascript.CodeArtifactOptions `json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Runtime dependencies of this module.
 	//
 	// The recommendation is to only specify the module name here (e.g.
@@ -2447,13 +2447,13 @@ type TypeScriptLibraryProjectOptions struct {
 	// TODO: EXAMPLE
 	//
 	// Deprecated: use TypeScriptProjectOptions
-	Deps *[]*string `json:"deps"`
+	Deps *[]*string `json:"deps" yaml:"deps"`
 	// The description is just a string that helps people understand the purpose of the package.
 	//
 	// It can be used when searching for packages in a package manager as well.
 	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
 	// Deprecated: use TypeScriptProjectOptions
-	Description *string `json:"description"`
+	Description *string `json:"description" yaml:"description"`
 	// Build dependencies for this module.
 	//
 	// These dependencies will only be
@@ -2470,58 +2470,58 @@ type TypeScriptLibraryProjectOptions struct {
 	// TODO: EXAMPLE
 	//
 	// Deprecated: use TypeScriptProjectOptions
-	DevDeps *[]*string `json:"devDeps"`
+	DevDeps *[]*string `json:"devDeps" yaml:"devDeps"`
 	// Module entrypoint (`main` in `package.json`).
 	//
 	// Set to an empty string to not include `main` in your package.json
 	// Deprecated: use TypeScriptProjectOptions
-	Entrypoint *string `json:"entrypoint"`
+	Entrypoint *string `json:"entrypoint" yaml:"entrypoint"`
 	// Package's Homepage / Website.
 	// Deprecated: use TypeScriptProjectOptions
-	Homepage *string `json:"homepage"`
+	Homepage *string `json:"homepage" yaml:"homepage"`
 	// Keywords to include in `package.json`.
 	// Deprecated: use TypeScriptProjectOptions
-	Keywords *[]*string `json:"keywords"`
+	Keywords *[]*string `json:"keywords" yaml:"keywords"`
 	// License's SPDX identifier.
 	//
 	// See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
 	// Use the `licensed` option if you want to no license to be specified.
 	// Deprecated: use TypeScriptProjectOptions
-	License *string `json:"license"`
+	License *string `json:"license" yaml:"license"`
 	// Indicates if a license should be added.
 	// Deprecated: use TypeScriptProjectOptions
-	Licensed *bool `json:"licensed"`
+	Licensed *bool `json:"licensed" yaml:"licensed"`
 	// Minimum node.js version to require via `engines` (inclusive).
 	// Deprecated: use TypeScriptProjectOptions
-	MaxNodeVersion *string `json:"maxNodeVersion"`
+	MaxNodeVersion *string `json:"maxNodeVersion" yaml:"maxNodeVersion"`
 	// Minimum Node.js version to require via package.json `engines` (inclusive).
 	// Deprecated: use TypeScriptProjectOptions
-	MinNodeVersion *string `json:"minNodeVersion"`
+	MinNodeVersion *string `json:"minNodeVersion" yaml:"minNodeVersion"`
 	// Access level of the npm package.
 	// Deprecated: use TypeScriptProjectOptions
-	NpmAccess javascript.NpmAccess `json:"npmAccess"`
+	NpmAccess javascript.NpmAccess `json:"npmAccess" yaml:"npmAccess"`
 	// The host name of the npm registry to publish to.
 	//
 	// Cannot be set together with `npmRegistryUrl`.
 	// Deprecated: use `npmRegistryUrl` instead
-	NpmRegistry *string `json:"npmRegistry"`
+	NpmRegistry *string `json:"npmRegistry" yaml:"npmRegistry"`
 	// The base URL of the npm package registry.
 	//
 	// Must be a URL (e.g. start with "https://" or "http://")
 	// Deprecated: use TypeScriptProjectOptions
-	NpmRegistryUrl *string `json:"npmRegistryUrl"`
+	NpmRegistryUrl *string `json:"npmRegistryUrl" yaml:"npmRegistryUrl"`
 	// GitHub secret which contains the NPM token to use when publishing packages.
 	// Deprecated: use TypeScriptProjectOptions
-	NpmTokenSecret *string `json:"npmTokenSecret"`
+	NpmTokenSecret *string `json:"npmTokenSecret" yaml:"npmTokenSecret"`
 	// The Node Package Manager used to execute scripts.
 	// Deprecated: use TypeScriptProjectOptions
-	PackageManager javascript.NodePackageManager `json:"packageManager"`
+	PackageManager javascript.NodePackageManager `json:"packageManager" yaml:"packageManager"`
 	// The "name" in package.json.
 	// Deprecated: use TypeScriptProjectOptions
-	PackageName *string `json:"packageName"`
+	PackageName *string `json:"packageName" yaml:"packageName"`
 	// Options for `peerDeps`.
 	// Deprecated: use TypeScriptProjectOptions
-	PeerDependencyOptions *javascript.PeerDependencyOptions `json:"peerDependencyOptions"`
+	PeerDependencyOptions *javascript.PeerDependencyOptions `json:"peerDependencyOptions" yaml:"peerDependencyOptions"`
 	// Peer dependencies for this module.
 	//
 	// Dependencies listed here are required to
@@ -2538,54 +2538,54 @@ type TypeScriptLibraryProjectOptions struct {
 	// pinned version for each peer dependency. This will ensure that you build &
 	// test your module against the lowest peer version required.
 	// Deprecated: use TypeScriptProjectOptions
-	PeerDeps *[]*string `json:"peerDeps"`
+	PeerDeps *[]*string `json:"peerDeps" yaml:"peerDeps"`
 	// The repository is the location where the actual code for your package lives.
 	//
 	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
 	// Deprecated: use TypeScriptProjectOptions
-	Repository *string `json:"repository"`
+	Repository *string `json:"repository" yaml:"repository"`
 	// If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
 	// Deprecated: use TypeScriptProjectOptions
-	RepositoryDirectory *string `json:"repositoryDirectory"`
+	RepositoryDirectory *string `json:"repositoryDirectory" yaml:"repositoryDirectory"`
 	// npm scripts to include.
 	//
 	// If a script has the same name as a standard script,
 	// the standard script will be overwritten.
 	// Deprecated: use TypeScriptProjectOptions
-	Scripts *map[string]*string `json:"scripts"`
+	Scripts *map[string]*string `json:"scripts" yaml:"scripts"`
 	// Package's Stability.
 	// Deprecated: use TypeScriptProjectOptions
-	Stability *string `json:"stability"`
+	Stability *string `json:"stability" yaml:"stability"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Deprecated: use TypeScriptProjectOptions
-	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
+	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.
 	//
 	// If this is specified, we bump the latest version of this major version line.
 	// If not specified, we bump the global latest version.
 	// Deprecated: use TypeScriptProjectOptions
-	MajorVersion *float64 `json:"majorVersion"`
+	MajorVersion *float64 `json:"majorVersion" yaml:"majorVersion"`
 	// The npmDistTag to use when publishing from the default branch.
 	//
 	// To set the npm dist-tag for release branches, set the `npmDistTag` property
 	// for each branch.
 	// Deprecated: use TypeScriptProjectOptions
-	NpmDistTag *string `json:"npmDistTag"`
+	NpmDistTag *string `json:"npmDistTag" yaml:"npmDistTag"`
 	// Steps to execute after build as part of the release workflow.
 	// Deprecated: use TypeScriptProjectOptions
-	PostBuildSteps *[]*workflows.JobStep `json:"postBuildSteps"`
+	PostBuildSteps *[]*workflows.JobStep `json:"postBuildSteps" yaml:"postBuildSteps"`
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
 	// Deprecated: use TypeScriptProjectOptions
-	Prerelease *string `json:"prerelease"`
+	Prerelease *string `json:"prerelease" yaml:"prerelease"`
 	// Instead of actually publishing to package managers, just print the publishing command.
 	// Deprecated: use TypeScriptProjectOptions
-	PublishDryRun *bool `json:"publishDryRun"`
+	PublishDryRun *bool `json:"publishDryRun" yaml:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
 	// in order to create a publishing task for each publishing activity.
 	// Deprecated: use TypeScriptProjectOptions
-	PublishTasks *bool `json:"publishTasks"`
+	PublishTasks *bool `json:"publishTasks" yaml:"publishTasks"`
 	// Defines additional release branches.
 	//
 	// A workflow will be created for each
@@ -2595,21 +2595,21 @@ type TypeScriptLibraryProjectOptions struct {
 	// version. If multiple branches are used, the `majorVersion` field must also
 	// be provided for the default branch.
 	// Deprecated: use TypeScriptProjectOptions
-	ReleaseBranches *map[string]*release.BranchOptions `json:"releaseBranches"`
+	ReleaseBranches *map[string]*release.BranchOptions `json:"releaseBranches" yaml:"releaseBranches"`
 	// Automatically release new versions every commit to one of branches in `releaseBranches`.
 	// Deprecated: Use `releaseTrigger: ReleaseTrigger.continuous()` instead
-	ReleaseEveryCommit *bool `json:"releaseEveryCommit"`
+	ReleaseEveryCommit *bool `json:"releaseEveryCommit" yaml:"releaseEveryCommit"`
 	// Create a github issue on every failed publishing task.
 	// Deprecated: use TypeScriptProjectOptions
-	ReleaseFailureIssue *bool `json:"releaseFailureIssue"`
+	ReleaseFailureIssue *bool `json:"releaseFailureIssue" yaml:"releaseFailureIssue"`
 	// The label to apply to issues indicating publish failures.
 	//
 	// Only applies if `releaseFailureIssue` is true.
 	// Deprecated: use TypeScriptProjectOptions
-	ReleaseFailureIssueLabel *string `json:"releaseFailureIssueLabel"`
+	ReleaseFailureIssueLabel *string `json:"releaseFailureIssueLabel" yaml:"releaseFailureIssueLabel"`
 	// CRON schedule to trigger new releases.
 	// Deprecated: Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
-	ReleaseSchedule *string `json:"releaseSchedule"`
+	ReleaseSchedule *string `json:"releaseSchedule" yaml:"releaseSchedule"`
 	// Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
 	//
 	// Note: this prefix is used to detect the latest tagged version
@@ -2617,86 +2617,86 @@ type TypeScriptLibraryProjectOptions struct {
 	// history, you may need to manually tag your latest release
 	// with the new prefix.
 	// Deprecated: use TypeScriptProjectOptions
-	ReleaseTagPrefix *string `json:"releaseTagPrefix"`
+	ReleaseTagPrefix *string `json:"releaseTagPrefix" yaml:"releaseTagPrefix"`
 	// The release trigger to use.
 	// Deprecated: use TypeScriptProjectOptions
-	ReleaseTrigger release.ReleaseTrigger `json:"releaseTrigger"`
+	ReleaseTrigger release.ReleaseTrigger `json:"releaseTrigger" yaml:"releaseTrigger"`
 	// The name of the default release workflow.
 	// Deprecated: use TypeScriptProjectOptions
-	ReleaseWorkflowName *string `json:"releaseWorkflowName"`
+	ReleaseWorkflowName *string `json:"releaseWorkflowName" yaml:"releaseWorkflowName"`
 	// A set of workflow steps to execute in order to setup the workflow container.
 	// Deprecated: use TypeScriptProjectOptions
-	ReleaseWorkflowSetupSteps *[]*workflows.JobStep `json:"releaseWorkflowSetupSteps"`
+	ReleaseWorkflowSetupSteps *[]*workflows.JobStep `json:"releaseWorkflowSetupSteps" yaml:"releaseWorkflowSetupSteps"`
 	// Custom configuration used when creating changelog with standard-version package.
 	//
 	// Given values either append to default configuration or overwrite values in it.
 	// Deprecated: use TypeScriptProjectOptions
-	VersionrcOptions *map[string]interface{} `json:"versionrcOptions"`
+	VersionrcOptions *map[string]interface{} `json:"versionrcOptions" yaml:"versionrcOptions"`
 	// Container image to use for GitHub workflows.
 	// Deprecated: use TypeScriptProjectOptions
-	WorkflowContainerImage *string `json:"workflowContainerImage"`
+	WorkflowContainerImage *string `json:"workflowContainerImage" yaml:"workflowContainerImage"`
 	// Github Runner selection labels.
 	// Deprecated: use TypeScriptProjectOptions
-	WorkflowRunsOn *[]*string `json:"workflowRunsOn"`
+	WorkflowRunsOn *[]*string `json:"workflowRunsOn" yaml:"workflowRunsOn"`
 	// The name of the main release branch.
 	// Deprecated: use TypeScriptProjectOptions
-	DefaultReleaseBranch *string `json:"defaultReleaseBranch"`
+	DefaultReleaseBranch *string `json:"defaultReleaseBranch" yaml:"defaultReleaseBranch"`
 	// A directory which will contain build artifacts.
 	// Deprecated: use TypeScriptProjectOptions
-	ArtifactsDirectory *string `json:"artifactsDirectory"`
+	ArtifactsDirectory *string `json:"artifactsDirectory" yaml:"artifactsDirectory"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
 	// Deprecated: use TypeScriptProjectOptions
-	AutoApproveProjenUpgrades *bool `json:"autoApproveProjenUpgrades"`
+	AutoApproveProjenUpgrades *bool `json:"autoApproveProjenUpgrades" yaml:"autoApproveProjenUpgrades"`
 	// Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
 	// Deprecated: use TypeScriptProjectOptions
-	AutoApproveUpgrades *bool `json:"autoApproveUpgrades"`
+	AutoApproveUpgrades *bool `json:"autoApproveUpgrades" yaml:"autoApproveUpgrades"`
 	// Define a GitHub workflow for building PRs.
 	// Deprecated: use TypeScriptProjectOptions
-	BuildWorkflow *bool `json:"buildWorkflow"`
+	BuildWorkflow *bool `json:"buildWorkflow" yaml:"buildWorkflow"`
 	// Options for `Bundler`.
 	// Deprecated: use TypeScriptProjectOptions
-	BundlerOptions *javascript.BundlerOptions `json:"bundlerOptions"`
+	BundlerOptions *javascript.BundlerOptions `json:"bundlerOptions" yaml:"bundlerOptions"`
 	// Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v1 A secret is required for private repos. Configured with @codeCovTokenSecret.
 	// Deprecated: use TypeScriptProjectOptions
-	CodeCov *bool `json:"codeCov"`
+	CodeCov *bool `json:"codeCov" yaml:"codeCov"`
 	// Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories.
 	// Deprecated: use TypeScriptProjectOptions
-	CodeCovTokenSecret *string `json:"codeCovTokenSecret"`
+	CodeCovTokenSecret *string `json:"codeCovTokenSecret" yaml:"codeCovTokenSecret"`
 	// License copyright owner.
 	// Deprecated: use TypeScriptProjectOptions
-	CopyrightOwner *string `json:"copyrightOwner"`
+	CopyrightOwner *string `json:"copyrightOwner" yaml:"copyrightOwner"`
 	// The copyright years to put in the LICENSE file.
 	// Deprecated: use TypeScriptProjectOptions
-	CopyrightPeriod *string `json:"copyrightPeriod"`
+	CopyrightPeriod *string `json:"copyrightPeriod" yaml:"copyrightPeriod"`
 	// Use dependabot to handle dependency upgrades.
 	//
 	// Cannot be used in conjunction with `depsUpgrade`.
 	// Deprecated: use TypeScriptProjectOptions
-	Dependabot *bool `json:"dependabot"`
+	Dependabot *bool `json:"dependabot" yaml:"dependabot"`
 	// Options for dependabot.
 	// Deprecated: use TypeScriptProjectOptions
-	DependabotOptions *github.DependabotOptions `json:"dependabotOptions"`
+	DependabotOptions *github.DependabotOptions `json:"dependabotOptions" yaml:"dependabotOptions"`
 	// Use github workflows to handle dependency upgrades.
 	//
 	// Cannot be used in conjunction with `dependabot`.
 	// Deprecated: use TypeScriptProjectOptions
-	DepsUpgrade *bool `json:"depsUpgrade"`
+	DepsUpgrade *bool `json:"depsUpgrade" yaml:"depsUpgrade"`
 	// Options for depsUpgrade.
 	// Deprecated: use TypeScriptProjectOptions
-	DepsUpgradeOptions *javascript.UpgradeDependenciesOptions `json:"depsUpgradeOptions"`
+	DepsUpgradeOptions *javascript.UpgradeDependenciesOptions `json:"depsUpgradeOptions" yaml:"depsUpgradeOptions"`
 	// Additional entries to .gitignore.
 	// Deprecated: use TypeScriptProjectOptions
-	Gitignore *[]*string `json:"gitignore"`
+	Gitignore *[]*string `json:"gitignore" yaml:"gitignore"`
 	// Setup jest unit tests.
 	// Deprecated: use TypeScriptProjectOptions
-	Jest *bool `json:"jest"`
+	Jest *bool `json:"jest" yaml:"jest"`
 	// Jest options.
 	// Deprecated: use TypeScriptProjectOptions
-	JestOptions *javascript.JestOptions `json:"jestOptions"`
+	JestOptions *javascript.JestOptions `json:"jestOptions" yaml:"jestOptions"`
 	// Automatically update files modified during builds to pull-request branches.
 	//
 	// This means
@@ -2705,39 +2705,39 @@ type TypeScriptLibraryProjectOptions struct {
 	//
 	// Implies that PR builds do not have anti-tamper checks.
 	// Deprecated: use TypeScriptProjectOptions
-	MutableBuild *bool `json:"mutableBuild"`
+	MutableBuild *bool `json:"mutableBuild" yaml:"mutableBuild"`
 	// Additional entries to .npmignore.
 	// Deprecated: - use `project.addPackageIgnore`
-	Npmignore *[]*string `json:"npmignore"`
+	Npmignore *[]*string `json:"npmignore" yaml:"npmignore"`
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
 	// Deprecated: use TypeScriptProjectOptions
-	NpmignoreEnabled *bool `json:"npmignoreEnabled"`
+	NpmignoreEnabled *bool `json:"npmignoreEnabled" yaml:"npmignoreEnabled"`
 	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
 	// Deprecated: use TypeScriptProjectOptions
-	Package *bool `json:"package"`
+	Package *bool `json:"package" yaml:"package"`
 	// Setup prettier.
 	// Deprecated: use TypeScriptProjectOptions
-	Prettier *bool `json:"prettier"`
+	Prettier *bool `json:"prettier" yaml:"prettier"`
 	// Prettier options.
 	// Deprecated: use TypeScriptProjectOptions
-	PrettierOptions *javascript.PrettierOptions `json:"prettierOptions"`
+	PrettierOptions *javascript.PrettierOptions `json:"prettierOptions" yaml:"prettierOptions"`
 	// Indicates of "projen" should be installed as a devDependency.
 	// Deprecated: use TypeScriptProjectOptions
-	ProjenDevDependency *bool `json:"projenDevDependency"`
+	ProjenDevDependency *bool `json:"projenDevDependency" yaml:"projenDevDependency"`
 	// Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation.
 	// Deprecated: use TypeScriptProjectOptions
-	ProjenrcJs *bool `json:"projenrcJs"`
+	ProjenrcJs *bool `json:"projenrcJs" yaml:"projenrcJs"`
 	// Options for .projenrc.js.
 	// Deprecated: use TypeScriptProjectOptions
-	ProjenrcJsOptions *javascript.ProjenrcOptions `json:"projenrcJsOptions"`
+	ProjenrcJsOptions *javascript.ProjenrcOptions `json:"projenrcJsOptions" yaml:"projenrcJsOptions"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
 	// Deprecated: use `autoApproveProjenUpgrades`.
-	ProjenUpgradeAutoMerge *bool `json:"projenUpgradeAutoMerge"`
+	ProjenUpgradeAutoMerge *bool `json:"projenUpgradeAutoMerge" yaml:"projenUpgradeAutoMerge"`
 	// Customize the projenUpgrade schedule in cron expression.
 	// Deprecated: use TypeScriptProjectOptions
-	ProjenUpgradeSchedule *[]*string `json:"projenUpgradeSchedule"`
+	ProjenUpgradeSchedule *[]*string `json:"projenUpgradeSchedule" yaml:"projenUpgradeSchedule"`
 	// Periodically submits a pull request for projen upgrades (executes `yarn projen:upgrade`).
 	//
 	// This setting is a GitHub secret name which contains a GitHub Access Token
@@ -2748,67 +2748,67 @@ type TypeScriptLibraryProjectOptions struct {
 	//
 	// To create a personal access token see https://github.com/settings/tokens
 	// Deprecated: use `githubTokenSecret` instead.
-	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
+	ProjenUpgradeSecret *string `json:"projenUpgradeSecret" yaml:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Deprecated: use TypeScriptProjectOptions
-	ProjenVersion *string `json:"projenVersion"`
+	ProjenVersion *string `json:"projenVersion" yaml:"projenVersion"`
 	// Include a GitHub pull request template.
 	// Deprecated: use TypeScriptProjectOptions
-	PullRequestTemplate *bool `json:"pullRequestTemplate"`
+	PullRequestTemplate *bool `json:"pullRequestTemplate" yaml:"pullRequestTemplate"`
 	// The contents of the pull request template.
 	// Deprecated: use TypeScriptProjectOptions
-	PullRequestTemplateContents *[]*string `json:"pullRequestTemplateContents"`
+	PullRequestTemplateContents *[]*string `json:"pullRequestTemplateContents" yaml:"pullRequestTemplateContents"`
 	// Add release management to this project.
 	// Deprecated: use TypeScriptProjectOptions
-	Release *bool `json:"release"`
+	Release *bool `json:"release" yaml:"release"`
 	// Automatically release to npm when new versions are introduced.
 	// Deprecated: use TypeScriptProjectOptions
-	ReleaseToNpm *bool `json:"releaseToNpm"`
+	ReleaseToNpm *bool `json:"releaseToNpm" yaml:"releaseToNpm"`
 	// DEPRECATED: renamed to `release`.
 	// Deprecated: see `release`.
-	ReleaseWorkflow *bool `json:"releaseWorkflow"`
+	ReleaseWorkflow *bool `json:"releaseWorkflow" yaml:"releaseWorkflow"`
 	// Workflow steps to use in order to bootstrap this repo.
 	// Deprecated: use TypeScriptProjectOptions
-	WorkflowBootstrapSteps *[]interface{} `json:"workflowBootstrapSteps"`
+	WorkflowBootstrapSteps *[]interface{} `json:"workflowBootstrapSteps" yaml:"workflowBootstrapSteps"`
 	// The git identity to use in workflows.
 	// Deprecated: use TypeScriptProjectOptions
-	WorkflowGitIdentity *github.GitIdentity `json:"workflowGitIdentity"`
+	WorkflowGitIdentity *github.GitIdentity `json:"workflowGitIdentity" yaml:"workflowGitIdentity"`
 	// The node version to use in GitHub workflows.
 	// Deprecated: use TypeScriptProjectOptions
-	WorkflowNodeVersion *string `json:"workflowNodeVersion"`
+	WorkflowNodeVersion *string `json:"workflowNodeVersion" yaml:"workflowNodeVersion"`
 	// Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler).
 	// Deprecated: use TypeScriptProjectOptions
-	DisableTsconfig *bool `json:"disableTsconfig"`
+	DisableTsconfig *bool `json:"disableTsconfig" yaml:"disableTsconfig"`
 	// Docgen by Typedoc.
 	// Deprecated: use TypeScriptProjectOptions
-	Docgen *bool `json:"docgen"`
+	Docgen *bool `json:"docgen" yaml:"docgen"`
 	// Docs directory.
 	// Deprecated: use TypeScriptProjectOptions
-	DocsDirectory *string `json:"docsDirectory"`
+	DocsDirectory *string `json:"docsDirectory" yaml:"docsDirectory"`
 	// The .d.ts file that includes the type declarations for this module.
 	// Deprecated: use TypeScriptProjectOptions
-	EntrypointTypes *string `json:"entrypointTypes"`
+	EntrypointTypes *string `json:"entrypointTypes" yaml:"entrypointTypes"`
 	// Setup eslint.
 	// Deprecated: use TypeScriptProjectOptions
-	Eslint *bool `json:"eslint"`
+	Eslint *bool `json:"eslint" yaml:"eslint"`
 	// Eslint options.
 	// Deprecated: use TypeScriptProjectOptions
-	EslintOptions *javascript.EslintOptions `json:"eslintOptions"`
+	EslintOptions *javascript.EslintOptions `json:"eslintOptions" yaml:"eslintOptions"`
 	// Typescript  artifacts output directory.
 	// Deprecated: use TypeScriptProjectOptions
-	Libdir *string `json:"libdir"`
+	Libdir *string `json:"libdir" yaml:"libdir"`
 	// Use TypeScript for your projenrc file (`.projenrc.ts`).
 	// Deprecated: use TypeScriptProjectOptions
-	ProjenrcTs *bool `json:"projenrcTs"`
+	ProjenrcTs *bool `json:"projenrcTs" yaml:"projenrcTs"`
 	// Options for .projenrc.ts.
 	// Deprecated: use TypeScriptProjectOptions
-	ProjenrcTsOptions *ProjenrcOptions `json:"projenrcTsOptions"`
+	ProjenrcTsOptions *ProjenrcOptions `json:"projenrcTsOptions" yaml:"projenrcTsOptions"`
 	// Generate one-time sample in `src/` and `test/` if there are no files there.
 	// Deprecated: use TypeScriptProjectOptions
-	SampleCode *bool `json:"sampleCode"`
+	SampleCode *bool `json:"sampleCode" yaml:"sampleCode"`
 	// Typescript sources directory.
 	// Deprecated: use TypeScriptProjectOptions
-	Srcdir *string `json:"srcdir"`
+	Srcdir *string `json:"srcdir" yaml:"srcdir"`
 	// Jest tests directory. Tests files should be named `xxx.test.ts`.
 	//
 	// If this directory is under `srcdir` (e.g. `src/test`, `src/__tests__`),
@@ -2816,22 +2816,22 @@ type TypeScriptLibraryProjectOptions struct {
 	// If the test directory is outside of `src`, then we configure jest to
 	// compile the code in-memory.
 	// Deprecated: use TypeScriptProjectOptions
-	Testdir *string `json:"testdir"`
+	Testdir *string `json:"testdir" yaml:"testdir"`
 	// Custom TSConfig.
 	// Deprecated: use TypeScriptProjectOptions
-	Tsconfig *javascript.TypescriptConfigOptions `json:"tsconfig"`
+	Tsconfig *javascript.TypescriptConfigOptions `json:"tsconfig" yaml:"tsconfig"`
 	// Custom tsconfig options for the development tsconfig.json file (used for testing).
 	// Deprecated: use TypeScriptProjectOptions
-	TsconfigDev *javascript.TypescriptConfigOptions `json:"tsconfigDev"`
+	TsconfigDev *javascript.TypescriptConfigOptions `json:"tsconfigDev" yaml:"tsconfigDev"`
 	// The name of the development tsconfig.json file.
 	// Deprecated: use TypeScriptProjectOptions
-	TsconfigDevFile *string `json:"tsconfigDevFile"`
+	TsconfigDevFile *string `json:"tsconfigDevFile" yaml:"tsconfigDevFile"`
 	// TypeScript version to use.
 	//
 	// NOTE: Typescript is not semantically versioned and should remain on the
 	// same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
 	// Deprecated: use TypeScriptProjectOptions
-	TypescriptVersion *string `json:"typescriptVersion"`
+	TypescriptVersion *string `json:"typescriptVersion" yaml:"typescriptVersion"`
 }
 
 // TypeScript project.
@@ -3930,10 +3930,10 @@ func (t *jsiiProxy_TypeScriptProject) TryFindObjectFile(filePath *string) projen
 type TypeScriptProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
-	Name *string `json:"name"`
+	Name *string `json:"name" yaml:"name"`
 	// Configure logging options such as verbosity.
 	// Experimental.
-	Logging *projen.LoggerOptions `json:"logging"`
+	Logging *projen.LoggerOptions `json:"logging" yaml:"logging"`
 	// The root directory of the project.
 	//
 	// Relative to this directory, all files are synthesized.
@@ -3942,117 +3942,117 @@ type TypeScriptProjectOptions struct {
 	// directory and it cannot be the same as the parent or any of it's other
 	// sub-projects.
 	// Experimental.
-	Outdir *string `json:"outdir"`
+	Outdir *string `json:"outdir" yaml:"outdir"`
 	// The parent project, if this project is part of a bigger project.
 	// Experimental.
-	Parent projen.Project `json:"parent"`
+	Parent projen.Project `json:"parent" yaml:"parent"`
 	// The shell command to use in order to run the projen CLI.
 	//
 	// Can be used to customize in special environments.
 	// Experimental.
-	ProjenCommand *string `json:"projenCommand"`
+	ProjenCommand *string `json:"projenCommand" yaml:"projenCommand"`
 	// Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
 	// Experimental.
-	ProjenrcJson *bool `json:"projenrcJson"`
+	ProjenrcJson *bool `json:"projenrcJson" yaml:"projenrcJson"`
 	// Options for .projenrc.json.
 	// Experimental.
-	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions"`
+	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
 	// Enable and configure the 'auto approve' workflow.
 	// Experimental.
-	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions"`
+	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
 	// Configure options for automatic merging on GitHub.
 	//
 	// Has no effect if
 	// `github.mergify` is set to false.
 	// Experimental.
-	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions"`
+	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions" yaml:"autoMergeOptions"`
 	// Add a `clobber` task which resets the repo to origin.
 	// Experimental.
-	Clobber *bool `json:"clobber"`
+	Clobber *bool `json:"clobber" yaml:"clobber"`
 	// Add a VSCode development environment (used for GitHub Codespaces).
 	// Experimental.
-	DevContainer *bool `json:"devContainer"`
+	DevContainer *bool `json:"devContainer" yaml:"devContainer"`
 	// Enable GitHub integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
 	// Experimental.
-	Github *bool `json:"github"`
+	Github *bool `json:"github" yaml:"github"`
 	// Options for GitHub integration.
 	// Experimental.
-	GithubOptions *github.GitHubOptions `json:"githubOptions"`
+	GithubOptions *github.GitHubOptions `json:"githubOptions" yaml:"githubOptions"`
 	// Add a Gitpod development environment.
 	// Experimental.
-	Gitpod *bool `json:"gitpod"`
+	Gitpod *bool `json:"gitpod" yaml:"gitpod"`
 	// Whether mergify should be enabled on this repository or not.
 	// Deprecated: use `githubOptions.mergify` instead
-	Mergify *bool `json:"mergify"`
+	Mergify *bool `json:"mergify" yaml:"mergify"`
 	// Options for mergify.
 	// Deprecated: use `githubOptions.mergifyOptions` instead
-	MergifyOptions *github.MergifyOptions `json:"mergifyOptions"`
+	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level
-	ProjectType projen.ProjectType `json:"projectType"`
+	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
 	// This token needs to have the `repo`, `workflows`
 	// and `packages` scope.
 	// Experimental.
-	ProjenTokenSecret *string `json:"projenTokenSecret"`
+	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
 	// TODO: EXAMPLE
 	//
 	// Experimental.
-	Readme *projen.SampleReadmeProps `json:"readme"`
+	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
 	// Auto-close of stale issues and pull request.
 	//
 	// See `staleOptions` for options.
 	// Experimental.
-	Stale *bool `json:"stale"`
+	Stale *bool `json:"stale" yaml:"stale"`
 	// Auto-close stale issues and pull requests.
 	//
 	// To disable set `stale` to `false`.
 	// Experimental.
-	StaleOptions *github.StaleOptions `json:"staleOptions"`
+	StaleOptions *github.StaleOptions `json:"staleOptions" yaml:"staleOptions"`
 	// Enable VSCode integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
 	// Experimental.
-	Vscode *bool `json:"vscode"`
+	Vscode *bool `json:"vscode" yaml:"vscode"`
 	// Allow the project to include `peerDependencies` and `bundledDependencies`.
 	//
 	// This is normally only allowed for libraries. For apps, there's no meaning
 	// for specifying these.
 	// Experimental.
-	AllowLibraryDependencies *bool `json:"allowLibraryDependencies"`
+	AllowLibraryDependencies *bool `json:"allowLibraryDependencies" yaml:"allowLibraryDependencies"`
 	// Author's e-mail.
 	// Experimental.
-	AuthorEmail *string `json:"authorEmail"`
+	AuthorEmail *string `json:"authorEmail" yaml:"authorEmail"`
 	// Author's name.
 	// Experimental.
-	AuthorName *string `json:"authorName"`
+	AuthorName *string `json:"authorName" yaml:"authorName"`
 	// Author's Organization.
 	// Experimental.
-	AuthorOrganization *bool `json:"authorOrganization"`
+	AuthorOrganization *bool `json:"authorOrganization" yaml:"authorOrganization"`
 	// Author's URL / Website.
 	// Experimental.
-	AuthorUrl *string `json:"authorUrl"`
+	AuthorUrl *string `json:"authorUrl" yaml:"authorUrl"`
 	// Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
 	// Experimental.
-	AutoDetectBin *bool `json:"autoDetectBin"`
+	AutoDetectBin *bool `json:"autoDetectBin" yaml:"autoDetectBin"`
 	// Binary programs vended with your module.
 	//
 	// You can use this option to add/customize how binaries are represented in
 	// your `package.json`, but unless `autoDetectBin` is `false`, every
 	// executable file under `bin` will automatically be added to this section.
 	// Experimental.
-	Bin *map[string]*string `json:"bin"`
+	Bin *map[string]*string `json:"bin" yaml:"bin"`
 	// The email address to which issues should be reported.
 	// Experimental.
-	BugsEmail *string `json:"bugsEmail"`
+	BugsEmail *string `json:"bugsEmail" yaml:"bugsEmail"`
 	// The url to your project's issue tracker.
 	// Experimental.
-	BugsUrl *string `json:"bugsUrl"`
+	BugsUrl *string `json:"bugsUrl" yaml:"bugsUrl"`
 	// List of dependencies to bundle into this module.
 	//
 	// These modules will be
@@ -4066,10 +4066,10 @@ type TypeScriptProjectOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	// Experimental.
-	BundledDeps *[]*string `json:"bundledDeps"`
+	BundledDeps *[]*string `json:"bundledDeps" yaml:"bundledDeps"`
 	// Options for publishing npm package to AWS CodeArtifact.
 	// Experimental.
-	CodeArtifactOptions *javascript.CodeArtifactOptions `json:"codeArtifactOptions"`
+	CodeArtifactOptions *javascript.CodeArtifactOptions `json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Runtime dependencies of this module.
 	//
 	// The recommendation is to only specify the module name here (e.g.
@@ -4082,13 +4082,13 @@ type TypeScriptProjectOptions struct {
 	// TODO: EXAMPLE
 	//
 	// Experimental.
-	Deps *[]*string `json:"deps"`
+	Deps *[]*string `json:"deps" yaml:"deps"`
 	// The description is just a string that helps people understand the purpose of the package.
 	//
 	// It can be used when searching for packages in a package manager as well.
 	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
 	// Experimental.
-	Description *string `json:"description"`
+	Description *string `json:"description" yaml:"description"`
 	// Build dependencies for this module.
 	//
 	// These dependencies will only be
@@ -4105,58 +4105,58 @@ type TypeScriptProjectOptions struct {
 	// TODO: EXAMPLE
 	//
 	// Experimental.
-	DevDeps *[]*string `json:"devDeps"`
+	DevDeps *[]*string `json:"devDeps" yaml:"devDeps"`
 	// Module entrypoint (`main` in `package.json`).
 	//
 	// Set to an empty string to not include `main` in your package.json
 	// Experimental.
-	Entrypoint *string `json:"entrypoint"`
+	Entrypoint *string `json:"entrypoint" yaml:"entrypoint"`
 	// Package's Homepage / Website.
 	// Experimental.
-	Homepage *string `json:"homepage"`
+	Homepage *string `json:"homepage" yaml:"homepage"`
 	// Keywords to include in `package.json`.
 	// Experimental.
-	Keywords *[]*string `json:"keywords"`
+	Keywords *[]*string `json:"keywords" yaml:"keywords"`
 	// License's SPDX identifier.
 	//
 	// See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
 	// Use the `licensed` option if you want to no license to be specified.
 	// Experimental.
-	License *string `json:"license"`
+	License *string `json:"license" yaml:"license"`
 	// Indicates if a license should be added.
 	// Experimental.
-	Licensed *bool `json:"licensed"`
+	Licensed *bool `json:"licensed" yaml:"licensed"`
 	// Minimum node.js version to require via `engines` (inclusive).
 	// Experimental.
-	MaxNodeVersion *string `json:"maxNodeVersion"`
+	MaxNodeVersion *string `json:"maxNodeVersion" yaml:"maxNodeVersion"`
 	// Minimum Node.js version to require via package.json `engines` (inclusive).
 	// Experimental.
-	MinNodeVersion *string `json:"minNodeVersion"`
+	MinNodeVersion *string `json:"minNodeVersion" yaml:"minNodeVersion"`
 	// Access level of the npm package.
 	// Experimental.
-	NpmAccess javascript.NpmAccess `json:"npmAccess"`
+	NpmAccess javascript.NpmAccess `json:"npmAccess" yaml:"npmAccess"`
 	// The host name of the npm registry to publish to.
 	//
 	// Cannot be set together with `npmRegistryUrl`.
 	// Deprecated: use `npmRegistryUrl` instead
-	NpmRegistry *string `json:"npmRegistry"`
+	NpmRegistry *string `json:"npmRegistry" yaml:"npmRegistry"`
 	// The base URL of the npm package registry.
 	//
 	// Must be a URL (e.g. start with "https://" or "http://")
 	// Experimental.
-	NpmRegistryUrl *string `json:"npmRegistryUrl"`
+	NpmRegistryUrl *string `json:"npmRegistryUrl" yaml:"npmRegistryUrl"`
 	// GitHub secret which contains the NPM token to use when publishing packages.
 	// Experimental.
-	NpmTokenSecret *string `json:"npmTokenSecret"`
+	NpmTokenSecret *string `json:"npmTokenSecret" yaml:"npmTokenSecret"`
 	// The Node Package Manager used to execute scripts.
 	// Experimental.
-	PackageManager javascript.NodePackageManager `json:"packageManager"`
+	PackageManager javascript.NodePackageManager `json:"packageManager" yaml:"packageManager"`
 	// The "name" in package.json.
 	// Experimental.
-	PackageName *string `json:"packageName"`
+	PackageName *string `json:"packageName" yaml:"packageName"`
 	// Options for `peerDeps`.
 	// Experimental.
-	PeerDependencyOptions *javascript.PeerDependencyOptions `json:"peerDependencyOptions"`
+	PeerDependencyOptions *javascript.PeerDependencyOptions `json:"peerDependencyOptions" yaml:"peerDependencyOptions"`
 	// Peer dependencies for this module.
 	//
 	// Dependencies listed here are required to
@@ -4173,54 +4173,54 @@ type TypeScriptProjectOptions struct {
 	// pinned version for each peer dependency. This will ensure that you build &
 	// test your module against the lowest peer version required.
 	// Experimental.
-	PeerDeps *[]*string `json:"peerDeps"`
+	PeerDeps *[]*string `json:"peerDeps" yaml:"peerDeps"`
 	// The repository is the location where the actual code for your package lives.
 	//
 	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
 	// Experimental.
-	Repository *string `json:"repository"`
+	Repository *string `json:"repository" yaml:"repository"`
 	// If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
 	// Experimental.
-	RepositoryDirectory *string `json:"repositoryDirectory"`
+	RepositoryDirectory *string `json:"repositoryDirectory" yaml:"repositoryDirectory"`
 	// npm scripts to include.
 	//
 	// If a script has the same name as a standard script,
 	// the standard script will be overwritten.
 	// Experimental.
-	Scripts *map[string]*string `json:"scripts"`
+	Scripts *map[string]*string `json:"scripts" yaml:"scripts"`
 	// Package's Stability.
 	// Experimental.
-	Stability *string `json:"stability"`
+	Stability *string `json:"stability" yaml:"stability"`
 	// Version requirement of `jsii-release` which is used to publish modules to npm.
 	// Experimental.
-	JsiiReleaseVersion *string `json:"jsiiReleaseVersion"`
+	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.
 	//
 	// If this is specified, we bump the latest version of this major version line.
 	// If not specified, we bump the global latest version.
 	// Experimental.
-	MajorVersion *float64 `json:"majorVersion"`
+	MajorVersion *float64 `json:"majorVersion" yaml:"majorVersion"`
 	// The npmDistTag to use when publishing from the default branch.
 	//
 	// To set the npm dist-tag for release branches, set the `npmDistTag` property
 	// for each branch.
 	// Experimental.
-	NpmDistTag *string `json:"npmDistTag"`
+	NpmDistTag *string `json:"npmDistTag" yaml:"npmDistTag"`
 	// Steps to execute after build as part of the release workflow.
 	// Experimental.
-	PostBuildSteps *[]*workflows.JobStep `json:"postBuildSteps"`
+	PostBuildSteps *[]*workflows.JobStep `json:"postBuildSteps" yaml:"postBuildSteps"`
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
 	// Experimental.
-	Prerelease *string `json:"prerelease"`
+	Prerelease *string `json:"prerelease" yaml:"prerelease"`
 	// Instead of actually publishing to package managers, just print the publishing command.
 	// Experimental.
-	PublishDryRun *bool `json:"publishDryRun"`
+	PublishDryRun *bool `json:"publishDryRun" yaml:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
 	// in order to create a publishing task for each publishing activity.
 	// Experimental.
-	PublishTasks *bool `json:"publishTasks"`
+	PublishTasks *bool `json:"publishTasks" yaml:"publishTasks"`
 	// Defines additional release branches.
 	//
 	// A workflow will be created for each
@@ -4230,21 +4230,21 @@ type TypeScriptProjectOptions struct {
 	// version. If multiple branches are used, the `majorVersion` field must also
 	// be provided for the default branch.
 	// Experimental.
-	ReleaseBranches *map[string]*release.BranchOptions `json:"releaseBranches"`
+	ReleaseBranches *map[string]*release.BranchOptions `json:"releaseBranches" yaml:"releaseBranches"`
 	// Automatically release new versions every commit to one of branches in `releaseBranches`.
 	// Deprecated: Use `releaseTrigger: ReleaseTrigger.continuous()` instead
-	ReleaseEveryCommit *bool `json:"releaseEveryCommit"`
+	ReleaseEveryCommit *bool `json:"releaseEveryCommit" yaml:"releaseEveryCommit"`
 	// Create a github issue on every failed publishing task.
 	// Experimental.
-	ReleaseFailureIssue *bool `json:"releaseFailureIssue"`
+	ReleaseFailureIssue *bool `json:"releaseFailureIssue" yaml:"releaseFailureIssue"`
 	// The label to apply to issues indicating publish failures.
 	//
 	// Only applies if `releaseFailureIssue` is true.
 	// Experimental.
-	ReleaseFailureIssueLabel *string `json:"releaseFailureIssueLabel"`
+	ReleaseFailureIssueLabel *string `json:"releaseFailureIssueLabel" yaml:"releaseFailureIssueLabel"`
 	// CRON schedule to trigger new releases.
 	// Deprecated: Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
-	ReleaseSchedule *string `json:"releaseSchedule"`
+	ReleaseSchedule *string `json:"releaseSchedule" yaml:"releaseSchedule"`
 	// Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
 	//
 	// Note: this prefix is used to detect the latest tagged version
@@ -4252,86 +4252,86 @@ type TypeScriptProjectOptions struct {
 	// history, you may need to manually tag your latest release
 	// with the new prefix.
 	// Experimental.
-	ReleaseTagPrefix *string `json:"releaseTagPrefix"`
+	ReleaseTagPrefix *string `json:"releaseTagPrefix" yaml:"releaseTagPrefix"`
 	// The release trigger to use.
 	// Experimental.
-	ReleaseTrigger release.ReleaseTrigger `json:"releaseTrigger"`
+	ReleaseTrigger release.ReleaseTrigger `json:"releaseTrigger" yaml:"releaseTrigger"`
 	// The name of the default release workflow.
 	// Experimental.
-	ReleaseWorkflowName *string `json:"releaseWorkflowName"`
+	ReleaseWorkflowName *string `json:"releaseWorkflowName" yaml:"releaseWorkflowName"`
 	// A set of workflow steps to execute in order to setup the workflow container.
 	// Experimental.
-	ReleaseWorkflowSetupSteps *[]*workflows.JobStep `json:"releaseWorkflowSetupSteps"`
+	ReleaseWorkflowSetupSteps *[]*workflows.JobStep `json:"releaseWorkflowSetupSteps" yaml:"releaseWorkflowSetupSteps"`
 	// Custom configuration used when creating changelog with standard-version package.
 	//
 	// Given values either append to default configuration or overwrite values in it.
 	// Experimental.
-	VersionrcOptions *map[string]interface{} `json:"versionrcOptions"`
+	VersionrcOptions *map[string]interface{} `json:"versionrcOptions" yaml:"versionrcOptions"`
 	// Container image to use for GitHub workflows.
 	// Experimental.
-	WorkflowContainerImage *string `json:"workflowContainerImage"`
+	WorkflowContainerImage *string `json:"workflowContainerImage" yaml:"workflowContainerImage"`
 	// Github Runner selection labels.
 	// Experimental.
-	WorkflowRunsOn *[]*string `json:"workflowRunsOn"`
+	WorkflowRunsOn *[]*string `json:"workflowRunsOn" yaml:"workflowRunsOn"`
 	// The name of the main release branch.
 	// Experimental.
-	DefaultReleaseBranch *string `json:"defaultReleaseBranch"`
+	DefaultReleaseBranch *string `json:"defaultReleaseBranch" yaml:"defaultReleaseBranch"`
 	// A directory which will contain build artifacts.
 	// Experimental.
-	ArtifactsDirectory *string `json:"artifactsDirectory"`
+	ArtifactsDirectory *string `json:"artifactsDirectory" yaml:"artifactsDirectory"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
 	// Experimental.
-	AutoApproveProjenUpgrades *bool `json:"autoApproveProjenUpgrades"`
+	AutoApproveProjenUpgrades *bool `json:"autoApproveProjenUpgrades" yaml:"autoApproveProjenUpgrades"`
 	// Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
 	// Experimental.
-	AutoApproveUpgrades *bool `json:"autoApproveUpgrades"`
+	AutoApproveUpgrades *bool `json:"autoApproveUpgrades" yaml:"autoApproveUpgrades"`
 	// Define a GitHub workflow for building PRs.
 	// Experimental.
-	BuildWorkflow *bool `json:"buildWorkflow"`
+	BuildWorkflow *bool `json:"buildWorkflow" yaml:"buildWorkflow"`
 	// Options for `Bundler`.
 	// Experimental.
-	BundlerOptions *javascript.BundlerOptions `json:"bundlerOptions"`
+	BundlerOptions *javascript.BundlerOptions `json:"bundlerOptions" yaml:"bundlerOptions"`
 	// Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v1 A secret is required for private repos. Configured with @codeCovTokenSecret.
 	// Experimental.
-	CodeCov *bool `json:"codeCov"`
+	CodeCov *bool `json:"codeCov" yaml:"codeCov"`
 	// Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories.
 	// Experimental.
-	CodeCovTokenSecret *string `json:"codeCovTokenSecret"`
+	CodeCovTokenSecret *string `json:"codeCovTokenSecret" yaml:"codeCovTokenSecret"`
 	// License copyright owner.
 	// Experimental.
-	CopyrightOwner *string `json:"copyrightOwner"`
+	CopyrightOwner *string `json:"copyrightOwner" yaml:"copyrightOwner"`
 	// The copyright years to put in the LICENSE file.
 	// Experimental.
-	CopyrightPeriod *string `json:"copyrightPeriod"`
+	CopyrightPeriod *string `json:"copyrightPeriod" yaml:"copyrightPeriod"`
 	// Use dependabot to handle dependency upgrades.
 	//
 	// Cannot be used in conjunction with `depsUpgrade`.
 	// Experimental.
-	Dependabot *bool `json:"dependabot"`
+	Dependabot *bool `json:"dependabot" yaml:"dependabot"`
 	// Options for dependabot.
 	// Experimental.
-	DependabotOptions *github.DependabotOptions `json:"dependabotOptions"`
+	DependabotOptions *github.DependabotOptions `json:"dependabotOptions" yaml:"dependabotOptions"`
 	// Use github workflows to handle dependency upgrades.
 	//
 	// Cannot be used in conjunction with `dependabot`.
 	// Experimental.
-	DepsUpgrade *bool `json:"depsUpgrade"`
+	DepsUpgrade *bool `json:"depsUpgrade" yaml:"depsUpgrade"`
 	// Options for depsUpgrade.
 	// Experimental.
-	DepsUpgradeOptions *javascript.UpgradeDependenciesOptions `json:"depsUpgradeOptions"`
+	DepsUpgradeOptions *javascript.UpgradeDependenciesOptions `json:"depsUpgradeOptions" yaml:"depsUpgradeOptions"`
 	// Additional entries to .gitignore.
 	// Experimental.
-	Gitignore *[]*string `json:"gitignore"`
+	Gitignore *[]*string `json:"gitignore" yaml:"gitignore"`
 	// Setup jest unit tests.
 	// Experimental.
-	Jest *bool `json:"jest"`
+	Jest *bool `json:"jest" yaml:"jest"`
 	// Jest options.
 	// Experimental.
-	JestOptions *javascript.JestOptions `json:"jestOptions"`
+	JestOptions *javascript.JestOptions `json:"jestOptions" yaml:"jestOptions"`
 	// Automatically update files modified during builds to pull-request branches.
 	//
 	// This means
@@ -4340,39 +4340,39 @@ type TypeScriptProjectOptions struct {
 	//
 	// Implies that PR builds do not have anti-tamper checks.
 	// Experimental.
-	MutableBuild *bool `json:"mutableBuild"`
+	MutableBuild *bool `json:"mutableBuild" yaml:"mutableBuild"`
 	// Additional entries to .npmignore.
 	// Deprecated: - use `project.addPackageIgnore`
-	Npmignore *[]*string `json:"npmignore"`
+	Npmignore *[]*string `json:"npmignore" yaml:"npmignore"`
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
 	// Experimental.
-	NpmignoreEnabled *bool `json:"npmignoreEnabled"`
+	NpmignoreEnabled *bool `json:"npmignoreEnabled" yaml:"npmignoreEnabled"`
 	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
 	// Experimental.
-	Package *bool `json:"package"`
+	Package *bool `json:"package" yaml:"package"`
 	// Setup prettier.
 	// Experimental.
-	Prettier *bool `json:"prettier"`
+	Prettier *bool `json:"prettier" yaml:"prettier"`
 	// Prettier options.
 	// Experimental.
-	PrettierOptions *javascript.PrettierOptions `json:"prettierOptions"`
+	PrettierOptions *javascript.PrettierOptions `json:"prettierOptions" yaml:"prettierOptions"`
 	// Indicates of "projen" should be installed as a devDependency.
 	// Experimental.
-	ProjenDevDependency *bool `json:"projenDevDependency"`
+	ProjenDevDependency *bool `json:"projenDevDependency" yaml:"projenDevDependency"`
 	// Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation.
 	// Experimental.
-	ProjenrcJs *bool `json:"projenrcJs"`
+	ProjenrcJs *bool `json:"projenrcJs" yaml:"projenrcJs"`
 	// Options for .projenrc.js.
 	// Experimental.
-	ProjenrcJsOptions *javascript.ProjenrcOptions `json:"projenrcJsOptions"`
+	ProjenrcJsOptions *javascript.ProjenrcOptions `json:"projenrcJsOptions" yaml:"projenrcJsOptions"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
 	// Deprecated: use `autoApproveProjenUpgrades`.
-	ProjenUpgradeAutoMerge *bool `json:"projenUpgradeAutoMerge"`
+	ProjenUpgradeAutoMerge *bool `json:"projenUpgradeAutoMerge" yaml:"projenUpgradeAutoMerge"`
 	// Customize the projenUpgrade schedule in cron expression.
 	// Experimental.
-	ProjenUpgradeSchedule *[]*string `json:"projenUpgradeSchedule"`
+	ProjenUpgradeSchedule *[]*string `json:"projenUpgradeSchedule" yaml:"projenUpgradeSchedule"`
 	// Periodically submits a pull request for projen upgrades (executes `yarn projen:upgrade`).
 	//
 	// This setting is a GitHub secret name which contains a GitHub Access Token
@@ -4383,67 +4383,67 @@ type TypeScriptProjectOptions struct {
 	//
 	// To create a personal access token see https://github.com/settings/tokens
 	// Deprecated: use `githubTokenSecret` instead.
-	ProjenUpgradeSecret *string `json:"projenUpgradeSecret"`
+	ProjenUpgradeSecret *string `json:"projenUpgradeSecret" yaml:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.
-	ProjenVersion *string `json:"projenVersion"`
+	ProjenVersion *string `json:"projenVersion" yaml:"projenVersion"`
 	// Include a GitHub pull request template.
 	// Experimental.
-	PullRequestTemplate *bool `json:"pullRequestTemplate"`
+	PullRequestTemplate *bool `json:"pullRequestTemplate" yaml:"pullRequestTemplate"`
 	// The contents of the pull request template.
 	// Experimental.
-	PullRequestTemplateContents *[]*string `json:"pullRequestTemplateContents"`
+	PullRequestTemplateContents *[]*string `json:"pullRequestTemplateContents" yaml:"pullRequestTemplateContents"`
 	// Add release management to this project.
 	// Experimental.
-	Release *bool `json:"release"`
+	Release *bool `json:"release" yaml:"release"`
 	// Automatically release to npm when new versions are introduced.
 	// Experimental.
-	ReleaseToNpm *bool `json:"releaseToNpm"`
+	ReleaseToNpm *bool `json:"releaseToNpm" yaml:"releaseToNpm"`
 	// DEPRECATED: renamed to `release`.
 	// Deprecated: see `release`.
-	ReleaseWorkflow *bool `json:"releaseWorkflow"`
+	ReleaseWorkflow *bool `json:"releaseWorkflow" yaml:"releaseWorkflow"`
 	// Workflow steps to use in order to bootstrap this repo.
 	// Experimental.
-	WorkflowBootstrapSteps *[]interface{} `json:"workflowBootstrapSteps"`
+	WorkflowBootstrapSteps *[]interface{} `json:"workflowBootstrapSteps" yaml:"workflowBootstrapSteps"`
 	// The git identity to use in workflows.
 	// Experimental.
-	WorkflowGitIdentity *github.GitIdentity `json:"workflowGitIdentity"`
+	WorkflowGitIdentity *github.GitIdentity `json:"workflowGitIdentity" yaml:"workflowGitIdentity"`
 	// The node version to use in GitHub workflows.
 	// Experimental.
-	WorkflowNodeVersion *string `json:"workflowNodeVersion"`
+	WorkflowNodeVersion *string `json:"workflowNodeVersion" yaml:"workflowNodeVersion"`
 	// Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler).
 	// Experimental.
-	DisableTsconfig *bool `json:"disableTsconfig"`
+	DisableTsconfig *bool `json:"disableTsconfig" yaml:"disableTsconfig"`
 	// Docgen by Typedoc.
 	// Experimental.
-	Docgen *bool `json:"docgen"`
+	Docgen *bool `json:"docgen" yaml:"docgen"`
 	// Docs directory.
 	// Experimental.
-	DocsDirectory *string `json:"docsDirectory"`
+	DocsDirectory *string `json:"docsDirectory" yaml:"docsDirectory"`
 	// The .d.ts file that includes the type declarations for this module.
 	// Experimental.
-	EntrypointTypes *string `json:"entrypointTypes"`
+	EntrypointTypes *string `json:"entrypointTypes" yaml:"entrypointTypes"`
 	// Setup eslint.
 	// Experimental.
-	Eslint *bool `json:"eslint"`
+	Eslint *bool `json:"eslint" yaml:"eslint"`
 	// Eslint options.
 	// Experimental.
-	EslintOptions *javascript.EslintOptions `json:"eslintOptions"`
+	EslintOptions *javascript.EslintOptions `json:"eslintOptions" yaml:"eslintOptions"`
 	// Typescript  artifacts output directory.
 	// Experimental.
-	Libdir *string `json:"libdir"`
+	Libdir *string `json:"libdir" yaml:"libdir"`
 	// Use TypeScript for your projenrc file (`.projenrc.ts`).
 	// Experimental.
-	ProjenrcTs *bool `json:"projenrcTs"`
+	ProjenrcTs *bool `json:"projenrcTs" yaml:"projenrcTs"`
 	// Options for .projenrc.ts.
 	// Experimental.
-	ProjenrcTsOptions *ProjenrcOptions `json:"projenrcTsOptions"`
+	ProjenrcTsOptions *ProjenrcOptions `json:"projenrcTsOptions" yaml:"projenrcTsOptions"`
 	// Generate one-time sample in `src/` and `test/` if there are no files there.
 	// Experimental.
-	SampleCode *bool `json:"sampleCode"`
+	SampleCode *bool `json:"sampleCode" yaml:"sampleCode"`
 	// Typescript sources directory.
 	// Experimental.
-	Srcdir *string `json:"srcdir"`
+	Srcdir *string `json:"srcdir" yaml:"srcdir"`
 	// Jest tests directory. Tests files should be named `xxx.test.ts`.
 	//
 	// If this directory is under `srcdir` (e.g. `src/test`, `src/__tests__`),
@@ -4451,22 +4451,22 @@ type TypeScriptProjectOptions struct {
 	// If the test directory is outside of `src`, then we configure jest to
 	// compile the code in-memory.
 	// Experimental.
-	Testdir *string `json:"testdir"`
+	Testdir *string `json:"testdir" yaml:"testdir"`
 	// Custom TSConfig.
 	// Experimental.
-	Tsconfig *javascript.TypescriptConfigOptions `json:"tsconfig"`
+	Tsconfig *javascript.TypescriptConfigOptions `json:"tsconfig" yaml:"tsconfig"`
 	// Custom tsconfig options for the development tsconfig.json file (used for testing).
 	// Experimental.
-	TsconfigDev *javascript.TypescriptConfigOptions `json:"tsconfigDev"`
+	TsconfigDev *javascript.TypescriptConfigOptions `json:"tsconfigDev" yaml:"tsconfigDev"`
 	// The name of the development tsconfig.json file.
 	// Experimental.
-	TsconfigDevFile *string `json:"tsconfigDevFile"`
+	TsconfigDevFile *string `json:"tsconfigDevFile" yaml:"tsconfigDevFile"`
 	// TypeScript version to use.
 	//
 	// NOTE: Typescript is not semantically versioned and should remain on the
 	// same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
 	// Experimental.
-	TypescriptVersion *string `json:"typescriptVersion"`
+	TypescriptVersion *string `json:"typescriptVersion" yaml:"typescriptVersion"`
 }
 
 // Adds a simple Typescript documentation generator.
