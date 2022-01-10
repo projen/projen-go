@@ -240,6 +240,7 @@ func init() {
 		"projen.github.Mergify",
 		reflect.TypeOf((*Mergify)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addQueue", GoMethod: "AddQueue"},
 			_jsii_.MemberMethod{JsiiMethod: "addRule", GoMethod: "AddRule"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
@@ -259,6 +260,10 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.github.MergifyOptions",
 		reflect.TypeOf((*MergifyOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.MergifyQueue",
+		reflect.TypeOf((*MergifyQueue)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.github.MergifyRule",

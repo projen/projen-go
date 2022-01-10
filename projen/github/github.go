@@ -1703,6 +1703,7 @@ func (i *jsiiProxy_IJobProvider) RenderJobs() *map[string]*workflows.Job {
 type Mergify interface {
 	projen.Component
 	Project() projen.Project
+	AddQueue(queue *MergifyQueue)
 	AddRule(rule *MergifyRule)
 	PostSynthesize()
 	PreSynthesize()
@@ -1748,6 +1749,15 @@ func NewMergify_Override(m Mergify, github GitHub, options *MergifyOptions) {
 		"projen.github.Mergify",
 		[]interface{}{github, options},
 		m,
+	)
+}
+
+// Experimental.
+func (m *jsiiProxy_Mergify) AddQueue(queue *MergifyQueue) {
+	_jsii_.InvokeVoid(
+		m,
+		"addQueue",
+		[]interface{}{queue},
 	)
 }
 
@@ -1808,7 +1818,21 @@ type MergifyConditionalOperator struct {
 // Experimental.
 type MergifyOptions struct {
 	// Experimental.
+	Queues *[]*MergifyQueue `json:"queues" yaml:"queues"`
+	// Experimental.
 	Rules *[]*MergifyRule `json:"rules" yaml:"rules"`
+}
+
+// Experimental.
+type MergifyQueue struct {
+	// A list of Conditions string that must match against the pull request for the pull request to be added to the queue.
+	// See: https://docs.mergify.com/conditions/#conditions
+	//
+	// Experimental.
+	Conditions *[]interface{} `json:"conditions" yaml:"conditions"`
+	// The name of the queue.
+	// Experimental.
+	Name *string `json:"name" yaml:"name"`
 }
 
 // Experimental.
