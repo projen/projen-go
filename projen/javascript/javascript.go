@@ -4040,6 +4040,7 @@ type UpgradeDependencies interface {
 	ContainerOptions() *workflows.ContainerOptions
 	SetContainerOptions(val *workflows.ContainerOptions)
 	IgnoresProjen() *bool
+	PostUpgradeTask() projen.Task
 	Project() projen.Project
 	Workflows() *[]github.GithubWorkflow
 	AddPostBuildSteps(steps ...*workflows.JobStep)
@@ -4068,6 +4069,16 @@ func (j *jsiiProxy_UpgradeDependencies) IgnoresProjen() *bool {
 	_jsii_.Get(
 		j,
 		"ignoresProjen",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_UpgradeDependencies) PostUpgradeTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"postUpgradeTask",
 		&returns,
 	)
 	return returns
