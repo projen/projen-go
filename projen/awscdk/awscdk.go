@@ -7684,6 +7684,12 @@ type IntegrationTestOptions struct {
 	// The path of the tsconfig.json file to use when running integration test cdk apps.
 	// Experimental.
 	TsconfigPath *string `json:"tsconfigPath" yaml:"tsconfigPath"`
+	// Name of the integration test.
+	// Experimental.
+	Name *string `json:"name" yaml:"name"`
+	// A list of stacks within the integration test to deploy/destroy.
+	// Experimental.
+	Stacks *[]*string `json:"stacks" yaml:"stacks"`
 }
 
 // Generates a pre-bundled AWS Lambda function construct from handler code.
