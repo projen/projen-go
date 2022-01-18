@@ -1708,6 +1708,9 @@ type Cdk8sTypeScriptAppOptions struct {
 	// If you use experimental features this will let you define the moment you include breaking changes.
 	// Experimental.
 	Cdk8sCliVersionPinning *bool `json:"cdk8sCliVersionPinning" yaml:"cdk8sCliVersionPinning"`
+	// Import additional specs.
+	// Experimental.
+	Cdk8sImports *[]*string `json:"cdk8sImports" yaml:"cdk8sImports"`
 	// Use pinned version instead of caret version for cdk8s-plus-17.
 	//
 	// You can use this to prevent yarn to mix versions for your CDK8s package and to prevent auto-updates.
