@@ -2290,6 +2290,11 @@ type StaleBehavior struct {
 	// Same as setting `daysBeforeStale` and `daysBeforeClose` to `-1`.
 	// Experimental.
 	Enabled *bool `json:"enabled" yaml:"enabled"`
+	// Label which exempt an issue/PR from becoming stale.
+	//
+	// Set to `[]` to disable.
+	// Experimental.
+	ExemptLabels *[]*string `json:"exemptLabels" yaml:"exemptLabels"`
 	// The label to apply to the issue/PR when it becomes stale.
 	// Experimental.
 	StaleLabel *string `json:"staleLabel" yaml:"staleLabel"`
