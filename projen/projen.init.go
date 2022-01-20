@@ -977,6 +977,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addOverride", GoMethod: "AddOverride"},
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
+			_jsii_.MemberProperty{JsiiProperty: "lineWidth", GoGetter: "LineWidth"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
 			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},

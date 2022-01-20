@@ -6867,6 +6867,8 @@ type YamlFile interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
+	LineWidth() *float64
+	SetLineWidth(val *float64)
 	Marker() *bool
 	SetMarker(val *bool)
 	OmitEmpty() *bool
@@ -6912,6 +6914,16 @@ func (j *jsiiProxy_YamlFile) Executable() *bool {
 	_jsii_.Get(
 		j,
 		"executable",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_YamlFile) LineWidth() *float64 {
+	var returns *float64
+	_jsii_.Get(
+		j,
+		"lineWidth",
 		&returns,
 	)
 	return returns
@@ -6998,6 +7010,14 @@ func (j *jsiiProxy_YamlFile) SetExecutable(val *bool) {
 	_jsii_.Set(
 		j,
 		"executable",
+		val,
+	)
+}
+
+func (j *jsiiProxy_YamlFile) SetLineWidth(val *float64) {
+	_jsii_.Set(
+		j,
+		"lineWidth",
 		val,
 	)
 }
@@ -7153,5 +7173,8 @@ type YamlFileOptions struct {
 	// Omits empty objects and arrays.
 	// Experimental.
 	OmitEmpty *bool `json:"omitEmpty" yaml:"omitEmpty"`
+	// Maximum line width (set to 0 to disable folding).
+	// Experimental.
+	LineWidth *float64 `json:"lineWidth" yaml:"lineWidth"`
 }
 
