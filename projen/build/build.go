@@ -236,5 +236,8 @@ type BuildWorkflowOptions struct {
 	// Github Runner selection labels.
 	// Experimental.
 	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
+	// Build workflow triggers.
+	// Experimental.
+	WorkflowTriggers *workflows.Triggers `json:"workflowTriggers" yaml:"workflowTriggers"`
 }
 

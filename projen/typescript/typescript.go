@@ -2657,6 +2657,9 @@ type TypeScriptLibraryProjectOptions struct {
 	// Define a GitHub workflow for building PRs.
 	// Deprecated: use TypeScriptProjectOptions
 	BuildWorkflow *bool `json:"buildWorkflow" yaml:"buildWorkflow"`
+	// Build workflow triggers.
+	// Deprecated: use TypeScriptProjectOptions
+	BuildWorkflowTriggers *workflows.Triggers `json:"buildWorkflowTriggers" yaml:"buildWorkflowTriggers"`
 	// Options for `Bundler`.
 	// Deprecated: use TypeScriptProjectOptions
 	BundlerOptions *javascript.BundlerOptions `json:"bundlerOptions" yaml:"bundlerOptions"`
@@ -4292,6 +4295,9 @@ type TypeScriptProjectOptions struct {
 	// Define a GitHub workflow for building PRs.
 	// Experimental.
 	BuildWorkflow *bool `json:"buildWorkflow" yaml:"buildWorkflow"`
+	// Build workflow triggers.
+	// Experimental.
+	BuildWorkflowTriggers *workflows.Triggers `json:"buildWorkflowTriggers" yaml:"buildWorkflowTriggers"`
 	// Options for `Bundler`.
 	// Experimental.
 	BundlerOptions *javascript.BundlerOptions `json:"bundlerOptions" yaml:"bundlerOptions"`

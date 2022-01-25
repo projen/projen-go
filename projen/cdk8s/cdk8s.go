@@ -1518,6 +1518,9 @@ type Cdk8sTypeScriptAppOptions struct {
 	// Define a GitHub workflow for building PRs.
 	// Experimental.
 	BuildWorkflow *bool `json:"buildWorkflow" yaml:"buildWorkflow"`
+	// Build workflow triggers.
+	// Experimental.
+	BuildWorkflowTriggers *workflows.Triggers `json:"buildWorkflowTriggers" yaml:"buildWorkflowTriggers"`
 	// Options for `Bundler`.
 	// Experimental.
 	BundlerOptions *javascript.BundlerOptions `json:"bundlerOptions" yaml:"bundlerOptions"`
@@ -3221,6 +3224,9 @@ type ConstructLibraryCdk8sOptions struct {
 	// Define a GitHub workflow for building PRs.
 	// Experimental.
 	BuildWorkflow *bool `json:"buildWorkflow" yaml:"buildWorkflow"`
+	// Build workflow triggers.
+	// Experimental.
+	BuildWorkflowTriggers *workflows.Triggers `json:"buildWorkflowTriggers" yaml:"buildWorkflowTriggers"`
 	// Options for `Bundler`.
 	// Experimental.
 	BundlerOptions *javascript.BundlerOptions `json:"bundlerOptions" yaml:"bundlerOptions"`

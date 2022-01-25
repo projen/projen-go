@@ -1511,6 +1511,9 @@ type NextJsProjectOptions struct {
 	// Define a GitHub workflow for building PRs.
 	// Experimental.
 	BuildWorkflow *bool `json:"buildWorkflow" yaml:"buildWorkflow"`
+	// Build workflow triggers.
+	// Experimental.
+	BuildWorkflowTriggers *workflows.Triggers `json:"buildWorkflowTriggers" yaml:"buildWorkflowTriggers"`
 	// Options for `Bundler`.
 	// Experimental.
 	BundlerOptions *javascript.BundlerOptions `json:"bundlerOptions" yaml:"bundlerOptions"`
@@ -3126,6 +3129,9 @@ type NextJsTypeScriptProjectOptions struct {
 	// Define a GitHub workflow for building PRs.
 	// Experimental.
 	BuildWorkflow *bool `json:"buildWorkflow" yaml:"buildWorkflow"`
+	// Build workflow triggers.
+	// Experimental.
+	BuildWorkflowTriggers *workflows.Triggers `json:"buildWorkflowTriggers" yaml:"buildWorkflowTriggers"`
 	// Options for `Bundler`.
 	// Experimental.
 	BundlerOptions *javascript.BundlerOptions `json:"bundlerOptions" yaml:"bundlerOptions"`
@@ -4863,6 +4869,9 @@ type ReactProjectOptions struct {
 	// Define a GitHub workflow for building PRs.
 	// Experimental.
 	BuildWorkflow *bool `json:"buildWorkflow" yaml:"buildWorkflow"`
+	// Build workflow triggers.
+	// Experimental.
+	BuildWorkflowTriggers *workflows.Triggers `json:"buildWorkflowTriggers" yaml:"buildWorkflowTriggers"`
 	// Options for `Bundler`.
 	// Experimental.
 	BundlerOptions *javascript.BundlerOptions `json:"bundlerOptions" yaml:"bundlerOptions"`
@@ -6724,6 +6733,9 @@ type ReactTypeScriptProjectOptions struct {
 	// Define a GitHub workflow for building PRs.
 	// Experimental.
 	BuildWorkflow *bool `json:"buildWorkflow" yaml:"buildWorkflow"`
+	// Build workflow triggers.
+	// Experimental.
+	BuildWorkflowTriggers *workflows.Triggers `json:"buildWorkflowTriggers" yaml:"buildWorkflowTriggers"`
 	// Options for `Bundler`.
 	// Experimental.
 	BundlerOptions *javascript.BundlerOptions `json:"bundlerOptions" yaml:"bundlerOptions"`
