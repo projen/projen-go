@@ -1732,6 +1732,9 @@ type Cdk8sTypeScriptAppOptions struct {
 	// If you use experimental features this will let you define the moment you include breaking changes.
 	// Experimental.
 	ConstructsVersionPinning *bool `json:"constructsVersionPinning" yaml:"constructsVersionPinning"`
+	// Import a specific Kubernetes spec version.
+	// Experimental.
+	K8sSpecVersion *string `json:"k8sSpecVersion" yaml:"k8sSpecVersion"`
 }
 
 // CDK8s construct library project.
