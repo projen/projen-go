@@ -40,6 +40,7 @@ type ConstructLibraryCdktf interface {
 	DevContainer() vscode.DevContainer
 	Docgen() *bool
 	DocsDirectory() *string
+	Ejected() *bool
 	Entrypoint() *string
 	Eslint() javascript.Eslint
 	Files() *[]projen.FileBase
@@ -270,6 +271,16 @@ func (j *jsiiProxy_ConstructLibraryCdktf) DocsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"docsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryCdktf) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns

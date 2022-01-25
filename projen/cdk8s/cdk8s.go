@@ -40,6 +40,7 @@ type Cdk8sTypeScriptApp interface {
 	DevContainer() vscode.DevContainer
 	Docgen() *bool
 	DocsDirectory() *string
+	Ejected() *bool
 	Entrypoint() *string
 	Eslint() javascript.Eslint
 	Files() *[]projen.FileBase
@@ -310,6 +311,16 @@ func (j *jsiiProxy_Cdk8sTypeScriptApp) DocsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"docsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Cdk8sTypeScriptApp) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns
@@ -1766,6 +1777,7 @@ type ConstructLibraryCdk8s interface {
 	DevContainer() vscode.DevContainer
 	Docgen() *bool
 	DocsDirectory() *string
+	Ejected() *bool
 	Entrypoint() *string
 	Eslint() javascript.Eslint
 	Files() *[]projen.FileBase
@@ -2016,6 +2028,16 @@ func (j *jsiiProxy_ConstructLibraryCdk8s) DocsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"docsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryCdk8s) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns

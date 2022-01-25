@@ -753,6 +753,7 @@ type GitHubProject interface {
 	DefaultTask() projen.Task
 	Deps() projen.Dependencies
 	DevContainer() vscode.DevContainer
+	Ejected() *bool
 	Files() *[]projen.FileBase
 	Gitattributes() projen.GitAttributesFile
 	Github() GitHub
@@ -859,6 +860,16 @@ func (j *jsiiProxy_GitHubProject) DevContainer() vscode.DevContainer {
 	_jsii_.Get(
 		j,
 		"devContainer",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns
@@ -1965,6 +1976,7 @@ type PullRequestTemplate interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
+	Marker() *string
 	Path() *string
 	Project() projen.Project
 	Readonly() *bool
@@ -2006,6 +2018,16 @@ func (j *jsiiProxy_PullRequestTemplate) Executable() *bool {
 	_jsii_.Get(
 		j,
 		"executable",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_PullRequestTemplate) Marker() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"marker",
 		&returns,
 	)
 	return returns
@@ -2082,17 +2104,6 @@ func (j *jsiiProxy_PullRequestTemplate) SetReadonly(val *bool) {
 		"readonly",
 		val,
 	)
-}
-
-func PullRequestTemplate_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.github.PullRequestTemplate",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
 }
 
 // Adds a line to the text file.

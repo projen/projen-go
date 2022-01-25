@@ -157,6 +157,7 @@ type AwsCdkConstructLibrary interface {
 	DevContainer() vscode.DevContainer
 	Docgen() *bool
 	DocsDirectory() *string
+	Ejected() *bool
 	Entrypoint() *string
 	Eslint() javascript.Eslint
 	Files() *[]projen.FileBase
@@ -410,6 +411,16 @@ func (j *jsiiProxy_AwsCdkConstructLibrary) DocsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"docsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkConstructLibrary) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns
@@ -2590,6 +2601,7 @@ type AwsCdkJavaApp interface {
 	Deps() projen.Dependencies
 	DevContainer() vscode.DevContainer
 	Distdir() *string
+	Ejected() *bool
 	Files() *[]projen.FileBase
 	Gitattributes() projen.GitAttributesFile
 	Github() github.GitHub
@@ -2757,6 +2769,16 @@ func (j *jsiiProxy_AwsCdkJavaApp) Distdir() *string {
 	_jsii_.Get(
 		j,
 		"distdir",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkJavaApp) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns
@@ -3637,6 +3659,7 @@ type AwsCdkTypeScriptApp interface {
 	DevContainer() vscode.DevContainer
 	Docgen() *bool
 	DocsDirectory() *string
+	Ejected() *bool
 	Entrypoint() *string
 	Eslint() javascript.Eslint
 	Files() *[]projen.FileBase
@@ -3918,6 +3941,16 @@ func (j *jsiiProxy_AwsCdkTypeScriptApp) DocsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"docsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkTypeScriptApp) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns
@@ -5734,6 +5767,7 @@ type ConstructLibraryAws interface {
 	DevContainer() vscode.DevContainer
 	Docgen() *bool
 	DocsDirectory() *string
+	Ejected() *bool
 	Entrypoint() *string
 	Eslint() javascript.Eslint
 	Files() *[]projen.FileBase
@@ -5987,6 +6021,16 @@ func (j *jsiiProxy_ConstructLibraryAws) DocsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"docsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryAws) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns

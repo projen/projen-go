@@ -128,6 +128,7 @@ type TypeScriptAppProject interface {
 	DevContainer() vscode.DevContainer
 	Docgen() *bool
 	DocsDirectory() *string
+	Ejected() *bool
 	Entrypoint() *string
 	Eslint() javascript.Eslint
 	Files() *[]projen.FileBase
@@ -358,6 +359,16 @@ func (j *jsiiProxy_TypeScriptAppProject) DocsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"docsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptAppProject) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns
@@ -1219,6 +1230,7 @@ type TypeScriptLibraryProject interface {
 	DevContainer() vscode.DevContainer
 	Docgen() *bool
 	DocsDirectory() *string
+	Ejected() *bool
 	Entrypoint() *string
 	Eslint() javascript.Eslint
 	Files() *[]projen.FileBase
@@ -1449,6 +1461,16 @@ func (j *jsiiProxy_TypeScriptLibraryProject) DocsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"docsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptLibraryProject) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns
@@ -2857,6 +2879,7 @@ type TypeScriptProject interface {
 	DevContainer() vscode.DevContainer
 	Docgen() *bool
 	DocsDirectory() *string
+	Ejected() *bool
 	Entrypoint() *string
 	Eslint() javascript.Eslint
 	Files() *[]projen.FileBase
@@ -3087,6 +3110,16 @@ func (j *jsiiProxy_TypeScriptProject) DocsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"docsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptProject) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns

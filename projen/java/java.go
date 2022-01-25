@@ -23,6 +23,7 @@ type JavaProject interface {
 	Deps() projen.Dependencies
 	DevContainer() vscode.DevContainer
 	Distdir() *string
+	Ejected() *bool
 	Files() *[]projen.FileBase
 	Gitattributes() projen.GitAttributesFile
 	Github() github.GitHub
@@ -156,6 +157,16 @@ func (j *jsiiProxy_JavaProject) Distdir() *string {
 	_jsii_.Get(
 		j,
 		"distdir",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_JavaProject) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns

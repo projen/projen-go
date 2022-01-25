@@ -1737,6 +1737,7 @@ type NodeProject interface {
 	DefaultTask() projen.Task
 	Deps() projen.Dependencies
 	DevContainer() vscode.DevContainer
+	Ejected() *bool
 	Entrypoint() *string
 	Files() *[]projen.FileBase
 	Gitattributes() projen.GitAttributesFile
@@ -1939,6 +1940,16 @@ func (j *jsiiProxy_NodeProject) DevContainer() vscode.DevContainer {
 	_jsii_.Get(
 		j,
 		"devContainer",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NodeProject) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns

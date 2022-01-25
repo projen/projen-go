@@ -951,6 +951,7 @@ type PythonProject interface {
 	Deps() projen.Dependencies
 	DepsManager() IPythonDeps
 	DevContainer() vscode.DevContainer
+	Ejected() *bool
 	EnvManager() IPythonEnv
 	Files() *[]projen.FileBase
 	Gitattributes() projen.GitAttributesFile
@@ -1074,6 +1075,16 @@ func (j *jsiiProxy_PythonProject) DevContainer() vscode.DevContainer {
 	_jsii_.Get(
 		j,
 		"devContainer",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_PythonProject) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns
@@ -1868,6 +1879,7 @@ type RequirementsFile interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
+	Marker() *string
 	Path() *string
 	Project() projen.Project
 	Readonly() *bool
@@ -1909,6 +1921,16 @@ func (j *jsiiProxy_RequirementsFile) Executable() *bool {
 	_jsii_.Get(
 		j,
 		"executable",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_RequirementsFile) Marker() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"marker",
 		&returns,
 	)
 	return returns
@@ -1985,17 +2007,6 @@ func (j *jsiiProxy_RequirementsFile) SetReadonly(val *bool) {
 		"readonly",
 		val,
 	)
-}
-
-func RequirementsFile_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.python.RequirementsFile",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
 }
 
 // Adds the specified packages provided in semver format.
@@ -2077,6 +2088,7 @@ type SetupPy interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
+	Marker() *string
 	Path() *string
 	Project() projen.Project
 	Readonly() *bool
@@ -2117,6 +2129,16 @@ func (j *jsiiProxy_SetupPy) Executable() *bool {
 	_jsii_.Get(
 		j,
 		"executable",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_SetupPy) Marker() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"marker",
 		&returns,
 	)
 	return returns
@@ -2193,17 +2215,6 @@ func (j *jsiiProxy_SetupPy) SetReadonly(val *bool) {
 		"readonly",
 		val,
 	)
-}
-
-func SetupPy_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.python.SetupPy",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
 }
 
 // Called after synthesis.

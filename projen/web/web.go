@@ -141,6 +141,7 @@ type NextJsProject interface {
 	DefaultTask() projen.Task
 	Deps() projen.Dependencies
 	DevContainer() vscode.DevContainer
+	Ejected() *bool
 	Entrypoint() *string
 	Files() *[]projen.FileBase
 	Gitattributes() projen.GitAttributesFile
@@ -355,6 +356,16 @@ func (j *jsiiProxy_NextJsProject) DevContainer() vscode.DevContainer {
 	_jsii_.Get(
 		j,
 		"devContainer",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NextJsProject) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns
@@ -1662,6 +1673,7 @@ type NextJsTypeScriptProject interface {
 	DevContainer() vscode.DevContainer
 	Docgen() *bool
 	DocsDirectory() *string
+	Ejected() *bool
 	Entrypoint() *string
 	Eslint() javascript.Eslint
 	Files() *[]projen.FileBase
@@ -1903,6 +1915,16 @@ func (j *jsiiProxy_NextJsTypeScriptProject) DocsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"docsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NextJsTypeScriptProject) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns
@@ -3528,6 +3550,7 @@ type ReactProject interface {
 	DefaultTask() projen.Task
 	Deps() projen.Dependencies
 	DevContainer() vscode.DevContainer
+	Ejected() *bool
 	Entrypoint() *string
 	Files() *[]projen.FileBase
 	Gitattributes() projen.GitAttributesFile
@@ -3731,6 +3754,16 @@ func (j *jsiiProxy_ReactProject) DevContainer() vscode.DevContainer {
 	_jsii_.Get(
 		j,
 		"devContainer",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ReactProject) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns
@@ -5068,6 +5101,7 @@ type ReactTypeDef interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
+	Marker() *string
 	Path() *string
 	Project() projen.Project
 	Readonly() *bool
@@ -5108,6 +5142,16 @@ func (j *jsiiProxy_ReactTypeDef) Executable() *bool {
 	_jsii_.Get(
 		j,
 		"executable",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ReactTypeDef) Marker() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"marker",
 		&returns,
 	)
 	return returns
@@ -5186,17 +5230,6 @@ func (j *jsiiProxy_ReactTypeDef) SetReadonly(val *bool) {
 	)
 }
 
-func ReactTypeDef_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.web.ReactTypeDef",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
-}
-
 // Called after synthesis.
 //
 // Order is *not* guaranteed.
@@ -5259,6 +5292,9 @@ type ReactTypeDefOptions struct {
 	// Whether the generated file should be marked as executable.
 	// Experimental.
 	Executable *bool `json:"executable" yaml:"executable"`
+	// Adds the projen marker to the file.
+	// Experimental.
+	Marker *bool `json:"marker" yaml:"marker"`
 	// Whether the generated file should be readonly.
 	// Experimental.
 	Readonly *bool `json:"readonly" yaml:"readonly"`
@@ -5284,6 +5320,7 @@ type ReactTypeScriptProject interface {
 	DevContainer() vscode.DevContainer
 	Docgen() *bool
 	DocsDirectory() *string
+	Ejected() *bool
 	Entrypoint() *string
 	Eslint() javascript.Eslint
 	Files() *[]projen.FileBase
@@ -5515,6 +5552,16 @@ func (j *jsiiProxy_ReactTypeScriptProject) DocsDirectory() *string {
 	_jsii_.Get(
 		j,
 		"docsDirectory",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ReactTypeScriptProject) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns

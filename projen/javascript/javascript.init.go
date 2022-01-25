@@ -244,6 +244,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "defaultTask", GoGetter: "DefaultTask"},
 			_jsii_.MemberProperty{JsiiProperty: "deps", GoGetter: "Deps"},
 			_jsii_.MemberProperty{JsiiProperty: "devContainer", GoGetter: "DevContainer"},
+			_jsii_.MemberProperty{JsiiProperty: "ejected", GoGetter: "Ejected"},
 			_jsii_.MemberProperty{JsiiProperty: "entrypoint", GoGetter: "Entrypoint"},
 			_jsii_.MemberProperty{JsiiProperty: "files", GoGetter: "Files"},
 			_jsii_.MemberProperty{JsiiProperty: "gitattributes", GoGetter: "Gitattributes"},

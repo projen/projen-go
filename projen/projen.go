@@ -953,6 +953,7 @@ type FileBase interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
+	Marker() *string
 	Path() *string
 	Project() Project
 	Readonly() *bool
@@ -993,6 +994,16 @@ func (j *jsiiProxy_FileBase) Executable() *bool {
 	_jsii_.Get(
 		j,
 		"executable",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_FileBase) Marker() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"marker",
 		&returns,
 	)
 	return returns
@@ -1054,17 +1065,6 @@ func (j *jsiiProxy_FileBase) SetReadonly(val *bool) {
 		"readonly",
 		val,
 	)
-}
-
-func FileBase_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.FileBase",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
 }
 
 // Called after synthesis.
@@ -1131,6 +1131,9 @@ type FileBaseOptions struct {
 	// Whether the generated file should be marked as executable.
 	// Experimental.
 	Executable *bool `json:"executable" yaml:"executable"`
+	// Adds the projen marker to the file.
+	// Experimental.
+	Marker *bool `json:"marker" yaml:"marker"`
 	// Whether the generated file should be readonly.
 	// Experimental.
 	Readonly *bool `json:"readonly" yaml:"readonly"`
@@ -1146,6 +1149,7 @@ type GitAttributesFile interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
+	Marker() *string
 	Path() *string
 	Project() Project
 	Readonly() *bool
@@ -1187,6 +1191,16 @@ func (j *jsiiProxy_GitAttributesFile) Executable() *bool {
 	_jsii_.Get(
 		j,
 		"executable",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitAttributesFile) Marker() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"marker",
 		&returns,
 	)
 	return returns
@@ -1263,17 +1277,6 @@ func (j *jsiiProxy_GitAttributesFile) SetReadonly(val *bool) {
 		"readonly",
 		val,
 	)
-}
-
-func GitAttributesFile_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.GitAttributesFile",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
 }
 
 // Maps a set of attributes to a set of files.
@@ -1889,6 +1892,7 @@ type IgnoreFile interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
+	Marker() *string
 	Path() *string
 	Project() Project
 	Readonly() *bool
@@ -1933,6 +1937,16 @@ func (j *jsiiProxy_IgnoreFile) Executable() *bool {
 	_jsii_.Get(
 		j,
 		"executable",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IgnoreFile) Marker() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"marker",
 		&returns,
 	)
 	return returns
@@ -2009,17 +2023,6 @@ func (j *jsiiProxy_IgnoreFile) SetReadonly(val *bool) {
 		"readonly",
 		val,
 	)
-}
-
-func IgnoreFile_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.IgnoreFile",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
 }
 
 // Add ignore patterns.
@@ -2145,8 +2148,7 @@ type IniFile interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
-	Marker() *bool
-	SetMarker(val *bool)
+	Marker() *string
 	OmitEmpty() *bool
 	Path() *string
 	Project() Project
@@ -2195,8 +2197,8 @@ func (j *jsiiProxy_IniFile) Executable() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_IniFile) Marker() *bool {
-	var returns *bool
+func (j *jsiiProxy_IniFile) Marker() *string {
+	var returns *string
 	_jsii_.Get(
 		j,
 		"marker",
@@ -2280,31 +2282,12 @@ func (j *jsiiProxy_IniFile) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_IniFile) SetMarker(val *bool) {
-	_jsii_.Set(
-		j,
-		"marker",
-		val,
-	)
-}
-
 func (j *jsiiProxy_IniFile) SetReadonly(val *bool) {
 	_jsii_.Set(
 		j,
 		"readonly",
 		val,
 	)
-}
-
-func IniFile_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.IniFile",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
 }
 
 // Syntactic sugar for `addOverride(path, undefined)`.
@@ -2416,12 +2399,12 @@ type IniFileOptions struct {
 	// Whether the generated file should be marked as executable.
 	// Experimental.
 	Executable *bool `json:"executable" yaml:"executable"`
-	// Whether the generated file should be readonly.
-	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
 	// Adds the projen marker to the file.
 	// Experimental.
 	Marker *bool `json:"marker" yaml:"marker"`
+	// Whether the generated file should be readonly.
+	// Experimental.
+	Readonly *bool `json:"readonly" yaml:"readonly"`
 	// The object that will be serialized.
 	//
 	// You can modify the object's contents
@@ -2474,8 +2457,7 @@ type JsonFile interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
-	Marker() *bool
-	SetMarker(val *bool)
+	Marker() *string
 	OmitEmpty() *bool
 	Path() *string
 	Project() Project
@@ -2524,8 +2506,8 @@ func (j *jsiiProxy_JsonFile) Executable() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_JsonFile) Marker() *bool {
-	var returns *bool
+func (j *jsiiProxy_JsonFile) Marker() *string {
+	var returns *string
 	_jsii_.Get(
 		j,
 		"marker",
@@ -2609,31 +2591,12 @@ func (j *jsiiProxy_JsonFile) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_JsonFile) SetMarker(val *bool) {
-	_jsii_.Set(
-		j,
-		"marker",
-		val,
-	)
-}
-
 func (j *jsiiProxy_JsonFile) SetReadonly(val *bool) {
 	_jsii_.Set(
 		j,
 		"readonly",
 		val,
 	)
-}
-
-func JsonFile_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.JsonFile",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
 }
 
 // Syntactic sugar for `addOverride(path, undefined)`.
@@ -2745,12 +2708,12 @@ type JsonFileOptions struct {
 	// Whether the generated file should be marked as executable.
 	// Experimental.
 	Executable *bool `json:"executable" yaml:"executable"`
-	// Whether the generated file should be readonly.
-	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
 	// Adds the projen marker to the file.
 	// Experimental.
 	Marker *bool `json:"marker" yaml:"marker"`
+	// Whether the generated file should be readonly.
+	// Experimental.
+	Readonly *bool `json:"readonly" yaml:"readonly"`
 	// The object that will be serialized.
 	//
 	// You can modify the object's contents
@@ -2772,6 +2735,7 @@ type License interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
+	Marker() *string
 	Path() *string
 	Project() Project
 	Readonly() *bool
@@ -2812,6 +2776,16 @@ func (j *jsiiProxy_License) Executable() *bool {
 	_jsii_.Get(
 		j,
 		"executable",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_License) Marker() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"marker",
 		&returns,
 	)
 	return returns
@@ -2888,17 +2862,6 @@ func (j *jsiiProxy_License) SetReadonly(val *bool) {
 		"readonly",
 		val,
 	)
-}
-
-func License_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.License",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
 }
 
 // Called after synthesis.
@@ -3185,6 +3148,7 @@ type Makefile interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
+	Marker() *string
 	Path() *string
 	Project() Project
 	Readonly() *bool
@@ -3230,6 +3194,16 @@ func (j *jsiiProxy_Makefile) Executable() *bool {
 	_jsii_.Get(
 		j,
 		"executable",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Makefile) Marker() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"marker",
 		&returns,
 	)
 	return returns
@@ -3316,17 +3290,6 @@ func (j *jsiiProxy_Makefile) SetReadonly(val *bool) {
 		"readonly",
 		val,
 	)
-}
-
-func Makefile_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.Makefile",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
 }
 
 // Add a target to all.
@@ -3462,6 +3425,9 @@ type MakefileOptions struct {
 	// Whether the generated file should be marked as executable.
 	// Experimental.
 	Executable *bool `json:"executable" yaml:"executable"`
+	// Adds the projen marker to the file.
+	// Experimental.
+	Marker *bool `json:"marker" yaml:"marker"`
 	// Whether the generated file should be readonly.
 	// Experimental.
 	Readonly *bool `json:"readonly" yaml:"readonly"`
@@ -3481,8 +3447,7 @@ type ObjectFile interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
-	Marker() *bool
-	SetMarker(val *bool)
+	Marker() *string
 	OmitEmpty() *bool
 	Path() *string
 	Project() Project
@@ -3531,8 +3496,8 @@ func (j *jsiiProxy_ObjectFile) Executable() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_ObjectFile) Marker() *bool {
-	var returns *bool
+func (j *jsiiProxy_ObjectFile) Marker() *string {
+	var returns *string
 	_jsii_.Get(
 		j,
 		"marker",
@@ -3601,31 +3566,12 @@ func (j *jsiiProxy_ObjectFile) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_ObjectFile) SetMarker(val *bool) {
-	_jsii_.Set(
-		j,
-		"marker",
-		val,
-	)
-}
-
 func (j *jsiiProxy_ObjectFile) SetReadonly(val *bool) {
 	_jsii_.Set(
 		j,
 		"readonly",
 		val,
 	)
-}
-
-func ObjectFile_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.ObjectFile",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
 }
 
 // Syntactic sugar for `addOverride(path, undefined)`.
@@ -3737,12 +3683,12 @@ type ObjectFileOptions struct {
 	// Whether the generated file should be marked as executable.
 	// Experimental.
 	Executable *bool `json:"executable" yaml:"executable"`
-	// Whether the generated file should be readonly.
-	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
 	// Adds the projen marker to the file.
 	// Experimental.
 	Marker *bool `json:"marker" yaml:"marker"`
+	// Whether the generated file should be readonly.
+	// Experimental.
+	Readonly *bool `json:"readonly" yaml:"readonly"`
 	// The object that will be serialized.
 	//
 	// You can modify the object's contents
@@ -3762,6 +3708,7 @@ type Project interface {
 	Components() *[]Component
 	DefaultTask() Task
 	Deps() Dependencies
+	Ejected() *bool
 	Files() *[]FileBase
 	Gitattributes() GitAttributesFile
 	Gitignore() IgnoreFile
@@ -3844,6 +3791,16 @@ func (j *jsiiProxy_Project) Deps() Dependencies {
 	_jsii_.Get(
 		j,
 		"deps",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Project) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
 		&returns,
 	)
 	return returns
@@ -5066,6 +5023,7 @@ func Semver_Tilde(version *string) Semver {
 type SourceCode interface {
 	Component
 	FilePath() *string
+	Marker() *string
 	Project() Project
 	Close(code *string)
 	Line(code *string)
@@ -5085,6 +5043,16 @@ func (j *jsiiProxy_SourceCode) FilePath() *string {
 	_jsii_.Get(
 		j,
 		"filePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_SourceCode) Marker() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"marker",
 		&returns,
 	)
 	return returns
@@ -5545,6 +5513,17 @@ func NewTaskRuntime_Override(t TaskRuntime, workdir *string) {
 	)
 }
 
+func TaskRuntime_MANIFEST_FILE() *string {
+	_init_.Initialize()
+	var returns *string
+	_jsii_.StaticGet(
+		"projen.TaskRuntime",
+		"MANIFEST_FILE",
+		&returns,
+	)
+	return returns
+}
+
 // Runs the task.
 // Experimental.
 func (t *jsiiProxy_TaskRuntime) RunTask(name *string, parents *[]*string) {
@@ -5729,17 +5708,6 @@ func NewTasks_Override(t Tasks, project Project) {
 	)
 }
 
-func Tasks_MANIFEST_FILE() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.Tasks",
-		"MANIFEST_FILE",
-		&returns,
-	)
-	return returns
-}
-
 // Adds global environment.
 // Experimental.
 func (t *jsiiProxy_Tasks) AddEnvironment(name *string, value *string) {
@@ -5882,6 +5850,7 @@ type TextFile interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
+	Marker() *string
 	Path() *string
 	Project() Project
 	Readonly() *bool
@@ -5923,6 +5892,16 @@ func (j *jsiiProxy_TextFile) Executable() *bool {
 	_jsii_.Get(
 		j,
 		"executable",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TextFile) Marker() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"marker",
 		&returns,
 	)
 	return returns
@@ -6003,17 +5982,6 @@ func (j *jsiiProxy_TextFile) SetReadonly(val *bool) {
 	)
 }
 
-func TextFile_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.TextFile",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
-}
-
 // Adds a line to the text file.
 // Experimental.
 func (t *jsiiProxy_TextFile) AddLine(line *string) {
@@ -6087,6 +6055,9 @@ type TextFileOptions struct {
 	// Whether the generated file should be marked as executable.
 	// Experimental.
 	Executable *bool `json:"executable" yaml:"executable"`
+	// Adds the projen marker to the file.
+	// Experimental.
+	Marker *bool `json:"marker" yaml:"marker"`
 	// Whether the generated file should be readonly.
 	// Experimental.
 	Readonly *bool `json:"readonly" yaml:"readonly"`
@@ -6105,8 +6076,7 @@ type TomlFile interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
-	Marker() *bool
-	SetMarker(val *bool)
+	Marker() *string
 	OmitEmpty() *bool
 	Path() *string
 	Project() Project
@@ -6155,8 +6125,8 @@ func (j *jsiiProxy_TomlFile) Executable() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_TomlFile) Marker() *bool {
-	var returns *bool
+func (j *jsiiProxy_TomlFile) Marker() *string {
+	var returns *string
 	_jsii_.Get(
 		j,
 		"marker",
@@ -6240,31 +6210,12 @@ func (j *jsiiProxy_TomlFile) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_TomlFile) SetMarker(val *bool) {
-	_jsii_.Set(
-		j,
-		"marker",
-		val,
-	)
-}
-
 func (j *jsiiProxy_TomlFile) SetReadonly(val *bool) {
 	_jsii_.Set(
 		j,
 		"readonly",
 		val,
 	)
-}
-
-func TomlFile_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.TomlFile",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
 }
 
 // Syntactic sugar for `addOverride(path, undefined)`.
@@ -6376,12 +6327,12 @@ type TomlFileOptions struct {
 	// Whether the generated file should be marked as executable.
 	// Experimental.
 	Executable *bool `json:"executable" yaml:"executable"`
-	// Whether the generated file should be readonly.
-	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
 	// Adds the projen marker to the file.
 	// Experimental.
 	Marker *bool `json:"marker" yaml:"marker"`
+	// Whether the generated file should be readonly.
+	// Experimental.
+	Readonly *bool `json:"readonly" yaml:"readonly"`
 	// The object that will be serialized.
 	//
 	// You can modify the object's contents
@@ -6571,8 +6522,7 @@ type XmlFile interface {
 	Changed() *bool
 	Executable() *bool
 	SetExecutable(val *bool)
-	Marker() *bool
-	SetMarker(val *bool)
+	Marker() *string
 	OmitEmpty() *bool
 	Path() *string
 	Project() Project
@@ -6621,8 +6571,8 @@ func (j *jsiiProxy_XmlFile) Executable() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_XmlFile) Marker() *bool {
-	var returns *bool
+func (j *jsiiProxy_XmlFile) Marker() *string {
+	var returns *string
 	_jsii_.Get(
 		j,
 		"marker",
@@ -6706,31 +6656,12 @@ func (j *jsiiProxy_XmlFile) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_XmlFile) SetMarker(val *bool) {
-	_jsii_.Set(
-		j,
-		"marker",
-		val,
-	)
-}
-
 func (j *jsiiProxy_XmlFile) SetReadonly(val *bool) {
 	_jsii_.Set(
 		j,
 		"readonly",
 		val,
 	)
-}
-
-func XmlFile_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.XmlFile",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
 }
 
 // Syntactic sugar for `addOverride(path, undefined)`.
@@ -6842,12 +6773,12 @@ type XmlFileOptions struct {
 	// Whether the generated file should be marked as executable.
 	// Experimental.
 	Executable *bool `json:"executable" yaml:"executable"`
-	// Whether the generated file should be readonly.
-	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
 	// Adds the projen marker to the file.
 	// Experimental.
 	Marker *bool `json:"marker" yaml:"marker"`
+	// Whether the generated file should be readonly.
+	// Experimental.
+	Readonly *bool `json:"readonly" yaml:"readonly"`
 	// The object that will be serialized.
 	//
 	// You can modify the object's contents
@@ -6869,8 +6800,7 @@ type YamlFile interface {
 	SetExecutable(val *bool)
 	LineWidth() *float64
 	SetLineWidth(val *float64)
-	Marker() *bool
-	SetMarker(val *bool)
+	Marker() *string
 	OmitEmpty() *bool
 	Path() *string
 	Project() Project
@@ -6929,8 +6859,8 @@ func (j *jsiiProxy_YamlFile) LineWidth() *float64 {
 	return returns
 }
 
-func (j *jsiiProxy_YamlFile) Marker() *bool {
-	var returns *bool
+func (j *jsiiProxy_YamlFile) Marker() *string {
+	var returns *string
 	_jsii_.Get(
 		j,
 		"marker",
@@ -7022,31 +6952,12 @@ func (j *jsiiProxy_YamlFile) SetLineWidth(val *float64) {
 	)
 }
 
-func (j *jsiiProxy_YamlFile) SetMarker(val *bool) {
-	_jsii_.Set(
-		j,
-		"marker",
-		val,
-	)
-}
-
 func (j *jsiiProxy_YamlFile) SetReadonly(val *bool) {
 	_jsii_.Set(
 		j,
 		"readonly",
 		val,
 	)
-}
-
-func YamlFile_PROJEN_MARKER() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.YamlFile",
-		"PROJEN_MARKER",
-		&returns,
-	)
-	return returns
 }
 
 // Syntactic sugar for `addOverride(path, undefined)`.
@@ -7158,12 +7069,12 @@ type YamlFileOptions struct {
 	// Whether the generated file should be marked as executable.
 	// Experimental.
 	Executable *bool `json:"executable" yaml:"executable"`
-	// Whether the generated file should be readonly.
-	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
 	// Adds the projen marker to the file.
 	// Experimental.
 	Marker *bool `json:"marker" yaml:"marker"`
+	// Whether the generated file should be readonly.
+	// Experimental.
+	Readonly *bool `json:"readonly" yaml:"readonly"`
 	// The object that will be serialized.
 	//
 	// You can modify the object's contents
