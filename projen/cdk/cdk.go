@@ -1675,6 +1675,9 @@ type ConstructLibraryOptions struct {
 	// Name of the ignore file for API compatibility tests.
 	// Experimental.
 	CompatIgnore *string `json:"compatIgnore" yaml:"compatIgnore"`
+	// File path for generated docs.
+	// Experimental.
+	DocgenFilePath *string `json:"docgenFilePath" yaml:"docgenFilePath"`
 	// Deprecated: use `publishToNuget`
 	Dotnet *JsiiDotNetTarget `json:"dotnet" yaml:"dotnet"`
 	// Accepts a list of glob patterns.
@@ -1718,7 +1721,7 @@ type ConstructLibraryOptions struct {
 	Catalog *Catalog `json:"catalog" yaml:"catalog"`
 }
 
-// Creates an API.md file based on the jsii manifest: - Adds a `docgen` script to package.json - Runs `jsii-docgen` after compilation - Enforces that API.md is checked in.
+// Creates a markdown file based on the jsii manifest: - Adds a `docgen` script to package.json - Runs `jsii-docgen` after compilation - Enforces that markdown file is checked in.
 // Experimental.
 type JsiiDocgen interface {
 }
@@ -1729,14 +1732,14 @@ type jsiiProxy_JsiiDocgen struct {
 }
 
 // Experimental.
-func NewJsiiDocgen(project JsiiProject) JsiiDocgen {
+func NewJsiiDocgen(project JsiiProject, options *JsiiDocgenOptions) JsiiDocgen {
 	_init_.Initialize()
 
 	j := jsiiProxy_JsiiDocgen{}
 
 	_jsii_.Create(
 		"projen.cdk.JsiiDocgen",
-		[]interface{}{project},
+		[]interface{}{project, options},
 		&j,
 	)
 
@@ -1744,14 +1747,22 @@ func NewJsiiDocgen(project JsiiProject) JsiiDocgen {
 }
 
 // Experimental.
-func NewJsiiDocgen_Override(j JsiiDocgen, project JsiiProject) {
+func NewJsiiDocgen_Override(j JsiiDocgen, project JsiiProject, options *JsiiDocgenOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.cdk.JsiiDocgen",
-		[]interface{}{project},
+		[]interface{}{project, options},
 		j,
 	)
+}
+
+// Options for `JsiiDocgen`.
+// Experimental.
+type JsiiDocgenOptions struct {
+	// File path for generated docs.
+	// Experimental.
+	FilePath *string `json:"filePath" yaml:"filePath"`
 }
 
 // Experimental.
@@ -3547,6 +3558,9 @@ type JsiiProjectOptions struct {
 	// Name of the ignore file for API compatibility tests.
 	// Experimental.
 	CompatIgnore *string `json:"compatIgnore" yaml:"compatIgnore"`
+	// File path for generated docs.
+	// Experimental.
+	DocgenFilePath *string `json:"docgenFilePath" yaml:"docgenFilePath"`
 	// Deprecated: use `publishToNuget`
 	Dotnet *JsiiDotNetTarget `json:"dotnet" yaml:"dotnet"`
 	// Accepts a list of glob patterns.

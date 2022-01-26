@@ -120,6 +120,10 @@ func init() {
 		},
 	)
 	_jsii_.RegisterStruct(
+		"projen.cdk.JsiiDocgenOptions",
+		reflect.TypeOf((*JsiiDocgenOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.cdk.JsiiDotNetTarget",
 		reflect.TypeOf((*JsiiDotNetTarget)(nil)).Elem(),
 	)

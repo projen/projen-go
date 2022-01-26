@@ -1868,6 +1868,9 @@ type AwsCdkConstructLibraryOptions struct {
 	// Name of the ignore file for API compatibility tests.
 	// Experimental.
 	CompatIgnore *string `json:"compatIgnore" yaml:"compatIgnore"`
+	// File path for generated docs.
+	// Experimental.
+	DocgenFilePath *string `json:"docgenFilePath" yaml:"docgenFilePath"`
 	// Deprecated: use `publishToNuget`
 	Dotnet *cdk.JsiiDotNetTarget `json:"dotnet" yaml:"dotnet"`
 	// Accepts a list of glob patterns.
@@ -7477,6 +7480,9 @@ type ConstructLibraryAwsOptions struct {
 	// Name of the ignore file for API compatibility tests.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	CompatIgnore *string `json:"compatIgnore" yaml:"compatIgnore"`
+	// File path for generated docs.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	DocgenFilePath *string `json:"docgenFilePath" yaml:"docgenFilePath"`
 	// Deprecated: use `publishToNuget`
 	Dotnet *cdk.JsiiDotNetTarget `json:"dotnet" yaml:"dotnet"`
 	// Accepts a list of glob patterns.
