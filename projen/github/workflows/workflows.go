@@ -288,20 +288,20 @@ type JobMatrix struct {
 	// matrix.os property as the value of the runs-on keyword to create a job
 	// for each operating system.
 	// Experimental.
-	Domain *map[string]*[]*string `json:"domain" yaml:"domain"`
+	Domain *map[string]*[]interface{} `json:"domain" yaml:"domain"`
 	// You can remove a specific configurations defined in the build matrix using the exclude option.
 	//
 	// Using exclude removes a job defined by the
 	// build matrix.
 	// Experimental.
-	Exclude *[]*map[string]*string `json:"exclude" yaml:"exclude"`
+	Exclude *[]*map[string]interface{} `json:"exclude" yaml:"exclude"`
 	// You can add additional configuration options to a build matrix job that already exists.
 	//
 	// For example, if you want to use a specific version of npm
 	// when the job that uses windows-latest and version 8 of node runs, you can
 	// use include to specify that additional option.
 	// Experimental.
-	Include *[]*map[string]*string `json:"include" yaml:"include"`
+	Include *[]*map[string]interface{} `json:"include" yaml:"include"`
 }
 
 // Access level for workflow permission scopes.
