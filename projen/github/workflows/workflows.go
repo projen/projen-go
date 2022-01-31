@@ -833,8 +833,14 @@ type WorkflowDispatchOptions struct {
 // Workflow run options.
 // Experimental.
 type WorkflowRunOptions struct {
+	// Which branches or branch-ignore to limit the trigger to.
+	// Experimental.
+	Branches *[]*string `json:"branches" yaml:"branches"`
 	// Which activity types to trigger on.
 	// Experimental.
 	Types *[]*string `json:"types" yaml:"types"`
+	// Which workflow to trigger on.
+	// Experimental.
+	Workflows *[]*string `json:"workflows" yaml:"workflows"`
 }
 
