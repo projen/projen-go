@@ -7856,6 +7856,14 @@ func (l *jsiiProxy_LambdaFunction) Synthesize() {
 // auto-discovery.
 // Experimental.
 type LambdaFunctionCommonOptions struct {
+	// Whether to automatically reuse TCP connections when working with the AWS SDK for JavaScript.
+	//
+	// This sets the `AWS_NODEJS_CONNECTION_REUSE_ENABLED` environment variable
+	// to `1`.
+	// See: https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/node-reusing-connections.html
+	//
+	// Experimental.
+	AwsSdkConnectionReuse *bool `json:"awsSdkConnectionReuse" yaml:"awsSdkConnectionReuse"`
 	// Bundling options for this AWS Lambda function.
 	//
 	// If not specified the default bundling options specified for the project
@@ -7870,6 +7878,14 @@ type LambdaFunctionCommonOptions struct {
 // Options for `Function`.
 // Experimental.
 type LambdaFunctionOptions struct {
+	// Whether to automatically reuse TCP connections when working with the AWS SDK for JavaScript.
+	//
+	// This sets the `AWS_NODEJS_CONNECTION_REUSE_ENABLED` environment variable
+	// to `1`.
+	// See: https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/node-reusing-connections.html
+	//
+	// Experimental.
+	AwsSdkConnectionReuse *bool `json:"awsSdkConnectionReuse" yaml:"awsSdkConnectionReuse"`
 	// Bundling options for this AWS Lambda function.
 	//
 	// If not specified the default bundling options specified for the project
