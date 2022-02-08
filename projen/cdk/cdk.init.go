@@ -7,6 +7,26 @@ import (
 )
 
 func init() {
+	_jsii_.RegisterClass(
+		"projen.cdk.AutoDiscoverBase",
+		reflect.TypeOf((*AutoDiscoverBase)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "entrypoints", GoGetter: "Entrypoints"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+		},
+		func() interface{} {
+			j := jsiiProxy_AutoDiscoverBase{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.cdk.AutoDiscoverBaseOptions",
+		reflect.TypeOf((*AutoDiscoverBaseOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterStruct(
 		"projen.cdk.Catalog",
 		reflect.TypeOf((*Catalog)(nil)).Elem(),
@@ -110,6 +130,51 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.cdk.ConstructLibraryOptions",
 		reflect.TypeOf((*ConstructLibraryOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.cdk.IntegrationTestAutoDiscoverBase",
+		reflect.TypeOf((*IntegrationTestAutoDiscoverBase)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "entrypoints", GoGetter: "Entrypoints"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+		},
+		func() interface{} {
+			j := jsiiProxy_IntegrationTestAutoDiscoverBase{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_AutoDiscoverBase)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.cdk.IntegrationTestAutoDiscoverBaseOptions",
+		reflect.TypeOf((*IntegrationTestAutoDiscoverBaseOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.cdk.IntegrationTestBase",
+		reflect.TypeOf((*IntegrationTestBase)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "assertTask", GoGetter: "AssertTask"},
+			_jsii_.MemberProperty{JsiiProperty: "deployTask", GoGetter: "DeployTask"},
+			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberProperty{JsiiProperty: "snapshotDir", GoGetter: "SnapshotDir"},
+			_jsii_.MemberProperty{JsiiProperty: "snapshotTask", GoGetter: "SnapshotTask"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "tmpDir", GoGetter: "TmpDir"},
+		},
+		func() interface{} {
+			j := jsiiProxy_IntegrationTestBase{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.cdk.IntegrationTestBaseOptions",
+		reflect.TypeOf((*IntegrationTestBaseOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.cdk.JsiiDocgen",

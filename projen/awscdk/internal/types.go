@@ -9,3 +9,6 @@ type Type__projenComponent = projen.Component
 type Type__cdkConstructLibrary = cdk.ConstructLibrary
 type Type__javaJavaProject = java.JavaProject
 type Type__typescriptTypeScriptAppProject = typescript.TypeScriptAppProject
+type Type__cdkIntegrationTestBase = cdk.IntegrationTestBase
+type Type__cdkIntegrationTestAutoDiscoverBase = cdk.IntegrationTestAutoDiscoverBase
+type Type__cdkAutoDiscoverBase = cdk.AutoDiscoverBase

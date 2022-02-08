@@ -27,7 +27,7 @@ const (
 	ApprovalLevel_BROADENING ApprovalLevel = "BROADENING"
 )
 
-// Automatically creates a `LambdaFunction` for all `.lambda.ts` files under the source directory of the project.
+// Discovers and creates integration tests and lambdas from code in the project's source and test trees.
 // Experimental.
 type AutoDiscover interface {
 	projen.Component
@@ -111,24 +111,41 @@ func (a *jsiiProxy_AutoDiscover) Synthesize() {
 	)
 }
 
+// Common options for auto discovering project subcomponents.
+// Experimental.
+type AutoDiscoverCommonOptions struct {
+	// AWS CDK dependency manager.
+	// Experimental.
+	CdkDeps AwsCdkDeps `json:"cdkDeps" yaml:"cdkDeps"`
+	// Path to the tsconfig file to use for integration tests.
+	// Experimental.
+	TsconfigPath *string `json:"tsconfigPath" yaml:"tsconfigPath"`
+}
+
 // Options for `AutoDiscover`.
 // Experimental.
 type AutoDiscoverOptions struct {
 	// AWS CDK dependency manager.
 	// Experimental.
 	CdkDeps AwsCdkDeps `json:"cdkDeps" yaml:"cdkDeps"`
-	// Project source tree (relative to project output directory).
-	// Experimental.
-	Srcdir *string `json:"srcdir" yaml:"srcdir"`
-	// Test source tree.
-	// Experimental.
-	Testdir *string `json:"testdir" yaml:"testdir"`
 	// Path to the tsconfig file to use for integration tests.
 	// Experimental.
 	TsconfigPath *string `json:"tsconfigPath" yaml:"tsconfigPath"`
+	// Project source tree (relative to project output directory).
+	// Experimental.
+	Srcdir *string `json:"srcdir" yaml:"srcdir"`
 	// Options for auto-discovery of AWS Lambda functions.
 	// Experimental.
 	LambdaOptions *LambdaFunctionCommonOptions `json:"lambdaOptions" yaml:"lambdaOptions"`
+	// Test source tree.
+	// Experimental.
+	Testdir *string `json:"testdir" yaml:"testdir"`
+	// Auto-discover integration tests.
+	// Experimental.
+	IntegrationTestAutoDiscover *bool `json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
+	// Auto-discover lambda functions.
+	// Experimental.
+	LambdaAutoDiscover *bool `json:"lambdaAutoDiscover" yaml:"lambdaAutoDiscover"`
 }
 
 // AWS CDK construct library project.
@@ -1951,6 +1968,9 @@ type AwsCdkConstructLibraryOptions struct {
 	// Minimum version of the `constructs` library to depend on.
 	// Experimental.
 	ConstructsVersion *string `json:"constructsVersion" yaml:"constructsVersion"`
+	// Automatically discovers and creates integration tests for each `.integ.ts` file in under your test directory.
+	// Experimental.
+	IntegrationTestAutoDiscover *bool `json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
 	// Automatically adds an `aws_lambda.Function` for each `.lambda.ts` handler in your source tree. If this is disabled, you either need to explicitly call `aws_lambda.Function.autoDiscover()` or define a `new aws_lambda.Function()` for each handler.
 	// Experimental.
 	LambdaAutoDiscover *bool `json:"lambdaAutoDiscover" yaml:"lambdaAutoDiscover"`
@@ -5422,6 +5442,9 @@ type AwsCdkTypeScriptAppOptions struct {
 	// The CDK app's entrypoint (relative to the source directory, which is "src" by default).
 	// Experimental.
 	AppEntrypoint *string `json:"appEntrypoint" yaml:"appEntrypoint"`
+	// Automatically discovers and creates integration tests for each `.integ.ts` file in under your test directory.
+	// Experimental.
+	IntegrationTestAutoDiscover *bool `json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
 	// Automatically adds an `awscdk.LambdaFunction` for each `.lambda.ts` handler in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project.
 	// Experimental.
 	LambdaAutoDiscover *bool `json:"lambdaAutoDiscover" yaml:"lambdaAutoDiscover"`
@@ -7563,6 +7586,9 @@ type ConstructLibraryAwsOptions struct {
 	// Minimum version of the `constructs` library to depend on.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	ConstructsVersion *string `json:"constructsVersion" yaml:"constructsVersion"`
+	// Automatically discovers and creates integration tests for each `.integ.ts` file in under your test directory.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	IntegrationTestAutoDiscover *bool `json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
 	// Automatically adds an `aws_lambda.Function` for each `.lambda.ts` handler in your source tree. If this is disabled, you either need to explicitly call `aws_lambda.Function.autoDiscover()` or define a `new aws_lambda.Function()` for each handler.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`
 	LambdaAutoDiscover *bool `json:"lambdaAutoDiscover" yaml:"lambdaAutoDiscover"`
@@ -7574,12 +7600,15 @@ type ConstructLibraryAwsOptions struct {
 // Cloud integration tests.
 // Experimental.
 type IntegrationTest interface {
-	projen.Component
+	cdk.IntegrationTestBase
 	AssertTask() projen.Task
 	DeployTask() projen.Task
 	DestroyTask() projen.Task
+	Name() *string
 	Project() projen.Project
+	SnapshotDir() *string
 	SnapshotTask() projen.Task
+	TmpDir() *string
 	WatchTask() projen.Task
 	PostSynthesize()
 	PreSynthesize()
@@ -7588,7 +7617,7 @@ type IntegrationTest interface {
 
 // The jsii proxy struct for IntegrationTest
 type jsiiProxy_IntegrationTest struct {
-	internal.Type__projenComponent
+	internal.Type__cdkIntegrationTestBase
 }
 
 func (j *jsiiProxy_IntegrationTest) AssertTask() projen.Task {
@@ -7621,6 +7650,16 @@ func (j *jsiiProxy_IntegrationTest) DestroyTask() projen.Task {
 	return returns
 }
 
+func (j *jsiiProxy_IntegrationTest) Name() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"name",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_IntegrationTest) Project() projen.Project {
 	var returns projen.Project
 	_jsii_.Get(
@@ -7631,11 +7670,31 @@ func (j *jsiiProxy_IntegrationTest) Project() projen.Project {
 	return returns
 }
 
+func (j *jsiiProxy_IntegrationTest) SnapshotDir() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"snapshotDir",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_IntegrationTest) SnapshotTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
 		j,
 		"snapshotTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IntegrationTest) TmpDir() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"tmpDir",
 		&returns,
 	)
 	return returns
@@ -7710,6 +7769,115 @@ func (i *jsiiProxy_IntegrationTest) Synthesize() {
 	)
 }
 
+// Creates integration tests from entry points discovered in the test tree.
+// Experimental.
+type IntegrationTestAutoDiscover interface {
+	cdk.IntegrationTestAutoDiscoverBase
+	Entrypoints() *[]*string
+	Project() projen.Project
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
+}
+
+// The jsii proxy struct for IntegrationTestAutoDiscover
+type jsiiProxy_IntegrationTestAutoDiscover struct {
+	internal.Type__cdkIntegrationTestAutoDiscoverBase
+}
+
+func (j *jsiiProxy_IntegrationTestAutoDiscover) Entrypoints() *[]*string {
+	var returns *[]*string
+	_jsii_.Get(
+		j,
+		"entrypoints",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IntegrationTestAutoDiscover) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewIntegrationTestAutoDiscover(project projen.Project, options *IntegrationTestAutoDiscoverOptions) IntegrationTestAutoDiscover {
+	_init_.Initialize()
+
+	j := jsiiProxy_IntegrationTestAutoDiscover{}
+
+	_jsii_.Create(
+		"projen.awscdk.IntegrationTestAutoDiscover",
+		[]interface{}{project, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewIntegrationTestAutoDiscover_Override(i IntegrationTestAutoDiscover, project projen.Project, options *IntegrationTestAutoDiscoverOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.awscdk.IntegrationTestAutoDiscover",
+		[]interface{}{project, options},
+		i,
+	)
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (i *jsiiProxy_IntegrationTestAutoDiscover) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		i,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (i *jsiiProxy_IntegrationTestAutoDiscover) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		i,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (i *jsiiProxy_IntegrationTestAutoDiscover) Synthesize() {
+	_jsii_.InvokeVoid(
+		i,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Options for `IntegrationTestAutoDiscover`.
+// Experimental.
+type IntegrationTestAutoDiscoverOptions struct {
+	// AWS CDK dependency manager.
+	// Experimental.
+	CdkDeps AwsCdkDeps `json:"cdkDeps" yaml:"cdkDeps"`
+	// Path to the tsconfig file to use for integration tests.
+	// Experimental.
+	TsconfigPath *string `json:"tsconfigPath" yaml:"tsconfigPath"`
+	// Test source tree.
+	// Experimental.
+	Testdir *string `json:"testdir" yaml:"testdir"`
+}
+
 // Experimental.
 type IntegrationTestCommonOptions struct {
 	// Destroy the test app after a successful deployment.
@@ -7729,9 +7897,6 @@ type IntegrationTestOptions struct {
 	// app deployed in the dev account.
 	// Experimental.
 	DestroyAfterDeploy *bool `json:"destroyAfterDeploy" yaml:"destroyAfterDeploy"`
-	// AWS CDK dependency manager.
-	// Experimental.
-	CdkDeps AwsCdkDeps `json:"cdkDeps" yaml:"cdkDeps"`
 	// A path from the project root directory to a TypeScript file which contains the integration test app.
 	//
 	// This is relative to the root directory of the project.
@@ -7746,9 +7911,124 @@ type IntegrationTestOptions struct {
 	// Name of the integration test.
 	// Experimental.
 	Name *string `json:"name" yaml:"name"`
+	// AWS CDK dependency manager.
+	// Experimental.
+	CdkDeps AwsCdkDeps `json:"cdkDeps" yaml:"cdkDeps"`
 	// A list of stacks within the integration test to deploy/destroy.
 	// Experimental.
 	Stacks *[]*string `json:"stacks" yaml:"stacks"`
+}
+
+// Creates lambdas from entry points discovered in the project's source tree.
+// Experimental.
+type LambdaAutoDiscover interface {
+	cdk.AutoDiscoverBase
+	Entrypoints() *[]*string
+	Project() projen.Project
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
+}
+
+// The jsii proxy struct for LambdaAutoDiscover
+type jsiiProxy_LambdaAutoDiscover struct {
+	internal.Type__cdkAutoDiscoverBase
+}
+
+func (j *jsiiProxy_LambdaAutoDiscover) Entrypoints() *[]*string {
+	var returns *[]*string
+	_jsii_.Get(
+		j,
+		"entrypoints",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_LambdaAutoDiscover) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewLambdaAutoDiscover(project projen.Project, options *LambdaAutoDiscoverOptions) LambdaAutoDiscover {
+	_init_.Initialize()
+
+	j := jsiiProxy_LambdaAutoDiscover{}
+
+	_jsii_.Create(
+		"projen.awscdk.LambdaAutoDiscover",
+		[]interface{}{project, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewLambdaAutoDiscover_Override(l LambdaAutoDiscover, project projen.Project, options *LambdaAutoDiscoverOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.awscdk.LambdaAutoDiscover",
+		[]interface{}{project, options},
+		l,
+	)
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (l *jsiiProxy_LambdaAutoDiscover) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		l,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (l *jsiiProxy_LambdaAutoDiscover) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		l,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (l *jsiiProxy_LambdaAutoDiscover) Synthesize() {
+	_jsii_.InvokeVoid(
+		l,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Options for `LambdaAutoDiscover`.
+// Experimental.
+type LambdaAutoDiscoverOptions struct {
+	// AWS CDK dependency manager.
+	// Experimental.
+	CdkDeps AwsCdkDeps `json:"cdkDeps" yaml:"cdkDeps"`
+	// Path to the tsconfig file to use for integration tests.
+	// Experimental.
+	TsconfigPath *string `json:"tsconfigPath" yaml:"tsconfigPath"`
+	// Project source tree (relative to project output directory).
+	// Experimental.
+	Srcdir *string `json:"srcdir" yaml:"srcdir"`
+	// Options for auto-discovery of AWS Lambda functions.
+	// Experimental.
+	LambdaOptions *LambdaFunctionCommonOptions `json:"lambdaOptions" yaml:"lambdaOptions"`
 }
 
 // Generates a pre-bundled AWS Lambda function construct from handler code.

@@ -8,6 +8,25 @@ import (
 
 func init() {
 	_jsii_.RegisterClass(
+		"projen.cdk8s.AutoDiscover",
+		reflect.TypeOf((*AutoDiscover)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+		},
+		func() interface{} {
+			j := jsiiProxy_AutoDiscover{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.cdk8s.AutoDiscoverOptions",
+		reflect.TypeOf((*AutoDiscoverOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
 		"projen.cdk8s.Cdk8sTypeScriptApp",
 		reflect.TypeOf((*Cdk8sTypeScriptApp)(nil)).Elem(),
 		[]_jsii_.Member{
@@ -212,5 +231,50 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.cdk8s.ConstructLibraryCdk8sOptions",
 		reflect.TypeOf((*ConstructLibraryCdk8sOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.cdk8s.IntegrationTest",
+		reflect.TypeOf((*IntegrationTest)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "assertTask", GoGetter: "AssertTask"},
+			_jsii_.MemberProperty{JsiiProperty: "deployTask", GoGetter: "DeployTask"},
+			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberProperty{JsiiProperty: "snapshotDir", GoGetter: "SnapshotDir"},
+			_jsii_.MemberProperty{JsiiProperty: "snapshotTask", GoGetter: "SnapshotTask"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "tmpDir", GoGetter: "TmpDir"},
+		},
+		func() interface{} {
+			j := jsiiProxy_IntegrationTest{}
+			_jsii_.InitJsiiProxy(&j.Type__cdkIntegrationTestBase)
+			return &j
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.cdk8s.IntegrationTestAutoDiscover",
+		reflect.TypeOf((*IntegrationTestAutoDiscover)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "entrypoints", GoGetter: "Entrypoints"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+		},
+		func() interface{} {
+			j := jsiiProxy_IntegrationTestAutoDiscover{}
+			_jsii_.InitJsiiProxy(&j.Type__cdkIntegrationTestAutoDiscoverBase)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.cdk8s.IntegrationTestAutoDiscoverOptions",
+		reflect.TypeOf((*IntegrationTestAutoDiscoverOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.cdk8s.IntegrationTestOptions",
+		reflect.TypeOf((*IntegrationTestOptions)(nil)).Elem(),
 	)
 }

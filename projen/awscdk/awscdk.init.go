@@ -32,6 +32,10 @@ func init() {
 		},
 	)
 	_jsii_.RegisterStruct(
+		"projen.awscdk.AutoDiscoverCommonOptions",
+		reflect.TypeOf((*AutoDiscoverCommonOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.awscdk.AutoDiscoverOptions",
 		reflect.TypeOf((*AutoDiscoverOptions)(nil)).Elem(),
 	)
@@ -555,18 +559,41 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "assertTask", GoGetter: "AssertTask"},
 			_jsii_.MemberProperty{JsiiProperty: "deployTask", GoGetter: "DeployTask"},
 			_jsii_.MemberProperty{JsiiProperty: "destroyTask", GoGetter: "DestroyTask"},
+			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberProperty{JsiiProperty: "snapshotDir", GoGetter: "SnapshotDir"},
 			_jsii_.MemberProperty{JsiiProperty: "snapshotTask", GoGetter: "SnapshotTask"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "tmpDir", GoGetter: "TmpDir"},
 			_jsii_.MemberProperty{JsiiProperty: "watchTask", GoGetter: "WatchTask"},
 		},
 		func() interface{} {
 			j := jsiiProxy_IntegrationTest{}
-			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			_jsii_.InitJsiiProxy(&j.Type__cdkIntegrationTestBase)
 			return &j
 		},
+	)
+	_jsii_.RegisterClass(
+		"projen.awscdk.IntegrationTestAutoDiscover",
+		reflect.TypeOf((*IntegrationTestAutoDiscover)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "entrypoints", GoGetter: "Entrypoints"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+		},
+		func() interface{} {
+			j := jsiiProxy_IntegrationTestAutoDiscover{}
+			_jsii_.InitJsiiProxy(&j.Type__cdkIntegrationTestAutoDiscoverBase)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.awscdk.IntegrationTestAutoDiscoverOptions",
+		reflect.TypeOf((*IntegrationTestAutoDiscoverOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.awscdk.IntegrationTestCommonOptions",
@@ -575,6 +602,26 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.awscdk.IntegrationTestOptions",
 		reflect.TypeOf((*IntegrationTestOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.awscdk.LambdaAutoDiscover",
+		reflect.TypeOf((*LambdaAutoDiscover)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "entrypoints", GoGetter: "Entrypoints"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+		},
+		func() interface{} {
+			j := jsiiProxy_LambdaAutoDiscover{}
+			_jsii_.InitJsiiProxy(&j.Type__cdkAutoDiscoverBase)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.awscdk.LambdaAutoDiscoverOptions",
+		reflect.TypeOf((*LambdaAutoDiscoverOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.awscdk.LambdaFunction",

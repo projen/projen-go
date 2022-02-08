@@ -16,6 +16,104 @@ import (
 	"github.com/projen/projen-go/projen/vscode"
 )
 
+// Automatically discovers and creates `IntegrationTest`s from entry points found in the test tree.
+// Experimental.
+type AutoDiscover interface {
+	projen.Component
+	Project() projen.Project
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
+}
+
+// The jsii proxy struct for AutoDiscover
+type jsiiProxy_AutoDiscover struct {
+	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_AutoDiscover) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewAutoDiscover(project projen.Project, options *AutoDiscoverOptions) AutoDiscover {
+	_init_.Initialize()
+
+	j := jsiiProxy_AutoDiscover{}
+
+	_jsii_.Create(
+		"projen.cdk8s.AutoDiscover",
+		[]interface{}{project, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewAutoDiscover_Override(a AutoDiscover, project projen.Project, options *AutoDiscoverOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.cdk8s.AutoDiscover",
+		[]interface{}{project, options},
+		a,
+	)
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (a *jsiiProxy_AutoDiscover) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (a *jsiiProxy_AutoDiscover) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (a *jsiiProxy_AutoDiscover) Synthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Options for `AutoDiscover`.
+// Experimental.
+type AutoDiscoverOptions struct {
+	// Test source tree.
+	// Experimental.
+	Testdir *string `json:"testdir" yaml:"testdir"`
+	// Path to the tsconfig file to use for integration tests.
+	// Experimental.
+	TsconfigPath *string `json:"tsconfigPath" yaml:"tsconfigPath"`
+	// Automatically discover integration tests.
+	// Experimental.
+	IntegrationTestAutoDiscover *bool `json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
+}
+
 // CDK8s app in TypeScript.
 // Experimental.
 type Cdk8sTypeScriptApp interface {
@@ -1746,6 +1844,9 @@ type Cdk8sTypeScriptAppOptions struct {
 	// If you use experimental features this will let you define the moment you include breaking changes.
 	// Experimental.
 	ConstructsVersionPinning *bool `json:"constructsVersionPinning" yaml:"constructsVersionPinning"`
+	// Automatically adds an `cdk8s.IntegrationTest` for each `.integ.ts` app in your test directory. If this is disabled, you can manually add an `cdk8s.AutoDiscover` component to your project.
+	// Experimental.
+	IntegrationTestAutoDiscover *bool `json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
 	// Import a specific Kubernetes spec version.
 	// Experimental.
 	K8sSpecVersion *string `json:"k8sSpecVersion" yaml:"k8sSpecVersion"`
@@ -3510,5 +3611,282 @@ type ConstructLibraryCdk8sOptions struct {
 	// If you use experimental features this will let you define the moment you include breaking changes.
 	// Experimental.
 	ConstructsVersionPinning *bool `json:"constructsVersionPinning" yaml:"constructsVersionPinning"`
+	// Automatically adds an `cdk8s.IntegrationTest` for each `.integ.ts` app in your test directory. If this is disabled, you can manually add an `cdk8s.AutoDiscover` component to your project.
+	// Experimental.
+	IntegrationTestAutoDiscover *bool `json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
+}
+
+// CDK8S integration test.
+// Experimental.
+type IntegrationTest interface {
+	cdk.IntegrationTestBase
+	AssertTask() projen.Task
+	DeployTask() projen.Task
+	Name() *string
+	Project() projen.Project
+	SnapshotDir() *string
+	SnapshotTask() projen.Task
+	TmpDir() *string
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
+}
+
+// The jsii proxy struct for IntegrationTest
+type jsiiProxy_IntegrationTest struct {
+	internal.Type__cdkIntegrationTestBase
+}
+
+func (j *jsiiProxy_IntegrationTest) AssertTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"assertTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IntegrationTest) DeployTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"deployTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IntegrationTest) Name() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"name",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IntegrationTest) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IntegrationTest) SnapshotDir() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"snapshotDir",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IntegrationTest) SnapshotTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"snapshotTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IntegrationTest) TmpDir() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"tmpDir",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewIntegrationTest(project projen.Project, options *IntegrationTestOptions) IntegrationTest {
+	_init_.Initialize()
+
+	j := jsiiProxy_IntegrationTest{}
+
+	_jsii_.Create(
+		"projen.cdk8s.IntegrationTest",
+		[]interface{}{project, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewIntegrationTest_Override(i IntegrationTest, project projen.Project, options *IntegrationTestOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.cdk8s.IntegrationTest",
+		[]interface{}{project, options},
+		i,
+	)
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (i *jsiiProxy_IntegrationTest) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		i,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (i *jsiiProxy_IntegrationTest) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		i,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (i *jsiiProxy_IntegrationTest) Synthesize() {
+	_jsii_.InvokeVoid(
+		i,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Discovers and creates integration tests from files in the test root.
+// Experimental.
+type IntegrationTestAutoDiscover interface {
+	cdk.IntegrationTestAutoDiscoverBase
+	Entrypoints() *[]*string
+	Project() projen.Project
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
+}
+
+// The jsii proxy struct for IntegrationTestAutoDiscover
+type jsiiProxy_IntegrationTestAutoDiscover struct {
+	internal.Type__cdkIntegrationTestAutoDiscoverBase
+}
+
+func (j *jsiiProxy_IntegrationTestAutoDiscover) Entrypoints() *[]*string {
+	var returns *[]*string
+	_jsii_.Get(
+		j,
+		"entrypoints",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IntegrationTestAutoDiscover) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewIntegrationTestAutoDiscover(project projen.Project, options *IntegrationTestAutoDiscoverOptions) IntegrationTestAutoDiscover {
+	_init_.Initialize()
+
+	j := jsiiProxy_IntegrationTestAutoDiscover{}
+
+	_jsii_.Create(
+		"projen.cdk8s.IntegrationTestAutoDiscover",
+		[]interface{}{project, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewIntegrationTestAutoDiscover_Override(i IntegrationTestAutoDiscover, project projen.Project, options *IntegrationTestAutoDiscoverOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.cdk8s.IntegrationTestAutoDiscover",
+		[]interface{}{project, options},
+		i,
+	)
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (i *jsiiProxy_IntegrationTestAutoDiscover) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		i,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (i *jsiiProxy_IntegrationTestAutoDiscover) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		i,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (i *jsiiProxy_IntegrationTestAutoDiscover) Synthesize() {
+	_jsii_.InvokeVoid(
+		i,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Experimental.
+type IntegrationTestAutoDiscoverOptions struct {
+	// Test source tree.
+	// Experimental.
+	Testdir *string `json:"testdir" yaml:"testdir"`
+	// Path to the tsconfig file to use for integration tests.
+	// Experimental.
+	TsconfigPath *string `json:"tsconfigPath" yaml:"tsconfigPath"`
+}
+
+// Options for IntegrationTest.
+// Experimental.
+type IntegrationTestOptions struct {
+	// A path from the project root directory to a TypeScript file which contains the integration test app.
+	//
+	// This is relative to the root directory of the project.
+	//
+	// TODO: EXAMPLE
+	//
+	// Experimental.
+	Entrypoint *string `json:"entrypoint" yaml:"entrypoint"`
+	// The path of the tsconfig.json file to use when running integration test cdk apps.
+	// Experimental.
+	TsconfigPath *string `json:"tsconfigPath" yaml:"tsconfigPath"`
+	// Name of the integration test.
+	// Experimental.
+	Name *string `json:"name" yaml:"name"`
 }
 
