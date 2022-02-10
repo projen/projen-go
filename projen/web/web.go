@@ -1421,7 +1421,7 @@ type NextJsProjectOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability" yaml:"stability"`
-	// Version requirement of `jsii-release` which is used to publish modules to npm.
+	// Version requirement of `publib` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.
@@ -3050,7 +3050,7 @@ type NextJsTypeScriptProjectOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability" yaml:"stability"`
-	// Version requirement of `jsii-release` which is used to publish modules to npm.
+	// Version requirement of `publib` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.
@@ -4801,7 +4801,7 @@ type ReactProjectOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability" yaml:"stability"`
-	// Version requirement of `jsii-release` which is used to publish modules to npm.
+	// Version requirement of `publib` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.
@@ -6679,7 +6679,7 @@ type ReactTypeScriptProjectOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability" yaml:"stability"`
-	// Version requirement of `jsii-release` which is used to publish modules to npm.
+	// Version requirement of `publib` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.

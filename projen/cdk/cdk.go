@@ -1475,7 +1475,7 @@ type ConstructLibraryOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability" yaml:"stability"`
-	// Version requirement of `jsii-release` which is used to publish modules to npm.
+	// Version requirement of `publib` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.
@@ -2201,7 +2201,7 @@ type JsiiJavaTarget struct {
 	// GitHub secret name which contains the GPG private key or file that includes it.
 	//
 	// This is used to sign your Maven packages. See instructions.
-	// See: https://github.com/aws/jsii-release#maven
+	// See: https://github.com/aws/publib#maven
 	//
 	// Experimental.
 	MavenGpgPrivateKeyPassphrase *string `json:"mavenGpgPrivateKeyPassphrase" yaml:"mavenGpgPrivateKeyPassphrase"`
@@ -2209,7 +2209,7 @@ type JsiiJavaTarget struct {
 	//
 	// This is used to sign your Maven
 	// packages. See instructions.
-	// See: https://github.com/aws/jsii-release#maven
+	// See: https://github.com/aws/publib#maven
 	//
 	// Experimental.
 	MavenGpgPrivateKeySecret *string `json:"mavenGpgPrivateKeySecret" yaml:"mavenGpgPrivateKeySecret"`
@@ -3614,7 +3614,7 @@ type JsiiProjectOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `json:"stability" yaml:"stability"`
-	// Version requirement of `jsii-release` which is used to publish modules to npm.
+	// Version requirement of `publib` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.

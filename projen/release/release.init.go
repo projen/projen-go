@@ -75,6 +75,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberProperty{JsiiProperty: "publibVersion", GoGetter: "PublibVersion"},
 			_jsii_.MemberMethod{JsiiMethod: "publishToGit", GoMethod: "PublishToGit"},
 			_jsii_.MemberMethod{JsiiMethod: "publishToGitHubReleases", GoMethod: "PublishToGitHubReleases"},
 			_jsii_.MemberMethod{JsiiMethod: "publishToGo", GoMethod: "PublishToGo"},

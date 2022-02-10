@@ -217,7 +217,7 @@ type JsiiReleaseMaven struct {
 	// GitHub secret name which contains the GPG private key or file that includes it.
 	//
 	// This is used to sign your Maven packages. See instructions.
-	// See: https://github.com/aws/jsii-release#maven
+	// See: https://github.com/aws/publib#maven
 	//
 	// Deprecated: Use `MavenPublishOptions` instead.
 	MavenGpgPrivateKeyPassphrase *string `json:"mavenGpgPrivateKeyPassphrase" yaml:"mavenGpgPrivateKeyPassphrase"`
@@ -225,7 +225,7 @@ type JsiiReleaseMaven struct {
 	//
 	// This is used to sign your Maven
 	// packages. See instructions.
-	// See: https://github.com/aws/jsii-release#maven
+	// See: https://github.com/aws/publib#maven
 	//
 	// Deprecated: Use `MavenPublishOptions` instead.
 	MavenGpgPrivateKeySecret *string `json:"mavenGpgPrivateKeySecret" yaml:"mavenGpgPrivateKeySecret"`
@@ -384,7 +384,7 @@ type MavenPublishOptions struct {
 	// GitHub secret name which contains the GPG private key or file that includes it.
 	//
 	// This is used to sign your Maven packages. See instructions.
-	// See: https://github.com/aws/jsii-release#maven
+	// See: https://github.com/aws/publib#maven
 	//
 	// Experimental.
 	MavenGpgPrivateKeyPassphrase *string `json:"mavenGpgPrivateKeyPassphrase" yaml:"mavenGpgPrivateKeyPassphrase"`
@@ -392,7 +392,7 @@ type MavenPublishOptions struct {
 	//
 	// This is used to sign your Maven
 	// packages. See instructions.
-	// See: https://github.com/aws/jsii-release#maven
+	// See: https://github.com/aws/publib#maven
 	//
 	// Experimental.
 	MavenGpgPrivateKeySecret *string `json:"mavenGpgPrivateKeySecret" yaml:"mavenGpgPrivateKeySecret"`
@@ -492,7 +492,7 @@ type NugetPublishOptions struct {
 
 // Implements GitHub jobs for publishing modules to package managers.
 //
-// Under the hood, it uses https://github.com/aws/jsii-release
+// Under the hood, it uses https://github.com/aws/publib
 // Experimental.
 type Publisher interface {
 	projen.Component
@@ -501,6 +501,7 @@ type Publisher interface {
 	Condition() *string
 	JsiiReleaseVersion() *string
 	Project() projen.Project
+	PublibVersion() *string
 	AddGitHubPrePublishingSteps(steps ...*workflows.JobStep)
 	PostSynthesize()
 	PreSynthesize()
@@ -564,6 +565,16 @@ func (j *jsiiProxy_Publisher) Project() projen.Project {
 	_jsii_.Get(
 		j,
 		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Publisher) PublibVersion() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"publibVersion",
 		&returns,
 	)
 	return returns
@@ -728,7 +739,7 @@ type PublisherOptions struct {
 	// The artifact is expected to include a subdirectory for each release target:
 	// `go` (GitHub), `dotnet` (NuGet), `java` (Maven), `js` (npm), `python`
 	// (PyPI).
-	// See: https://github.com/aws/jsii-release
+	// See: https://github.com/aws/publib
 	//
 	// Experimental.
 	ArtifactName *string `json:"artifactName" yaml:"artifactName"`
@@ -753,9 +764,11 @@ type PublisherOptions struct {
 	// Only applies if `failureIssue` is true.
 	// Experimental.
 	FailureIssueLabel *string `json:"failureIssueLabel" yaml:"failureIssueLabel"`
-	// Version requirement for `jsii-release`.
-	// Experimental.
+	// Deprecated: use `publibVersion` instead
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
+	// Version requirement for `publib`.
+	// Experimental.
+	PublibVersion *string `json:"publibVersion" yaml:"publibVersion"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
@@ -940,7 +953,7 @@ func (r *jsiiProxy_Release) Synthesize() {
 // Options for `Release`.
 // Experimental.
 type ReleaseOptions struct {
-	// Version requirement of `jsii-release` which is used to publish modules to npm.
+	// Version requirement of `publib` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.
@@ -1054,7 +1067,7 @@ type ReleaseOptions struct {
 // Project options for release.
 // Experimental.
 type ReleaseProjectOptions struct {
-	// Version requirement of `jsii-release` which is used to publish modules to npm.
+	// Version requirement of `publib` which is used to publish modules to npm.
 	// Experimental.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.
