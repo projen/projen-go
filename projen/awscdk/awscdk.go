@@ -140,6 +140,9 @@ type AutoDiscoverOptions struct {
 	// Test source tree.
 	// Experimental.
 	Testdir *string `json:"testdir" yaml:"testdir"`
+	// Options for integration tests.
+	// Experimental.
+	IntegrationTestOptions *IntegrationTestCommonOptions `json:"integrationTestOptions" yaml:"integrationTestOptions"`
 	// Auto-discover integration tests.
 	// Experimental.
 	IntegrationTestAutoDiscover *bool `json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
@@ -7876,6 +7879,9 @@ type IntegrationTestAutoDiscoverOptions struct {
 	// Test source tree.
 	// Experimental.
 	Testdir *string `json:"testdir" yaml:"testdir"`
+	// Options for integration tests.
+	// Experimental.
+	IntegrationTestOptions *IntegrationTestCommonOptions `json:"integrationTestOptions" yaml:"integrationTestOptions"`
 }
 
 // Experimental.
@@ -7886,6 +7892,9 @@ type IntegrationTestCommonOptions struct {
 	// app deployed in the dev account.
 	// Experimental.
 	DestroyAfterDeploy *bool `json:"destroyAfterDeploy" yaml:"destroyAfterDeploy"`
+	// Enables path metadata, adding `aws:cdk:path`, with the defining construct's path, to the CloudFormation metadata for each synthesized resource.
+	// Experimental.
+	PathMetadata *bool `json:"pathMetadata" yaml:"pathMetadata"`
 }
 
 // Options for `IntegrationTest`.
@@ -7897,6 +7906,9 @@ type IntegrationTestOptions struct {
 	// app deployed in the dev account.
 	// Experimental.
 	DestroyAfterDeploy *bool `json:"destroyAfterDeploy" yaml:"destroyAfterDeploy"`
+	// Enables path metadata, adding `aws:cdk:path`, with the defining construct's path, to the CloudFormation metadata for each synthesized resource.
+	// Experimental.
+	PathMetadata *bool `json:"pathMetadata" yaml:"pathMetadata"`
 	// A path from the project root directory to a TypeScript file which contains the integration test app.
 	//
 	// This is relative to the root directory of the project.
