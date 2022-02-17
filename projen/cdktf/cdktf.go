@@ -1732,5 +1732,8 @@ type ConstructLibraryCdktfOptions struct {
 	// Minimum target version this library is tested against.
 	// Experimental.
 	CdktfVersion *string `json:"cdktfVersion" yaml:"cdktfVersion"`
+	// Construct version to use.
+	// Experimental.
+	ConstructsVersion *string `json:"constructsVersion" yaml:"constructsVersion"`
 }
 
