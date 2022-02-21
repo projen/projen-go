@@ -331,9 +331,15 @@ type JobPermissions struct {
 	// Experimental.
 	Deployments JobPermission `json:"deployments" yaml:"deployments"`
 	// Experimental.
+	Discussions JobPermission `json:"discussions" yaml:"discussions"`
+	// Experimental.
+	IdToken JobPermission `json:"idToken" yaml:"idToken"`
+	// Experimental.
 	Issues JobPermission `json:"issues" yaml:"issues"`
 	// Experimental.
 	Packages JobPermission `json:"packages" yaml:"packages"`
+	// Experimental.
+	Pages JobPermission `json:"pages" yaml:"pages"`
 	// Experimental.
 	PullRequests JobPermission `json:"pullRequests" yaml:"pullRequests"`
 	// Experimental.
