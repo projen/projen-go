@@ -814,6 +814,7 @@ type ProjenrcOptions struct {
 type Pytest interface {
 	projen.Component
 	Project() projen.Project
+	Testdir() *string
 	PostSynthesize()
 	PreSynthesize()
 	Synthesize()
@@ -829,6 +830,16 @@ func (j *jsiiProxy_Pytest) Project() projen.Project {
 	_jsii_.Get(
 		j,
 		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Pytest) Testdir() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"testdir",
 		&returns,
 	)
 	return returns
@@ -907,6 +918,89 @@ type PytestOptions struct {
 }
 
 // Experimental.
+type PytestSample interface {
+	projen.Component
+	Project() projen.Project
+	PostSynthesize()
+	PreSynthesize()
+	Synthesize()
+}
+
+// The jsii proxy struct for PytestSample
+type jsiiProxy_PytestSample struct {
+	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_PytestSample) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewPytestSample(project PythonProject, testdir *string) PytestSample {
+	_init_.Initialize()
+
+	j := jsiiProxy_PytestSample{}
+
+	_jsii_.Create(
+		"projen.python.PytestSample",
+		[]interface{}{project, testdir},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewPytestSample_Override(p PytestSample, project PythonProject, testdir *string) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.python.PytestSample",
+		[]interface{}{project, testdir},
+		p,
+	)
+}
+
+// Called after synthesis.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (p *jsiiProxy_PytestSample) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		p,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before synthesis.
+// Experimental.
+func (p *jsiiProxy_PytestSample) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		p,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Synthesizes files to the project output directory.
+// Experimental.
+func (p *jsiiProxy_PytestSample) Synthesize() {
+	_jsii_.InvokeVoid(
+		p,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Experimental.
 type PythonPackagingOptions struct {
 	// Author's e-mail.
 	// Experimental.
@@ -972,6 +1066,7 @@ type PythonProject interface {
 	ProjectType() projen.ProjectType
 	ProjenCommand() *string
 	Pytest() Pytest
+	SetPytest(val Pytest)
 	Root() projen.Project
 	Tasks() projen.Tasks
 	TestTask() projen.Task
@@ -1364,6 +1459,14 @@ func NewPythonProject_Override(p PythonProject, options *PythonProjectOptions) {
 		"projen.python.PythonProject",
 		[]interface{}{options},
 		p,
+	)
+}
+
+func (j *jsiiProxy_PythonProject) SetPytest(val Pytest) {
+	_jsii_.Set(
+		j,
+		"pytest",
+		val,
 	)
 }
 

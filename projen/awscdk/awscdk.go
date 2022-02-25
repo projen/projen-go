@@ -12,6 +12,7 @@ import (
 	"github.com/projen/projen-go/projen/github/workflows"
 	"github.com/projen/projen-go/projen/java"
 	"github.com/projen/projen-go/projen/javascript"
+	"github.com/projen/projen-go/projen/python"
 	"github.com/projen/projen-go/projen/release"
 	"github.com/projen/projen-go/projen/typescript"
 	"github.com/projen/projen-go/projen/vscode"
@@ -3658,6 +3659,992 @@ type AwsCdkPackageNames struct {
 	// Fully qualified name of the assert library package Can be empty as it's only really available for javascript projects.
 	// Experimental.
 	Assert *string `json:"assert" yaml:"assert"`
+}
+
+// AWS CDK app in Python.
+// Experimental.
+type AwsCdkPythonApp interface {
+	python.PythonProject
+	AppEntrypoint() *string
+	AutoApprove() github.AutoApprove
+	BuildTask() projen.Task
+	CdkConfig() CdkConfig
+	CdkDeps() AwsCdkDeps
+	CdkTasks() CdkTasks
+	CdkVersion() *string
+	CompileTask() projen.Task
+	Components() *[]projen.Component
+	DefaultTask() projen.Task
+	Deps() projen.Dependencies
+	DepsManager() python.IPythonDeps
+	DevContainer() vscode.DevContainer
+	Ejected() *bool
+	EnvManager() python.IPythonEnv
+	Files() *[]projen.FileBase
+	Gitattributes() projen.GitAttributesFile
+	Github() github.GitHub
+	Gitignore() projen.IgnoreFile
+	Gitpod() projen.Gitpod
+	InitProject() *projen.InitProject
+	Logger() projen.Logger
+	ModuleName() *string
+	Name() *string
+	Outdir() *string
+	PackageTask() projen.Task
+	PackagingManager() python.IPythonPackaging
+	Parent() projen.Project
+	PostCompileTask() projen.Task
+	PreCompileTask() projen.Task
+	ProjectBuild() projen.ProjectBuild
+	ProjectType() projen.ProjectType
+	ProjenCommand() *string
+	Pytest() python.Pytest
+	SetPytest(val python.Pytest)
+	Root() projen.Project
+	Tasks() projen.Tasks
+	Testdir() *string
+	TestTask() projen.Task
+	Version() *string
+	Vscode() vscode.VsCode
+	AddDependency(spec *string)
+	AddDevDependency(spec *string)
+	AddExcludeFromCleanup(globs ...*string)
+	AddGitIgnore(pattern *string)
+	AddPackageIgnore(_pattern *string)
+	AddTask(name *string, props *projen.TaskOptions) projen.Task
+	AddTip(message *string)
+	AnnotateGenerated(glob *string)
+	PostSynthesize()
+	PreSynthesize()
+	RemoveTask(name *string) projen.Task
+	RunTaskCommand(task projen.Task) *string
+	Synth()
+	TryFindFile(filePath *string) projen.FileBase
+	TryFindJsonFile(filePath *string) projen.JsonFile
+	TryFindObjectFile(filePath *string) projen.ObjectFile
+}
+
+// The jsii proxy struct for AwsCdkPythonApp
+type jsiiProxy_AwsCdkPythonApp struct {
+	internal.Type__pythonPythonProject
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) AppEntrypoint() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"appEntrypoint",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) AutoApprove() github.AutoApprove {
+	var returns github.AutoApprove
+	_jsii_.Get(
+		j,
+		"autoApprove",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) BuildTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"buildTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) CdkConfig() CdkConfig {
+	var returns CdkConfig
+	_jsii_.Get(
+		j,
+		"cdkConfig",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) CdkDeps() AwsCdkDeps {
+	var returns AwsCdkDeps
+	_jsii_.Get(
+		j,
+		"cdkDeps",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) CdkTasks() CdkTasks {
+	var returns CdkTasks
+	_jsii_.Get(
+		j,
+		"cdkTasks",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) CdkVersion() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"cdkVersion",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) CompileTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"compileTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Components() *[]projen.Component {
+	var returns *[]projen.Component
+	_jsii_.Get(
+		j,
+		"components",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) DefaultTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"defaultTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Deps() projen.Dependencies {
+	var returns projen.Dependencies
+	_jsii_.Get(
+		j,
+		"deps",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) DepsManager() python.IPythonDeps {
+	var returns python.IPythonDeps
+	_jsii_.Get(
+		j,
+		"depsManager",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) DevContainer() vscode.DevContainer {
+	var returns vscode.DevContainer
+	_jsii_.Get(
+		j,
+		"devContainer",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Ejected() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"ejected",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) EnvManager() python.IPythonEnv {
+	var returns python.IPythonEnv
+	_jsii_.Get(
+		j,
+		"envManager",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Files() *[]projen.FileBase {
+	var returns *[]projen.FileBase
+	_jsii_.Get(
+		j,
+		"files",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Gitattributes() projen.GitAttributesFile {
+	var returns projen.GitAttributesFile
+	_jsii_.Get(
+		j,
+		"gitattributes",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Github() github.GitHub {
+	var returns github.GitHub
+	_jsii_.Get(
+		j,
+		"github",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Gitignore() projen.IgnoreFile {
+	var returns projen.IgnoreFile
+	_jsii_.Get(
+		j,
+		"gitignore",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Gitpod() projen.Gitpod {
+	var returns projen.Gitpod
+	_jsii_.Get(
+		j,
+		"gitpod",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) InitProject() *projen.InitProject {
+	var returns *projen.InitProject
+	_jsii_.Get(
+		j,
+		"initProject",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Logger() projen.Logger {
+	var returns projen.Logger
+	_jsii_.Get(
+		j,
+		"logger",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) ModuleName() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"moduleName",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Name() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"name",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Outdir() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"outdir",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) PackageTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"packageTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) PackagingManager() python.IPythonPackaging {
+	var returns python.IPythonPackaging
+	_jsii_.Get(
+		j,
+		"packagingManager",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Parent() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"parent",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) PostCompileTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"postCompileTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) PreCompileTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"preCompileTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) ProjectBuild() projen.ProjectBuild {
+	var returns projen.ProjectBuild
+	_jsii_.Get(
+		j,
+		"projectBuild",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) ProjectType() projen.ProjectType {
+	var returns projen.ProjectType
+	_jsii_.Get(
+		j,
+		"projectType",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) ProjenCommand() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"projenCommand",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Pytest() python.Pytest {
+	var returns python.Pytest
+	_jsii_.Get(
+		j,
+		"pytest",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Root() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"root",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Tasks() projen.Tasks {
+	var returns projen.Tasks
+	_jsii_.Get(
+		j,
+		"tasks",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Testdir() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"testdir",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) TestTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"testTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Version() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"version",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) Vscode() vscode.VsCode {
+	var returns vscode.VsCode
+	_jsii_.Get(
+		j,
+		"vscode",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewAwsCdkPythonApp(options *AwsCdkPythonAppOptions) AwsCdkPythonApp {
+	_init_.Initialize()
+
+	j := jsiiProxy_AwsCdkPythonApp{}
+
+	_jsii_.Create(
+		"projen.awscdk.AwsCdkPythonApp",
+		[]interface{}{options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewAwsCdkPythonApp_Override(a AwsCdkPythonApp, options *AwsCdkPythonAppOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.awscdk.AwsCdkPythonApp",
+		[]interface{}{options},
+		a,
+	)
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) SetPytest(val python.Pytest) {
+	_jsii_.Set(
+		j,
+		"pytest",
+		val,
+	)
+}
+
+func AwsCdkPythonApp_DEFAULT_TASK() *string {
+	_init_.Initialize()
+	var returns *string
+	_jsii_.StaticGet(
+		"projen.awscdk.AwsCdkPythonApp",
+		"DEFAULT_TASK",
+		&returns,
+	)
+	return returns
+}
+
+// Adds a runtime dependency.
+// Experimental.
+func (a *jsiiProxy_AwsCdkPythonApp) AddDependency(spec *string) {
+	_jsii_.InvokeVoid(
+		a,
+		"addDependency",
+		[]interface{}{spec},
+	)
+}
+
+// Adds a dev dependency.
+// Experimental.
+func (a *jsiiProxy_AwsCdkPythonApp) AddDevDependency(spec *string) {
+	_jsii_.InvokeVoid(
+		a,
+		"addDevDependency",
+		[]interface{}{spec},
+	)
+}
+
+// Exclude the matching files from pre-synth cleanup.
+//
+// Can be used when, for example, some
+// source files include the projen marker and we don't want them to be erased during synth.
+// Experimental.
+func (a *jsiiProxy_AwsCdkPythonApp) AddExcludeFromCleanup(globs ...*string) {
+	args := []interface{}{}
+	for _, a := range globs {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		a,
+		"addExcludeFromCleanup",
+		args,
+	)
+}
+
+// Adds a .gitignore pattern.
+// Experimental.
+func (a *jsiiProxy_AwsCdkPythonApp) AddGitIgnore(pattern *string) {
+	_jsii_.InvokeVoid(
+		a,
+		"addGitIgnore",
+		[]interface{}{pattern},
+	)
+}
+
+// Exclude these files from the bundled package.
+//
+// Implemented by project types based on the
+// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+// Experimental.
+func (a *jsiiProxy_AwsCdkPythonApp) AddPackageIgnore(_pattern *string) {
+	_jsii_.InvokeVoid(
+		a,
+		"addPackageIgnore",
+		[]interface{}{_pattern},
+	)
+}
+
+// Adds a new task to this project.
+//
+// This will fail if the project already has
+// a task with this name.
+// Experimental.
+func (a *jsiiProxy_AwsCdkPythonApp) AddTask(name *string, props *projen.TaskOptions) projen.Task {
+	var returns projen.Task
+
+	_jsii_.Invoke(
+		a,
+		"addTask",
+		[]interface{}{name, props},
+		&returns,
+	)
+
+	return returns
+}
+
+// Prints a "tip" message during synthesis.
+// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
+func (a *jsiiProxy_AwsCdkPythonApp) AddTip(message *string) {
+	_jsii_.InvokeVoid(
+		a,
+		"addTip",
+		[]interface{}{message},
+	)
+}
+
+// Marks the provided file(s) as being generated.
+//
+// This is achieved using the
+// github-linguist attributes. Generated files do not count against the
+// repository statistics and language breakdown.
+// See: https://github.com/github/linguist/blob/master/docs/overrides.md
+//
+// Deprecated.
+func (a *jsiiProxy_AwsCdkPythonApp) AnnotateGenerated(glob *string) {
+	_jsii_.InvokeVoid(
+		a,
+		"annotateGenerated",
+		[]interface{}{glob},
+	)
+}
+
+// Called after all components are synthesized.
+//
+// Order is *not* guaranteed.
+// Experimental.
+func (a *jsiiProxy_AwsCdkPythonApp) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Called before all components are synthesized.
+// Experimental.
+func (a *jsiiProxy_AwsCdkPythonApp) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		a,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+// Removes a task from a project.
+//
+// Returns: The `Task` that was removed, otherwise `undefined`.
+// Experimental.
+func (a *jsiiProxy_AwsCdkPythonApp) RemoveTask(name *string) projen.Task {
+	var returns projen.Task
+
+	_jsii_.Invoke(
+		a,
+		"removeTask",
+		[]interface{}{name},
+		&returns,
+	)
+
+	return returns
+}
+
+// Returns the shell command to execute in order to run a task.
+//
+// By default, this is `npx projen@<version> <task>`
+// Experimental.
+func (a *jsiiProxy_AwsCdkPythonApp) RunTaskCommand(task projen.Task) *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		a,
+		"runTaskCommand",
+		[]interface{}{task},
+		&returns,
+	)
+
+	return returns
+}
+
+// Synthesize all project files into `outdir`.
+//
+// 1. Call "this.preSynthesize()"
+// 2. Delete all generated files
+// 3. Synthesize all sub-projects
+// 4. Synthesize all components of this project
+// 5. Call "postSynthesize()" for all components of this project
+// 6. Call "this.postSynthesize()"
+// Experimental.
+func (a *jsiiProxy_AwsCdkPythonApp) Synth() {
+	_jsii_.InvokeVoid(
+		a,
+		"synth",
+		nil, // no parameters
+	)
+}
+
+// Finds a file at the specified relative path within this project and all its subprojects.
+//
+// Returns: a `FileBase` or undefined if there is no file in that path
+// Experimental.
+func (a *jsiiProxy_AwsCdkPythonApp) TryFindFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		a,
+		"tryFindFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+// Finds a json file by name.
+// Deprecated: use `tryFindObjectFile`
+func (a *jsiiProxy_AwsCdkPythonApp) TryFindJsonFile(filePath *string) projen.JsonFile {
+	var returns projen.JsonFile
+
+	_jsii_.Invoke(
+		a,
+		"tryFindJsonFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+// Experimental.
+func (a *jsiiProxy_AwsCdkPythonApp) TryFindObjectFile(filePath *string) projen.ObjectFile {
+	var returns projen.ObjectFile
+
+	_jsii_.Invoke(
+		a,
+		"tryFindObjectFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+// Options for `AwsCdkPythonApp`.
+// Experimental.
+type AwsCdkPythonAppOptions struct {
+	// This is the name of your project.
+	// Experimental.
+	Name *string `json:"name" yaml:"name"`
+	// Configure logging options such as verbosity.
+	// Experimental.
+	Logging *projen.LoggerOptions `json:"logging" yaml:"logging"`
+	// The root directory of the project.
+	//
+	// Relative to this directory, all files are synthesized.
+	//
+	// If this project has a parent, this directory is relative to the parent
+	// directory and it cannot be the same as the parent or any of it's other
+	// sub-projects.
+	// Experimental.
+	Outdir *string `json:"outdir" yaml:"outdir"`
+	// The parent project, if this project is part of a bigger project.
+	// Experimental.
+	Parent projen.Project `json:"parent" yaml:"parent"`
+	// The shell command to use in order to run the projen CLI.
+	//
+	// Can be used to customize in special environments.
+	// Experimental.
+	ProjenCommand *string `json:"projenCommand" yaml:"projenCommand"`
+	// Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
+	// Experimental.
+	ProjenrcJson *bool `json:"projenrcJson" yaml:"projenrcJson"`
+	// Options for .projenrc.json.
+	// Experimental.
+	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	// Enable and configure the 'auto approve' workflow.
+	// Experimental.
+	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
+	// Configure options for automatic merging on GitHub.
+	//
+	// Has no effect if
+	// `github.mergify` is set to false.
+	// Experimental.
+	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions" yaml:"autoMergeOptions"`
+	// Add a `clobber` task which resets the repo to origin.
+	// Experimental.
+	Clobber *bool `json:"clobber" yaml:"clobber"`
+	// Add a VSCode development environment (used for GitHub Codespaces).
+	// Experimental.
+	DevContainer *bool `json:"devContainer" yaml:"devContainer"`
+	// Enable GitHub integration.
+	//
+	// Enabled by default for root projects. Disabled for non-root projects.
+	// Experimental.
+	Github *bool `json:"github" yaml:"github"`
+	// Options for GitHub integration.
+	// Experimental.
+	GithubOptions *github.GitHubOptions `json:"githubOptions" yaml:"githubOptions"`
+	// Add a Gitpod development environment.
+	// Experimental.
+	Gitpod *bool `json:"gitpod" yaml:"gitpod"`
+	// Whether mergify should be enabled on this repository or not.
+	// Deprecated: use `githubOptions.mergify` instead
+	Mergify *bool `json:"mergify" yaml:"mergify"`
+	// Options for mergify.
+	// Deprecated: use `githubOptions.mergifyOptions` instead
+	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
+	// Which type of project this is (library/app).
+	// Deprecated: no longer supported at the base project level
+	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
+	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+	//
+	// This token needs to have the `repo`, `workflows`
+	// and `packages` scope.
+	// Experimental.
+	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
+	// The README setup.
+	//
+	// TODO: EXAMPLE
+	//
+	// Experimental.
+	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
+	// Auto-close of stale issues and pull request.
+	//
+	// See `staleOptions` for options.
+	// Experimental.
+	Stale *bool `json:"stale" yaml:"stale"`
+	// Auto-close stale issues and pull requests.
+	//
+	// To disable set `stale` to `false`.
+	// Experimental.
+	StaleOptions *github.StaleOptions `json:"staleOptions" yaml:"staleOptions"`
+	// Enable VSCode integration.
+	//
+	// Enabled by default for root projects. Disabled for non-root projects.
+	// Experimental.
+	Vscode *bool `json:"vscode" yaml:"vscode"`
+	// Author's e-mail.
+	// Experimental.
+	AuthorEmail *string `json:"authorEmail" yaml:"authorEmail"`
+	// Author's name.
+	// Experimental.
+	AuthorName *string `json:"authorName" yaml:"authorName"`
+	// Version of the package.
+	// Experimental.
+	Version *string `json:"version" yaml:"version"`
+	// A list of PyPI trove classifiers that describe the project.
+	// See: https://pypi.org/classifiers/
+	//
+	// Experimental.
+	Classifiers *[]*string `json:"classifiers" yaml:"classifiers"`
+	// A short description of the package.
+	// Experimental.
+	Description *string `json:"description" yaml:"description"`
+	// A URL to the website of the project.
+	// Experimental.
+	Homepage *string `json:"homepage" yaml:"homepage"`
+	// License of this package as an SPDX identifier.
+	// Experimental.
+	License *string `json:"license" yaml:"license"`
+	// Additional options to set for poetry if using poetry.
+	// Experimental.
+	PoetryOptions *python.PoetryPyprojectOptionsWithoutDeps `json:"poetryOptions" yaml:"poetryOptions"`
+	// Additional fields to pass in the setup() function if using setuptools.
+	// Experimental.
+	SetupConfig *map[string]interface{} `json:"setupConfig" yaml:"setupConfig"`
+	// Name of the python package as used in imports and filenames.
+	//
+	// Must only consist of alphanumeric characters and underscores.
+	// Experimental.
+	ModuleName *string `json:"moduleName" yaml:"moduleName"`
+	// List of runtime dependencies for this project.
+	//
+	// Dependencies use the format: `<module>@<semver>`
+	//
+	// Additional dependencies can be added via `project.addDependency()`.
+	// Experimental.
+	Deps *[]*string `json:"deps" yaml:"deps"`
+	// List of dev dependencies for this project.
+	//
+	// Dependencies use the format: `<module>@<semver>`
+	//
+	// Additional dependencies can be added via `project.addDevDependency()`.
+	// Experimental.
+	DevDeps *[]*string `json:"devDeps" yaml:"devDeps"`
+	// Use pip with a requirements.txt file to track project dependencies.
+	// Experimental.
+	Pip *bool `json:"pip" yaml:"pip"`
+	// Use poetry to manage your project dependencies, virtual environment, and (optional) packaging/publishing.
+	// Experimental.
+	Poetry *bool `json:"poetry" yaml:"poetry"`
+	// Use projenrc in python.
+	//
+	// This will install `projen` as a python dependency and will add a `synth`
+	// task which will run `.projenrc.py`.
+	// Experimental.
+	ProjenrcPython *bool `json:"projenrcPython" yaml:"projenrcPython"`
+	// Options related to projenrc in python.
+	// Experimental.
+	ProjenrcPythonOptions *python.ProjenrcOptions `json:"projenrcPythonOptions" yaml:"projenrcPythonOptions"`
+	// Include pytest tests.
+	// Experimental.
+	Pytest *bool `json:"pytest" yaml:"pytest"`
+	// pytest options.
+	// Experimental.
+	PytestOptions *python.PytestOptions `json:"pytestOptions" yaml:"pytestOptions"`
+	// Include sample code and test if the relevant directories don't exist.
+	// Experimental.
+	Sample *bool `json:"sample" yaml:"sample"`
+	// Use setuptools with a setup.py script for packaging and publishing.
+	// Experimental.
+	Setuptools *bool `json:"setuptools" yaml:"setuptools"`
+	// Use venv to manage a virtual environment for installing dependencies inside.
+	// Experimental.
+	Venv *bool `json:"venv" yaml:"venv"`
+	// Venv options.
+	// Experimental.
+	VenvOptions *python.VenvOptions `json:"venvOptions" yaml:"venvOptions"`
+	// A command to execute before synthesis.
+	//
+	// This command will be called when
+	// running `cdk synth` or when `cdk watch` identifies a change in your source
+	// code before redeployment.
+	// Experimental.
+	BuildCommand *string `json:"buildCommand" yaml:"buildCommand"`
+	// cdk.out directory.
+	// Experimental.
+	Cdkout *string `json:"cdkout" yaml:"cdkout"`
+	// Additional context to include in `cdk.json`.
+	// Experimental.
+	Context *map[string]interface{} `json:"context" yaml:"context"`
+	// Include all feature flags in cdk.json.
+	// Experimental.
+	FeatureFlags *bool `json:"featureFlags" yaml:"featureFlags"`
+	// To protect you against unintended changes that affect your security posture, the AWS CDK Toolkit prompts you to approve security-related changes before deploying them.
+	// Experimental.
+	RequireApproval ApprovalLevel `json:"requireApproval" yaml:"requireApproval"`
+	// Glob patterns to exclude from `cdk watch`.
+	// Experimental.
+	WatchExcludes *[]*string `json:"watchExcludes" yaml:"watchExcludes"`
+	// Glob patterns to include in `cdk watch`.
+	// Experimental.
+	WatchIncludes *[]*string `json:"watchIncludes" yaml:"watchIncludes"`
+	// Minimum version of the AWS CDK to depend on.
+	// Experimental.
+	CdkVersion *string `json:"cdkVersion" yaml:"cdkVersion"`
+	// Warning: NodeJS only.
+	//
+	// Install the @aws-cdk/assert library?
+	// Deprecated: The
+	CdkAssert *bool `json:"cdkAssert" yaml:"cdkAssert"`
+	// Install the assertions library?
+	//
+	// Only needed for CDK 1.x. If using CDK 2.x then
+	// assertions is already included in 'aws-cdk-lib'
+	// Experimental.
+	CdkAssertions *bool `json:"cdkAssertions" yaml:"cdkAssertions"`
+	// Which AWS CDKv1 modules this project requires.
+	// Deprecated: For CDK 2.x use "deps" instead. (or "peerDeps" if you're building a library)
+	CdkDependencies *[]*string `json:"cdkDependencies" yaml:"cdkDependencies"`
+	// If this is enabled (default), all modules declared in `cdkDependencies` will be also added as normal `dependencies` (as well as `peerDependencies`).
+	//
+	// This is to ensure that downstream consumers actually have your CDK dependencies installed
+	// when using npm < 7 or yarn, where peer dependencies are not automatically installed.
+	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
+	// they are present during development.
+	//
+	// Note: this setting only applies to construct library projects
+	// Deprecated: Not supported in CDK v2.
+	CdkDependenciesAsDeps *bool `json:"cdkDependenciesAsDeps" yaml:"cdkDependenciesAsDeps"`
+	// AWS CDK modules required for testing.
+	// Deprecated: For CDK 2.x use 'devDeps' (in node.js projects) or 'testDeps' (in java projects) instead
+	CdkTestDependencies *[]*string `json:"cdkTestDependencies" yaml:"cdkTestDependencies"`
+	// Use pinned version instead of caret version for CDK.
+	//
+	// You can use this to prevent mixed versions for your CDK dependencies and to prevent auto-updates.
+	// If you use experimental features this will let you define the moment you include breaking changes.
+	// Experimental.
+	CdkVersionPinning *bool `json:"cdkVersionPinning" yaml:"cdkVersionPinning"`
+	// Minimum version of the `constructs` library to depend on.
+	// Experimental.
+	ConstructsVersion *string `json:"constructsVersion" yaml:"constructsVersion"`
+	// The CDK app's entrypoint (relative to the source directory, which is "src" by default).
+	// Experimental.
+	AppEntrypoint *string `json:"appEntrypoint" yaml:"appEntrypoint"`
+	// Python sources directory.
+	// Experimental.
+	Testdir *string `json:"testdir" yaml:"testdir"`
 }
 
 // AWS CDK app in TypeScript.
