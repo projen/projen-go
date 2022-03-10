@@ -43,14 +43,48 @@ type AddPostBuildJobTaskOptions struct {
 // Experimental.
 type BuildWorkflow interface {
 	projen.Component
+	// Returns a list of job IDs that are part of the build.
+	// Experimental.
 	BuildJobIds() *[]*string
+	// Experimental.
 	Project() projen.Project
+	// Adds another job to the build workflow which is executed after the build job succeeded.
+	//
+	// Jobs are executed _only_ if the build did NOT self mutate. If the build
+	// self-mutate, the branch will either be updated or the build will fail (in
+	// forks), so there is no point in executing the post-build job.
+	// Experimental.
 	AddPostBuildJob(id *string, job *workflows.Job)
+	// Run a sequence of commands as a job within the build workflow which is executed after the build job succeeded.
+	//
+	// Jobs are executed _only_ if the build did NOT self mutate. If the build
+	// self-mutate, the branch will either be updated or the build will fail (in
+	// forks), so there is no point in executing the post-build job.
+	// Experimental.
 	AddPostBuildJobCommands(id *string, commands *[]*string, options *AddPostBuildJobCommandsOptions)
+	// Run a task as a job within the build workflow which is executed after the build job succeeded.
+	//
+	// The job will have access to build artifacts and will install project
+	// dependencies in order to be able to run any commands used in the tasks.
+	//
+	// Jobs are executed _only_ if the build did NOT self mutate. If the build
+	// self-mutate, the branch will either be updated or the build will fail (in
+	// forks), so there is no point in executing the post-build job.
+	// Experimental.
 	AddPostBuildJobTask(task projen.Task, options *AddPostBuildJobTaskOptions)
+	// Adds steps that are executed after the build.
+	// Experimental.
 	AddPostBuildSteps(steps ...*workflows.JobStep)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -106,12 +140,6 @@ func NewBuildWorkflow_Override(b BuildWorkflow, project projen.Project, options 
 	)
 }
 
-// Adds another job to the build workflow which is executed after the build job succeeded.
-//
-// Jobs are executed _only_ if the build did NOT self mutate. If the build
-// self-mutate, the branch will either be updated or the build will fail (in
-// forks), so there is no point in executing the post-build job.
-// Experimental.
 func (b *jsiiProxy_BuildWorkflow) AddPostBuildJob(id *string, job *workflows.Job) {
 	_jsii_.InvokeVoid(
 		b,
@@ -120,12 +148,6 @@ func (b *jsiiProxy_BuildWorkflow) AddPostBuildJob(id *string, job *workflows.Job
 	)
 }
 
-// Run a sequence of commands as a job within the build workflow which is executed after the build job succeeded.
-//
-// Jobs are executed _only_ if the build did NOT self mutate. If the build
-// self-mutate, the branch will either be updated or the build will fail (in
-// forks), so there is no point in executing the post-build job.
-// Experimental.
 func (b *jsiiProxy_BuildWorkflow) AddPostBuildJobCommands(id *string, commands *[]*string, options *AddPostBuildJobCommandsOptions) {
 	_jsii_.InvokeVoid(
 		b,
@@ -134,15 +156,6 @@ func (b *jsiiProxy_BuildWorkflow) AddPostBuildJobCommands(id *string, commands *
 	)
 }
 
-// Run a task as a job within the build workflow which is executed after the build job succeeded.
-//
-// The job will have access to build artifacts and will install project
-// dependencies in order to be able to run any commands used in the tasks.
-//
-// Jobs are executed _only_ if the build did NOT self mutate. If the build
-// self-mutate, the branch will either be updated or the build will fail (in
-// forks), so there is no point in executing the post-build job.
-// Experimental.
 func (b *jsiiProxy_BuildWorkflow) AddPostBuildJobTask(task projen.Task, options *AddPostBuildJobTaskOptions) {
 	_jsii_.InvokeVoid(
 		b,
@@ -151,8 +164,6 @@ func (b *jsiiProxy_BuildWorkflow) AddPostBuildJobTask(task projen.Task, options 
 	)
 }
 
-// Adds steps that are executed after the build.
-// Experimental.
 func (b *jsiiProxy_BuildWorkflow) AddPostBuildSteps(steps ...*workflows.JobStep) {
 	args := []interface{}{}
 	for _, a := range steps {
@@ -166,10 +177,6 @@ func (b *jsiiProxy_BuildWorkflow) AddPostBuildSteps(steps ...*workflows.JobStep)
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (b *jsiiProxy_BuildWorkflow) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		b,
@@ -178,8 +185,6 @@ func (b *jsiiProxy_BuildWorkflow) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (b *jsiiProxy_BuildWorkflow) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		b,
@@ -188,8 +193,6 @@ func (b *jsiiProxy_BuildWorkflow) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (b *jsiiProxy_BuildWorkflow) Synthesize() {
 	_jsii_.InvokeVoid(
 		b,

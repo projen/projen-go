@@ -23,8 +23,16 @@ import (
 type ApprovalLevel string
 
 const (
+	// Approval is never required.
+	// Experimental.
 	ApprovalLevel_NEVER ApprovalLevel = "NEVER"
+	// Requires approval on any IAM or security-group-related change.
+	// Experimental.
 	ApprovalLevel_ANY_CHANGE ApprovalLevel = "ANY_CHANGE"
+	// Requires approval when IAM statements or traffic rules are added;
+	//
+	// removals don't require approval.
+	// Experimental.
 	ApprovalLevel_BROADENING ApprovalLevel = "BROADENING"
 )
 
@@ -32,9 +40,18 @@ const (
 // Experimental.
 type AutoDiscover interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -80,10 +97,6 @@ func NewAutoDiscover_Override(a AutoDiscover, project projen.Project, options *A
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (a *jsiiProxy_AutoDiscover) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -92,8 +105,6 @@ func (a *jsiiProxy_AutoDiscover) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (a *jsiiProxy_AutoDiscover) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -102,8 +113,6 @@ func (a *jsiiProxy_AutoDiscover) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (a *jsiiProxy_AutoDiscover) Synthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -160,95 +169,323 @@ type AutoDiscoverOptions struct {
 // Experimental.
 type AwsCdkConstructLibrary interface {
 	cdk.ConstructLibrary
+	// Deprecated: use `package.allowLibraryDependencies`
 	AllowLibraryDependencies() *bool
+	// The build output directory.
+	//
+	// An npm tarball will be created under the `js`
+	// subdirectory. For example, if this is set to `dist` (the default), the npm
+	// tarball will be placed under `dist/js/boom-boom-1.2.3.tg`.
+	// Experimental.
 	ArtifactsDirectory() *string
+	// The location of the npm tarball after build (`${artifactsDirectory}/js`).
+	// Experimental.
 	ArtifactsJavascriptDirectory() *string
+	// Auto approve set up for this project.
+	// Deprecated.
 	AutoApprove() github.AutoApprove
+	// Automatic PR merges.
+	// Experimental.
 	AutoMerge() github.AutoMerge
+	// Experimental.
 	BuildTask() projen.Task
+	// The PR build GitHub workflow.
+	//
+	// `undefined` if `buildWorkflow` is disabled.
+	// Experimental.
 	BuildWorkflow() build.BuildWorkflow
+	// The job ID of the build workflow.
+	// Experimental.
 	BuildWorkflowJobId() *string
+	// Experimental.
 	Bundler() javascript.Bundler
+	// Experimental.
 	CdkDeps() AwsCdkDeps
+	// The target CDK version for this library.
+	// Experimental.
 	CdkVersion() *string
+	// Experimental.
 	CompileTask() projen.Task
+	// Returns all the components within this project.
+	// Experimental.
 	Components() *[]projen.Component
+	// This is the "default" task, the one that executes "projen".
+	//
+	// Undefined if
+	// the project is being ejected.
+	// Experimental.
 	DefaultTask() projen.Task
+	// Project dependencies.
+	// Experimental.
 	Deps() projen.Dependencies
+	// Access for .devcontainer.json (used for GitHub Codespaces).
+	//
+	// This will be `undefined` if devContainer boolean is false.
+	// Deprecated.
 	DevContainer() vscode.DevContainer
+	// Experimental.
 	Docgen() *bool
+	// Experimental.
 	DocsDirectory() *string
+	// Whether or not the project is being ejected.
+	// Experimental.
 	Ejected() *bool
+	// Deprecated: use `package.entrypoint`
 	Entrypoint() *string
+	// Experimental.
 	Eslint() javascript.Eslint
+	// All files in this project.
+	// Experimental.
 	Files() *[]projen.FileBase
+	// The .gitattributes file for this repository.
+	// Experimental.
 	Gitattributes() projen.GitAttributesFile
+	// Access all github components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Github() github.GitHub
+	// .gitignore.
+	// Experimental.
 	Gitignore() projen.IgnoreFile
+	// Access for Gitpod.
+	//
+	// This will be `undefined` if gitpod boolean is false.
+	// Deprecated.
 	Gitpod() projen.Gitpod
+	// The options used when this project is bootstrapped via `projen new`.
+	//
+	// It
+	// includes the original set of options passed to the CLI and also the JSII
+	// FQN of the project type.
+	// Experimental.
 	InitProject() *projen.InitProject
+	// The Jest configuration (if enabled).
+	// Experimental.
 	Jest() javascript.Jest
+	// The directory in which compiled .js files reside.
+	// Experimental.
 	Libdir() *string
+	// Logging utilities.
+	// Experimental.
 	Logger() projen.Logger
+	// Deprecated: use `package.addField(x, y)`
 	Manifest() interface{}
+	// Maximum node version required by this pacakge.
+	// Experimental.
 	MaxNodeVersion() *string
+	// Minimum node.js version required by this package.
+	// Experimental.
 	MinNodeVersion() *string
+	// Project name.
+	// Experimental.
 	Name() *string
+	// The .npmignore file.
+	// Experimental.
 	Npmignore() projen.IgnoreFile
+	// Absolute output directory of this project.
+	// Experimental.
 	Outdir() *string
+	// API for managing the node package.
+	// Experimental.
 	Package() javascript.NodePackage
+	// The package manager to use.
+	// Deprecated: use `package.packageManager`
 	PackageManager() javascript.NodePackageManager
+	// Experimental.
 	PackageTask() projen.Task
+	// A parent project.
+	//
+	// If undefined, this is the root project.
+	// Experimental.
 	Parent() projen.Project
+	// Experimental.
 	PostCompileTask() projen.Task
+	// Experimental.
 	PreCompileTask() projen.Task
+	// Experimental.
 	Prettier() javascript.Prettier
+	// Manages the build process of the project.
+	// Experimental.
 	ProjectBuild() projen.ProjectBuild
+	// Deprecated.
 	ProjectType() projen.ProjectType
+	// The command to use in order to run the projen CLI.
+	// Experimental.
 	ProjenCommand() *string
+	// Package publisher.
+	//
+	// This will be `undefined` if the project does not have a
+	// release workflow.
+	// Deprecated: use `release.publisher`.
 	Publisher() release.Publisher
+	// Release management.
+	// Experimental.
 	Release() release.Release
+	// The root project.
+	// Experimental.
 	Root() projen.Project
+	// The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager).
+	// Experimental.
 	RunScriptCommand() *string
+	// The directory in which the .ts sources reside.
+	// Experimental.
 	Srcdir() *string
+	// Project tasks.
+	// Experimental.
 	Tasks() projen.Tasks
+	// The directory in which tests reside.
+	// Experimental.
 	Testdir() *string
+	// Experimental.
 	TestTask() projen.Task
+	// Experimental.
 	Tsconfig() javascript.TypescriptConfig
+	// A typescript configuration file which covers all files (sources, tests, projen).
+	// Experimental.
 	TsconfigDev() javascript.TypescriptConfig
+	// Experimental.
 	TsconfigEslint() javascript.TypescriptConfig
+	// The upgrade workflow.
+	// Experimental.
 	UpgradeWorkflow() javascript.UpgradeDependencies
+	// Deprecated: use `cdkVersion`.
 	Version() *string
+	// Access all VSCode components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Vscode() vscode.VsCode
+	// The "watch" task.
+	// Experimental.
 	WatchTask() projen.Task
+	// Experimental.
 	AddBins(bins *map[string]*string)
+	// Defines bundled dependencies.
+	//
+	// Bundled dependencies will be added as normal dependencies as well as to the
+	// `bundledDependencies` section of your `package.json`.
+	// Experimental.
 	AddBundledDeps(deps ...*string)
+	// Adds dependencies to AWS CDK modules.
+	//
+	// Since this is a library project, dependencies will be added as peer dependencies.
+	// Deprecated: Not supported in v2. For v1, use `project.cdkDeps.addV1Dependencies()`
 	AddCdkDependencies(deps ...*string)
+	// Adds AWS CDK modules as dev dependencies.
+	// Deprecated: Not supported in v2. For v1, use `project.cdkDeps.addV1DevDependencies()`
 	AddCdkTestDependencies(deps ...*string)
+	// DEPRECATED.
+	// Deprecated: use `project.compileTask.exec()`
 	AddCompileCommand(commands ...*string)
+	// Defines normal dependencies.
+	// Experimental.
 	AddDeps(deps ...*string)
+	// Defines development/test dependencies.
+	// Experimental.
 	AddDevDeps(deps ...*string)
+	// Exclude the matching files from pre-synth cleanup.
+	//
+	// Can be used when, for example, some
+	// source files include the projen marker and we don't want them to be erased during synth.
+	// Experimental.
 	AddExcludeFromCleanup(globs ...*string)
+	// Directly set fields in `package.json`.
+	// Experimental.
 	AddFields(fields *map[string]interface{})
+	// Adds a .gitignore pattern.
+	// Experimental.
 	AddGitIgnore(pattern *string)
+	// Adds keywords to package.json (deduplicated).
+	// Experimental.
 	AddKeywords(keywords ...*string)
+	// Exclude these files from the bundled package.
+	//
+	// Implemented by project types based on the
+	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Experimental.
 	AddPackageIgnore(pattern *string)
+	// Defines peer dependencies.
+	//
+	// When adding peer dependencies, a devDependency will also be added on the
+	// pinned version of the declared peer. This will ensure that you are testing
+	// your code against the minimum version required from your consumers.
+	// Experimental.
 	AddPeerDeps(deps ...*string)
+	// Adds a new task to this project.
+	//
+	// This will fail if the project already has
+	// a task with this name.
+	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
+	// DEPRECATED.
+	// Deprecated: use `project.testTask.exec()`
 	AddTestCommand(commands ...*string)
+	// Prints a "tip" message during synthesis.
+	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 	AddTip(message *string)
+	// Marks the provided file(s) as being generated.
+	//
+	// This is achieved using the
+	// github-linguist attributes. Generated files do not count against the
+	// repository statistics and language breakdown.
+	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
+	//
+	// Deprecated.
 	AnnotateGenerated(glob *string)
+	// Indicates if a script by the name name is defined.
+	// Experimental.
 	HasScript(name *string) *bool
+	// Called after all components are synthesized.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before all components are synthesized.
+	// Experimental.
 	PreSynthesize()
+	// Removes the npm script (always successful).
+	// Experimental.
 	RemoveScript(name *string)
+	// Removes a task from a project.
+	//
+	// Returns: The `Task` that was removed, otherwise `undefined`.
+	// Experimental.
 	RemoveTask(name *string) projen.Task
+	// Returns the set of workflow steps which should be executed to bootstrap a workflow.
+	//
+	// Returns: Job steps.
+	// Experimental.
 	RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep
+	// Returns the shell command to execute in order to run a task.
+	//
+	// This will
+	// typically be `npx projen TASK`.
+	// Experimental.
 	RunTaskCommand(task projen.Task) *string
+	// Replaces the contents of an npm package.json script.
+	// Experimental.
 	SetScript(name *string, command *string)
+	// Synthesize all project files into `outdir`.
+	//
+	// 1. Call "this.preSynthesize()"
+	// 2. Delete all generated files
+	// 3. Synthesize all sub-projects
+	// 4. Synthesize all components of this project
+	// 5. Call "postSynthesize()" for all components of this project
+	// 6. Call "this.postSynthesize()"
+	// Experimental.
 	Synth()
+	// Finds a file at the specified relative path within this project and all its subprojects.
+	//
+	// Returns: a `FileBase` or undefined if there is no file in that path.
+	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
+	// Finds a json file by name.
+	// Deprecated: use `tryFindObjectFile`.
 	TryFindJsonFile(filePath *string) projen.JsonFile
+	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
 }
 
@@ -905,7 +1142,6 @@ func AwsCdkConstructLibrary_DEFAULT_TASK() *string {
 	return returns
 }
 
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddBins(bins *map[string]*string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -914,11 +1150,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddBins(bins *map[string]*string) {
 	)
 }
 
-// Defines bundled dependencies.
-//
-// Bundled dependencies will be added as normal dependencies as well as to the
-// `bundledDependencies` section of your `package.json`.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddBundledDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -932,10 +1163,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddBundledDeps(deps ...*string) {
 	)
 }
 
-// Adds dependencies to AWS CDK modules.
-//
-// Since this is a library project, dependencies will be added as peer dependencies.
-// Deprecated: Not supported in v2. For v1, use `project.cdkDeps.addV1Dependencies()`
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddCdkDependencies(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -949,8 +1176,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddCdkDependencies(deps ...*string) {
 	)
 }
 
-// Adds AWS CDK modules as dev dependencies.
-// Deprecated: Not supported in v2. For v1, use `project.cdkDeps.addV1DevDependencies()`
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddCdkTestDependencies(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -964,8 +1189,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddCdkTestDependencies(deps ...*strin
 	)
 }
 
-// DEPRECATED.
-// Deprecated: use `project.compileTask.exec()`
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddCompileCommand(commands ...*string) {
 	args := []interface{}{}
 	for _, a := range commands {
@@ -979,8 +1202,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddCompileCommand(commands ...*string
 	)
 }
 
-// Defines normal dependencies.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -994,8 +1215,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddDeps(deps ...*string) {
 	)
 }
 
-// Defines development/test dependencies.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddDevDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -1009,11 +1228,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddDevDeps(deps ...*string) {
 	)
 }
 
-// Exclude the matching files from pre-synth cleanup.
-//
-// Can be used when, for example, some
-// source files include the projen marker and we don't want them to be erased during synth.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddExcludeFromCleanup(globs ...*string) {
 	args := []interface{}{}
 	for _, a := range globs {
@@ -1027,8 +1241,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddExcludeFromCleanup(globs ...*strin
 	)
 }
 
-// Directly set fields in `package.json`.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddFields(fields *map[string]interface{}) {
 	_jsii_.InvokeVoid(
 		a,
@@ -1037,8 +1249,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddFields(fields *map[string]interfac
 	)
 }
 
-// Adds a .gitignore pattern.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddGitIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -1047,8 +1257,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddGitIgnore(pattern *string) {
 	)
 }
 
-// Adds keywords to package.json (deduplicated).
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddKeywords(keywords ...*string) {
 	args := []interface{}{}
 	for _, a := range keywords {
@@ -1062,11 +1270,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddKeywords(keywords ...*string) {
 	)
 }
 
-// Exclude these files from the bundled package.
-//
-// Implemented by project types based on the
-// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddPackageIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -1075,12 +1278,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddPackageIgnore(pattern *string) {
 	)
 }
 
-// Defines peer dependencies.
-//
-// When adding peer dependencies, a devDependency will also be added on the
-// pinned version of the declared peer. This will ensure that you are testing
-// your code against the minimum version required from your consumers.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddPeerDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -1094,11 +1291,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddPeerDeps(deps ...*string) {
 	)
 }
 
-// Adds a new task to this project.
-//
-// This will fail if the project already has
-// a task with this name.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddTask(name *string, props *projen.TaskOptions) projen.Task {
 	var returns projen.Task
 
@@ -1112,8 +1304,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddTask(name *string, props *projen.T
 	return returns
 }
 
-// DEPRECATED.
-// Deprecated: use `project.testTask.exec()`
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddTestCommand(commands ...*string) {
 	args := []interface{}{}
 	for _, a := range commands {
@@ -1127,8 +1317,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddTestCommand(commands ...*string) {
 	)
 }
 
-// Prints a "tip" message during synthesis.
-// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddTip(message *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -1137,14 +1325,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddTip(message *string) {
 	)
 }
 
-// Marks the provided file(s) as being generated.
-//
-// This is achieved using the
-// github-linguist attributes. Generated files do not count against the
-// repository statistics and language breakdown.
-// See: https://github.com/github/linguist/blob/master/docs/overrides.md
-//
-// Deprecated.
 func (a *jsiiProxy_AwsCdkConstructLibrary) AnnotateGenerated(glob *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -1153,8 +1333,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AnnotateGenerated(glob *string) {
 	)
 }
 
-// Indicates if a script by the name name is defined.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) HasScript(name *string) *bool {
 	var returns *bool
 
@@ -1168,10 +1346,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) HasScript(name *string) *bool {
 	return returns
 }
 
-// Called after all components are synthesized.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -1180,8 +1354,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) PostSynthesize() {
 	)
 }
 
-// Called before all components are synthesized.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -1190,8 +1362,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) PreSynthesize() {
 	)
 }
 
-// Removes the npm script (always successful).
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) RemoveScript(name *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -1200,10 +1370,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) RemoveScript(name *string) {
 	)
 }
 
-// Removes a task from a project.
-//
-// Returns: The `Task` that was removed, otherwise `undefined`.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) RemoveTask(name *string) projen.Task {
 	var returns projen.Task
 
@@ -1217,10 +1383,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) RemoveTask(name *string) projen.Task 
 	return returns
 }
 
-// Returns the set of workflow steps which should be executed to bootstrap a workflow.
-//
-// Returns: Job steps
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
 	var returns *[]*workflows.JobStep
 
@@ -1234,11 +1396,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) RenderWorkflowSetup(options *javascri
 	return returns
 }
 
-// Returns the shell command to execute in order to run a task.
-//
-// This will
-// typically be `npx projen TASK`.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) RunTaskCommand(task projen.Task) *string {
 	var returns *string
 
@@ -1252,8 +1409,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) RunTaskCommand(task projen.Task) *str
 	return returns
 }
 
-// Replaces the contents of an npm package.json script.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) SetScript(name *string, command *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -1262,15 +1417,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) SetScript(name *string, command *stri
 	)
 }
 
-// Synthesize all project files into `outdir`.
-//
-// 1. Call "this.preSynthesize()"
-// 2. Delete all generated files
-// 3. Synthesize all sub-projects
-// 4. Synthesize all components of this project
-// 5. Call "postSynthesize()" for all components of this project
-// 6. Call "this.postSynthesize()"
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) Synth() {
 	_jsii_.InvokeVoid(
 		a,
@@ -1279,10 +1425,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) Synth() {
 	)
 }
 
-// Finds a file at the specified relative path within this project and all its subprojects.
-//
-// Returns: a `FileBase` or undefined if there is no file in that path
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) TryFindFile(filePath *string) projen.FileBase {
 	var returns projen.FileBase
 
@@ -1296,8 +1438,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) TryFindFile(filePath *string) projen.
 	return returns
 }
 
-// Finds a json file by name.
-// Deprecated: use `tryFindObjectFile`
 func (a *jsiiProxy_AwsCdkConstructLibrary) TryFindJsonFile(filePath *string) projen.JsonFile {
 	var returns projen.JsonFile
 
@@ -1311,8 +1451,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) TryFindJsonFile(filePath *string) pro
 	return returns
 }
 
-// Finds an object file (like JsonFile, YamlFile, etc.) by name.
-// Experimental.
 func (a *jsiiProxy_AwsCdkConstructLibrary) TryFindObjectFile(filePath *string) projen.ObjectFile {
 	var returns projen.ObjectFile
 
@@ -1391,7 +1529,7 @@ type AwsCdkConstructLibraryOptions struct {
 	// Deprecated: use `githubOptions.mergifyOptions` instead
 	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
-	// Deprecated: no longer supported at the base project level
+	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
@@ -1401,7 +1539,8 @@ type AwsCdkConstructLibraryOptions struct {
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "{ filename: 'readme.md', contents: '# title' }"
 	//
 	// Experimental.
 	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
@@ -1480,7 +1619,8 @@ type AwsCdkConstructLibraryOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   [ 'express', 'lodash', 'foo@^2' ]
 	//
 	// Experimental.
 	Deps *[]*string `json:"deps" yaml:"deps"`
@@ -1503,7 +1643,8 @@ type AwsCdkConstructLibraryOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   [ 'typescript', '@types/express' ]
 	//
 	// Experimental.
 	DevDeps *[]*string `json:"devDeps" yaml:"devDeps"`
@@ -1539,7 +1680,7 @@ type AwsCdkConstructLibraryOptions struct {
 	// The host name of the npm registry to publish to.
 	//
 	// Cannot be set together with `npmRegistryUrl`.
-	// Deprecated: use `npmRegistryUrl` instead
+	// Deprecated: use `npmRegistryUrl` instead.
 	NpmRegistry *string `json:"npmRegistry" yaml:"npmRegistry"`
 	// The base URL of the npm package registry.
 	//
@@ -1892,7 +2033,7 @@ type AwsCdkConstructLibraryOptions struct {
 	// File path for generated docs.
 	// Experimental.
 	DocgenFilePath *string `json:"docgenFilePath" yaml:"docgenFilePath"`
-	// Deprecated: use `publishToNuget`
+	// Deprecated: use `publishToNuget`.
 	Dotnet *cdk.JsiiDotNetTarget `json:"dotnet" yaml:"dotnet"`
 	// Accepts a list of glob patterns.
 	//
@@ -1915,7 +2056,7 @@ type AwsCdkConstructLibraryOptions struct {
 	// Publish to pypi.
 	// Experimental.
 	PublishToPypi *cdk.JsiiPythonTarget `json:"publishToPypi" yaml:"publishToPypi"`
-	// Deprecated: use `publishToPyPi`
+	// Deprecated: use `publishToPyPi`.
 	Python *cdk.JsiiPythonTarget `json:"python" yaml:"python"`
 	// Experimental.
 	Rootdir *string `json:"rootdir" yaml:"rootdir"`
@@ -1939,12 +2080,12 @@ type AwsCdkConstructLibraryOptions struct {
 	// Warning: NodeJS only.
 	//
 	// Install the @aws-cdk/assert library?
-	// Deprecated: The
+	// Deprecated: The.
 	CdkAssert *bool `json:"cdkAssert" yaml:"cdkAssert"`
 	// Install the assertions library?
 	//
 	// Only needed for CDK 1.x. If using CDK 2.x then
-	// assertions is already included in 'aws-cdk-lib'
+	// assertions is already included in 'aws-cdk-lib'.
 	// Experimental.
 	CdkAssertions *bool `json:"cdkAssertions" yaml:"cdkAssertions"`
 	// Which AWS CDKv1 modules this project requires.
@@ -1957,7 +2098,7 @@ type AwsCdkConstructLibraryOptions struct {
 	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
 	// they are present during development.
 	//
-	// Note: this setting only applies to construct library projects
+	// Note: this setting only applies to construct library projects.
 	// Deprecated: Not supported in CDK v2.
 	CdkDependenciesAsDeps *bool `json:"cdkDependenciesAsDeps" yaml:"cdkDependenciesAsDeps"`
 	// AWS CDK modules required for testing.
@@ -1987,16 +2128,47 @@ type AwsCdkConstructLibraryOptions struct {
 // Experimental.
 type AwsCdkDeps interface {
 	projen.Component
+	// Whether CDK dependencies are added as normal dependencies (and peer dependencies).
+	// Deprecated: Not used for CDK 2.x
 	CdkDependenciesAsDeps() *bool
+	// The major version of the AWS CDK (e.g. 1, 2, ...).
+	// Experimental.
 	CdkMajorVersion() *float64
+	// The minimum version of the AWS CDK (e.g. `2.0.0`).
+	// Experimental.
 	CdkMinimumVersion() *string
+	// The dependency requirement for AWS CDK (e.g. `^2.0.0`).
+	// Experimental.
 	CdkVersion() *string
+	// Experimental.
 	Project() projen.Project
+	// Adds dependencies to AWS CDK modules.
+	//
+	// The type of dependency is determined by the `dependencyType` option.
+	//
+	// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
+	// `project.addDeps()` as appropriate.
+	// Experimental.
 	AddV1Dependencies(deps ...*string)
+	// Adds AWS CDK modules as dev dependencies.
+	//
+	// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
+	// `project.addDeps()` as appropriate.
+	// Experimental.
 	AddV1DevDependencies(deps ...*string)
+	// Return a configuration object with information about package naming in various languages.
+	// Experimental.
 	PackageNames() *AwsCdkPackageNames
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -2067,13 +2239,6 @@ func NewAwsCdkDeps_Override(a AwsCdkDeps, project projen.Project, options *AwsCd
 	)
 }
 
-// Adds dependencies to AWS CDK modules.
-//
-// The type of dependency is determined by the `dependencyType` option.
-//
-// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
-// `project.addDeps()` as appropriate.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDeps) AddV1Dependencies(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -2087,11 +2252,6 @@ func (a *jsiiProxy_AwsCdkDeps) AddV1Dependencies(deps ...*string) {
 	)
 }
 
-// Adds AWS CDK modules as dev dependencies.
-//
-// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
-// `project.addDeps()` as appropriate.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDeps) AddV1DevDependencies(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -2105,8 +2265,6 @@ func (a *jsiiProxy_AwsCdkDeps) AddV1DevDependencies(deps ...*string) {
 	)
 }
 
-// Return a configuration object with information about package naming in various languages.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDeps) PackageNames() *AwsCdkPackageNames {
 	var returns *AwsCdkPackageNames
 
@@ -2120,10 +2278,6 @@ func (a *jsiiProxy_AwsCdkDeps) PackageNames() *AwsCdkPackageNames {
 	return returns
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDeps) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -2132,8 +2286,6 @@ func (a *jsiiProxy_AwsCdkDeps) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDeps) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -2142,8 +2294,6 @@ func (a *jsiiProxy_AwsCdkDeps) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDeps) Synthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -2161,12 +2311,12 @@ type AwsCdkDepsCommonOptions struct {
 	// Warning: NodeJS only.
 	//
 	// Install the @aws-cdk/assert library?
-	// Deprecated: The
+	// Deprecated: The.
 	CdkAssert *bool `json:"cdkAssert" yaml:"cdkAssert"`
 	// Install the assertions library?
 	//
 	// Only needed for CDK 1.x. If using CDK 2.x then
-	// assertions is already included in 'aws-cdk-lib'
+	// assertions is already included in 'aws-cdk-lib'.
 	// Experimental.
 	CdkAssertions *bool `json:"cdkAssertions" yaml:"cdkAssertions"`
 	// Which AWS CDKv1 modules this project requires.
@@ -2179,7 +2329,7 @@ type AwsCdkDepsCommonOptions struct {
 	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
 	// they are present during development.
 	//
-	// Note: this setting only applies to construct library projects
+	// Note: this setting only applies to construct library projects.
 	// Deprecated: Not supported in CDK v2.
 	CdkDependenciesAsDeps *bool `json:"cdkDependenciesAsDeps" yaml:"cdkDependenciesAsDeps"`
 	// AWS CDK modules required for testing.
@@ -2200,16 +2350,47 @@ type AwsCdkDepsCommonOptions struct {
 // Experimental.
 type AwsCdkDepsJava interface {
 	AwsCdkDeps
+	// Whether CDK dependencies are added as normal dependencies (and peer dependencies).
+	// Deprecated: Not used for CDK 2.x
 	CdkDependenciesAsDeps() *bool
+	// The major version of the AWS CDK (e.g. 1, 2, ...).
+	// Experimental.
 	CdkMajorVersion() *float64
+	// The minimum version of the AWS CDK (e.g. `2.0.0`).
+	// Experimental.
 	CdkMinimumVersion() *string
+	// The dependency requirement for AWS CDK (e.g. `^2.0.0`).
+	// Experimental.
 	CdkVersion() *string
+	// Experimental.
 	Project() projen.Project
+	// Adds dependencies to AWS CDK modules.
+	//
+	// The type of dependency is determined by the `dependencyType` option.
+	//
+	// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
+	// `project.addDeps()` as appropriate.
+	// Experimental.
 	AddV1Dependencies(deps ...*string)
+	// Adds AWS CDK modules as dev dependencies.
+	//
+	// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
+	// `project.addDeps()` as appropriate.
+	// Experimental.
 	AddV1DevDependencies(deps ...*string)
+	// Return a configuration object with information about package naming in various languages.
+	// Experimental.
 	PackageNames() *AwsCdkPackageNames
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -2295,13 +2476,6 @@ func NewAwsCdkDepsJava_Override(a AwsCdkDepsJava, project projen.Project, option
 	)
 }
 
-// Adds dependencies to AWS CDK modules.
-//
-// The type of dependency is determined by the `dependencyType` option.
-//
-// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
-// `project.addDeps()` as appropriate.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDepsJava) AddV1Dependencies(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -2315,11 +2489,6 @@ func (a *jsiiProxy_AwsCdkDepsJava) AddV1Dependencies(deps ...*string) {
 	)
 }
 
-// Adds AWS CDK modules as dev dependencies.
-//
-// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
-// `project.addDeps()` as appropriate.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDepsJava) AddV1DevDependencies(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -2333,8 +2502,6 @@ func (a *jsiiProxy_AwsCdkDepsJava) AddV1DevDependencies(deps ...*string) {
 	)
 }
 
-// Return a configuration object with information about package naming in various languages.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDepsJava) PackageNames() *AwsCdkPackageNames {
 	var returns *AwsCdkPackageNames
 
@@ -2348,10 +2515,6 @@ func (a *jsiiProxy_AwsCdkDepsJava) PackageNames() *AwsCdkPackageNames {
 	return returns
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDepsJava) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -2360,8 +2523,6 @@ func (a *jsiiProxy_AwsCdkDepsJava) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDepsJava) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -2370,8 +2531,6 @@ func (a *jsiiProxy_AwsCdkDepsJava) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDepsJava) Synthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -2384,16 +2543,47 @@ func (a *jsiiProxy_AwsCdkDepsJava) Synthesize() {
 // Experimental.
 type AwsCdkDepsJs interface {
 	AwsCdkDeps
+	// Whether CDK dependencies are added as normal dependencies (and peer dependencies).
+	// Deprecated: Not used for CDK 2.x
 	CdkDependenciesAsDeps() *bool
+	// The major version of the AWS CDK (e.g. 1, 2, ...).
+	// Experimental.
 	CdkMajorVersion() *float64
+	// The minimum version of the AWS CDK (e.g. `2.0.0`).
+	// Experimental.
 	CdkMinimumVersion() *string
+	// The dependency requirement for AWS CDK (e.g. `^2.0.0`).
+	// Experimental.
 	CdkVersion() *string
+	// Experimental.
 	Project() projen.Project
+	// Adds dependencies to AWS CDK modules.
+	//
+	// The type of dependency is determined by the `dependencyType` option.
+	//
+	// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
+	// `project.addDeps()` as appropriate.
+	// Experimental.
 	AddV1Dependencies(deps ...*string)
+	// Adds AWS CDK modules as dev dependencies.
+	//
+	// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
+	// `project.addDeps()` as appropriate.
+	// Experimental.
 	AddV1DevDependencies(deps ...*string)
+	// Return a configuration object with information about package naming in various languages.
+	// Experimental.
 	PackageNames() *AwsCdkPackageNames
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -2479,13 +2669,6 @@ func NewAwsCdkDepsJs_Override(a AwsCdkDepsJs, project projen.Project, options *A
 	)
 }
 
-// Adds dependencies to AWS CDK modules.
-//
-// The type of dependency is determined by the `dependencyType` option.
-//
-// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
-// `project.addDeps()` as appropriate.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDepsJs) AddV1Dependencies(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -2499,11 +2682,6 @@ func (a *jsiiProxy_AwsCdkDepsJs) AddV1Dependencies(deps ...*string) {
 	)
 }
 
-// Adds AWS CDK modules as dev dependencies.
-//
-// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
-// `project.addDeps()` as appropriate.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDepsJs) AddV1DevDependencies(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -2517,8 +2695,6 @@ func (a *jsiiProxy_AwsCdkDepsJs) AddV1DevDependencies(deps ...*string) {
 	)
 }
 
-// Return a configuration object with information about package naming in various languages.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDepsJs) PackageNames() *AwsCdkPackageNames {
 	var returns *AwsCdkPackageNames
 
@@ -2532,10 +2708,6 @@ func (a *jsiiProxy_AwsCdkDepsJs) PackageNames() *AwsCdkPackageNames {
 	return returns
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDepsJs) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -2544,8 +2716,6 @@ func (a *jsiiProxy_AwsCdkDepsJs) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDepsJs) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -2554,8 +2724,6 @@ func (a *jsiiProxy_AwsCdkDepsJs) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (a *jsiiProxy_AwsCdkDepsJs) Synthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -2572,12 +2740,12 @@ type AwsCdkDepsOptions struct {
 	// Warning: NodeJS only.
 	//
 	// Install the @aws-cdk/assert library?
-	// Deprecated: The
+	// Deprecated: The.
 	CdkAssert *bool `json:"cdkAssert" yaml:"cdkAssert"`
 	// Install the assertions library?
 	//
 	// Only needed for CDK 1.x. If using CDK 2.x then
-	// assertions is already included in 'aws-cdk-lib'
+	// assertions is already included in 'aws-cdk-lib'.
 	// Experimental.
 	CdkAssertions *bool `json:"cdkAssertions" yaml:"cdkAssertions"`
 	// Which AWS CDKv1 modules this project requires.
@@ -2590,7 +2758,7 @@ type AwsCdkDepsOptions struct {
 	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
 	// they are present during development.
 	//
-	// Note: this setting only applies to construct library projects
+	// Note: this setting only applies to construct library projects.
 	// Deprecated: Not supported in CDK v2.
 	CdkDependenciesAsDeps *bool `json:"cdkDependenciesAsDeps" yaml:"cdkDependenciesAsDeps"`
 	// AWS CDK modules required for testing.
@@ -2616,63 +2784,221 @@ type AwsCdkDepsOptions struct {
 // Experimental.
 type AwsCdkJavaApp interface {
 	java.JavaProject
+	// Auto approve set up for this project.
+	// Deprecated.
 	AutoApprove() github.AutoApprove
+	// Experimental.
 	BuildTask() projen.Task
+	// The `cdk.json` file.
+	// Experimental.
 	CdkConfig() CdkConfig
+	// CDK dependency management helper class.
+	// Experimental.
 	CdkDeps() AwsCdkDeps
+	// CDK tasks.
+	// Experimental.
 	CdkTasks() CdkTasks
+	// Compile component.
+	// Experimental.
 	Compile() java.MavenCompile
+	// Experimental.
 	CompileTask() projen.Task
+	// Returns all the components within this project.
+	// Experimental.
 	Components() *[]projen.Component
+	// This is the "default" task, the one that executes "projen".
+	//
+	// Undefined if
+	// the project is being ejected.
+	// Experimental.
 	DefaultTask() projen.Task
+	// Project dependencies.
+	// Experimental.
 	Deps() projen.Dependencies
+	// Access for .devcontainer.json (used for GitHub Codespaces).
+	//
+	// This will be `undefined` if devContainer boolean is false.
+	// Deprecated.
 	DevContainer() vscode.DevContainer
+	// Maven artifact output directory.
+	// Experimental.
 	Distdir() *string
+	// Whether or not the project is being ejected.
+	// Experimental.
 	Ejected() *bool
+	// All files in this project.
+	// Experimental.
 	Files() *[]projen.FileBase
+	// The .gitattributes file for this repository.
+	// Experimental.
 	Gitattributes() projen.GitAttributesFile
+	// Access all github components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Github() github.GitHub
+	// .gitignore.
+	// Experimental.
 	Gitignore() projen.IgnoreFile
+	// Access for Gitpod.
+	//
+	// This will be `undefined` if gitpod boolean is false.
+	// Deprecated.
 	Gitpod() projen.Gitpod
+	// The options used when this project is bootstrapped via `projen new`.
+	//
+	// It
+	// includes the original set of options passed to the CLI and also the JSII
+	// FQN of the project type.
+	// Experimental.
 	InitProject() *projen.InitProject
+	// JUnit component.
+	// Experimental.
 	Junit() java.Junit
+	// Logging utilities.
+	// Experimental.
 	Logger() projen.Logger
+	// The full name of the main class of the java app (package.Class).
+	// Experimental.
 	MainClass() *string
+	// The name of the Java class with the static `main()` method.
+	// Experimental.
 	MainClassName() *string
+	// The name of the Java package that includes the main class.
+	// Experimental.
 	MainPackage() *string
+	// Project name.
+	// Experimental.
 	Name() *string
+	// Absolute output directory of this project.
+	// Experimental.
 	Outdir() *string
+	// Experimental.
 	PackageTask() projen.Task
+	// Packaging component.
+	// Experimental.
 	Packaging() java.MavenPackaging
+	// A parent project.
+	//
+	// If undefined, this is the root project.
+	// Experimental.
 	Parent() projen.Project
+	// API for managing `pom.xml`.
+	// Experimental.
 	Pom() java.Pom
+	// Experimental.
 	PostCompileTask() projen.Task
+	// Experimental.
 	PreCompileTask() projen.Task
+	// Manages the build process of the project.
+	// Experimental.
 	ProjectBuild() projen.ProjectBuild
+	// Deprecated.
 	ProjectType() projen.ProjectType
+	// The command to use in order to run the projen CLI.
+	// Experimental.
 	ProjenCommand() *string
+	// Projenrc component.
+	// Experimental.
 	Projenrc() java.Projenrc
+	// The root project.
+	// Experimental.
 	Root() projen.Project
+	// Project tasks.
+	// Experimental.
 	Tasks() projen.Tasks
+	// Experimental.
 	TestTask() projen.Task
+	// Access all VSCode components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Vscode() vscode.VsCode
+	// Adds an AWS CDK module dependencies.
+	// Deprecated: In CDK 2.x all modules are available by default. Alpha modules should be added using the standard 'deps'
 	AddCdkDependency(modules ...*string)
+	// Adds a runtime dependency.
+	// Experimental.
 	AddDependency(spec *string)
+	// Exclude the matching files from pre-synth cleanup.
+	//
+	// Can be used when, for example, some
+	// source files include the projen marker and we don't want them to be erased during synth.
+	// Experimental.
 	AddExcludeFromCleanup(globs ...*string)
+	// Adds a .gitignore pattern.
+	// Experimental.
 	AddGitIgnore(pattern *string)
+	// Exclude these files from the bundled package.
+	//
+	// Implemented by project types based on the
+	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Experimental.
 	AddPackageIgnore(_pattern *string)
+	// Adds a build plugin to the pom.
+	//
+	// The plug in is also added as a BUILD dep to the project.
+	// Experimental.
 	AddPlugin(spec *string, options *java.PluginOptions) *projen.Dependency
+	// Adds a new task to this project.
+	//
+	// This will fail if the project already has
+	// a task with this name.
+	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
+	// Adds a test dependency.
+	// Experimental.
 	AddTestDependency(spec *string)
+	// Prints a "tip" message during synthesis.
+	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 	AddTip(message *string)
+	// Marks the provided file(s) as being generated.
+	//
+	// This is achieved using the
+	// github-linguist attributes. Generated files do not count against the
+	// repository statistics and language breakdown.
+	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
+	//
+	// Deprecated.
 	AnnotateGenerated(glob *string)
+	// Called after all components are synthesized.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before all components are synthesized.
+	// Experimental.
 	PreSynthesize()
+	// Removes a task from a project.
+	//
+	// Returns: The `Task` that was removed, otherwise `undefined`.
+	// Experimental.
 	RemoveTask(name *string) projen.Task
+	// Returns the shell command to execute in order to run a task.
+	//
+	// By default, this is `npx projen@<version> <task>`.
+	// Experimental.
 	RunTaskCommand(task projen.Task) *string
+	// Synthesize all project files into `outdir`.
+	//
+	// 1. Call "this.preSynthesize()"
+	// 2. Delete all generated files
+	// 3. Synthesize all sub-projects
+	// 4. Synthesize all components of this project
+	// 5. Call "postSynthesize()" for all components of this project
+	// 6. Call "this.postSynthesize()"
+	// Experimental.
 	Synth()
+	// Finds a file at the specified relative path within this project and all its subprojects.
+	//
+	// Returns: a `FileBase` or undefined if there is no file in that path.
+	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
+	// Finds a json file by name.
+	// Deprecated: use `tryFindObjectFile`.
 	TryFindJsonFile(filePath *string) projen.JsonFile
+	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
 }
 
@@ -3119,8 +3445,6 @@ func AwsCdkJavaApp_DEFAULT_TASK() *string {
 	return returns
 }
 
-// Adds an AWS CDK module dependencies.
-// Deprecated: In CDK 2.x all modules are available by default. Alpha modules should be added using the standard 'deps'
 func (a *jsiiProxy_AwsCdkJavaApp) AddCdkDependency(modules ...*string) {
 	args := []interface{}{}
 	for _, a := range modules {
@@ -3134,8 +3458,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddCdkDependency(modules ...*string) {
 	)
 }
 
-// Adds a runtime dependency.
-// Experimental.
 func (a *jsiiProxy_AwsCdkJavaApp) AddDependency(spec *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -3144,11 +3466,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddDependency(spec *string) {
 	)
 }
 
-// Exclude the matching files from pre-synth cleanup.
-//
-// Can be used when, for example, some
-// source files include the projen marker and we don't want them to be erased during synth.
-// Experimental.
 func (a *jsiiProxy_AwsCdkJavaApp) AddExcludeFromCleanup(globs ...*string) {
 	args := []interface{}{}
 	for _, a := range globs {
@@ -3162,8 +3479,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddExcludeFromCleanup(globs ...*string) {
 	)
 }
 
-// Adds a .gitignore pattern.
-// Experimental.
 func (a *jsiiProxy_AwsCdkJavaApp) AddGitIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -3172,11 +3487,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddGitIgnore(pattern *string) {
 	)
 }
 
-// Exclude these files from the bundled package.
-//
-// Implemented by project types based on the
-// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
-// Experimental.
 func (a *jsiiProxy_AwsCdkJavaApp) AddPackageIgnore(_pattern *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -3185,10 +3495,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddPackageIgnore(_pattern *string) {
 	)
 }
 
-// Adds a build plugin to the pom.
-//
-// The plug in is also added as a BUILD dep to the project.
-// Experimental.
 func (a *jsiiProxy_AwsCdkJavaApp) AddPlugin(spec *string, options *java.PluginOptions) *projen.Dependency {
 	var returns *projen.Dependency
 
@@ -3202,11 +3508,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddPlugin(spec *string, options *java.PluginOp
 	return returns
 }
 
-// Adds a new task to this project.
-//
-// This will fail if the project already has
-// a task with this name.
-// Experimental.
 func (a *jsiiProxy_AwsCdkJavaApp) AddTask(name *string, props *projen.TaskOptions) projen.Task {
 	var returns projen.Task
 
@@ -3220,8 +3521,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddTask(name *string, props *projen.TaskOption
 	return returns
 }
 
-// Adds a test dependency.
-// Experimental.
 func (a *jsiiProxy_AwsCdkJavaApp) AddTestDependency(spec *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -3230,8 +3529,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddTestDependency(spec *string) {
 	)
 }
 
-// Prints a "tip" message during synthesis.
-// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 func (a *jsiiProxy_AwsCdkJavaApp) AddTip(message *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -3240,14 +3537,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddTip(message *string) {
 	)
 }
 
-// Marks the provided file(s) as being generated.
-//
-// This is achieved using the
-// github-linguist attributes. Generated files do not count against the
-// repository statistics and language breakdown.
-// See: https://github.com/github/linguist/blob/master/docs/overrides.md
-//
-// Deprecated.
 func (a *jsiiProxy_AwsCdkJavaApp) AnnotateGenerated(glob *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -3256,10 +3545,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) AnnotateGenerated(glob *string) {
 	)
 }
 
-// Called after all components are synthesized.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (a *jsiiProxy_AwsCdkJavaApp) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -3268,8 +3553,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) PostSynthesize() {
 	)
 }
 
-// Called before all components are synthesized.
-// Experimental.
 func (a *jsiiProxy_AwsCdkJavaApp) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -3278,10 +3561,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) PreSynthesize() {
 	)
 }
 
-// Removes a task from a project.
-//
-// Returns: The `Task` that was removed, otherwise `undefined`.
-// Experimental.
 func (a *jsiiProxy_AwsCdkJavaApp) RemoveTask(name *string) projen.Task {
 	var returns projen.Task
 
@@ -3295,10 +3574,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) RemoveTask(name *string) projen.Task {
 	return returns
 }
 
-// Returns the shell command to execute in order to run a task.
-//
-// By default, this is `npx projen@<version> <task>`
-// Experimental.
 func (a *jsiiProxy_AwsCdkJavaApp) RunTaskCommand(task projen.Task) *string {
 	var returns *string
 
@@ -3312,15 +3587,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) RunTaskCommand(task projen.Task) *string {
 	return returns
 }
 
-// Synthesize all project files into `outdir`.
-//
-// 1. Call "this.preSynthesize()"
-// 2. Delete all generated files
-// 3. Synthesize all sub-projects
-// 4. Synthesize all components of this project
-// 5. Call "postSynthesize()" for all components of this project
-// 6. Call "this.postSynthesize()"
-// Experimental.
 func (a *jsiiProxy_AwsCdkJavaApp) Synth() {
 	_jsii_.InvokeVoid(
 		a,
@@ -3329,10 +3595,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) Synth() {
 	)
 }
 
-// Finds a file at the specified relative path within this project and all its subprojects.
-//
-// Returns: a `FileBase` or undefined if there is no file in that path
-// Experimental.
 func (a *jsiiProxy_AwsCdkJavaApp) TryFindFile(filePath *string) projen.FileBase {
 	var returns projen.FileBase
 
@@ -3346,8 +3608,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) TryFindFile(filePath *string) projen.FileBase 
 	return returns
 }
 
-// Finds a json file by name.
-// Deprecated: use `tryFindObjectFile`
 func (a *jsiiProxy_AwsCdkJavaApp) TryFindJsonFile(filePath *string) projen.JsonFile {
 	var returns projen.JsonFile
 
@@ -3361,8 +3621,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) TryFindJsonFile(filePath *string) projen.JsonF
 	return returns
 }
 
-// Finds an object file (like JsonFile, YamlFile, etc.) by name.
-// Experimental.
 func (a *jsiiProxy_AwsCdkJavaApp) TryFindObjectFile(filePath *string) projen.ObjectFile {
 	var returns projen.ObjectFile
 
@@ -3440,7 +3698,7 @@ type AwsCdkJavaAppOptions struct {
 	// Deprecated: use `githubOptions.mergifyOptions` instead
 	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
-	// Deprecated: no longer supported at the base project level
+	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
@@ -3450,7 +3708,8 @@ type AwsCdkJavaAppOptions struct {
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "{ filename: 'readme.md', contents: '# title' }"
 	//
 	// Experimental.
 	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
@@ -3600,12 +3859,12 @@ type AwsCdkJavaAppOptions struct {
 	// Warning: NodeJS only.
 	//
 	// Install the @aws-cdk/assert library?
-	// Deprecated: The
+	// Deprecated: The.
 	CdkAssert *bool `json:"cdkAssert" yaml:"cdkAssert"`
 	// Install the assertions library?
 	//
 	// Only needed for CDK 1.x. If using CDK 2.x then
-	// assertions is already included in 'aws-cdk-lib'
+	// assertions is already included in 'aws-cdk-lib'.
 	// Experimental.
 	CdkAssertions *bool `json:"cdkAssertions" yaml:"cdkAssertions"`
 	// Which AWS CDKv1 modules this project requires.
@@ -3618,7 +3877,7 @@ type AwsCdkJavaAppOptions struct {
 	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
 	// they are present during development.
 	//
-	// Note: this setting only applies to construct library projects
+	// Note: this setting only applies to construct library projects.
 	// Deprecated: Not supported in CDK v2.
 	CdkDependenciesAsDeps *bool `json:"cdkDependenciesAsDeps" yaml:"cdkDependenciesAsDeps"`
 	// AWS CDK modules required for testing.
@@ -3665,62 +3924,216 @@ type AwsCdkPackageNames struct {
 // Experimental.
 type AwsCdkPythonApp interface {
 	python.PythonProject
+	// The CDK app entrypoint.
+	// Experimental.
 	AppEntrypoint() *string
+	// Auto approve set up for this project.
+	// Deprecated.
 	AutoApprove() github.AutoApprove
+	// Experimental.
 	BuildTask() projen.Task
+	// cdk.json configuration.
+	// Experimental.
 	CdkConfig() CdkConfig
+	// Experimental.
 	CdkDeps() AwsCdkDeps
+	// Common CDK tasks.
+	// Experimental.
 	CdkTasks() CdkTasks
+	// The CDK version this app is using.
+	// Experimental.
 	CdkVersion() *string
+	// Experimental.
 	CompileTask() projen.Task
+	// Returns all the components within this project.
+	// Experimental.
 	Components() *[]projen.Component
+	// This is the "default" task, the one that executes "projen".
+	//
+	// Undefined if
+	// the project is being ejected.
+	// Experimental.
 	DefaultTask() projen.Task
+	// Project dependencies.
+	// Experimental.
 	Deps() projen.Dependencies
+	// API for managing dependencies.
+	// Experimental.
 	DepsManager() python.IPythonDeps
+	// Access for .devcontainer.json (used for GitHub Codespaces).
+	//
+	// This will be `undefined` if devContainer boolean is false.
+	// Deprecated.
 	DevContainer() vscode.DevContainer
+	// Whether or not the project is being ejected.
+	// Experimental.
 	Ejected() *bool
+	// API for mangaging the Python runtime environment.
+	// Experimental.
 	EnvManager() python.IPythonEnv
+	// All files in this project.
+	// Experimental.
 	Files() *[]projen.FileBase
+	// The .gitattributes file for this repository.
+	// Experimental.
 	Gitattributes() projen.GitAttributesFile
+	// Access all github components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Github() github.GitHub
+	// .gitignore.
+	// Experimental.
 	Gitignore() projen.IgnoreFile
+	// Access for Gitpod.
+	//
+	// This will be `undefined` if gitpod boolean is false.
+	// Deprecated.
 	Gitpod() projen.Gitpod
+	// The options used when this project is bootstrapped via `projen new`.
+	//
+	// It
+	// includes the original set of options passed to the CLI and also the JSII
+	// FQN of the project type.
+	// Experimental.
 	InitProject() *projen.InitProject
+	// Logging utilities.
+	// Experimental.
 	Logger() projen.Logger
+	// Python module name (the project name, with any hyphens or periods replaced with underscores).
+	// Experimental.
 	ModuleName() *string
+	// Project name.
+	// Experimental.
 	Name() *string
+	// Absolute output directory of this project.
+	// Experimental.
 	Outdir() *string
+	// Experimental.
 	PackageTask() projen.Task
+	// API for managing packaging the project as a library.
+	//
+	// Only applies when the `projectType` is LIB.
+	// Experimental.
 	PackagingManager() python.IPythonPackaging
+	// A parent project.
+	//
+	// If undefined, this is the root project.
+	// Experimental.
 	Parent() projen.Project
+	// Experimental.
 	PostCompileTask() projen.Task
+	// Experimental.
 	PreCompileTask() projen.Task
+	// Manages the build process of the project.
+	// Experimental.
 	ProjectBuild() projen.ProjectBuild
+	// Deprecated.
 	ProjectType() projen.ProjectType
+	// The command to use in order to run the projen CLI.
+	// Experimental.
 	ProjenCommand() *string
+	// Pytest component.
+	// Experimental.
 	Pytest() python.Pytest
+	// Experimental.
 	SetPytest(val python.Pytest)
+	// The root project.
+	// Experimental.
 	Root() projen.Project
+	// Project tasks.
+	// Experimental.
 	Tasks() projen.Tasks
+	// The directory in which the python tests reside.
+	// Experimental.
 	Testdir() *string
+	// Experimental.
 	TestTask() projen.Task
+	// Version of the package for distribution (should follow semver).
+	// Experimental.
 	Version() *string
+	// Access all VSCode components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Vscode() vscode.VsCode
+	// Adds a runtime dependency.
+	// Experimental.
 	AddDependency(spec *string)
+	// Adds a dev dependency.
+	// Experimental.
 	AddDevDependency(spec *string)
+	// Exclude the matching files from pre-synth cleanup.
+	//
+	// Can be used when, for example, some
+	// source files include the projen marker and we don't want them to be erased during synth.
+	// Experimental.
 	AddExcludeFromCleanup(globs ...*string)
+	// Adds a .gitignore pattern.
+	// Experimental.
 	AddGitIgnore(pattern *string)
+	// Exclude these files from the bundled package.
+	//
+	// Implemented by project types based on the
+	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Experimental.
 	AddPackageIgnore(_pattern *string)
+	// Adds a new task to this project.
+	//
+	// This will fail if the project already has
+	// a task with this name.
+	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
+	// Prints a "tip" message during synthesis.
+	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 	AddTip(message *string)
+	// Marks the provided file(s) as being generated.
+	//
+	// This is achieved using the
+	// github-linguist attributes. Generated files do not count against the
+	// repository statistics and language breakdown.
+	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
+	//
+	// Deprecated.
 	AnnotateGenerated(glob *string)
+	// Called after all components are synthesized.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before all components are synthesized.
+	// Experimental.
 	PreSynthesize()
+	// Removes a task from a project.
+	//
+	// Returns: The `Task` that was removed, otherwise `undefined`.
+	// Experimental.
 	RemoveTask(name *string) projen.Task
+	// Returns the shell command to execute in order to run a task.
+	//
+	// By default, this is `npx projen@<version> <task>`.
+	// Experimental.
 	RunTaskCommand(task projen.Task) *string
+	// Synthesize all project files into `outdir`.
+	//
+	// 1. Call "this.preSynthesize()"
+	// 2. Delete all generated files
+	// 3. Synthesize all sub-projects
+	// 4. Synthesize all components of this project
+	// 5. Call "postSynthesize()" for all components of this project
+	// 6. Call "this.postSynthesize()"
+	// Experimental.
 	Synth()
+	// Finds a file at the specified relative path within this project and all its subprojects.
+	//
+	// Returns: a `FileBase` or undefined if there is no file in that path.
+	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
+	// Finds a json file by name.
+	// Deprecated: use `tryFindObjectFile`.
 	TryFindJsonFile(filePath *string) projen.JsonFile
+	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
 }
 
@@ -4175,8 +4588,6 @@ func AwsCdkPythonApp_DEFAULT_TASK() *string {
 	return returns
 }
 
-// Adds a runtime dependency.
-// Experimental.
 func (a *jsiiProxy_AwsCdkPythonApp) AddDependency(spec *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -4185,8 +4596,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) AddDependency(spec *string) {
 	)
 }
 
-// Adds a dev dependency.
-// Experimental.
 func (a *jsiiProxy_AwsCdkPythonApp) AddDevDependency(spec *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -4195,11 +4604,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) AddDevDependency(spec *string) {
 	)
 }
 
-// Exclude the matching files from pre-synth cleanup.
-//
-// Can be used when, for example, some
-// source files include the projen marker and we don't want them to be erased during synth.
-// Experimental.
 func (a *jsiiProxy_AwsCdkPythonApp) AddExcludeFromCleanup(globs ...*string) {
 	args := []interface{}{}
 	for _, a := range globs {
@@ -4213,8 +4617,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) AddExcludeFromCleanup(globs ...*string) {
 	)
 }
 
-// Adds a .gitignore pattern.
-// Experimental.
 func (a *jsiiProxy_AwsCdkPythonApp) AddGitIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -4223,11 +4625,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) AddGitIgnore(pattern *string) {
 	)
 }
 
-// Exclude these files from the bundled package.
-//
-// Implemented by project types based on the
-// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
-// Experimental.
 func (a *jsiiProxy_AwsCdkPythonApp) AddPackageIgnore(_pattern *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -4236,11 +4633,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) AddPackageIgnore(_pattern *string) {
 	)
 }
 
-// Adds a new task to this project.
-//
-// This will fail if the project already has
-// a task with this name.
-// Experimental.
 func (a *jsiiProxy_AwsCdkPythonApp) AddTask(name *string, props *projen.TaskOptions) projen.Task {
 	var returns projen.Task
 
@@ -4254,8 +4646,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) AddTask(name *string, props *projen.TaskOpti
 	return returns
 }
 
-// Prints a "tip" message during synthesis.
-// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 func (a *jsiiProxy_AwsCdkPythonApp) AddTip(message *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -4264,14 +4654,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) AddTip(message *string) {
 	)
 }
 
-// Marks the provided file(s) as being generated.
-//
-// This is achieved using the
-// github-linguist attributes. Generated files do not count against the
-// repository statistics and language breakdown.
-// See: https://github.com/github/linguist/blob/master/docs/overrides.md
-//
-// Deprecated.
 func (a *jsiiProxy_AwsCdkPythonApp) AnnotateGenerated(glob *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -4280,10 +4662,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) AnnotateGenerated(glob *string) {
 	)
 }
 
-// Called after all components are synthesized.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (a *jsiiProxy_AwsCdkPythonApp) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -4292,8 +4670,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) PostSynthesize() {
 	)
 }
 
-// Called before all components are synthesized.
-// Experimental.
 func (a *jsiiProxy_AwsCdkPythonApp) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -4302,10 +4678,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) PreSynthesize() {
 	)
 }
 
-// Removes a task from a project.
-//
-// Returns: The `Task` that was removed, otherwise `undefined`.
-// Experimental.
 func (a *jsiiProxy_AwsCdkPythonApp) RemoveTask(name *string) projen.Task {
 	var returns projen.Task
 
@@ -4319,10 +4691,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) RemoveTask(name *string) projen.Task {
 	return returns
 }
 
-// Returns the shell command to execute in order to run a task.
-//
-// By default, this is `npx projen@<version> <task>`
-// Experimental.
 func (a *jsiiProxy_AwsCdkPythonApp) RunTaskCommand(task projen.Task) *string {
 	var returns *string
 
@@ -4336,15 +4704,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) RunTaskCommand(task projen.Task) *string {
 	return returns
 }
 
-// Synthesize all project files into `outdir`.
-//
-// 1. Call "this.preSynthesize()"
-// 2. Delete all generated files
-// 3. Synthesize all sub-projects
-// 4. Synthesize all components of this project
-// 5. Call "postSynthesize()" for all components of this project
-// 6. Call "this.postSynthesize()"
-// Experimental.
 func (a *jsiiProxy_AwsCdkPythonApp) Synth() {
 	_jsii_.InvokeVoid(
 		a,
@@ -4353,10 +4712,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) Synth() {
 	)
 }
 
-// Finds a file at the specified relative path within this project and all its subprojects.
-//
-// Returns: a `FileBase` or undefined if there is no file in that path
-// Experimental.
 func (a *jsiiProxy_AwsCdkPythonApp) TryFindFile(filePath *string) projen.FileBase {
 	var returns projen.FileBase
 
@@ -4370,8 +4725,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) TryFindFile(filePath *string) projen.FileBas
 	return returns
 }
 
-// Finds a json file by name.
-// Deprecated: use `tryFindObjectFile`
 func (a *jsiiProxy_AwsCdkPythonApp) TryFindJsonFile(filePath *string) projen.JsonFile {
 	var returns projen.JsonFile
 
@@ -4385,8 +4738,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) TryFindJsonFile(filePath *string) projen.Jso
 	return returns
 }
 
-// Finds an object file (like JsonFile, YamlFile, etc.) by name.
-// Experimental.
 func (a *jsiiProxy_AwsCdkPythonApp) TryFindObjectFile(filePath *string) projen.ObjectFile {
 	var returns projen.ObjectFile
 
@@ -4465,7 +4816,7 @@ type AwsCdkPythonAppOptions struct {
 	// Deprecated: use `githubOptions.mergifyOptions` instead
 	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
-	// Deprecated: no longer supported at the base project level
+	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
@@ -4475,7 +4826,8 @@ type AwsCdkPythonAppOptions struct {
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "{ filename: 'readme.md', contents: '# title' }"
 	//
 	// Experimental.
 	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
@@ -4606,12 +4958,12 @@ type AwsCdkPythonAppOptions struct {
 	// Warning: NodeJS only.
 	//
 	// Install the @aws-cdk/assert library?
-	// Deprecated: The
+	// Deprecated: The.
 	CdkAssert *bool `json:"cdkAssert" yaml:"cdkAssert"`
 	// Install the assertions library?
 	//
 	// Only needed for CDK 1.x. If using CDK 2.x then
-	// assertions is already included in 'aws-cdk-lib'
+	// assertions is already included in 'aws-cdk-lib'.
 	// Experimental.
 	CdkAssertions *bool `json:"cdkAssertions" yaml:"cdkAssertions"`
 	// Which AWS CDKv1 modules this project requires.
@@ -4624,7 +4976,7 @@ type AwsCdkPythonAppOptions struct {
 	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
 	// they are present during development.
 	//
-	// Note: this setting only applies to construct library projects
+	// Note: this setting only applies to construct library projects.
 	// Deprecated: Not supported in CDK v2.
 	CdkDependenciesAsDeps *bool `json:"cdkDependenciesAsDeps" yaml:"cdkDependenciesAsDeps"`
 	// AWS CDK modules required for testing.
@@ -4651,96 +5003,325 @@ type AwsCdkPythonAppOptions struct {
 // Experimental.
 type AwsCdkTypeScriptApp interface {
 	typescript.TypeScriptAppProject
+	// Deprecated: use `package.allowLibraryDependencies`
 	AllowLibraryDependencies() *bool
+	// The CDK app entrypoint.
+	// Experimental.
 	AppEntrypoint() *string
+	// The build output directory.
+	//
+	// An npm tarball will be created under the `js`
+	// subdirectory. For example, if this is set to `dist` (the default), the npm
+	// tarball will be placed under `dist/js/boom-boom-1.2.3.tg`.
+	// Experimental.
 	ArtifactsDirectory() *string
+	// The location of the npm tarball after build (`${artifactsDirectory}/js`).
+	// Experimental.
 	ArtifactsJavascriptDirectory() *string
+	// Auto approve set up for this project.
+	// Deprecated.
 	AutoApprove() github.AutoApprove
+	// Automatic PR merges.
+	// Experimental.
 	AutoMerge() github.AutoMerge
+	// Experimental.
 	BuildTask() projen.Task
+	// The PR build GitHub workflow.
+	//
+	// `undefined` if `buildWorkflow` is disabled.
+	// Experimental.
 	BuildWorkflow() build.BuildWorkflow
+	// The job ID of the build workflow.
+	// Experimental.
 	BuildWorkflowJobId() *string
+	// Experimental.
 	Bundler() javascript.Bundler
+	// cdk.json configuration.
+	// Experimental.
 	CdkConfig() CdkConfig
+	// Experimental.
 	CdkDeps() AwsCdkDeps
+	// Common CDK tasks.
+	// Experimental.
 	CdkTasks() CdkTasks
+	// The CDK version this app is using.
+	// Experimental.
 	CdkVersion() *string
+	// Experimental.
 	CompileTask() projen.Task
+	// Returns all the components within this project.
+	// Experimental.
 	Components() *[]projen.Component
+	// This is the "default" task, the one that executes "projen".
+	//
+	// Undefined if
+	// the project is being ejected.
+	// Experimental.
 	DefaultTask() projen.Task
+	// Project dependencies.
+	// Experimental.
 	Deps() projen.Dependencies
+	// Access for .devcontainer.json (used for GitHub Codespaces).
+	//
+	// This will be `undefined` if devContainer boolean is false.
+	// Deprecated.
 	DevContainer() vscode.DevContainer
+	// Experimental.
 	Docgen() *bool
+	// Experimental.
 	DocsDirectory() *string
+	// Whether or not the project is being ejected.
+	// Experimental.
 	Ejected() *bool
+	// Deprecated: use `package.entrypoint`
 	Entrypoint() *string
+	// Experimental.
 	Eslint() javascript.Eslint
+	// All files in this project.
+	// Experimental.
 	Files() *[]projen.FileBase
+	// The .gitattributes file for this repository.
+	// Experimental.
 	Gitattributes() projen.GitAttributesFile
+	// Access all github components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Github() github.GitHub
+	// .gitignore.
+	// Experimental.
 	Gitignore() projen.IgnoreFile
+	// Access for Gitpod.
+	//
+	// This will be `undefined` if gitpod boolean is false.
+	// Deprecated.
 	Gitpod() projen.Gitpod
+	// The options used when this project is bootstrapped via `projen new`.
+	//
+	// It
+	// includes the original set of options passed to the CLI and also the JSII
+	// FQN of the project type.
+	// Experimental.
 	InitProject() *projen.InitProject
+	// The Jest configuration (if enabled).
+	// Experimental.
 	Jest() javascript.Jest
+	// The directory in which compiled .js files reside.
+	// Experimental.
 	Libdir() *string
+	// Logging utilities.
+	// Experimental.
 	Logger() projen.Logger
+	// Deprecated: use `package.addField(x, y)`
 	Manifest() interface{}
+	// Maximum node version required by this pacakge.
+	// Experimental.
 	MaxNodeVersion() *string
+	// Minimum node.js version required by this package.
+	// Experimental.
 	MinNodeVersion() *string
+	// Project name.
+	// Experimental.
 	Name() *string
+	// The .npmignore file.
+	// Experimental.
 	Npmignore() projen.IgnoreFile
+	// Absolute output directory of this project.
+	// Experimental.
 	Outdir() *string
+	// API for managing the node package.
+	// Experimental.
 	Package() javascript.NodePackage
+	// The package manager to use.
+	// Deprecated: use `package.packageManager`
 	PackageManager() javascript.NodePackageManager
+	// Experimental.
 	PackageTask() projen.Task
+	// A parent project.
+	//
+	// If undefined, this is the root project.
+	// Experimental.
 	Parent() projen.Project
+	// Experimental.
 	PostCompileTask() projen.Task
+	// Experimental.
 	PreCompileTask() projen.Task
+	// Experimental.
 	Prettier() javascript.Prettier
+	// Manages the build process of the project.
+	// Experimental.
 	ProjectBuild() projen.ProjectBuild
+	// Deprecated.
 	ProjectType() projen.ProjectType
+	// The command to use in order to run the projen CLI.
+	// Experimental.
 	ProjenCommand() *string
+	// Package publisher.
+	//
+	// This will be `undefined` if the project does not have a
+	// release workflow.
+	// Deprecated: use `release.publisher`.
 	Publisher() release.Publisher
+	// Release management.
+	// Experimental.
 	Release() release.Release
+	// The root project.
+	// Experimental.
 	Root() projen.Project
+	// The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager).
+	// Experimental.
 	RunScriptCommand() *string
+	// The directory in which the .ts sources reside.
+	// Experimental.
 	Srcdir() *string
+	// Project tasks.
+	// Experimental.
 	Tasks() projen.Tasks
+	// The directory in which tests reside.
+	// Experimental.
 	Testdir() *string
+	// Experimental.
 	TestTask() projen.Task
+	// Experimental.
 	Tsconfig() javascript.TypescriptConfig
+	// A typescript configuration file which covers all files (sources, tests, projen).
+	// Experimental.
 	TsconfigDev() javascript.TypescriptConfig
+	// Experimental.
 	TsconfigEslint() javascript.TypescriptConfig
+	// The upgrade workflow.
+	// Experimental.
 	UpgradeWorkflow() javascript.UpgradeDependencies
+	// Access all VSCode components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Vscode() vscode.VsCode
+	// The "watch" task.
+	// Experimental.
 	WatchTask() projen.Task
+	// Experimental.
 	AddBins(bins *map[string]*string)
+	// Defines bundled dependencies.
+	//
+	// Bundled dependencies will be added as normal dependencies as well as to the
+	// `bundledDependencies` section of your `package.json`.
+	// Experimental.
 	AddBundledDeps(deps ...*string)
+	// Adds an AWS CDK module dependencies.
+	// Experimental.
 	AddCdkDependency(modules ...*string)
+	// DEPRECATED.
+	// Deprecated: use `project.compileTask.exec()`
 	AddCompileCommand(commands ...*string)
+	// Defines normal dependencies.
+	// Experimental.
 	AddDeps(deps ...*string)
+	// Defines development/test dependencies.
+	// Experimental.
 	AddDevDeps(deps ...*string)
+	// Exclude the matching files from pre-synth cleanup.
+	//
+	// Can be used when, for example, some
+	// source files include the projen marker and we don't want them to be erased during synth.
+	// Experimental.
 	AddExcludeFromCleanup(globs ...*string)
+	// Directly set fields in `package.json`.
+	// Experimental.
 	AddFields(fields *map[string]interface{})
+	// Adds a .gitignore pattern.
+	// Experimental.
 	AddGitIgnore(pattern *string)
+	// Adds keywords to package.json (deduplicated).
+	// Experimental.
 	AddKeywords(keywords ...*string)
+	// Exclude these files from the bundled package.
+	//
+	// Implemented by project types based on the
+	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Experimental.
 	AddPackageIgnore(pattern *string)
+	// Defines peer dependencies.
+	//
+	// When adding peer dependencies, a devDependency will also be added on the
+	// pinned version of the declared peer. This will ensure that you are testing
+	// your code against the minimum version required from your consumers.
+	// Experimental.
 	AddPeerDeps(deps ...*string)
+	// Adds a new task to this project.
+	//
+	// This will fail if the project already has
+	// a task with this name.
+	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
+	// DEPRECATED.
+	// Deprecated: use `project.testTask.exec()`
 	AddTestCommand(commands ...*string)
+	// Prints a "tip" message during synthesis.
+	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 	AddTip(message *string)
+	// Marks the provided file(s) as being generated.
+	//
+	// This is achieved using the
+	// github-linguist attributes. Generated files do not count against the
+	// repository statistics and language breakdown.
+	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
+	//
+	// Deprecated.
 	AnnotateGenerated(glob *string)
+	// Indicates if a script by the name name is defined.
+	// Experimental.
 	HasScript(name *string) *bool
+	// Called after all components are synthesized.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before all components are synthesized.
+	// Experimental.
 	PreSynthesize()
+	// Removes the npm script (always successful).
+	// Experimental.
 	RemoveScript(name *string)
+	// Removes a task from a project.
+	//
+	// Returns: The `Task` that was removed, otherwise `undefined`.
+	// Experimental.
 	RemoveTask(name *string) projen.Task
+	// Returns the set of workflow steps which should be executed to bootstrap a workflow.
+	//
+	// Returns: Job steps.
+	// Experimental.
 	RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep
+	// Returns the shell command to execute in order to run a task.
+	//
+	// This will
+	// typically be `npx projen TASK`.
+	// Experimental.
 	RunTaskCommand(task projen.Task) *string
+	// Replaces the contents of an npm package.json script.
+	// Experimental.
 	SetScript(name *string, command *string)
+	// Synthesize all project files into `outdir`.
+	//
+	// 1. Call "this.preSynthesize()"
+	// 2. Delete all generated files
+	// 3. Synthesize all sub-projects
+	// 4. Synthesize all components of this project
+	// 5. Call "postSynthesize()" for all components of this project
+	// 6. Call "this.postSynthesize()"
+	// Experimental.
 	Synth()
+	// Finds a file at the specified relative path within this project and all its subprojects.
+	//
+	// Returns: a `FileBase` or undefined if there is no file in that path.
+	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
+	// Finds a json file by name.
+	// Deprecated: use `tryFindObjectFile`.
 	TryFindJsonFile(filePath *string) projen.JsonFile
+	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
 }
 
@@ -5417,7 +5998,6 @@ func AwsCdkTypeScriptApp_DEFAULT_TASK() *string {
 	return returns
 }
 
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddBins(bins *map[string]*string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -5426,11 +6006,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddBins(bins *map[string]*string) {
 	)
 }
 
-// Defines bundled dependencies.
-//
-// Bundled dependencies will be added as normal dependencies as well as to the
-// `bundledDependencies` section of your `package.json`.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddBundledDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -5444,8 +6019,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddBundledDeps(deps ...*string) {
 	)
 }
 
-// Adds an AWS CDK module dependencies.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddCdkDependency(modules ...*string) {
 	args := []interface{}{}
 	for _, a := range modules {
@@ -5459,8 +6032,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddCdkDependency(modules ...*string) {
 	)
 }
 
-// DEPRECATED.
-// Deprecated: use `project.compileTask.exec()`
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddCompileCommand(commands ...*string) {
 	args := []interface{}{}
 	for _, a := range commands {
@@ -5474,8 +6045,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddCompileCommand(commands ...*string) {
 	)
 }
 
-// Defines normal dependencies.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -5489,8 +6058,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddDeps(deps ...*string) {
 	)
 }
 
-// Defines development/test dependencies.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddDevDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -5504,11 +6071,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddDevDeps(deps ...*string) {
 	)
 }
 
-// Exclude the matching files from pre-synth cleanup.
-//
-// Can be used when, for example, some
-// source files include the projen marker and we don't want them to be erased during synth.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddExcludeFromCleanup(globs ...*string) {
 	args := []interface{}{}
 	for _, a := range globs {
@@ -5522,8 +6084,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddExcludeFromCleanup(globs ...*string) 
 	)
 }
 
-// Directly set fields in `package.json`.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddFields(fields *map[string]interface{}) {
 	_jsii_.InvokeVoid(
 		a,
@@ -5532,8 +6092,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddFields(fields *map[string]interface{}
 	)
 }
 
-// Adds a .gitignore pattern.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddGitIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -5542,8 +6100,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddGitIgnore(pattern *string) {
 	)
 }
 
-// Adds keywords to package.json (deduplicated).
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddKeywords(keywords ...*string) {
 	args := []interface{}{}
 	for _, a := range keywords {
@@ -5557,11 +6113,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddKeywords(keywords ...*string) {
 	)
 }
 
-// Exclude these files from the bundled package.
-//
-// Implemented by project types based on the
-// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddPackageIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -5570,12 +6121,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddPackageIgnore(pattern *string) {
 	)
 }
 
-// Defines peer dependencies.
-//
-// When adding peer dependencies, a devDependency will also be added on the
-// pinned version of the declared peer. This will ensure that you are testing
-// your code against the minimum version required from your consumers.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddPeerDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -5589,11 +6134,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddPeerDeps(deps ...*string) {
 	)
 }
 
-// Adds a new task to this project.
-//
-// This will fail if the project already has
-// a task with this name.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddTask(name *string, props *projen.TaskOptions) projen.Task {
 	var returns projen.Task
 
@@ -5607,8 +6147,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddTask(name *string, props *projen.Task
 	return returns
 }
 
-// DEPRECATED.
-// Deprecated: use `project.testTask.exec()`
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddTestCommand(commands ...*string) {
 	args := []interface{}{}
 	for _, a := range commands {
@@ -5622,8 +6160,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddTestCommand(commands ...*string) {
 	)
 }
 
-// Prints a "tip" message during synthesis.
-// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddTip(message *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -5632,14 +6168,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddTip(message *string) {
 	)
 }
 
-// Marks the provided file(s) as being generated.
-//
-// This is achieved using the
-// github-linguist attributes. Generated files do not count against the
-// repository statistics and language breakdown.
-// See: https://github.com/github/linguist/blob/master/docs/overrides.md
-//
-// Deprecated.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AnnotateGenerated(glob *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -5648,8 +6176,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AnnotateGenerated(glob *string) {
 	)
 }
 
-// Indicates if a script by the name name is defined.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) HasScript(name *string) *bool {
 	var returns *bool
 
@@ -5663,10 +6189,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) HasScript(name *string) *bool {
 	return returns
 }
 
-// Called after all components are synthesized.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -5675,8 +6197,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) PostSynthesize() {
 	)
 }
 
-// Called before all components are synthesized.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -5685,8 +6205,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) PreSynthesize() {
 	)
 }
 
-// Removes the npm script (always successful).
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) RemoveScript(name *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -5695,10 +6213,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) RemoveScript(name *string) {
 	)
 }
 
-// Removes a task from a project.
-//
-// Returns: The `Task` that was removed, otherwise `undefined`.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) RemoveTask(name *string) projen.Task {
 	var returns projen.Task
 
@@ -5712,10 +6226,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) RemoveTask(name *string) projen.Task {
 	return returns
 }
 
-// Returns the set of workflow steps which should be executed to bootstrap a workflow.
-//
-// Returns: Job steps
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
 	var returns *[]*workflows.JobStep
 
@@ -5729,11 +6239,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) RenderWorkflowSetup(options *javascript.
 	return returns
 }
 
-// Returns the shell command to execute in order to run a task.
-//
-// This will
-// typically be `npx projen TASK`.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) RunTaskCommand(task projen.Task) *string {
 	var returns *string
 
@@ -5747,8 +6252,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) RunTaskCommand(task projen.Task) *string
 	return returns
 }
 
-// Replaces the contents of an npm package.json script.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) SetScript(name *string, command *string) {
 	_jsii_.InvokeVoid(
 		a,
@@ -5757,15 +6260,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) SetScript(name *string, command *string)
 	)
 }
 
-// Synthesize all project files into `outdir`.
-//
-// 1. Call "this.preSynthesize()"
-// 2. Delete all generated files
-// 3. Synthesize all sub-projects
-// 4. Synthesize all components of this project
-// 5. Call "postSynthesize()" for all components of this project
-// 6. Call "this.postSynthesize()"
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) Synth() {
 	_jsii_.InvokeVoid(
 		a,
@@ -5774,10 +6268,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) Synth() {
 	)
 }
 
-// Finds a file at the specified relative path within this project and all its subprojects.
-//
-// Returns: a `FileBase` or undefined if there is no file in that path
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) TryFindFile(filePath *string) projen.FileBase {
 	var returns projen.FileBase
 
@@ -5791,8 +6281,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) TryFindFile(filePath *string) projen.Fil
 	return returns
 }
 
-// Finds a json file by name.
-// Deprecated: use `tryFindObjectFile`
 func (a *jsiiProxy_AwsCdkTypeScriptApp) TryFindJsonFile(filePath *string) projen.JsonFile {
 	var returns projen.JsonFile
 
@@ -5806,8 +6294,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) TryFindJsonFile(filePath *string) projen
 	return returns
 }
 
-// Finds an object file (like JsonFile, YamlFile, etc.) by name.
-// Experimental.
 func (a *jsiiProxy_AwsCdkTypeScriptApp) TryFindObjectFile(filePath *string) projen.ObjectFile {
 	var returns projen.ObjectFile
 
@@ -5885,7 +6371,7 @@ type AwsCdkTypeScriptAppOptions struct {
 	// Deprecated: use `githubOptions.mergifyOptions` instead
 	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
-	// Deprecated: no longer supported at the base project level
+	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
@@ -5895,7 +6381,8 @@ type AwsCdkTypeScriptAppOptions struct {
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "{ filename: 'readme.md', contents: '# title' }"
 	//
 	// Experimental.
 	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
@@ -5974,7 +6461,8 @@ type AwsCdkTypeScriptAppOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   [ 'express', 'lodash', 'foo@^2' ]
 	//
 	// Experimental.
 	Deps *[]*string `json:"deps" yaml:"deps"`
@@ -5997,7 +6485,8 @@ type AwsCdkTypeScriptAppOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   [ 'typescript', '@types/express' ]
 	//
 	// Experimental.
 	DevDeps *[]*string `json:"devDeps" yaml:"devDeps"`
@@ -6033,7 +6522,7 @@ type AwsCdkTypeScriptAppOptions struct {
 	// The host name of the npm registry to publish to.
 	//
 	// Cannot be set together with `npmRegistryUrl`.
-	// Deprecated: use `npmRegistryUrl` instead
+	// Deprecated: use `npmRegistryUrl` instead.
 	NpmRegistry *string `json:"npmRegistry" yaml:"npmRegistry"`
 	// The base URL of the npm package registry.
 	//
@@ -6396,12 +6885,12 @@ type AwsCdkTypeScriptAppOptions struct {
 	// Warning: NodeJS only.
 	//
 	// Install the @aws-cdk/assert library?
-	// Deprecated: The
+	// Deprecated: The.
 	CdkAssert *bool `json:"cdkAssert" yaml:"cdkAssert"`
 	// Install the assertions library?
 	//
 	// Only needed for CDK 1.x. If using CDK 2.x then
-	// assertions is already included in 'aws-cdk-lib'
+	// assertions is already included in 'aws-cdk-lib'.
 	// Experimental.
 	CdkAssertions *bool `json:"cdkAssertions" yaml:"cdkAssertions"`
 	// Which AWS CDKv1 modules this project requires.
@@ -6414,7 +6903,7 @@ type AwsCdkTypeScriptAppOptions struct {
 	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
 	// they are present during development.
 	//
-	// Note: this setting only applies to construct library projects
+	// Note: this setting only applies to construct library projects.
 	// Deprecated: Not supported in CDK v2.
 	CdkDependenciesAsDeps *bool `json:"cdkDependenciesAsDeps" yaml:"cdkDependenciesAsDeps"`
 	// AWS CDK modules required for testing.
@@ -6447,11 +6936,24 @@ type AwsCdkTypeScriptAppOptions struct {
 // Experimental.
 type CdkConfig interface {
 	projen.Component
+	// Name of the cdk.out directory.
+	// Experimental.
 	Cdkout() *string
+	// Represents the JSON file.
+	// Experimental.
 	Json() projen.JsonFile
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -6517,10 +7019,6 @@ func NewCdkConfig_Override(c CdkConfig, project projen.Project, options *CdkConf
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (c *jsiiProxy_CdkConfig) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		c,
@@ -6529,8 +7027,6 @@ func (c *jsiiProxy_CdkConfig) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (c *jsiiProxy_CdkConfig) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		c,
@@ -6539,8 +7035,6 @@ func (c *jsiiProxy_CdkConfig) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (c *jsiiProxy_CdkConfig) Synthesize() {
 	_jsii_.InvokeVoid(
 		c,
@@ -6616,15 +7110,36 @@ type CdkConfigOptions struct {
 // Experimental.
 type CdkTasks interface {
 	projen.Component
+	// Deploys your app.
+	// Experimental.
 	Deploy() projen.Task
+	// Destroys all the stacks.
+	// Experimental.
 	Destroy() projen.Task
+	// Diff against production.
+	// Experimental.
 	Diff() projen.Task
+	// Experimental.
 	Project() projen.Project
+	// Synthesizes your app.
+	// Experimental.
 	Synth() projen.Task
+	// Synthesizes your app and suppresses stdout.
+	// Experimental.
 	SynthSilent() projen.Task
+	// Watch task.
+	// Experimental.
 	Watch() projen.Task
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -6730,10 +7245,6 @@ func NewCdkTasks_Override(c CdkTasks, project projen.Project) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (c *jsiiProxy_CdkTasks) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		c,
@@ -6742,8 +7253,6 @@ func (c *jsiiProxy_CdkTasks) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (c *jsiiProxy_CdkTasks) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		c,
@@ -6752,8 +7261,6 @@ func (c *jsiiProxy_CdkTasks) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (c *jsiiProxy_CdkTasks) Synthesize() {
 	_jsii_.InvokeVoid(
 		c,
@@ -6762,98 +7269,326 @@ func (c *jsiiProxy_CdkTasks) Synthesize() {
 	)
 }
 
-// Deprecated: use `AwsCdkConstructLibrary`
+// Deprecated: use `AwsCdkConstructLibrary`.
 type ConstructLibraryAws interface {
 	AwsCdkConstructLibrary
+	// Deprecated: use `package.allowLibraryDependencies`
 	AllowLibraryDependencies() *bool
+	// The build output directory.
+	//
+	// An npm tarball will be created under the `js`
+	// subdirectory. For example, if this is set to `dist` (the default), the npm
+	// tarball will be placed under `dist/js/boom-boom-1.2.3.tg`.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	ArtifactsDirectory() *string
+	// The location of the npm tarball after build (`${artifactsDirectory}/js`).
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	ArtifactsJavascriptDirectory() *string
+	// Auto approve set up for this project.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AutoApprove() github.AutoApprove
+	// Automatic PR merges.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AutoMerge() github.AutoMerge
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	BuildTask() projen.Task
+	// The PR build GitHub workflow.
+	//
+	// `undefined` if `buildWorkflow` is disabled.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	BuildWorkflow() build.BuildWorkflow
+	// The job ID of the build workflow.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	BuildWorkflowJobId() *string
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Bundler() javascript.Bundler
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	CdkDeps() AwsCdkDeps
+	// The target CDK version for this library.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	CdkVersion() *string
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	CompileTask() projen.Task
+	// Returns all the components within this project.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Components() *[]projen.Component
+	// This is the "default" task, the one that executes "projen".
+	//
+	// Undefined if
+	// the project is being ejected.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	DefaultTask() projen.Task
+	// Project dependencies.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Deps() projen.Dependencies
+	// Access for .devcontainer.json (used for GitHub Codespaces).
+	//
+	// This will be `undefined` if devContainer boolean is false.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	DevContainer() vscode.DevContainer
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Docgen() *bool
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	DocsDirectory() *string
+	// Whether or not the project is being ejected.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Ejected() *bool
+	// Deprecated: use `package.entrypoint`
 	Entrypoint() *string
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Eslint() javascript.Eslint
+	// All files in this project.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Files() *[]projen.FileBase
+	// The .gitattributes file for this repository.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Gitattributes() projen.GitAttributesFile
+	// Access all github components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Github() github.GitHub
+	// .gitignore.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Gitignore() projen.IgnoreFile
+	// Access for Gitpod.
+	//
+	// This will be `undefined` if gitpod boolean is false.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Gitpod() projen.Gitpod
+	// The options used when this project is bootstrapped via `projen new`.
+	//
+	// It
+	// includes the original set of options passed to the CLI and also the JSII
+	// FQN of the project type.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	InitProject() *projen.InitProject
+	// The Jest configuration (if enabled).
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Jest() javascript.Jest
+	// The directory in which compiled .js files reside.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Libdir() *string
+	// Logging utilities.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Logger() projen.Logger
+	// Deprecated: use `package.addField(x, y)`
 	Manifest() interface{}
+	// Maximum node version required by this pacakge.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	MaxNodeVersion() *string
+	// Minimum node.js version required by this package.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	MinNodeVersion() *string
+	// Project name.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Name() *string
+	// The .npmignore file.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Npmignore() projen.IgnoreFile
+	// Absolute output directory of this project.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Outdir() *string
+	// API for managing the node package.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Package() javascript.NodePackage
+	// The package manager to use.
+	// Deprecated: use `package.packageManager`
 	PackageManager() javascript.NodePackageManager
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	PackageTask() projen.Task
+	// A parent project.
+	//
+	// If undefined, this is the root project.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Parent() projen.Project
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	PostCompileTask() projen.Task
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	PreCompileTask() projen.Task
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Prettier() javascript.Prettier
+	// Manages the build process of the project.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	ProjectBuild() projen.ProjectBuild
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	ProjectType() projen.ProjectType
+	// The command to use in order to run the projen CLI.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	ProjenCommand() *string
+	// Package publisher.
+	//
+	// This will be `undefined` if the project does not have a
+	// release workflow.
+	// Deprecated: use `release.publisher`.
 	Publisher() release.Publisher
+	// Release management.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Release() release.Release
+	// The root project.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Root() projen.Project
+	// The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager).
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	RunScriptCommand() *string
+	// The directory in which the .ts sources reside.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Srcdir() *string
+	// Project tasks.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Tasks() projen.Tasks
+	// The directory in which tests reside.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Testdir() *string
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	TestTask() projen.Task
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Tsconfig() javascript.TypescriptConfig
+	// A typescript configuration file which covers all files (sources, tests, projen).
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	TsconfigDev() javascript.TypescriptConfig
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	TsconfigEslint() javascript.TypescriptConfig
+	// The upgrade workflow.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	UpgradeWorkflow() javascript.UpgradeDependencies
+	// Deprecated: use `cdkVersion`.
 	Version() *string
+	// Access all VSCode components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Vscode() vscode.VsCode
+	// The "watch" task.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	WatchTask() projen.Task
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddBins(bins *map[string]*string)
+	// Defines bundled dependencies.
+	//
+	// Bundled dependencies will be added as normal dependencies as well as to the
+	// `bundledDependencies` section of your `package.json`.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddBundledDeps(deps ...*string)
+	// Adds dependencies to AWS CDK modules.
+	//
+	// Since this is a library project, dependencies will be added as peer dependencies.
+	// Deprecated: Not supported in v2. For v1, use `project.cdkDeps.addV1Dependencies()`
 	AddCdkDependencies(deps ...*string)
+	// Adds AWS CDK modules as dev dependencies.
+	// Deprecated: Not supported in v2. For v1, use `project.cdkDeps.addV1DevDependencies()`
 	AddCdkTestDependencies(deps ...*string)
+	// DEPRECATED.
+	// Deprecated: use `project.compileTask.exec()`
 	AddCompileCommand(commands ...*string)
+	// Defines normal dependencies.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddDeps(deps ...*string)
+	// Defines development/test dependencies.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddDevDeps(deps ...*string)
+	// Exclude the matching files from pre-synth cleanup.
+	//
+	// Can be used when, for example, some
+	// source files include the projen marker and we don't want them to be erased during synth.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddExcludeFromCleanup(globs ...*string)
+	// Directly set fields in `package.json`.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddFields(fields *map[string]interface{})
+	// Adds a .gitignore pattern.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddGitIgnore(pattern *string)
+	// Adds keywords to package.json (deduplicated).
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddKeywords(keywords ...*string)
+	// Exclude these files from the bundled package.
+	//
+	// Implemented by project types based on the
+	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddPackageIgnore(pattern *string)
+	// Defines peer dependencies.
+	//
+	// When adding peer dependencies, a devDependency will also be added on the
+	// pinned version of the declared peer. This will ensure that you are testing
+	// your code against the minimum version required from your consumers.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddPeerDeps(deps ...*string)
+	// Adds a new task to this project.
+	//
+	// This will fail if the project already has
+	// a task with this name.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
+	// DEPRECATED.
+	// Deprecated: use `project.testTask.exec()`
 	AddTestCommand(commands ...*string)
+	// Prints a "tip" message during synthesis.
+	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 	AddTip(message *string)
+	// Marks the provided file(s) as being generated.
+	//
+	// This is achieved using the
+	// github-linguist attributes. Generated files do not count against the
+	// repository statistics and language breakdown.
+	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
+	//
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AnnotateGenerated(glob *string)
+	// Indicates if a script by the name name is defined.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	HasScript(name *string) *bool
+	// Called after all components are synthesized.
+	//
+	// Order is *not* guaranteed.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	PostSynthesize()
+	// Called before all components are synthesized.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	PreSynthesize()
+	// Removes the npm script (always successful).
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	RemoveScript(name *string)
+	// Removes a task from a project.
+	//
+	// Returns: The `Task` that was removed, otherwise `undefined`.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	RemoveTask(name *string) projen.Task
+	// Returns the set of workflow steps which should be executed to bootstrap a workflow.
+	//
+	// Returns: Job steps.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep
+	// Returns the shell command to execute in order to run a task.
+	//
+	// This will
+	// typically be `npx projen TASK`.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	RunTaskCommand(task projen.Task) *string
+	// Replaces the contents of an npm package.json script.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	SetScript(name *string, command *string)
+	// Synthesize all project files into `outdir`.
+	//
+	// 1. Call "this.preSynthesize()"
+	// 2. Delete all generated files
+	// 3. Synthesize all sub-projects
+	// 4. Synthesize all components of this project
+	// 5. Call "postSynthesize()" for all components of this project
+	// 6. Call "this.postSynthesize()"
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	Synth()
+	// Finds a file at the specified relative path within this project and all its subprojects.
+	//
+	// Returns: a `FileBase` or undefined if there is no file in that path.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	TryFindFile(filePath *string) projen.FileBase
+	// Finds a json file by name.
+	// Deprecated: use `tryFindObjectFile`.
 	TryFindJsonFile(filePath *string) projen.JsonFile
+	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
 }
 
@@ -7473,7 +8208,7 @@ func (j *jsiiProxy_ConstructLibraryAws) WatchTask() projen.Task {
 }
 
 
-// Deprecated: use `AwsCdkConstructLibrary`
+// Deprecated: use `AwsCdkConstructLibrary`.
 func NewConstructLibraryAws(options *AwsCdkConstructLibraryOptions) ConstructLibraryAws {
 	_init_.Initialize()
 
@@ -7488,7 +8223,7 @@ func NewConstructLibraryAws(options *AwsCdkConstructLibraryOptions) ConstructLib
 	return &j
 }
 
-// Deprecated: use `AwsCdkConstructLibrary`
+// Deprecated: use `AwsCdkConstructLibrary`.
 func NewConstructLibraryAws_Override(c ConstructLibraryAws, options *AwsCdkConstructLibraryOptions) {
 	_init_.Initialize()
 
@@ -7510,7 +8245,6 @@ func ConstructLibraryAws_DEFAULT_TASK() *string {
 	return returns
 }
 
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) AddBins(bins *map[string]*string) {
 	_jsii_.InvokeVoid(
 		c,
@@ -7519,11 +8253,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddBins(bins *map[string]*string) {
 	)
 }
 
-// Defines bundled dependencies.
-//
-// Bundled dependencies will be added as normal dependencies as well as to the
-// `bundledDependencies` section of your `package.json`.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) AddBundledDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -7537,10 +8266,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddBundledDeps(deps ...*string) {
 	)
 }
 
-// Adds dependencies to AWS CDK modules.
-//
-// Since this is a library project, dependencies will be added as peer dependencies.
-// Deprecated: Not supported in v2. For v1, use `project.cdkDeps.addV1Dependencies()`
 func (c *jsiiProxy_ConstructLibraryAws) AddCdkDependencies(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -7554,8 +8279,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddCdkDependencies(deps ...*string) {
 	)
 }
 
-// Adds AWS CDK modules as dev dependencies.
-// Deprecated: Not supported in v2. For v1, use `project.cdkDeps.addV1DevDependencies()`
 func (c *jsiiProxy_ConstructLibraryAws) AddCdkTestDependencies(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -7569,8 +8292,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddCdkTestDependencies(deps ...*string) 
 	)
 }
 
-// DEPRECATED.
-// Deprecated: use `project.compileTask.exec()`
 func (c *jsiiProxy_ConstructLibraryAws) AddCompileCommand(commands ...*string) {
 	args := []interface{}{}
 	for _, a := range commands {
@@ -7584,8 +8305,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddCompileCommand(commands ...*string) {
 	)
 }
 
-// Defines normal dependencies.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) AddDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -7599,8 +8318,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddDeps(deps ...*string) {
 	)
 }
 
-// Defines development/test dependencies.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) AddDevDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -7614,11 +8331,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddDevDeps(deps ...*string) {
 	)
 }
 
-// Exclude the matching files from pre-synth cleanup.
-//
-// Can be used when, for example, some
-// source files include the projen marker and we don't want them to be erased during synth.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) AddExcludeFromCleanup(globs ...*string) {
 	args := []interface{}{}
 	for _, a := range globs {
@@ -7632,8 +8344,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddExcludeFromCleanup(globs ...*string) 
 	)
 }
 
-// Directly set fields in `package.json`.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) AddFields(fields *map[string]interface{}) {
 	_jsii_.InvokeVoid(
 		c,
@@ -7642,8 +8352,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddFields(fields *map[string]interface{}
 	)
 }
 
-// Adds a .gitignore pattern.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) AddGitIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		c,
@@ -7652,8 +8360,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddGitIgnore(pattern *string) {
 	)
 }
 
-// Adds keywords to package.json (deduplicated).
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) AddKeywords(keywords ...*string) {
 	args := []interface{}{}
 	for _, a := range keywords {
@@ -7667,11 +8373,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddKeywords(keywords ...*string) {
 	)
 }
 
-// Exclude these files from the bundled package.
-//
-// Implemented by project types based on the
-// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) AddPackageIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		c,
@@ -7680,12 +8381,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddPackageIgnore(pattern *string) {
 	)
 }
 
-// Defines peer dependencies.
-//
-// When adding peer dependencies, a devDependency will also be added on the
-// pinned version of the declared peer. This will ensure that you are testing
-// your code against the minimum version required from your consumers.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) AddPeerDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -7699,11 +8394,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddPeerDeps(deps ...*string) {
 	)
 }
 
-// Adds a new task to this project.
-//
-// This will fail if the project already has
-// a task with this name.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) AddTask(name *string, props *projen.TaskOptions) projen.Task {
 	var returns projen.Task
 
@@ -7717,8 +8407,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddTask(name *string, props *projen.Task
 	return returns
 }
 
-// DEPRECATED.
-// Deprecated: use `project.testTask.exec()`
 func (c *jsiiProxy_ConstructLibraryAws) AddTestCommand(commands ...*string) {
 	args := []interface{}{}
 	for _, a := range commands {
@@ -7732,8 +8420,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddTestCommand(commands ...*string) {
 	)
 }
 
-// Prints a "tip" message during synthesis.
-// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 func (c *jsiiProxy_ConstructLibraryAws) AddTip(message *string) {
 	_jsii_.InvokeVoid(
 		c,
@@ -7742,14 +8428,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AddTip(message *string) {
 	)
 }
 
-// Marks the provided file(s) as being generated.
-//
-// This is achieved using the
-// github-linguist attributes. Generated files do not count against the
-// repository statistics and language breakdown.
-// See: https://github.com/github/linguist/blob/master/docs/overrides.md
-//
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) AnnotateGenerated(glob *string) {
 	_jsii_.InvokeVoid(
 		c,
@@ -7758,8 +8436,6 @@ func (c *jsiiProxy_ConstructLibraryAws) AnnotateGenerated(glob *string) {
 	)
 }
 
-// Indicates if a script by the name name is defined.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) HasScript(name *string) *bool {
 	var returns *bool
 
@@ -7773,10 +8449,6 @@ func (c *jsiiProxy_ConstructLibraryAws) HasScript(name *string) *bool {
 	return returns
 }
 
-// Called after all components are synthesized.
-//
-// Order is *not* guaranteed.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		c,
@@ -7785,8 +8457,6 @@ func (c *jsiiProxy_ConstructLibraryAws) PostSynthesize() {
 	)
 }
 
-// Called before all components are synthesized.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		c,
@@ -7795,8 +8465,6 @@ func (c *jsiiProxy_ConstructLibraryAws) PreSynthesize() {
 	)
 }
 
-// Removes the npm script (always successful).
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) RemoveScript(name *string) {
 	_jsii_.InvokeVoid(
 		c,
@@ -7805,10 +8473,6 @@ func (c *jsiiProxy_ConstructLibraryAws) RemoveScript(name *string) {
 	)
 }
 
-// Removes a task from a project.
-//
-// Returns: The `Task` that was removed, otherwise `undefined`.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) RemoveTask(name *string) projen.Task {
 	var returns projen.Task
 
@@ -7822,10 +8486,6 @@ func (c *jsiiProxy_ConstructLibraryAws) RemoveTask(name *string) projen.Task {
 	return returns
 }
 
-// Returns the set of workflow steps which should be executed to bootstrap a workflow.
-//
-// Returns: Job steps
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
 	var returns *[]*workflows.JobStep
 
@@ -7839,11 +8499,6 @@ func (c *jsiiProxy_ConstructLibraryAws) RenderWorkflowSetup(options *javascript.
 	return returns
 }
 
-// Returns the shell command to execute in order to run a task.
-//
-// This will
-// typically be `npx projen TASK`.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) RunTaskCommand(task projen.Task) *string {
 	var returns *string
 
@@ -7857,8 +8512,6 @@ func (c *jsiiProxy_ConstructLibraryAws) RunTaskCommand(task projen.Task) *string
 	return returns
 }
 
-// Replaces the contents of an npm package.json script.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) SetScript(name *string, command *string) {
 	_jsii_.InvokeVoid(
 		c,
@@ -7867,15 +8520,6 @@ func (c *jsiiProxy_ConstructLibraryAws) SetScript(name *string, command *string)
 	)
 }
 
-// Synthesize all project files into `outdir`.
-//
-// 1. Call "this.preSynthesize()"
-// 2. Delete all generated files
-// 3. Synthesize all sub-projects
-// 4. Synthesize all components of this project
-// 5. Call "postSynthesize()" for all components of this project
-// 6. Call "this.postSynthesize()"
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) Synth() {
 	_jsii_.InvokeVoid(
 		c,
@@ -7884,10 +8528,6 @@ func (c *jsiiProxy_ConstructLibraryAws) Synth() {
 	)
 }
 
-// Finds a file at the specified relative path within this project and all its subprojects.
-//
-// Returns: a `FileBase` or undefined if there is no file in that path
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) TryFindFile(filePath *string) projen.FileBase {
 	var returns projen.FileBase
 
@@ -7901,8 +8541,6 @@ func (c *jsiiProxy_ConstructLibraryAws) TryFindFile(filePath *string) projen.Fil
 	return returns
 }
 
-// Finds a json file by name.
-// Deprecated: use `tryFindObjectFile`
 func (c *jsiiProxy_ConstructLibraryAws) TryFindJsonFile(filePath *string) projen.JsonFile {
 	var returns projen.JsonFile
 
@@ -7916,8 +8554,6 @@ func (c *jsiiProxy_ConstructLibraryAws) TryFindJsonFile(filePath *string) projen
 	return returns
 }
 
-// Finds an object file (like JsonFile, YamlFile, etc.) by name.
-// Deprecated: use `AwsCdkConstructLibrary`
 func (c *jsiiProxy_ConstructLibraryAws) TryFindObjectFile(filePath *string) projen.ObjectFile {
 	var returns projen.ObjectFile
 
@@ -7931,13 +8567,13 @@ func (c *jsiiProxy_ConstructLibraryAws) TryFindObjectFile(filePath *string) proj
 	return returns
 }
 
-// Deprecated: use `AwsCdkConstructLibraryOptions`
+// Deprecated: use `AwsCdkConstructLibraryOptions`.
 type ConstructLibraryAwsOptions struct {
 	// This is the name of your project.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Name *string `json:"name" yaml:"name"`
 	// Configure logging options such as verbosity.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Logging *projen.LoggerOptions `json:"logging" yaml:"logging"`
 	// The root directory of the project.
 	//
@@ -7946,47 +8582,47 @@ type ConstructLibraryAwsOptions struct {
 	// If this project has a parent, this directory is relative to the parent
 	// directory and it cannot be the same as the parent or any of it's other
 	// sub-projects.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Outdir *string `json:"outdir" yaml:"outdir"`
 	// The parent project, if this project is part of a bigger project.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Parent projen.Project `json:"parent" yaml:"parent"`
 	// The shell command to use in order to run the projen CLI.
 	//
 	// Can be used to customize in special environments.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ProjenCommand *string `json:"projenCommand" yaml:"projenCommand"`
 	// Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ProjenrcJson *bool `json:"projenrcJson" yaml:"projenrcJson"`
 	// Options for .projenrc.json.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
 	// Enable and configure the 'auto approve' workflow.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
 	// Configure options for automatic merging on GitHub.
 	//
 	// Has no effect if
 	// `github.mergify` is set to false.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions" yaml:"autoMergeOptions"`
 	// Add a `clobber` task which resets the repo to origin.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Clobber *bool `json:"clobber" yaml:"clobber"`
 	// Add a VSCode development environment (used for GitHub Codespaces).
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	DevContainer *bool `json:"devContainer" yaml:"devContainer"`
 	// Enable GitHub integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Github *bool `json:"github" yaml:"github"`
 	// Options for GitHub integration.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	GithubOptions *github.GitHubOptions `json:"githubOptions" yaml:"githubOptions"`
 	// Add a Gitpod development environment.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Gitpod *bool `json:"gitpod" yaml:"gitpod"`
 	// Whether mergify should be enabled on this repository or not.
 	// Deprecated: use `githubOptions.mergify` instead
@@ -7995,68 +8631,69 @@ type ConstructLibraryAwsOptions struct {
 	// Deprecated: use `githubOptions.mergifyOptions` instead
 	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
-	// Deprecated: no longer supported at the base project level
+	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
 	// This token needs to have the `repo`, `workflows`
 	// and `packages` scope.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "{ filename: 'readme.md', contents: '# title' }"
 	//
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
 	// Auto-close of stale issues and pull request.
 	//
 	// See `staleOptions` for options.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Stale *bool `json:"stale" yaml:"stale"`
 	// Auto-close stale issues and pull requests.
 	//
 	// To disable set `stale` to `false`.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	StaleOptions *github.StaleOptions `json:"staleOptions" yaml:"staleOptions"`
 	// Enable VSCode integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Vscode *bool `json:"vscode" yaml:"vscode"`
 	// Allow the project to include `peerDependencies` and `bundledDependencies`.
 	//
 	// This is normally only allowed for libraries. For apps, there's no meaning
 	// for specifying these.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	AllowLibraryDependencies *bool `json:"allowLibraryDependencies" yaml:"allowLibraryDependencies"`
 	// Author's e-mail.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	AuthorEmail *string `json:"authorEmail" yaml:"authorEmail"`
 	// Author's name.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	AuthorName *string `json:"authorName" yaml:"authorName"`
 	// Author's Organization.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	AuthorOrganization *bool `json:"authorOrganization" yaml:"authorOrganization"`
 	// Author's URL / Website.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	AuthorUrl *string `json:"authorUrl" yaml:"authorUrl"`
 	// Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	AutoDetectBin *bool `json:"autoDetectBin" yaml:"autoDetectBin"`
 	// Binary programs vended with your module.
 	//
 	// You can use this option to add/customize how binaries are represented in
 	// your `package.json`, but unless `autoDetectBin` is `false`, every
 	// executable file under `bin` will automatically be added to this section.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Bin *map[string]*string `json:"bin" yaml:"bin"`
 	// The email address to which issues should be reported.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	BugsEmail *string `json:"bugsEmail" yaml:"bugsEmail"`
 	// The url to your project's issue tracker.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	BugsUrl *string `json:"bugsUrl" yaml:"bugsUrl"`
 	// List of dependencies to bundle into this module.
 	//
@@ -8070,10 +8707,10 @@ type ConstructLibraryAwsOptions struct {
 	// file with the latest version (`^`). You can specify semver requirements in
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	BundledDeps *[]*string `json:"bundledDeps" yaml:"bundledDeps"`
 	// Options for publishing npm package to AWS CodeArtifact.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	CodeArtifactOptions *javascript.CodeArtifactOptions `json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Runtime dependencies of this module.
 	//
@@ -8084,15 +8721,16 @@ type ConstructLibraryAwsOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   [ 'express', 'lodash', 'foo@^2' ]
 	//
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Deps *[]*string `json:"deps" yaml:"deps"`
 	// The description is just a string that helps people understand the purpose of the package.
 	//
 	// It can be used when searching for packages in a package manager as well.
 	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Description *string `json:"description" yaml:"description"`
 	// Build dependencies for this module.
 	//
@@ -8107,60 +8745,61 @@ type ConstructLibraryAwsOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   [ 'typescript', '@types/express' ]
 	//
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	DevDeps *[]*string `json:"devDeps" yaml:"devDeps"`
 	// Module entrypoint (`main` in `package.json`).
 	//
 	// Set to an empty string to not include `main` in your package.json
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Entrypoint *string `json:"entrypoint" yaml:"entrypoint"`
 	// Package's Homepage / Website.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Homepage *string `json:"homepage" yaml:"homepage"`
 	// Keywords to include in `package.json`.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Keywords *[]*string `json:"keywords" yaml:"keywords"`
 	// License's SPDX identifier.
 	//
 	// See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
 	// Use the `licensed` option if you want to no license to be specified.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	License *string `json:"license" yaml:"license"`
 	// Indicates if a license should be added.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Licensed *bool `json:"licensed" yaml:"licensed"`
 	// Minimum node.js version to require via `engines` (inclusive).
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	MaxNodeVersion *string `json:"maxNodeVersion" yaml:"maxNodeVersion"`
 	// Minimum Node.js version to require via package.json `engines` (inclusive).
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	MinNodeVersion *string `json:"minNodeVersion" yaml:"minNodeVersion"`
 	// Access level of the npm package.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	NpmAccess javascript.NpmAccess `json:"npmAccess" yaml:"npmAccess"`
 	// The host name of the npm registry to publish to.
 	//
 	// Cannot be set together with `npmRegistryUrl`.
-	// Deprecated: use `npmRegistryUrl` instead
+	// Deprecated: use `npmRegistryUrl` instead.
 	NpmRegistry *string `json:"npmRegistry" yaml:"npmRegistry"`
 	// The base URL of the npm package registry.
 	//
 	// Must be a URL (e.g. start with "https://" or "http://")
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	NpmRegistryUrl *string `json:"npmRegistryUrl" yaml:"npmRegistryUrl"`
 	// GitHub secret which contains the NPM token to use when publishing packages.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	NpmTokenSecret *string `json:"npmTokenSecret" yaml:"npmTokenSecret"`
 	// The Node Package Manager used to execute scripts.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PackageManager javascript.NodePackageManager `json:"packageManager" yaml:"packageManager"`
 	// The "name" in package.json.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PackageName *string `json:"packageName" yaml:"packageName"`
 	// Options for `peerDeps`.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PeerDependencyOptions *javascript.PeerDependencyOptions `json:"peerDependencyOptions" yaml:"peerDependencyOptions"`
 	// Peer dependencies for this module.
 	//
@@ -8177,54 +8816,54 @@ type ConstructLibraryAwsOptions struct {
 	// enabled by default), projen will automatically add a dev dependency with a
 	// pinned version for each peer dependency. This will ensure that you build &
 	// test your module against the lowest peer version required.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PeerDeps *[]*string `json:"peerDeps" yaml:"peerDeps"`
 	// The repository is the location where the actual code for your package lives.
 	//
 	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Repository *string `json:"repository" yaml:"repository"`
 	// If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	RepositoryDirectory *string `json:"repositoryDirectory" yaml:"repositoryDirectory"`
 	// npm scripts to include.
 	//
 	// If a script has the same name as a standard script,
 	// the standard script will be overwritten.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Scripts *map[string]*string `json:"scripts" yaml:"scripts"`
 	// Package's Stability.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Stability *string `json:"stability" yaml:"stability"`
 	// Version requirement of `publib` which is used to publish modules to npm.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.
 	//
 	// If this is specified, we bump the latest version of this major version line.
 	// If not specified, we bump the global latest version.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	MajorVersion *float64 `json:"majorVersion" yaml:"majorVersion"`
 	// The npmDistTag to use when publishing from the default branch.
 	//
 	// To set the npm dist-tag for release branches, set the `npmDistTag` property
 	// for each branch.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	NpmDistTag *string `json:"npmDistTag" yaml:"npmDistTag"`
 	// Steps to execute after build as part of the release workflow.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PostBuildSteps *[]*workflows.JobStep `json:"postBuildSteps" yaml:"postBuildSteps"`
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Prerelease *string `json:"prerelease" yaml:"prerelease"`
 	// Instead of actually publishing to package managers, just print the publishing command.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PublishDryRun *bool `json:"publishDryRun" yaml:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
 	// in order to create a publishing task for each publishing activity.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PublishTasks *bool `json:"publishTasks" yaml:"publishTasks"`
 	// Defines additional release branches.
 	//
@@ -8234,18 +8873,18 @@ type ConstructLibraryAwsOptions struct {
 	// to enforce that versions published from that branch always use that major
 	// version. If multiple branches are used, the `majorVersion` field must also
 	// be provided for the default branch.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ReleaseBranches *map[string]*release.BranchOptions `json:"releaseBranches" yaml:"releaseBranches"`
 	// Automatically release new versions every commit to one of branches in `releaseBranches`.
 	// Deprecated: Use `releaseTrigger: ReleaseTrigger.continuous()` instead
 	ReleaseEveryCommit *bool `json:"releaseEveryCommit" yaml:"releaseEveryCommit"`
 	// Create a github issue on every failed publishing task.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ReleaseFailureIssue *bool `json:"releaseFailureIssue" yaml:"releaseFailureIssue"`
 	// The label to apply to issues indicating publish failures.
 	//
 	// Only applies if `releaseFailureIssue` is true.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ReleaseFailureIssueLabel *string `json:"releaseFailureIssueLabel" yaml:"releaseFailureIssueLabel"`
 	// CRON schedule to trigger new releases.
 	// Deprecated: Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
@@ -8256,89 +8895,89 @@ type ConstructLibraryAwsOptions struct {
 	// when bumping, so if you change this on a project with an existing version
 	// history, you may need to manually tag your latest release
 	// with the new prefix.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ReleaseTagPrefix *string `json:"releaseTagPrefix" yaml:"releaseTagPrefix"`
 	// The release trigger to use.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ReleaseTrigger release.ReleaseTrigger `json:"releaseTrigger" yaml:"releaseTrigger"`
 	// The name of the default release workflow.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ReleaseWorkflowName *string `json:"releaseWorkflowName" yaml:"releaseWorkflowName"`
 	// A set of workflow steps to execute in order to setup the workflow container.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ReleaseWorkflowSetupSteps *[]*workflows.JobStep `json:"releaseWorkflowSetupSteps" yaml:"releaseWorkflowSetupSteps"`
 	// Custom configuration used when creating changelog with standard-version package.
 	//
 	// Given values either append to default configuration or overwrite values in it.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	VersionrcOptions *map[string]interface{} `json:"versionrcOptions" yaml:"versionrcOptions"`
 	// Container image to use for GitHub workflows.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	WorkflowContainerImage *string `json:"workflowContainerImage" yaml:"workflowContainerImage"`
 	// Github Runner selection labels.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	WorkflowRunsOn *[]*string `json:"workflowRunsOn" yaml:"workflowRunsOn"`
 	// The name of the main release branch.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	DefaultReleaseBranch *string `json:"defaultReleaseBranch" yaml:"defaultReleaseBranch"`
 	// A directory which will contain build artifacts.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ArtifactsDirectory *string `json:"artifactsDirectory" yaml:"artifactsDirectory"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	AutoApproveProjenUpgrades *bool `json:"autoApproveProjenUpgrades" yaml:"autoApproveProjenUpgrades"`
 	// Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	AutoApproveUpgrades *bool `json:"autoApproveUpgrades" yaml:"autoApproveUpgrades"`
 	// Define a GitHub workflow for building PRs.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	BuildWorkflow *bool `json:"buildWorkflow" yaml:"buildWorkflow"`
 	// Build workflow triggers.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	BuildWorkflowTriggers *workflows.Triggers `json:"buildWorkflowTriggers" yaml:"buildWorkflowTriggers"`
 	// Options for `Bundler`.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	BundlerOptions *javascript.BundlerOptions `json:"bundlerOptions" yaml:"bundlerOptions"`
 	// Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v1 A secret is required for private repos. Configured with @codeCovTokenSecret.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	CodeCov *bool `json:"codeCov" yaml:"codeCov"`
 	// Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	CodeCovTokenSecret *string `json:"codeCovTokenSecret" yaml:"codeCovTokenSecret"`
 	// License copyright owner.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	CopyrightOwner *string `json:"copyrightOwner" yaml:"copyrightOwner"`
 	// The copyright years to put in the LICENSE file.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	CopyrightPeriod *string `json:"copyrightPeriod" yaml:"copyrightPeriod"`
 	// Use dependabot to handle dependency upgrades.
 	//
 	// Cannot be used in conjunction with `depsUpgrade`.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Dependabot *bool `json:"dependabot" yaml:"dependabot"`
 	// Options for dependabot.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	DependabotOptions *github.DependabotOptions `json:"dependabotOptions" yaml:"dependabotOptions"`
 	// Use github workflows to handle dependency upgrades.
 	//
 	// Cannot be used in conjunction with `dependabot`.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	DepsUpgrade *bool `json:"depsUpgrade" yaml:"depsUpgrade"`
 	// Options for depsUpgrade.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	DepsUpgradeOptions *javascript.UpgradeDependenciesOptions `json:"depsUpgradeOptions" yaml:"depsUpgradeOptions"`
 	// Additional entries to .gitignore.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Gitignore *[]*string `json:"gitignore" yaml:"gitignore"`
 	// Setup jest unit tests.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Jest *bool `json:"jest" yaml:"jest"`
 	// Jest options.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	JestOptions *javascript.JestOptions `json:"jestOptions" yaml:"jestOptions"`
 	// Automatically update files modified during builds to pull-request branches.
 	//
@@ -8347,31 +8986,31 @@ type ConstructLibraryAwsOptions struct {
 	// before a PR is merged.
 	//
 	// Implies that PR builds do not have anti-tamper checks.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	MutableBuild *bool `json:"mutableBuild" yaml:"mutableBuild"`
 	// Additional entries to .npmignore.
 	// Deprecated: - use `project.addPackageIgnore`
 	Npmignore *[]*string `json:"npmignore" yaml:"npmignore"`
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	NpmignoreEnabled *bool `json:"npmignoreEnabled" yaml:"npmignoreEnabled"`
 	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Package *bool `json:"package" yaml:"package"`
 	// Setup prettier.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Prettier *bool `json:"prettier" yaml:"prettier"`
 	// Prettier options.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PrettierOptions *javascript.PrettierOptions `json:"prettierOptions" yaml:"prettierOptions"`
 	// Indicates of "projen" should be installed as a devDependency.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ProjenDevDependency *bool `json:"projenDevDependency" yaml:"projenDevDependency"`
 	// Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ProjenrcJs *bool `json:"projenrcJs" yaml:"projenrcJs"`
 	// Options for .projenrc.js.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ProjenrcJsOptions *javascript.ProjenrcOptions `json:"projenrcJsOptions" yaml:"projenrcJsOptions"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
@@ -8379,7 +9018,7 @@ type ConstructLibraryAwsOptions struct {
 	// Deprecated: use `autoApproveProjenUpgrades`.
 	ProjenUpgradeAutoMerge *bool `json:"projenUpgradeAutoMerge" yaml:"projenUpgradeAutoMerge"`
 	// Customize the projenUpgrade schedule in cron expression.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ProjenUpgradeSchedule *[]*string `json:"projenUpgradeSchedule" yaml:"projenUpgradeSchedule"`
 	// Periodically submits a pull request for projen upgrades (executes `yarn projen:upgrade`).
 	//
@@ -8393,64 +9032,64 @@ type ConstructLibraryAwsOptions struct {
 	// Deprecated: use `githubTokenSecret` instead.
 	ProjenUpgradeSecret *string `json:"projenUpgradeSecret" yaml:"projenUpgradeSecret"`
 	// Version of projen to install.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ProjenVersion *string `json:"projenVersion" yaml:"projenVersion"`
 	// Include a GitHub pull request template.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PullRequestTemplate *bool `json:"pullRequestTemplate" yaml:"pullRequestTemplate"`
 	// The contents of the pull request template.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PullRequestTemplateContents *[]*string `json:"pullRequestTemplateContents" yaml:"pullRequestTemplateContents"`
 	// Add release management to this project.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Release *bool `json:"release" yaml:"release"`
 	// Automatically release to npm when new versions are introduced.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ReleaseToNpm *bool `json:"releaseToNpm" yaml:"releaseToNpm"`
 	// DEPRECATED: renamed to `release`.
 	// Deprecated: see `release`.
 	ReleaseWorkflow *bool `json:"releaseWorkflow" yaml:"releaseWorkflow"`
 	// Workflow steps to use in order to bootstrap this repo.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	WorkflowBootstrapSteps *[]interface{} `json:"workflowBootstrapSteps" yaml:"workflowBootstrapSteps"`
 	// The git identity to use in workflows.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	WorkflowGitIdentity *github.GitIdentity `json:"workflowGitIdentity" yaml:"workflowGitIdentity"`
 	// The node version to use in GitHub workflows.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	WorkflowNodeVersion *string `json:"workflowNodeVersion" yaml:"workflowNodeVersion"`
 	// Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler).
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	DisableTsconfig *bool `json:"disableTsconfig" yaml:"disableTsconfig"`
 	// Docgen by Typedoc.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Docgen *bool `json:"docgen" yaml:"docgen"`
 	// Docs directory.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	DocsDirectory *string `json:"docsDirectory" yaml:"docsDirectory"`
 	// The .d.ts file that includes the type declarations for this module.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	EntrypointTypes *string `json:"entrypointTypes" yaml:"entrypointTypes"`
 	// Setup eslint.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Eslint *bool `json:"eslint" yaml:"eslint"`
 	// Eslint options.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	EslintOptions *javascript.EslintOptions `json:"eslintOptions" yaml:"eslintOptions"`
 	// Typescript  artifacts output directory.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Libdir *string `json:"libdir" yaml:"libdir"`
 	// Use TypeScript for your projenrc file (`.projenrc.ts`).
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ProjenrcTs *bool `json:"projenrcTs" yaml:"projenrcTs"`
 	// Options for .projenrc.ts.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ProjenrcTsOptions *typescript.ProjenrcOptions `json:"projenrcTsOptions" yaml:"projenrcTsOptions"`
 	// Generate one-time sample in `src/` and `test/` if there are no files there.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	SampleCode *bool `json:"sampleCode" yaml:"sampleCode"`
 	// Typescript sources directory.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Srcdir *string `json:"srcdir" yaml:"srcdir"`
 	// Jest tests directory. Tests files should be named `xxx.test.ts`.
 	//
@@ -8458,45 +9097,45 @@ type ConstructLibraryAwsOptions struct {
 	// then tests are going to be compiled into `lib/` and executed as javascript.
 	// If the test directory is outside of `src`, then we configure jest to
 	// compile the code in-memory.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Testdir *string `json:"testdir" yaml:"testdir"`
 	// Custom TSConfig.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Tsconfig *javascript.TypescriptConfigOptions `json:"tsconfig" yaml:"tsconfig"`
 	// Custom tsconfig options for the development tsconfig.json file (used for testing).
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	TsconfigDev *javascript.TypescriptConfigOptions `json:"tsconfigDev" yaml:"tsconfigDev"`
 	// The name of the development tsconfig.json file.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	TsconfigDevFile *string `json:"tsconfigDevFile" yaml:"tsconfigDevFile"`
 	// TypeScript version to use.
 	//
 	// NOTE: Typescript is not semantically versioned and should remain on the
 	// same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	TypescriptVersion *string `json:"typescriptVersion" yaml:"typescriptVersion"`
 	// The name of the library author.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Author *string `json:"author" yaml:"author"`
 	// Email or URL of the library author.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	AuthorAddress *string `json:"authorAddress" yaml:"authorAddress"`
 	// Git repository URL.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	RepositoryUrl *string `json:"repositoryUrl" yaml:"repositoryUrl"`
 	// Automatically run API compatibility test against the latest version published to npm after compilation.
 	//
 	// - You can manually run compatibility tests using `yarn compat` if this feature is disabled.
 	// - You can ignore compatibility failures by adding lines to a ".compatignore" file.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Compat *bool `json:"compat" yaml:"compat"`
 	// Name of the ignore file for API compatibility tests.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	CompatIgnore *string `json:"compatIgnore" yaml:"compatIgnore"`
 	// File path for generated docs.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	DocgenFilePath *string `json:"docgenFilePath" yaml:"docgenFilePath"`
-	// Deprecated: use `publishToNuget`
+	// Deprecated: use `publishToNuget`.
 	Dotnet *cdk.JsiiDotNetTarget `json:"dotnet" yaml:"dotnet"`
 	// Accepts a list of glob patterns.
 	//
@@ -8505,23 +9144,23 @@ type ConstructLibraryAwsOptions struct {
 	// By default, jsii will include all *.ts files (except .d.ts files) in the TypeScript compiler input.
 	// This can be problematic for example when the package's build or test procedure generates .ts files
 	// that cannot be compiled with jsii's compiler settings.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ExcludeTypescript *[]*string `json:"excludeTypescript" yaml:"excludeTypescript"`
 	// Publish Go bindings to a git repository.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PublishToGo *cdk.JsiiGoTarget `json:"publishToGo" yaml:"publishToGo"`
 	// Publish to maven.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PublishToMaven *cdk.JsiiJavaTarget `json:"publishToMaven" yaml:"publishToMaven"`
 	// Publish to NuGet.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PublishToNuget *cdk.JsiiDotNetTarget `json:"publishToNuget" yaml:"publishToNuget"`
 	// Publish to pypi.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PublishToPypi *cdk.JsiiPythonTarget `json:"publishToPypi" yaml:"publishToPypi"`
-	// Deprecated: use `publishToPyPi`
+	// Deprecated: use `publishToPyPi`.
 	Python *cdk.JsiiPythonTarget `json:"python" yaml:"python"`
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Rootdir *string `json:"rootdir" yaml:"rootdir"`
 	// Libraries will be picked up by the construct catalog when they are published to npm as jsii modules and will be published under:.
 	//
@@ -8535,21 +9174,21 @@ type ConstructLibraryAwsOptions struct {
 	// mentioned in the tweet.
 	// See: https://github.com/construct-catalog/catalog
 	//
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Catalog *cdk.Catalog `json:"catalog" yaml:"catalog"`
 	// Minimum version of the AWS CDK to depend on.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	CdkVersion *string `json:"cdkVersion" yaml:"cdkVersion"`
 	// Warning: NodeJS only.
 	//
 	// Install the @aws-cdk/assert library?
-	// Deprecated: The
+	// Deprecated: The.
 	CdkAssert *bool `json:"cdkAssert" yaml:"cdkAssert"`
 	// Install the assertions library?
 	//
 	// Only needed for CDK 1.x. If using CDK 2.x then
-	// assertions is already included in 'aws-cdk-lib'
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// assertions is already included in 'aws-cdk-lib'.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	CdkAssertions *bool `json:"cdkAssertions" yaml:"cdkAssertions"`
 	// Which AWS CDKv1 modules this project requires.
 	// Deprecated: For CDK 2.x use "deps" instead. (or "peerDeps" if you're building a library)
@@ -8561,7 +9200,7 @@ type ConstructLibraryAwsOptions struct {
 	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
 	// they are present during development.
 	//
-	// Note: this setting only applies to construct library projects
+	// Note: this setting only applies to construct library projects.
 	// Deprecated: Not supported in CDK v2.
 	CdkDependenciesAsDeps *bool `json:"cdkDependenciesAsDeps" yaml:"cdkDependenciesAsDeps"`
 	// AWS CDK modules required for testing.
@@ -8571,19 +9210,19 @@ type ConstructLibraryAwsOptions struct {
 	//
 	// You can use this to prevent mixed versions for your CDK dependencies and to prevent auto-updates.
 	// If you use experimental features this will let you define the moment you include breaking changes.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	CdkVersionPinning *bool `json:"cdkVersionPinning" yaml:"cdkVersionPinning"`
 	// Minimum version of the `constructs` library to depend on.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ConstructsVersion *string `json:"constructsVersion" yaml:"constructsVersion"`
 	// Automatically discovers and creates integration tests for each `.integ.ts` file in under your test directory.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	IntegrationTestAutoDiscover *bool `json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
 	// Automatically adds an `aws_lambda.Function` for each `.lambda.ts` handler in your source tree. If this is disabled, you either need to explicitly call `aws_lambda.Function.autoDiscover()` or define a `new aws_lambda.Function()` for each handler.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	LambdaAutoDiscover *bool `json:"lambdaAutoDiscover" yaml:"lambdaAutoDiscover"`
 	// Common options for all AWS Lambda functions.
-	// Deprecated: use `AwsCdkConstructLibraryOptions`
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	LambdaOptions *LambdaFunctionCommonOptions `json:"lambdaOptions" yaml:"lambdaOptions"`
 }
 
@@ -8591,17 +9230,42 @@ type ConstructLibraryAwsOptions struct {
 // Experimental.
 type IntegrationTest interface {
 	cdk.IntegrationTestBase
+	// Synthesizes the integration test and compares against a local copy (runs during build).
+	// Experimental.
 	AssertTask() projen.Task
+	// Deploy the integration test and update the snapshot upon success.
+	// Experimental.
 	DeployTask() projen.Task
+	// Destroy the integration test resources.
+	// Experimental.
 	DestroyTask() projen.Task
+	// Integration test name.
+	// Experimental.
 	Name() *string
+	// Experimental.
 	Project() projen.Project
+	// Snapshot output directory.
+	// Experimental.
 	SnapshotDir() *string
+	// Just update snapshot (without deployment).
+	// Experimental.
 	SnapshotTask() projen.Task
+	// Temporary directory for each integration test.
+	// Experimental.
 	TmpDir() *string
+	// The watch task.
+	// Experimental.
 	WatchTask() projen.Task
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -8727,10 +9391,6 @@ func NewIntegrationTest_Override(i IntegrationTest, project projen.Project, opti
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (i *jsiiProxy_IntegrationTest) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -8739,8 +9399,6 @@ func (i *jsiiProxy_IntegrationTest) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (i *jsiiProxy_IntegrationTest) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -8749,8 +9407,6 @@ func (i *jsiiProxy_IntegrationTest) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (i *jsiiProxy_IntegrationTest) Synthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -8763,10 +9419,21 @@ func (i *jsiiProxy_IntegrationTest) Synthesize() {
 // Experimental.
 type IntegrationTestAutoDiscover interface {
 	cdk.IntegrationTestAutoDiscoverBase
+	// Auto-discovered entry points with paths relative to the project directory.
+	// Experimental.
 	Entrypoints() *[]*string
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -8822,10 +9489,6 @@ func NewIntegrationTestAutoDiscover_Override(i IntegrationTestAutoDiscover, proj
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (i *jsiiProxy_IntegrationTestAutoDiscover) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -8834,8 +9497,6 @@ func (i *jsiiProxy_IntegrationTestAutoDiscover) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (i *jsiiProxy_IntegrationTestAutoDiscover) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -8844,8 +9505,6 @@ func (i *jsiiProxy_IntegrationTestAutoDiscover) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (i *jsiiProxy_IntegrationTestAutoDiscover) Synthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -8900,7 +9559,8 @@ type IntegrationTestOptions struct {
 	//
 	// This is relative to the root directory of the project.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "test/subdir/foo.integ.ts"
 	//
 	// Experimental.
 	Entrypoint *string `json:"entrypoint" yaml:"entrypoint"`
@@ -8922,10 +9582,21 @@ type IntegrationTestOptions struct {
 // Experimental.
 type LambdaAutoDiscover interface {
 	cdk.AutoDiscoverBase
+	// Auto-discovered entry points with paths relative to the project directory.
+	// Experimental.
 	Entrypoints() *[]*string
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -8981,10 +9652,6 @@ func NewLambdaAutoDiscover_Override(l LambdaAutoDiscover, project projen.Project
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (l *jsiiProxy_LambdaAutoDiscover) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -8993,8 +9660,6 @@ func (l *jsiiProxy_LambdaAutoDiscover) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (l *jsiiProxy_LambdaAutoDiscover) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -9003,8 +9668,6 @@ func (l *jsiiProxy_LambdaAutoDiscover) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (l *jsiiProxy_LambdaAutoDiscover) Synthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -9042,14 +9705,27 @@ type LambdaAutoDiscoverOptions struct {
 // which extends `@aws-cdk/aws-lambda.Function` which is bound to the bundled
 // handle through an asset.
 //
-// TODO: EXAMPLE
+// Example:
+//   new LambdaFunction(myProject, {
+//     srcdir: myProject.srcdir,
+//     entrypoint: 'src/foo.lambda.ts',
+//   });
 //
 // Experimental.
 type LambdaFunction interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -9097,10 +9773,6 @@ func NewLambdaFunction_Override(l LambdaFunction, project projen.Project, option
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (l *jsiiProxy_LambdaFunction) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -9109,8 +9781,6 @@ func (l *jsiiProxy_LambdaFunction) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (l *jsiiProxy_LambdaFunction) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -9119,8 +9789,6 @@ func (l *jsiiProxy_LambdaFunction) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (l *jsiiProxy_LambdaFunction) Synthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -9181,7 +9849,8 @@ type LambdaFunctionOptions struct {
 	//
 	// This is relative to the root directory of the project.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "src/subdir/foo.lambda.ts"
 	//
 	// Experimental.
 	Entrypoint *string `json:"entrypoint" yaml:"entrypoint"`
@@ -9199,8 +9868,13 @@ type LambdaFunctionOptions struct {
 // The runtime for the AWS Lambda function.
 // Experimental.
 type LambdaRuntime interface {
+	// Experimental.
 	EsbuildPlatform() *string
+	// The esbuild setting to use.
+	// Experimental.
 	EsbuildTarget() *string
+	// The aws-lambda.Runtime member name to use.
+	// Experimental.
 	FunctionRuntime() *string
 }
 

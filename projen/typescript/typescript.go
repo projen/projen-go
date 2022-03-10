@@ -18,9 +18,18 @@ import (
 // Experimental.
 type Projenrc interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -66,10 +75,6 @@ func NewProjenrc_Override(p Projenrc, project TypeScriptProject, options *Projen
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_Projenrc) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -78,8 +83,6 @@ func (p *jsiiProxy_Projenrc) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_Projenrc) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -88,8 +91,6 @@ func (p *jsiiProxy_Projenrc) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_Projenrc) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -112,90 +113,308 @@ type ProjenrcOptions struct {
 // Experimental.
 type TypeScriptAppProject interface {
 	TypeScriptProject
+	// Deprecated: use `package.allowLibraryDependencies`
 	AllowLibraryDependencies() *bool
+	// The build output directory.
+	//
+	// An npm tarball will be created under the `js`
+	// subdirectory. For example, if this is set to `dist` (the default), the npm
+	// tarball will be placed under `dist/js/boom-boom-1.2.3.tg`.
+	// Experimental.
 	ArtifactsDirectory() *string
+	// The location of the npm tarball after build (`${artifactsDirectory}/js`).
+	// Experimental.
 	ArtifactsJavascriptDirectory() *string
+	// Auto approve set up for this project.
+	// Deprecated.
 	AutoApprove() github.AutoApprove
+	// Automatic PR merges.
+	// Experimental.
 	AutoMerge() github.AutoMerge
+	// Experimental.
 	BuildTask() projen.Task
+	// The PR build GitHub workflow.
+	//
+	// `undefined` if `buildWorkflow` is disabled.
+	// Experimental.
 	BuildWorkflow() build.BuildWorkflow
+	// The job ID of the build workflow.
+	// Experimental.
 	BuildWorkflowJobId() *string
+	// Experimental.
 	Bundler() javascript.Bundler
+	// Experimental.
 	CompileTask() projen.Task
+	// Returns all the components within this project.
+	// Experimental.
 	Components() *[]projen.Component
+	// This is the "default" task, the one that executes "projen".
+	//
+	// Undefined if
+	// the project is being ejected.
+	// Experimental.
 	DefaultTask() projen.Task
+	// Project dependencies.
+	// Experimental.
 	Deps() projen.Dependencies
+	// Access for .devcontainer.json (used for GitHub Codespaces).
+	//
+	// This will be `undefined` if devContainer boolean is false.
+	// Deprecated.
 	DevContainer() vscode.DevContainer
+	// Experimental.
 	Docgen() *bool
+	// Experimental.
 	DocsDirectory() *string
+	// Whether or not the project is being ejected.
+	// Experimental.
 	Ejected() *bool
+	// Deprecated: use `package.entrypoint`
 	Entrypoint() *string
+	// Experimental.
 	Eslint() javascript.Eslint
+	// All files in this project.
+	// Experimental.
 	Files() *[]projen.FileBase
+	// The .gitattributes file for this repository.
+	// Experimental.
 	Gitattributes() projen.GitAttributesFile
+	// Access all github components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Github() github.GitHub
+	// .gitignore.
+	// Experimental.
 	Gitignore() projen.IgnoreFile
+	// Access for Gitpod.
+	//
+	// This will be `undefined` if gitpod boolean is false.
+	// Deprecated.
 	Gitpod() projen.Gitpod
+	// The options used when this project is bootstrapped via `projen new`.
+	//
+	// It
+	// includes the original set of options passed to the CLI and also the JSII
+	// FQN of the project type.
+	// Experimental.
 	InitProject() *projen.InitProject
+	// The Jest configuration (if enabled).
+	// Experimental.
 	Jest() javascript.Jest
+	// The directory in which compiled .js files reside.
+	// Experimental.
 	Libdir() *string
+	// Logging utilities.
+	// Experimental.
 	Logger() projen.Logger
+	// Deprecated: use `package.addField(x, y)`
 	Manifest() interface{}
+	// Maximum node version required by this pacakge.
+	// Experimental.
 	MaxNodeVersion() *string
+	// Minimum node.js version required by this package.
+	// Experimental.
 	MinNodeVersion() *string
+	// Project name.
+	// Experimental.
 	Name() *string
+	// The .npmignore file.
+	// Experimental.
 	Npmignore() projen.IgnoreFile
+	// Absolute output directory of this project.
+	// Experimental.
 	Outdir() *string
+	// API for managing the node package.
+	// Experimental.
 	Package() javascript.NodePackage
+	// The package manager to use.
+	// Deprecated: use `package.packageManager`
 	PackageManager() javascript.NodePackageManager
+	// Experimental.
 	PackageTask() projen.Task
+	// A parent project.
+	//
+	// If undefined, this is the root project.
+	// Experimental.
 	Parent() projen.Project
+	// Experimental.
 	PostCompileTask() projen.Task
+	// Experimental.
 	PreCompileTask() projen.Task
+	// Experimental.
 	Prettier() javascript.Prettier
+	// Manages the build process of the project.
+	// Experimental.
 	ProjectBuild() projen.ProjectBuild
+	// Deprecated.
 	ProjectType() projen.ProjectType
+	// The command to use in order to run the projen CLI.
+	// Experimental.
 	ProjenCommand() *string
+	// Package publisher.
+	//
+	// This will be `undefined` if the project does not have a
+	// release workflow.
+	// Deprecated: use `release.publisher`.
 	Publisher() release.Publisher
+	// Release management.
+	// Experimental.
 	Release() release.Release
+	// The root project.
+	// Experimental.
 	Root() projen.Project
+	// The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager).
+	// Experimental.
 	RunScriptCommand() *string
+	// The directory in which the .ts sources reside.
+	// Experimental.
 	Srcdir() *string
+	// Project tasks.
+	// Experimental.
 	Tasks() projen.Tasks
+	// The directory in which tests reside.
+	// Experimental.
 	Testdir() *string
+	// Experimental.
 	TestTask() projen.Task
+	// Experimental.
 	Tsconfig() javascript.TypescriptConfig
+	// A typescript configuration file which covers all files (sources, tests, projen).
+	// Experimental.
 	TsconfigDev() javascript.TypescriptConfig
+	// Experimental.
 	TsconfigEslint() javascript.TypescriptConfig
+	// The upgrade workflow.
+	// Experimental.
 	UpgradeWorkflow() javascript.UpgradeDependencies
+	// Access all VSCode components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Vscode() vscode.VsCode
+	// The "watch" task.
+	// Experimental.
 	WatchTask() projen.Task
+	// Experimental.
 	AddBins(bins *map[string]*string)
+	// Defines bundled dependencies.
+	//
+	// Bundled dependencies will be added as normal dependencies as well as to the
+	// `bundledDependencies` section of your `package.json`.
+	// Experimental.
 	AddBundledDeps(deps ...*string)
+	// DEPRECATED.
+	// Deprecated: use `project.compileTask.exec()`
 	AddCompileCommand(commands ...*string)
+	// Defines normal dependencies.
+	// Experimental.
 	AddDeps(deps ...*string)
+	// Defines development/test dependencies.
+	// Experimental.
 	AddDevDeps(deps ...*string)
+	// Exclude the matching files from pre-synth cleanup.
+	//
+	// Can be used when, for example, some
+	// source files include the projen marker and we don't want them to be erased during synth.
+	// Experimental.
 	AddExcludeFromCleanup(globs ...*string)
+	// Directly set fields in `package.json`.
+	// Experimental.
 	AddFields(fields *map[string]interface{})
+	// Adds a .gitignore pattern.
+	// Experimental.
 	AddGitIgnore(pattern *string)
+	// Adds keywords to package.json (deduplicated).
+	// Experimental.
 	AddKeywords(keywords ...*string)
+	// Exclude these files from the bundled package.
+	//
+	// Implemented by project types based on the
+	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Experimental.
 	AddPackageIgnore(pattern *string)
+	// Defines peer dependencies.
+	//
+	// When adding peer dependencies, a devDependency will also be added on the
+	// pinned version of the declared peer. This will ensure that you are testing
+	// your code against the minimum version required from your consumers.
+	// Experimental.
 	AddPeerDeps(deps ...*string)
+	// Adds a new task to this project.
+	//
+	// This will fail if the project already has
+	// a task with this name.
+	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
+	// DEPRECATED.
+	// Deprecated: use `project.testTask.exec()`
 	AddTestCommand(commands ...*string)
+	// Prints a "tip" message during synthesis.
+	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 	AddTip(message *string)
+	// Marks the provided file(s) as being generated.
+	//
+	// This is achieved using the
+	// github-linguist attributes. Generated files do not count against the
+	// repository statistics and language breakdown.
+	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
+	//
+	// Deprecated.
 	AnnotateGenerated(glob *string)
+	// Indicates if a script by the name name is defined.
+	// Experimental.
 	HasScript(name *string) *bool
+	// Called after all components are synthesized.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before all components are synthesized.
+	// Experimental.
 	PreSynthesize()
+	// Removes the npm script (always successful).
+	// Experimental.
 	RemoveScript(name *string)
+	// Removes a task from a project.
+	//
+	// Returns: The `Task` that was removed, otherwise `undefined`.
+	// Experimental.
 	RemoveTask(name *string) projen.Task
+	// Returns the set of workflow steps which should be executed to bootstrap a workflow.
+	//
+	// Returns: Job steps.
+	// Experimental.
 	RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep
+	// Returns the shell command to execute in order to run a task.
+	//
+	// This will
+	// typically be `npx projen TASK`.
+	// Experimental.
 	RunTaskCommand(task projen.Task) *string
+	// Replaces the contents of an npm package.json script.
+	// Experimental.
 	SetScript(name *string, command *string)
+	// Synthesize all project files into `outdir`.
+	//
+	// 1. Call "this.preSynthesize()"
+	// 2. Delete all generated files
+	// 3. Synthesize all sub-projects
+	// 4. Synthesize all components of this project
+	// 5. Call "postSynthesize()" for all components of this project
+	// 6. Call "this.postSynthesize()"
+	// Experimental.
 	Synth()
+	// Finds a file at the specified relative path within this project and all its subprojects.
+	//
+	// Returns: a `FileBase` or undefined if there is no file in that path.
+	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
+	// Finds a json file by name.
+	// Deprecated: use `tryFindObjectFile`.
 	TryFindJsonFile(filePath *string) projen.JsonFile
+	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
 }
 
@@ -822,7 +1041,6 @@ func TypeScriptAppProject_DEFAULT_TASK() *string {
 	return returns
 }
 
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) AddBins(bins *map[string]*string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -831,11 +1049,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AddBins(bins *map[string]*string) {
 	)
 }
 
-// Defines bundled dependencies.
-//
-// Bundled dependencies will be added as normal dependencies as well as to the
-// `bundledDependencies` section of your `package.json`.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) AddBundledDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -849,8 +1062,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AddBundledDeps(deps ...*string) {
 	)
 }
 
-// DEPRECATED.
-// Deprecated: use `project.compileTask.exec()`
 func (t *jsiiProxy_TypeScriptAppProject) AddCompileCommand(commands ...*string) {
 	args := []interface{}{}
 	for _, a := range commands {
@@ -864,8 +1075,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AddCompileCommand(commands ...*string) 
 	)
 }
 
-// Defines normal dependencies.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) AddDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -879,8 +1088,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AddDeps(deps ...*string) {
 	)
 }
 
-// Defines development/test dependencies.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) AddDevDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -894,11 +1101,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AddDevDeps(deps ...*string) {
 	)
 }
 
-// Exclude the matching files from pre-synth cleanup.
-//
-// Can be used when, for example, some
-// source files include the projen marker and we don't want them to be erased during synth.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) AddExcludeFromCleanup(globs ...*string) {
 	args := []interface{}{}
 	for _, a := range globs {
@@ -912,8 +1114,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AddExcludeFromCleanup(globs ...*string)
 	)
 }
 
-// Directly set fields in `package.json`.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) AddFields(fields *map[string]interface{}) {
 	_jsii_.InvokeVoid(
 		t,
@@ -922,8 +1122,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AddFields(fields *map[string]interface{
 	)
 }
 
-// Adds a .gitignore pattern.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) AddGitIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -932,8 +1130,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AddGitIgnore(pattern *string) {
 	)
 }
 
-// Adds keywords to package.json (deduplicated).
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) AddKeywords(keywords ...*string) {
 	args := []interface{}{}
 	for _, a := range keywords {
@@ -947,11 +1143,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AddKeywords(keywords ...*string) {
 	)
 }
 
-// Exclude these files from the bundled package.
-//
-// Implemented by project types based on the
-// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) AddPackageIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -960,12 +1151,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AddPackageIgnore(pattern *string) {
 	)
 }
 
-// Defines peer dependencies.
-//
-// When adding peer dependencies, a devDependency will also be added on the
-// pinned version of the declared peer. This will ensure that you are testing
-// your code against the minimum version required from your consumers.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) AddPeerDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -979,11 +1164,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AddPeerDeps(deps ...*string) {
 	)
 }
 
-// Adds a new task to this project.
-//
-// This will fail if the project already has
-// a task with this name.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) AddTask(name *string, props *projen.TaskOptions) projen.Task {
 	var returns projen.Task
 
@@ -997,8 +1177,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AddTask(name *string, props *projen.Tas
 	return returns
 }
 
-// DEPRECATED.
-// Deprecated: use `project.testTask.exec()`
 func (t *jsiiProxy_TypeScriptAppProject) AddTestCommand(commands ...*string) {
 	args := []interface{}{}
 	for _, a := range commands {
@@ -1012,8 +1190,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AddTestCommand(commands ...*string) {
 	)
 }
 
-// Prints a "tip" message during synthesis.
-// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 func (t *jsiiProxy_TypeScriptAppProject) AddTip(message *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -1022,14 +1198,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AddTip(message *string) {
 	)
 }
 
-// Marks the provided file(s) as being generated.
-//
-// This is achieved using the
-// github-linguist attributes. Generated files do not count against the
-// repository statistics and language breakdown.
-// See: https://github.com/github/linguist/blob/master/docs/overrides.md
-//
-// Deprecated.
 func (t *jsiiProxy_TypeScriptAppProject) AnnotateGenerated(glob *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -1038,8 +1206,6 @@ func (t *jsiiProxy_TypeScriptAppProject) AnnotateGenerated(glob *string) {
 	)
 }
 
-// Indicates if a script by the name name is defined.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) HasScript(name *string) *bool {
 	var returns *bool
 
@@ -1053,10 +1219,6 @@ func (t *jsiiProxy_TypeScriptAppProject) HasScript(name *string) *bool {
 	return returns
 }
 
-// Called after all components are synthesized.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -1065,8 +1227,6 @@ func (t *jsiiProxy_TypeScriptAppProject) PostSynthesize() {
 	)
 }
 
-// Called before all components are synthesized.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -1075,8 +1235,6 @@ func (t *jsiiProxy_TypeScriptAppProject) PreSynthesize() {
 	)
 }
 
-// Removes the npm script (always successful).
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) RemoveScript(name *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -1085,10 +1243,6 @@ func (t *jsiiProxy_TypeScriptAppProject) RemoveScript(name *string) {
 	)
 }
 
-// Removes a task from a project.
-//
-// Returns: The `Task` that was removed, otherwise `undefined`.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) RemoveTask(name *string) projen.Task {
 	var returns projen.Task
 
@@ -1102,10 +1256,6 @@ func (t *jsiiProxy_TypeScriptAppProject) RemoveTask(name *string) projen.Task {
 	return returns
 }
 
-// Returns the set of workflow steps which should be executed to bootstrap a workflow.
-//
-// Returns: Job steps
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
 	var returns *[]*workflows.JobStep
 
@@ -1119,11 +1269,6 @@ func (t *jsiiProxy_TypeScriptAppProject) RenderWorkflowSetup(options *javascript
 	return returns
 }
 
-// Returns the shell command to execute in order to run a task.
-//
-// This will
-// typically be `npx projen TASK`.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) RunTaskCommand(task projen.Task) *string {
 	var returns *string
 
@@ -1137,8 +1282,6 @@ func (t *jsiiProxy_TypeScriptAppProject) RunTaskCommand(task projen.Task) *strin
 	return returns
 }
 
-// Replaces the contents of an npm package.json script.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) SetScript(name *string, command *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -1147,15 +1290,6 @@ func (t *jsiiProxy_TypeScriptAppProject) SetScript(name *string, command *string
 	)
 }
 
-// Synthesize all project files into `outdir`.
-//
-// 1. Call "this.preSynthesize()"
-// 2. Delete all generated files
-// 3. Synthesize all sub-projects
-// 4. Synthesize all components of this project
-// 5. Call "postSynthesize()" for all components of this project
-// 6. Call "this.postSynthesize()"
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) Synth() {
 	_jsii_.InvokeVoid(
 		t,
@@ -1164,10 +1298,6 @@ func (t *jsiiProxy_TypeScriptAppProject) Synth() {
 	)
 }
 
-// Finds a file at the specified relative path within this project and all its subprojects.
-//
-// Returns: a `FileBase` or undefined if there is no file in that path
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) TryFindFile(filePath *string) projen.FileBase {
 	var returns projen.FileBase
 
@@ -1181,8 +1311,6 @@ func (t *jsiiProxy_TypeScriptAppProject) TryFindFile(filePath *string) projen.Fi
 	return returns
 }
 
-// Finds a json file by name.
-// Deprecated: use `tryFindObjectFile`
 func (t *jsiiProxy_TypeScriptAppProject) TryFindJsonFile(filePath *string) projen.JsonFile {
 	var returns projen.JsonFile
 
@@ -1196,8 +1324,6 @@ func (t *jsiiProxy_TypeScriptAppProject) TryFindJsonFile(filePath *string) proje
 	return returns
 }
 
-// Finds an object file (like JsonFile, YamlFile, etc.) by name.
-// Experimental.
 func (t *jsiiProxy_TypeScriptAppProject) TryFindObjectFile(filePath *string) projen.ObjectFile {
 	var returns projen.ObjectFile
 
@@ -1211,93 +1337,311 @@ func (t *jsiiProxy_TypeScriptAppProject) TryFindObjectFile(filePath *string) pro
 	return returns
 }
 
-// Deprecated: use `TypeScriptProject`
+// Deprecated: use `TypeScriptProject`.
 type TypeScriptLibraryProject interface {
 	TypeScriptProject
+	// Deprecated: use `package.allowLibraryDependencies`
 	AllowLibraryDependencies() *bool
+	// The build output directory.
+	//
+	// An npm tarball will be created under the `js`
+	// subdirectory. For example, if this is set to `dist` (the default), the npm
+	// tarball will be placed under `dist/js/boom-boom-1.2.3.tg`.
+	// Deprecated: use `TypeScriptProject`.
 	ArtifactsDirectory() *string
+	// The location of the npm tarball after build (`${artifactsDirectory}/js`).
+	// Deprecated: use `TypeScriptProject`.
 	ArtifactsJavascriptDirectory() *string
+	// Auto approve set up for this project.
+	// Deprecated: use `TypeScriptProject`.
 	AutoApprove() github.AutoApprove
+	// Automatic PR merges.
+	// Deprecated: use `TypeScriptProject`.
 	AutoMerge() github.AutoMerge
+	// Deprecated: use `TypeScriptProject`.
 	BuildTask() projen.Task
+	// The PR build GitHub workflow.
+	//
+	// `undefined` if `buildWorkflow` is disabled.
+	// Deprecated: use `TypeScriptProject`.
 	BuildWorkflow() build.BuildWorkflow
+	// The job ID of the build workflow.
+	// Deprecated: use `TypeScriptProject`.
 	BuildWorkflowJobId() *string
+	// Deprecated: use `TypeScriptProject`.
 	Bundler() javascript.Bundler
+	// Deprecated: use `TypeScriptProject`.
 	CompileTask() projen.Task
+	// Returns all the components within this project.
+	// Deprecated: use `TypeScriptProject`.
 	Components() *[]projen.Component
+	// This is the "default" task, the one that executes "projen".
+	//
+	// Undefined if
+	// the project is being ejected.
+	// Deprecated: use `TypeScriptProject`.
 	DefaultTask() projen.Task
+	// Project dependencies.
+	// Deprecated: use `TypeScriptProject`.
 	Deps() projen.Dependencies
+	// Access for .devcontainer.json (used for GitHub Codespaces).
+	//
+	// This will be `undefined` if devContainer boolean is false.
+	// Deprecated: use `TypeScriptProject`.
 	DevContainer() vscode.DevContainer
+	// Deprecated: use `TypeScriptProject`.
 	Docgen() *bool
+	// Deprecated: use `TypeScriptProject`.
 	DocsDirectory() *string
+	// Whether or not the project is being ejected.
+	// Deprecated: use `TypeScriptProject`.
 	Ejected() *bool
+	// Deprecated: use `package.entrypoint`
 	Entrypoint() *string
+	// Deprecated: use `TypeScriptProject`.
 	Eslint() javascript.Eslint
+	// All files in this project.
+	// Deprecated: use `TypeScriptProject`.
 	Files() *[]projen.FileBase
+	// The .gitattributes file for this repository.
+	// Deprecated: use `TypeScriptProject`.
 	Gitattributes() projen.GitAttributesFile
+	// Access all github components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated: use `TypeScriptProject`.
 	Github() github.GitHub
+	// .gitignore.
+	// Deprecated: use `TypeScriptProject`.
 	Gitignore() projen.IgnoreFile
+	// Access for Gitpod.
+	//
+	// This will be `undefined` if gitpod boolean is false.
+	// Deprecated: use `TypeScriptProject`.
 	Gitpod() projen.Gitpod
+	// The options used when this project is bootstrapped via `projen new`.
+	//
+	// It
+	// includes the original set of options passed to the CLI and also the JSII
+	// FQN of the project type.
+	// Deprecated: use `TypeScriptProject`.
 	InitProject() *projen.InitProject
+	// The Jest configuration (if enabled).
+	// Deprecated: use `TypeScriptProject`.
 	Jest() javascript.Jest
+	// The directory in which compiled .js files reside.
+	// Deprecated: use `TypeScriptProject`.
 	Libdir() *string
+	// Logging utilities.
+	// Deprecated: use `TypeScriptProject`.
 	Logger() projen.Logger
+	// Deprecated: use `package.addField(x, y)`
 	Manifest() interface{}
+	// Maximum node version required by this pacakge.
+	// Deprecated: use `TypeScriptProject`.
 	MaxNodeVersion() *string
+	// Minimum node.js version required by this package.
+	// Deprecated: use `TypeScriptProject`.
 	MinNodeVersion() *string
+	// Project name.
+	// Deprecated: use `TypeScriptProject`.
 	Name() *string
+	// The .npmignore file.
+	// Deprecated: use `TypeScriptProject`.
 	Npmignore() projen.IgnoreFile
+	// Absolute output directory of this project.
+	// Deprecated: use `TypeScriptProject`.
 	Outdir() *string
+	// API for managing the node package.
+	// Deprecated: use `TypeScriptProject`.
 	Package() javascript.NodePackage
+	// The package manager to use.
+	// Deprecated: use `package.packageManager`
 	PackageManager() javascript.NodePackageManager
+	// Deprecated: use `TypeScriptProject`.
 	PackageTask() projen.Task
+	// A parent project.
+	//
+	// If undefined, this is the root project.
+	// Deprecated: use `TypeScriptProject`.
 	Parent() projen.Project
+	// Deprecated: use `TypeScriptProject`.
 	PostCompileTask() projen.Task
+	// Deprecated: use `TypeScriptProject`.
 	PreCompileTask() projen.Task
+	// Deprecated: use `TypeScriptProject`.
 	Prettier() javascript.Prettier
+	// Manages the build process of the project.
+	// Deprecated: use `TypeScriptProject`.
 	ProjectBuild() projen.ProjectBuild
+	// Deprecated: use `TypeScriptProject`.
 	ProjectType() projen.ProjectType
+	// The command to use in order to run the projen CLI.
+	// Deprecated: use `TypeScriptProject`.
 	ProjenCommand() *string
+	// Package publisher.
+	//
+	// This will be `undefined` if the project does not have a
+	// release workflow.
+	// Deprecated: use `release.publisher`.
 	Publisher() release.Publisher
+	// Release management.
+	// Deprecated: use `TypeScriptProject`.
 	Release() release.Release
+	// The root project.
+	// Deprecated: use `TypeScriptProject`.
 	Root() projen.Project
+	// The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager).
+	// Deprecated: use `TypeScriptProject`.
 	RunScriptCommand() *string
+	// The directory in which the .ts sources reside.
+	// Deprecated: use `TypeScriptProject`.
 	Srcdir() *string
+	// Project tasks.
+	// Deprecated: use `TypeScriptProject`.
 	Tasks() projen.Tasks
+	// The directory in which tests reside.
+	// Deprecated: use `TypeScriptProject`.
 	Testdir() *string
+	// Deprecated: use `TypeScriptProject`.
 	TestTask() projen.Task
+	// Deprecated: use `TypeScriptProject`.
 	Tsconfig() javascript.TypescriptConfig
+	// A typescript configuration file which covers all files (sources, tests, projen).
+	// Deprecated: use `TypeScriptProject`.
 	TsconfigDev() javascript.TypescriptConfig
+	// Deprecated: use `TypeScriptProject`.
 	TsconfigEslint() javascript.TypescriptConfig
+	// The upgrade workflow.
+	// Deprecated: use `TypeScriptProject`.
 	UpgradeWorkflow() javascript.UpgradeDependencies
+	// Access all VSCode components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated: use `TypeScriptProject`.
 	Vscode() vscode.VsCode
+	// The "watch" task.
+	// Deprecated: use `TypeScriptProject`.
 	WatchTask() projen.Task
+	// Deprecated: use `TypeScriptProject`.
 	AddBins(bins *map[string]*string)
+	// Defines bundled dependencies.
+	//
+	// Bundled dependencies will be added as normal dependencies as well as to the
+	// `bundledDependencies` section of your `package.json`.
+	// Deprecated: use `TypeScriptProject`.
 	AddBundledDeps(deps ...*string)
+	// DEPRECATED.
+	// Deprecated: use `project.compileTask.exec()`
 	AddCompileCommand(commands ...*string)
+	// Defines normal dependencies.
+	// Deprecated: use `TypeScriptProject`.
 	AddDeps(deps ...*string)
+	// Defines development/test dependencies.
+	// Deprecated: use `TypeScriptProject`.
 	AddDevDeps(deps ...*string)
+	// Exclude the matching files from pre-synth cleanup.
+	//
+	// Can be used when, for example, some
+	// source files include the projen marker and we don't want them to be erased during synth.
+	// Deprecated: use `TypeScriptProject`.
 	AddExcludeFromCleanup(globs ...*string)
+	// Directly set fields in `package.json`.
+	// Deprecated: use `TypeScriptProject`.
 	AddFields(fields *map[string]interface{})
+	// Adds a .gitignore pattern.
+	// Deprecated: use `TypeScriptProject`.
 	AddGitIgnore(pattern *string)
+	// Adds keywords to package.json (deduplicated).
+	// Deprecated: use `TypeScriptProject`.
 	AddKeywords(keywords ...*string)
+	// Exclude these files from the bundled package.
+	//
+	// Implemented by project types based on the
+	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Deprecated: use `TypeScriptProject`.
 	AddPackageIgnore(pattern *string)
+	// Defines peer dependencies.
+	//
+	// When adding peer dependencies, a devDependency will also be added on the
+	// pinned version of the declared peer. This will ensure that you are testing
+	// your code against the minimum version required from your consumers.
+	// Deprecated: use `TypeScriptProject`.
 	AddPeerDeps(deps ...*string)
+	// Adds a new task to this project.
+	//
+	// This will fail if the project already has
+	// a task with this name.
+	// Deprecated: use `TypeScriptProject`.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
+	// DEPRECATED.
+	// Deprecated: use `project.testTask.exec()`
 	AddTestCommand(commands ...*string)
+	// Prints a "tip" message during synthesis.
+	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 	AddTip(message *string)
+	// Marks the provided file(s) as being generated.
+	//
+	// This is achieved using the
+	// github-linguist attributes. Generated files do not count against the
+	// repository statistics and language breakdown.
+	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
+	//
+	// Deprecated: use `TypeScriptProject`.
 	AnnotateGenerated(glob *string)
+	// Indicates if a script by the name name is defined.
+	// Deprecated: use `TypeScriptProject`.
 	HasScript(name *string) *bool
+	// Called after all components are synthesized.
+	//
+	// Order is *not* guaranteed.
+	// Deprecated: use `TypeScriptProject`.
 	PostSynthesize()
+	// Called before all components are synthesized.
+	// Deprecated: use `TypeScriptProject`.
 	PreSynthesize()
+	// Removes the npm script (always successful).
+	// Deprecated: use `TypeScriptProject`.
 	RemoveScript(name *string)
+	// Removes a task from a project.
+	//
+	// Returns: The `Task` that was removed, otherwise `undefined`.
+	// Deprecated: use `TypeScriptProject`.
 	RemoveTask(name *string) projen.Task
+	// Returns the set of workflow steps which should be executed to bootstrap a workflow.
+	//
+	// Returns: Job steps.
+	// Deprecated: use `TypeScriptProject`.
 	RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep
+	// Returns the shell command to execute in order to run a task.
+	//
+	// This will
+	// typically be `npx projen TASK`.
+	// Deprecated: use `TypeScriptProject`.
 	RunTaskCommand(task projen.Task) *string
+	// Replaces the contents of an npm package.json script.
+	// Deprecated: use `TypeScriptProject`.
 	SetScript(name *string, command *string)
+	// Synthesize all project files into `outdir`.
+	//
+	// 1. Call "this.preSynthesize()"
+	// 2. Delete all generated files
+	// 3. Synthesize all sub-projects
+	// 4. Synthesize all components of this project
+	// 5. Call "postSynthesize()" for all components of this project
+	// 6. Call "this.postSynthesize()"
+	// Deprecated: use `TypeScriptProject`.
 	Synth()
+	// Finds a file at the specified relative path within this project and all its subprojects.
+	//
+	// Returns: a `FileBase` or undefined if there is no file in that path.
+	// Deprecated: use `TypeScriptProject`.
 	TryFindFile(filePath *string) projen.FileBase
+	// Finds a json file by name.
+	// Deprecated: use `tryFindObjectFile`.
 	TryFindJsonFile(filePath *string) projen.JsonFile
+	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+	// Deprecated: use `TypeScriptProject`.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
 }
 
@@ -1887,7 +2231,7 @@ func (j *jsiiProxy_TypeScriptLibraryProject) WatchTask() projen.Task {
 }
 
 
-// Deprecated: use `TypeScriptProject`
+// Deprecated: use `TypeScriptProject`.
 func NewTypeScriptLibraryProject(options *TypeScriptProjectOptions) TypeScriptLibraryProject {
 	_init_.Initialize()
 
@@ -1902,7 +2246,7 @@ func NewTypeScriptLibraryProject(options *TypeScriptProjectOptions) TypeScriptLi
 	return &j
 }
 
-// Deprecated: use `TypeScriptProject`
+// Deprecated: use `TypeScriptProject`.
 func NewTypeScriptLibraryProject_Override(t TypeScriptLibraryProject, options *TypeScriptProjectOptions) {
 	_init_.Initialize()
 
@@ -1924,7 +2268,6 @@ func TypeScriptLibraryProject_DEFAULT_TASK() *string {
 	return returns
 }
 
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) AddBins(bins *map[string]*string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -1933,11 +2276,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddBins(bins *map[string]*string) {
 	)
 }
 
-// Defines bundled dependencies.
-//
-// Bundled dependencies will be added as normal dependencies as well as to the
-// `bundledDependencies` section of your `package.json`.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) AddBundledDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -1951,8 +2289,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddBundledDeps(deps ...*string) {
 	)
 }
 
-// DEPRECATED.
-// Deprecated: use `project.compileTask.exec()`
 func (t *jsiiProxy_TypeScriptLibraryProject) AddCompileCommand(commands ...*string) {
 	args := []interface{}{}
 	for _, a := range commands {
@@ -1966,8 +2302,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddCompileCommand(commands ...*stri
 	)
 }
 
-// Defines normal dependencies.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) AddDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -1981,8 +2315,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddDeps(deps ...*string) {
 	)
 }
 
-// Defines development/test dependencies.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) AddDevDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -1996,11 +2328,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddDevDeps(deps ...*string) {
 	)
 }
 
-// Exclude the matching files from pre-synth cleanup.
-//
-// Can be used when, for example, some
-// source files include the projen marker and we don't want them to be erased during synth.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) AddExcludeFromCleanup(globs ...*string) {
 	args := []interface{}{}
 	for _, a := range globs {
@@ -2014,8 +2341,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddExcludeFromCleanup(globs ...*str
 	)
 }
 
-// Directly set fields in `package.json`.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) AddFields(fields *map[string]interface{}) {
 	_jsii_.InvokeVoid(
 		t,
@@ -2024,8 +2349,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddFields(fields *map[string]interf
 	)
 }
 
-// Adds a .gitignore pattern.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) AddGitIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -2034,8 +2357,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddGitIgnore(pattern *string) {
 	)
 }
 
-// Adds keywords to package.json (deduplicated).
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) AddKeywords(keywords ...*string) {
 	args := []interface{}{}
 	for _, a := range keywords {
@@ -2049,11 +2370,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddKeywords(keywords ...*string) {
 	)
 }
 
-// Exclude these files from the bundled package.
-//
-// Implemented by project types based on the
-// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) AddPackageIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -2062,12 +2378,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddPackageIgnore(pattern *string) {
 	)
 }
 
-// Defines peer dependencies.
-//
-// When adding peer dependencies, a devDependency will also be added on the
-// pinned version of the declared peer. This will ensure that you are testing
-// your code against the minimum version required from your consumers.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) AddPeerDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -2081,11 +2391,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddPeerDeps(deps ...*string) {
 	)
 }
 
-// Adds a new task to this project.
-//
-// This will fail if the project already has
-// a task with this name.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) AddTask(name *string, props *projen.TaskOptions) projen.Task {
 	var returns projen.Task
 
@@ -2099,8 +2404,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddTask(name *string, props *projen
 	return returns
 }
 
-// DEPRECATED.
-// Deprecated: use `project.testTask.exec()`
 func (t *jsiiProxy_TypeScriptLibraryProject) AddTestCommand(commands ...*string) {
 	args := []interface{}{}
 	for _, a := range commands {
@@ -2114,8 +2417,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddTestCommand(commands ...*string)
 	)
 }
 
-// Prints a "tip" message during synthesis.
-// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 func (t *jsiiProxy_TypeScriptLibraryProject) AddTip(message *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -2124,14 +2425,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddTip(message *string) {
 	)
 }
 
-// Marks the provided file(s) as being generated.
-//
-// This is achieved using the
-// github-linguist attributes. Generated files do not count against the
-// repository statistics and language breakdown.
-// See: https://github.com/github/linguist/blob/master/docs/overrides.md
-//
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) AnnotateGenerated(glob *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -2140,8 +2433,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AnnotateGenerated(glob *string) {
 	)
 }
 
-// Indicates if a script by the name name is defined.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) HasScript(name *string) *bool {
 	var returns *bool
 
@@ -2155,10 +2446,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) HasScript(name *string) *bool {
 	return returns
 }
 
-// Called after all components are synthesized.
-//
-// Order is *not* guaranteed.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -2167,8 +2454,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) PostSynthesize() {
 	)
 }
 
-// Called before all components are synthesized.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -2177,8 +2462,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) PreSynthesize() {
 	)
 }
 
-// Removes the npm script (always successful).
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) RemoveScript(name *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -2187,10 +2470,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) RemoveScript(name *string) {
 	)
 }
 
-// Removes a task from a project.
-//
-// Returns: The `Task` that was removed, otherwise `undefined`.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) RemoveTask(name *string) projen.Task {
 	var returns projen.Task
 
@@ -2204,10 +2483,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) RemoveTask(name *string) projen.Tas
 	return returns
 }
 
-// Returns the set of workflow steps which should be executed to bootstrap a workflow.
-//
-// Returns: Job steps
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
 	var returns *[]*workflows.JobStep
 
@@ -2221,11 +2496,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) RenderWorkflowSetup(options *javasc
 	return returns
 }
 
-// Returns the shell command to execute in order to run a task.
-//
-// This will
-// typically be `npx projen TASK`.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) RunTaskCommand(task projen.Task) *string {
 	var returns *string
 
@@ -2239,8 +2509,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) RunTaskCommand(task projen.Task) *s
 	return returns
 }
 
-// Replaces the contents of an npm package.json script.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) SetScript(name *string, command *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -2249,15 +2517,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) SetScript(name *string, command *st
 	)
 }
 
-// Synthesize all project files into `outdir`.
-//
-// 1. Call "this.preSynthesize()"
-// 2. Delete all generated files
-// 3. Synthesize all sub-projects
-// 4. Synthesize all components of this project
-// 5. Call "postSynthesize()" for all components of this project
-// 6. Call "this.postSynthesize()"
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) Synth() {
 	_jsii_.InvokeVoid(
 		t,
@@ -2266,10 +2525,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) Synth() {
 	)
 }
 
-// Finds a file at the specified relative path within this project and all its subprojects.
-//
-// Returns: a `FileBase` or undefined if there is no file in that path
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) TryFindFile(filePath *string) projen.FileBase {
 	var returns projen.FileBase
 
@@ -2283,8 +2538,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) TryFindFile(filePath *string) proje
 	return returns
 }
 
-// Finds a json file by name.
-// Deprecated: use `tryFindObjectFile`
 func (t *jsiiProxy_TypeScriptLibraryProject) TryFindJsonFile(filePath *string) projen.JsonFile {
 	var returns projen.JsonFile
 
@@ -2298,8 +2551,6 @@ func (t *jsiiProxy_TypeScriptLibraryProject) TryFindJsonFile(filePath *string) p
 	return returns
 }
 
-// Finds an object file (like JsonFile, YamlFile, etc.) by name.
-// Deprecated: use `TypeScriptProject`
 func (t *jsiiProxy_TypeScriptLibraryProject) TryFindObjectFile(filePath *string) projen.ObjectFile {
 	var returns projen.ObjectFile
 
@@ -2313,13 +2564,13 @@ func (t *jsiiProxy_TypeScriptLibraryProject) TryFindObjectFile(filePath *string)
 	return returns
 }
 
-// Deprecated: use TypeScriptProjectOptions
+// Deprecated: use TypeScriptProjectOptions.
 type TypeScriptLibraryProjectOptions struct {
 	// This is the name of your project.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Name *string `json:"name" yaml:"name"`
 	// Configure logging options such as verbosity.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Logging *projen.LoggerOptions `json:"logging" yaml:"logging"`
 	// The root directory of the project.
 	//
@@ -2328,47 +2579,47 @@ type TypeScriptLibraryProjectOptions struct {
 	// If this project has a parent, this directory is relative to the parent
 	// directory and it cannot be the same as the parent or any of it's other
 	// sub-projects.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Outdir *string `json:"outdir" yaml:"outdir"`
 	// The parent project, if this project is part of a bigger project.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Parent projen.Project `json:"parent" yaml:"parent"`
 	// The shell command to use in order to run the projen CLI.
 	//
 	// Can be used to customize in special environments.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ProjenCommand *string `json:"projenCommand" yaml:"projenCommand"`
 	// Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ProjenrcJson *bool `json:"projenrcJson" yaml:"projenrcJson"`
 	// Options for .projenrc.json.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
 	// Enable and configure the 'auto approve' workflow.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
 	// Configure options for automatic merging on GitHub.
 	//
 	// Has no effect if
 	// `github.mergify` is set to false.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions" yaml:"autoMergeOptions"`
 	// Add a `clobber` task which resets the repo to origin.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Clobber *bool `json:"clobber" yaml:"clobber"`
 	// Add a VSCode development environment (used for GitHub Codespaces).
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	DevContainer *bool `json:"devContainer" yaml:"devContainer"`
 	// Enable GitHub integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Github *bool `json:"github" yaml:"github"`
 	// Options for GitHub integration.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	GithubOptions *github.GitHubOptions `json:"githubOptions" yaml:"githubOptions"`
 	// Add a Gitpod development environment.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Gitpod *bool `json:"gitpod" yaml:"gitpod"`
 	// Whether mergify should be enabled on this repository or not.
 	// Deprecated: use `githubOptions.mergify` instead
@@ -2377,68 +2628,69 @@ type TypeScriptLibraryProjectOptions struct {
 	// Deprecated: use `githubOptions.mergifyOptions` instead
 	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
-	// Deprecated: no longer supported at the base project level
+	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
 	// This token needs to have the `repo`, `workflows`
 	// and `packages` scope.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "{ filename: 'readme.md', contents: '# title' }"
 	//
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
 	// Auto-close of stale issues and pull request.
 	//
 	// See `staleOptions` for options.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Stale *bool `json:"stale" yaml:"stale"`
 	// Auto-close stale issues and pull requests.
 	//
 	// To disable set `stale` to `false`.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	StaleOptions *github.StaleOptions `json:"staleOptions" yaml:"staleOptions"`
 	// Enable VSCode integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Vscode *bool `json:"vscode" yaml:"vscode"`
 	// Allow the project to include `peerDependencies` and `bundledDependencies`.
 	//
 	// This is normally only allowed for libraries. For apps, there's no meaning
 	// for specifying these.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	AllowLibraryDependencies *bool `json:"allowLibraryDependencies" yaml:"allowLibraryDependencies"`
 	// Author's e-mail.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	AuthorEmail *string `json:"authorEmail" yaml:"authorEmail"`
 	// Author's name.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	AuthorName *string `json:"authorName" yaml:"authorName"`
 	// Author's Organization.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	AuthorOrganization *bool `json:"authorOrganization" yaml:"authorOrganization"`
 	// Author's URL / Website.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	AuthorUrl *string `json:"authorUrl" yaml:"authorUrl"`
 	// Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	AutoDetectBin *bool `json:"autoDetectBin" yaml:"autoDetectBin"`
 	// Binary programs vended with your module.
 	//
 	// You can use this option to add/customize how binaries are represented in
 	// your `package.json`, but unless `autoDetectBin` is `false`, every
 	// executable file under `bin` will automatically be added to this section.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Bin *map[string]*string `json:"bin" yaml:"bin"`
 	// The email address to which issues should be reported.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	BugsEmail *string `json:"bugsEmail" yaml:"bugsEmail"`
 	// The url to your project's issue tracker.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	BugsUrl *string `json:"bugsUrl" yaml:"bugsUrl"`
 	// List of dependencies to bundle into this module.
 	//
@@ -2452,10 +2704,10 @@ type TypeScriptLibraryProjectOptions struct {
 	// file with the latest version (`^`). You can specify semver requirements in
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	BundledDeps *[]*string `json:"bundledDeps" yaml:"bundledDeps"`
 	// Options for publishing npm package to AWS CodeArtifact.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	CodeArtifactOptions *javascript.CodeArtifactOptions `json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Runtime dependencies of this module.
 	//
@@ -2466,15 +2718,16 @@ type TypeScriptLibraryProjectOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   [ 'express', 'lodash', 'foo@^2' ]
 	//
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Deps *[]*string `json:"deps" yaml:"deps"`
 	// The description is just a string that helps people understand the purpose of the package.
 	//
 	// It can be used when searching for packages in a package manager as well.
 	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Description *string `json:"description" yaml:"description"`
 	// Build dependencies for this module.
 	//
@@ -2489,60 +2742,61 @@ type TypeScriptLibraryProjectOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   [ 'typescript', '@types/express' ]
 	//
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	DevDeps *[]*string `json:"devDeps" yaml:"devDeps"`
 	// Module entrypoint (`main` in `package.json`).
 	//
 	// Set to an empty string to not include `main` in your package.json
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Entrypoint *string `json:"entrypoint" yaml:"entrypoint"`
 	// Package's Homepage / Website.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Homepage *string `json:"homepage" yaml:"homepage"`
 	// Keywords to include in `package.json`.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Keywords *[]*string `json:"keywords" yaml:"keywords"`
 	// License's SPDX identifier.
 	//
 	// See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
 	// Use the `licensed` option if you want to no license to be specified.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	License *string `json:"license" yaml:"license"`
 	// Indicates if a license should be added.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Licensed *bool `json:"licensed" yaml:"licensed"`
 	// Minimum node.js version to require via `engines` (inclusive).
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	MaxNodeVersion *string `json:"maxNodeVersion" yaml:"maxNodeVersion"`
 	// Minimum Node.js version to require via package.json `engines` (inclusive).
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	MinNodeVersion *string `json:"minNodeVersion" yaml:"minNodeVersion"`
 	// Access level of the npm package.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	NpmAccess javascript.NpmAccess `json:"npmAccess" yaml:"npmAccess"`
 	// The host name of the npm registry to publish to.
 	//
 	// Cannot be set together with `npmRegistryUrl`.
-	// Deprecated: use `npmRegistryUrl` instead
+	// Deprecated: use `npmRegistryUrl` instead.
 	NpmRegistry *string `json:"npmRegistry" yaml:"npmRegistry"`
 	// The base URL of the npm package registry.
 	//
 	// Must be a URL (e.g. start with "https://" or "http://")
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	NpmRegistryUrl *string `json:"npmRegistryUrl" yaml:"npmRegistryUrl"`
 	// GitHub secret which contains the NPM token to use when publishing packages.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	NpmTokenSecret *string `json:"npmTokenSecret" yaml:"npmTokenSecret"`
 	// The Node Package Manager used to execute scripts.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	PackageManager javascript.NodePackageManager `json:"packageManager" yaml:"packageManager"`
 	// The "name" in package.json.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	PackageName *string `json:"packageName" yaml:"packageName"`
 	// Options for `peerDeps`.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	PeerDependencyOptions *javascript.PeerDependencyOptions `json:"peerDependencyOptions" yaml:"peerDependencyOptions"`
 	// Peer dependencies for this module.
 	//
@@ -2559,54 +2813,54 @@ type TypeScriptLibraryProjectOptions struct {
 	// enabled by default), projen will automatically add a dev dependency with a
 	// pinned version for each peer dependency. This will ensure that you build &
 	// test your module against the lowest peer version required.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	PeerDeps *[]*string `json:"peerDeps" yaml:"peerDeps"`
 	// The repository is the location where the actual code for your package lives.
 	//
 	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Repository *string `json:"repository" yaml:"repository"`
 	// If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	RepositoryDirectory *string `json:"repositoryDirectory" yaml:"repositoryDirectory"`
 	// npm scripts to include.
 	//
 	// If a script has the same name as a standard script,
 	// the standard script will be overwritten.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Scripts *map[string]*string `json:"scripts" yaml:"scripts"`
 	// Package's Stability.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Stability *string `json:"stability" yaml:"stability"`
 	// Version requirement of `publib` which is used to publish modules to npm.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.
 	//
 	// If this is specified, we bump the latest version of this major version line.
 	// If not specified, we bump the global latest version.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	MajorVersion *float64 `json:"majorVersion" yaml:"majorVersion"`
 	// The npmDistTag to use when publishing from the default branch.
 	//
 	// To set the npm dist-tag for release branches, set the `npmDistTag` property
 	// for each branch.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	NpmDistTag *string `json:"npmDistTag" yaml:"npmDistTag"`
 	// Steps to execute after build as part of the release workflow.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	PostBuildSteps *[]*workflows.JobStep `json:"postBuildSteps" yaml:"postBuildSteps"`
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Prerelease *string `json:"prerelease" yaml:"prerelease"`
 	// Instead of actually publishing to package managers, just print the publishing command.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	PublishDryRun *bool `json:"publishDryRun" yaml:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
 	// in order to create a publishing task for each publishing activity.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	PublishTasks *bool `json:"publishTasks" yaml:"publishTasks"`
 	// Defines additional release branches.
 	//
@@ -2616,18 +2870,18 @@ type TypeScriptLibraryProjectOptions struct {
 	// to enforce that versions published from that branch always use that major
 	// version. If multiple branches are used, the `majorVersion` field must also
 	// be provided for the default branch.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ReleaseBranches *map[string]*release.BranchOptions `json:"releaseBranches" yaml:"releaseBranches"`
 	// Automatically release new versions every commit to one of branches in `releaseBranches`.
 	// Deprecated: Use `releaseTrigger: ReleaseTrigger.continuous()` instead
 	ReleaseEveryCommit *bool `json:"releaseEveryCommit" yaml:"releaseEveryCommit"`
 	// Create a github issue on every failed publishing task.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ReleaseFailureIssue *bool `json:"releaseFailureIssue" yaml:"releaseFailureIssue"`
 	// The label to apply to issues indicating publish failures.
 	//
 	// Only applies if `releaseFailureIssue` is true.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ReleaseFailureIssueLabel *string `json:"releaseFailureIssueLabel" yaml:"releaseFailureIssueLabel"`
 	// CRON schedule to trigger new releases.
 	// Deprecated: Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
@@ -2638,89 +2892,89 @@ type TypeScriptLibraryProjectOptions struct {
 	// when bumping, so if you change this on a project with an existing version
 	// history, you may need to manually tag your latest release
 	// with the new prefix.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ReleaseTagPrefix *string `json:"releaseTagPrefix" yaml:"releaseTagPrefix"`
 	// The release trigger to use.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ReleaseTrigger release.ReleaseTrigger `json:"releaseTrigger" yaml:"releaseTrigger"`
 	// The name of the default release workflow.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ReleaseWorkflowName *string `json:"releaseWorkflowName" yaml:"releaseWorkflowName"`
 	// A set of workflow steps to execute in order to setup the workflow container.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ReleaseWorkflowSetupSteps *[]*workflows.JobStep `json:"releaseWorkflowSetupSteps" yaml:"releaseWorkflowSetupSteps"`
 	// Custom configuration used when creating changelog with standard-version package.
 	//
 	// Given values either append to default configuration or overwrite values in it.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	VersionrcOptions *map[string]interface{} `json:"versionrcOptions" yaml:"versionrcOptions"`
 	// Container image to use for GitHub workflows.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	WorkflowContainerImage *string `json:"workflowContainerImage" yaml:"workflowContainerImage"`
 	// Github Runner selection labels.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	WorkflowRunsOn *[]*string `json:"workflowRunsOn" yaml:"workflowRunsOn"`
 	// The name of the main release branch.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	DefaultReleaseBranch *string `json:"defaultReleaseBranch" yaml:"defaultReleaseBranch"`
 	// A directory which will contain build artifacts.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ArtifactsDirectory *string `json:"artifactsDirectory" yaml:"artifactsDirectory"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	AutoApproveProjenUpgrades *bool `json:"autoApproveProjenUpgrades" yaml:"autoApproveProjenUpgrades"`
 	// Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	AutoApproveUpgrades *bool `json:"autoApproveUpgrades" yaml:"autoApproveUpgrades"`
 	// Define a GitHub workflow for building PRs.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	BuildWorkflow *bool `json:"buildWorkflow" yaml:"buildWorkflow"`
 	// Build workflow triggers.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	BuildWorkflowTriggers *workflows.Triggers `json:"buildWorkflowTriggers" yaml:"buildWorkflowTriggers"`
 	// Options for `Bundler`.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	BundlerOptions *javascript.BundlerOptions `json:"bundlerOptions" yaml:"bundlerOptions"`
 	// Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v1 A secret is required for private repos. Configured with @codeCovTokenSecret.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	CodeCov *bool `json:"codeCov" yaml:"codeCov"`
 	// Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	CodeCovTokenSecret *string `json:"codeCovTokenSecret" yaml:"codeCovTokenSecret"`
 	// License copyright owner.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	CopyrightOwner *string `json:"copyrightOwner" yaml:"copyrightOwner"`
 	// The copyright years to put in the LICENSE file.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	CopyrightPeriod *string `json:"copyrightPeriod" yaml:"copyrightPeriod"`
 	// Use dependabot to handle dependency upgrades.
 	//
 	// Cannot be used in conjunction with `depsUpgrade`.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Dependabot *bool `json:"dependabot" yaml:"dependabot"`
 	// Options for dependabot.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	DependabotOptions *github.DependabotOptions `json:"dependabotOptions" yaml:"dependabotOptions"`
 	// Use github workflows to handle dependency upgrades.
 	//
 	// Cannot be used in conjunction with `dependabot`.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	DepsUpgrade *bool `json:"depsUpgrade" yaml:"depsUpgrade"`
 	// Options for depsUpgrade.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	DepsUpgradeOptions *javascript.UpgradeDependenciesOptions `json:"depsUpgradeOptions" yaml:"depsUpgradeOptions"`
 	// Additional entries to .gitignore.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Gitignore *[]*string `json:"gitignore" yaml:"gitignore"`
 	// Setup jest unit tests.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Jest *bool `json:"jest" yaml:"jest"`
 	// Jest options.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	JestOptions *javascript.JestOptions `json:"jestOptions" yaml:"jestOptions"`
 	// Automatically update files modified during builds to pull-request branches.
 	//
@@ -2729,31 +2983,31 @@ type TypeScriptLibraryProjectOptions struct {
 	// before a PR is merged.
 	//
 	// Implies that PR builds do not have anti-tamper checks.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	MutableBuild *bool `json:"mutableBuild" yaml:"mutableBuild"`
 	// Additional entries to .npmignore.
 	// Deprecated: - use `project.addPackageIgnore`
 	Npmignore *[]*string `json:"npmignore" yaml:"npmignore"`
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	NpmignoreEnabled *bool `json:"npmignoreEnabled" yaml:"npmignoreEnabled"`
 	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Package *bool `json:"package" yaml:"package"`
 	// Setup prettier.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Prettier *bool `json:"prettier" yaml:"prettier"`
 	// Prettier options.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	PrettierOptions *javascript.PrettierOptions `json:"prettierOptions" yaml:"prettierOptions"`
 	// Indicates of "projen" should be installed as a devDependency.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ProjenDevDependency *bool `json:"projenDevDependency" yaml:"projenDevDependency"`
 	// Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ProjenrcJs *bool `json:"projenrcJs" yaml:"projenrcJs"`
 	// Options for .projenrc.js.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ProjenrcJsOptions *javascript.ProjenrcOptions `json:"projenrcJsOptions" yaml:"projenrcJsOptions"`
 	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
@@ -2761,7 +3015,7 @@ type TypeScriptLibraryProjectOptions struct {
 	// Deprecated: use `autoApproveProjenUpgrades`.
 	ProjenUpgradeAutoMerge *bool `json:"projenUpgradeAutoMerge" yaml:"projenUpgradeAutoMerge"`
 	// Customize the projenUpgrade schedule in cron expression.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ProjenUpgradeSchedule *[]*string `json:"projenUpgradeSchedule" yaml:"projenUpgradeSchedule"`
 	// Periodically submits a pull request for projen upgrades (executes `yarn projen:upgrade`).
 	//
@@ -2775,64 +3029,64 @@ type TypeScriptLibraryProjectOptions struct {
 	// Deprecated: use `githubTokenSecret` instead.
 	ProjenUpgradeSecret *string `json:"projenUpgradeSecret" yaml:"projenUpgradeSecret"`
 	// Version of projen to install.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ProjenVersion *string `json:"projenVersion" yaml:"projenVersion"`
 	// Include a GitHub pull request template.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	PullRequestTemplate *bool `json:"pullRequestTemplate" yaml:"pullRequestTemplate"`
 	// The contents of the pull request template.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	PullRequestTemplateContents *[]*string `json:"pullRequestTemplateContents" yaml:"pullRequestTemplateContents"`
 	// Add release management to this project.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Release *bool `json:"release" yaml:"release"`
 	// Automatically release to npm when new versions are introduced.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ReleaseToNpm *bool `json:"releaseToNpm" yaml:"releaseToNpm"`
 	// DEPRECATED: renamed to `release`.
 	// Deprecated: see `release`.
 	ReleaseWorkflow *bool `json:"releaseWorkflow" yaml:"releaseWorkflow"`
 	// Workflow steps to use in order to bootstrap this repo.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	WorkflowBootstrapSteps *[]interface{} `json:"workflowBootstrapSteps" yaml:"workflowBootstrapSteps"`
 	// The git identity to use in workflows.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	WorkflowGitIdentity *github.GitIdentity `json:"workflowGitIdentity" yaml:"workflowGitIdentity"`
 	// The node version to use in GitHub workflows.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	WorkflowNodeVersion *string `json:"workflowNodeVersion" yaml:"workflowNodeVersion"`
 	// Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler).
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	DisableTsconfig *bool `json:"disableTsconfig" yaml:"disableTsconfig"`
 	// Docgen by Typedoc.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Docgen *bool `json:"docgen" yaml:"docgen"`
 	// Docs directory.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	DocsDirectory *string `json:"docsDirectory" yaml:"docsDirectory"`
 	// The .d.ts file that includes the type declarations for this module.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	EntrypointTypes *string `json:"entrypointTypes" yaml:"entrypointTypes"`
 	// Setup eslint.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Eslint *bool `json:"eslint" yaml:"eslint"`
 	// Eslint options.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	EslintOptions *javascript.EslintOptions `json:"eslintOptions" yaml:"eslintOptions"`
 	// Typescript  artifacts output directory.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Libdir *string `json:"libdir" yaml:"libdir"`
 	// Use TypeScript for your projenrc file (`.projenrc.ts`).
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ProjenrcTs *bool `json:"projenrcTs" yaml:"projenrcTs"`
 	// Options for .projenrc.ts.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	ProjenrcTsOptions *ProjenrcOptions `json:"projenrcTsOptions" yaml:"projenrcTsOptions"`
 	// Generate one-time sample in `src/` and `test/` if there are no files there.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	SampleCode *bool `json:"sampleCode" yaml:"sampleCode"`
 	// Typescript sources directory.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Srcdir *string `json:"srcdir" yaml:"srcdir"`
 	// Jest tests directory. Tests files should be named `xxx.test.ts`.
 	//
@@ -2840,22 +3094,22 @@ type TypeScriptLibraryProjectOptions struct {
 	// then tests are going to be compiled into `lib/` and executed as javascript.
 	// If the test directory is outside of `src`, then we configure jest to
 	// compile the code in-memory.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Testdir *string `json:"testdir" yaml:"testdir"`
 	// Custom TSConfig.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	Tsconfig *javascript.TypescriptConfigOptions `json:"tsconfig" yaml:"tsconfig"`
 	// Custom tsconfig options for the development tsconfig.json file (used for testing).
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	TsconfigDev *javascript.TypescriptConfigOptions `json:"tsconfigDev" yaml:"tsconfigDev"`
 	// The name of the development tsconfig.json file.
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	TsconfigDevFile *string `json:"tsconfigDevFile" yaml:"tsconfigDevFile"`
 	// TypeScript version to use.
 	//
 	// NOTE: Typescript is not semantically versioned and should remain on the
 	// same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
-	// Deprecated: use TypeScriptProjectOptions
+	// Deprecated: use TypeScriptProjectOptions.
 	TypescriptVersion *string `json:"typescriptVersion" yaml:"typescriptVersion"`
 }
 
@@ -2863,90 +3117,308 @@ type TypeScriptLibraryProjectOptions struct {
 // Experimental.
 type TypeScriptProject interface {
 	javascript.NodeProject
+	// Deprecated: use `package.allowLibraryDependencies`
 	AllowLibraryDependencies() *bool
+	// The build output directory.
+	//
+	// An npm tarball will be created under the `js`
+	// subdirectory. For example, if this is set to `dist` (the default), the npm
+	// tarball will be placed under `dist/js/boom-boom-1.2.3.tg`.
+	// Experimental.
 	ArtifactsDirectory() *string
+	// The location of the npm tarball after build (`${artifactsDirectory}/js`).
+	// Experimental.
 	ArtifactsJavascriptDirectory() *string
+	// Auto approve set up for this project.
+	// Deprecated.
 	AutoApprove() github.AutoApprove
+	// Automatic PR merges.
+	// Experimental.
 	AutoMerge() github.AutoMerge
+	// Experimental.
 	BuildTask() projen.Task
+	// The PR build GitHub workflow.
+	//
+	// `undefined` if `buildWorkflow` is disabled.
+	// Experimental.
 	BuildWorkflow() build.BuildWorkflow
+	// The job ID of the build workflow.
+	// Experimental.
 	BuildWorkflowJobId() *string
+	// Experimental.
 	Bundler() javascript.Bundler
+	// Experimental.
 	CompileTask() projen.Task
+	// Returns all the components within this project.
+	// Experimental.
 	Components() *[]projen.Component
+	// This is the "default" task, the one that executes "projen".
+	//
+	// Undefined if
+	// the project is being ejected.
+	// Experimental.
 	DefaultTask() projen.Task
+	// Project dependencies.
+	// Experimental.
 	Deps() projen.Dependencies
+	// Access for .devcontainer.json (used for GitHub Codespaces).
+	//
+	// This will be `undefined` if devContainer boolean is false.
+	// Deprecated.
 	DevContainer() vscode.DevContainer
+	// Experimental.
 	Docgen() *bool
+	// Experimental.
 	DocsDirectory() *string
+	// Whether or not the project is being ejected.
+	// Experimental.
 	Ejected() *bool
+	// Deprecated: use `package.entrypoint`
 	Entrypoint() *string
+	// Experimental.
 	Eslint() javascript.Eslint
+	// All files in this project.
+	// Experimental.
 	Files() *[]projen.FileBase
+	// The .gitattributes file for this repository.
+	// Experimental.
 	Gitattributes() projen.GitAttributesFile
+	// Access all github components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Github() github.GitHub
+	// .gitignore.
+	// Experimental.
 	Gitignore() projen.IgnoreFile
+	// Access for Gitpod.
+	//
+	// This will be `undefined` if gitpod boolean is false.
+	// Deprecated.
 	Gitpod() projen.Gitpod
+	// The options used when this project is bootstrapped via `projen new`.
+	//
+	// It
+	// includes the original set of options passed to the CLI and also the JSII
+	// FQN of the project type.
+	// Experimental.
 	InitProject() *projen.InitProject
+	// The Jest configuration (if enabled).
+	// Experimental.
 	Jest() javascript.Jest
+	// The directory in which compiled .js files reside.
+	// Experimental.
 	Libdir() *string
+	// Logging utilities.
+	// Experimental.
 	Logger() projen.Logger
+	// Deprecated: use `package.addField(x, y)`
 	Manifest() interface{}
+	// Maximum node version required by this pacakge.
+	// Experimental.
 	MaxNodeVersion() *string
+	// Minimum node.js version required by this package.
+	// Experimental.
 	MinNodeVersion() *string
+	// Project name.
+	// Experimental.
 	Name() *string
+	// The .npmignore file.
+	// Experimental.
 	Npmignore() projen.IgnoreFile
+	// Absolute output directory of this project.
+	// Experimental.
 	Outdir() *string
+	// API for managing the node package.
+	// Experimental.
 	Package() javascript.NodePackage
+	// The package manager to use.
+	// Deprecated: use `package.packageManager`
 	PackageManager() javascript.NodePackageManager
+	// Experimental.
 	PackageTask() projen.Task
+	// A parent project.
+	//
+	// If undefined, this is the root project.
+	// Experimental.
 	Parent() projen.Project
+	// Experimental.
 	PostCompileTask() projen.Task
+	// Experimental.
 	PreCompileTask() projen.Task
+	// Experimental.
 	Prettier() javascript.Prettier
+	// Manages the build process of the project.
+	// Experimental.
 	ProjectBuild() projen.ProjectBuild
+	// Deprecated.
 	ProjectType() projen.ProjectType
+	// The command to use in order to run the projen CLI.
+	// Experimental.
 	ProjenCommand() *string
+	// Package publisher.
+	//
+	// This will be `undefined` if the project does not have a
+	// release workflow.
+	// Deprecated: use `release.publisher`.
 	Publisher() release.Publisher
+	// Release management.
+	// Experimental.
 	Release() release.Release
+	// The root project.
+	// Experimental.
 	Root() projen.Project
+	// The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager).
+	// Experimental.
 	RunScriptCommand() *string
+	// The directory in which the .ts sources reside.
+	// Experimental.
 	Srcdir() *string
+	// Project tasks.
+	// Experimental.
 	Tasks() projen.Tasks
+	// The directory in which tests reside.
+	// Experimental.
 	Testdir() *string
+	// Experimental.
 	TestTask() projen.Task
+	// Experimental.
 	Tsconfig() javascript.TypescriptConfig
+	// A typescript configuration file which covers all files (sources, tests, projen).
+	// Experimental.
 	TsconfigDev() javascript.TypescriptConfig
+	// Experimental.
 	TsconfigEslint() javascript.TypescriptConfig
+	// The upgrade workflow.
+	// Experimental.
 	UpgradeWorkflow() javascript.UpgradeDependencies
+	// Access all VSCode components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Vscode() vscode.VsCode
+	// The "watch" task.
+	// Experimental.
 	WatchTask() projen.Task
+	// Experimental.
 	AddBins(bins *map[string]*string)
+	// Defines bundled dependencies.
+	//
+	// Bundled dependencies will be added as normal dependencies as well as to the
+	// `bundledDependencies` section of your `package.json`.
+	// Experimental.
 	AddBundledDeps(deps ...*string)
+	// DEPRECATED.
+	// Deprecated: use `project.compileTask.exec()`
 	AddCompileCommand(commands ...*string)
+	// Defines normal dependencies.
+	// Experimental.
 	AddDeps(deps ...*string)
+	// Defines development/test dependencies.
+	// Experimental.
 	AddDevDeps(deps ...*string)
+	// Exclude the matching files from pre-synth cleanup.
+	//
+	// Can be used when, for example, some
+	// source files include the projen marker and we don't want them to be erased during synth.
+	// Experimental.
 	AddExcludeFromCleanup(globs ...*string)
+	// Directly set fields in `package.json`.
+	// Experimental.
 	AddFields(fields *map[string]interface{})
+	// Adds a .gitignore pattern.
+	// Experimental.
 	AddGitIgnore(pattern *string)
+	// Adds keywords to package.json (deduplicated).
+	// Experimental.
 	AddKeywords(keywords ...*string)
+	// Exclude these files from the bundled package.
+	//
+	// Implemented by project types based on the
+	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Experimental.
 	AddPackageIgnore(pattern *string)
+	// Defines peer dependencies.
+	//
+	// When adding peer dependencies, a devDependency will also be added on the
+	// pinned version of the declared peer. This will ensure that you are testing
+	// your code against the minimum version required from your consumers.
+	// Experimental.
 	AddPeerDeps(deps ...*string)
+	// Adds a new task to this project.
+	//
+	// This will fail if the project already has
+	// a task with this name.
+	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
+	// DEPRECATED.
+	// Deprecated: use `project.testTask.exec()`
 	AddTestCommand(commands ...*string)
+	// Prints a "tip" message during synthesis.
+	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 	AddTip(message *string)
+	// Marks the provided file(s) as being generated.
+	//
+	// This is achieved using the
+	// github-linguist attributes. Generated files do not count against the
+	// repository statistics and language breakdown.
+	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
+	//
+	// Deprecated.
 	AnnotateGenerated(glob *string)
+	// Indicates if a script by the name name is defined.
+	// Experimental.
 	HasScript(name *string) *bool
+	// Called after all components are synthesized.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before all components are synthesized.
+	// Experimental.
 	PreSynthesize()
+	// Removes the npm script (always successful).
+	// Experimental.
 	RemoveScript(name *string)
+	// Removes a task from a project.
+	//
+	// Returns: The `Task` that was removed, otherwise `undefined`.
+	// Experimental.
 	RemoveTask(name *string) projen.Task
+	// Returns the set of workflow steps which should be executed to bootstrap a workflow.
+	//
+	// Returns: Job steps.
+	// Experimental.
 	RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep
+	// Returns the shell command to execute in order to run a task.
+	//
+	// This will
+	// typically be `npx projen TASK`.
+	// Experimental.
 	RunTaskCommand(task projen.Task) *string
+	// Replaces the contents of an npm package.json script.
+	// Experimental.
 	SetScript(name *string, command *string)
+	// Synthesize all project files into `outdir`.
+	//
+	// 1. Call "this.preSynthesize()"
+	// 2. Delete all generated files
+	// 3. Synthesize all sub-projects
+	// 4. Synthesize all components of this project
+	// 5. Call "postSynthesize()" for all components of this project
+	// 6. Call "this.postSynthesize()"
+	// Experimental.
 	Synth()
+	// Finds a file at the specified relative path within this project and all its subprojects.
+	//
+	// Returns: a `FileBase` or undefined if there is no file in that path.
+	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
+	// Finds a json file by name.
+	// Deprecated: use `tryFindObjectFile`.
 	TryFindJsonFile(filePath *string) projen.JsonFile
+	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
 }
 
@@ -3573,7 +4045,6 @@ func TypeScriptProject_DEFAULT_TASK() *string {
 	return returns
 }
 
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) AddBins(bins *map[string]*string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -3582,11 +4053,6 @@ func (t *jsiiProxy_TypeScriptProject) AddBins(bins *map[string]*string) {
 	)
 }
 
-// Defines bundled dependencies.
-//
-// Bundled dependencies will be added as normal dependencies as well as to the
-// `bundledDependencies` section of your `package.json`.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) AddBundledDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -3600,8 +4066,6 @@ func (t *jsiiProxy_TypeScriptProject) AddBundledDeps(deps ...*string) {
 	)
 }
 
-// DEPRECATED.
-// Deprecated: use `project.compileTask.exec()`
 func (t *jsiiProxy_TypeScriptProject) AddCompileCommand(commands ...*string) {
 	args := []interface{}{}
 	for _, a := range commands {
@@ -3615,8 +4079,6 @@ func (t *jsiiProxy_TypeScriptProject) AddCompileCommand(commands ...*string) {
 	)
 }
 
-// Defines normal dependencies.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) AddDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -3630,8 +4092,6 @@ func (t *jsiiProxy_TypeScriptProject) AddDeps(deps ...*string) {
 	)
 }
 
-// Defines development/test dependencies.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) AddDevDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -3645,11 +4105,6 @@ func (t *jsiiProxy_TypeScriptProject) AddDevDeps(deps ...*string) {
 	)
 }
 
-// Exclude the matching files from pre-synth cleanup.
-//
-// Can be used when, for example, some
-// source files include the projen marker and we don't want them to be erased during synth.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) AddExcludeFromCleanup(globs ...*string) {
 	args := []interface{}{}
 	for _, a := range globs {
@@ -3663,8 +4118,6 @@ func (t *jsiiProxy_TypeScriptProject) AddExcludeFromCleanup(globs ...*string) {
 	)
 }
 
-// Directly set fields in `package.json`.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) AddFields(fields *map[string]interface{}) {
 	_jsii_.InvokeVoid(
 		t,
@@ -3673,8 +4126,6 @@ func (t *jsiiProxy_TypeScriptProject) AddFields(fields *map[string]interface{}) 
 	)
 }
 
-// Adds a .gitignore pattern.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) AddGitIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -3683,8 +4134,6 @@ func (t *jsiiProxy_TypeScriptProject) AddGitIgnore(pattern *string) {
 	)
 }
 
-// Adds keywords to package.json (deduplicated).
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) AddKeywords(keywords ...*string) {
 	args := []interface{}{}
 	for _, a := range keywords {
@@ -3698,11 +4147,6 @@ func (t *jsiiProxy_TypeScriptProject) AddKeywords(keywords ...*string) {
 	)
 }
 
-// Exclude these files from the bundled package.
-//
-// Implemented by project types based on the
-// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) AddPackageIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -3711,12 +4155,6 @@ func (t *jsiiProxy_TypeScriptProject) AddPackageIgnore(pattern *string) {
 	)
 }
 
-// Defines peer dependencies.
-//
-// When adding peer dependencies, a devDependency will also be added on the
-// pinned version of the declared peer. This will ensure that you are testing
-// your code against the minimum version required from your consumers.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) AddPeerDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -3730,11 +4168,6 @@ func (t *jsiiProxy_TypeScriptProject) AddPeerDeps(deps ...*string) {
 	)
 }
 
-// Adds a new task to this project.
-//
-// This will fail if the project already has
-// a task with this name.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) AddTask(name *string, props *projen.TaskOptions) projen.Task {
 	var returns projen.Task
 
@@ -3748,8 +4181,6 @@ func (t *jsiiProxy_TypeScriptProject) AddTask(name *string, props *projen.TaskOp
 	return returns
 }
 
-// DEPRECATED.
-// Deprecated: use `project.testTask.exec()`
 func (t *jsiiProxy_TypeScriptProject) AddTestCommand(commands ...*string) {
 	args := []interface{}{}
 	for _, a := range commands {
@@ -3763,8 +4194,6 @@ func (t *jsiiProxy_TypeScriptProject) AddTestCommand(commands ...*string) {
 	)
 }
 
-// Prints a "tip" message during synthesis.
-// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 func (t *jsiiProxy_TypeScriptProject) AddTip(message *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -3773,14 +4202,6 @@ func (t *jsiiProxy_TypeScriptProject) AddTip(message *string) {
 	)
 }
 
-// Marks the provided file(s) as being generated.
-//
-// This is achieved using the
-// github-linguist attributes. Generated files do not count against the
-// repository statistics and language breakdown.
-// See: https://github.com/github/linguist/blob/master/docs/overrides.md
-//
-// Deprecated.
 func (t *jsiiProxy_TypeScriptProject) AnnotateGenerated(glob *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -3789,8 +4210,6 @@ func (t *jsiiProxy_TypeScriptProject) AnnotateGenerated(glob *string) {
 	)
 }
 
-// Indicates if a script by the name name is defined.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) HasScript(name *string) *bool {
 	var returns *bool
 
@@ -3804,10 +4223,6 @@ func (t *jsiiProxy_TypeScriptProject) HasScript(name *string) *bool {
 	return returns
 }
 
-// Called after all components are synthesized.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -3816,8 +4231,6 @@ func (t *jsiiProxy_TypeScriptProject) PostSynthesize() {
 	)
 }
 
-// Called before all components are synthesized.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -3826,8 +4239,6 @@ func (t *jsiiProxy_TypeScriptProject) PreSynthesize() {
 	)
 }
 
-// Removes the npm script (always successful).
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) RemoveScript(name *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -3836,10 +4247,6 @@ func (t *jsiiProxy_TypeScriptProject) RemoveScript(name *string) {
 	)
 }
 
-// Removes a task from a project.
-//
-// Returns: The `Task` that was removed, otherwise `undefined`.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) RemoveTask(name *string) projen.Task {
 	var returns projen.Task
 
@@ -3853,10 +4260,6 @@ func (t *jsiiProxy_TypeScriptProject) RemoveTask(name *string) projen.Task {
 	return returns
 }
 
-// Returns the set of workflow steps which should be executed to bootstrap a workflow.
-//
-// Returns: Job steps
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
 	var returns *[]*workflows.JobStep
 
@@ -3870,11 +4273,6 @@ func (t *jsiiProxy_TypeScriptProject) RenderWorkflowSetup(options *javascript.Re
 	return returns
 }
 
-// Returns the shell command to execute in order to run a task.
-//
-// This will
-// typically be `npx projen TASK`.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) RunTaskCommand(task projen.Task) *string {
 	var returns *string
 
@@ -3888,8 +4286,6 @@ func (t *jsiiProxy_TypeScriptProject) RunTaskCommand(task projen.Task) *string {
 	return returns
 }
 
-// Replaces the contents of an npm package.json script.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) SetScript(name *string, command *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -3898,15 +4294,6 @@ func (t *jsiiProxy_TypeScriptProject) SetScript(name *string, command *string) {
 	)
 }
 
-// Synthesize all project files into `outdir`.
-//
-// 1. Call "this.preSynthesize()"
-// 2. Delete all generated files
-// 3. Synthesize all sub-projects
-// 4. Synthesize all components of this project
-// 5. Call "postSynthesize()" for all components of this project
-// 6. Call "this.postSynthesize()"
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) Synth() {
 	_jsii_.InvokeVoid(
 		t,
@@ -3915,10 +4302,6 @@ func (t *jsiiProxy_TypeScriptProject) Synth() {
 	)
 }
 
-// Finds a file at the specified relative path within this project and all its subprojects.
-//
-// Returns: a `FileBase` or undefined if there is no file in that path
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) TryFindFile(filePath *string) projen.FileBase {
 	var returns projen.FileBase
 
@@ -3932,8 +4315,6 @@ func (t *jsiiProxy_TypeScriptProject) TryFindFile(filePath *string) projen.FileB
 	return returns
 }
 
-// Finds a json file by name.
-// Deprecated: use `tryFindObjectFile`
 func (t *jsiiProxy_TypeScriptProject) TryFindJsonFile(filePath *string) projen.JsonFile {
 	var returns projen.JsonFile
 
@@ -3947,8 +4328,6 @@ func (t *jsiiProxy_TypeScriptProject) TryFindJsonFile(filePath *string) projen.J
 	return returns
 }
 
-// Finds an object file (like JsonFile, YamlFile, etc.) by name.
-// Experimental.
 func (t *jsiiProxy_TypeScriptProject) TryFindObjectFile(filePath *string) projen.ObjectFile {
 	var returns projen.ObjectFile
 
@@ -4026,7 +4405,7 @@ type TypeScriptProjectOptions struct {
 	// Deprecated: use `githubOptions.mergifyOptions` instead
 	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
-	// Deprecated: no longer supported at the base project level
+	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
@@ -4036,7 +4415,8 @@ type TypeScriptProjectOptions struct {
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "{ filename: 'readme.md', contents: '# title' }"
 	//
 	// Experimental.
 	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
@@ -4115,7 +4495,8 @@ type TypeScriptProjectOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   [ 'express', 'lodash', 'foo@^2' ]
 	//
 	// Experimental.
 	Deps *[]*string `json:"deps" yaml:"deps"`
@@ -4138,7 +4519,8 @@ type TypeScriptProjectOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   [ 'typescript', '@types/express' ]
 	//
 	// Experimental.
 	DevDeps *[]*string `json:"devDeps" yaml:"devDeps"`
@@ -4174,7 +4556,7 @@ type TypeScriptProjectOptions struct {
 	// The host name of the npm registry to publish to.
 	//
 	// Cannot be set together with `npmRegistryUrl`.
-	// Deprecated: use `npmRegistryUrl` instead
+	// Deprecated: use `npmRegistryUrl` instead.
 	NpmRegistry *string `json:"npmRegistry" yaml:"npmRegistry"`
 	// The base URL of the npm package registry.
 	//

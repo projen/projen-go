@@ -14,10 +14,20 @@ import (
 // Experimental.
 type AutoApprove interface {
 	projen.Component
+	// Experimental.
 	Label() *string
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -73,10 +83,6 @@ func NewAutoApprove_Override(a AutoApprove, github GitHub, options *AutoApproveO
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (a *jsiiProxy_AutoApprove) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -85,8 +91,6 @@ func (a *jsiiProxy_AutoApprove) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (a *jsiiProxy_AutoApprove) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -95,8 +99,6 @@ func (a *jsiiProxy_AutoApprove) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (a *jsiiProxy_AutoApprove) Synthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -140,11 +142,24 @@ type AutoApproveOptions struct {
 // Experimental.
 type AutoMerge interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Adds conditions to the auto merge rule.
+	// Experimental.
 	AddConditions(conditions ...*string)
+	// Adds conditions that will be rendered only during synthesis.
+	// Experimental.
 	AddConditionsLater(later IAddConditionsLater)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -190,8 +205,6 @@ func NewAutoMerge_Override(a AutoMerge, github GitHub, options *AutoMergeOptions
 	)
 }
 
-// Adds conditions to the auto merge rule.
-// Experimental.
 func (a *jsiiProxy_AutoMerge) AddConditions(conditions ...*string) {
 	args := []interface{}{}
 	for _, a := range conditions {
@@ -205,8 +218,6 @@ func (a *jsiiProxy_AutoMerge) AddConditions(conditions ...*string) {
 	)
 }
 
-// Adds conditions that will be rendered only during synthesis.
-// Experimental.
 func (a *jsiiProxy_AutoMerge) AddConditionsLater(later IAddConditionsLater) {
 	_jsii_.InvokeVoid(
 		a,
@@ -215,10 +226,6 @@ func (a *jsiiProxy_AutoMerge) AddConditionsLater(later IAddConditionsLater) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (a *jsiiProxy_AutoMerge) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -227,8 +234,6 @@ func (a *jsiiProxy_AutoMerge) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (a *jsiiProxy_AutoMerge) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -237,8 +242,6 @@ func (a *jsiiProxy_AutoMerge) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (a *jsiiProxy_AutoMerge) Synthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -265,12 +268,29 @@ type AutoMergeOptions struct {
 // Experimental.
 type Dependabot interface {
 	projen.Component
+	// The raw dependabot configuration.
+	// See: https://docs.github.com/en/github/administering-a-repository/configuration-options-for-dependency-updates
+	//
+	// Experimental.
 	Config() interface{}
+	// Whether or not projen is also upgraded in this config,.
+	// Experimental.
 	IgnoresProjen() *bool
+	// Experimental.
 	Project() projen.Project
+	// Ignores a dependency from automatic updates.
+	// Experimental.
 	AddIgnore(dependencyName *string, versions ...*string)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -336,8 +356,6 @@ func NewDependabot_Override(d Dependabot, github GitHub, options *DependabotOpti
 	)
 }
 
-// Ignores a dependency from automatic updates.
-// Experimental.
 func (d *jsiiProxy_Dependabot) AddIgnore(dependencyName *string, versions ...*string) {
 	args := []interface{}{dependencyName}
 	for _, a := range versions {
@@ -351,10 +369,6 @@ func (d *jsiiProxy_Dependabot) AddIgnore(dependencyName *string, versions ...*st
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (d *jsiiProxy_Dependabot) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		d,
@@ -363,8 +377,6 @@ func (d *jsiiProxy_Dependabot) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (d *jsiiProxy_Dependabot) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		d,
@@ -373,8 +385,6 @@ func (d *jsiiProxy_Dependabot) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (d *jsiiProxy_Dependabot) Synthesize() {
 	_jsii_.InvokeVoid(
 		d,
@@ -467,22 +477,64 @@ type DependabotRegistry struct {
 
 // Each configuration type requires you to provide particular settings.
 //
-// Some types allow more than one way to connect
+// Some types allow more than one way to connect.
 // See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#configuration-options-for-private-registries
 //
 // Experimental.
 type DependabotRegistryType string
 
 const (
+	// The composer-repository type supports username and password.
+	// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#composer-repository
+	//
+	// Experimental.
 	DependabotRegistryType_COMPOSER_REGISTRY DependabotRegistryType = "COMPOSER_REGISTRY"
+	// The docker-registry type supports username and password.
+	//
+	// The docker-registry type can also be used to pull from Amazon ECR using static AWS credentials.
+	// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#docker-registry
+	//
+	// Experimental.
 	DependabotRegistryType_DOCKER_REGISTRY DependabotRegistryType = "DOCKER_REGISTRY"
+	// The git type supports username and password.
+	// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#git
+	//
+	// Experimental.
 	DependabotRegistryType_GIT DependabotRegistryType = "GIT"
+	// The hex-organization type supports organization and key.
+	// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#hex-organization
+	//
+	// Experimental.
 	DependabotRegistryType_HEX_ORGANIZATION DependabotRegistryType = "HEX_ORGANIZATION"
+	// The maven-repository type supports username and password, or token.
+	// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#maven-repository
+	//
+	// Experimental.
 	DependabotRegistryType_MAVEN_REPOSITORY DependabotRegistryType = "MAVEN_REPOSITORY"
+	// The npm-registry type supports username and password, or token.
+	// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#npm-registry
+	//
+	// Experimental.
 	DependabotRegistryType_NPM_REGISTRY DependabotRegistryType = "NPM_REGISTRY"
+	// The nuget-feed type supports username and password, or token.
+	// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#nuget-feed
+	//
+	// Experimental.
 	DependabotRegistryType_NUGET_FEED DependabotRegistryType = "NUGET_FEED"
+	// The python-index type supports username and password, or token.
+	// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#python-index
+	//
+	// Experimental.
 	DependabotRegistryType_PYTHON_INDEX DependabotRegistryType = "PYTHON_INDEX"
+	// The rubygems-server type supports username and password, or token.
+	// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#rubygems-server
+	//
+	// Experimental.
 	DependabotRegistryType_RUBYGEMS_SERVER DependabotRegistryType = "RUBYGEMS_SERVER"
+	// The terraform-registry type supports a token.
+	// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#terraform-registry
+	//
+	// Experimental.
 	DependabotRegistryType_TERRAFORM_REGISTRY DependabotRegistryType = "TERRAFORM_REGISTRY"
 )
 
@@ -491,25 +543,65 @@ const (
 type DependabotScheduleInterval string
 
 const (
+	// Runs on every weekday, Monday to Friday.
+	// Experimental.
 	DependabotScheduleInterval_DAILY DependabotScheduleInterval = "DAILY"
+	// Runs once each week.
+	//
+	// By default, this is on Monday.
+	// Experimental.
 	DependabotScheduleInterval_WEEKLY DependabotScheduleInterval = "WEEKLY"
+	// Runs once each month.
+	//
+	// This is on the first day of the month.
+	// Experimental.
 	DependabotScheduleInterval_MONTHLY DependabotScheduleInterval = "MONTHLY"
 )
 
 // Experimental.
 type GitHub interface {
 	projen.Component
+	// The `Mergify` configured on this repository.
+	//
+	// This is `undefined` if Mergify
+	// was not enabled when creating the repository.
+	// Experimental.
 	Mergify() Mergify
+	// Experimental.
 	Project() projen.Project
+	// The name of a secret with a GitHub Personal Access Token to be used by projen workflows.
+	// Experimental.
 	ProjenTokenSecret() *string
+	// All workflows.
+	// Experimental.
 	Workflows() *[]GithubWorkflow
+	// Are workflows enabled?
+	// Experimental.
 	WorkflowsEnabled() *bool
+	// Experimental.
 	AddDependabot(options *DependabotOptions) Dependabot
+	// Experimental.
 	AddPullRequestTemplate(content ...*string) PullRequestTemplate
+	// Adds a workflow to the project.
+	//
+	// Returns: a GithubWorkflow instance.
+	// Experimental.
 	AddWorkflow(name *string) GithubWorkflow
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
+	// Finds a GitHub workflow by name.
+	//
+	// Returns `undefined` if the workflow cannot be found.
+	// Experimental.
 	TryFindWorkflow(name *string) GithubWorkflow
 }
 
@@ -612,7 +704,6 @@ func GitHub_Of(project projen.Project) GitHub {
 	return returns
 }
 
-// Experimental.
 func (g *jsiiProxy_GitHub) AddDependabot(options *DependabotOptions) Dependabot {
 	var returns Dependabot
 
@@ -626,7 +717,6 @@ func (g *jsiiProxy_GitHub) AddDependabot(options *DependabotOptions) Dependabot 
 	return returns
 }
 
-// Experimental.
 func (g *jsiiProxy_GitHub) AddPullRequestTemplate(content ...*string) PullRequestTemplate {
 	args := []interface{}{}
 	for _, a := range content {
@@ -645,10 +735,6 @@ func (g *jsiiProxy_GitHub) AddPullRequestTemplate(content ...*string) PullReques
 	return returns
 }
 
-// Adds a workflow to the project.
-//
-// Returns: a GithubWorkflow instance
-// Experimental.
 func (g *jsiiProxy_GitHub) AddWorkflow(name *string) GithubWorkflow {
 	var returns GithubWorkflow
 
@@ -662,10 +748,6 @@ func (g *jsiiProxy_GitHub) AddWorkflow(name *string) GithubWorkflow {
 	return returns
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (g *jsiiProxy_GitHub) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -674,8 +756,6 @@ func (g *jsiiProxy_GitHub) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (g *jsiiProxy_GitHub) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -684,8 +764,6 @@ func (g *jsiiProxy_GitHub) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (g *jsiiProxy_GitHub) Synthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -694,10 +772,6 @@ func (g *jsiiProxy_GitHub) Synthesize() {
 	)
 }
 
-// Finds a GitHub workflow by name.
-//
-// Returns `undefined` if the workflow cannot be found.
-// Experimental.
 func (g *jsiiProxy_GitHub) TryFindWorkflow(name *string) GithubWorkflow {
 	var returns GithubWorkflow
 
@@ -746,47 +820,331 @@ type GitHubOptions struct {
 // "engines" can be used to implement our CI/CD solutions.
 type GitHubProject interface {
 	projen.Project
+	// Auto approve set up for this project.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	AutoApprove() AutoApprove
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	BuildTask() projen.Task
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	CompileTask() projen.Task
+	// Returns all the components within this project.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Components() *[]projen.Component
+	// This is the "default" task, the one that executes "projen".
+	//
+	// Undefined if
+	// the project is being ejected.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	DefaultTask() projen.Task
+	// Project dependencies.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Deps() projen.Dependencies
+	// Access for .devcontainer.json (used for GitHub Codespaces).
+	//
+	// This will be `undefined` if devContainer boolean is false.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	DevContainer() vscode.DevContainer
+	// Whether or not the project is being ejected.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Ejected() *bool
+	// All files in this project.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Files() *[]projen.FileBase
+	// The .gitattributes file for this repository.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Gitattributes() projen.GitAttributesFile
+	// Access all github components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Github() GitHub
+	// .gitignore.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Gitignore() projen.IgnoreFile
+	// Access for Gitpod.
+	//
+	// This will be `undefined` if gitpod boolean is false.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Gitpod() projen.Gitpod
+	// The options used when this project is bootstrapped via `projen new`.
+	//
+	// It
+	// includes the original set of options passed to the CLI and also the JSII
+	// FQN of the project type.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	InitProject() *projen.InitProject
+	// Logging utilities.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Logger() projen.Logger
+	// Project name.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Name() *string
+	// Absolute output directory of this project.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Outdir() *string
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	PackageTask() projen.Task
+	// A parent project.
+	//
+	// If undefined, this is the root project.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Parent() projen.Project
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	PostCompileTask() projen.Task
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	PreCompileTask() projen.Task
+	// Manages the build process of the project.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	ProjectBuild() projen.ProjectBuild
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	ProjectType() projen.ProjectType
+	// The command to use in order to run the projen CLI.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	ProjenCommand() *string
+	// The root project.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Root() projen.Project
+	// Project tasks.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Tasks() projen.Tasks
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	TestTask() projen.Task
+	// Access all VSCode components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Vscode() vscode.VsCode
+	// Exclude the matching files from pre-synth cleanup.
+	//
+	// Can be used when, for example, some
+	// source files include the projen marker and we don't want them to be erased during synth.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	AddExcludeFromCleanup(globs ...*string)
+	// Adds a .gitignore pattern.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	AddGitIgnore(pattern *string)
+	// Exclude these files from the bundled package.
+	//
+	// Implemented by project types based on the
+	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	AddPackageIgnore(_pattern *string)
+	// Adds a new task to this project.
+	//
+	// This will fail if the project already has
+	// a task with this name.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
+	// Prints a "tip" message during synthesis.
+	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 	AddTip(message *string)
+	// Marks the provided file(s) as being generated.
+	//
+	// This is achieved using the
+	// github-linguist attributes. Generated files do not count against the
+	// repository statistics and language breakdown.
+	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
+	//
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	AnnotateGenerated(glob *string)
+	// Called after all components are synthesized.
+	//
+	// Order is *not* guaranteed.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	PostSynthesize()
+	// Called before all components are synthesized.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	PreSynthesize()
+	// Removes a task from a project.
+	//
+	// Returns: The `Task` that was removed, otherwise `undefined`.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	RemoveTask(name *string) projen.Task
+	// Returns the shell command to execute in order to run a task.
+	//
+	// By default, this is `npx projen@<version> <task>`.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	RunTaskCommand(task projen.Task) *string
+	// Synthesize all project files into `outdir`.
+	//
+	// 1. Call "this.preSynthesize()"
+	// 2. Delete all generated files
+	// 3. Synthesize all sub-projects
+	// 4. Synthesize all components of this project
+	// 5. Call "postSynthesize()" for all components of this project
+	// 6. Call "this.postSynthesize()"
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	Synth()
+	// Finds a file at the specified relative path within this project and all its subprojects.
+	//
+	// Returns: a `FileBase` or undefined if there is no file in that path.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	TryFindFile(filePath *string) projen.FileBase
+	// Finds a json file by name.
+	// Deprecated: use `tryFindObjectFile`.
 	TryFindJsonFile(filePath *string) projen.JsonFile
+	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
 }
 
@@ -1121,15 +1479,6 @@ func GitHubProject_DEFAULT_TASK() *string {
 	return returns
 }
 
-// Exclude the matching files from pre-synth cleanup.
-//
-// Can be used when, for example, some
-// source files include the projen marker and we don't want them to be erased during synth.
-// Deprecated: This is a *temporary* class. At the moment, our base project
-// types such as `NodeProject` and `JavaProject` are derived from this, but we
-// want to be able to use these project types outside of GitHub as well. One of
-// the next steps to address this is to abstract workflows so that different
-// "engines" can be used to implement our CI/CD solutions.
 func (g *jsiiProxy_GitHubProject) AddExcludeFromCleanup(globs ...*string) {
 	args := []interface{}{}
 	for _, a := range globs {
@@ -1143,12 +1492,6 @@ func (g *jsiiProxy_GitHubProject) AddExcludeFromCleanup(globs ...*string) {
 	)
 }
 
-// Adds a .gitignore pattern.
-// Deprecated: This is a *temporary* class. At the moment, our base project
-// types such as `NodeProject` and `JavaProject` are derived from this, but we
-// want to be able to use these project types outside of GitHub as well. One of
-// the next steps to address this is to abstract workflows so that different
-// "engines" can be used to implement our CI/CD solutions.
 func (g *jsiiProxy_GitHubProject) AddGitIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		g,
@@ -1157,15 +1500,6 @@ func (g *jsiiProxy_GitHubProject) AddGitIgnore(pattern *string) {
 	)
 }
 
-// Exclude these files from the bundled package.
-//
-// Implemented by project types based on the
-// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
-// Deprecated: This is a *temporary* class. At the moment, our base project
-// types such as `NodeProject` and `JavaProject` are derived from this, but we
-// want to be able to use these project types outside of GitHub as well. One of
-// the next steps to address this is to abstract workflows so that different
-// "engines" can be used to implement our CI/CD solutions.
 func (g *jsiiProxy_GitHubProject) AddPackageIgnore(_pattern *string) {
 	_jsii_.InvokeVoid(
 		g,
@@ -1174,15 +1508,6 @@ func (g *jsiiProxy_GitHubProject) AddPackageIgnore(_pattern *string) {
 	)
 }
 
-// Adds a new task to this project.
-//
-// This will fail if the project already has
-// a task with this name.
-// Deprecated: This is a *temporary* class. At the moment, our base project
-// types such as `NodeProject` and `JavaProject` are derived from this, but we
-// want to be able to use these project types outside of GitHub as well. One of
-// the next steps to address this is to abstract workflows so that different
-// "engines" can be used to implement our CI/CD solutions.
 func (g *jsiiProxy_GitHubProject) AddTask(name *string, props *projen.TaskOptions) projen.Task {
 	var returns projen.Task
 
@@ -1196,8 +1521,6 @@ func (g *jsiiProxy_GitHubProject) AddTask(name *string, props *projen.TaskOption
 	return returns
 }
 
-// Prints a "tip" message during synthesis.
-// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 func (g *jsiiProxy_GitHubProject) AddTip(message *string) {
 	_jsii_.InvokeVoid(
 		g,
@@ -1206,18 +1529,6 @@ func (g *jsiiProxy_GitHubProject) AddTip(message *string) {
 	)
 }
 
-// Marks the provided file(s) as being generated.
-//
-// This is achieved using the
-// github-linguist attributes. Generated files do not count against the
-// repository statistics and language breakdown.
-// See: https://github.com/github/linguist/blob/master/docs/overrides.md
-//
-// Deprecated: This is a *temporary* class. At the moment, our base project
-// types such as `NodeProject` and `JavaProject` are derived from this, but we
-// want to be able to use these project types outside of GitHub as well. One of
-// the next steps to address this is to abstract workflows so that different
-// "engines" can be used to implement our CI/CD solutions.
 func (g *jsiiProxy_GitHubProject) AnnotateGenerated(glob *string) {
 	_jsii_.InvokeVoid(
 		g,
@@ -1226,14 +1537,6 @@ func (g *jsiiProxy_GitHubProject) AnnotateGenerated(glob *string) {
 	)
 }
 
-// Called after all components are synthesized.
-//
-// Order is *not* guaranteed.
-// Deprecated: This is a *temporary* class. At the moment, our base project
-// types such as `NodeProject` and `JavaProject` are derived from this, but we
-// want to be able to use these project types outside of GitHub as well. One of
-// the next steps to address this is to abstract workflows so that different
-// "engines" can be used to implement our CI/CD solutions.
 func (g *jsiiProxy_GitHubProject) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -1242,12 +1545,6 @@ func (g *jsiiProxy_GitHubProject) PostSynthesize() {
 	)
 }
 
-// Called before all components are synthesized.
-// Deprecated: This is a *temporary* class. At the moment, our base project
-// types such as `NodeProject` and `JavaProject` are derived from this, but we
-// want to be able to use these project types outside of GitHub as well. One of
-// the next steps to address this is to abstract workflows so that different
-// "engines" can be used to implement our CI/CD solutions.
 func (g *jsiiProxy_GitHubProject) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -1256,14 +1553,6 @@ func (g *jsiiProxy_GitHubProject) PreSynthesize() {
 	)
 }
 
-// Removes a task from a project.
-//
-// Returns: The `Task` that was removed, otherwise `undefined`.
-// Deprecated: This is a *temporary* class. At the moment, our base project
-// types such as `NodeProject` and `JavaProject` are derived from this, but we
-// want to be able to use these project types outside of GitHub as well. One of
-// the next steps to address this is to abstract workflows so that different
-// "engines" can be used to implement our CI/CD solutions.
 func (g *jsiiProxy_GitHubProject) RemoveTask(name *string) projen.Task {
 	var returns projen.Task
 
@@ -1277,14 +1566,6 @@ func (g *jsiiProxy_GitHubProject) RemoveTask(name *string) projen.Task {
 	return returns
 }
 
-// Returns the shell command to execute in order to run a task.
-//
-// By default, this is `npx projen@<version> <task>`
-// Deprecated: This is a *temporary* class. At the moment, our base project
-// types such as `NodeProject` and `JavaProject` are derived from this, but we
-// want to be able to use these project types outside of GitHub as well. One of
-// the next steps to address this is to abstract workflows so that different
-// "engines" can be used to implement our CI/CD solutions.
 func (g *jsiiProxy_GitHubProject) RunTaskCommand(task projen.Task) *string {
 	var returns *string
 
@@ -1298,19 +1579,6 @@ func (g *jsiiProxy_GitHubProject) RunTaskCommand(task projen.Task) *string {
 	return returns
 }
 
-// Synthesize all project files into `outdir`.
-//
-// 1. Call "this.preSynthesize()"
-// 2. Delete all generated files
-// 3. Synthesize all sub-projects
-// 4. Synthesize all components of this project
-// 5. Call "postSynthesize()" for all components of this project
-// 6. Call "this.postSynthesize()"
-// Deprecated: This is a *temporary* class. At the moment, our base project
-// types such as `NodeProject` and `JavaProject` are derived from this, but we
-// want to be able to use these project types outside of GitHub as well. One of
-// the next steps to address this is to abstract workflows so that different
-// "engines" can be used to implement our CI/CD solutions.
 func (g *jsiiProxy_GitHubProject) Synth() {
 	_jsii_.InvokeVoid(
 		g,
@@ -1319,14 +1587,6 @@ func (g *jsiiProxy_GitHubProject) Synth() {
 	)
 }
 
-// Finds a file at the specified relative path within this project and all its subprojects.
-//
-// Returns: a `FileBase` or undefined if there is no file in that path
-// Deprecated: This is a *temporary* class. At the moment, our base project
-// types such as `NodeProject` and `JavaProject` are derived from this, but we
-// want to be able to use these project types outside of GitHub as well. One of
-// the next steps to address this is to abstract workflows so that different
-// "engines" can be used to implement our CI/CD solutions.
 func (g *jsiiProxy_GitHubProject) TryFindFile(filePath *string) projen.FileBase {
 	var returns projen.FileBase
 
@@ -1340,8 +1600,6 @@ func (g *jsiiProxy_GitHubProject) TryFindFile(filePath *string) projen.FileBase 
 	return returns
 }
 
-// Finds a json file by name.
-// Deprecated: use `tryFindObjectFile`
 func (g *jsiiProxy_GitHubProject) TryFindJsonFile(filePath *string) projen.JsonFile {
 	var returns projen.JsonFile
 
@@ -1355,12 +1613,6 @@ func (g *jsiiProxy_GitHubProject) TryFindJsonFile(filePath *string) projen.JsonF
 	return returns
 }
 
-// Finds an object file (like JsonFile, YamlFile, etc.) by name.
-// Deprecated: This is a *temporary* class. At the moment, our base project
-// types such as `NodeProject` and `JavaProject` are derived from this, but we
-// want to be able to use these project types outside of GitHub as well. One of
-// the next steps to address this is to abstract workflows so that different
-// "engines" can be used to implement our CI/CD solutions.
 func (g *jsiiProxy_GitHubProject) TryFindObjectFile(filePath *string) projen.ObjectFile {
 	var returns projen.ObjectFile
 
@@ -1439,7 +1691,7 @@ type GitHubProjectOptions struct {
 	// Deprecated: use `githubOptions.mergifyOptions` instead
 	MergifyOptions *MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
-	// Deprecated: no longer supported at the base project level
+	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
@@ -1449,7 +1701,8 @@ type GitHubProjectOptions struct {
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "{ filename: 'readme.md', contents: '# title' }"
 	//
 	// Experimental.
 	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
@@ -1489,16 +1742,41 @@ type GitIdentity struct {
 // Experimental.
 type GithubWorkflow interface {
 	projen.Component
+	// Concurrency ensures that only a single job or workflow using the same concurrency group will run at a time.
+	// Experimental.
 	Concurrency() *string
+	// The workflow YAML file.
+	//
+	// May not exist if `workflowsEnabled` is false on `GitHub`.
+	// Experimental.
 	File() projen.YamlFile
+	// The name of the workflow.
+	// Experimental.
 	Name() *string
+	// Experimental.
 	Project() projen.Project
+	// The name of a secret that includes a PAT that can be used by workflows.
+	// Experimental.
 	ProjenTokenSecret() *string
+	// Adds a single job to the workflow.
+	// Experimental.
 	AddJob(id *string, job *workflows.Job)
+	// Add jobs to the workflow.
+	// Experimental.
 	AddJobs(jobs *map[string]*workflows.Job)
+	// Add events to triggers the workflow.
+	// Experimental.
 	On(events *workflows.Triggers)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -1584,8 +1862,6 @@ func NewGithubWorkflow_Override(g GithubWorkflow, github GitHub, name *string, o
 	)
 }
 
-// Adds a single job to the workflow.
-// Experimental.
 func (g *jsiiProxy_GithubWorkflow) AddJob(id *string, job *workflows.Job) {
 	_jsii_.InvokeVoid(
 		g,
@@ -1594,8 +1870,6 @@ func (g *jsiiProxy_GithubWorkflow) AddJob(id *string, job *workflows.Job) {
 	)
 }
 
-// Add jobs to the workflow.
-// Experimental.
 func (g *jsiiProxy_GithubWorkflow) AddJobs(jobs *map[string]*workflows.Job) {
 	_jsii_.InvokeVoid(
 		g,
@@ -1604,8 +1878,6 @@ func (g *jsiiProxy_GithubWorkflow) AddJobs(jobs *map[string]*workflows.Job) {
 	)
 }
 
-// Add events to triggers the workflow.
-// Experimental.
 func (g *jsiiProxy_GithubWorkflow) On(events *workflows.Triggers) {
 	_jsii_.InvokeVoid(
 		g,
@@ -1614,10 +1886,6 @@ func (g *jsiiProxy_GithubWorkflow) On(events *workflows.Triggers) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (g *jsiiProxy_GithubWorkflow) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -1626,8 +1894,6 @@ func (g *jsiiProxy_GithubWorkflow) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (g *jsiiProxy_GithubWorkflow) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -1636,8 +1902,6 @@ func (g *jsiiProxy_GithubWorkflow) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (g *jsiiProxy_GithubWorkflow) Synthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -1713,11 +1977,22 @@ func (i *jsiiProxy_IJobProvider) RenderJobs() *map[string]*workflows.Job {
 // Experimental.
 type Mergify interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Experimental.
 	AddQueue(queue *MergifyQueue)
+	// Experimental.
 	AddRule(rule *MergifyRule)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -1763,7 +2038,6 @@ func NewMergify_Override(m Mergify, github GitHub, options *MergifyOptions) {
 	)
 }
 
-// Experimental.
 func (m *jsiiProxy_Mergify) AddQueue(queue *MergifyQueue) {
 	_jsii_.InvokeVoid(
 		m,
@@ -1772,7 +2046,6 @@ func (m *jsiiProxy_Mergify) AddQueue(queue *MergifyQueue) {
 	)
 }
 
-// Experimental.
 func (m *jsiiProxy_Mergify) AddRule(rule *MergifyRule) {
 	_jsii_.InvokeVoid(
 		m,
@@ -1781,10 +2054,6 @@ func (m *jsiiProxy_Mergify) AddRule(rule *MergifyRule) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (m *jsiiProxy_Mergify) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -1793,8 +2062,6 @@ func (m *jsiiProxy_Mergify) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (m *jsiiProxy_Mergify) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -1803,8 +2070,6 @@ func (m *jsiiProxy_Mergify) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (m *jsiiProxy_Mergify) Synthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -1872,9 +2137,18 @@ type MergifyRule struct {
 // Experimental.
 type PullRequestLint interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -1920,10 +2194,6 @@ func NewPullRequestLint_Override(p PullRequestLint, github GitHub, options *Pull
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_PullRequestLint) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1932,8 +2202,6 @@ func (p *jsiiProxy_PullRequestLint) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_PullRequestLint) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1942,8 +2210,6 @@ func (p *jsiiProxy_PullRequestLint) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_PullRequestLint) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1972,19 +2238,52 @@ type PullRequestLintOptions struct {
 // Experimental.
 type PullRequestTemplate interface {
 	projen.TextFile
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() projen.Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// Adds a line to the text file.
+	// Experimental.
 	AddLine(line *string)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	// Experimental.
 	SynthesizeContent(_arg projen.IResolver) *string
 }
 
@@ -2106,8 +2405,6 @@ func (j *jsiiProxy_PullRequestTemplate) SetReadonly(val *bool) {
 	)
 }
 
-// Adds a line to the text file.
-// Experimental.
 func (p *jsiiProxy_PullRequestTemplate) AddLine(line *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -2116,10 +2413,6 @@ func (p *jsiiProxy_PullRequestTemplate) AddLine(line *string) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_PullRequestTemplate) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -2128,8 +2421,6 @@ func (p *jsiiProxy_PullRequestTemplate) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_PullRequestTemplate) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -2138,8 +2429,6 @@ func (p *jsiiProxy_PullRequestTemplate) PreSynthesize() {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (p *jsiiProxy_PullRequestTemplate) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -2148,8 +2437,6 @@ func (p *jsiiProxy_PullRequestTemplate) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-// Experimental.
 func (p *jsiiProxy_PullRequestTemplate) SynthesizeContent(_arg projen.IResolver) *string {
 	var returns *string
 
@@ -2200,9 +2487,18 @@ type SemanticTitleOptions struct {
 // Experimental.
 type Stale interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -2248,10 +2544,6 @@ func NewStale_Override(s Stale, github GitHub, options *StaleOptions) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (s *jsiiProxy_Stale) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -2260,8 +2552,6 @@ func (s *jsiiProxy_Stale) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (s *jsiiProxy_Stale) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -2270,8 +2560,6 @@ func (s *jsiiProxy_Stale) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (s *jsiiProxy_Stale) Synthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -2332,18 +2620,45 @@ type StaleOptions struct {
 // Experimental.
 type TaskWorkflow interface {
 	GithubWorkflow
+	// Experimental.
 	ArtifactsDirectory() *string
+	// Concurrency ensures that only a single job or workflow using the same concurrency group will run at a time.
+	// Experimental.
 	Concurrency() *string
+	// The workflow YAML file.
+	//
+	// May not exist if `workflowsEnabled` is false on `GitHub`.
+	// Experimental.
 	File() projen.YamlFile
+	// Experimental.
 	JobId() *string
+	// The name of the workflow.
+	// Experimental.
 	Name() *string
+	// Experimental.
 	Project() projen.Project
+	// The name of a secret that includes a PAT that can be used by workflows.
+	// Experimental.
 	ProjenTokenSecret() *string
+	// Adds a single job to the workflow.
+	// Experimental.
 	AddJob(id *string, job *workflows.Job)
+	// Add jobs to the workflow.
+	// Experimental.
 	AddJobs(jobs *map[string]*workflows.Job)
+	// Add events to triggers the workflow.
+	// Experimental.
 	On(events *workflows.Triggers)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -2449,8 +2764,6 @@ func NewTaskWorkflow_Override(t TaskWorkflow, github GitHub, options *TaskWorkfl
 	)
 }
 
-// Adds a single job to the workflow.
-// Experimental.
 func (t *jsiiProxy_TaskWorkflow) AddJob(id *string, job *workflows.Job) {
 	_jsii_.InvokeVoid(
 		t,
@@ -2459,8 +2772,6 @@ func (t *jsiiProxy_TaskWorkflow) AddJob(id *string, job *workflows.Job) {
 	)
 }
 
-// Add jobs to the workflow.
-// Experimental.
 func (t *jsiiProxy_TaskWorkflow) AddJobs(jobs *map[string]*workflows.Job) {
 	_jsii_.InvokeVoid(
 		t,
@@ -2469,8 +2780,6 @@ func (t *jsiiProxy_TaskWorkflow) AddJobs(jobs *map[string]*workflows.Job) {
 	)
 }
 
-// Add events to triggers the workflow.
-// Experimental.
 func (t *jsiiProxy_TaskWorkflow) On(events *workflows.Triggers) {
 	_jsii_.InvokeVoid(
 		t,
@@ -2479,10 +2788,6 @@ func (t *jsiiProxy_TaskWorkflow) On(events *workflows.Triggers) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (t *jsiiProxy_TaskWorkflow) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -2491,8 +2796,6 @@ func (t *jsiiProxy_TaskWorkflow) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (t *jsiiProxy_TaskWorkflow) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -2501,8 +2804,6 @@ func (t *jsiiProxy_TaskWorkflow) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (t *jsiiProxy_TaskWorkflow) Synthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -2567,10 +2868,25 @@ type TaskWorkflowOptions struct {
 type VersioningStrategy string
 
 const (
+	// Only create pull requests to update lockfiles updates.
+	//
+	// Ignore any new
+	// versions that would require package manifest changes.
+	// Experimental.
 	VersioningStrategy_LOCKFILE_ONLY VersioningStrategy = "LOCKFILE_ONLY"
+	// - For apps, the version requirements are increased.
+	//
+	// - For libraries, the range of versions is widened.
+	// Experimental.
 	VersioningStrategy_AUTO VersioningStrategy = "AUTO"
+	// Relax the version requirement to include both the new and old version, when possible.
+	// Experimental.
 	VersioningStrategy_WIDEN VersioningStrategy = "WIDEN"
+	// Always increase the version requirement to match the new version.
+	// Experimental.
 	VersioningStrategy_INCREASE VersioningStrategy = "INCREASE"
+	// Increase the version requirement only when required by the new version.
+	// Experimental.
 	VersioningStrategy_INCREASE_IF_NECESSARY VersioningStrategy = "INCREASE_IF_NECESSARY"
 )
 

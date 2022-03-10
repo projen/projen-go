@@ -165,7 +165,8 @@ type Job struct {
 	// The machine can be either a
 	// GitHub-hosted runner or a self-hosted runner.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   ["ubuntu-latest"]
 	//
 	// Experimental.
 	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
@@ -309,8 +310,14 @@ type JobMatrix struct {
 type JobPermission string
 
 const (
+	// Read-only access.
+	// Experimental.
 	JobPermission_READ JobPermission = "READ"
+	// Read-write access.
+	// Experimental.
 	JobPermission_WRITE JobPermission = "WRITE"
+	// No access at all.
+	// Experimental.
 	JobPermission_NONE JobPermission = "NONE"
 )
 
@@ -425,7 +432,7 @@ type JobStepOutput struct {
 type JobStrategy struct {
 	// When set to true, GitHub cancels all in-progress jobs if any matrix job fails.
 	//
-	// Default: true
+	// Default: true.
 	// Experimental.
 	FailFast *bool `json:"failFast" yaml:"failFast"`
 	// You can define a matrix of different job configurations.
@@ -622,7 +629,8 @@ type RepositoryDispatchOptions struct {
 type RunSettings struct {
 	// Which shell to use for running the step.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "bash"
 	//
 	// Experimental.
 	Shell *string `json:"shell" yaml:"shell"`

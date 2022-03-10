@@ -84,19 +84,22 @@ type GitHubReleasesPublishOptions struct {
 	PublishTools *workflows.Tools `json:"publishTools" yaml:"publishTools"`
 	// The location of an .md file (relative to `dist/`) that includes the changelog for the release.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   changelog.md
 	//
 	// Experimental.
 	ChangelogFile *string `json:"changelogFile" yaml:"changelogFile"`
 	// The location of a text file (relative to `dist/`) that contains the release tag.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   releasetag.txt
 	//
 	// Experimental.
 	ReleaseTagFile *string `json:"releaseTagFile" yaml:"releaseTagFile"`
 	// The location of a text file (relative to `dist/`) that contains the version number.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   version.txt
 	//
 	// Experimental.
 	VersionFile *string `json:"versionFile" yaml:"versionFile"`
@@ -107,19 +110,22 @@ type GitHubReleasesPublishOptions struct {
 type GitPublishOptions struct {
 	// The location of an .md file (relative to `dist/`) that includes the changelog for the release.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   changelog.md
 	//
 	// Experimental.
 	ChangelogFile *string `json:"changelogFile" yaml:"changelogFile"`
 	// The location of a text file (relative to `dist/`) that contains the release tag.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   releasetag.txt
 	//
 	// Experimental.
 	ReleaseTagFile *string `json:"releaseTagFile" yaml:"releaseTagFile"`
 	// The location of a text file (relative to `dist/`) that contains the version number.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   version.txt
 	//
 	// Experimental.
 	VersionFile *string `json:"versionFile" yaml:"versionFile"`
@@ -297,7 +303,8 @@ type JsiiReleaseNpm struct {
 	// repository's package store. In this case, make sure `repositoryUrl` is
 	// correctly defined.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "npm.pkg.github.com"
 	//
 	// Deprecated: Use `NpmPublishOptions` instead.
 	Registry *string `json:"registry" yaml:"registry"`
@@ -465,7 +472,8 @@ type NpmPublishOptions struct {
 	// repository's package store. In this case, make sure `repositoryUrl` is
 	// correctly defined.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "npm.pkg.github.com"
 	//
 	// Experimental.
 	Registry *string `json:"registry" yaml:"registry"`
@@ -496,22 +504,54 @@ type NugetPublishOptions struct {
 // Experimental.
 type Publisher interface {
 	projen.Component
+	// Experimental.
 	ArtifactName() *string
+	// Experimental.
 	BuildJobId() *string
+	// Experimental.
 	Condition() *string
+	// Deprecated: use `publibVersion`.
 	JsiiReleaseVersion() *string
+	// Experimental.
 	Project() projen.Project
+	// Experimental.
 	PublibVersion() *string
+	// Adds pre publishing steps for the GitHub release job.
+	// Experimental.
 	AddGitHubPrePublishingSteps(steps ...*workflows.JobStep)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Publish to git.
+	//
+	// This includes generating a project-level changelog and release tags.
+	// Experimental.
 	PublishToGit(options *GitPublishOptions) projen.Task
+	// Creates a GitHub Release.
+	// Experimental.
 	PublishToGitHubReleases(options *GitHubReleasesPublishOptions)
+	// Adds a go publishing job.
+	// Experimental.
 	PublishToGo(options *GoPublishOptions)
+	// Publishes artifacts from `java/**` to Maven.
+	// Experimental.
 	PublishToMaven(options *MavenPublishOptions)
+	// Publishes artifacts from `js/**` to npm.
+	// Experimental.
 	PublishToNpm(options *NpmPublishOptions)
+	// Publishes artifacts from `dotnet/**` to NuGet Gallery.
+	// Experimental.
 	PublishToNuget(options *NugetPublishOptions)
+	// Publishes wheel artifacts from `python` to PyPI.
+	// Experimental.
 	PublishToPyPi(options *PyPiPublishOptions)
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -607,8 +647,6 @@ func NewPublisher_Override(p Publisher, project projen.Project, options *Publish
 	)
 }
 
-// Adds pre publishing steps for the GitHub release job.
-// Experimental.
 func (p *jsiiProxy_Publisher) AddGitHubPrePublishingSteps(steps ...*workflows.JobStep) {
 	args := []interface{}{}
 	for _, a := range steps {
@@ -622,10 +660,6 @@ func (p *jsiiProxy_Publisher) AddGitHubPrePublishingSteps(steps ...*workflows.Jo
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_Publisher) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -634,8 +668,6 @@ func (p *jsiiProxy_Publisher) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_Publisher) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -644,10 +676,6 @@ func (p *jsiiProxy_Publisher) PreSynthesize() {
 	)
 }
 
-// Publish to git.
-//
-// This includes generating a project-level changelog and release tags.
-// Experimental.
 func (p *jsiiProxy_Publisher) PublishToGit(options *GitPublishOptions) projen.Task {
 	var returns projen.Task
 
@@ -661,8 +689,6 @@ func (p *jsiiProxy_Publisher) PublishToGit(options *GitPublishOptions) projen.Ta
 	return returns
 }
 
-// Creates a GitHub Release.
-// Experimental.
 func (p *jsiiProxy_Publisher) PublishToGitHubReleases(options *GitHubReleasesPublishOptions) {
 	_jsii_.InvokeVoid(
 		p,
@@ -671,8 +697,6 @@ func (p *jsiiProxy_Publisher) PublishToGitHubReleases(options *GitHubReleasesPub
 	)
 }
 
-// Adds a go publishing job.
-// Experimental.
 func (p *jsiiProxy_Publisher) PublishToGo(options *GoPublishOptions) {
 	_jsii_.InvokeVoid(
 		p,
@@ -681,8 +705,6 @@ func (p *jsiiProxy_Publisher) PublishToGo(options *GoPublishOptions) {
 	)
 }
 
-// Publishes artifacts from `java/**` to Maven.
-// Experimental.
 func (p *jsiiProxy_Publisher) PublishToMaven(options *MavenPublishOptions) {
 	_jsii_.InvokeVoid(
 		p,
@@ -691,8 +713,6 @@ func (p *jsiiProxy_Publisher) PublishToMaven(options *MavenPublishOptions) {
 	)
 }
 
-// Publishes artifacts from `js/**` to npm.
-// Experimental.
 func (p *jsiiProxy_Publisher) PublishToNpm(options *NpmPublishOptions) {
 	_jsii_.InvokeVoid(
 		p,
@@ -701,8 +721,6 @@ func (p *jsiiProxy_Publisher) PublishToNpm(options *NpmPublishOptions) {
 	)
 }
 
-// Publishes artifacts from `dotnet/**` to NuGet Gallery.
-// Experimental.
 func (p *jsiiProxy_Publisher) PublishToNuget(options *NugetPublishOptions) {
 	_jsii_.InvokeVoid(
 		p,
@@ -711,8 +729,6 @@ func (p *jsiiProxy_Publisher) PublishToNuget(options *NugetPublishOptions) {
 	)
 }
 
-// Publishes wheel artifacts from `python` to PyPI.
-// Experimental.
 func (p *jsiiProxy_Publisher) PublishToPyPi(options *PyPiPublishOptions) {
 	_jsii_.InvokeVoid(
 		p,
@@ -721,8 +737,6 @@ func (p *jsiiProxy_Publisher) PublishToPyPi(options *PyPiPublishOptions) {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_Publisher) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -764,7 +778,7 @@ type PublisherOptions struct {
 	// Only applies if `failureIssue` is true.
 	// Experimental.
 	FailureIssueLabel *string `json:"failureIssueLabel" yaml:"failureIssueLabel"`
-	// Deprecated: use `publibVersion` instead
+	// Deprecated: use `publibVersion` instead.
 	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Version requirement for `publib`.
 	// Experimental.
@@ -811,14 +825,37 @@ type PyPiPublishOptions struct {
 // Experimental.
 type Release interface {
 	projen.Component
+	// Location of build artifacts.
+	// Experimental.
 	ArtifactsDirectory() *string
+	// Retrieve all release branch names.
+	// Experimental.
 	Branches() *[]*string
+	// Experimental.
 	Project() projen.Project
+	// Package publisher.
+	// Experimental.
 	Publisher() Publisher
+	// Adds a release branch.
+	//
+	// It is a git branch from which releases are published. If a project has more than one release
+	// branch, we require that `majorVersion` is also specified for the primary branch in order to
+	// ensure branches always release the correct version.
+	// Experimental.
 	AddBranch(branch *string, options *BranchOptions)
+	// Adds jobs to all release workflows.
+	// Experimental.
 	AddJobs(jobs *map[string]*workflows.Job)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -894,12 +931,6 @@ func NewRelease_Override(r Release, project github.GitHubProject, options *Relea
 	)
 }
 
-// Adds a release branch.
-//
-// It is a git branch from which releases are published. If a project has more than one release
-// branch, we require that `majorVersion` is also specified for the primary branch in order to
-// ensure branches always release the correct version.
-// Experimental.
 func (r *jsiiProxy_Release) AddBranch(branch *string, options *BranchOptions) {
 	_jsii_.InvokeVoid(
 		r,
@@ -908,8 +939,6 @@ func (r *jsiiProxy_Release) AddBranch(branch *string, options *BranchOptions) {
 	)
 }
 
-// Adds jobs to all release workflows.
-// Experimental.
 func (r *jsiiProxy_Release) AddJobs(jobs *map[string]*workflows.Job) {
 	_jsii_.InvokeVoid(
 		r,
@@ -918,10 +947,6 @@ func (r *jsiiProxy_Release) AddJobs(jobs *map[string]*workflows.Job) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (r *jsiiProxy_Release) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		r,
@@ -930,8 +955,6 @@ func (r *jsiiProxy_Release) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (r *jsiiProxy_Release) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		r,
@@ -940,8 +963,6 @@ func (r *jsiiProxy_Release) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (r *jsiiProxy_Release) Synthesize() {
 	_jsii_.InvokeVoid(
 		r,
@@ -1055,7 +1076,8 @@ type ReleaseOptions struct {
 	Task projen.Task `json:"task" yaml:"task"`
 	// A name of a .json file to set the `version` field in after a bump.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "package.json"
 	//
 	// Experimental.
 	VersionFile *string `json:"versionFile" yaml:"versionFile"`
@@ -1154,13 +1176,31 @@ type ReleaseProjectOptions struct {
 // Used to manage release strategies.
 //
 // This includes release
-// and release artifact automation
+// and release artifact automation.
 // Experimental.
 type ReleaseTrigger interface {
+	// Project-level changelog file path.
+	// Experimental.
 	ChangelogPath() *string
+	// Override git-push command used when releasing manually.
+	//
+	// Set to an empty string to disable pushing.
+	// Experimental.
 	GitPushCommand() *string
+	// Whether or not this is a continuous release.
+	// Experimental.
 	IsContinuous() *bool
+	// Whether or not this is a manual release trigger.
+	// Experimental.
 	IsManual() *bool
+	// Cron schedule for releases.
+	//
+	// Only defined if this is a scheduled release.
+	//
+	// Example:
+	//   '0 17 * * *' - every day at 5 pm
+	//
+	// Experimental.
 	Schedule() *string
 }
 
@@ -1293,7 +1333,8 @@ type ScheduledReleaseOptions struct {
 	//
 	// Only defined if this is a scheduled release.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   '0 17 * * *' - every day at 5 pm
 	//
 	// Experimental.
 	Schedule *string `json:"schedule" yaml:"schedule"`

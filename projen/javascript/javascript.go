@@ -42,13 +42,15 @@ type AddBundleOptions struct {
 	WatchTask *bool `json:"watchTask" yaml:"watchTask"`
 	// esbuild platform.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "node"
 	//
 	// Experimental.
 	Platform *string `json:"platform" yaml:"platform"`
 	// esbuild target.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "node12"
 	//
 	// Experimental.
 	Target *string `json:"target" yaml:"target"`
@@ -58,7 +60,15 @@ type AddBundleOptions struct {
 type ArrowParens string
 
 const (
+	// Always include parens.
+	//
+	// Example: `(x) => x`.
+	// Experimental.
 	ArrowParens_ALWAYS ArrowParens = "ALWAYS"
+	// Omit parens when possible.
+	//
+	// Example: `x => x`.
+	// Experimental.
 	ArrowParens_AVOID ArrowParens = "AVOID"
 )
 
@@ -67,7 +77,11 @@ const (
 type AutoRelease string
 
 const (
+	// Automatically bump & release a new version for every commit to "main".
+	// Experimental.
 	AutoRelease_EVERY_COMMIT AutoRelease = "EVERY_COMMIT"
+	// Automatically bump & release a new version on a daily basis.
+	// Experimental.
 	AutoRelease_DAILY AutoRelease = "DAILY"
 )
 
@@ -90,13 +104,33 @@ type Bundle struct {
 // Experimental.
 type Bundler interface {
 	projen.Component
+	// Root bundle directory.
+	// Experimental.
 	Bundledir() *string
+	// Gets or creates the singleton "bundle" task of the project.
+	//
+	// If the project doesn't have a "bundle" task, it will be created and spawned
+	// during the pre-compile phase.
+	// Experimental.
 	BundleTask() projen.Task
+	// The semantic version requirement for `esbuild` (if defined).
+	// Experimental.
 	EsbuildVersion() *string
+	// Experimental.
 	Project() projen.Project
+	// Adds a task to the project which bundles a specific entrypoint and all of its dependencies into a single javascript output file.
+	// Experimental.
 	AddBundle(entrypoint *string, options *AddBundleOptions) *Bundle
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -176,7 +210,7 @@ func NewBundler_Override(b Bundler, project projen.Project, options *BundlerOpti
 
 // Returns the `Bundler` instance associated with a project or `undefined` if there is no Bundler.
 //
-// Returns: A bundler
+// Returns: A bundler.
 // Experimental.
 func Bundler_Of(project projen.Project) Bundler {
 	_init_.Initialize()
@@ -193,8 +227,6 @@ func Bundler_Of(project projen.Project) Bundler {
 	return returns
 }
 
-// Adds a task to the project which bundles a specific entrypoint and all of its dependencies into a single javascript output file.
-// Experimental.
 func (b *jsiiProxy_Bundler) AddBundle(entrypoint *string, options *AddBundleOptions) *Bundle {
 	var returns *Bundle
 
@@ -208,10 +240,6 @@ func (b *jsiiProxy_Bundler) AddBundle(entrypoint *string, options *AddBundleOpti
 	return returns
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (b *jsiiProxy_Bundler) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		b,
@@ -220,8 +248,6 @@ func (b *jsiiProxy_Bundler) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (b *jsiiProxy_Bundler) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		b,
@@ -230,8 +256,6 @@ func (b *jsiiProxy_Bundler) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (b *jsiiProxy_Bundler) Synthesize() {
 	_jsii_.InvokeVoid(
 		b,
@@ -316,7 +340,11 @@ type CoverageThreshold struct {
 type EmbeddedLanguageFormatting string
 
 const (
+	// Format embedded code if Prettier can automatically identify it.
+	// Experimental.
 	EmbeddedLanguageFormatting_AUTO EmbeddedLanguageFormatting = "AUTO"
+	// Never automatically format embedded code.
+	// Experimental.
 	EmbeddedLanguageFormatting_OFF EmbeddedLanguageFormatting = "OFF"
 )
 
@@ -324,9 +352,17 @@ const (
 type EndOfLine string
 
 const (
+	// Maintain existing (mixed values within one file are normalised by looking at what's used after the first line).
+	// Experimental.
 	EndOfLine_AUTO EndOfLine = "AUTO"
+	// Carriage Return character only (\r), used very rarely.
+	// Experimental.
 	EndOfLine_CR EndOfLine = "CR"
+	// Carriage Return + Line Feed characters (\r\n), common on Windows.
+	// Experimental.
 	EndOfLine_CRLF EndOfLine = "CRLF"
+	// Line Feed only (\n), common on Linux and macOS as well as inside git repos.
+	// Experimental.
 	EndOfLine_LF EndOfLine = "LF"
 )
 
@@ -334,19 +370,48 @@ const (
 // Experimental.
 type Eslint interface {
 	projen.Component
+	// Direct access to the eslint configuration (escape hatch).
+	// Experimental.
 	Config() interface{}
+	// File patterns that should not be linted.
+	// Experimental.
 	IgnorePatterns() *[]*string
+	// eslint overrides.
+	// Experimental.
 	Overrides() *[]*EslintOverride
+	// Experimental.
 	Project() projen.Project
+	// eslint rules.
+	// Experimental.
 	Rules() *map[string]*[]interface{}
+	// Adds an `extends` item to the eslint configuration.
+	// Experimental.
 	AddExtends(extendList ...*string)
+	// Do not lint these files.
+	// Experimental.
 	AddIgnorePattern(pattern *string)
+	// Add an eslint override.
+	// Experimental.
 	AddOverride(override *EslintOverride)
+	// Adds an eslint plugin.
+	// Experimental.
 	AddPlugins(plugins ...*string)
+	// Add an eslint rule.
+	// Experimental.
 	AddRules(rules *map[string]interface{})
+	// Add a glob file pattern which allows importing dev dependencies.
+	// Experimental.
 	AllowDevDeps(pattern *string)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -449,8 +514,6 @@ func Eslint_Of(project projen.Project) Eslint {
 	return returns
 }
 
-// Adds an `extends` item to the eslint configuration.
-// Experimental.
 func (e *jsiiProxy_Eslint) AddExtends(extendList ...*string) {
 	args := []interface{}{}
 	for _, a := range extendList {
@@ -464,8 +527,6 @@ func (e *jsiiProxy_Eslint) AddExtends(extendList ...*string) {
 	)
 }
 
-// Do not lint these files.
-// Experimental.
 func (e *jsiiProxy_Eslint) AddIgnorePattern(pattern *string) {
 	_jsii_.InvokeVoid(
 		e,
@@ -474,8 +535,6 @@ func (e *jsiiProxy_Eslint) AddIgnorePattern(pattern *string) {
 	)
 }
 
-// Add an eslint override.
-// Experimental.
 func (e *jsiiProxy_Eslint) AddOverride(override *EslintOverride) {
 	_jsii_.InvokeVoid(
 		e,
@@ -484,8 +543,6 @@ func (e *jsiiProxy_Eslint) AddOverride(override *EslintOverride) {
 	)
 }
 
-// Adds an eslint plugin.
-// Experimental.
 func (e *jsiiProxy_Eslint) AddPlugins(plugins ...*string) {
 	args := []interface{}{}
 	for _, a := range plugins {
@@ -499,8 +556,6 @@ func (e *jsiiProxy_Eslint) AddPlugins(plugins ...*string) {
 	)
 }
 
-// Add an eslint rule.
-// Experimental.
 func (e *jsiiProxy_Eslint) AddRules(rules *map[string]interface{}) {
 	_jsii_.InvokeVoid(
 		e,
@@ -509,8 +564,6 @@ func (e *jsiiProxy_Eslint) AddRules(rules *map[string]interface{}) {
 	)
 }
 
-// Add a glob file pattern which allows importing dev dependencies.
-// Experimental.
 func (e *jsiiProxy_Eslint) AllowDevDeps(pattern *string) {
 	_jsii_.InvokeVoid(
 		e,
@@ -519,10 +572,6 @@ func (e *jsiiProxy_Eslint) AllowDevDeps(pattern *string) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (e *jsiiProxy_Eslint) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		e,
@@ -531,8 +580,6 @@ func (e *jsiiProxy_Eslint) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (e *jsiiProxy_Eslint) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		e,
@@ -541,8 +588,6 @@ func (e *jsiiProxy_Eslint) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (e *jsiiProxy_Eslint) Synthesize() {
 	_jsii_.InvokeVoid(
 		e,
@@ -605,8 +650,14 @@ type EslintOverride struct {
 type HTMLWhitespaceSensitivity string
 
 const (
+	// Respect the default value of CSS display property.
+	// Experimental.
 	HTMLWhitespaceSensitivity_CSS HTMLWhitespaceSensitivity = "CSS"
+	// Whitespaces are considered insignificant.
+	// Experimental.
 	HTMLWhitespaceSensitivity_IGNORE HTMLWhitespaceSensitivity = "IGNORE"
+	// Whitespaces are considered significant.
+	// Experimental.
 	HTMLWhitespaceSensitivity_STRICT HTMLWhitespaceSensitivity = "STRICT"
 )
 
@@ -628,14 +679,23 @@ type HasteConfig struct {
 //
 // - `test` will run `jest --passWithNoTests`
 // - `test:watch` will run `jest --watch`
-// - `test:update` will run `jest -u`
+// - `test:update` will run `jest -u`.
 // Experimental.
 type Jest interface {
+	// Escape hatch.
+	// Experimental.
 	Config() interface{}
+	// Experimental.
 	AddIgnorePattern(pattern *string)
+	// Experimental.
 	AddReporter(reporter interface{})
+	// Experimental.
 	AddSnapshotResolver(file *string)
+	// Adds a test match pattern.
+	// Experimental.
 	AddTestMatch(pattern *string)
+	// Adds a watch ignore pattern.
+	// Experimental.
 	AddWatchIgnorePattern(pattern *string)
 }
 
@@ -681,7 +741,6 @@ func NewJest_Override(j Jest, project NodeProject, options *JestOptions) {
 	)
 }
 
-// Experimental.
 func (j *jsiiProxy_Jest) AddIgnorePattern(pattern *string) {
 	_jsii_.InvokeVoid(
 		j,
@@ -690,7 +749,6 @@ func (j *jsiiProxy_Jest) AddIgnorePattern(pattern *string) {
 	)
 }
 
-// Experimental.
 func (j *jsiiProxy_Jest) AddReporter(reporter interface{}) {
 	_jsii_.InvokeVoid(
 		j,
@@ -699,7 +757,6 @@ func (j *jsiiProxy_Jest) AddReporter(reporter interface{}) {
 	)
 }
 
-// Experimental.
 func (j *jsiiProxy_Jest) AddSnapshotResolver(file *string) {
 	_jsii_.InvokeVoid(
 		j,
@@ -708,8 +765,6 @@ func (j *jsiiProxy_Jest) AddSnapshotResolver(file *string) {
 	)
 }
 
-// Adds a test match pattern.
-// Experimental.
 func (j *jsiiProxy_Jest) AddTestMatch(pattern *string) {
 	_jsii_.InvokeVoid(
 		j,
@@ -718,8 +773,6 @@ func (j *jsiiProxy_Jest) AddTestMatch(pattern *string) {
 	)
 }
 
-// Adds a watch ignore pattern.
-// Experimental.
 func (j *jsiiProxy_Jest) AddWatchIgnorePattern(pattern *string) {
 	_jsii_.InvokeVoid(
 		j,
@@ -732,7 +785,7 @@ func (j *jsiiProxy_Jest) AddWatchIgnorePattern(pattern *string) {
 type JestConfigOptions struct {
 	// This option tells Jest that all imported modules in your tests should be mocked automatically.
 	//
-	// All modules used in your tests will have a replacement implementation, keeping the API surface
+	// All modules used in your tests will have a replacement implementation, keeping the API surface.
 	// Experimental.
 	Automock *bool `json:"automock" yaml:"automock"`
 	// By default, Jest runs all tests and produces all errors into the console upon completion.
@@ -747,13 +800,13 @@ type JestConfigOptions struct {
 	// Automatically clear mock calls and instances before every test.
 	//
 	// Equivalent to calling jest.clearAllMocks() before each test.
-	// This does not remove any mock implementation that may have been provided
+	// This does not remove any mock implementation that may have been provided.
 	// Experimental.
 	ClearMocks *bool `json:"clearMocks" yaml:"clearMocks"`
 	// Indicates whether the coverage information should be collected while executing the test.
 	//
 	// Because this retrofits all executed files with coverage collection statements,
-	// it may significantly slow down your tests
+	// it may significantly slow down your tests.
 	// Experimental.
 	CollectCoverage *bool `json:"collectCoverage" yaml:"collectCoverage"`
 	// An array of glob patterns indicating a set of files for which coverage information should be collected.
@@ -764,17 +817,17 @@ type JestConfigOptions struct {
 	CoverageDirectory *string `json:"coverageDirectory" yaml:"coverageDirectory"`
 	// An array of regexp pattern strings that are matched against all file paths before executing the test.
 	//
-	// If the file path matches any of the patterns, coverage information will be skipped
+	// If the file path matches any of the patterns, coverage information will be skipped.
 	// Experimental.
 	CoveragePathIgnorePatterns *[]*string `json:"coveragePathIgnorePatterns" yaml:"coveragePathIgnorePatterns"`
 	// Indicates which provider should be used to instrument code for coverage.
 	//
-	// Allowed values are babel (default) or v8
+	// Allowed values are babel (default) or v8.
 	// Experimental.
 	CoverageProvider *string `json:"coverageProvider" yaml:"coverageProvider"`
 	// A list of reporter names that Jest uses when writing coverage reports.
 	//
-	// Any istanbul reporter can be used
+	// Any istanbul reporter can be used.
 	// Experimental.
 	CoverageReporters *[]*string `json:"coverageReporters" yaml:"coverageReporters"`
 	// Specify the global coverage thresholds.
@@ -786,7 +839,7 @@ type JestConfigOptions struct {
 	CoverageThreshold *CoverageThreshold `json:"coverageThreshold" yaml:"coverageThreshold"`
 	// This option allows the use of a custom dependency extractor.
 	//
-	// It must be a node module that exports an object with an extract function
+	// It must be a node module that exports an object with an extract function.
 	// Experimental.
 	DependencyExtractor *string `json:"dependencyExtractor" yaml:"dependencyExtractor"`
 	// Allows for a label to be printed alongside a test while it is running.
@@ -827,10 +880,18 @@ type JestConfigOptions struct {
 	// A number limiting the number of tests that are allowed to run at the same time when using test.concurrent. Any test above this limit will be queued and executed once a slot is released.
 	// Experimental.
 	MaxConcurrency *float64 `json:"maxConcurrency" yaml:"maxConcurrency"`
+	// Specifies the maximum number of workers the worker-pool will spawn for running tests.
+	//
+	// In single run mode,
+	// this defaults to the number of the cores available on your machine minus one for the main thread
+	// In watch mode, this defaults to half of the available cores on your machine.
+	// For environments with variable CPUs available, you can use percentage based configuration: "maxWorkers": "50%".
+	// Experimental.
+	MaxWorkers interface{} `json:"maxWorkers" yaml:"maxWorkers"`
 	// An array of directory names to be searched recursively up from the requiring module's location.
 	//
 	// Setting this option will override the default, if you wish to still search node_modules for packages
-	// include it along with any other options: ["node_modules", "bower_components"]
+	// include it along with any other options: ["node_modules", "bower_components"].
 	// Experimental.
 	ModuleDirectories *[]*string `json:"moduleDirectories" yaml:"moduleDirectories"`
 	// An array of file extensions your modules use.
@@ -859,7 +920,7 @@ type JestConfigOptions struct {
 	Notify *bool `json:"notify" yaml:"notify"`
 	// Specifies notification mode.
 	//
-	// Requires notify: true
+	// Requires notify: true.
 	// Experimental.
 	NotifyMode *string `json:"notifyMode" yaml:"notifyMode"`
 	// A preset that is used as a base for Jest's configuration.
@@ -1053,7 +1114,7 @@ type JestOptions struct {
 	ConfigFilePath *string `json:"configFilePath" yaml:"configFilePath"`
 	// Collect coverage.
 	//
-	// Deprecated
+	// Deprecated.
 	// Deprecated: use jestConfig.collectCoverage
 	Coverage *bool `json:"coverage" yaml:"coverage"`
 	// Include the `text` coverage reporter, which means that coverage summary is printed at the end of the jest execution.
@@ -1082,39 +1143,115 @@ type JestOptions struct {
 // Experimental.
 type NodePackage interface {
 	projen.Component
+	// Allow project to take library dependencies.
+	// Experimental.
 	AllowLibraryDependencies() *bool
+	// Options for publishing npm package to AWS CodeArtifact.
+	// Experimental.
 	CodeArtifactOptions() *CodeArtifactOptions
+	// The module's entrypoint (e.g. `lib/index.js`).
+	// Experimental.
 	Entrypoint() *string
+	// Renders `yarn install` or `npm install` with lockfile update (not frozen).
+	// Experimental.
 	InstallAndUpdateLockfileCommand() *string
+	// Returns the command to execute in order to install all dependencies (always frozen).
+	// Experimental.
 	InstallCommand() *string
+	// The SPDX license of this module.
+	//
+	// `undefined` if this package is not licensed.
+	// Experimental.
 	License() *string
+	// The name of the lock file.
+	// Experimental.
 	LockFile() *string
+	// Deprecated: use `addField(x, y)`.
 	Manifest() interface{}
+	// Maximum node version required by this pacakge.
+	// Experimental.
 	MaxNodeVersion() *string
+	// Minimum node.js version required by this package.
+	// Experimental.
 	MinNodeVersion() *string
+	// npm package access level.
+	// Experimental.
 	NpmAccess() NpmAccess
+	// The npm registry host (e.g. `registry.npmjs.org`).
+	// Experimental.
 	NpmRegistry() *string
+	// npm registry (e.g. `https://registry.npmjs.org`). Use `npmRegistryHost` to get just the host name.
+	// Experimental.
 	NpmRegistryUrl() *string
+	// GitHub secret which contains the NPM token to use when publishing packages.
+	// Experimental.
 	NpmTokenSecret() *string
+	// The package manager to use.
+	// Experimental.
 	PackageManager() NodePackageManager
+	// The name of the npm package.
+	// Experimental.
 	PackageName() *string
+	// Experimental.
 	Project() projen.Project
+	// The command which executes "projen".
+	// Experimental.
 	ProjenCommand() *string
+	// Experimental.
 	AddBin(bins *map[string]*string)
+	// Defines bundled dependencies.
+	//
+	// Bundled dependencies will be added as normal dependencies as well as to the
+	// `bundledDependencies` section of your `package.json`.
+	// Experimental.
 	AddBundledDeps(deps ...*string)
+	// Defines normal dependencies.
+	// Experimental.
 	AddDeps(deps ...*string)
+	// Defines development/test dependencies.
+	// Experimental.
 	AddDevDeps(deps ...*string)
+	// Adds an `engines` requirement to your package.
+	// Experimental.
 	AddEngine(engine *string, version *string)
+	// Directly set fields in `package.json`.
+	// Experimental.
 	AddField(name *string, value interface{})
+	// Adds keywords to package.json (deduplicated).
+	// Experimental.
 	AddKeywords(keywords ...*string)
+	// Defines peer dependencies.
+	//
+	// When adding peer dependencies, a devDependency will also be added on the
+	// pinned version of the declared peer. This will ensure that you are testing
+	// your code against the minimum version required from your consumers.
+	// Experimental.
 	AddPeerDeps(deps ...*string)
+	// Sets the package version.
+	// Experimental.
 	AddVersion(version *string)
+	// Indicates if a script by the given name is defined.
+	// Deprecated: Use `project.tasks.tryFind(name)`
 	HasScript(name *string) *bool
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Removes the npm script (always successful).
+	// Experimental.
 	RemoveScript(name *string)
+	// Render a package manager specific command to upgrade all requested dependencies.
+	// Experimental.
 	RenderUpgradePackagesCommand(exclude *[]*string, include *[]*string) *string
+	// Override the contents of an npm package.json script.
+	// Experimental.
 	SetScript(name *string, command *string)
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -1330,7 +1467,6 @@ func NewNodePackage_Override(n NodePackage, project projen.Project, options *Nod
 	)
 }
 
-// Experimental.
 func (n *jsiiProxy_NodePackage) AddBin(bins *map[string]*string) {
 	_jsii_.InvokeVoid(
 		n,
@@ -1339,11 +1475,6 @@ func (n *jsiiProxy_NodePackage) AddBin(bins *map[string]*string) {
 	)
 }
 
-// Defines bundled dependencies.
-//
-// Bundled dependencies will be added as normal dependencies as well as to the
-// `bundledDependencies` section of your `package.json`.
-// Experimental.
 func (n *jsiiProxy_NodePackage) AddBundledDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -1357,8 +1488,6 @@ func (n *jsiiProxy_NodePackage) AddBundledDeps(deps ...*string) {
 	)
 }
 
-// Defines normal dependencies.
-// Experimental.
 func (n *jsiiProxy_NodePackage) AddDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -1372,8 +1501,6 @@ func (n *jsiiProxy_NodePackage) AddDeps(deps ...*string) {
 	)
 }
 
-// Defines development/test dependencies.
-// Experimental.
 func (n *jsiiProxy_NodePackage) AddDevDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -1387,8 +1514,6 @@ func (n *jsiiProxy_NodePackage) AddDevDeps(deps ...*string) {
 	)
 }
 
-// Adds an `engines` requirement to your package.
-// Experimental.
 func (n *jsiiProxy_NodePackage) AddEngine(engine *string, version *string) {
 	_jsii_.InvokeVoid(
 		n,
@@ -1397,8 +1522,6 @@ func (n *jsiiProxy_NodePackage) AddEngine(engine *string, version *string) {
 	)
 }
 
-// Directly set fields in `package.json`.
-// Experimental.
 func (n *jsiiProxy_NodePackage) AddField(name *string, value interface{}) {
 	_jsii_.InvokeVoid(
 		n,
@@ -1407,8 +1530,6 @@ func (n *jsiiProxy_NodePackage) AddField(name *string, value interface{}) {
 	)
 }
 
-// Adds keywords to package.json (deduplicated).
-// Experimental.
 func (n *jsiiProxy_NodePackage) AddKeywords(keywords ...*string) {
 	args := []interface{}{}
 	for _, a := range keywords {
@@ -1422,12 +1543,6 @@ func (n *jsiiProxy_NodePackage) AddKeywords(keywords ...*string) {
 	)
 }
 
-// Defines peer dependencies.
-//
-// When adding peer dependencies, a devDependency will also be added on the
-// pinned version of the declared peer. This will ensure that you are testing
-// your code against the minimum version required from your consumers.
-// Experimental.
 func (n *jsiiProxy_NodePackage) AddPeerDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -1441,8 +1556,6 @@ func (n *jsiiProxy_NodePackage) AddPeerDeps(deps ...*string) {
 	)
 }
 
-// Sets the package version.
-// Experimental.
 func (n *jsiiProxy_NodePackage) AddVersion(version *string) {
 	_jsii_.InvokeVoid(
 		n,
@@ -1451,8 +1564,6 @@ func (n *jsiiProxy_NodePackage) AddVersion(version *string) {
 	)
 }
 
-// Indicates if a script by the given name is defined.
-// Deprecated: Use `project.tasks.tryFind(name)`
 func (n *jsiiProxy_NodePackage) HasScript(name *string) *bool {
 	var returns *bool
 
@@ -1466,10 +1577,6 @@ func (n *jsiiProxy_NodePackage) HasScript(name *string) *bool {
 	return returns
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (n *jsiiProxy_NodePackage) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		n,
@@ -1478,8 +1585,6 @@ func (n *jsiiProxy_NodePackage) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (n *jsiiProxy_NodePackage) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		n,
@@ -1488,8 +1593,6 @@ func (n *jsiiProxy_NodePackage) PreSynthesize() {
 	)
 }
 
-// Removes the npm script (always successful).
-// Experimental.
 func (n *jsiiProxy_NodePackage) RemoveScript(name *string) {
 	_jsii_.InvokeVoid(
 		n,
@@ -1498,8 +1601,6 @@ func (n *jsiiProxy_NodePackage) RemoveScript(name *string) {
 	)
 }
 
-// Render a package manager specific command to upgrade all requested dependencies.
-// Experimental.
 func (n *jsiiProxy_NodePackage) RenderUpgradePackagesCommand(exclude *[]*string, include *[]*string) *string {
 	var returns *string
 
@@ -1513,8 +1614,6 @@ func (n *jsiiProxy_NodePackage) RenderUpgradePackagesCommand(exclude *[]*string,
 	return returns
 }
 
-// Override the contents of an npm package.json script.
-// Experimental.
 func (n *jsiiProxy_NodePackage) SetScript(name *string, command *string) {
 	_jsii_.InvokeVoid(
 		n,
@@ -1523,8 +1622,6 @@ func (n *jsiiProxy_NodePackage) SetScript(name *string, command *string) {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (n *jsiiProxy_NodePackage) Synthesize() {
 	_jsii_.InvokeVoid(
 		n,
@@ -1538,8 +1635,14 @@ func (n *jsiiProxy_NodePackage) Synthesize() {
 type NodePackageManager string
 
 const (
+	// Use `yarn` as the package manager.
+	// Experimental.
 	NodePackageManager_YARN NodePackageManager = "YARN"
+	// Use `npm` as the package manager.
+	// Experimental.
 	NodePackageManager_NPM NodePackageManager = "NPM"
+	// Use `pnpm` as the package manager.
+	// Experimental.
 	NodePackageManager_PNPM NodePackageManager = "PNPM"
 )
 
@@ -1605,7 +1708,8 @@ type NodePackageOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   [ 'express', 'lodash', 'foo@^2' ]
 	//
 	// Experimental.
 	Deps *[]*string `json:"deps" yaml:"deps"`
@@ -1628,7 +1732,8 @@ type NodePackageOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   [ 'typescript', '@types/express' ]
 	//
 	// Experimental.
 	DevDeps *[]*string `json:"devDeps" yaml:"devDeps"`
@@ -1664,7 +1769,7 @@ type NodePackageOptions struct {
 	// The host name of the npm registry to publish to.
 	//
 	// Cannot be set together with `npmRegistryUrl`.
-	// Deprecated: use `npmRegistryUrl` instead
+	// Deprecated: use `npmRegistryUrl` instead.
 	NpmRegistry *string `json:"npmRegistry" yaml:"npmRegistry"`
 	// The base URL of the npm package registry.
 	//
@@ -1723,80 +1828,283 @@ type NodePackageOptions struct {
 // Experimental.
 type NodeProject interface {
 	github.GitHubProject
+	// Deprecated: use `package.allowLibraryDependencies`
 	AllowLibraryDependencies() *bool
+	// The build output directory.
+	//
+	// An npm tarball will be created under the `js`
+	// subdirectory. For example, if this is set to `dist` (the default), the npm
+	// tarball will be placed under `dist/js/boom-boom-1.2.3.tg`.
+	// Experimental.
 	ArtifactsDirectory() *string
+	// The location of the npm tarball after build (`${artifactsDirectory}/js`).
+	// Experimental.
 	ArtifactsJavascriptDirectory() *string
+	// Auto approve set up for this project.
+	// Deprecated.
 	AutoApprove() github.AutoApprove
+	// Automatic PR merges.
+	// Experimental.
 	AutoMerge() github.AutoMerge
+	// Experimental.
 	BuildTask() projen.Task
+	// The PR build GitHub workflow.
+	//
+	// `undefined` if `buildWorkflow` is disabled.
+	// Experimental.
 	BuildWorkflow() build.BuildWorkflow
+	// The job ID of the build workflow.
+	// Experimental.
 	BuildWorkflowJobId() *string
+	// Experimental.
 	Bundler() Bundler
+	// Experimental.
 	CompileTask() projen.Task
+	// Returns all the components within this project.
+	// Experimental.
 	Components() *[]projen.Component
+	// This is the "default" task, the one that executes "projen".
+	//
+	// Undefined if
+	// the project is being ejected.
+	// Experimental.
 	DefaultTask() projen.Task
+	// Project dependencies.
+	// Experimental.
 	Deps() projen.Dependencies
+	// Access for .devcontainer.json (used for GitHub Codespaces).
+	//
+	// This will be `undefined` if devContainer boolean is false.
+	// Deprecated.
 	DevContainer() vscode.DevContainer
+	// Whether or not the project is being ejected.
+	// Experimental.
 	Ejected() *bool
+	// Deprecated: use `package.entrypoint`
 	Entrypoint() *string
+	// All files in this project.
+	// Experimental.
 	Files() *[]projen.FileBase
+	// The .gitattributes file for this repository.
+	// Experimental.
 	Gitattributes() projen.GitAttributesFile
+	// Access all github components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Github() github.GitHub
+	// .gitignore.
+	// Experimental.
 	Gitignore() projen.IgnoreFile
+	// Access for Gitpod.
+	//
+	// This will be `undefined` if gitpod boolean is false.
+	// Deprecated.
 	Gitpod() projen.Gitpod
+	// The options used when this project is bootstrapped via `projen new`.
+	//
+	// It
+	// includes the original set of options passed to the CLI and also the JSII
+	// FQN of the project type.
+	// Experimental.
 	InitProject() *projen.InitProject
+	// The Jest configuration (if enabled).
+	// Experimental.
 	Jest() Jest
+	// Logging utilities.
+	// Experimental.
 	Logger() projen.Logger
+	// Deprecated: use `package.addField(x, y)`
 	Manifest() interface{}
+	// Maximum node version required by this pacakge.
+	// Experimental.
 	MaxNodeVersion() *string
+	// Minimum node.js version required by this package.
+	// Experimental.
 	MinNodeVersion() *string
+	// Project name.
+	// Experimental.
 	Name() *string
+	// The .npmignore file.
+	// Experimental.
 	Npmignore() projen.IgnoreFile
+	// Absolute output directory of this project.
+	// Experimental.
 	Outdir() *string
+	// API for managing the node package.
+	// Experimental.
 	Package() NodePackage
+	// The package manager to use.
+	// Deprecated: use `package.packageManager`
 	PackageManager() NodePackageManager
+	// Experimental.
 	PackageTask() projen.Task
+	// A parent project.
+	//
+	// If undefined, this is the root project.
+	// Experimental.
 	Parent() projen.Project
+	// Experimental.
 	PostCompileTask() projen.Task
+	// Experimental.
 	PreCompileTask() projen.Task
+	// Experimental.
 	Prettier() Prettier
+	// Manages the build process of the project.
+	// Experimental.
 	ProjectBuild() projen.ProjectBuild
+	// Deprecated.
 	ProjectType() projen.ProjectType
+	// The command to use in order to run the projen CLI.
+	// Experimental.
 	ProjenCommand() *string
+	// Package publisher.
+	//
+	// This will be `undefined` if the project does not have a
+	// release workflow.
+	// Deprecated: use `release.publisher`.
 	Publisher() release.Publisher
+	// Release management.
+	// Experimental.
 	Release() release.Release
+	// The root project.
+	// Experimental.
 	Root() projen.Project
+	// The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager).
+	// Experimental.
 	RunScriptCommand() *string
+	// Project tasks.
+	// Experimental.
 	Tasks() projen.Tasks
+	// Experimental.
 	TestTask() projen.Task
+	// The upgrade workflow.
+	// Experimental.
 	UpgradeWorkflow() UpgradeDependencies
+	// Access all VSCode components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Vscode() vscode.VsCode
+	// Experimental.
 	AddBins(bins *map[string]*string)
+	// Defines bundled dependencies.
+	//
+	// Bundled dependencies will be added as normal dependencies as well as to the
+	// `bundledDependencies` section of your `package.json`.
+	// Experimental.
 	AddBundledDeps(deps ...*string)
+	// DEPRECATED.
+	// Deprecated: use `project.compileTask.exec()`
 	AddCompileCommand(commands ...*string)
+	// Defines normal dependencies.
+	// Experimental.
 	AddDeps(deps ...*string)
+	// Defines development/test dependencies.
+	// Experimental.
 	AddDevDeps(deps ...*string)
+	// Exclude the matching files from pre-synth cleanup.
+	//
+	// Can be used when, for example, some
+	// source files include the projen marker and we don't want them to be erased during synth.
+	// Experimental.
 	AddExcludeFromCleanup(globs ...*string)
+	// Directly set fields in `package.json`.
+	// Experimental.
 	AddFields(fields *map[string]interface{})
+	// Adds a .gitignore pattern.
+	// Experimental.
 	AddGitIgnore(pattern *string)
+	// Adds keywords to package.json (deduplicated).
+	// Experimental.
 	AddKeywords(keywords ...*string)
+	// Exclude these files from the bundled package.
+	//
+	// Implemented by project types based on the
+	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Experimental.
 	AddPackageIgnore(pattern *string)
+	// Defines peer dependencies.
+	//
+	// When adding peer dependencies, a devDependency will also be added on the
+	// pinned version of the declared peer. This will ensure that you are testing
+	// your code against the minimum version required from your consumers.
+	// Experimental.
 	AddPeerDeps(deps ...*string)
+	// Adds a new task to this project.
+	//
+	// This will fail if the project already has
+	// a task with this name.
+	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
+	// DEPRECATED.
+	// Deprecated: use `project.testTask.exec()`
 	AddTestCommand(commands ...*string)
+	// Prints a "tip" message during synthesis.
+	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 	AddTip(message *string)
+	// Marks the provided file(s) as being generated.
+	//
+	// This is achieved using the
+	// github-linguist attributes. Generated files do not count against the
+	// repository statistics and language breakdown.
+	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
+	//
+	// Deprecated.
 	AnnotateGenerated(glob *string)
+	// Indicates if a script by the name name is defined.
+	// Experimental.
 	HasScript(name *string) *bool
+	// Called after all components are synthesized.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before all components are synthesized.
+	// Experimental.
 	PreSynthesize()
+	// Removes the npm script (always successful).
+	// Experimental.
 	RemoveScript(name *string)
+	// Removes a task from a project.
+	//
+	// Returns: The `Task` that was removed, otherwise `undefined`.
+	// Experimental.
 	RemoveTask(name *string) projen.Task
+	// Returns the set of workflow steps which should be executed to bootstrap a workflow.
+	//
+	// Returns: Job steps.
+	// Experimental.
 	RenderWorkflowSetup(options *RenderWorkflowSetupOptions) *[]*workflows.JobStep
+	// Returns the shell command to execute in order to run a task.
+	//
+	// This will
+	// typically be `npx projen TASK`.
+	// Experimental.
 	RunTaskCommand(task projen.Task) *string
+	// Replaces the contents of an npm package.json script.
+	// Experimental.
 	SetScript(name *string, command *string)
+	// Synthesize all project files into `outdir`.
+	//
+	// 1. Call "this.preSynthesize()"
+	// 2. Delete all generated files
+	// 3. Synthesize all sub-projects
+	// 4. Synthesize all components of this project
+	// 5. Call "postSynthesize()" for all components of this project
+	// 6. Call "this.postSynthesize()"
+	// Experimental.
 	Synth()
+	// Finds a file at the specified relative path within this project and all its subprojects.
+	//
+	// Returns: a `FileBase` or undefined if there is no file in that path.
+	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
+	// Finds a json file by name.
+	// Deprecated: use `tryFindObjectFile`.
 	TryFindJsonFile(filePath *string) projen.JsonFile
+	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
 }
 
@@ -2323,7 +2631,6 @@ func NodeProject_DEFAULT_TASK() *string {
 	return returns
 }
 
-// Experimental.
 func (n *jsiiProxy_NodeProject) AddBins(bins *map[string]*string) {
 	_jsii_.InvokeVoid(
 		n,
@@ -2332,11 +2639,6 @@ func (n *jsiiProxy_NodeProject) AddBins(bins *map[string]*string) {
 	)
 }
 
-// Defines bundled dependencies.
-//
-// Bundled dependencies will be added as normal dependencies as well as to the
-// `bundledDependencies` section of your `package.json`.
-// Experimental.
 func (n *jsiiProxy_NodeProject) AddBundledDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -2350,8 +2652,6 @@ func (n *jsiiProxy_NodeProject) AddBundledDeps(deps ...*string) {
 	)
 }
 
-// DEPRECATED.
-// Deprecated: use `project.compileTask.exec()`
 func (n *jsiiProxy_NodeProject) AddCompileCommand(commands ...*string) {
 	args := []interface{}{}
 	for _, a := range commands {
@@ -2365,8 +2665,6 @@ func (n *jsiiProxy_NodeProject) AddCompileCommand(commands ...*string) {
 	)
 }
 
-// Defines normal dependencies.
-// Experimental.
 func (n *jsiiProxy_NodeProject) AddDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -2380,8 +2678,6 @@ func (n *jsiiProxy_NodeProject) AddDeps(deps ...*string) {
 	)
 }
 
-// Defines development/test dependencies.
-// Experimental.
 func (n *jsiiProxy_NodeProject) AddDevDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -2395,11 +2691,6 @@ func (n *jsiiProxy_NodeProject) AddDevDeps(deps ...*string) {
 	)
 }
 
-// Exclude the matching files from pre-synth cleanup.
-//
-// Can be used when, for example, some
-// source files include the projen marker and we don't want them to be erased during synth.
-// Experimental.
 func (n *jsiiProxy_NodeProject) AddExcludeFromCleanup(globs ...*string) {
 	args := []interface{}{}
 	for _, a := range globs {
@@ -2413,8 +2704,6 @@ func (n *jsiiProxy_NodeProject) AddExcludeFromCleanup(globs ...*string) {
 	)
 }
 
-// Directly set fields in `package.json`.
-// Experimental.
 func (n *jsiiProxy_NodeProject) AddFields(fields *map[string]interface{}) {
 	_jsii_.InvokeVoid(
 		n,
@@ -2423,8 +2712,6 @@ func (n *jsiiProxy_NodeProject) AddFields(fields *map[string]interface{}) {
 	)
 }
 
-// Adds a .gitignore pattern.
-// Experimental.
 func (n *jsiiProxy_NodeProject) AddGitIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		n,
@@ -2433,8 +2720,6 @@ func (n *jsiiProxy_NodeProject) AddGitIgnore(pattern *string) {
 	)
 }
 
-// Adds keywords to package.json (deduplicated).
-// Experimental.
 func (n *jsiiProxy_NodeProject) AddKeywords(keywords ...*string) {
 	args := []interface{}{}
 	for _, a := range keywords {
@@ -2448,11 +2733,6 @@ func (n *jsiiProxy_NodeProject) AddKeywords(keywords ...*string) {
 	)
 }
 
-// Exclude these files from the bundled package.
-//
-// Implemented by project types based on the
-// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
-// Experimental.
 func (n *jsiiProxy_NodeProject) AddPackageIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		n,
@@ -2461,12 +2741,6 @@ func (n *jsiiProxy_NodeProject) AddPackageIgnore(pattern *string) {
 	)
 }
 
-// Defines peer dependencies.
-//
-// When adding peer dependencies, a devDependency will also be added on the
-// pinned version of the declared peer. This will ensure that you are testing
-// your code against the minimum version required from your consumers.
-// Experimental.
 func (n *jsiiProxy_NodeProject) AddPeerDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -2480,11 +2754,6 @@ func (n *jsiiProxy_NodeProject) AddPeerDeps(deps ...*string) {
 	)
 }
 
-// Adds a new task to this project.
-//
-// This will fail if the project already has
-// a task with this name.
-// Experimental.
 func (n *jsiiProxy_NodeProject) AddTask(name *string, props *projen.TaskOptions) projen.Task {
 	var returns projen.Task
 
@@ -2498,8 +2767,6 @@ func (n *jsiiProxy_NodeProject) AddTask(name *string, props *projen.TaskOptions)
 	return returns
 }
 
-// DEPRECATED.
-// Deprecated: use `project.testTask.exec()`
 func (n *jsiiProxy_NodeProject) AddTestCommand(commands ...*string) {
 	args := []interface{}{}
 	for _, a := range commands {
@@ -2513,8 +2780,6 @@ func (n *jsiiProxy_NodeProject) AddTestCommand(commands ...*string) {
 	)
 }
 
-// Prints a "tip" message during synthesis.
-// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 func (n *jsiiProxy_NodeProject) AddTip(message *string) {
 	_jsii_.InvokeVoid(
 		n,
@@ -2523,14 +2788,6 @@ func (n *jsiiProxy_NodeProject) AddTip(message *string) {
 	)
 }
 
-// Marks the provided file(s) as being generated.
-//
-// This is achieved using the
-// github-linguist attributes. Generated files do not count against the
-// repository statistics and language breakdown.
-// See: https://github.com/github/linguist/blob/master/docs/overrides.md
-//
-// Deprecated.
 func (n *jsiiProxy_NodeProject) AnnotateGenerated(glob *string) {
 	_jsii_.InvokeVoid(
 		n,
@@ -2539,8 +2796,6 @@ func (n *jsiiProxy_NodeProject) AnnotateGenerated(glob *string) {
 	)
 }
 
-// Indicates if a script by the name name is defined.
-// Experimental.
 func (n *jsiiProxy_NodeProject) HasScript(name *string) *bool {
 	var returns *bool
 
@@ -2554,10 +2809,6 @@ func (n *jsiiProxy_NodeProject) HasScript(name *string) *bool {
 	return returns
 }
 
-// Called after all components are synthesized.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (n *jsiiProxy_NodeProject) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		n,
@@ -2566,8 +2817,6 @@ func (n *jsiiProxy_NodeProject) PostSynthesize() {
 	)
 }
 
-// Called before all components are synthesized.
-// Experimental.
 func (n *jsiiProxy_NodeProject) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		n,
@@ -2576,8 +2825,6 @@ func (n *jsiiProxy_NodeProject) PreSynthesize() {
 	)
 }
 
-// Removes the npm script (always successful).
-// Experimental.
 func (n *jsiiProxy_NodeProject) RemoveScript(name *string) {
 	_jsii_.InvokeVoid(
 		n,
@@ -2586,10 +2833,6 @@ func (n *jsiiProxy_NodeProject) RemoveScript(name *string) {
 	)
 }
 
-// Removes a task from a project.
-//
-// Returns: The `Task` that was removed, otherwise `undefined`.
-// Experimental.
 func (n *jsiiProxy_NodeProject) RemoveTask(name *string) projen.Task {
 	var returns projen.Task
 
@@ -2603,10 +2846,6 @@ func (n *jsiiProxy_NodeProject) RemoveTask(name *string) projen.Task {
 	return returns
 }
 
-// Returns the set of workflow steps which should be executed to bootstrap a workflow.
-//
-// Returns: Job steps
-// Experimental.
 func (n *jsiiProxy_NodeProject) RenderWorkflowSetup(options *RenderWorkflowSetupOptions) *[]*workflows.JobStep {
 	var returns *[]*workflows.JobStep
 
@@ -2620,11 +2859,6 @@ func (n *jsiiProxy_NodeProject) RenderWorkflowSetup(options *RenderWorkflowSetup
 	return returns
 }
 
-// Returns the shell command to execute in order to run a task.
-//
-// This will
-// typically be `npx projen TASK`.
-// Experimental.
 func (n *jsiiProxy_NodeProject) RunTaskCommand(task projen.Task) *string {
 	var returns *string
 
@@ -2638,8 +2872,6 @@ func (n *jsiiProxy_NodeProject) RunTaskCommand(task projen.Task) *string {
 	return returns
 }
 
-// Replaces the contents of an npm package.json script.
-// Experimental.
 func (n *jsiiProxy_NodeProject) SetScript(name *string, command *string) {
 	_jsii_.InvokeVoid(
 		n,
@@ -2648,15 +2880,6 @@ func (n *jsiiProxy_NodeProject) SetScript(name *string, command *string) {
 	)
 }
 
-// Synthesize all project files into `outdir`.
-//
-// 1. Call "this.preSynthesize()"
-// 2. Delete all generated files
-// 3. Synthesize all sub-projects
-// 4. Synthesize all components of this project
-// 5. Call "postSynthesize()" for all components of this project
-// 6. Call "this.postSynthesize()"
-// Experimental.
 func (n *jsiiProxy_NodeProject) Synth() {
 	_jsii_.InvokeVoid(
 		n,
@@ -2665,10 +2888,6 @@ func (n *jsiiProxy_NodeProject) Synth() {
 	)
 }
 
-// Finds a file at the specified relative path within this project and all its subprojects.
-//
-// Returns: a `FileBase` or undefined if there is no file in that path
-// Experimental.
 func (n *jsiiProxy_NodeProject) TryFindFile(filePath *string) projen.FileBase {
 	var returns projen.FileBase
 
@@ -2682,8 +2901,6 @@ func (n *jsiiProxy_NodeProject) TryFindFile(filePath *string) projen.FileBase {
 	return returns
 }
 
-// Finds a json file by name.
-// Deprecated: use `tryFindObjectFile`
 func (n *jsiiProxy_NodeProject) TryFindJsonFile(filePath *string) projen.JsonFile {
 	var returns projen.JsonFile
 
@@ -2697,8 +2914,6 @@ func (n *jsiiProxy_NodeProject) TryFindJsonFile(filePath *string) projen.JsonFil
 	return returns
 }
 
-// Finds an object file (like JsonFile, YamlFile, etc.) by name.
-// Experimental.
 func (n *jsiiProxy_NodeProject) TryFindObjectFile(filePath *string) projen.ObjectFile {
 	var returns projen.ObjectFile
 
@@ -2776,7 +2991,7 @@ type NodeProjectOptions struct {
 	// Deprecated: use `githubOptions.mergifyOptions` instead
 	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
-	// Deprecated: no longer supported at the base project level
+	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
@@ -2786,7 +3001,8 @@ type NodeProjectOptions struct {
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "{ filename: 'readme.md', contents: '# title' }"
 	//
 	// Experimental.
 	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
@@ -2865,7 +3081,8 @@ type NodeProjectOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   [ 'express', 'lodash', 'foo@^2' ]
 	//
 	// Experimental.
 	Deps *[]*string `json:"deps" yaml:"deps"`
@@ -2888,7 +3105,8 @@ type NodeProjectOptions struct {
 	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
 	// this will be what you `package.json` will eventually include.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   [ 'typescript', '@types/express' ]
 	//
 	// Experimental.
 	DevDeps *[]*string `json:"devDeps" yaml:"devDeps"`
@@ -2924,7 +3142,7 @@ type NodeProjectOptions struct {
 	// The host name of the npm registry to publish to.
 	//
 	// Cannot be set together with `npmRegistryUrl`.
-	// Deprecated: use `npmRegistryUrl` instead
+	// Deprecated: use `npmRegistryUrl` instead.
 	NpmRegistry *string `json:"npmRegistry" yaml:"npmRegistry"`
 	// The base URL of the npm package registry.
 	//
@@ -3207,7 +3425,11 @@ type NodeProjectOptions struct {
 type NpmAccess string
 
 const (
+	// Package is public.
+	// Experimental.
 	NpmAccess_PUBLIC NpmAccess = "PUBLIC"
+	// Package can only be accessed with credentials.
+	// Experimental.
 	NpmAccess_RESTRICTED NpmAccess = "RESTRICTED"
 )
 
@@ -3215,11 +3437,24 @@ const (
 // Experimental.
 type NpmConfig interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// configure a generic property.
+	// Experimental.
 	AddConfig(name *string, value *string)
+	// configure a scoped registry.
+	// Experimental.
 	AddRegistry(url *string, scope *string)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -3265,8 +3500,6 @@ func NewNpmConfig_Override(n NpmConfig, project NodeProject, options *NpmConfigO
 	)
 }
 
-// configure a generic property.
-// Experimental.
 func (n *jsiiProxy_NpmConfig) AddConfig(name *string, value *string) {
 	_jsii_.InvokeVoid(
 		n,
@@ -3275,8 +3508,6 @@ func (n *jsiiProxy_NpmConfig) AddConfig(name *string, value *string) {
 	)
 }
 
-// configure a scoped registry.
-// Experimental.
 func (n *jsiiProxy_NpmConfig) AddRegistry(url *string, scope *string) {
 	_jsii_.InvokeVoid(
 		n,
@@ -3285,10 +3516,6 @@ func (n *jsiiProxy_NpmConfig) AddRegistry(url *string, scope *string) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (n *jsiiProxy_NpmConfig) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		n,
@@ -3297,8 +3524,6 @@ func (n *jsiiProxy_NpmConfig) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (n *jsiiProxy_NpmConfig) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		n,
@@ -3307,8 +3532,6 @@ func (n *jsiiProxy_NpmConfig) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (n *jsiiProxy_NpmConfig) Synthesize() {
 	_jsii_.InvokeVoid(
 		n,
@@ -3322,7 +3545,7 @@ func (n *jsiiProxy_NpmConfig) Synthesize() {
 type NpmConfigOptions struct {
 	// URL of the registry mirror to use.
 	//
-	// You can change this or add scoped registries using the addRegistry method
+	// You can change this or add scoped registries using the addRegistry method.
 	// Experimental.
 	Registry *string `json:"registry" yaml:"registry"`
 }
@@ -3338,14 +3561,35 @@ type PeerDependencyOptions struct {
 // Experimental.
 type Prettier interface {
 	projen.Component
+	// The .prettierIgnore file.
+	// Experimental.
 	IgnoreFile() projen.IgnoreFile
+	// Access to the Prettieroverrides to extend those.
+	// Experimental.
 	Overrides() *[]*PrettierOverride
+	// Experimental.
 	Project() projen.Project
+	// Direct access to the prettier settings.
+	// Experimental.
 	Settings() *PrettierSettings
+	// Defines Prettier ignore Patterns these patterns will be added to the file .prettierignore.
+	// Experimental.
 	AddIgnorePattern(pattern *string)
+	// Add a prettier override.
+	// See: https://prettier.io/docs/en/configuration.html#configuration-overrides
+	//
+	// Experimental.
 	AddOverride(override *PrettierOverride)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -3437,8 +3681,6 @@ func Prettier_Of(project projen.Project) Prettier {
 	return returns
 }
 
-// Defines Prettier ignore Patterns these patterns will be added to the file .prettierignore.
-// Experimental.
 func (p *jsiiProxy_Prettier) AddIgnorePattern(pattern *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -3447,10 +3689,6 @@ func (p *jsiiProxy_Prettier) AddIgnorePattern(pattern *string) {
 	)
 }
 
-// Add a prettier override.
-// See: https://prettier.io/docs/en/configuration.html#configuration-overrides
-//
-// Experimental.
 func (p *jsiiProxy_Prettier) AddOverride(override *PrettierOverride) {
 	_jsii_.InvokeVoid(
 		p,
@@ -3459,10 +3697,6 @@ func (p *jsiiProxy_Prettier) AddOverride(override *PrettierOverride) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_Prettier) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -3471,8 +3705,6 @@ func (p *jsiiProxy_Prettier) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_Prettier) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -3481,8 +3713,6 @@ func (p *jsiiProxy_Prettier) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_Prettier) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -3623,9 +3853,18 @@ type PrettierSettings struct {
 // Experimental.
 type Projenrc interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -3671,10 +3910,6 @@ func NewProjenrc_Override(p Projenrc, project projen.Project, options *ProjenrcO
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_Projenrc) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -3683,8 +3918,6 @@ func (p *jsiiProxy_Projenrc) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_Projenrc) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -3693,8 +3926,6 @@ func (p *jsiiProxy_Projenrc) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_Projenrc) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -3714,8 +3945,14 @@ type ProjenrcOptions struct {
 type ProseWrap string
 
 const (
+	// Wrap prose if it exceeds the print width.
+	// Experimental.
 	ProseWrap_ALWAYS ProseWrap = "ALWAYS"
+	// Do not wrap prose.
+	// Experimental.
 	ProseWrap_NEVER ProseWrap = "NEVER"
+	// Wrap prose as-is.
+	// Experimental.
 	ProseWrap_PRESERVE ProseWrap = "PRESERVE"
 )
 
@@ -3723,8 +3960,14 @@ const (
 type QuoteProps string
 
 const (
+	// Only add quotes around object properties where required.
+	// Experimental.
 	QuoteProps_ASNEEDED QuoteProps = "ASNEEDED"
+	// If at least one property in an object requires quotes, quote all properties.
+	// Experimental.
 	QuoteProps_CONSISTENT QuoteProps = "CONSISTENT"
+	// Respect the input use of quotes in object properties.
+	// Experimental.
 	QuoteProps_PRESERVE QuoteProps = "PRESERVE"
 )
 
@@ -3740,8 +3983,14 @@ type RenderWorkflowSetupOptions struct {
 type TrailingComma string
 
 const (
+	// Trailing commas wherever possible (including function arguments).
+	// Experimental.
 	TrailingComma_ALL TrailingComma = "ALL"
+	// Trailing commas where valid in ES5 (objects, arrays, etc.).
+	// Experimental.
 	TrailingComma_ES5 TrailingComma = "ES5"
+	// No trailing commas.
+	// Experimental.
 	TrailingComma_NONE TrailingComma = "NONE"
 )
 
@@ -3903,10 +4152,22 @@ type TypeScriptCompilerOptions struct {
 type TypeScriptJsxMode string
 
 const (
+	// Keeps the JSX as part of the output to be further consumed by another transform step (e.g. Babel).
+	// Experimental.
 	TypeScriptJsxMode_PRESERVE TypeScriptJsxMode = "PRESERVE"
+	// Converts JSX syntax into React.createElement, does not need to go through a JSX transformation before use, and the output will have a .js file extension.
+	// Experimental.
 	TypeScriptJsxMode_REACT TypeScriptJsxMode = "REACT"
+	// Keeps all JSX like 'preserve' mode, but output will have a .js extension.
+	// Experimental.
 	TypeScriptJsxMode_REACT_NATIVE TypeScriptJsxMode = "REACT_NATIVE"
+	// Passes `key` separately from props and always passes `children` as props (since React 17).
+	// See: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html#react-17-jsx-factories
+	//
+	// Experimental.
 	TypeScriptJsxMode_REACT_JSX TypeScriptJsxMode = "REACT_JSX"
+	// Same as `REACT_JSX` with additional debug data.
+	// Experimental.
 	TypeScriptJsxMode_REACT_JSXDEV TypeScriptJsxMode = "REACT_JSXDEV"
 )
 
@@ -3917,18 +4178,33 @@ const (
 type TypeScriptModuleResolution string
 
 const (
+	// TypeScript's former default resolution strategy.
+	// See: https://www.typescriptlang.org/docs/handbook/module-resolution.html#classic
+	//
+	// Experimental.
 	TypeScriptModuleResolution_CLASSIC TypeScriptModuleResolution = "CLASSIC"
+	// Resolution strategy which attempts to mimic the Node.js module resolution strategy at runtime.
+	// See: https://www.typescriptlang.org/docs/handbook/module-resolution.html#node
+	//
+	// Experimental.
 	TypeScriptModuleResolution_NODE TypeScriptModuleResolution = "NODE"
 )
 
 // Experimental.
 type TypescriptConfig interface {
+	// Experimental.
 	CompilerOptions() *TypeScriptCompilerOptions
+	// Experimental.
 	Exclude() *[]*string
+	// Experimental.
 	File() projen.JsonFile
+	// Experimental.
 	FileName() *string
+	// Experimental.
 	Include() *[]*string
+	// Experimental.
 	AddExclude(pattern *string)
+	// Experimental.
 	AddInclude(pattern *string)
 }
 
@@ -4014,7 +4290,6 @@ func NewTypescriptConfig_Override(t TypescriptConfig, project NodeProject, optio
 	)
 }
 
-// Experimental.
 func (t *jsiiProxy_TypescriptConfig) AddExclude(pattern *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -4023,7 +4298,6 @@ func (t *jsiiProxy_TypescriptConfig) AddExclude(pattern *string) {
 	)
 }
 
-// Experimental.
 func (t *jsiiProxy_TypescriptConfig) AddInclude(pattern *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -4051,15 +4325,37 @@ type TypescriptConfigOptions struct {
 // Experimental.
 type UpgradeDependencies interface {
 	projen.Component
+	// Container definitions for the upgrade workflow.
+	// Experimental.
 	ContainerOptions() *workflows.ContainerOptions
+	// Experimental.
 	SetContainerOptions(val *workflows.ContainerOptions)
+	// Whether or not projen is also upgraded in this workflow,.
+	// Experimental.
 	IgnoresProjen() *bool
+	// A task run after the upgrade task.
+	// Experimental.
 	PostUpgradeTask() projen.Task
+	// Experimental.
 	Project() projen.Project
+	// The workflows that execute the upgrades.
+	//
+	// One workflow per branch.
+	// Experimental.
 	Workflows() *[]github.GithubWorkflow
+	// Add steps to execute a successful build.
+	// Experimental.
 	AddPostBuildSteps(steps ...*workflows.JobStep)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -4153,8 +4449,6 @@ func (j *jsiiProxy_UpgradeDependencies) SetContainerOptions(val *workflows.Conta
 	)
 }
 
-// Add steps to execute a successful build.
-// Experimental.
 func (u *jsiiProxy_UpgradeDependencies) AddPostBuildSteps(steps ...*workflows.JobStep) {
 	args := []interface{}{}
 	for _, a := range steps {
@@ -4168,10 +4462,6 @@ func (u *jsiiProxy_UpgradeDependencies) AddPostBuildSteps(steps ...*workflows.Jo
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (u *jsiiProxy_UpgradeDependencies) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		u,
@@ -4180,8 +4470,6 @@ func (u *jsiiProxy_UpgradeDependencies) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (u *jsiiProxy_UpgradeDependencies) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		u,
@@ -4190,8 +4478,6 @@ func (u *jsiiProxy_UpgradeDependencies) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (u *jsiiProxy_UpgradeDependencies) Synthesize() {
 	_jsii_.InvokeVoid(
 		u,
@@ -4239,6 +4525,7 @@ type UpgradeDependenciesOptions struct {
 // How often to check for new versions and raise pull requests for version upgrades.
 // Experimental.
 type UpgradeDependenciesSchedule interface {
+	// Experimental.
 	Cron() *[]*string
 }
 

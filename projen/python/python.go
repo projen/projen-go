@@ -134,13 +134,30 @@ func (j *jsiiProxy_IPythonPackaging) PublishTask() projen.Task {
 type Pip interface {
 	projen.Component
 	IPythonDeps
+	// A task that installs and updates dependencies.
+	// Experimental.
 	InstallTask() projen.Task
+	// Experimental.
 	Project() projen.Project
+	// Adds a runtime dependency.
+	// Experimental.
 	AddDependency(spec *string)
+	// Adds a dev dependency.
+	// Experimental.
 	AddDevDependency(spec *string)
+	// Installs dependencies (called during post-synthesis).
+	// Experimental.
 	InstallDependencies()
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -197,8 +214,6 @@ func NewPip_Override(p Pip, project PythonProject, _options *PipOptions) {
 	)
 }
 
-// Adds a runtime dependency.
-// Experimental.
 func (p *jsiiProxy_Pip) AddDependency(spec *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -207,8 +222,6 @@ func (p *jsiiProxy_Pip) AddDependency(spec *string) {
 	)
 }
 
-// Adds a dev dependency.
-// Experimental.
 func (p *jsiiProxy_Pip) AddDevDependency(spec *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -217,8 +230,6 @@ func (p *jsiiProxy_Pip) AddDevDependency(spec *string) {
 	)
 }
 
-// Installs dependencies (called during post-synthesis).
-// Experimental.
 func (p *jsiiProxy_Pip) InstallDependencies() {
 	_jsii_.InvokeVoid(
 		p,
@@ -227,10 +238,6 @@ func (p *jsiiProxy_Pip) InstallDependencies() {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_Pip) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -239,8 +246,6 @@ func (p *jsiiProxy_Pip) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_Pip) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -249,8 +254,6 @@ func (p *jsiiProxy_Pip) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_Pip) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -271,16 +274,39 @@ type Poetry interface {
 	IPythonDeps
 	IPythonEnv
 	IPythonPackaging
+	// A task that installs and updates dependencies.
+	// Experimental.
 	InstallTask() projen.Task
+	// Experimental.
 	Project() projen.Project
+	// A task that uploads the package to a package repository.
+	// Experimental.
 	PublishTask() projen.Task
+	// A task that uploads the package to the Test PyPI repository.
+	// Experimental.
 	PublishTestTask() projen.Task
+	// Adds a runtime dependency.
+	// Experimental.
 	AddDependency(spec *string)
+	// Adds a dev dependency.
+	// Experimental.
 	AddDevDependency(spec *string)
+	// Installs dependencies (called during post-synthesis).
+	// Experimental.
 	InstallDependencies()
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Initializes the virtual environment if it doesn't exist (called during post-synthesis).
+	// Experimental.
 	SetupEnvironment()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -359,8 +385,6 @@ func NewPoetry_Override(p Poetry, project PythonProject, options *PythonPackagin
 	)
 }
 
-// Adds a runtime dependency.
-// Experimental.
 func (p *jsiiProxy_Poetry) AddDependency(spec *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -369,8 +393,6 @@ func (p *jsiiProxy_Poetry) AddDependency(spec *string) {
 	)
 }
 
-// Adds a dev dependency.
-// Experimental.
 func (p *jsiiProxy_Poetry) AddDevDependency(spec *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -379,8 +401,6 @@ func (p *jsiiProxy_Poetry) AddDevDependency(spec *string) {
 	)
 }
 
-// Installs dependencies (called during post-synthesis).
-// Experimental.
 func (p *jsiiProxy_Poetry) InstallDependencies() {
 	_jsii_.InvokeVoid(
 		p,
@@ -389,10 +409,6 @@ func (p *jsiiProxy_Poetry) InstallDependencies() {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_Poetry) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -401,8 +417,6 @@ func (p *jsiiProxy_Poetry) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_Poetry) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -411,8 +425,6 @@ func (p *jsiiProxy_Poetry) PreSynthesize() {
 	)
 }
 
-// Initializes the virtual environment if it doesn't exist (called during post-synthesis).
-// Experimental.
 func (p *jsiiProxy_Poetry) SetupEnvironment() {
 	_jsii_.InvokeVoid(
 		p,
@@ -421,8 +433,6 @@ func (p *jsiiProxy_Poetry) SetupEnvironment() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_Poetry) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -437,10 +447,20 @@ func (p *jsiiProxy_Poetry) Synthesize() {
 // Experimental.
 type PoetryPyproject interface {
 	projen.Component
+	// Experimental.
 	File() projen.TomlFile
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -496,10 +516,6 @@ func NewPoetryPyproject_Override(p PoetryPyproject, project PythonProject, optio
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_PoetryPyproject) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -508,8 +524,6 @@ func (p *jsiiProxy_PoetryPyproject) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_PoetryPyproject) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -518,8 +532,6 @@ func (p *jsiiProxy_PoetryPyproject) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_PoetryPyproject) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -535,7 +547,7 @@ func (p *jsiiProxy_PoetryPyproject) Synthesize() {
 type PoetryPyprojectOptions struct {
 	// The authors of the package.
 	//
-	// Must be in the form "name <email>"
+	// Must be in the form "name <email>".
 	// Experimental.
 	Authors *[]*string `json:"authors" yaml:"authors"`
 	// A list of PyPI trove classifiers that describe the project.
@@ -575,7 +587,7 @@ type PoetryPyprojectOptions struct {
 	License *string `json:"license" yaml:"license"`
 	// the maintainers of the package.
 	//
-	// Must be in the form "name <email>"
+	// Must be in the form "name <email>".
 	// Experimental.
 	Maintainers *[]*string `json:"maintainers" yaml:"maintainers"`
 	// Name of the package (required).
@@ -615,13 +627,15 @@ type PoetryPyprojectOptions struct {
 	//
 	// The python version for which your package is compatible is also required.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   { requests: "^2.13.0" }
 	//
 	// Experimental.
 	Dependencies *map[string]interface{} `json:"dependencies" yaml:"dependencies"`
 	// A list of development dependencies for the project.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   { requests: "^2.13.0" }
 	//
 	// Experimental.
 	DevDependencies *map[string]interface{} `json:"devDependencies" yaml:"devDependencies"`
@@ -634,7 +648,7 @@ type PoetryPyprojectOptions struct {
 type PoetryPyprojectOptionsWithoutDeps struct {
 	// The authors of the package.
 	//
-	// Must be in the form "name <email>"
+	// Must be in the form "name <email>".
 	// Experimental.
 	Authors *[]*string `json:"authors" yaml:"authors"`
 	// A list of PyPI trove classifiers that describe the project.
@@ -674,7 +688,7 @@ type PoetryPyprojectOptionsWithoutDeps struct {
 	License *string `json:"license" yaml:"license"`
 	// the maintainers of the package.
 	//
-	// Must be in the form "name <email>"
+	// Must be in the form "name <email>".
 	// Experimental.
 	Maintainers *[]*string `json:"maintainers" yaml:"maintainers"`
 	// Name of the package (required).
@@ -719,9 +733,18 @@ type PoetryPyprojectOptionsWithoutDeps struct {
 // Experimental.
 type Projenrc interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -767,10 +790,6 @@ func NewProjenrc_Override(p Projenrc, project projen.Project, options *ProjenrcO
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_Projenrc) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -779,8 +798,6 @@ func (p *jsiiProxy_Projenrc) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_Projenrc) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -789,8 +806,6 @@ func (p *jsiiProxy_Projenrc) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_Projenrc) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -813,10 +828,20 @@ type ProjenrcOptions struct {
 // Experimental.
 type Pytest interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Experimental.
 	Testdir() *string
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -872,10 +897,6 @@ func NewPytest_Override(p Pytest, project PythonProject, options *PytestOptions)
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_Pytest) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -884,8 +905,6 @@ func (p *jsiiProxy_Pytest) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_Pytest) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -894,8 +913,6 @@ func (p *jsiiProxy_Pytest) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_Pytest) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -920,9 +937,18 @@ type PytestOptions struct {
 // Experimental.
 type PytestSample interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -968,10 +994,6 @@ func NewPytestSample_Override(p PytestSample, project PythonProject, testdir *st
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_PytestSample) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -980,8 +1002,6 @@ func (p *jsiiProxy_PytestSample) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_PytestSample) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -990,8 +1010,6 @@ func (p *jsiiProxy_PytestSample) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_PytestSample) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1037,56 +1055,199 @@ type PythonPackagingOptions struct {
 // Experimental.
 type PythonProject interface {
 	github.GitHubProject
+	// Auto approve set up for this project.
+	// Deprecated.
 	AutoApprove() github.AutoApprove
+	// Experimental.
 	BuildTask() projen.Task
+	// Experimental.
 	CompileTask() projen.Task
+	// Returns all the components within this project.
+	// Experimental.
 	Components() *[]projen.Component
+	// This is the "default" task, the one that executes "projen".
+	//
+	// Undefined if
+	// the project is being ejected.
+	// Experimental.
 	DefaultTask() projen.Task
+	// Project dependencies.
+	// Experimental.
 	Deps() projen.Dependencies
+	// API for managing dependencies.
+	// Experimental.
 	DepsManager() IPythonDeps
+	// Access for .devcontainer.json (used for GitHub Codespaces).
+	//
+	// This will be `undefined` if devContainer boolean is false.
+	// Deprecated.
 	DevContainer() vscode.DevContainer
+	// Whether or not the project is being ejected.
+	// Experimental.
 	Ejected() *bool
+	// API for mangaging the Python runtime environment.
+	// Experimental.
 	EnvManager() IPythonEnv
+	// All files in this project.
+	// Experimental.
 	Files() *[]projen.FileBase
+	// The .gitattributes file for this repository.
+	// Experimental.
 	Gitattributes() projen.GitAttributesFile
+	// Access all github components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Github() github.GitHub
+	// .gitignore.
+	// Experimental.
 	Gitignore() projen.IgnoreFile
+	// Access for Gitpod.
+	//
+	// This will be `undefined` if gitpod boolean is false.
+	// Deprecated.
 	Gitpod() projen.Gitpod
+	// The options used when this project is bootstrapped via `projen new`.
+	//
+	// It
+	// includes the original set of options passed to the CLI and also the JSII
+	// FQN of the project type.
+	// Experimental.
 	InitProject() *projen.InitProject
+	// Logging utilities.
+	// Experimental.
 	Logger() projen.Logger
+	// Python module name (the project name, with any hyphens or periods replaced with underscores).
+	// Experimental.
 	ModuleName() *string
+	// Project name.
+	// Experimental.
 	Name() *string
+	// Absolute output directory of this project.
+	// Experimental.
 	Outdir() *string
+	// Experimental.
 	PackageTask() projen.Task
+	// API for managing packaging the project as a library.
+	//
+	// Only applies when the `projectType` is LIB.
+	// Experimental.
 	PackagingManager() IPythonPackaging
+	// A parent project.
+	//
+	// If undefined, this is the root project.
+	// Experimental.
 	Parent() projen.Project
+	// Experimental.
 	PostCompileTask() projen.Task
+	// Experimental.
 	PreCompileTask() projen.Task
+	// Manages the build process of the project.
+	// Experimental.
 	ProjectBuild() projen.ProjectBuild
+	// Deprecated.
 	ProjectType() projen.ProjectType
+	// The command to use in order to run the projen CLI.
+	// Experimental.
 	ProjenCommand() *string
+	// Pytest component.
+	// Experimental.
 	Pytest() Pytest
+	// Experimental.
 	SetPytest(val Pytest)
+	// The root project.
+	// Experimental.
 	Root() projen.Project
+	// Project tasks.
+	// Experimental.
 	Tasks() projen.Tasks
+	// Experimental.
 	TestTask() projen.Task
+	// Version of the package for distribution (should follow semver).
+	// Experimental.
 	Version() *string
+	// Access all VSCode components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Vscode() vscode.VsCode
+	// Adds a runtime dependency.
+	// Experimental.
 	AddDependency(spec *string)
+	// Adds a dev dependency.
+	// Experimental.
 	AddDevDependency(spec *string)
+	// Exclude the matching files from pre-synth cleanup.
+	//
+	// Can be used when, for example, some
+	// source files include the projen marker and we don't want them to be erased during synth.
+	// Experimental.
 	AddExcludeFromCleanup(globs ...*string)
+	// Adds a .gitignore pattern.
+	// Experimental.
 	AddGitIgnore(pattern *string)
+	// Exclude these files from the bundled package.
+	//
+	// Implemented by project types based on the
+	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Experimental.
 	AddPackageIgnore(_pattern *string)
+	// Adds a new task to this project.
+	//
+	// This will fail if the project already has
+	// a task with this name.
+	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
+	// Prints a "tip" message during synthesis.
+	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 	AddTip(message *string)
+	// Marks the provided file(s) as being generated.
+	//
+	// This is achieved using the
+	// github-linguist attributes. Generated files do not count against the
+	// repository statistics and language breakdown.
+	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
+	//
+	// Deprecated.
 	AnnotateGenerated(glob *string)
+	// Called after all components are synthesized.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before all components are synthesized.
+	// Experimental.
 	PreSynthesize()
+	// Removes a task from a project.
+	//
+	// Returns: The `Task` that was removed, otherwise `undefined`.
+	// Experimental.
 	RemoveTask(name *string) projen.Task
+	// Returns the shell command to execute in order to run a task.
+	//
+	// By default, this is `npx projen@<version> <task>`.
+	// Experimental.
 	RunTaskCommand(task projen.Task) *string
+	// Synthesize all project files into `outdir`.
+	//
+	// 1. Call "this.preSynthesize()"
+	// 2. Delete all generated files
+	// 3. Synthesize all sub-projects
+	// 4. Synthesize all components of this project
+	// 5. Call "postSynthesize()" for all components of this project
+	// 6. Call "this.postSynthesize()"
+	// Experimental.
 	Synth()
+	// Finds a file at the specified relative path within this project and all its subprojects.
+	//
+	// Returns: a `FileBase` or undefined if there is no file in that path.
+	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
+	// Finds a json file by name.
+	// Deprecated: use `tryFindObjectFile`.
 	TryFindJsonFile(filePath *string) projen.JsonFile
+	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
 }
 
@@ -1481,8 +1642,6 @@ func PythonProject_DEFAULT_TASK() *string {
 	return returns
 }
 
-// Adds a runtime dependency.
-// Experimental.
 func (p *jsiiProxy_PythonProject) AddDependency(spec *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -1491,8 +1650,6 @@ func (p *jsiiProxy_PythonProject) AddDependency(spec *string) {
 	)
 }
 
-// Adds a dev dependency.
-// Experimental.
 func (p *jsiiProxy_PythonProject) AddDevDependency(spec *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -1501,11 +1658,6 @@ func (p *jsiiProxy_PythonProject) AddDevDependency(spec *string) {
 	)
 }
 
-// Exclude the matching files from pre-synth cleanup.
-//
-// Can be used when, for example, some
-// source files include the projen marker and we don't want them to be erased during synth.
-// Experimental.
 func (p *jsiiProxy_PythonProject) AddExcludeFromCleanup(globs ...*string) {
 	args := []interface{}{}
 	for _, a := range globs {
@@ -1519,8 +1671,6 @@ func (p *jsiiProxy_PythonProject) AddExcludeFromCleanup(globs ...*string) {
 	)
 }
 
-// Adds a .gitignore pattern.
-// Experimental.
 func (p *jsiiProxy_PythonProject) AddGitIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -1529,11 +1679,6 @@ func (p *jsiiProxy_PythonProject) AddGitIgnore(pattern *string) {
 	)
 }
 
-// Exclude these files from the bundled package.
-//
-// Implemented by project types based on the
-// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
-// Experimental.
 func (p *jsiiProxy_PythonProject) AddPackageIgnore(_pattern *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -1542,11 +1687,6 @@ func (p *jsiiProxy_PythonProject) AddPackageIgnore(_pattern *string) {
 	)
 }
 
-// Adds a new task to this project.
-//
-// This will fail if the project already has
-// a task with this name.
-// Experimental.
 func (p *jsiiProxy_PythonProject) AddTask(name *string, props *projen.TaskOptions) projen.Task {
 	var returns projen.Task
 
@@ -1560,8 +1700,6 @@ func (p *jsiiProxy_PythonProject) AddTask(name *string, props *projen.TaskOption
 	return returns
 }
 
-// Prints a "tip" message during synthesis.
-// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 func (p *jsiiProxy_PythonProject) AddTip(message *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -1570,14 +1708,6 @@ func (p *jsiiProxy_PythonProject) AddTip(message *string) {
 	)
 }
 
-// Marks the provided file(s) as being generated.
-//
-// This is achieved using the
-// github-linguist attributes. Generated files do not count against the
-// repository statistics and language breakdown.
-// See: https://github.com/github/linguist/blob/master/docs/overrides.md
-//
-// Deprecated.
 func (p *jsiiProxy_PythonProject) AnnotateGenerated(glob *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -1586,10 +1716,6 @@ func (p *jsiiProxy_PythonProject) AnnotateGenerated(glob *string) {
 	)
 }
 
-// Called after all components are synthesized.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_PythonProject) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1598,8 +1724,6 @@ func (p *jsiiProxy_PythonProject) PostSynthesize() {
 	)
 }
 
-// Called before all components are synthesized.
-// Experimental.
 func (p *jsiiProxy_PythonProject) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1608,10 +1732,6 @@ func (p *jsiiProxy_PythonProject) PreSynthesize() {
 	)
 }
 
-// Removes a task from a project.
-//
-// Returns: The `Task` that was removed, otherwise `undefined`.
-// Experimental.
 func (p *jsiiProxy_PythonProject) RemoveTask(name *string) projen.Task {
 	var returns projen.Task
 
@@ -1625,10 +1745,6 @@ func (p *jsiiProxy_PythonProject) RemoveTask(name *string) projen.Task {
 	return returns
 }
 
-// Returns the shell command to execute in order to run a task.
-//
-// By default, this is `npx projen@<version> <task>`
-// Experimental.
 func (p *jsiiProxy_PythonProject) RunTaskCommand(task projen.Task) *string {
 	var returns *string
 
@@ -1642,15 +1758,6 @@ func (p *jsiiProxy_PythonProject) RunTaskCommand(task projen.Task) *string {
 	return returns
 }
 
-// Synthesize all project files into `outdir`.
-//
-// 1. Call "this.preSynthesize()"
-// 2. Delete all generated files
-// 3. Synthesize all sub-projects
-// 4. Synthesize all components of this project
-// 5. Call "postSynthesize()" for all components of this project
-// 6. Call "this.postSynthesize()"
-// Experimental.
 func (p *jsiiProxy_PythonProject) Synth() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1659,10 +1766,6 @@ func (p *jsiiProxy_PythonProject) Synth() {
 	)
 }
 
-// Finds a file at the specified relative path within this project and all its subprojects.
-//
-// Returns: a `FileBase` or undefined if there is no file in that path
-// Experimental.
 func (p *jsiiProxy_PythonProject) TryFindFile(filePath *string) projen.FileBase {
 	var returns projen.FileBase
 
@@ -1676,8 +1779,6 @@ func (p *jsiiProxy_PythonProject) TryFindFile(filePath *string) projen.FileBase 
 	return returns
 }
 
-// Finds a json file by name.
-// Deprecated: use `tryFindObjectFile`
 func (p *jsiiProxy_PythonProject) TryFindJsonFile(filePath *string) projen.JsonFile {
 	var returns projen.JsonFile
 
@@ -1691,8 +1792,6 @@ func (p *jsiiProxy_PythonProject) TryFindJsonFile(filePath *string) projen.JsonF
 	return returns
 }
 
-// Finds an object file (like JsonFile, YamlFile, etc.) by name.
-// Experimental.
 func (p *jsiiProxy_PythonProject) TryFindObjectFile(filePath *string) projen.ObjectFile {
 	var returns projen.ObjectFile
 
@@ -1771,7 +1870,7 @@ type PythonProjectOptions struct {
 	// Deprecated: use `githubOptions.mergifyOptions` instead
 	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
-	// Deprecated: no longer supported at the base project level
+	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
@@ -1781,7 +1880,8 @@ type PythonProjectOptions struct {
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "{ filename: 'readme.md', contents: '# title' }"
 	//
 	// Experimental.
 	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
@@ -1887,9 +1987,18 @@ type PythonProjectOptions struct {
 // Experimental.
 type PythonSample interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -1935,10 +2044,6 @@ func NewPythonSample_Override(p PythonSample, project PythonProject, _options *P
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_PythonSample) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1947,8 +2052,6 @@ func (p *jsiiProxy_PythonSample) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_PythonSample) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1957,8 +2060,6 @@ func (p *jsiiProxy_PythonSample) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_PythonSample) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1978,19 +2079,54 @@ type PythonSampleOptions struct {
 // Experimental.
 type RequirementsFile interface {
 	projen.FileBase
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() projen.Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// Adds the specified packages provided in semver format.
+	//
+	// Comment lines (start with `#`) are ignored.
+	// Experimental.
 	AddPackages(packages ...*string)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	// Experimental.
 	SynthesizeContent(resolver projen.IResolver) *string
 }
 
@@ -2112,10 +2248,6 @@ func (j *jsiiProxy_RequirementsFile) SetReadonly(val *bool) {
 	)
 }
 
-// Adds the specified packages provided in semver format.
-//
-// Comment lines (start with `#`) are ignored.
-// Experimental.
 func (r *jsiiProxy_RequirementsFile) AddPackages(packages ...*string) {
 	args := []interface{}{}
 	for _, a := range packages {
@@ -2129,10 +2261,6 @@ func (r *jsiiProxy_RequirementsFile) AddPackages(packages ...*string) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (r *jsiiProxy_RequirementsFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		r,
@@ -2141,8 +2269,6 @@ func (r *jsiiProxy_RequirementsFile) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (r *jsiiProxy_RequirementsFile) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		r,
@@ -2151,8 +2277,6 @@ func (r *jsiiProxy_RequirementsFile) PreSynthesize() {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (r *jsiiProxy_RequirementsFile) Synthesize() {
 	_jsii_.InvokeVoid(
 		r,
@@ -2161,8 +2285,6 @@ func (r *jsiiProxy_RequirementsFile) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-// Experimental.
 func (r *jsiiProxy_RequirementsFile) SynthesizeContent(resolver projen.IResolver) *string {
 	var returns *string
 
@@ -2187,18 +2309,49 @@ type RequirementsFileOptions struct {
 // Experimental.
 type SetupPy interface {
 	projen.FileBase
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() projen.Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	// Experimental.
 	SynthesizeContent(resolver projen.IResolver) *string
 }
 
@@ -2320,10 +2473,6 @@ func (j *jsiiProxy_SetupPy) SetReadonly(val *bool) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (s *jsiiProxy_SetupPy) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -2332,8 +2481,6 @@ func (s *jsiiProxy_SetupPy) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (s *jsiiProxy_SetupPy) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -2342,8 +2489,6 @@ func (s *jsiiProxy_SetupPy) PreSynthesize() {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (s *jsiiProxy_SetupPy) Synthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -2352,8 +2497,6 @@ func (s *jsiiProxy_SetupPy) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-// Experimental.
 func (s *jsiiProxy_SetupPy) SynthesizeContent(resolver projen.IResolver) *string {
 	var returns *string
 
@@ -2408,11 +2551,24 @@ type SetupPyOptions struct {
 type Setuptools interface {
 	projen.Component
 	IPythonPackaging
+	// Experimental.
 	Project() projen.Project
+	// A task that uploads the package to a package repository.
+	// Experimental.
 	PublishTask() projen.Task
+	// A task that uploads the package to the Test PyPI repository.
+	// Experimental.
 	PublishTestTask() projen.Task
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -2479,10 +2635,6 @@ func NewSetuptools_Override(s Setuptools, project PythonProject, options *Python
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (s *jsiiProxy_Setuptools) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -2491,8 +2643,6 @@ func (s *jsiiProxy_Setuptools) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (s *jsiiProxy_Setuptools) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -2501,8 +2651,6 @@ func (s *jsiiProxy_Setuptools) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (s *jsiiProxy_Setuptools) Synthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -2516,10 +2664,21 @@ func (s *jsiiProxy_Setuptools) Synthesize() {
 type Venv interface {
 	projen.Component
 	IPythonEnv
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Initializes the virtual environment if it doesn't exist (called during post-synthesis).
+	// Experimental.
 	SetupEnvironment()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -2566,10 +2725,6 @@ func NewVenv_Override(v Venv, project PythonProject, options *VenvOptions) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (v *jsiiProxy_Venv) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		v,
@@ -2578,8 +2733,6 @@ func (v *jsiiProxy_Venv) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (v *jsiiProxy_Venv) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		v,
@@ -2588,8 +2741,6 @@ func (v *jsiiProxy_Venv) PreSynthesize() {
 	)
 }
 
-// Initializes the virtual environment if it doesn't exist (called during post-synthesis).
-// Experimental.
 func (v *jsiiProxy_Venv) SetupEnvironment() {
 	_jsii_.InvokeVoid(
 		v,
@@ -2598,8 +2749,6 @@ func (v *jsiiProxy_Venv) SetupEnvironment() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (v *jsiiProxy_Venv) Synthesize() {
 	_jsii_.InvokeVoid(
 		v,

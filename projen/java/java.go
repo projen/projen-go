@@ -14,56 +14,200 @@ import (
 // Experimental.
 type JavaProject interface {
 	github.GitHubProject
+	// Auto approve set up for this project.
+	// Deprecated.
 	AutoApprove() github.AutoApprove
+	// Experimental.
 	BuildTask() projen.Task
+	// Compile component.
+	// Experimental.
 	Compile() MavenCompile
+	// Experimental.
 	CompileTask() projen.Task
+	// Returns all the components within this project.
+	// Experimental.
 	Components() *[]projen.Component
+	// This is the "default" task, the one that executes "projen".
+	//
+	// Undefined if
+	// the project is being ejected.
+	// Experimental.
 	DefaultTask() projen.Task
+	// Project dependencies.
+	// Experimental.
 	Deps() projen.Dependencies
+	// Access for .devcontainer.json (used for GitHub Codespaces).
+	//
+	// This will be `undefined` if devContainer boolean is false.
+	// Deprecated.
 	DevContainer() vscode.DevContainer
+	// Maven artifact output directory.
+	// Experimental.
 	Distdir() *string
+	// Whether or not the project is being ejected.
+	// Experimental.
 	Ejected() *bool
+	// All files in this project.
+	// Experimental.
 	Files() *[]projen.FileBase
+	// The .gitattributes file for this repository.
+	// Experimental.
 	Gitattributes() projen.GitAttributesFile
+	// Access all github components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Github() github.GitHub
+	// .gitignore.
+	// Experimental.
 	Gitignore() projen.IgnoreFile
+	// Access for Gitpod.
+	//
+	// This will be `undefined` if gitpod boolean is false.
+	// Deprecated.
 	Gitpod() projen.Gitpod
+	// The options used when this project is bootstrapped via `projen new`.
+	//
+	// It
+	// includes the original set of options passed to the CLI and also the JSII
+	// FQN of the project type.
+	// Experimental.
 	InitProject() *projen.InitProject
+	// JUnit component.
+	// Experimental.
 	Junit() Junit
+	// Logging utilities.
+	// Experimental.
 	Logger() projen.Logger
+	// Project name.
+	// Experimental.
 	Name() *string
+	// Absolute output directory of this project.
+	// Experimental.
 	Outdir() *string
+	// Experimental.
 	PackageTask() projen.Task
+	// Packaging component.
+	// Experimental.
 	Packaging() MavenPackaging
+	// A parent project.
+	//
+	// If undefined, this is the root project.
+	// Experimental.
 	Parent() projen.Project
+	// API for managing `pom.xml`.
+	// Experimental.
 	Pom() Pom
+	// Experimental.
 	PostCompileTask() projen.Task
+	// Experimental.
 	PreCompileTask() projen.Task
+	// Manages the build process of the project.
+	// Experimental.
 	ProjectBuild() projen.ProjectBuild
+	// Deprecated.
 	ProjectType() projen.ProjectType
+	// The command to use in order to run the projen CLI.
+	// Experimental.
 	ProjenCommand() *string
+	// Projenrc component.
+	// Experimental.
 	Projenrc() Projenrc
+	// The root project.
+	// Experimental.
 	Root() projen.Project
+	// Project tasks.
+	// Experimental.
 	Tasks() projen.Tasks
+	// Experimental.
 	TestTask() projen.Task
+	// Access all VSCode components.
+	//
+	// This will be `undefined` for subprojects.
+	// Deprecated.
 	Vscode() vscode.VsCode
+	// Adds a runtime dependency.
+	// Experimental.
 	AddDependency(spec *string)
+	// Exclude the matching files from pre-synth cleanup.
+	//
+	// Can be used when, for example, some
+	// source files include the projen marker and we don't want them to be erased during synth.
+	// Experimental.
 	AddExcludeFromCleanup(globs ...*string)
+	// Adds a .gitignore pattern.
+	// Experimental.
 	AddGitIgnore(pattern *string)
+	// Exclude these files from the bundled package.
+	//
+	// Implemented by project types based on the
+	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Experimental.
 	AddPackageIgnore(_pattern *string)
+	// Adds a build plugin to the pom.
+	//
+	// The plug in is also added as a BUILD dep to the project.
+	// Experimental.
 	AddPlugin(spec *string, options *PluginOptions) *projen.Dependency
+	// Adds a new task to this project.
+	//
+	// This will fail if the project already has
+	// a task with this name.
+	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
+	// Adds a test dependency.
+	// Experimental.
 	AddTestDependency(spec *string)
+	// Prints a "tip" message during synthesis.
+	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 	AddTip(message *string)
+	// Marks the provided file(s) as being generated.
+	//
+	// This is achieved using the
+	// github-linguist attributes. Generated files do not count against the
+	// repository statistics and language breakdown.
+	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
+	//
+	// Deprecated.
 	AnnotateGenerated(glob *string)
+	// Called after all components are synthesized.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before all components are synthesized.
+	// Experimental.
 	PreSynthesize()
+	// Removes a task from a project.
+	//
+	// Returns: The `Task` that was removed, otherwise `undefined`.
+	// Experimental.
 	RemoveTask(name *string) projen.Task
+	// Returns the shell command to execute in order to run a task.
+	//
+	// By default, this is `npx projen@<version> <task>`.
+	// Experimental.
 	RunTaskCommand(task projen.Task) *string
+	// Synthesize all project files into `outdir`.
+	//
+	// 1. Call "this.preSynthesize()"
+	// 2. Delete all generated files
+	// 3. Synthesize all sub-projects
+	// 4. Synthesize all components of this project
+	// 5. Call "postSynthesize()" for all components of this project
+	// 6. Call "this.postSynthesize()"
+	// Experimental.
 	Synth()
+	// Finds a file at the specified relative path within this project and all its subprojects.
+	//
+	// Returns: a `FileBase` or undefined if there is no file in that path.
+	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
+	// Finds a json file by name.
+	// Deprecated: use `tryFindObjectFile`.
 	TryFindJsonFile(filePath *string) projen.JsonFile
+	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
 }
 
@@ -450,8 +594,6 @@ func JavaProject_DEFAULT_TASK() *string {
 	return returns
 }
 
-// Adds a runtime dependency.
-// Experimental.
 func (j *jsiiProxy_JavaProject) AddDependency(spec *string) {
 	_jsii_.InvokeVoid(
 		j,
@@ -460,11 +602,6 @@ func (j *jsiiProxy_JavaProject) AddDependency(spec *string) {
 	)
 }
 
-// Exclude the matching files from pre-synth cleanup.
-//
-// Can be used when, for example, some
-// source files include the projen marker and we don't want them to be erased during synth.
-// Experimental.
 func (j *jsiiProxy_JavaProject) AddExcludeFromCleanup(globs ...*string) {
 	args := []interface{}{}
 	for _, a := range globs {
@@ -478,8 +615,6 @@ func (j *jsiiProxy_JavaProject) AddExcludeFromCleanup(globs ...*string) {
 	)
 }
 
-// Adds a .gitignore pattern.
-// Experimental.
 func (j *jsiiProxy_JavaProject) AddGitIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		j,
@@ -488,11 +623,6 @@ func (j *jsiiProxy_JavaProject) AddGitIgnore(pattern *string) {
 	)
 }
 
-// Exclude these files from the bundled package.
-//
-// Implemented by project types based on the
-// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
-// Experimental.
 func (j *jsiiProxy_JavaProject) AddPackageIgnore(_pattern *string) {
 	_jsii_.InvokeVoid(
 		j,
@@ -501,10 +631,6 @@ func (j *jsiiProxy_JavaProject) AddPackageIgnore(_pattern *string) {
 	)
 }
 
-// Adds a build plugin to the pom.
-//
-// The plug in is also added as a BUILD dep to the project.
-// Experimental.
 func (j *jsiiProxy_JavaProject) AddPlugin(spec *string, options *PluginOptions) *projen.Dependency {
 	var returns *projen.Dependency
 
@@ -518,11 +644,6 @@ func (j *jsiiProxy_JavaProject) AddPlugin(spec *string, options *PluginOptions) 
 	return returns
 }
 
-// Adds a new task to this project.
-//
-// This will fail if the project already has
-// a task with this name.
-// Experimental.
 func (j *jsiiProxy_JavaProject) AddTask(name *string, props *projen.TaskOptions) projen.Task {
 	var returns projen.Task
 
@@ -536,8 +657,6 @@ func (j *jsiiProxy_JavaProject) AddTask(name *string, props *projen.TaskOptions)
 	return returns
 }
 
-// Adds a test dependency.
-// Experimental.
 func (j *jsiiProxy_JavaProject) AddTestDependency(spec *string) {
 	_jsii_.InvokeVoid(
 		j,
@@ -546,8 +665,6 @@ func (j *jsiiProxy_JavaProject) AddTestDependency(spec *string) {
 	)
 }
 
-// Prints a "tip" message during synthesis.
-// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 func (j *jsiiProxy_JavaProject) AddTip(message *string) {
 	_jsii_.InvokeVoid(
 		j,
@@ -556,14 +673,6 @@ func (j *jsiiProxy_JavaProject) AddTip(message *string) {
 	)
 }
 
-// Marks the provided file(s) as being generated.
-//
-// This is achieved using the
-// github-linguist attributes. Generated files do not count against the
-// repository statistics and language breakdown.
-// See: https://github.com/github/linguist/blob/master/docs/overrides.md
-//
-// Deprecated.
 func (j *jsiiProxy_JavaProject) AnnotateGenerated(glob *string) {
 	_jsii_.InvokeVoid(
 		j,
@@ -572,10 +681,6 @@ func (j *jsiiProxy_JavaProject) AnnotateGenerated(glob *string) {
 	)
 }
 
-// Called after all components are synthesized.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (j *jsiiProxy_JavaProject) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		j,
@@ -584,8 +689,6 @@ func (j *jsiiProxy_JavaProject) PostSynthesize() {
 	)
 }
 
-// Called before all components are synthesized.
-// Experimental.
 func (j *jsiiProxy_JavaProject) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		j,
@@ -594,10 +697,6 @@ func (j *jsiiProxy_JavaProject) PreSynthesize() {
 	)
 }
 
-// Removes a task from a project.
-//
-// Returns: The `Task` that was removed, otherwise `undefined`.
-// Experimental.
 func (j *jsiiProxy_JavaProject) RemoveTask(name *string) projen.Task {
 	var returns projen.Task
 
@@ -611,10 +710,6 @@ func (j *jsiiProxy_JavaProject) RemoveTask(name *string) projen.Task {
 	return returns
 }
 
-// Returns the shell command to execute in order to run a task.
-//
-// By default, this is `npx projen@<version> <task>`
-// Experimental.
 func (j *jsiiProxy_JavaProject) RunTaskCommand(task projen.Task) *string {
 	var returns *string
 
@@ -628,15 +723,6 @@ func (j *jsiiProxy_JavaProject) RunTaskCommand(task projen.Task) *string {
 	return returns
 }
 
-// Synthesize all project files into `outdir`.
-//
-// 1. Call "this.preSynthesize()"
-// 2. Delete all generated files
-// 3. Synthesize all sub-projects
-// 4. Synthesize all components of this project
-// 5. Call "postSynthesize()" for all components of this project
-// 6. Call "this.postSynthesize()"
-// Experimental.
 func (j *jsiiProxy_JavaProject) Synth() {
 	_jsii_.InvokeVoid(
 		j,
@@ -645,10 +731,6 @@ func (j *jsiiProxy_JavaProject) Synth() {
 	)
 }
 
-// Finds a file at the specified relative path within this project and all its subprojects.
-//
-// Returns: a `FileBase` or undefined if there is no file in that path
-// Experimental.
 func (j *jsiiProxy_JavaProject) TryFindFile(filePath *string) projen.FileBase {
 	var returns projen.FileBase
 
@@ -662,8 +744,6 @@ func (j *jsiiProxy_JavaProject) TryFindFile(filePath *string) projen.FileBase {
 	return returns
 }
 
-// Finds a json file by name.
-// Deprecated: use `tryFindObjectFile`
 func (j *jsiiProxy_JavaProject) TryFindJsonFile(filePath *string) projen.JsonFile {
 	var returns projen.JsonFile
 
@@ -677,8 +757,6 @@ func (j *jsiiProxy_JavaProject) TryFindJsonFile(filePath *string) projen.JsonFil
 	return returns
 }
 
-// Finds an object file (like JsonFile, YamlFile, etc.) by name.
-// Experimental.
 func (j *jsiiProxy_JavaProject) TryFindObjectFile(filePath *string) projen.ObjectFile {
 	var returns projen.ObjectFile
 
@@ -757,7 +835,7 @@ type JavaProjectCommonOptions struct {
 	// Deprecated: use `githubOptions.mergifyOptions` instead
 	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
-	// Deprecated: no longer supported at the base project level
+	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
@@ -767,7 +845,8 @@ type JavaProjectCommonOptions struct {
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "{ filename: 'readme.md', contents: '# title' }"
 	//
 	// Experimental.
 	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
@@ -947,7 +1026,7 @@ type JavaProjectOptions struct {
 	// Deprecated: use `githubOptions.mergifyOptions` instead
 	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
-	// Deprecated: no longer supported at the base project level
+	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
@@ -957,7 +1036,8 @@ type JavaProjectOptions struct {
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "{ filename: 'readme.md', contents: '# title' }"
 	//
 	// Experimental.
 	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
@@ -1082,9 +1162,18 @@ type JavaProjectOptions struct {
 // Experimental.
 type Junit interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -1130,10 +1219,6 @@ func NewJunit_Override(j Junit, project projen.Project, options *JunitOptions) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (j *jsiiProxy_Junit) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		j,
@@ -1142,8 +1227,6 @@ func (j *jsiiProxy_Junit) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (j *jsiiProxy_Junit) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		j,
@@ -1152,8 +1235,6 @@ func (j *jsiiProxy_Junit) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (j *jsiiProxy_Junit) Synthesize() {
 	_jsii_.InvokeVoid(
 		j,
@@ -1180,9 +1261,18 @@ type JunitOptions struct {
 // Experimental.
 type MavenCompile interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -1228,10 +1318,6 @@ func NewMavenCompile_Override(m MavenCompile, project projen.Project, pom Pom, o
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (m *jsiiProxy_MavenCompile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -1240,8 +1326,6 @@ func (m *jsiiProxy_MavenCompile) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (m *jsiiProxy_MavenCompile) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -1250,8 +1334,6 @@ func (m *jsiiProxy_MavenCompile) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (m *jsiiProxy_MavenCompile) Synthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -1275,9 +1357,18 @@ type MavenCompileOptions struct {
 // Experimental.
 type MavenPackaging interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -1323,10 +1414,6 @@ func NewMavenPackaging_Override(m MavenPackaging, project projen.Project, pom Po
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (m *jsiiProxy_MavenPackaging) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -1335,8 +1422,6 @@ func (m *jsiiProxy_MavenPackaging) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (m *jsiiProxy_MavenPackaging) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -1345,8 +1430,6 @@ func (m *jsiiProxy_MavenPackaging) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (m *jsiiProxy_MavenPackaging) Synthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -1376,9 +1459,18 @@ type MavenPackagingOptions struct {
 // Experimental.
 type MavenSample interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -1424,10 +1516,6 @@ func NewMavenSample_Override(m MavenSample, project projen.Project, options *Mav
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (m *jsiiProxy_MavenSample) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -1436,8 +1524,6 @@ func (m *jsiiProxy_MavenSample) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (m *jsiiProxy_MavenSample) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -1446,8 +1532,6 @@ func (m *jsiiProxy_MavenSample) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (m *jsiiProxy_MavenSample) Synthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -1498,21 +1582,56 @@ type PluginOptions struct {
 // Experimental.
 type Pom interface {
 	projen.Component
+	// Maven artifact ID.
+	// Experimental.
 	ArtifactId() *string
+	// Project description.
+	// Experimental.
 	Description() *string
+	// The name of the pom file.
+	// Experimental.
 	FileName() *string
+	// Maven group ID.
+	// Experimental.
 	GroupId() *string
+	// Project display name.
+	// Experimental.
 	Name() *string
+	// Maven packaging format.
+	// Experimental.
 	Packaging() *string
+	// Experimental.
 	Project() projen.Project
+	// Project URL.
+	// Experimental.
 	Url() *string
+	// Project version.
+	// Experimental.
 	Version() *string
+	// Adds a runtime dependency.
+	// Experimental.
 	AddDependency(spec *string)
+	// Adds a build plugin to the pom.
+	//
+	// The plug in is also added as a BUILD dep to the project.
+	// Experimental.
 	AddPlugin(spec *string, options *PluginOptions) *projen.Dependency
+	// Adds a key/value property to the pom.
+	// Experimental.
 	AddProperty(key *string, value *string)
+	// Adds a test dependency.
+	// Experimental.
 	AddTestDependency(spec *string)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -1638,8 +1757,6 @@ func NewPom_Override(p Pom, project projen.Project, options *PomOptions) {
 	)
 }
 
-// Adds a runtime dependency.
-// Experimental.
 func (p *jsiiProxy_Pom) AddDependency(spec *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -1648,10 +1765,6 @@ func (p *jsiiProxy_Pom) AddDependency(spec *string) {
 	)
 }
 
-// Adds a build plugin to the pom.
-//
-// The plug in is also added as a BUILD dep to the project.
-// Experimental.
 func (p *jsiiProxy_Pom) AddPlugin(spec *string, options *PluginOptions) *projen.Dependency {
 	var returns *projen.Dependency
 
@@ -1665,8 +1778,6 @@ func (p *jsiiProxy_Pom) AddPlugin(spec *string, options *PluginOptions) *projen.
 	return returns
 }
 
-// Adds a key/value property to the pom.
-// Experimental.
 func (p *jsiiProxy_Pom) AddProperty(key *string, value *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -1675,8 +1786,6 @@ func (p *jsiiProxy_Pom) AddProperty(key *string, value *string) {
 	)
 }
 
-// Adds a test dependency.
-// Experimental.
 func (p *jsiiProxy_Pom) AddTestDependency(spec *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -1685,10 +1794,6 @@ func (p *jsiiProxy_Pom) AddTestDependency(spec *string) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_Pom) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1697,8 +1802,6 @@ func (p *jsiiProxy_Pom) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_Pom) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1707,8 +1810,6 @@ func (p *jsiiProxy_Pom) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_Pom) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1786,10 +1887,21 @@ type PomOptions struct {
 // Experimental.
 type Projenrc interface {
 	projen.Component
+	// The name of the java class that includes the projen entrypoint.
+	// Experimental.
 	ClassName() *string
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -1845,10 +1957,6 @@ func NewProjenrc_Override(p Projenrc, project projen.Project, pom Pom, options *
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_Projenrc) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1857,8 +1965,6 @@ func (p *jsiiProxy_Projenrc) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_Projenrc) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -1867,8 +1973,6 @@ func (p *jsiiProxy_Projenrc) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_Projenrc) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,

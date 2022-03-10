@@ -16,14 +16,35 @@ import (
 type DevContainer interface {
 	projen.Component
 	projen.IDevEnvironment
+	// Direct access to the devcontainer configuration (escape hatch).
+	// Experimental.
 	Config() interface{}
+	// Experimental.
 	Project() projen.Project
+	// Add a custom Docker image or Dockerfile for the container.
+	// Experimental.
 	AddDockerImage(image projen.DevEnvironmentDockerImage)
+	// Adds ports that should be exposed (forwarded) from the container.
+	// Experimental.
 	AddPorts(ports ...*string)
+	// Adds tasks to run when the container starts.
+	//
+	// Tasks will be run in sequence.
+	// Experimental.
 	AddTasks(tasks ...projen.Task)
+	// Adds a list of VSCode extensions that should be automatically installed in the container.
+	// Experimental.
 	AddVscodeExtensions(extensions ...*string)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -80,8 +101,6 @@ func NewDevContainer_Override(d DevContainer, project projen.Project, options *D
 	)
 }
 
-// Add a custom Docker image or Dockerfile for the container.
-// Experimental.
 func (d *jsiiProxy_DevContainer) AddDockerImage(image projen.DevEnvironmentDockerImage) {
 	_jsii_.InvokeVoid(
 		d,
@@ -90,8 +109,6 @@ func (d *jsiiProxy_DevContainer) AddDockerImage(image projen.DevEnvironmentDocke
 	)
 }
 
-// Adds ports that should be exposed (forwarded) from the container.
-// Experimental.
 func (d *jsiiProxy_DevContainer) AddPorts(ports ...*string) {
 	args := []interface{}{}
 	for _, a := range ports {
@@ -105,10 +122,6 @@ func (d *jsiiProxy_DevContainer) AddPorts(ports ...*string) {
 	)
 }
 
-// Adds tasks to run when the container starts.
-//
-// Tasks will be run in sequence.
-// Experimental.
 func (d *jsiiProxy_DevContainer) AddTasks(tasks ...projen.Task) {
 	args := []interface{}{}
 	for _, a := range tasks {
@@ -122,8 +135,6 @@ func (d *jsiiProxy_DevContainer) AddTasks(tasks ...projen.Task) {
 	)
 }
 
-// Adds a list of VSCode extensions that should be automatically installed in the container.
-// Experimental.
 func (d *jsiiProxy_DevContainer) AddVscodeExtensions(extensions ...*string) {
 	args := []interface{}{}
 	for _, a := range extensions {
@@ -137,10 +148,6 @@ func (d *jsiiProxy_DevContainer) AddVscodeExtensions(extensions ...*string) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (d *jsiiProxy_DevContainer) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		d,
@@ -149,8 +156,6 @@ func (d *jsiiProxy_DevContainer) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (d *jsiiProxy_DevContainer) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		d,
@@ -159,8 +164,6 @@ func (d *jsiiProxy_DevContainer) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (d *jsiiProxy_DevContainer) Synthesize() {
 	_jsii_.InvokeVoid(
 		d,
@@ -171,7 +174,7 @@ func (d *jsiiProxy_DevContainer) Synthesize() {
 
 // Constructor options for the DevContainer component.
 //
-// The default docker image used for GitHub Codespaces is defined here:
+// The default docker image used for GitHub Codespaces is defined here:.
 // See: https://github.com/microsoft/vscode-dev-containers/tree/master/containers/codespaces-linux
 //
 // Experimental.
@@ -195,8 +198,11 @@ type DevContainerOptions struct {
 type InternalConsoleOptions string
 
 const (
+	// Experimental.
 	InternalConsoleOptions_NEVER_OPEN InternalConsoleOptions = "NEVER_OPEN"
+	// Experimental.
 	InternalConsoleOptions_OPEN_ON_FIRST_SESSION_START InternalConsoleOptions = "OPEN_ON_FIRST_SESSION_START"
+	// Experimental.
 	InternalConsoleOptions_OPEN_ON_SESSION_START InternalConsoleOptions = "OPEN_ON_SESSION_START"
 )
 
@@ -225,10 +231,20 @@ type ServerReadyAction struct {
 // Experimental.
 type VsCode interface {
 	projen.Component
+	// Experimental.
 	LaunchConfiguration() VsCodeLaunchConfig
+	// Experimental.
 	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -284,10 +300,6 @@ func NewVsCode_Override(v VsCode, project projen.Project) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (v *jsiiProxy_VsCode) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		v,
@@ -296,8 +308,6 @@ func (v *jsiiProxy_VsCode) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (v *jsiiProxy_VsCode) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		v,
@@ -306,8 +316,6 @@ func (v *jsiiProxy_VsCode) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (v *jsiiProxy_VsCode) Synthesize() {
 	_jsii_.InvokeVoid(
 		v,
@@ -320,10 +328,21 @@ func (v *jsiiProxy_VsCode) Synthesize() {
 // Experimental.
 type VsCodeLaunchConfig interface {
 	projen.Component
+	// Experimental.
 	Project() projen.Project
+	// Adds a VsCodeLaunchConfigurationEntry (e.g. a node.js debugger) to `.vscode/launch.json. Each configuration entry has following mandatory fields: type, request and name. See https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes for details.
+	// Experimental.
 	AddConfiguration(cfg *VsCodeLaunchConfigurationEntry)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -369,8 +388,6 @@ func NewVsCodeLaunchConfig_Override(v VsCodeLaunchConfig, vscode VsCode) {
 	)
 }
 
-// Adds a VsCodeLaunchConfigurationEntry (e.g. a node.js debugger) to `.vscode/launch.json. Each configuration entry has following mandatory fields: type, request and name. See https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes for details.
-// Experimental.
 func (v *jsiiProxy_VsCodeLaunchConfig) AddConfiguration(cfg *VsCodeLaunchConfigurationEntry) {
 	_jsii_.InvokeVoid(
 		v,
@@ -379,10 +396,6 @@ func (v *jsiiProxy_VsCodeLaunchConfig) AddConfiguration(cfg *VsCodeLaunchConfigu
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (v *jsiiProxy_VsCodeLaunchConfig) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		v,
@@ -391,8 +404,6 @@ func (v *jsiiProxy_VsCodeLaunchConfig) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (v *jsiiProxy_VsCodeLaunchConfig) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		v,
@@ -401,8 +412,6 @@ func (v *jsiiProxy_VsCodeLaunchConfig) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (v *jsiiProxy_VsCodeLaunchConfig) Synthesize() {
 	_jsii_.InvokeVoid(
 		v,

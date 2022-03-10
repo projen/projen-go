@@ -9,9 +9,18 @@ import (
 // Represents a project component.
 // Experimental.
 type Component interface {
+	// Experimental.
 	Project() Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -57,10 +66,6 @@ func NewComponent_Override(c Component, project Project) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (c *jsiiProxy_Component) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		c,
@@ -69,8 +74,6 @@ func (c *jsiiProxy_Component) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (c *jsiiProxy_Component) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		c,
@@ -79,8 +82,6 @@ func (c *jsiiProxy_Component) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (c *jsiiProxy_Component) Synthesize() {
 	_jsii_.InvokeVoid(
 		c,
@@ -96,7 +97,8 @@ type CreateProjectOptions struct {
 	Dir *string `json:"dir" yaml:"dir"`
 	// Fully-qualified name of the project type (usually formatted as `module.ProjectType`).
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   `projen.TypescriptProject`
 	//
 	// Experimental.
 	ProjectFqn *string `json:"projectFqn" yaml:"projectFqn"`
@@ -132,14 +134,46 @@ type CreateProjectOptions struct {
 // Experimental.
 type Dependencies interface {
 	Component
+	// A copy of all dependencies recorded for this project.
+	//
+	// The list is sorted by type->name->version.
+	// Experimental.
 	All() *[]*Dependency
+	// Experimental.
 	Project() Project
+	// Adds a dependency to this project.
+	// Experimental.
 	AddDependency(spec *string, type_ DependencyType, metadata *map[string]interface{}) *Dependency
+	// Returns a dependency by name.
+	//
+	// Fails if there is no dependency defined by that name or if `type` is not
+	// provided and there is more then one dependency type for this dependency.
+	//
+	// Returns: a copy (cannot be modified).
+	// Experimental.
 	GetDependency(name *string, type_ DependencyType) *Dependency
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Removes a dependency.
+	// Experimental.
 	RemoveDependency(name *string, type_ DependencyType)
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
+	// Returns a dependency by name.
+	//
+	// Returns `undefined` if there is no dependency defined by that name or if
+	// `type` is not provided and there is more then one dependency type for this
+	// dependency.
+	//
+	// Returns: a copy (cannot be modified) or undefined if there is no match.
+	// Experimental.
 	TryGetDependency(name *string, type_ DependencyType) *Dependency
 }
 
@@ -228,8 +262,6 @@ func Dependencies_MANIFEST_FILE() *string {
 	return returns
 }
 
-// Adds a dependency to this project.
-// Experimental.
 func (d *jsiiProxy_Dependencies) AddDependency(spec *string, type_ DependencyType, metadata *map[string]interface{}) *Dependency {
 	var returns *Dependency
 
@@ -243,13 +275,6 @@ func (d *jsiiProxy_Dependencies) AddDependency(spec *string, type_ DependencyTyp
 	return returns
 }
 
-// Returns a dependency by name.
-//
-// Fails if there is no dependency defined by that name or if `type` is not
-// provided and there is more then one dependency type for this dependency.
-//
-// Returns: a copy (cannot be modified)
-// Experimental.
 func (d *jsiiProxy_Dependencies) GetDependency(name *string, type_ DependencyType) *Dependency {
 	var returns *Dependency
 
@@ -263,10 +288,6 @@ func (d *jsiiProxy_Dependencies) GetDependency(name *string, type_ DependencyTyp
 	return returns
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (d *jsiiProxy_Dependencies) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		d,
@@ -275,8 +296,6 @@ func (d *jsiiProxy_Dependencies) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (d *jsiiProxy_Dependencies) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		d,
@@ -285,8 +304,6 @@ func (d *jsiiProxy_Dependencies) PreSynthesize() {
 	)
 }
 
-// Removes a dependency.
-// Experimental.
 func (d *jsiiProxy_Dependencies) RemoveDependency(name *string, type_ DependencyType) {
 	_jsii_.InvokeVoid(
 		d,
@@ -295,8 +312,6 @@ func (d *jsiiProxy_Dependencies) RemoveDependency(name *string, type_ Dependency
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (d *jsiiProxy_Dependencies) Synthesize() {
 	_jsii_.InvokeVoid(
 		d,
@@ -305,14 +320,6 @@ func (d *jsiiProxy_Dependencies) Synthesize() {
 	)
 }
 
-// Returns a dependency by name.
-//
-// Returns `undefined` if there is no dependency defined by that name or if
-// `type` is not provided and there is more then one dependency type for this
-// dependency.
-//
-// Returns: a copy (cannot be modified) or undefined if there is no match
-// Experimental.
 func (d *jsiiProxy_Dependencies) TryGetDependency(name *string, type_ DependencyType) *Dependency {
 	var returns *Dependency
 
@@ -365,11 +372,23 @@ type DependencyCoordinates struct {
 type DependencyType string
 
 const (
+	// The dependency is required for the program/library during runtime.
+	// Experimental.
 	DependencyType_RUNTIME DependencyType = "RUNTIME"
+	// The dependency is required at runtime but expected to be installed by the consumer.
+	// Experimental.
 	DependencyType_PEER DependencyType = "PEER"
+	// The dependency is bundled and shipped with the module, so consumers are not required to install it.
+	// Experimental.
 	DependencyType_BUNDLED DependencyType = "BUNDLED"
+	// The dependency is required to run the `build` task.
+	// Experimental.
 	DependencyType_BUILD DependencyType = "BUILD"
+	// The dependency is required to run the `test` task.
+	// Experimental.
 	DependencyType_TEST DependencyType = "TEST"
+	// The dependency is required for development (e.g. IDE plugins).
+	// Experimental.
 	DependencyType_DEVENV DependencyType = "DEVENV"
 )
 
@@ -383,7 +402,11 @@ type DepsManifest struct {
 // Options for specifying the Docker image of the container.
 // Experimental.
 type DevEnvironmentDockerImage interface {
+	// The relative path of a Dockerfile that defines the container contents.
+	// Experimental.
 	DockerFile() *string
+	// A publicly available Docker image.
+	// Experimental.
 	Image() *string
 }
 
@@ -415,7 +438,8 @@ func (j *jsiiProxy_DevEnvironmentDockerImage) Image() *string {
 
 // The relative path of a Dockerfile that defines the container contents.
 //
-// TODO: EXAMPLE
+// Example:
+//   '.gitpod.Docker'
 //
 // Experimental.
 func DevEnvironmentDockerImage_FromFile(dockerFile *string) DevEnvironmentDockerImage {
@@ -435,7 +459,8 @@ func DevEnvironmentDockerImage_FromFile(dockerFile *string) DevEnvironmentDocker
 
 // A publicly available Docker image.
 //
-// TODO: EXAMPLE
+// Example:
+//   'ubuntu:latest'
 //
 // Experimental.
 func DevEnvironmentDockerImage_FromImage(image *string) DevEnvironmentDockerImage {
@@ -474,10 +499,21 @@ type DevEnvironmentOptions struct {
 // Experimental.
 type DockerCompose interface {
 	Component
+	// Experimental.
 	Project() Project
+	// Add a service to the docker-compose file.
+	// Experimental.
 	AddService(serviceName *string, description *DockerComposeServiceDescription) DockerComposeService
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -595,8 +631,6 @@ func DockerCompose_ServiceName(serviceName *string) IDockerComposeServiceName {
 	return returns
 }
 
-// Add a service to the docker-compose file.
-// Experimental.
 func (d *jsiiProxy_DockerCompose) AddService(serviceName *string, description *DockerComposeServiceDescription) DockerComposeService {
 	var returns DockerComposeService
 
@@ -610,10 +644,6 @@ func (d *jsiiProxy_DockerCompose) AddService(serviceName *string, description *D
 	return returns
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (d *jsiiProxy_DockerCompose) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		d,
@@ -622,8 +652,6 @@ func (d *jsiiProxy_DockerCompose) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (d *jsiiProxy_DockerCompose) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		d,
@@ -632,8 +660,6 @@ func (d *jsiiProxy_DockerCompose) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (d *jsiiProxy_DockerCompose) Synthesize() {
 	_jsii_.InvokeVoid(
 		d,
@@ -669,7 +695,8 @@ type DockerComposePortMappingOptions struct {
 type DockerComposeProps struct {
 	// A name to add to the docker-compose.yml filename.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   'myname' yields 'docker-compose.myname.yml'
 	//
 	// Experimental.
 	NameSuffix *string `json:"nameSuffix" yaml:"nameSuffix"`
@@ -686,7 +713,11 @@ type DockerComposeProps struct {
 type DockerComposeProtocol string
 
 const (
+	// TCP protocol.
+	// Experimental.
 	DockerComposeProtocol_TCP DockerComposeProtocol = "TCP"
+	// UDP protocol.
+	// Experimental.
 	DockerComposeProtocol_UDP DockerComposeProtocol = "UDP"
 )
 
@@ -694,17 +725,41 @@ const (
 // Experimental.
 type DockerComposeService interface {
 	IDockerComposeServiceName
+	// Command to run in the container.
+	// Experimental.
 	Command() *[]*string
+	// Other services that this service depends on.
+	// Experimental.
 	DependsOn() *[]IDockerComposeServiceName
+	// Environment variables.
+	// Experimental.
 	Environment() *map[string]*string
+	// Docker image.
+	// Experimental.
 	Image() *string
+	// Docker image build instructions.
+	// Experimental.
 	ImageBuild() *DockerComposeBuild
+	// Published ports.
+	// Experimental.
 	Ports() *[]*DockerComposeServicePort
+	// Name of the service.
+	// Experimental.
 	ServiceName() *string
+	// Volumes mounted in the container.
+	// Experimental.
 	Volumes() *[]IDockerComposeVolumeBinding
+	// Make the service depend on another service.
+	// Experimental.
 	AddDependsOn(serviceName IDockerComposeServiceName)
+	// Add an environment variable.
+	// Experimental.
 	AddEnvironment(name *string, value *string)
+	// Add a port mapping.
+	// Experimental.
 	AddPort(publishedPort *float64, targetPort *float64, options *DockerComposePortMappingOptions)
+	// Add a volume to the service.
+	// Experimental.
 	AddVolume(volume IDockerComposeVolumeBinding)
 }
 
@@ -820,8 +875,6 @@ func NewDockerComposeService_Override(d DockerComposeService, serviceName *strin
 	)
 }
 
-// Make the service depend on another service.
-// Experimental.
 func (d *jsiiProxy_DockerComposeService) AddDependsOn(serviceName IDockerComposeServiceName) {
 	_jsii_.InvokeVoid(
 		d,
@@ -830,8 +883,6 @@ func (d *jsiiProxy_DockerComposeService) AddDependsOn(serviceName IDockerCompose
 	)
 }
 
-// Add an environment variable.
-// Experimental.
 func (d *jsiiProxy_DockerComposeService) AddEnvironment(name *string, value *string) {
 	_jsii_.InvokeVoid(
 		d,
@@ -840,8 +891,6 @@ func (d *jsiiProxy_DockerComposeService) AddEnvironment(name *string, value *str
 	)
 }
 
-// Add a port mapping.
-// Experimental.
 func (d *jsiiProxy_DockerComposeService) AddPort(publishedPort *float64, targetPort *float64, options *DockerComposePortMappingOptions) {
 	_jsii_.InvokeVoid(
 		d,
@@ -850,8 +899,6 @@ func (d *jsiiProxy_DockerComposeService) AddPort(publishedPort *float64, targetP
 	)
 }
 
-// Add a volume to the service.
-// Experimental.
 func (d *jsiiProxy_DockerComposeService) AddVolume(volume IDockerComposeVolumeBinding) {
 	_jsii_.InvokeVoid(
 		d,
@@ -875,14 +922,14 @@ type DockerComposeServiceDescription struct {
 	// Use a docker image.
 	//
 	// Note: You must specify either `build` or `image` key.
-	// See: imageBuild
+	// See: imageBuild.
 	//
 	// Experimental.
 	Image *string `json:"image" yaml:"image"`
 	// Build a docker image.
 	//
 	// Note: You must specify either `imageBuild` or `image` key.
-	// See: image
+	// See: image.
 	//
 	// Experimental.
 	ImageBuild *DockerComposeBuild `json:"imageBuild" yaml:"imageBuild"`
@@ -891,7 +938,7 @@ type DockerComposeServiceDescription struct {
 	Ports *[]*DockerComposeServicePort `json:"ports" yaml:"ports"`
 	// Mount some volumes into the service.
 	//
-	// Use one of the following to create volumes:
+	// Use one of the following to create volumes:.
 	// See: DockerCompose.namedVolume() to create & mount a named volume
 	//
 	// Experimental.
@@ -949,18 +996,51 @@ type DockerComposeVolumeMount struct {
 // Experimental.
 type FileBase interface {
 	Component
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	//
+	// Returns: the content to synthesize or undefined to skip the file.
+	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
 }
 
@@ -1067,10 +1147,6 @@ func (j *jsiiProxy_FileBase) SetReadonly(val *bool) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (f *jsiiProxy_FileBase) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		f,
@@ -1079,8 +1155,6 @@ func (f *jsiiProxy_FileBase) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (f *jsiiProxy_FileBase) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		f,
@@ -1089,8 +1163,6 @@ func (f *jsiiProxy_FileBase) PreSynthesize() {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (f *jsiiProxy_FileBase) Synthesize() {
 	_jsii_.InvokeVoid(
 		f,
@@ -1099,10 +1171,6 @@ func (f *jsiiProxy_FileBase) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-//
-// Returns: the content to synthesize or undefined to skip the file
-// Experimental.
 func (f *jsiiProxy_FileBase) SynthesizeContent(resolver IResolver) *string {
 	var returns *string
 
@@ -1145,19 +1213,52 @@ type FileBaseOptions struct {
 // Experimental.
 type GitAttributesFile interface {
 	FileBase
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// Maps a set of attributes to a set of files.
+	// Experimental.
 	AddAttributes(glob *string, attributes ...*string)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	// Experimental.
 	SynthesizeContent(_arg IResolver) *string
 }
 
@@ -1279,8 +1380,6 @@ func (j *jsiiProxy_GitAttributesFile) SetReadonly(val *bool) {
 	)
 }
 
-// Maps a set of attributes to a set of files.
-// Experimental.
 func (g *jsiiProxy_GitAttributesFile) AddAttributes(glob *string, attributes ...*string) {
 	args := []interface{}{glob}
 	for _, a := range attributes {
@@ -1294,10 +1393,6 @@ func (g *jsiiProxy_GitAttributesFile) AddAttributes(glob *string, attributes ...
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (g *jsiiProxy_GitAttributesFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -1306,8 +1401,6 @@ func (g *jsiiProxy_GitAttributesFile) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (g *jsiiProxy_GitAttributesFile) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -1316,8 +1409,6 @@ func (g *jsiiProxy_GitAttributesFile) PreSynthesize() {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (g *jsiiProxy_GitAttributesFile) Synthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -1326,8 +1417,6 @@ func (g *jsiiProxy_GitAttributesFile) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-// Experimental.
 func (g *jsiiProxy_GitAttributesFile) SynthesizeContent(_arg IResolver) *string {
 	var returns *string
 
@@ -1346,16 +1435,53 @@ func (g *jsiiProxy_GitAttributesFile) SynthesizeContent(_arg IResolver) *string 
 type Gitpod interface {
 	Component
 	IDevEnvironment
+	// Direct access to the gitpod configuration (escape hatch).
+	// Experimental.
 	Config() interface{}
+	// Experimental.
 	Project() Project
+	// Add a task with more granular options.
+	//
+	// By default, all tasks will be run in parallel. To run tasks in sequence,
+	// create a new `Task` and set the other tasks as subtasks.
+	// Experimental.
 	AddCustomTask(options *GitpodTask)
+	// Add a custom Docker image or Dockerfile for the container.
+	// Experimental.
 	AddDockerImage(image DevEnvironmentDockerImage)
+	// Add ports that should be exposed (forwarded) from the container.
+	// Experimental.
 	AddPorts(ports ...*string)
+	// Add a prebuilds configuration for the Gitpod App.
+	// Experimental.
 	AddPrebuilds(config *GitpodPrebuilds)
+	// Add tasks to run when gitpod starts.
+	//
+	// By default, all tasks will be run in parallel. To run tasks in sequence,
+	// create a new `Task` and specify the other tasks as subtasks.
+	// Experimental.
 	AddTasks(tasks ...Task)
+	// Add a list of VSCode extensions that should be automatically installed in the container.
+	//
+	// These must be in the format defined in the Open VSX registry.
+	//
+	// Example:
+	//   'scala-lang.scala@0.3.9:O5XmjwY5Gz+0oDZAmqneJw=='
+	//
+	// See: https://www.gitpod.io/docs/vscode-extensions/
+	//
+	// Experimental.
 	AddVscodeExtensions(extensions ...*string)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -1412,11 +1538,6 @@ func NewGitpod_Override(g Gitpod, project Project, options *GitpodOptions) {
 	)
 }
 
-// Add a task with more granular options.
-//
-// By default, all tasks will be run in parallel. To run tasks in sequence,
-// create a new `Task` and set the other tasks as subtasks.
-// Experimental.
 func (g *jsiiProxy_Gitpod) AddCustomTask(options *GitpodTask) {
 	_jsii_.InvokeVoid(
 		g,
@@ -1425,8 +1546,6 @@ func (g *jsiiProxy_Gitpod) AddCustomTask(options *GitpodTask) {
 	)
 }
 
-// Add a custom Docker image or Dockerfile for the container.
-// Experimental.
 func (g *jsiiProxy_Gitpod) AddDockerImage(image DevEnvironmentDockerImage) {
 	_jsii_.InvokeVoid(
 		g,
@@ -1435,8 +1554,6 @@ func (g *jsiiProxy_Gitpod) AddDockerImage(image DevEnvironmentDockerImage) {
 	)
 }
 
-// Add ports that should be exposed (forwarded) from the container.
-// Experimental.
 func (g *jsiiProxy_Gitpod) AddPorts(ports ...*string) {
 	args := []interface{}{}
 	for _, a := range ports {
@@ -1450,8 +1567,6 @@ func (g *jsiiProxy_Gitpod) AddPorts(ports ...*string) {
 	)
 }
 
-// Add a prebuilds configuration for the Gitpod App.
-// Experimental.
 func (g *jsiiProxy_Gitpod) AddPrebuilds(config *GitpodPrebuilds) {
 	_jsii_.InvokeVoid(
 		g,
@@ -1460,11 +1575,6 @@ func (g *jsiiProxy_Gitpod) AddPrebuilds(config *GitpodPrebuilds) {
 	)
 }
 
-// Add tasks to run when gitpod starts.
-//
-// By default, all tasks will be run in parallel. To run tasks in sequence,
-// create a new `Task` and specify the other tasks as subtasks.
-// Experimental.
 func (g *jsiiProxy_Gitpod) AddTasks(tasks ...Task) {
 	args := []interface{}{}
 	for _, a := range tasks {
@@ -1478,15 +1588,6 @@ func (g *jsiiProxy_Gitpod) AddTasks(tasks ...Task) {
 	)
 }
 
-// Add a list of VSCode extensions that should be automatically installed in the container.
-//
-// These must be in the format defined in the Open VSX registry.
-//
-// TODO: EXAMPLE
-//
-// See: https://www.gitpod.io/docs/vscode-extensions/
-//
-// Experimental.
 func (g *jsiiProxy_Gitpod) AddVscodeExtensions(extensions ...*string) {
 	args := []interface{}{}
 	for _, a := range extensions {
@@ -1500,10 +1601,6 @@ func (g *jsiiProxy_Gitpod) AddVscodeExtensions(extensions ...*string) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (g *jsiiProxy_Gitpod) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -1512,8 +1609,6 @@ func (g *jsiiProxy_Gitpod) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (g *jsiiProxy_Gitpod) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -1522,8 +1617,6 @@ func (g *jsiiProxy_Gitpod) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (g *jsiiProxy_Gitpod) Synthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -1537,9 +1630,17 @@ func (g *jsiiProxy_Gitpod) Synthesize() {
 type GitpodOnOpen string
 
 const (
+	// Open a new browser tab.
+	// Experimental.
 	GitpodOnOpen_OPEN_BROWSER GitpodOnOpen = "OPEN_BROWSER"
+	// Open a preview on the right side of the IDE.
+	// Experimental.
 	GitpodOnOpen_OPEN_PREVIEW GitpodOnOpen = "OPEN_PREVIEW"
+	// Show a notification asking the user what to do (default).
+	// Experimental.
 	GitpodOnOpen_NOTIFY GitpodOnOpen = "NOTIFY"
+	// Do nothing.
+	// Experimental.
 	GitpodOnOpen_IGNORE GitpodOnOpen = "IGNORE"
 )
 
@@ -1548,9 +1649,17 @@ const (
 type GitpodOpenIn string
 
 const (
+	// the bottom panel (default).
+	// Experimental.
 	GitpodOpenIn_BOTTOM GitpodOpenIn = "BOTTOM"
+	// the left panel.
+	// Experimental.
 	GitpodOpenIn_LEFT GitpodOpenIn = "LEFT"
+	// the right panel.
+	// Experimental.
 	GitpodOpenIn_RIGHT GitpodOpenIn = "RIGHT"
+	// the main editor area.
+	// Experimental.
 	GitpodOpenIn_MAIN GitpodOpenIn = "MAIN"
 )
 
@@ -1559,11 +1668,23 @@ const (
 type GitpodOpenMode string
 
 const (
+	// Opens in the same tab group right after the previous tab.
+	// Experimental.
 	GitpodOpenMode_TAB_AFTER GitpodOpenMode = "TAB_AFTER"
+	// Opens in the same tab group left before the previous tab.
+	// Experimental.
 	GitpodOpenMode_TAB_BEFORE GitpodOpenMode = "TAB_BEFORE"
+	// Splits and adds the terminal to the right.
+	// Experimental.
 	GitpodOpenMode_SPLIT_RIGHT GitpodOpenMode = "SPLIT_RIGHT"
+	// Splits and adds the terminal to the left.
+	// Experimental.
 	GitpodOpenMode_SPLIT_LEFT GitpodOpenMode = "SPLIT_LEFT"
+	// Splits and adds the terminal to the top.
+	// Experimental.
 	GitpodOpenMode_SPLIT_TOP GitpodOpenMode = "SPLIT_TOP"
+	// Splits and adds the terminal to the bottom.
+	// Experimental.
 	GitpodOpenMode_SPLIT_BOTTOM GitpodOpenMode = "SPLIT_BOTTOM"
 )
 
@@ -1602,7 +1723,8 @@ type GitpodPort struct {
 	OnOpen GitpodOnOpen `json:"onOpen" yaml:"onOpen"`
 	// A port that should be exposed (forwarded) from the container.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "8080"
 	//
 	// Experimental.
 	Port *string `json:"port" yaml:"port"`
@@ -1616,7 +1738,11 @@ type GitpodPort struct {
 type GitpodPortVisibility string
 
 const (
+	// Allows everyone with the port URL to access the port (default).
+	// Experimental.
 	GitpodPortVisibility_PUBLIC GitpodPortVisibility = "PUBLIC"
+	// Only allows users with workspace access to access the port.
+	// Experimental.
 	GitpodPortVisibility_PRIVATE GitpodPortVisibility = "PRIVATE"
 )
 
@@ -1659,12 +1785,12 @@ type GitpodPrebuilds struct {
 // Fresh Workspace    | before && init && command
 // Restart Workspace  | before && command
 // Snapshot           | before && command
-// Prebuild           | before && init && prebuild
+// Prebuild           | before && init && prebuild.
 // Experimental.
 type GitpodTask struct {
 	// Required.
 	//
-	// The shell command to run
+	// The shell command to run.
 	// Experimental.
 	Command *string `json:"command" yaml:"command"`
 	// In case you need to run something even before init, that is a requirement for both init and command, you can use the before property.
@@ -1888,22 +2014,69 @@ func (i *jsiiProxy_IResolver) Resolve(value interface{}, options *ResolveOptions
 // Experimental.
 type IgnoreFile interface {
 	FileBase
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// Add ignore patterns.
+	//
+	// Files that match this pattern will be ignored. If the
+	// pattern starts with a negation mark `!`, files that match will _not_ be
+	// ignored.
+	//
+	// Comment lines (start with `#`) are ignored.
+	// Experimental.
 	AddPatterns(patterns ...*string)
+	// Ignore the files that match these patterns.
+	// Experimental.
 	Exclude(patterns ...*string)
+	// Always include the specified file patterns.
+	// Experimental.
 	Include(patterns ...*string)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Removes patterns previously added from the ignore file.
+	//
+	// If `addPattern()` is called after this, the pattern will be added again.
+	// Experimental.
 	RemovePatterns(patterns ...*string)
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
 }
 
@@ -2025,14 +2198,6 @@ func (j *jsiiProxy_IgnoreFile) SetReadonly(val *bool) {
 	)
 }
 
-// Add ignore patterns.
-//
-// Files that match this pattern will be ignored. If the
-// pattern starts with a negation mark `!`, files that match will _not_ be
-// ignored.
-//
-// Comment lines (start with `#`) are ignored.
-// Experimental.
 func (i *jsiiProxy_IgnoreFile) AddPatterns(patterns ...*string) {
 	args := []interface{}{}
 	for _, a := range patterns {
@@ -2046,8 +2211,6 @@ func (i *jsiiProxy_IgnoreFile) AddPatterns(patterns ...*string) {
 	)
 }
 
-// Ignore the files that match these patterns.
-// Experimental.
 func (i *jsiiProxy_IgnoreFile) Exclude(patterns ...*string) {
 	args := []interface{}{}
 	for _, a := range patterns {
@@ -2061,8 +2224,6 @@ func (i *jsiiProxy_IgnoreFile) Exclude(patterns ...*string) {
 	)
 }
 
-// Always include the specified file patterns.
-// Experimental.
 func (i *jsiiProxy_IgnoreFile) Include(patterns ...*string) {
 	args := []interface{}{}
 	for _, a := range patterns {
@@ -2076,10 +2237,6 @@ func (i *jsiiProxy_IgnoreFile) Include(patterns ...*string) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (i *jsiiProxy_IgnoreFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -2088,8 +2245,6 @@ func (i *jsiiProxy_IgnoreFile) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (i *jsiiProxy_IgnoreFile) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -2098,10 +2253,6 @@ func (i *jsiiProxy_IgnoreFile) PreSynthesize() {
 	)
 }
 
-// Removes patterns previously added from the ignore file.
-//
-// If `addPattern()` is called after this, the pattern will be added again.
-// Experimental.
 func (i *jsiiProxy_IgnoreFile) RemovePatterns(patterns ...*string) {
 	args := []interface{}{}
 	for _, a := range patterns {
@@ -2115,8 +2266,6 @@ func (i *jsiiProxy_IgnoreFile) RemovePatterns(patterns ...*string) {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (i *jsiiProxy_IgnoreFile) Synthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -2125,8 +2274,6 @@ func (i *jsiiProxy_IgnoreFile) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-// Experimental.
 func (i *jsiiProxy_IgnoreFile) SynthesizeContent(resolver IResolver) *string {
 	var returns *string
 
@@ -2144,21 +2291,84 @@ func (i *jsiiProxy_IgnoreFile) SynthesizeContent(resolver IResolver) *string {
 // Experimental.
 type IniFile interface {
 	ObjectFile
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// Indicates if empty objects and arrays are omitted from the output object.
+	// Experimental.
 	OmitEmpty() *bool
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// Syntactic sugar for `addOverride(path, undefined)`.
+	// Experimental.
 	AddDeletionOverride(path *string)
+	// Adds an override to the synthesized object file.
+	//
+	// If the override is nested, separate each nested level using a dot (.) in the path parameter.
+	// If there is an array as part of the nesting, specify the index in the path.
+	//
+	// To include a literal `.` in the property name, prefix with a `\`. In most
+	// programming languages you will need to write this as `"\\."` because the
+	// `\` itself will need to be escaped.
+	//
+	// For example,
+	// ```typescript
+	// project.tsconfig.file.addOverride('compilerOptions.alwaysStrict', true);
+	// project.tsconfig.file.addOverride('compilerOptions.lib', ['dom', 'dom.iterable', 'esnext']);
+	// ```
+	// would add the overrides
+	// ```json
+	// "compilerOptions": {
+	//    "alwaysStrict": true,
+	//    "lib": [
+	//      "dom",
+	//      "dom.iterable",
+	//      "esnext"
+	//    ]
+	//    ...
+	// }
+	// ...
+	// ```.
+	// Experimental.
 	AddOverride(path *string, value interface{})
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
 }
 
@@ -2290,8 +2500,6 @@ func (j *jsiiProxy_IniFile) SetReadonly(val *bool) {
 	)
 }
 
-// Syntactic sugar for `addOverride(path, undefined)`.
-// Experimental.
 func (i *jsiiProxy_IniFile) AddDeletionOverride(path *string) {
 	_jsii_.InvokeVoid(
 		i,
@@ -2300,34 +2508,6 @@ func (i *jsiiProxy_IniFile) AddDeletionOverride(path *string) {
 	)
 }
 
-// Adds an override to the synthesized object file.
-//
-// If the override is nested, separate each nested level using a dot (.) in the path parameter.
-// If there is an array as part of the nesting, specify the index in the path.
-//
-// To include a literal `.` in the property name, prefix with a `\`. In most
-// programming languages you will need to write this as `"\\."` because the
-// `\` itself will need to be escaped.
-//
-// For example,
-// ```typescript
-// project.tsconfig.file.addOverride('compilerOptions.alwaysStrict', true);
-// project.tsconfig.file.addOverride('compilerOptions.lib', ['dom', 'dom.iterable', 'esnext']);
-// ```
-// would add the overrides
-// ```json
-// "compilerOptions": {
-//    "alwaysStrict": true,
-//    "lib": [
-//      "dom",
-//      "dom.iterable",
-//      "esnext"
-//    ]
-//    ...
-// }
-// ...
-// ```
-// Experimental.
 func (i *jsiiProxy_IniFile) AddOverride(path *string, value interface{}) {
 	_jsii_.InvokeVoid(
 		i,
@@ -2336,10 +2516,6 @@ func (i *jsiiProxy_IniFile) AddOverride(path *string, value interface{}) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (i *jsiiProxy_IniFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -2348,8 +2524,6 @@ func (i *jsiiProxy_IniFile) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (i *jsiiProxy_IniFile) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -2358,8 +2532,6 @@ func (i *jsiiProxy_IniFile) PreSynthesize() {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (i *jsiiProxy_IniFile) Synthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -2368,8 +2540,6 @@ func (i *jsiiProxy_IniFile) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-// Experimental.
 func (i *jsiiProxy_IniFile) SynthesizeContent(resolver IResolver) *string {
 	var returns *string
 
@@ -2444,8 +2614,14 @@ type InitProject struct {
 type InitProjectOptionHints string
 
 const (
+	// Display all possible options (grouped by which interface they belong to).
+	// Experimental.
 	InitProjectOptionHints_ALL InitProjectOptionHints = "ALL"
+	// Display only featured options, in alphabetical order.
+	// Experimental.
 	InitProjectOptionHints_FEATURED InitProjectOptionHints = "FEATURED"
+	// Display no extra options.
+	// Experimental.
 	InitProjectOptionHints_NONE InitProjectOptionHints = "NONE"
 )
 
@@ -2453,21 +2629,84 @@ const (
 // Experimental.
 type JsonFile interface {
 	ObjectFile
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// Indicates if empty objects and arrays are omitted from the output object.
+	// Experimental.
 	OmitEmpty() *bool
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// Syntactic sugar for `addOverride(path, undefined)`.
+	// Experimental.
 	AddDeletionOverride(path *string)
+	// Adds an override to the synthesized object file.
+	//
+	// If the override is nested, separate each nested level using a dot (.) in the path parameter.
+	// If there is an array as part of the nesting, specify the index in the path.
+	//
+	// To include a literal `.` in the property name, prefix with a `\`. In most
+	// programming languages you will need to write this as `"\\."` because the
+	// `\` itself will need to be escaped.
+	//
+	// For example,
+	// ```typescript
+	// project.tsconfig.file.addOverride('compilerOptions.alwaysStrict', true);
+	// project.tsconfig.file.addOverride('compilerOptions.lib', ['dom', 'dom.iterable', 'esnext']);
+	// ```
+	// would add the overrides
+	// ```json
+	// "compilerOptions": {
+	//    "alwaysStrict": true,
+	//    "lib": [
+	//      "dom",
+	//      "dom.iterable",
+	//      "esnext"
+	//    ]
+	//    ...
+	// }
+	// ...
+	// ```.
+	// Experimental.
 	AddOverride(path *string, value interface{})
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
 }
 
@@ -2599,8 +2838,6 @@ func (j *jsiiProxy_JsonFile) SetReadonly(val *bool) {
 	)
 }
 
-// Syntactic sugar for `addOverride(path, undefined)`.
-// Experimental.
 func (j *jsiiProxy_JsonFile) AddDeletionOverride(path *string) {
 	_jsii_.InvokeVoid(
 		j,
@@ -2609,34 +2846,6 @@ func (j *jsiiProxy_JsonFile) AddDeletionOverride(path *string) {
 	)
 }
 
-// Adds an override to the synthesized object file.
-//
-// If the override is nested, separate each nested level using a dot (.) in the path parameter.
-// If there is an array as part of the nesting, specify the index in the path.
-//
-// To include a literal `.` in the property name, prefix with a `\`. In most
-// programming languages you will need to write this as `"\\."` because the
-// `\` itself will need to be escaped.
-//
-// For example,
-// ```typescript
-// project.tsconfig.file.addOverride('compilerOptions.alwaysStrict', true);
-// project.tsconfig.file.addOverride('compilerOptions.lib', ['dom', 'dom.iterable', 'esnext']);
-// ```
-// would add the overrides
-// ```json
-// "compilerOptions": {
-//    "alwaysStrict": true,
-//    "lib": [
-//      "dom",
-//      "dom.iterable",
-//      "esnext"
-//    ]
-//    ...
-// }
-// ...
-// ```
-// Experimental.
 func (j *jsiiProxy_JsonFile) AddOverride(path *string, value interface{}) {
 	_jsii_.InvokeVoid(
 		j,
@@ -2645,10 +2854,6 @@ func (j *jsiiProxy_JsonFile) AddOverride(path *string, value interface{}) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (j *jsiiProxy_JsonFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		j,
@@ -2657,8 +2862,6 @@ func (j *jsiiProxy_JsonFile) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (j *jsiiProxy_JsonFile) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		j,
@@ -2667,8 +2870,6 @@ func (j *jsiiProxy_JsonFile) PreSynthesize() {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (j *jsiiProxy_JsonFile) Synthesize() {
 	_jsii_.InvokeVoid(
 		j,
@@ -2677,8 +2878,6 @@ func (j *jsiiProxy_JsonFile) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-// Experimental.
 func (j *jsiiProxy_JsonFile) SynthesizeContent(resolver IResolver) *string {
 	var returns *string
 
@@ -2731,18 +2930,49 @@ type JsonFileOptions struct {
 // Experimental.
 type License interface {
 	FileBase
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	// Experimental.
 	SynthesizeContent(_arg IResolver) *string
 }
 
@@ -2864,10 +3094,6 @@ func (j *jsiiProxy_License) SetReadonly(val *bool) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (l *jsiiProxy_License) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -2876,8 +3102,6 @@ func (l *jsiiProxy_License) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (l *jsiiProxy_License) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -2886,8 +3110,6 @@ func (l *jsiiProxy_License) PreSynthesize() {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (l *jsiiProxy_License) Synthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -2896,8 +3118,6 @@ func (l *jsiiProxy_License) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-// Experimental.
 func (l *jsiiProxy_License) SynthesizeContent(_arg IResolver) *string {
 	var returns *string
 
@@ -2935,11 +3155,17 @@ type LicenseOptions struct {
 type LogLevel string
 
 const (
+	// Experimental.
 	LogLevel_OFF LogLevel = "OFF"
+	// Experimental.
 	LogLevel_ERROR LogLevel = "ERROR"
+	// Experimental.
 	LogLevel_WARN LogLevel = "WARN"
+	// Experimental.
 	LogLevel_INFO LogLevel = "INFO"
+	// Experimental.
 	LogLevel_DEBUG LogLevel = "DEBUG"
+	// Experimental.
 	LogLevel_VERBOSE LogLevel = "VERBOSE"
 )
 
@@ -2947,15 +3173,39 @@ const (
 // Experimental.
 type Logger interface {
 	Component
+	// Experimental.
 	Project() Project
+	// Log a message to stderr with DEBUG severity.
+	// Experimental.
 	Debug(text ...interface{})
+	// Log a message to stderr with ERROR severity.
+	// Experimental.
 	Error(text ...interface{})
+	// Log a message to stderr with INFO severity.
+	// Experimental.
 	Info(text ...interface{})
+	// Log a message to stderr with a given logging level.
+	//
+	// The message will be
+	// printed as long as `logger.level` is set to the message's severity or higher.
+	// Experimental.
 	Log(level LogLevel, text ...interface{})
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
+	// Log a message to stderr with VERBOSE severity.
+	// Experimental.
 	Verbose(text ...interface{})
+	// Log a message to stderr with WARN severity.
+	// Experimental.
 	Warn(text ...interface{})
 }
 
@@ -3001,8 +3251,6 @@ func NewLogger_Override(l Logger, project Project, options *LoggerOptions) {
 	)
 }
 
-// Log a message to stderr with DEBUG severity.
-// Experimental.
 func (l *jsiiProxy_Logger) Debug(text ...interface{}) {
 	args := []interface{}{}
 	for _, a := range text {
@@ -3016,8 +3264,6 @@ func (l *jsiiProxy_Logger) Debug(text ...interface{}) {
 	)
 }
 
-// Log a message to stderr with ERROR severity.
-// Experimental.
 func (l *jsiiProxy_Logger) Error(text ...interface{}) {
 	args := []interface{}{}
 	for _, a := range text {
@@ -3031,8 +3277,6 @@ func (l *jsiiProxy_Logger) Error(text ...interface{}) {
 	)
 }
 
-// Log a message to stderr with INFO severity.
-// Experimental.
 func (l *jsiiProxy_Logger) Info(text ...interface{}) {
 	args := []interface{}{}
 	for _, a := range text {
@@ -3046,11 +3290,6 @@ func (l *jsiiProxy_Logger) Info(text ...interface{}) {
 	)
 }
 
-// Log a message to stderr with a given logging level.
-//
-// The message will be
-// printed as long as `logger.level` is set to the message's severity or higher.
-// Experimental.
 func (l *jsiiProxy_Logger) Log(level LogLevel, text ...interface{}) {
 	args := []interface{}{level}
 	for _, a := range text {
@@ -3064,10 +3303,6 @@ func (l *jsiiProxy_Logger) Log(level LogLevel, text ...interface{}) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (l *jsiiProxy_Logger) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -3076,8 +3311,6 @@ func (l *jsiiProxy_Logger) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (l *jsiiProxy_Logger) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -3086,8 +3319,6 @@ func (l *jsiiProxy_Logger) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (l *jsiiProxy_Logger) Synthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -3096,8 +3327,6 @@ func (l *jsiiProxy_Logger) Synthesize() {
 	)
 }
 
-// Log a message to stderr with VERBOSE severity.
-// Experimental.
 func (l *jsiiProxy_Logger) Verbose(text ...interface{}) {
 	args := []interface{}{}
 	for _, a := range text {
@@ -3111,8 +3340,6 @@ func (l *jsiiProxy_Logger) Verbose(text ...interface{}) {
 	)
 }
 
-// Log a message to stderr with WARN severity.
-// Experimental.
 func (l *jsiiProxy_Logger) Warn(text ...interface{}) {
 	args := []interface{}{}
 	for _, a := range text {
@@ -3144,23 +3371,64 @@ type LoggerOptions struct {
 // Experimental.
 type Makefile interface {
 	FileBase
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// List of rule definitions.
+	// Experimental.
 	Rules() *[]*Rule
+	// Add a target to all.
+	// Experimental.
 	AddAll(target *string) Makefile
+	// Add multiple targets to all.
+	// Experimental.
 	AddAlls(targets ...*string) Makefile
+	// Add a rule to the Makefile.
+	// Experimental.
 	AddRule(rule *Rule) Makefile
+	// Add multiple rules to the Makefile.
+	// Experimental.
 	AddRules(rules ...*Rule) Makefile
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
 }
 
@@ -3292,8 +3560,6 @@ func (j *jsiiProxy_Makefile) SetReadonly(val *bool) {
 	)
 }
 
-// Add a target to all.
-// Experimental.
 func (m *jsiiProxy_Makefile) AddAll(target *string) Makefile {
 	var returns Makefile
 
@@ -3307,8 +3573,6 @@ func (m *jsiiProxy_Makefile) AddAll(target *string) Makefile {
 	return returns
 }
 
-// Add multiple targets to all.
-// Experimental.
 func (m *jsiiProxy_Makefile) AddAlls(targets ...*string) Makefile {
 	args := []interface{}{}
 	for _, a := range targets {
@@ -3327,8 +3591,6 @@ func (m *jsiiProxy_Makefile) AddAlls(targets ...*string) Makefile {
 	return returns
 }
 
-// Add a rule to the Makefile.
-// Experimental.
 func (m *jsiiProxy_Makefile) AddRule(rule *Rule) Makefile {
 	var returns Makefile
 
@@ -3342,8 +3604,6 @@ func (m *jsiiProxy_Makefile) AddRule(rule *Rule) Makefile {
 	return returns
 }
 
-// Add multiple rules to the Makefile.
-// Experimental.
 func (m *jsiiProxy_Makefile) AddRules(rules ...*Rule) Makefile {
 	args := []interface{}{}
 	for _, a := range rules {
@@ -3362,10 +3622,6 @@ func (m *jsiiProxy_Makefile) AddRules(rules ...*Rule) Makefile {
 	return returns
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (m *jsiiProxy_Makefile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -3374,8 +3630,6 @@ func (m *jsiiProxy_Makefile) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (m *jsiiProxy_Makefile) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -3384,8 +3638,6 @@ func (m *jsiiProxy_Makefile) PreSynthesize() {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (m *jsiiProxy_Makefile) Synthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -3394,8 +3646,6 @@ func (m *jsiiProxy_Makefile) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-// Experimental.
 func (m *jsiiProxy_Makefile) SynthesizeContent(resolver IResolver) *string {
 	var returns *string
 
@@ -3443,21 +3693,84 @@ type MakefileOptions struct {
 // Experimental.
 type ObjectFile interface {
 	FileBase
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// Indicates if empty objects and arrays are omitted from the output object.
+	// Experimental.
 	OmitEmpty() *bool
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// Syntactic sugar for `addOverride(path, undefined)`.
+	// Experimental.
 	AddDeletionOverride(path *string)
+	// Adds an override to the synthesized object file.
+	//
+	// If the override is nested, separate each nested level using a dot (.) in the path parameter.
+	// If there is an array as part of the nesting, specify the index in the path.
+	//
+	// To include a literal `.` in the property name, prefix with a `\`. In most
+	// programming languages you will need to write this as `"\\."` because the
+	// `\` itself will need to be escaped.
+	//
+	// For example,
+	// ```typescript
+	// project.tsconfig.file.addOverride('compilerOptions.alwaysStrict', true);
+	// project.tsconfig.file.addOverride('compilerOptions.lib', ['dom', 'dom.iterable', 'esnext']);
+	// ```
+	// would add the overrides
+	// ```json
+	// "compilerOptions": {
+	//    "alwaysStrict": true,
+	//    "lib": [
+	//      "dom",
+	//      "dom.iterable",
+	//      "esnext"
+	//    ]
+	//    ...
+	// }
+	// ...
+	// ```.
+	// Experimental.
 	AddOverride(path *string, value interface{})
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
 }
 
@@ -3574,8 +3887,6 @@ func (j *jsiiProxy_ObjectFile) SetReadonly(val *bool) {
 	)
 }
 
-// Syntactic sugar for `addOverride(path, undefined)`.
-// Experimental.
 func (o *jsiiProxy_ObjectFile) AddDeletionOverride(path *string) {
 	_jsii_.InvokeVoid(
 		o,
@@ -3584,34 +3895,6 @@ func (o *jsiiProxy_ObjectFile) AddDeletionOverride(path *string) {
 	)
 }
 
-// Adds an override to the synthesized object file.
-//
-// If the override is nested, separate each nested level using a dot (.) in the path parameter.
-// If there is an array as part of the nesting, specify the index in the path.
-//
-// To include a literal `.` in the property name, prefix with a `\`. In most
-// programming languages you will need to write this as `"\\."` because the
-// `\` itself will need to be escaped.
-//
-// For example,
-// ```typescript
-// project.tsconfig.file.addOverride('compilerOptions.alwaysStrict', true);
-// project.tsconfig.file.addOverride('compilerOptions.lib', ['dom', 'dom.iterable', 'esnext']);
-// ```
-// would add the overrides
-// ```json
-// "compilerOptions": {
-//    "alwaysStrict": true,
-//    "lib": [
-//      "dom",
-//      "dom.iterable",
-//      "esnext"
-//    ]
-//    ...
-// }
-// ...
-// ```
-// Experimental.
 func (o *jsiiProxy_ObjectFile) AddOverride(path *string, value interface{}) {
 	_jsii_.InvokeVoid(
 		o,
@@ -3620,10 +3903,6 @@ func (o *jsiiProxy_ObjectFile) AddOverride(path *string, value interface{}) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (o *jsiiProxy_ObjectFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		o,
@@ -3632,8 +3911,6 @@ func (o *jsiiProxy_ObjectFile) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (o *jsiiProxy_ObjectFile) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		o,
@@ -3642,8 +3919,6 @@ func (o *jsiiProxy_ObjectFile) PreSynthesize() {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (o *jsiiProxy_ObjectFile) Synthesize() {
 	_jsii_.InvokeVoid(
 		o,
@@ -3652,8 +3927,6 @@ func (o *jsiiProxy_ObjectFile) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-// Experimental.
 func (o *jsiiProxy_ObjectFile) SynthesizeContent(resolver IResolver) *string {
 	var returns *string
 
@@ -3703,41 +3976,144 @@ type ObjectFileOptions struct {
 // Base project.
 // Experimental.
 type Project interface {
+	// Experimental.
 	BuildTask() Task
+	// Experimental.
 	CompileTask() Task
+	// Returns all the components within this project.
+	// Experimental.
 	Components() *[]Component
+	// This is the "default" task, the one that executes "projen".
+	//
+	// Undefined if
+	// the project is being ejected.
+	// Experimental.
 	DefaultTask() Task
+	// Project dependencies.
+	// Experimental.
 	Deps() Dependencies
+	// Whether or not the project is being ejected.
+	// Experimental.
 	Ejected() *bool
+	// All files in this project.
+	// Experimental.
 	Files() *[]FileBase
+	// The .gitattributes file for this repository.
+	// Experimental.
 	Gitattributes() GitAttributesFile
+	// .gitignore.
+	// Experimental.
 	Gitignore() IgnoreFile
+	// The options used when this project is bootstrapped via `projen new`.
+	//
+	// It
+	// includes the original set of options passed to the CLI and also the JSII
+	// FQN of the project type.
+	// Experimental.
 	InitProject() *InitProject
+	// Logging utilities.
+	// Experimental.
 	Logger() Logger
+	// Project name.
+	// Experimental.
 	Name() *string
+	// Absolute output directory of this project.
+	// Experimental.
 	Outdir() *string
+	// Experimental.
 	PackageTask() Task
+	// A parent project.
+	//
+	// If undefined, this is the root project.
+	// Experimental.
 	Parent() Project
+	// Experimental.
 	PostCompileTask() Task
+	// Experimental.
 	PreCompileTask() Task
+	// Manages the build process of the project.
+	// Experimental.
 	ProjectBuild() ProjectBuild
+	// The command to use in order to run the projen CLI.
+	// Experimental.
 	ProjenCommand() *string
+	// The root project.
+	// Experimental.
 	Root() Project
+	// Project tasks.
+	// Experimental.
 	Tasks() Tasks
+	// Experimental.
 	TestTask() Task
+	// Exclude the matching files from pre-synth cleanup.
+	//
+	// Can be used when, for example, some
+	// source files include the projen marker and we don't want them to be erased during synth.
+	// Experimental.
 	AddExcludeFromCleanup(globs ...*string)
+	// Adds a .gitignore pattern.
+	// Experimental.
 	AddGitIgnore(pattern *string)
+	// Exclude these files from the bundled package.
+	//
+	// Implemented by project types based on the
+	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Experimental.
 	AddPackageIgnore(_pattern *string)
+	// Adds a new task to this project.
+	//
+	// This will fail if the project already has
+	// a task with this name.
+	// Experimental.
 	AddTask(name *string, props *TaskOptions) Task
+	// Prints a "tip" message during synthesis.
+	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 	AddTip(message *string)
+	// Consider a set of files as "generated".
+	//
+	// This method is implemented by
+	// derived classes and used for example, to add git attributes to tell GitHub
+	// that certain files are generated.
+	// Experimental.
 	AnnotateGenerated(_glob *string)
+	// Called after all components are synthesized.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before all components are synthesized.
+	// Experimental.
 	PreSynthesize()
+	// Removes a task from a project.
+	//
+	// Returns: The `Task` that was removed, otherwise `undefined`.
+	// Experimental.
 	RemoveTask(name *string) Task
+	// Returns the shell command to execute in order to run a task.
+	//
+	// By default, this is `npx projen@<version> <task>`.
+	// Experimental.
 	RunTaskCommand(task Task) *string
+	// Synthesize all project files into `outdir`.
+	//
+	// 1. Call "this.preSynthesize()"
+	// 2. Delete all generated files
+	// 3. Synthesize all sub-projects
+	// 4. Synthesize all components of this project
+	// 5. Call "postSynthesize()" for all components of this project
+	// 6. Call "this.postSynthesize()"
+	// Experimental.
 	Synth()
+	// Finds a file at the specified relative path within this project and all its subprojects.
+	//
+	// Returns: a `FileBase` or undefined if there is no file in that path.
+	// Experimental.
 	TryFindFile(filePath *string) FileBase
+	// Finds a json file by name.
+	// Deprecated: use `tryFindObjectFile`.
 	TryFindJsonFile(filePath *string) JsonFile
+	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
+	// Experimental.
 	TryFindObjectFile(filePath *string) ObjectFile
 }
 
@@ -4004,11 +4380,6 @@ func Project_DEFAULT_TASK() *string {
 	return returns
 }
 
-// Exclude the matching files from pre-synth cleanup.
-//
-// Can be used when, for example, some
-// source files include the projen marker and we don't want them to be erased during synth.
-// Experimental.
 func (p *jsiiProxy_Project) AddExcludeFromCleanup(globs ...*string) {
 	args := []interface{}{}
 	for _, a := range globs {
@@ -4022,8 +4393,6 @@ func (p *jsiiProxy_Project) AddExcludeFromCleanup(globs ...*string) {
 	)
 }
 
-// Adds a .gitignore pattern.
-// Experimental.
 func (p *jsiiProxy_Project) AddGitIgnore(pattern *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -4032,11 +4401,6 @@ func (p *jsiiProxy_Project) AddGitIgnore(pattern *string) {
 	)
 }
 
-// Exclude these files from the bundled package.
-//
-// Implemented by project types based on the
-// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
-// Experimental.
 func (p *jsiiProxy_Project) AddPackageIgnore(_pattern *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -4045,11 +4409,6 @@ func (p *jsiiProxy_Project) AddPackageIgnore(_pattern *string) {
 	)
 }
 
-// Adds a new task to this project.
-//
-// This will fail if the project already has
-// a task with this name.
-// Experimental.
 func (p *jsiiProxy_Project) AddTask(name *string, props *TaskOptions) Task {
 	var returns Task
 
@@ -4063,8 +4422,6 @@ func (p *jsiiProxy_Project) AddTask(name *string, props *TaskOptions) Task {
 	return returns
 }
 
-// Prints a "tip" message during synthesis.
-// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
 func (p *jsiiProxy_Project) AddTip(message *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -4073,12 +4430,6 @@ func (p *jsiiProxy_Project) AddTip(message *string) {
 	)
 }
 
-// Consider a set of files as "generated".
-//
-// This method is implemented by
-// derived classes and used for example, to add git attributes to tell GitHub
-// that certain files are generated.
-// Experimental.
 func (p *jsiiProxy_Project) AnnotateGenerated(_glob *string) {
 	_jsii_.InvokeVoid(
 		p,
@@ -4087,10 +4438,6 @@ func (p *jsiiProxy_Project) AnnotateGenerated(_glob *string) {
 	)
 }
 
-// Called after all components are synthesized.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_Project) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -4099,8 +4446,6 @@ func (p *jsiiProxy_Project) PostSynthesize() {
 	)
 }
 
-// Called before all components are synthesized.
-// Experimental.
 func (p *jsiiProxy_Project) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -4109,10 +4454,6 @@ func (p *jsiiProxy_Project) PreSynthesize() {
 	)
 }
 
-// Removes a task from a project.
-//
-// Returns: The `Task` that was removed, otherwise `undefined`.
-// Experimental.
 func (p *jsiiProxy_Project) RemoveTask(name *string) Task {
 	var returns Task
 
@@ -4126,10 +4467,6 @@ func (p *jsiiProxy_Project) RemoveTask(name *string) Task {
 	return returns
 }
 
-// Returns the shell command to execute in order to run a task.
-//
-// By default, this is `npx projen@<version> <task>`
-// Experimental.
 func (p *jsiiProxy_Project) RunTaskCommand(task Task) *string {
 	var returns *string
 
@@ -4143,15 +4480,6 @@ func (p *jsiiProxy_Project) RunTaskCommand(task Task) *string {
 	return returns
 }
 
-// Synthesize all project files into `outdir`.
-//
-// 1. Call "this.preSynthesize()"
-// 2. Delete all generated files
-// 3. Synthesize all sub-projects
-// 4. Synthesize all components of this project
-// 5. Call "postSynthesize()" for all components of this project
-// 6. Call "this.postSynthesize()"
-// Experimental.
 func (p *jsiiProxy_Project) Synth() {
 	_jsii_.InvokeVoid(
 		p,
@@ -4160,10 +4488,6 @@ func (p *jsiiProxy_Project) Synth() {
 	)
 }
 
-// Finds a file at the specified relative path within this project and all its subprojects.
-//
-// Returns: a `FileBase` or undefined if there is no file in that path
-// Experimental.
 func (p *jsiiProxy_Project) TryFindFile(filePath *string) FileBase {
 	var returns FileBase
 
@@ -4177,8 +4501,6 @@ func (p *jsiiProxy_Project) TryFindFile(filePath *string) FileBase {
 	return returns
 }
 
-// Finds a json file by name.
-// Deprecated: use `tryFindObjectFile`
 func (p *jsiiProxy_Project) TryFindJsonFile(filePath *string) JsonFile {
 	var returns JsonFile
 
@@ -4192,8 +4514,6 @@ func (p *jsiiProxy_Project) TryFindJsonFile(filePath *string) JsonFile {
 	return returns
 }
 
-// Finds an object file (like JsonFile, YamlFile, etc.) by name.
-// Experimental.
 func (p *jsiiProxy_Project) TryFindObjectFile(filePath *string) ObjectFile {
 	var returns ObjectFile
 
@@ -4219,15 +4539,38 @@ func (p *jsiiProxy_Project) TryFindObjectFile(filePath *string) ObjectFile {
 // Experimental.
 type ProjectBuild interface {
 	Component
+	// The task responsible for a full release build.
+	// Experimental.
 	BuildTask() Task
+	// Compiles the code.
+	//
+	// By default for node.js projects this task is empty.
+	// Experimental.
 	CompileTask() Task
+	// The "package" task.
+	// Experimental.
 	PackageTask() Task
+	// Post-compile task.
+	// Experimental.
 	PostCompileTask() Task
+	// Pre-compile task.
+	// Experimental.
 	PreCompileTask() Task
+	// Experimental.
 	Project() Project
+	// Tests the code.
+	// Experimental.
 	TestTask() Task
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -4333,10 +4676,6 @@ func NewProjectBuild_Override(p ProjectBuild, project Project) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_ProjectBuild) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -4345,8 +4684,6 @@ func (p *jsiiProxy_ProjectBuild) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_ProjectBuild) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -4355,8 +4692,6 @@ func (p *jsiiProxy_ProjectBuild) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_ProjectBuild) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -4400,12 +4735,21 @@ type ProjectOptions struct {
 }
 
 // Which type of project this is.
-// Deprecated: no longer supported at the base project level
+// Deprecated: no longer supported at the base project level.
 type ProjectType string
 
 const (
+	// This module may be a either a library or an app.
+	// Deprecated: no longer supported at the base project level.
 	ProjectType_UNKNOWN ProjectType = "UNKNOWN"
+	// This is a library, intended to be published to a package manager and consumed by other projects.
+	// Deprecated: no longer supported at the base project level.
 	ProjectType_LIB ProjectType = "LIB"
+	// This is an app (service, tool, website, etc).
+	//
+	// Its artifacts are intended to
+	// be deployed or published for end-user consumption.
+	// Deprecated: no longer supported at the base project level.
 	ProjectType_APP ProjectType = "APP"
 )
 
@@ -4442,9 +4786,18 @@ func Projects_CreateProject(options *CreateProjectOptions) {
 // Experimental.
 type Projenrc interface {
 	Component
+	// Experimental.
 	Project() Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -4490,10 +4843,6 @@ func NewProjenrc_Override(p Projenrc, project Project, options *ProjenrcOptions)
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (p *jsiiProxy_Projenrc) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -4502,8 +4851,6 @@ func (p *jsiiProxy_Projenrc) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (p *jsiiProxy_Projenrc) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -4512,8 +4859,6 @@ func (p *jsiiProxy_Projenrc) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (p *jsiiProxy_Projenrc) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -4561,13 +4906,22 @@ type Rule struct {
 
 // Renders the given files into the directory if the directory does not exist.
 //
-// Use this to create sample code files
+// Use this to create sample code files.
 // Experimental.
 type SampleDir interface {
 	Component
+	// Experimental.
 	Project() Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -4615,10 +4969,6 @@ func NewSampleDir_Override(s SampleDir, project Project, dir *string, options *S
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (s *jsiiProxy_SampleDir) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -4627,8 +4977,6 @@ func (s *jsiiProxy_SampleDir) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (s *jsiiProxy_SampleDir) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -4637,8 +4985,6 @@ func (s *jsiiProxy_SampleDir) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (s *jsiiProxy_SampleDir) Synthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -4664,7 +5010,7 @@ type SampleDirOptions struct {
 	// otherwise they may not be copied. For example:
 	// ```
 	// new SampleDir(this, 'public', { source: path.join(__dirname, '..', 'sample-assets') });
-	// ```
+	// ```.
 	// Experimental.
 	SourceDir *string `json:"sourceDir" yaml:"sourceDir"`
 }
@@ -4675,9 +5021,18 @@ type SampleDirOptions struct {
 // Experimental.
 type SampleFile interface {
 	Component
+	// Experimental.
 	Project() Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -4725,10 +5080,6 @@ func NewSampleFile_Override(s SampleFile, project Project, filePath *string, opt
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (s *jsiiProxy_SampleFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -4737,8 +5088,6 @@ func (s *jsiiProxy_SampleFile) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (s *jsiiProxy_SampleFile) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -4747,8 +5096,6 @@ func (s *jsiiProxy_SampleFile) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (s *jsiiProxy_SampleFile) Synthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -4770,7 +5117,7 @@ type SampleFileOptions struct {
 	// otherwise they may not be copied. For example:
 	// ```
 	// new SampleFile(this, 'assets/icon.png', { source: path.join(__dirname, '..', 'sample-assets', 'icon.png') });
-	// ```
+	// ```.
 	// Experimental.
 	SourcePath *string `json:"sourcePath" yaml:"sourcePath"`
 }
@@ -4779,9 +5126,18 @@ type SampleFileOptions struct {
 // Experimental.
 type SampleReadme interface {
 	SampleFile
+	// Experimental.
 	Project() Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -4827,10 +5183,6 @@ func NewSampleReadme_Override(s SampleReadme, project Project, props *SampleRead
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (s *jsiiProxy_SampleReadme) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -4839,8 +5191,6 @@ func (s *jsiiProxy_SampleReadme) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (s *jsiiProxy_SampleReadme) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -4849,8 +5199,6 @@ func (s *jsiiProxy_SampleReadme) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (s *jsiiProxy_SampleReadme) Synthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -4867,7 +5215,8 @@ type SampleReadmeProps struct {
 	Contents *string `json:"contents" yaml:"contents"`
 	// The name of the README.md file.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "readme.md"
 	//
 	// Experimental.
 	Filename *string `json:"filename" yaml:"filename"`
@@ -4877,8 +5226,17 @@ type SampleReadmeProps struct {
 // specify semver requirements in `deps`, `devDeps`, etc, specify them like so
 // `express@^2.1`.
 type Semver interface {
+	// Deprecated: This class will be removed in upcoming releases. if you wish to
+	// specify semver requirements in `deps`, `devDeps`, etc, specify them like so
+	// `express@^2.1`.
 	Mode() *string
+	// Deprecated: This class will be removed in upcoming releases. if you wish to
+	// specify semver requirements in `deps`, `devDeps`, etc, specify them like so
+	// `express@^2.1`.
 	Spec() *string
+	// Deprecated: This class will be removed in upcoming releases. if you wish to
+	// specify semver requirements in `deps`, `devDeps`, etc, specify them like so
+	// `express@^2.1`.
 	Version() *string
 }
 
@@ -4921,7 +5279,7 @@ func (j *jsiiProxy_Semver) Version() *string {
 // Accept any minor version.
 //
 // >= version
-// < next major version
+// < next major version.
 // Deprecated: This class will be removed in upcoming releases. if you wish to
 // specify semver requirements in `deps`, `devDeps`, etc, specify them like so
 // `express@^2.1`.
@@ -4999,7 +5357,7 @@ func Semver_Pinned(version *string) Semver {
 // Accept patches.
 //
 // >= version
-// < next minor version
+// < next minor version.
 // Deprecated: This class will be removed in upcoming releases. if you wish to
 // specify semver requirements in `deps`, `devDeps`, etc, specify them like so
 // `express@^2.1`.
@@ -5022,14 +5380,31 @@ func Semver_Tilde(version *string) Semver {
 // Experimental.
 type SourceCode interface {
 	Component
+	// Experimental.
 	FilePath() *string
+	// Experimental.
 	Marker() *string
+	// Experimental.
 	Project() Project
+	// Decreases the indentation level and closes a code block.
+	// Experimental.
 	Close(code *string)
+	// Emit a line of code.
+	// Experimental.
 	Line(code *string)
+	// Opens a code block and increases the indentation level.
+	// Experimental.
 	Open(code *string)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -5095,8 +5470,6 @@ func NewSourceCode_Override(s SourceCode, project Project, filePath *string, opt
 	)
 }
 
-// Decreases the indentation level and closes a code block.
-// Experimental.
 func (s *jsiiProxy_SourceCode) Close(code *string) {
 	_jsii_.InvokeVoid(
 		s,
@@ -5105,8 +5478,6 @@ func (s *jsiiProxy_SourceCode) Close(code *string) {
 	)
 }
 
-// Emit a line of code.
-// Experimental.
 func (s *jsiiProxy_SourceCode) Line(code *string) {
 	_jsii_.InvokeVoid(
 		s,
@@ -5115,8 +5486,6 @@ func (s *jsiiProxy_SourceCode) Line(code *string) {
 	)
 }
 
-// Opens a code block and increases the indentation level.
-// Experimental.
 func (s *jsiiProxy_SourceCode) Open(code *string) {
 	_jsii_.InvokeVoid(
 		s,
@@ -5125,10 +5494,6 @@ func (s *jsiiProxy_SourceCode) Open(code *string) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (s *jsiiProxy_SourceCode) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -5137,8 +5502,6 @@ func (s *jsiiProxy_SourceCode) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (s *jsiiProxy_SourceCode) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -5147,8 +5510,6 @@ func (s *jsiiProxy_SourceCode) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (s *jsiiProxy_SourceCode) Synthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -5171,21 +5532,62 @@ type SourceCodeOptions struct {
 // commands and subtasks.
 // Experimental.
 type Task interface {
+	// A command to execute which determines if the task should be skipped.
+	//
+	// If it
+	// returns a zero exit code, the task will not be executed.
+	// Experimental.
 	Condition() *string
+	// Returns the description of this task.
+	//
+	// Sets the description of this task.
+	// Experimental.
 	Description() *string
+	// Experimental.
 	SetDescription(val *string)
+	// Task name.
+	// Experimental.
 	Name() *string
+	// Returns an immutable copy of all the step specifications of the task.
+	// Experimental.
 	Steps() *[]*TaskStep
+	// Execute a builtin task.
+	//
+	// Builtin tasks are programs bundled as part of projen itself and used as
+	// helpers for various components.
+	//
+	// In the future we should support built-in tasks from external modules.
+	// Experimental.
 	Builtin(name *string)
+	// Adds an environment variable to this task.
+	// Experimental.
 	Env(name *string, value *string)
+	// Executes a shell command.
+	// Experimental.
 	Exec(command *string, options *TaskStepOptions)
+	// Forbid additional changes to this task.
+	// Experimental.
 	Lock()
+	// Adds a command at the beginning of the task.
+	// Deprecated: use `prependExec()`.
 	Prepend(shell *string, options *TaskStepOptions)
+	// Adds a command at the beginning of the task.
+	// Experimental.
 	PrependExec(shell *string, options *TaskStepOptions)
+	// Says something at the beginning of the task.
+	// Experimental.
 	PrependSay(message *string, options *TaskStepOptions)
+	// Adds a spawn instruction at the beginning of the task.
+	// Experimental.
 	PrependSpawn(subtask Task, options *TaskStepOptions)
+	// Reset the task so it no longer has any commands.
+	// Experimental.
 	Reset(command *string, options *TaskStepOptions)
+	// Say something.
+	// Experimental.
 	Say(message *string, options *TaskStepOptions)
+	// Spawns a sub-task.
+	// Experimental.
 	Spawn(subtask Task, options *TaskStepOptions)
 }
 
@@ -5269,13 +5671,6 @@ func (j *jsiiProxy_Task) SetDescription(val *string) {
 	)
 }
 
-// Execute a builtin task.
-//
-// Builtin tasks are programs bundled as part of projen itself and used as
-// helpers for various components.
-//
-// In the future we should support built-in tasks from external modules.
-// Experimental.
 func (t *jsiiProxy_Task) Builtin(name *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -5284,8 +5679,6 @@ func (t *jsiiProxy_Task) Builtin(name *string) {
 	)
 }
 
-// Adds an environment variable to this task.
-// Experimental.
 func (t *jsiiProxy_Task) Env(name *string, value *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -5294,8 +5687,6 @@ func (t *jsiiProxy_Task) Env(name *string, value *string) {
 	)
 }
 
-// Executes a shell command.
-// Experimental.
 func (t *jsiiProxy_Task) Exec(command *string, options *TaskStepOptions) {
 	_jsii_.InvokeVoid(
 		t,
@@ -5304,8 +5695,6 @@ func (t *jsiiProxy_Task) Exec(command *string, options *TaskStepOptions) {
 	)
 }
 
-// Forbid additional changes to this task.
-// Experimental.
 func (t *jsiiProxy_Task) Lock() {
 	_jsii_.InvokeVoid(
 		t,
@@ -5314,8 +5703,6 @@ func (t *jsiiProxy_Task) Lock() {
 	)
 }
 
-// Adds a command at the beginning of the task.
-// Deprecated: use `prependExec()`
 func (t *jsiiProxy_Task) Prepend(shell *string, options *TaskStepOptions) {
 	_jsii_.InvokeVoid(
 		t,
@@ -5324,8 +5711,6 @@ func (t *jsiiProxy_Task) Prepend(shell *string, options *TaskStepOptions) {
 	)
 }
 
-// Adds a command at the beginning of the task.
-// Experimental.
 func (t *jsiiProxy_Task) PrependExec(shell *string, options *TaskStepOptions) {
 	_jsii_.InvokeVoid(
 		t,
@@ -5334,8 +5719,6 @@ func (t *jsiiProxy_Task) PrependExec(shell *string, options *TaskStepOptions) {
 	)
 }
 
-// Says something at the beginning of the task.
-// Experimental.
 func (t *jsiiProxy_Task) PrependSay(message *string, options *TaskStepOptions) {
 	_jsii_.InvokeVoid(
 		t,
@@ -5344,8 +5727,6 @@ func (t *jsiiProxy_Task) PrependSay(message *string, options *TaskStepOptions) {
 	)
 }
 
-// Adds a spawn instruction at the beginning of the task.
-// Experimental.
 func (t *jsiiProxy_Task) PrependSpawn(subtask Task, options *TaskStepOptions) {
 	_jsii_.InvokeVoid(
 		t,
@@ -5354,8 +5735,6 @@ func (t *jsiiProxy_Task) PrependSpawn(subtask Task, options *TaskStepOptions) {
 	)
 }
 
-// Reset the task so it no longer has any commands.
-// Experimental.
 func (t *jsiiProxy_Task) Reset(command *string, options *TaskStepOptions) {
 	_jsii_.InvokeVoid(
 		t,
@@ -5364,8 +5743,6 @@ func (t *jsiiProxy_Task) Reset(command *string, options *TaskStepOptions) {
 	)
 }
 
-// Say something.
-// Experimental.
 func (t *jsiiProxy_Task) Say(message *string, options *TaskStepOptions) {
 	_jsii_.InvokeVoid(
 		t,
@@ -5374,8 +5751,6 @@ func (t *jsiiProxy_Task) Say(message *string, options *TaskStepOptions) {
 	)
 }
 
-// Spawns a sub-task.
-// Experimental.
 func (t *jsiiProxy_Task) Spawn(subtask Task, options *TaskStepOptions) {
 	_jsii_.InvokeVoid(
 		t,
@@ -5444,10 +5819,20 @@ type TaskOptions struct {
 // The runtime component of the tasks engine.
 // Experimental.
 type TaskRuntime interface {
+	// The contents of tasks.json.
+	// Experimental.
 	Manifest() *TasksManifest
+	// The tasks in this project.
+	// Experimental.
 	Tasks() *[]*TaskSpec
+	// The root directory of the project and the cwd for executing tasks.
+	// Experimental.
 	Workdir() *string
+	// Runs the task.
+	// Experimental.
 	RunTask(name *string, parents *[]*string)
+	// Find a task by name, or `undefined` if not found.
+	// Experimental.
 	TryFindTask(name *string) *TaskSpec
 }
 
@@ -5524,8 +5909,6 @@ func TaskRuntime_MANIFEST_FILE() *string {
 	return returns
 }
 
-// Runs the task.
-// Experimental.
 func (t *jsiiProxy_TaskRuntime) RunTask(name *string, parents *[]*string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -5534,8 +5917,6 @@ func (t *jsiiProxy_TaskRuntime) RunTask(name *string, parents *[]*string) {
 	)
 }
 
-// Find a task by name, or `undefined` if not found.
-// Experimental.
 func (t *jsiiProxy_TaskRuntime) TryFindTask(name *string) *TaskSpec {
 	var returns *TaskSpec
 
@@ -5634,15 +6015,40 @@ type TaskStepOptions struct {
 // Experimental.
 type Tasks interface {
 	Component
+	// All tasks.
+	// Experimental.
 	All() *[]Task
+	// Returns a copy of the currently global environment for this project.
+	// Experimental.
 	Env() *map[string]*string
+	// Experimental.
 	Project() Project
+	// Adds global environment.
+	// Experimental.
 	AddEnvironment(name *string, value *string)
+	// Adds a task to a project.
+	// Experimental.
 	AddTask(name *string, options *TaskOptions) Task
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Removes a task from a project.
+	//
+	// Returns: The `Task` that was removed, otherwise `undefined`.
+	// Experimental.
 	RemoveTask(name *string) Task
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
+	// Finds a task by name.
+	//
+	// Returns `undefined` if the task cannot be found.
+	// Experimental.
 	TryFind(name *string) Task
 }
 
@@ -5708,8 +6114,6 @@ func NewTasks_Override(t Tasks, project Project) {
 	)
 }
 
-// Adds global environment.
-// Experimental.
 func (t *jsiiProxy_Tasks) AddEnvironment(name *string, value *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -5718,8 +6122,6 @@ func (t *jsiiProxy_Tasks) AddEnvironment(name *string, value *string) {
 	)
 }
 
-// Adds a task to a project.
-// Experimental.
 func (t *jsiiProxy_Tasks) AddTask(name *string, options *TaskOptions) Task {
 	var returns Task
 
@@ -5733,10 +6135,6 @@ func (t *jsiiProxy_Tasks) AddTask(name *string, options *TaskOptions) Task {
 	return returns
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (t *jsiiProxy_Tasks) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -5745,8 +6143,6 @@ func (t *jsiiProxy_Tasks) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (t *jsiiProxy_Tasks) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -5755,10 +6151,6 @@ func (t *jsiiProxy_Tasks) PreSynthesize() {
 	)
 }
 
-// Removes a task from a project.
-//
-// Returns: The `Task` that was removed, otherwise `undefined`.
-// Experimental.
 func (t *jsiiProxy_Tasks) RemoveTask(name *string) Task {
 	var returns Task
 
@@ -5772,8 +6164,6 @@ func (t *jsiiProxy_Tasks) RemoveTask(name *string) Task {
 	return returns
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (t *jsiiProxy_Tasks) Synthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -5782,10 +6172,6 @@ func (t *jsiiProxy_Tasks) Synthesize() {
 	)
 }
 
-// Finds a task by name.
-//
-// Returns `undefined` if the task cannot be found.
-// Experimental.
 func (t *jsiiProxy_Tasks) TryFind(name *string) Task {
 	var returns Task
 
@@ -5812,7 +6198,8 @@ type TasksManifest struct {
 
 // A Testing static class with a .synth helper for getting a snapshots of construct outputs. Useful for snapshot testing with Jest.
 //
-// TODO: EXAMPLE
+// Example:
+//   `expect(Testing.synth(someProject)).toMatchSnapshot()`
 //
 // Experimental.
 type Testing interface {
@@ -5825,7 +6212,7 @@ type jsiiProxy_Testing struct {
 
 // Produces a simple JS object that represents the contents of the projects with field names being file paths.
 //
-// Returns: : any }
+// Returns: : any }.
 // Experimental.
 func Testing_Synth(project Project) *map[string]interface{} {
 	_init_.Initialize()
@@ -5846,19 +6233,52 @@ func Testing_Synth(project Project) *map[string]interface{} {
 // Experimental.
 type TextFile interface {
 	FileBase
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// Adds a line to the text file.
+	// Experimental.
 	AddLine(line *string)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	// Experimental.
 	SynthesizeContent(_arg IResolver) *string
 }
 
@@ -5982,8 +6402,6 @@ func (j *jsiiProxy_TextFile) SetReadonly(val *bool) {
 	)
 }
 
-// Adds a line to the text file.
-// Experimental.
 func (t *jsiiProxy_TextFile) AddLine(line *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -5992,10 +6410,6 @@ func (t *jsiiProxy_TextFile) AddLine(line *string) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (t *jsiiProxy_TextFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -6004,8 +6418,6 @@ func (t *jsiiProxy_TextFile) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (t *jsiiProxy_TextFile) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -6014,8 +6426,6 @@ func (t *jsiiProxy_TextFile) PreSynthesize() {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (t *jsiiProxy_TextFile) Synthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -6024,8 +6434,6 @@ func (t *jsiiProxy_TextFile) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-// Experimental.
 func (t *jsiiProxy_TextFile) SynthesizeContent(_arg IResolver) *string {
 	var returns *string
 
@@ -6072,21 +6480,84 @@ type TextFileOptions struct {
 // Experimental.
 type TomlFile interface {
 	ObjectFile
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// Indicates if empty objects and arrays are omitted from the output object.
+	// Experimental.
 	OmitEmpty() *bool
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// Syntactic sugar for `addOverride(path, undefined)`.
+	// Experimental.
 	AddDeletionOverride(path *string)
+	// Adds an override to the synthesized object file.
+	//
+	// If the override is nested, separate each nested level using a dot (.) in the path parameter.
+	// If there is an array as part of the nesting, specify the index in the path.
+	//
+	// To include a literal `.` in the property name, prefix with a `\`. In most
+	// programming languages you will need to write this as `"\\."` because the
+	// `\` itself will need to be escaped.
+	//
+	// For example,
+	// ```typescript
+	// project.tsconfig.file.addOverride('compilerOptions.alwaysStrict', true);
+	// project.tsconfig.file.addOverride('compilerOptions.lib', ['dom', 'dom.iterable', 'esnext']);
+	// ```
+	// would add the overrides
+	// ```json
+	// "compilerOptions": {
+	//    "alwaysStrict": true,
+	//    "lib": [
+	//      "dom",
+	//      "dom.iterable",
+	//      "esnext"
+	//    ]
+	//    ...
+	// }
+	// ...
+	// ```.
+	// Experimental.
 	AddOverride(path *string, value interface{})
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
 }
 
@@ -6218,8 +6689,6 @@ func (j *jsiiProxy_TomlFile) SetReadonly(val *bool) {
 	)
 }
 
-// Syntactic sugar for `addOverride(path, undefined)`.
-// Experimental.
 func (t *jsiiProxy_TomlFile) AddDeletionOverride(path *string) {
 	_jsii_.InvokeVoid(
 		t,
@@ -6228,34 +6697,6 @@ func (t *jsiiProxy_TomlFile) AddDeletionOverride(path *string) {
 	)
 }
 
-// Adds an override to the synthesized object file.
-//
-// If the override is nested, separate each nested level using a dot (.) in the path parameter.
-// If there is an array as part of the nesting, specify the index in the path.
-//
-// To include a literal `.` in the property name, prefix with a `\`. In most
-// programming languages you will need to write this as `"\\."` because the
-// `\` itself will need to be escaped.
-//
-// For example,
-// ```typescript
-// project.tsconfig.file.addOverride('compilerOptions.alwaysStrict', true);
-// project.tsconfig.file.addOverride('compilerOptions.lib', ['dom', 'dom.iterable', 'esnext']);
-// ```
-// would add the overrides
-// ```json
-// "compilerOptions": {
-//    "alwaysStrict": true,
-//    "lib": [
-//      "dom",
-//      "dom.iterable",
-//      "esnext"
-//    ]
-//    ...
-// }
-// ...
-// ```
-// Experimental.
 func (t *jsiiProxy_TomlFile) AddOverride(path *string, value interface{}) {
 	_jsii_.InvokeVoid(
 		t,
@@ -6264,10 +6705,6 @@ func (t *jsiiProxy_TomlFile) AddOverride(path *string, value interface{}) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (t *jsiiProxy_TomlFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -6276,8 +6713,6 @@ func (t *jsiiProxy_TomlFile) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (t *jsiiProxy_TomlFile) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -6286,8 +6721,6 @@ func (t *jsiiProxy_TomlFile) PreSynthesize() {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (t *jsiiProxy_TomlFile) Synthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -6296,8 +6729,6 @@ func (t *jsiiProxy_TomlFile) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-// Experimental.
 func (t *jsiiProxy_TomlFile) SynthesizeContent(resolver IResolver) *string {
 	var returns *string
 
@@ -6347,14 +6778,31 @@ type TomlFileOptions struct {
 // Experimental.
 type Version interface {
 	Component
+	// Experimental.
 	BumpTask() Task
+	// The name of the changelog file (under `artifactsDirectory`).
+	// Experimental.
 	ChangelogFileName() *string
+	// Experimental.
 	Project() Project
+	// The name of the file that contains the release tag (under `artifactsDirectory`).
+	// Experimental.
 	ReleaseTagFileName() *string
+	// Experimental.
 	UnbumpTask() Task
+	// The name of the file that contains the version (under `artifactsDirectory`).
+	// Experimental.
 	VersionFileName() *string
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
 	Synthesize()
 }
 
@@ -6461,10 +6909,6 @@ func Version_STANDARD_VERSION() *string {
 	return returns
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (v *jsiiProxy_Version) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		v,
@@ -6473,8 +6917,6 @@ func (v *jsiiProxy_Version) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (v *jsiiProxy_Version) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		v,
@@ -6483,8 +6925,6 @@ func (v *jsiiProxy_Version) PreSynthesize() {
 	)
 }
 
-// Synthesizes files to the project output directory.
-// Experimental.
 func (v *jsiiProxy_Version) Synthesize() {
 	_jsii_.InvokeVoid(
 		v,
@@ -6501,7 +6941,8 @@ type VersionOptions struct {
 	ArtifactsDirectory *string `json:"artifactsDirectory" yaml:"artifactsDirectory"`
 	// A name of a .json file to set the `version` field in after a bump.
 	//
-	// TODO: EXAMPLE
+	// Example:
+	//   "package.json"
 	//
 	// Experimental.
 	VersionInputFile *string `json:"versionInputFile" yaml:"versionInputFile"`
@@ -6518,21 +6959,84 @@ type VersionOptions struct {
 // Experimental.
 type XmlFile interface {
 	ObjectFile
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// Indicates if empty objects and arrays are omitted from the output object.
+	// Experimental.
 	OmitEmpty() *bool
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// Syntactic sugar for `addOverride(path, undefined)`.
+	// Experimental.
 	AddDeletionOverride(path *string)
+	// Adds an override to the synthesized object file.
+	//
+	// If the override is nested, separate each nested level using a dot (.) in the path parameter.
+	// If there is an array as part of the nesting, specify the index in the path.
+	//
+	// To include a literal `.` in the property name, prefix with a `\`. In most
+	// programming languages you will need to write this as `"\\."` because the
+	// `\` itself will need to be escaped.
+	//
+	// For example,
+	// ```typescript
+	// project.tsconfig.file.addOverride('compilerOptions.alwaysStrict', true);
+	// project.tsconfig.file.addOverride('compilerOptions.lib', ['dom', 'dom.iterable', 'esnext']);
+	// ```
+	// would add the overrides
+	// ```json
+	// "compilerOptions": {
+	//    "alwaysStrict": true,
+	//    "lib": [
+	//      "dom",
+	//      "dom.iterable",
+	//      "esnext"
+	//    ]
+	//    ...
+	// }
+	// ...
+	// ```.
+	// Experimental.
 	AddOverride(path *string, value interface{})
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
 }
 
@@ -6664,8 +7168,6 @@ func (j *jsiiProxy_XmlFile) SetReadonly(val *bool) {
 	)
 }
 
-// Syntactic sugar for `addOverride(path, undefined)`.
-// Experimental.
 func (x *jsiiProxy_XmlFile) AddDeletionOverride(path *string) {
 	_jsii_.InvokeVoid(
 		x,
@@ -6674,34 +7176,6 @@ func (x *jsiiProxy_XmlFile) AddDeletionOverride(path *string) {
 	)
 }
 
-// Adds an override to the synthesized object file.
-//
-// If the override is nested, separate each nested level using a dot (.) in the path parameter.
-// If there is an array as part of the nesting, specify the index in the path.
-//
-// To include a literal `.` in the property name, prefix with a `\`. In most
-// programming languages you will need to write this as `"\\."` because the
-// `\` itself will need to be escaped.
-//
-// For example,
-// ```typescript
-// project.tsconfig.file.addOverride('compilerOptions.alwaysStrict', true);
-// project.tsconfig.file.addOverride('compilerOptions.lib', ['dom', 'dom.iterable', 'esnext']);
-// ```
-// would add the overrides
-// ```json
-// "compilerOptions": {
-//    "alwaysStrict": true,
-//    "lib": [
-//      "dom",
-//      "dom.iterable",
-//      "esnext"
-//    ]
-//    ...
-// }
-// ...
-// ```
-// Experimental.
 func (x *jsiiProxy_XmlFile) AddOverride(path *string, value interface{}) {
 	_jsii_.InvokeVoid(
 		x,
@@ -6710,10 +7184,6 @@ func (x *jsiiProxy_XmlFile) AddOverride(path *string, value interface{}) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (x *jsiiProxy_XmlFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		x,
@@ -6722,8 +7192,6 @@ func (x *jsiiProxy_XmlFile) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (x *jsiiProxy_XmlFile) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		x,
@@ -6732,8 +7200,6 @@ func (x *jsiiProxy_XmlFile) PreSynthesize() {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (x *jsiiProxy_XmlFile) Synthesize() {
 	_jsii_.InvokeVoid(
 		x,
@@ -6742,8 +7208,6 @@ func (x *jsiiProxy_XmlFile) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-// Experimental.
 func (x *jsiiProxy_XmlFile) SynthesizeContent(resolver IResolver) *string {
 	var returns *string
 
@@ -6794,23 +7258,89 @@ type XmlFileOptions struct {
 // Experimental.
 type YamlFile interface {
 	ObjectFile
+	// The absolute path of this file.
+	// Experimental.
 	AbsolutePath() *string
+	// Indicates if the file has been changed during synthesis.
+	//
+	// This property is
+	// only available in `postSynthesize()` hooks. If this is `undefined`, the
+	// file has not been synthesized yet.
+	// Experimental.
 	Changed() *bool
+	// Indicates if the file should be marked as executable.
+	// Experimental.
 	Executable() *bool
+	// Experimental.
 	SetExecutable(val *bool)
+	// Maximum line width (set to 0 to disable folding).
+	// Experimental.
 	LineWidth() *float64
+	// Experimental.
 	SetLineWidth(val *float64)
+	// The projen marker, used to identify files as projen-generated.
+	//
+	// Value is undefined if the project is being ejected.
+	// Experimental.
 	Marker() *string
+	// Indicates if empty objects and arrays are omitted from the output object.
+	// Experimental.
 	OmitEmpty() *bool
+	// The file path, relative to the project root.
+	// Experimental.
 	Path() *string
+	// Experimental.
 	Project() Project
+	// Indicates if the file should be read-only or read-write.
+	// Experimental.
 	Readonly() *bool
+	// Experimental.
 	SetReadonly(val *bool)
+	// Syntactic sugar for `addOverride(path, undefined)`.
+	// Experimental.
 	AddDeletionOverride(path *string)
+	// Adds an override to the synthesized object file.
+	//
+	// If the override is nested, separate each nested level using a dot (.) in the path parameter.
+	// If there is an array as part of the nesting, specify the index in the path.
+	//
+	// To include a literal `.` in the property name, prefix with a `\`. In most
+	// programming languages you will need to write this as `"\\."` because the
+	// `\` itself will need to be escaped.
+	//
+	// For example,
+	// ```typescript
+	// project.tsconfig.file.addOverride('compilerOptions.alwaysStrict', true);
+	// project.tsconfig.file.addOverride('compilerOptions.lib', ['dom', 'dom.iterable', 'esnext']);
+	// ```
+	// would add the overrides
+	// ```json
+	// "compilerOptions": {
+	//    "alwaysStrict": true,
+	//    "lib": [
+	//      "dom",
+	//      "dom.iterable",
+	//      "esnext"
+	//    ]
+	//    ...
+	// }
+	// ...
+	// ```.
+	// Experimental.
 	AddOverride(path *string, value interface{})
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
 	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
 	PreSynthesize()
+	// Writes the file to the project's output directory.
+	// Experimental.
 	Synthesize()
+	// Implemented by derived classes and returns the contents of the file to emit.
+	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
 }
 
@@ -6960,8 +7490,6 @@ func (j *jsiiProxy_YamlFile) SetReadonly(val *bool) {
 	)
 }
 
-// Syntactic sugar for `addOverride(path, undefined)`.
-// Experimental.
 func (y *jsiiProxy_YamlFile) AddDeletionOverride(path *string) {
 	_jsii_.InvokeVoid(
 		y,
@@ -6970,34 +7498,6 @@ func (y *jsiiProxy_YamlFile) AddDeletionOverride(path *string) {
 	)
 }
 
-// Adds an override to the synthesized object file.
-//
-// If the override is nested, separate each nested level using a dot (.) in the path parameter.
-// If there is an array as part of the nesting, specify the index in the path.
-//
-// To include a literal `.` in the property name, prefix with a `\`. In most
-// programming languages you will need to write this as `"\\."` because the
-// `\` itself will need to be escaped.
-//
-// For example,
-// ```typescript
-// project.tsconfig.file.addOverride('compilerOptions.alwaysStrict', true);
-// project.tsconfig.file.addOverride('compilerOptions.lib', ['dom', 'dom.iterable', 'esnext']);
-// ```
-// would add the overrides
-// ```json
-// "compilerOptions": {
-//    "alwaysStrict": true,
-//    "lib": [
-//      "dom",
-//      "dom.iterable",
-//      "esnext"
-//    ]
-//    ...
-// }
-// ...
-// ```
-// Experimental.
 func (y *jsiiProxy_YamlFile) AddOverride(path *string, value interface{}) {
 	_jsii_.InvokeVoid(
 		y,
@@ -7006,10 +7506,6 @@ func (y *jsiiProxy_YamlFile) AddOverride(path *string, value interface{}) {
 	)
 }
 
-// Called after synthesis.
-//
-// Order is *not* guaranteed.
-// Experimental.
 func (y *jsiiProxy_YamlFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		y,
@@ -7018,8 +7514,6 @@ func (y *jsiiProxy_YamlFile) PostSynthesize() {
 	)
 }
 
-// Called before synthesis.
-// Experimental.
 func (y *jsiiProxy_YamlFile) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		y,
@@ -7028,8 +7522,6 @@ func (y *jsiiProxy_YamlFile) PreSynthesize() {
 	)
 }
 
-// Writes the file to the project's output directory.
-// Experimental.
 func (y *jsiiProxy_YamlFile) Synthesize() {
 	_jsii_.InvokeVoid(
 		y,
@@ -7038,8 +7530,6 @@ func (y *jsiiProxy_YamlFile) Synthesize() {
 	)
 }
 
-// Implemented by derived classes and returns the contents of the file to emit.
-// Experimental.
 func (y *jsiiProxy_YamlFile) SynthesizeContent(resolver IResolver) *string {
 	var returns *string
 
