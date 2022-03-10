@@ -3048,7 +3048,7 @@ type TypeScriptLibraryProjectOptions struct {
 	ReleaseWorkflow *bool `json:"releaseWorkflow" yaml:"releaseWorkflow"`
 	// Workflow steps to use in order to bootstrap this repo.
 	// Deprecated: use TypeScriptProjectOptions.
-	WorkflowBootstrapSteps *[]interface{} `json:"workflowBootstrapSteps" yaml:"workflowBootstrapSteps"`
+	WorkflowBootstrapSteps *[]*workflows.JobStep `json:"workflowBootstrapSteps" yaml:"workflowBootstrapSteps"`
 	// The git identity to use in workflows.
 	// Deprecated: use TypeScriptProjectOptions.
 	WorkflowGitIdentity *github.GitIdentity `json:"workflowGitIdentity" yaml:"workflowGitIdentity"`
@@ -4825,7 +4825,7 @@ type TypeScriptProjectOptions struct {
 	ReleaseWorkflow *bool `json:"releaseWorkflow" yaml:"releaseWorkflow"`
 	// Workflow steps to use in order to bootstrap this repo.
 	// Experimental.
-	WorkflowBootstrapSteps *[]interface{} `json:"workflowBootstrapSteps" yaml:"workflowBootstrapSteps"`
+	WorkflowBootstrapSteps *[]*workflows.JobStep `json:"workflowBootstrapSteps" yaml:"workflowBootstrapSteps"`
 	// The git identity to use in workflows.
 	// Experimental.
 	WorkflowGitIdentity *github.GitIdentity `json:"workflowGitIdentity" yaml:"workflowGitIdentity"`
