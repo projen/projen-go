@@ -144,9 +144,12 @@ type AutoDiscoverOptions struct {
 	// Project source tree (relative to project output directory).
 	// Experimental.
 	Srcdir *string `json:"srcdir" yaml:"srcdir"`
-	// Options for auto-discovery of AWS Lambda functions.
+	// Options for AWS Lambda functions.
 	// Experimental.
 	LambdaOptions *LambdaFunctionCommonOptions `json:"lambdaOptions" yaml:"lambdaOptions"`
+	// Options for lambda extensions.
+	// Experimental.
+	LambdaExtensionOptions *LambdaExtensionCommonOptions `json:"lambdaExtensionOptions" yaml:"lambdaExtensionOptions"`
 	// Test source tree.
 	// Experimental.
 	Testdir *string `json:"testdir" yaml:"testdir"`
@@ -159,6 +162,9 @@ type AutoDiscoverOptions struct {
 	// Auto-discover lambda functions.
 	// Experimental.
 	LambdaAutoDiscover *bool `json:"lambdaAutoDiscover" yaml:"lambdaAutoDiscover"`
+	// Auto-discover lambda extensions.
+	// Experimental.
+	LambdaExtensionAutoDiscover *bool `json:"lambdaExtensionAutoDiscover" yaml:"lambdaExtensionAutoDiscover"`
 }
 
 // AWS CDK construct library project.
@@ -2119,6 +2125,9 @@ type AwsCdkConstructLibraryOptions struct {
 	// Automatically adds an `aws_lambda.Function` for each `.lambda.ts` handler in your source tree. If this is disabled, you either need to explicitly call `aws_lambda.Function.autoDiscover()` or define a `new aws_lambda.Function()` for each handler.
 	// Experimental.
 	LambdaAutoDiscover *bool `json:"lambdaAutoDiscover" yaml:"lambdaAutoDiscover"`
+	// Automatically adds an `awscdk.LambdaExtension` for each `.lambda-extension.ts` entrypoint in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project.
+	// Experimental.
+	LambdaExtensionAutoDiscover *bool `json:"lambdaExtensionAutoDiscover" yaml:"lambdaExtensionAutoDiscover"`
 	// Common options for all AWS Lambda functions.
 	// Experimental.
 	LambdaOptions *LambdaFunctionCommonOptions `json:"lambdaOptions" yaml:"lambdaOptions"`
@@ -6927,6 +6936,9 @@ type AwsCdkTypeScriptAppOptions struct {
 	// Automatically adds an `awscdk.LambdaFunction` for each `.lambda.ts` handler in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project.
 	// Experimental.
 	LambdaAutoDiscover *bool `json:"lambdaAutoDiscover" yaml:"lambdaAutoDiscover"`
+	// Automatically adds an `awscdk.LambdaExtension` for each `.lambda-extension.ts` entrypoint in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project.
+	// Experimental.
+	LambdaExtensionAutoDiscover *bool `json:"lambdaExtensionAutoDiscover" yaml:"lambdaExtensionAutoDiscover"`
 	// Common options for all AWS Lambda functions.
 	// Experimental.
 	LambdaOptions *LambdaFunctionCommonOptions `json:"lambdaOptions" yaml:"lambdaOptions"`
@@ -9221,6 +9233,9 @@ type ConstructLibraryAwsOptions struct {
 	// Automatically adds an `aws_lambda.Function` for each `.lambda.ts` handler in your source tree. If this is disabled, you either need to explicitly call `aws_lambda.Function.autoDiscover()` or define a `new aws_lambda.Function()` for each handler.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	LambdaAutoDiscover *bool `json:"lambdaAutoDiscover" yaml:"lambdaAutoDiscover"`
+	// Automatically adds an `awscdk.LambdaExtension` for each `.lambda-extension.ts` entrypoint in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	LambdaExtensionAutoDiscover *bool `json:"lambdaExtensionAutoDiscover" yaml:"lambdaExtensionAutoDiscover"`
 	// Common options for all AWS Lambda functions.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	LambdaOptions *LambdaFunctionCommonOptions `json:"lambdaOptions" yaml:"lambdaOptions"`
@@ -9688,9 +9703,261 @@ type LambdaAutoDiscoverOptions struct {
 	// Project source tree (relative to project output directory).
 	// Experimental.
 	Srcdir *string `json:"srcdir" yaml:"srcdir"`
-	// Options for auto-discovery of AWS Lambda functions.
+	// Options for AWS Lambda functions.
 	// Experimental.
 	LambdaOptions *LambdaFunctionCommonOptions `json:"lambdaOptions" yaml:"lambdaOptions"`
+}
+
+// Create a Lambda Extension.
+// Experimental.
+type LambdaExtension interface {
+	projen.Component
+	// Experimental.
+	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
+	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
+	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
+	Synthesize()
+}
+
+// The jsii proxy struct for LambdaExtension
+type jsiiProxy_LambdaExtension struct {
+	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_LambdaExtension) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewLambdaExtension(project projen.Project, options *LambdaExtensionOptions) LambdaExtension {
+	_init_.Initialize()
+
+	j := jsiiProxy_LambdaExtension{}
+
+	_jsii_.Create(
+		"projen.awscdk.LambdaExtension",
+		[]interface{}{project, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewLambdaExtension_Override(l LambdaExtension, project projen.Project, options *LambdaExtensionOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.awscdk.LambdaExtension",
+		[]interface{}{project, options},
+		l,
+	)
+}
+
+func (l *jsiiProxy_LambdaExtension) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		l,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+func (l *jsiiProxy_LambdaExtension) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		l,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+func (l *jsiiProxy_LambdaExtension) Synthesize() {
+	_jsii_.InvokeVoid(
+		l,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Creates Lambda Extensions from entrypoints discovered in the project's source tree.
+// Experimental.
+type LambdaExtensionAutoDiscover interface {
+	cdk.AutoDiscoverBase
+	// Auto-discovered entry points with paths relative to the project directory.
+	// Experimental.
+	Entrypoints() *[]*string
+	// Experimental.
+	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
+	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
+	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
+	Synthesize()
+}
+
+// The jsii proxy struct for LambdaExtensionAutoDiscover
+type jsiiProxy_LambdaExtensionAutoDiscover struct {
+	internal.Type__cdkAutoDiscoverBase
+}
+
+func (j *jsiiProxy_LambdaExtensionAutoDiscover) Entrypoints() *[]*string {
+	var returns *[]*string
+	_jsii_.Get(
+		j,
+		"entrypoints",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_LambdaExtensionAutoDiscover) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewLambdaExtensionAutoDiscover(project projen.Project, options *LambdaExtensionAutoDiscoverOptions) LambdaExtensionAutoDiscover {
+	_init_.Initialize()
+
+	j := jsiiProxy_LambdaExtensionAutoDiscover{}
+
+	_jsii_.Create(
+		"projen.awscdk.LambdaExtensionAutoDiscover",
+		[]interface{}{project, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewLambdaExtensionAutoDiscover_Override(l LambdaExtensionAutoDiscover, project projen.Project, options *LambdaExtensionAutoDiscoverOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.awscdk.LambdaExtensionAutoDiscover",
+		[]interface{}{project, options},
+		l,
+	)
+}
+
+func (l *jsiiProxy_LambdaExtensionAutoDiscover) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		l,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+func (l *jsiiProxy_LambdaExtensionAutoDiscover) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		l,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+func (l *jsiiProxy_LambdaExtensionAutoDiscover) Synthesize() {
+	_jsii_.InvokeVoid(
+		l,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Options for `LambdaExtensionAutoDiscover`.
+// Experimental.
+type LambdaExtensionAutoDiscoverOptions struct {
+	// AWS CDK dependency manager.
+	// Experimental.
+	CdkDeps AwsCdkDeps `json:"cdkDeps" yaml:"cdkDeps"`
+	// Path to the tsconfig file to use for integration tests.
+	// Experimental.
+	TsconfigPath *string `json:"tsconfigPath" yaml:"tsconfigPath"`
+	// Project source tree (relative to project output directory).
+	// Experimental.
+	Srcdir *string `json:"srcdir" yaml:"srcdir"`
+	// Options for lambda extensions.
+	// Experimental.
+	LambdaExtensionOptions *LambdaExtensionCommonOptions `json:"lambdaExtensionOptions" yaml:"lambdaExtensionOptions"`
+}
+
+// Common options for creating lambda extensions.
+// Experimental.
+type LambdaExtensionCommonOptions struct {
+	// Bundling options for this AWS Lambda extension.
+	//
+	// If not specified the default bundling options specified for the project
+	// `Bundler` instance will be used.
+	// Experimental.
+	BundlingOptions *javascript.BundlingOptions `json:"bundlingOptions" yaml:"bundlingOptions"`
+	// The extension's compatible runtimes.
+	// Experimental.
+	CompatibleRuntimes *[]LambdaRuntime `json:"compatibleRuntimes" yaml:"compatibleRuntimes"`
+}
+
+// Options for creating lambda extensions.
+// Experimental.
+type LambdaExtensionOptions struct {
+	// Bundling options for this AWS Lambda extension.
+	//
+	// If not specified the default bundling options specified for the project
+	// `Bundler` instance will be used.
+	// Experimental.
+	BundlingOptions *javascript.BundlingOptions `json:"bundlingOptions" yaml:"bundlingOptions"`
+	// The extension's compatible runtimes.
+	// Experimental.
+	CompatibleRuntimes *[]LambdaRuntime `json:"compatibleRuntimes" yaml:"compatibleRuntimes"`
+	// AWS CDK dependency manager.
+	// Experimental.
+	CdkDeps AwsCdkDeps `json:"cdkDeps" yaml:"cdkDeps"`
+	// A path from the project root directory to a TypeScript file which contains the AWS Lambda extension entrypoint (stand-alone script).
+	//
+	// This is relative to the root directory of the project.
+	//
+	// Example:
+	//   "src/subdir/foo.lambda-extension.ts"
+	//
+	// Experimental.
+	Entrypoint *string `json:"entrypoint" yaml:"entrypoint"`
+	// The name of the generated TypeScript source file.
+	//
+	// This file should also be
+	// under the source tree.
+	// Experimental.
+	ConstructFile *string `json:"constructFile" yaml:"constructFile"`
+	// The name of the generated `lambda.LayerVersion` subclass.
+	// Experimental.
+	ConstructName *string `json:"constructName" yaml:"constructName"`
+	// Name of the extension.
+	// Experimental.
+	Name *string `json:"name" yaml:"name"`
 }
 
 // Generates a pre-bundled AWS Lambda function construct from handler code.

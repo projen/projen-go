@@ -54,6 +54,12 @@ type AddBundleOptions struct {
 	//
 	// Experimental.
 	Target *string `json:"target" yaml:"target"`
+	// Mark the output file as executable.
+	// Experimental.
+	Executable *bool `json:"executable" yaml:"executable"`
+	// Bundler output path relative to the asset's output directory.
+	// Experimental.
+	Outfile *string `json:"outfile" yaml:"outfile"`
 }
 
 // Experimental.
@@ -90,6 +96,9 @@ type Bundle struct {
 	// The task that produces this bundle.
 	// Experimental.
 	BundleTask projen.Task `json:"bundleTask" yaml:"bundleTask"`
+	// Base directory containing the output file (relative to project root).
+	// Experimental.
+	Outdir *string `json:"outdir" yaml:"outdir"`
 	// Location of the output file (relative to project root).
 	// Experimental.
 	Outfile *string `json:"outfile" yaml:"outfile"`

@@ -695,6 +695,49 @@ func init() {
 		reflect.TypeOf((*LambdaAutoDiscoverOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
+		"projen.awscdk.LambdaExtension",
+		reflect.TypeOf((*LambdaExtension)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+		},
+		func() interface{} {
+			j := jsiiProxy_LambdaExtension{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.awscdk.LambdaExtensionAutoDiscover",
+		reflect.TypeOf((*LambdaExtensionAutoDiscover)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "entrypoints", GoGetter: "Entrypoints"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+		},
+		func() interface{} {
+			j := jsiiProxy_LambdaExtensionAutoDiscover{}
+			_jsii_.InitJsiiProxy(&j.Type__cdkAutoDiscoverBase)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.awscdk.LambdaExtensionAutoDiscoverOptions",
+		reflect.TypeOf((*LambdaExtensionAutoDiscoverOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.awscdk.LambdaExtensionCommonOptions",
+		reflect.TypeOf((*LambdaExtensionCommonOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.awscdk.LambdaExtensionOptions",
+		reflect.TypeOf((*LambdaExtensionOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
 		"projen.awscdk.LambdaFunction",
 		reflect.TypeOf((*LambdaFunction)(nil)).Elem(),
 		[]_jsii_.Member{
