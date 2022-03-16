@@ -6946,6 +6946,9 @@ type VersionOptions struct {
 	//
 	// Experimental.
 	VersionInputFile *string `json:"versionInputFile" yaml:"versionInputFile"`
+	// The tag prefix corresponding to this version.
+	// Experimental.
+	TagPrefix *string `json:"tagPrefix" yaml:"tagPrefix"`
 	// Custom configuration for versionrc file used by standard-release.
 	// Experimental.
 	VersionrcOptions *map[string]interface{} `json:"versionrcOptions" yaml:"versionrcOptions"`
