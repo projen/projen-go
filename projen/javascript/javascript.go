@@ -4629,6 +4629,9 @@ func UpgradeDependenciesSchedule_WEEKLY() UpgradeDependenciesSchedule {
 // Options for `UpgradeDependencies.workflowOptions`.
 // Experimental.
 type UpgradeDependenciesWorkflowOptions struct {
+	// Assignees to add on the PR.
+	// Experimental.
+	Assignees *[]*string `json:"assignees" yaml:"assignees"`
 	// List of branches to create PR's for.
 	// Experimental.
 	Branches *[]*string `json:"branches" yaml:"branches"`
