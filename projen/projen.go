@@ -5524,6 +5524,9 @@ type SourceCodeOptions struct {
 	// Indentation size.
 	// Experimental.
 	Indent *float64 `json:"indent" yaml:"indent"`
+	// Whether the generated file should be readonly.
+	// Experimental.
+	Readonly *bool `json:"readonly" yaml:"readonly"`
 }
 
 // A task that can be performed on the project.
