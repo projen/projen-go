@@ -931,6 +931,23 @@ func NewRelease_Override(r Release, project github.GitHubProject, options *Relea
 	)
 }
 
+// Returns the `Release` component of a project or `undefined` if the project does not have a Release component.
+// Experimental.
+func Release_Of(project github.GitHubProject) Release {
+	_init_.Initialize()
+
+	var returns Release
+
+	_jsii_.StaticInvoke(
+		"projen.release.Release",
+		"of",
+		[]interface{}{project},
+		&returns,
+	)
+
+	return returns
+}
+
 func (r *jsiiProxy_Release) AddBranch(branch *string, options *BranchOptions) {
 	_jsii_.InvokeVoid(
 		r,

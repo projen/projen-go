@@ -4347,6 +4347,9 @@ type UpgradeDependencies interface {
 	PostUpgradeTask() projen.Task
 	// Experimental.
 	Project() projen.Project
+	// The upgrade task.
+	// Experimental.
+	UpgradeTask() projen.Task
 	// The workflows that execute the upgrades.
 	//
 	// One workflow per branch.
@@ -4408,6 +4411,16 @@ func (j *jsiiProxy_UpgradeDependencies) Project() projen.Project {
 	_jsii_.Get(
 		j,
 		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_UpgradeDependencies) UpgradeTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"upgradeTask",
 		&returns,
 	)
 	return returns

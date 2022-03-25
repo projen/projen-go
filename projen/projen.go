@@ -5817,6 +5817,9 @@ type TaskOptions struct {
 	// Shell command to execute as the first command of the task.
 	// Experimental.
 	Exec *string `json:"exec" yaml:"exec"`
+	// List of task steps to run.
+	// Experimental.
+	Steps *[]*TaskStep `json:"steps" yaml:"steps"`
 }
 
 // The runtime component of the tasks engine.
