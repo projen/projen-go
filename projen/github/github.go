@@ -569,9 +569,9 @@ type GitHub interface {
 	Mergify() Mergify
 	// Experimental.
 	Project() projen.Project
-	// The name of a secret with a GitHub Personal Access Token to be used by projen workflows.
+	// GitHub API authentication method used by projen workflows.
 	// Experimental.
-	ProjenTokenSecret() *string
+	ProjenCredentials() GithubCredentials
 	// All workflows.
 	// Experimental.
 	Workflows() *[]GithubWorkflow
@@ -630,11 +630,11 @@ func (j *jsiiProxy_GitHub) Project() projen.Project {
 	return returns
 }
 
-func (j *jsiiProxy_GitHub) ProjenTokenSecret() *string {
-	var returns *string
+func (j *jsiiProxy_GitHub) ProjenCredentials() GithubCredentials {
+	var returns GithubCredentials
 	_jsii_.Get(
 		j,
-		"projenTokenSecret",
+		"projenCredentials",
 		&returns,
 	)
 	return returns
@@ -793,11 +793,14 @@ type GitHubOptions struct {
 	// Options for Mergify.
 	// Experimental.
 	MergifyOptions *MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
+	// Choose a method of providing GitHub API access for projen workflows.
+	// Experimental.
+	ProjenCredentials GithubCredentials `json:"projenCredentials" yaml:"projenCredentials"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
 	// This token needs to have the `repo`, `workflows`
 	// and `packages` scope.
-	// Experimental.
+	// Deprecated: - use `projenCredentials`.
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// Add a workflow that performs basic checks for pull requests, like validating that PRs follow Conventional Commits.
 	// Experimental.
@@ -1693,11 +1696,14 @@ type GitHubProjectOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
+	// Choose a method of providing GitHub API access for projen workflows.
+	// Experimental.
+	ProjenCredentials GithubCredentials `json:"projenCredentials" yaml:"projenCredentials"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
 	// This token needs to have the `repo`, `workflows`
 	// and `packages` scope.
-	// Experimental.
+	// Deprecated: use `projenCredentials`.
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
@@ -1734,6 +1740,107 @@ type GitIdentity struct {
 	Name *string `json:"name" yaml:"name"`
 }
 
+// Represents a method of providing GitHub API access for projen workflows.
+// Experimental.
+type GithubCredentials interface {
+	// Setup steps to obtain GitHub credentials.
+	// Experimental.
+	SetupSteps() *[]*workflows.JobStep
+	// The value to use in a workflow when a GitHub token is expected.
+	//
+	// This
+	// typically looks like "${{ some.path.to.a.value }}".
+	// Experimental.
+	TokenRef() *string
+}
+
+// The jsii proxy struct for GithubCredentials
+type jsiiProxy_GithubCredentials struct {
+	_ byte // padding
+}
+
+func (j *jsiiProxy_GithubCredentials) SetupSteps() *[]*workflows.JobStep {
+	var returns *[]*workflows.JobStep
+	_jsii_.Get(
+		j,
+		"setupSteps",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GithubCredentials) TokenRef() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"tokenRef",
+		&returns,
+	)
+	return returns
+}
+
+
+// Provide API access through a GitHub App.
+//
+// The GitHub App must be installed on the GitHub repo, its App ID and a
+// private key must be added as secrets to the repo. The name of the secrets
+// can be specified here.
+// See: https://docs.github.com/en/developers/apps/building-github-apps/creating-a-github-app
+//
+// Experimental.
+func GithubCredentials_FromApp(options *GithubCredentialsAppOptions) GithubCredentials {
+	_init_.Initialize()
+
+	var returns GithubCredentials
+
+	_jsii_.StaticInvoke(
+		"projen.github.GithubCredentials",
+		"fromApp",
+		[]interface{}{options},
+		&returns,
+	)
+
+	return returns
+}
+
+// Provide API access through a GitHub personal access token.
+//
+// The token must be added as a secret to the GitHub repo, and the name of the
+// secret can be specified here.
+// See: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+//
+// Experimental.
+func GithubCredentials_FromPersonalAccessToken(options *GithubCredentialsPersonalAccessTokenOptions) GithubCredentials {
+	_init_.Initialize()
+
+	var returns GithubCredentials
+
+	_jsii_.StaticInvoke(
+		"projen.github.GithubCredentials",
+		"fromPersonalAccessToken",
+		[]interface{}{options},
+		&returns,
+	)
+
+	return returns
+}
+
+// Options for `GithubCredentials.fromApp`.
+// Experimental.
+type GithubCredentialsAppOptions struct {
+	// Experimental.
+	AppIdSecret *string `json:"appIdSecret" yaml:"appIdSecret"`
+	// Experimental.
+	PrivateKeySecret *string `json:"privateKeySecret" yaml:"privateKeySecret"`
+}
+
+// Options for `GithubCredentials.fromPersonalAccessToken`.
+// Experimental.
+type GithubCredentialsPersonalAccessTokenOptions struct {
+	// Experimental.
+	Secret *string `json:"secret" yaml:"secret"`
+}
+
 // Workflow for GitHub.
 //
 // A workflow is a configurable automated process made up of one or more jobs.
@@ -1755,9 +1862,9 @@ type GithubWorkflow interface {
 	Name() *string
 	// Experimental.
 	Project() projen.Project
-	// The name of a secret that includes a PAT that can be used by workflows.
+	// GitHub API authentication method used by projen workflows.
 	// Experimental.
-	ProjenTokenSecret() *string
+	ProjenCredentials() GithubCredentials
 	// Adds a single job to the workflow.
 	// Experimental.
 	AddJob(id *string, job *workflows.Job)
@@ -1825,11 +1932,11 @@ func (j *jsiiProxy_GithubWorkflow) Project() projen.Project {
 	return returns
 }
 
-func (j *jsiiProxy_GithubWorkflow) ProjenTokenSecret() *string {
-	var returns *string
+func (j *jsiiProxy_GithubWorkflow) ProjenCredentials() GithubCredentials {
+	var returns GithubCredentials
 	_jsii_.Get(
 		j,
-		"projenTokenSecret",
+		"projenCredentials",
 		&returns,
 	)
 	return returns
@@ -2637,9 +2744,9 @@ type TaskWorkflow interface {
 	Name() *string
 	// Experimental.
 	Project() projen.Project
-	// The name of a secret that includes a PAT that can be used by workflows.
+	// GitHub API authentication method used by projen workflows.
 	// Experimental.
-	ProjenTokenSecret() *string
+	ProjenCredentials() GithubCredentials
 	// Adds a single job to the workflow.
 	// Experimental.
 	AddJob(id *string, job *workflows.Job)
@@ -2727,11 +2834,11 @@ func (j *jsiiProxy_TaskWorkflow) Project() projen.Project {
 	return returns
 }
 
-func (j *jsiiProxy_TaskWorkflow) ProjenTokenSecret() *string {
-	var returns *string
+func (j *jsiiProxy_TaskWorkflow) ProjenCredentials() GithubCredentials {
+	var returns GithubCredentials
 	_jsii_.Get(
 		j,
-		"projenTokenSecret",
+		"projenCredentials",
 		&returns,
 	)
 	return returns

@@ -3002,11 +3002,14 @@ type NodeProjectOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
+	// Choose a method of providing GitHub API access for projen workflows.
+	// Experimental.
+	ProjenCredentials github.GithubCredentials `json:"projenCredentials" yaml:"projenCredentials"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
 	// This token needs to have the `repo`, `workflows`
 	// and `packages` scope.
-	// Experimental.
+	// Deprecated: use `projenCredentials`.
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
@@ -3292,11 +3295,6 @@ type NodeProjectOptions struct {
 	// A directory which will contain build artifacts.
 	// Experimental.
 	ArtifactsDirectory *string `json:"artifactsDirectory" yaml:"artifactsDirectory"`
-	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
-	//
-	// Throw if set to true but `autoApproveOptions` are not defined.
-	// Experimental.
-	AutoApproveProjenUpgrades *bool `json:"autoApproveProjenUpgrades" yaml:"autoApproveProjenUpgrades"`
 	// Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
@@ -3336,7 +3334,7 @@ type NodeProjectOptions struct {
 	// Cannot be used in conjunction with `dependabot`.
 	// Experimental.
 	DepsUpgrade *bool `json:"depsUpgrade" yaml:"depsUpgrade"`
-	// Options for depsUpgrade.
+	// Options for `UpgradeDependencies`.
 	// Experimental.
 	DepsUpgradeOptions *UpgradeDependenciesOptions `json:"depsUpgradeOptions" yaml:"depsUpgradeOptions"`
 	// Additional entries to .gitignore.
@@ -3381,25 +3379,6 @@ type NodeProjectOptions struct {
 	// Options for .projenrc.js.
 	// Experimental.
 	ProjenrcJsOptions *ProjenrcOptions `json:"projenrcJsOptions" yaml:"projenrcJsOptions"`
-	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
-	//
-	// Throw if set to true but `autoApproveOptions` are not defined.
-	// Deprecated: use `autoApproveProjenUpgrades`.
-	ProjenUpgradeAutoMerge *bool `json:"projenUpgradeAutoMerge" yaml:"projenUpgradeAutoMerge"`
-	// Customize the projenUpgrade schedule in cron expression.
-	// Experimental.
-	ProjenUpgradeSchedule *[]*string `json:"projenUpgradeSchedule" yaml:"projenUpgradeSchedule"`
-	// Periodically submits a pull request for projen upgrades (executes `yarn projen:upgrade`).
-	//
-	// This setting is a GitHub secret name which contains a GitHub Access Token
-	// with `repo` and `workflow` permissions.
-	//
-	// This token is used to submit the upgrade pull request, which will likely
-	// include workflow updates.
-	//
-	// To create a personal access token see https://github.com/settings/tokens
-	// Deprecated: use `githubTokenSecret` instead.
-	ProjenUpgradeSecret *string `json:"projenUpgradeSecret" yaml:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.
 	ProjenVersion *string `json:"projenVersion" yaml:"projenVersion"`
@@ -4339,9 +4318,6 @@ type UpgradeDependencies interface {
 	ContainerOptions() *workflows.ContainerOptions
 	// Experimental.
 	SetContainerOptions(val *workflows.ContainerOptions)
-	// Whether or not projen is also upgraded in this workflow,.
-	// Experimental.
-	IgnoresProjen() *bool
 	// A task run after the upgrade task.
 	// Experimental.
 	PostUpgradeTask() projen.Task
@@ -4381,16 +4357,6 @@ func (j *jsiiProxy_UpgradeDependencies) ContainerOptions() *workflows.ContainerO
 	_jsii_.Get(
 		j,
 		"containerOptions",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_UpgradeDependencies) IgnoresProjen() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"ignoresProjen",
 		&returns,
 	)
 	return returns
@@ -4514,9 +4480,6 @@ type UpgradeDependenciesOptions struct {
 	// List of package names to exclude during the upgrade.
 	// Experimental.
 	Exclude *[]*string `json:"exclude" yaml:"exclude"`
-	// Whether or not to ignore projen upgrades.
-	// Experimental.
-	IgnoreProjen *bool `json:"ignoreProjen" yaml:"ignoreProjen"`
 	// List of package names to include during the upgrade.
 	// Experimental.
 	Include *[]*string `json:"include" yaml:"include"`
@@ -4657,24 +4620,21 @@ type UpgradeDependenciesWorkflowOptions struct {
 	// Labels to apply on the PR.
 	// Experimental.
 	Labels *[]*string `json:"labels" yaml:"labels"`
+	// Choose a method for authenticating with GitHub for creating the PR.
+	//
+	// When using the default github token, PR's created by this workflow
+	// will not trigger any subsequent workflows (i.e the build workflow), so
+	// projen requires API access to be provided through e.g. a personal
+	// access token or other method.
+	// See: https://github.com/peter-evans/create-pull-request/issues/48
+	//
+	// Experimental.
+	ProjenCredentials github.GithubCredentials `json:"projenCredentials" yaml:"projenCredentials"`
 	// Github Runner selection labels.
 	// Experimental.
 	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
 	// Schedule to run on.
 	// Experimental.
 	Schedule UpgradeDependenciesSchedule `json:"schedule" yaml:"schedule"`
-	// Which secret to use when creating the PR.
-	//
-	// When using the default github token, PR's created by this workflow
-	// will not trigger any subsequent workflows (i.e the build workflow).
-	// This is why this workflow also runs 'build' by default, and manually updates
-	// the status check of the PR.
-	//
-	// If you pass a token that has the `workflow` permissions, you can skip running
-	// build in this workflow by specifying `rebuild: false`.
-	// See: https://github.com/peter-evans/create-pull-request/issues/48
-	//
-	// Experimental.
-	Secret *string `json:"secret" yaml:"secret"`
 }
 

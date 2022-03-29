@@ -1314,11 +1314,14 @@ type ConstructLibraryCdktfOptions struct {
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level.
 	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
+	// Choose a method of providing GitHub API access for projen workflows.
+	// Experimental.
+	ProjenCredentials github.GithubCredentials `json:"projenCredentials" yaml:"projenCredentials"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
 	// This token needs to have the `repo`, `workflows`
 	// and `packages` scope.
-	// Experimental.
+	// Deprecated: use `projenCredentials`.
 	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
@@ -1604,11 +1607,6 @@ type ConstructLibraryCdktfOptions struct {
 	// A directory which will contain build artifacts.
 	// Experimental.
 	ArtifactsDirectory *string `json:"artifactsDirectory" yaml:"artifactsDirectory"`
-	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
-	//
-	// Throw if set to true but `autoApproveOptions` are not defined.
-	// Experimental.
-	AutoApproveProjenUpgrades *bool `json:"autoApproveProjenUpgrades" yaml:"autoApproveProjenUpgrades"`
 	// Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
@@ -1648,7 +1646,7 @@ type ConstructLibraryCdktfOptions struct {
 	// Cannot be used in conjunction with `dependabot`.
 	// Experimental.
 	DepsUpgrade *bool `json:"depsUpgrade" yaml:"depsUpgrade"`
-	// Options for depsUpgrade.
+	// Options for `UpgradeDependencies`.
 	// Experimental.
 	DepsUpgradeOptions *javascript.UpgradeDependenciesOptions `json:"depsUpgradeOptions" yaml:"depsUpgradeOptions"`
 	// Additional entries to .gitignore.
@@ -1693,25 +1691,6 @@ type ConstructLibraryCdktfOptions struct {
 	// Options for .projenrc.js.
 	// Experimental.
 	ProjenrcJsOptions *javascript.ProjenrcOptions `json:"projenrcJsOptions" yaml:"projenrcJsOptions"`
-	// Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued).
-	//
-	// Throw if set to true but `autoApproveOptions` are not defined.
-	// Deprecated: use `autoApproveProjenUpgrades`.
-	ProjenUpgradeAutoMerge *bool `json:"projenUpgradeAutoMerge" yaml:"projenUpgradeAutoMerge"`
-	// Customize the projenUpgrade schedule in cron expression.
-	// Experimental.
-	ProjenUpgradeSchedule *[]*string `json:"projenUpgradeSchedule" yaml:"projenUpgradeSchedule"`
-	// Periodically submits a pull request for projen upgrades (executes `yarn projen:upgrade`).
-	//
-	// This setting is a GitHub secret name which contains a GitHub Access Token
-	// with `repo` and `workflow` permissions.
-	//
-	// This token is used to submit the upgrade pull request, which will likely
-	// include workflow updates.
-	//
-	// To create a personal access token see https://github.com/settings/tokens
-	// Deprecated: use `githubTokenSecret` instead.
-	ProjenUpgradeSecret *string `json:"projenUpgradeSecret" yaml:"projenUpgradeSecret"`
 	// Version of projen to install.
 	// Experimental.
 	ProjenVersion *string `json:"projenVersion" yaml:"projenVersion"`

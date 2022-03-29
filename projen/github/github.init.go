@@ -114,7 +114,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
-			_jsii_.MemberProperty{JsiiProperty: "projenTokenSecret", GoGetter: "ProjenTokenSecret"},
+			_jsii_.MemberProperty{JsiiProperty: "projenCredentials", GoGetter: "ProjenCredentials"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "tryFindWorkflow", GoMethod: "TryFindWorkflow"},
 			_jsii_.MemberProperty{JsiiProperty: "workflows", GoGetter: "Workflows"},
@@ -192,6 +192,25 @@ func init() {
 		reflect.TypeOf((*GitIdentity)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
+		"projen.github.GithubCredentials",
+		reflect.TypeOf((*GithubCredentials)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "setupSteps", GoGetter: "SetupSteps"},
+			_jsii_.MemberProperty{JsiiProperty: "tokenRef", GoGetter: "TokenRef"},
+		},
+		func() interface{} {
+			return &jsiiProxy_GithubCredentials{}
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.GithubCredentialsAppOptions",
+		reflect.TypeOf((*GithubCredentialsAppOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.GithubCredentialsPersonalAccessTokenOptions",
+		reflect.TypeOf((*GithubCredentialsPersonalAccessTokenOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
 		"projen.github.GithubWorkflow",
 		reflect.TypeOf((*GithubWorkflow)(nil)).Elem(),
 		[]_jsii_.Member{
@@ -204,7 +223,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
-			_jsii_.MemberProperty{JsiiProperty: "projenTokenSecret", GoGetter: "ProjenTokenSecret"},
+			_jsii_.MemberProperty{JsiiProperty: "projenCredentials", GoGetter: "ProjenCredentials"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 		},
 		func() interface{} {
@@ -358,7 +377,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
-			_jsii_.MemberProperty{JsiiProperty: "projenTokenSecret", GoGetter: "ProjenTokenSecret"},
+			_jsii_.MemberProperty{JsiiProperty: "projenCredentials", GoGetter: "ProjenCredentials"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 		},
 		func() interface{} {

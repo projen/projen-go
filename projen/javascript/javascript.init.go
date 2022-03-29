@@ -465,7 +465,6 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addPostBuildSteps", GoMethod: "AddPostBuildSteps"},
 			_jsii_.MemberProperty{JsiiProperty: "containerOptions", GoGetter: "ContainerOptions"},
-			_jsii_.MemberProperty{JsiiProperty: "ignoresProjen", GoGetter: "IgnoresProjen"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "postUpgradeTask", GoGetter: "PostUpgradeTask"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
