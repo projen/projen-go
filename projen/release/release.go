@@ -647,6 +647,17 @@ func NewPublisher_Override(p Publisher, project projen.Project, options *Publish
 	)
 }
 
+func Publisher_PUBLISH_GIT_TASK_NAME() *string {
+	_init_.Initialize()
+	var returns *string
+	_jsii_.StaticGet(
+		"projen.release.Publisher",
+		"PUBLISH_GIT_TASK_NAME",
+		&returns,
+	)
+	return returns
+}
+
 func (p *jsiiProxy_Publisher) AddGitHubPrePublishingSteps(steps ...*workflows.JobStep) {
 	args := []interface{}{}
 	for _, a := range steps {
@@ -945,6 +956,17 @@ func Release_Of(project github.GitHubProject) Release {
 		&returns,
 	)
 
+	return returns
+}
+
+func Release_ANTI_TAMPER_CMD() *string {
+	_init_.Initialize()
+	var returns *string
+	_jsii_.StaticGet(
+		"projen.release.Release",
+		"ANTI_TAMPER_CMD",
+		&returns,
+	)
 	return returns
 }
 
