@@ -1616,7 +1616,9 @@ type AwsCdkConstructLibraryOptions struct {
 	// this will be what you `package.json` will eventually include.
 	// Experimental.
 	BundledDeps *[]*string `json:"bundledDeps" yaml:"bundledDeps"`
-	// Options for publishing npm package to AWS CodeArtifact.
+	// Options for npm packages using AWS CodeArtifact.
+	//
+	// This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact.
 	// Experimental.
 	CodeArtifactOptions *javascript.CodeArtifactOptions `json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Runtime dependencies of this module.
@@ -1733,6 +1735,9 @@ type AwsCdkConstructLibraryOptions struct {
 	// If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
 	// Experimental.
 	RepositoryDirectory *string `json:"repositoryDirectory" yaml:"repositoryDirectory"`
+	// Options for privately hosted scoped packages.
+	// Experimental.
+	ScopedPackagesOptions *[]*javascript.ScopedPackagesOptions `json:"scopedPackagesOptions" yaml:"scopedPackagesOptions"`
 	// npm scripts to include.
 	//
 	// If a script has the same name as a standard script,
@@ -6446,7 +6451,9 @@ type AwsCdkTypeScriptAppOptions struct {
 	// this will be what you `package.json` will eventually include.
 	// Experimental.
 	BundledDeps *[]*string `json:"bundledDeps" yaml:"bundledDeps"`
-	// Options for publishing npm package to AWS CodeArtifact.
+	// Options for npm packages using AWS CodeArtifact.
+	//
+	// This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact.
 	// Experimental.
 	CodeArtifactOptions *javascript.CodeArtifactOptions `json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Runtime dependencies of this module.
@@ -6563,6 +6570,9 @@ type AwsCdkTypeScriptAppOptions struct {
 	// If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
 	// Experimental.
 	RepositoryDirectory *string `json:"repositoryDirectory" yaml:"repositoryDirectory"`
+	// Options for privately hosted scoped packages.
+	// Experimental.
+	ScopedPackagesOptions *[]*javascript.ScopedPackagesOptions `json:"scopedPackagesOptions" yaml:"scopedPackagesOptions"`
 	// npm scripts to include.
 	//
 	// If a script has the same name as a standard script,
@@ -8688,7 +8698,9 @@ type ConstructLibraryAwsOptions struct {
 	// this will be what you `package.json` will eventually include.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	BundledDeps *[]*string `json:"bundledDeps" yaml:"bundledDeps"`
-	// Options for publishing npm package to AWS CodeArtifact.
+	// Options for npm packages using AWS CodeArtifact.
+	//
+	// This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	CodeArtifactOptions *javascript.CodeArtifactOptions `json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Runtime dependencies of this module.
@@ -8805,6 +8817,9 @@ type ConstructLibraryAwsOptions struct {
 	// If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	RepositoryDirectory *string `json:"repositoryDirectory" yaml:"repositoryDirectory"`
+	// Options for privately hosted scoped packages.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	ScopedPackagesOptions *[]*javascript.ScopedPackagesOptions `json:"scopedPackagesOptions" yaml:"scopedPackagesOptions"`
 	// npm scripts to include.
 	//
 	// If a script has the same name as a standard script,

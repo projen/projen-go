@@ -1155,7 +1155,9 @@ type NodePackage interface {
 	// Allow project to take library dependencies.
 	// Experimental.
 	AllowLibraryDependencies() *bool
-	// Options for publishing npm package to AWS CodeArtifact.
+	// Options for npm packages using AWS CodeArtifact.
+	//
+	// This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact.
 	// Experimental.
 	CodeArtifactOptions() *CodeArtifactOptions
 	// The module's entrypoint (e.g. `lib/index.js`).
@@ -1206,6 +1208,9 @@ type NodePackage interface {
 	// The command which executes "projen".
 	// Experimental.
 	ProjenCommand() *string
+	// Options for privately hosted scoped packages.
+	// Experimental.
+	ScopedPackagesOptions() *[]*ScopedPackagesOptions
 	// Experimental.
 	AddBin(bins *map[string]*string)
 	// Defines bundled dependencies.
@@ -1444,6 +1449,16 @@ func (j *jsiiProxy_NodePackage) ProjenCommand() *string {
 	_jsii_.Get(
 		j,
 		"projenCommand",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NodePackage) ScopedPackagesOptions() *[]*ScopedPackagesOptions {
+	var returns *[]*ScopedPackagesOptions
+	_jsii_.Get(
+		j,
+		"scopedPackagesOptions",
 		&returns,
 	)
 	return returns
@@ -1705,7 +1720,9 @@ type NodePackageOptions struct {
 	// this will be what you `package.json` will eventually include.
 	// Experimental.
 	BundledDeps *[]*string `json:"bundledDeps" yaml:"bundledDeps"`
-	// Options for publishing npm package to AWS CodeArtifact.
+	// Options for npm packages using AWS CodeArtifact.
+	//
+	// This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact.
 	// Experimental.
 	CodeArtifactOptions *CodeArtifactOptions `json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Runtime dependencies of this module.
@@ -1822,6 +1839,9 @@ type NodePackageOptions struct {
 	// If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
 	// Experimental.
 	RepositoryDirectory *string `json:"repositoryDirectory" yaml:"repositoryDirectory"`
+	// Options for privately hosted scoped packages.
+	// Experimental.
+	ScopedPackagesOptions *[]*ScopedPackagesOptions `json:"scopedPackagesOptions" yaml:"scopedPackagesOptions"`
 	// npm scripts to include.
 	//
 	// If a script has the same name as a standard script,
@@ -3081,7 +3101,9 @@ type NodeProjectOptions struct {
 	// this will be what you `package.json` will eventually include.
 	// Experimental.
 	BundledDeps *[]*string `json:"bundledDeps" yaml:"bundledDeps"`
-	// Options for publishing npm package to AWS CodeArtifact.
+	// Options for npm packages using AWS CodeArtifact.
+	//
+	// This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact.
 	// Experimental.
 	CodeArtifactOptions *CodeArtifactOptions `json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Runtime dependencies of this module.
@@ -3198,6 +3220,9 @@ type NodeProjectOptions struct {
 	// If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
 	// Experimental.
 	RepositoryDirectory *string `json:"repositoryDirectory" yaml:"repositoryDirectory"`
+	// Options for privately hosted scoped packages.
+	// Experimental.
+	ScopedPackagesOptions *[]*ScopedPackagesOptions `json:"scopedPackagesOptions" yaml:"scopedPackagesOptions"`
 	// npm scripts to include.
 	//
 	// If a script has the same name as a standard script,
@@ -3965,6 +3990,21 @@ type RenderWorkflowSetupOptions struct {
 	// Should the pacakge lockfile be updated?
 	// Experimental.
 	Mutable *bool `json:"mutable" yaml:"mutable"`
+}
+
+// Options for scoped packages.
+// Experimental.
+type ScopedPackagesOptions struct {
+	// URL of the registry for scoped packages.
+	// Experimental.
+	RegistryUrl *string `json:"registryUrl" yaml:"registryUrl"`
+	// Scope of the packages.
+	//
+	// Example:
+	//   "@angular"
+	//
+	// Experimental.
+	Scope *string `json:"scope" yaml:"scope"`
 }
 
 // Experimental.

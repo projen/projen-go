@@ -189,6 +189,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "projenCommand", GoGetter: "ProjenCommand"},
 			_jsii_.MemberMethod{JsiiMethod: "removeScript", GoMethod: "RemoveScript"},
 			_jsii_.MemberMethod{JsiiMethod: "renderUpgradePackagesCommand", GoMethod: "RenderUpgradePackagesCommand"},
+			_jsii_.MemberProperty{JsiiProperty: "scopedPackagesOptions", GoGetter: "ScopedPackagesOptions"},
 			_jsii_.MemberMethod{JsiiMethod: "setScript", GoMethod: "SetScript"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 		},
@@ -406,6 +407,10 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.RenderWorkflowSetupOptions",
 		reflect.TypeOf((*RenderWorkflowSetupOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.ScopedPackagesOptions",
+		reflect.TypeOf((*ScopedPackagesOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.TrailingComma",
