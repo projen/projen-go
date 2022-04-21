@@ -1872,7 +1872,7 @@ type NodeProject interface {
 	// Auto approve set up for this project.
 	// Deprecated.
 	AutoApprove() github.AutoApprove
-	// Automatic PR merges.
+	// Component that sets up mergify for merging approved pull requests.
 	// Experimental.
 	AutoMerge() github.AutoMerge
 	// Experimental.
@@ -2990,10 +2990,16 @@ type NodeProjectOptions struct {
 	// Enable and configure the 'auto approve' workflow.
 	// Experimental.
 	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
+	// Enable automatic merging on GitHub.
+	//
+	// Has no effect if `github.mergify`
+	// is set to false.
+	// Experimental.
+	AutoMerge *bool `json:"autoMerge" yaml:"autoMerge"`
 	// Configure options for automatic merging on GitHub.
 	//
 	// Has no effect if
-	// `github.mergify` is set to false.
+	// `github.mergify` or `autoMerge` is set to false.
 	// Experimental.
 	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions" yaml:"autoMergeOptions"`
 	// Add a `clobber` task which resets the repo to origin.
