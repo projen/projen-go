@@ -177,6 +177,10 @@ func init() {
 		reflect.TypeOf((*StatusOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.github.workflows.Step",
+		reflect.TypeOf((*Step)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.github.workflows.ToolRequirement",
 		reflect.TypeOf((*ToolRequirement)(nil)).Elem(),
 	)

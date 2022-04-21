@@ -360,12 +360,6 @@ type JobPermissions struct {
 // A job step.
 // Experimental.
 type JobStep struct {
-	// Prevents a job from failing when a step fails.
-	//
-	// Set to true to allow a job
-	// to pass when this step fails.
-	// Experimental.
-	ContinueOnError *bool `json:"continueOnError" yaml:"continueOnError"`
 	// Sets environment variables for steps to use in the runner environment.
 	//
 	// You can also set environment variables for the entire workflow or a job.
@@ -393,9 +387,6 @@ type JobStep struct {
 	// the run command.
 	// Experimental.
 	Run *string `json:"run" yaml:"run"`
-	// The maximum number of minutes to run the step before killing the process.
-	// Experimental.
-	TimeoutMinutes *float64 `json:"timeoutMinutes" yaml:"timeoutMinutes"`
 	// Selects an action to run as part of a step in your job.
 	//
 	// An action is a
@@ -411,6 +402,15 @@ type JobStep struct {
 	// The variable is prefixed with INPUT_ and converted to upper case.
 	// Experimental.
 	With *map[string]interface{} `json:"with" yaml:"with"`
+	// Prevents a job from failing when a step fails.
+	//
+	// Set to true to allow a job
+	// to pass when this step fails.
+	// Experimental.
+	ContinueOnError *bool `json:"continueOnError" yaml:"continueOnError"`
+	// The maximum number of minutes to run the step before killing the process.
+	// Experimental.
+	TimeoutMinutes *float64 `json:"timeoutMinutes" yaml:"timeoutMinutes"`
 }
 
 // An output binding for a job.
@@ -642,6 +642,53 @@ type RunSettings struct {
 // The Status event accepts no options.
 // Experimental.
 type StatusOptions struct {
+}
+
+// A generic step.
+// Experimental.
+type Step struct {
+	// Sets environment variables for steps to use in the runner environment.
+	//
+	// You can also set environment variables for the entire workflow or a job.
+	// Experimental.
+	Env *map[string]*string `json:"env" yaml:"env"`
+	// A unique identifier for the step.
+	//
+	// You can use the id to reference the
+	// step in contexts.
+	// Experimental.
+	Id *string `json:"id" yaml:"id"`
+	// You can use the if conditional to prevent a job from running unless a condition is met.
+	//
+	// You can use any supported context and expression to
+	// create a conditional.
+	// Experimental.
+	If *string `json:"if" yaml:"if"`
+	// A name for your step to display on GitHub.
+	// Experimental.
+	Name *string `json:"name" yaml:"name"`
+	// Runs command-line programs using the operating system's shell.
+	//
+	// If you do
+	// not provide a name, the step name will default to the text specified in
+	// the run command.
+	// Experimental.
+	Run *string `json:"run" yaml:"run"`
+	// Selects an action to run as part of a step in your job.
+	//
+	// An action is a
+	// reusable unit of code. You can use an action defined in the same
+	// repository as the workflow, a public repository, or in a published Docker
+	// container image.
+	// Experimental.
+	Uses *string `json:"uses" yaml:"uses"`
+	// A map of the input parameters defined by the action.
+	//
+	// Each input parameter
+	// is a key/value pair. Input parameters are set as environment variables.
+	// The variable is prefixed with INPUT_ and converted to upper case.
+	// Experimental.
+	With *map[string]interface{} `json:"with" yaml:"with"`
 }
 
 // Version requirement for tools.
