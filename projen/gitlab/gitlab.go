@@ -90,10 +90,57 @@ type Assets struct {
 //
 // Experimental.
 type Cache struct {
+	// Used the to give each cache a unique identifying key.
+	//
+	// All jobs that use the same cache key use the same cache.
+	// Experimental.
+	Key interface{} `json:"key" yaml:"key"`
+	// Defines which files or directories to cache.
+	// Experimental.
+	Paths *[]*string `json:"paths" yaml:"paths"`
+	// Defines the upload and download behaviour of the cache.
+	// Experimental.
+	Policy CachePolicy `json:"policy" yaml:"policy"`
+	// If set to true all files that are untracked in your Git repository will be cached.
+	// Experimental.
+	Untracked *bool `json:"untracked" yaml:"untracked"`
 	// Defines when to save the cache, based on the status of the job (Default: Job Success).
 	// Experimental.
 	When CacheWhen `json:"when" yaml:"when"`
 }
+
+// Use this construct to generate a new key when one or two specific files change.
+// See: https://docs.gitlab.com/ee/ci/yaml/#cachekeyfiles
+//
+// Experimental.
+type CacheKeyFiles struct {
+	// The files that are checked against.
+	//
+	// If the SHA checksum changes, the cache becomes invalid.
+	// Experimental.
+	Files *[]*string `json:"files" yaml:"files"`
+	// Adds a custom prefix to the checksums computed.
+	// Experimental.
+	Prefix *string `json:"prefix" yaml:"prefix"`
+}
+
+// Configure the upload and download behaviour of a cache.
+// See: https://docs.gitlab.com/ee/ci/yaml/#cachepolicy
+//
+// Experimental.
+type CachePolicy string
+
+const (
+	// Only download the cache when the job starts, but never upload changes when the job finishes.
+	// Experimental.
+	CachePolicy_PULL CachePolicy = "PULL"
+	// Only upload a cache when the job finishes, but never download the cache when the job starts.
+	// Experimental.
+	CachePolicy_PUSH CachePolicy = "PUSH"
+	// The job downloads the cache when the job starts, and uploads changes to the cache when the job ends.
+	// Experimental.
+	CachePolicy_PULL_PUSH CachePolicy = "PULL_PUSH"
+)
 
 // Configure when artifacts are uploaded depended on job status.
 // See: https://docs.gitlab.com/ee/ci/yaml/#cachewhen

@@ -32,6 +32,19 @@ func init() {
 		"projen.gitlab.Cache",
 		reflect.TypeOf((*Cache)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.gitlab.CacheKeyFiles",
+		reflect.TypeOf((*CacheKeyFiles)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.gitlab.CachePolicy",
+		reflect.TypeOf((*CachePolicy)(nil)).Elem(),
+		map[string]interface{}{
+			"PULL": CachePolicy_PULL,
+			"PUSH": CachePolicy_PUSH,
+			"PULL_PUSH": CachePolicy_PULL_PUSH,
+		},
+	)
 	_jsii_.RegisterEnum(
 		"projen.gitlab.CacheWhen",
 		reflect.TypeOf((*CacheWhen)(nil)).Elem(),
