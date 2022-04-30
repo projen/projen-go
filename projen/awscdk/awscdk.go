@@ -4917,9 +4917,18 @@ type AwsCdkPythonAppOptions struct {
 	// Use poetry to manage your project dependencies, virtual environment, and (optional) packaging/publishing.
 	// Experimental.
 	Poetry *bool `json:"poetry" yaml:"poetry"`
-	// Use projenrc in python.
+	// Use projenrc in javascript.
 	//
-	// This will install `projen` as a python dependency and will add a `synth`
+	// This will install `projen` as a JavaScript dependency and add a `synth`
+	// task which will run `.projenrc.js`.
+	// Experimental.
+	ProjenrcJs *bool `json:"projenrcJs" yaml:"projenrcJs"`
+	// Options related to projenrc in JavaScript.
+	// Experimental.
+	ProjenrcJsOptions *javascript.ProjenrcOptions `json:"projenrcJsOptions" yaml:"projenrcJsOptions"`
+	// Use projenrc in Python.
+	//
+	// This will install `projen` as a Python dependency and add a `synth`
 	// task which will run `.projenrc.py`.
 	// Experimental.
 	ProjenrcPython *bool `json:"projenrcPython" yaml:"projenrcPython"`
