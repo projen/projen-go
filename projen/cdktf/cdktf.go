@@ -327,6 +327,12 @@ type ConstructLibraryCdktf interface {
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Experimental.
+	TryRemoveFile(filePath *string) projen.FileBase
 }
 
 // The jsii proxy struct for ConstructLibraryCdktf
@@ -1241,6 +1247,19 @@ func (c *jsiiProxy_ConstructLibraryCdktf) TryFindObjectFile(filePath *string) pr
 	_jsii_.Invoke(
 		c,
 		"tryFindObjectFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+func (c *jsiiProxy_ConstructLibraryCdktf) TryRemoveFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		c,
+		"tryRemoveFile",
 		[]interface{}{filePath},
 		&returns,
 	)

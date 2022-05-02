@@ -1149,6 +1149,16 @@ type GitHubProject interface {
 	// the next steps to address this is to abstract workflows so that different
 	// "engines" can be used to implement our CI/CD solutions.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
+	TryRemoveFile(filePath *string) projen.FileBase
 }
 
 // The jsii proxy struct for GitHubProject
@@ -1622,6 +1632,19 @@ func (g *jsiiProxy_GitHubProject) TryFindObjectFile(filePath *string) projen.Obj
 	_jsii_.Invoke(
 		g,
 		"tryFindObjectFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+func (g *jsiiProxy_GitHubProject) TryRemoveFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		g,
+		"tryRemoveFile",
 		[]interface{}{filePath},
 		&returns,
 	)

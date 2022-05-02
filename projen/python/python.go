@@ -1250,6 +1250,12 @@ type PythonProject interface {
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Experimental.
+	TryRemoveFile(filePath *string) projen.FileBase
 }
 
 // The jsii proxy struct for PythonProject
@@ -1799,6 +1805,19 @@ func (p *jsiiProxy_PythonProject) TryFindObjectFile(filePath *string) projen.Obj
 	_jsii_.Invoke(
 		p,
 		"tryFindObjectFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+func (p *jsiiProxy_PythonProject) TryRemoveFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		p,
+		"tryRemoveFile",
 		[]interface{}{filePath},
 		&returns,
 	)

@@ -434,6 +434,12 @@ type Cdk8sTypeScriptApp interface {
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Experimental.
+	TryRemoveFile(filePath *string) projen.FileBase
 }
 
 // The jsii proxy struct for Cdk8sTypeScriptApp
@@ -1395,6 +1401,19 @@ func (c *jsiiProxy_Cdk8sTypeScriptApp) TryFindObjectFile(filePath *string) proje
 	return returns
 }
 
+func (c *jsiiProxy_Cdk8sTypeScriptApp) TryRemoveFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		c,
+		"tryRemoveFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
 // Experimental.
 type Cdk8sTypeScriptAppOptions struct {
 	// This is the name of your project.
@@ -2296,6 +2315,12 @@ type ConstructLibraryCdk8s interface {
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Experimental.
+	TryRemoveFile(filePath *string) projen.FileBase
 }
 
 // The jsii proxy struct for ConstructLibraryCdk8s
@@ -3230,6 +3255,19 @@ func (c *jsiiProxy_ConstructLibraryCdk8s) TryFindObjectFile(filePath *string) pr
 	_jsii_.Invoke(
 		c,
 		"tryFindObjectFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+func (c *jsiiProxy_ConstructLibraryCdk8s) TryRemoveFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		c,
+		"tryRemoveFile",
 		[]interface{}{filePath},
 		&returns,
 	)

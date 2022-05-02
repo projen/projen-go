@@ -416,6 +416,12 @@ type NextJsProject interface {
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Experimental.
+	TryRemoveFile(filePath *string) projen.FileBase
 }
 
 // The jsii proxy struct for NextJsProject
@@ -1267,6 +1273,19 @@ func (n *jsiiProxy_NextJsProject) TryFindObjectFile(filePath *string) projen.Obj
 	return returns
 }
 
+func (n *jsiiProxy_NextJsProject) TryRemoveFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		n,
+		"tryRemoveFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
 // Experimental.
 type NextJsProjectOptions struct {
 	// Assets directory.
@@ -2079,6 +2098,12 @@ type NextJsTypeScriptProject interface {
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Experimental.
+	TryRemoveFile(filePath *string) projen.FileBase
 }
 
 // The jsii proxy struct for NextJsTypeScriptProject
@@ -3013,6 +3038,19 @@ func (n *jsiiProxy_NextJsTypeScriptProject) TryFindObjectFile(filePath *string) 
 	_jsii_.Invoke(
 		n,
 		"tryFindObjectFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+func (n *jsiiProxy_NextJsTypeScriptProject) TryRemoveFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		n,
+		"tryRemoveFile",
 		[]interface{}{filePath},
 		&returns,
 	)
@@ -4057,6 +4095,12 @@ type ReactProject interface {
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Experimental.
+	TryRemoveFile(filePath *string) projen.FileBase
 }
 
 // The jsii proxy struct for ReactProject
@@ -4881,6 +4925,19 @@ func (r *jsiiProxy_ReactProject) TryFindObjectFile(filePath *string) projen.Obje
 	_jsii_.Invoke(
 		r,
 		"tryFindObjectFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+func (r *jsiiProxy_ReactProject) TryRemoveFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		r,
+		"tryRemoveFile",
 		[]interface{}{filePath},
 		&returns,
 	)
@@ -5976,6 +6033,12 @@ type ReactTypeScriptProject interface {
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Experimental.
+	TryRemoveFile(filePath *string) projen.FileBase
 }
 
 // The jsii proxy struct for ReactTypeScriptProject
@@ -6900,6 +6963,19 @@ func (r *jsiiProxy_ReactTypeScriptProject) TryFindObjectFile(filePath *string) p
 	_jsii_.Invoke(
 		r,
 		"tryFindObjectFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+func (r *jsiiProxy_ReactTypeScriptProject) TryRemoveFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		r,
+		"tryRemoveFile",
 		[]interface{}{filePath},
 		&returns,
 	)

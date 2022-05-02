@@ -493,6 +493,12 @@ type AwsCdkConstructLibrary interface {
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Experimental.
+	TryRemoveFile(filePath *string) projen.FileBase
 }
 
 // The jsii proxy struct for AwsCdkConstructLibrary
@@ -1463,6 +1469,19 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) TryFindObjectFile(filePath *string) p
 	_jsii_.Invoke(
 		a,
 		"tryFindObjectFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+func (a *jsiiProxy_AwsCdkConstructLibrary) TryRemoveFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		a,
+		"tryRemoveFile",
 		[]interface{}{filePath},
 		&returns,
 	)
@@ -2999,6 +3018,12 @@ type AwsCdkJavaApp interface {
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Experimental.
+	TryRemoveFile(filePath *string) projen.FileBase
 }
 
 // The jsii proxy struct for AwsCdkJavaApp
@@ -3633,6 +3658,19 @@ func (a *jsiiProxy_AwsCdkJavaApp) TryFindObjectFile(filePath *string) projen.Obj
 	return returns
 }
 
+func (a *jsiiProxy_AwsCdkJavaApp) TryRemoveFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		a,
+		"tryRemoveFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
 // Experimental.
 type AwsCdkJavaAppOptions struct {
 	// This is the name of your project.
@@ -4143,6 +4181,12 @@ type AwsCdkPythonApp interface {
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Experimental.
+	TryRemoveFile(filePath *string) projen.FileBase
 }
 
 // The jsii proxy struct for AwsCdkPythonApp
@@ -4759,6 +4803,19 @@ func (a *jsiiProxy_AwsCdkPythonApp) TryFindObjectFile(filePath *string) projen.O
 	return returns
 }
 
+func (a *jsiiProxy_AwsCdkPythonApp) TryRemoveFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		a,
+		"tryRemoveFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
 // Options for `AwsCdkPythonApp`.
 // Experimental.
 type AwsCdkPythonAppOptions struct {
@@ -5349,6 +5406,12 @@ type AwsCdkTypeScriptApp interface {
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Experimental.
+	TryRemoveFile(filePath *string) projen.FileBase
 }
 
 // The jsii proxy struct for AwsCdkTypeScriptApp
@@ -6326,6 +6389,19 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) TryFindObjectFile(filePath *string) proj
 	_jsii_.Invoke(
 		a,
 		"tryFindObjectFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+func (a *jsiiProxy_AwsCdkTypeScriptApp) TryRemoveFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		a,
+		"tryRemoveFile",
 		[]interface{}{filePath},
 		&returns,
 	)
@@ -7609,6 +7685,12 @@ type ConstructLibraryAws interface {
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Deprecated: use `AwsCdkConstructLibrary`.
+	TryRemoveFile(filePath *string) projen.FileBase
 }
 
 // The jsii proxy struct for ConstructLibraryAws
@@ -8579,6 +8661,19 @@ func (c *jsiiProxy_ConstructLibraryAws) TryFindObjectFile(filePath *string) proj
 	_jsii_.Invoke(
 		c,
 		"tryFindObjectFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+func (c *jsiiProxy_ConstructLibraryAws) TryRemoveFile(filePath *string) projen.FileBase {
+	var returns projen.FileBase
+
+	_jsii_.Invoke(
+		c,
+		"tryRemoveFile",
 		[]interface{}{filePath},
 		&returns,
 	)

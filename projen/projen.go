@@ -4115,6 +4115,12 @@ type Project interface {
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) ObjectFile
+	// Finds a file at the specified relative path within this project and removes it.
+	//
+	// Returns: a `FileBase` if the file was found and removed, or undefined if
+	// the file was not found.
+	// Experimental.
+	TryRemoveFile(filePath *string) FileBase
 }
 
 // The jsii proxy struct for Project
@@ -4520,6 +4526,19 @@ func (p *jsiiProxy_Project) TryFindObjectFile(filePath *string) ObjectFile {
 	_jsii_.Invoke(
 		p,
 		"tryFindObjectFile",
+		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+func (p *jsiiProxy_Project) TryRemoveFile(filePath *string) FileBase {
+	var returns FileBase
+
+	_jsii_.Invoke(
+		p,
+		"tryRemoveFile",
 		[]interface{}{filePath},
 		&returns,
 	)
