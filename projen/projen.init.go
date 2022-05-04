@@ -676,6 +676,38 @@ func init() {
 		"projen.ProjenrcOptions",
 		reflect.TypeOf((*ProjenrcOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterClass(
+		"projen.Renovatebot",
+		reflect.TypeOf((*Renovatebot)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+		},
+		func() interface{} {
+			j := jsiiProxy_Renovatebot{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_Component)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.RenovatebotOptions",
+		reflect.TypeOf((*RenovatebotOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.RenovatebotScheduleInterval",
+		reflect.TypeOf((*RenovatebotScheduleInterval)(nil)).Elem(),
+		map[string]interface{}{
+			"ANY_TIME": RenovatebotScheduleInterval_ANY_TIME,
+			"EARLY_MONDAYS": RenovatebotScheduleInterval_EARLY_MONDAYS,
+			"DAILY": RenovatebotScheduleInterval_DAILY,
+			"MONTHLY": RenovatebotScheduleInterval_MONTHLY,
+			"QUARTERLY": RenovatebotScheduleInterval_QUARTERLY,
+			"WEEKENDS": RenovatebotScheduleInterval_WEEKENDS,
+			"WEEKDAYS": RenovatebotScheduleInterval_WEEKDAYS,
+		},
+	)
 	_jsii_.RegisterStruct(
 		"projen.ResolveOptions",
 		reflect.TypeOf((*ResolveOptions)(nil)).Elem(),

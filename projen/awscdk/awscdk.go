@@ -1521,6 +1521,12 @@ type AwsCdkConstructLibraryOptions struct {
 	// Options for .projenrc.json.
 	// Experimental.
 	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	// Use renovatebot to handle dependency upgrades.
+	// Experimental.
+	Renovatebot *bool `json:"renovatebot" yaml:"renovatebot"`
+	// Options for renovatebot.
+	// Experimental.
+	RenovatebotOptions *projen.RenovatebotOptions `json:"renovatebotOptions" yaml:"renovatebotOptions"`
 	// Enable and configure the 'auto approve' workflow.
 	// Experimental.
 	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
@@ -3702,6 +3708,12 @@ type AwsCdkJavaAppOptions struct {
 	// Options for .projenrc.json.
 	// Experimental.
 	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	// Use renovatebot to handle dependency upgrades.
+	// Experimental.
+	Renovatebot *bool `json:"renovatebot" yaml:"renovatebot"`
+	// Options for renovatebot.
+	// Experimental.
+	RenovatebotOptions *projen.RenovatebotOptions `json:"renovatebotOptions" yaml:"renovatebotOptions"`
 	// Enable and configure the 'auto approve' workflow.
 	// Experimental.
 	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
@@ -4848,6 +4860,12 @@ type AwsCdkPythonAppOptions struct {
 	// Options for .projenrc.json.
 	// Experimental.
 	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	// Use renovatebot to handle dependency upgrades.
+	// Experimental.
+	Renovatebot *bool `json:"renovatebot" yaml:"renovatebot"`
+	// Options for renovatebot.
+	// Experimental.
+	RenovatebotOptions *projen.RenovatebotOptions `json:"renovatebotOptions" yaml:"renovatebotOptions"`
 	// Enable and configure the 'auto approve' workflow.
 	// Experimental.
 	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
@@ -6440,6 +6458,12 @@ type AwsCdkTypeScriptAppOptions struct {
 	// Options for .projenrc.json.
 	// Experimental.
 	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	// Use renovatebot to handle dependency upgrades.
+	// Experimental.
+	Renovatebot *bool `json:"renovatebot" yaml:"renovatebot"`
+	// Options for renovatebot.
+	// Experimental.
+	RenovatebotOptions *projen.RenovatebotOptions `json:"renovatebotOptions" yaml:"renovatebotOptions"`
 	// Enable and configure the 'auto approve' workflow.
 	// Experimental.
 	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
@@ -8712,6 +8736,12 @@ type ConstructLibraryAwsOptions struct {
 	// Options for .projenrc.json.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	// Use renovatebot to handle dependency upgrades.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	Renovatebot *bool `json:"renovatebot" yaml:"renovatebot"`
+	// Options for renovatebot.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	RenovatebotOptions *projen.RenovatebotOptions `json:"renovatebotOptions" yaml:"renovatebotOptions"`
 	// Enable and configure the 'auto approve' workflow.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`

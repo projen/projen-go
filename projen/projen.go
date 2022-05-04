@@ -4751,6 +4751,12 @@ type ProjectOptions struct {
 	// Options for .projenrc.json.
 	// Experimental.
 	ProjenrcJsonOptions *ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	// Use renovatebot to handle dependency upgrades.
+	// Experimental.
+	Renovatebot *bool `json:"renovatebot" yaml:"renovatebot"`
+	// Options for renovatebot.
+	// Experimental.
+	RenovatebotOptions *RenovatebotOptions `json:"renovatebotOptions" yaml:"renovatebotOptions"`
 }
 
 // Which type of project this is.
@@ -4892,6 +4898,155 @@ type ProjenrcOptions struct {
 	// Experimental.
 	Filename *string `json:"filename" yaml:"filename"`
 }
+
+// Defines renovatebot configuration for projen project.
+//
+// Ignores the versions controlled by Projen.
+// Experimental.
+type Renovatebot interface {
+	Component
+	// Experimental.
+	Project() Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
+	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
+	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
+	Synthesize()
+}
+
+// The jsii proxy struct for Renovatebot
+type jsiiProxy_Renovatebot struct {
+	jsiiProxy_Component
+}
+
+func (j *jsiiProxy_Renovatebot) Project() Project {
+	var returns Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewRenovatebot(project Project, options *RenovatebotOptions) Renovatebot {
+	_init_.Initialize()
+
+	j := jsiiProxy_Renovatebot{}
+
+	_jsii_.Create(
+		"projen.Renovatebot",
+		[]interface{}{project, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewRenovatebot_Override(r Renovatebot, project Project, options *RenovatebotOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.Renovatebot",
+		[]interface{}{project, options},
+		r,
+	)
+}
+
+func (r *jsiiProxy_Renovatebot) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		r,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+func (r *jsiiProxy_Renovatebot) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		r,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+func (r *jsiiProxy_Renovatebot) Synthesize() {
+	_jsii_.InvokeVoid(
+		r,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Options for Renovatebot.
+// Experimental.
+type RenovatebotOptions struct {
+	// You can use the `ignore` option to customize which dependencies are updated.
+	//
+	// The ignore option supports just package name.
+	// Experimental.
+	Ignore *[]*string `json:"ignore" yaml:"ignore"`
+	// Ignores updates to `projen`.
+	//
+	// This is required since projen updates may cause changes in committed files
+	// and anti-tamper checks will fail.
+	//
+	// Projen upgrades are covered through the `ProjenUpgrade` class.
+	// Experimental.
+	IgnoreProjen *bool `json:"ignoreProjen" yaml:"ignoreProjen"`
+	// List of labels to apply to the created PR's.
+	// Experimental.
+	Labels *[]*string `json:"labels" yaml:"labels"`
+	// How often to check for new versions and raise pull requests.
+	//
+	// Can be given in CRON or LATER format, and use multiple schedules
+	// (e.g. different for weekdays and weekends). Multiple rules are
+	// handles as OR.
+	//
+	// Some normal scheduling values defined in enum `RenovatebotScheduleInterval`.
+	// See: https://docs.renovatebot.com/configuration-options/#schedule
+	//
+	// Experimental.
+	ScheduleInterval *[]*string `json:"scheduleInterval" yaml:"scheduleInterval"`
+}
+
+// How often to check for new versions and raise pull requests for version updates.
+// See: https://docs.renovatebot.com/presets-schedule/
+//
+// Experimental.
+type RenovatebotScheduleInterval string
+
+const (
+	// Run at any time.
+	// Experimental.
+	RenovatebotScheduleInterval_ANY_TIME RenovatebotScheduleInterval = "ANY_TIME"
+	// Weekly schedule on early monday mornings.
+	// Experimental.
+	RenovatebotScheduleInterval_EARLY_MONDAYS RenovatebotScheduleInterval = "EARLY_MONDAYS"
+	// Schedule daily.
+	// Experimental.
+	RenovatebotScheduleInterval_DAILY RenovatebotScheduleInterval = "DAILY"
+	// Schedule monthly.
+	// Experimental.
+	RenovatebotScheduleInterval_MONTHLY RenovatebotScheduleInterval = "MONTHLY"
+	// Schedule quarterly.
+	// Experimental.
+	RenovatebotScheduleInterval_QUARTERLY RenovatebotScheduleInterval = "QUARTERLY"
+	// Schedule for weekends.
+	// Experimental.
+	RenovatebotScheduleInterval_WEEKENDS RenovatebotScheduleInterval = "WEEKENDS"
+	// Schedule for weekdays.
+	// Experimental.
+	RenovatebotScheduleInterval_WEEKDAYS RenovatebotScheduleInterval = "WEEKDAYS"
+)
 
 // Resolve options.
 // Experimental.

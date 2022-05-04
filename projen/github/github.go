@@ -1684,6 +1684,12 @@ type GitHubProjectOptions struct {
 	// Options for .projenrc.json.
 	// Experimental.
 	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	// Use renovatebot to handle dependency upgrades.
+	// Experimental.
+	Renovatebot *bool `json:"renovatebot" yaml:"renovatebot"`
+	// Options for renovatebot.
+	// Experimental.
+	RenovatebotOptions *projen.RenovatebotOptions `json:"renovatebotOptions" yaml:"renovatebotOptions"`
 	// Enable and configure the 'auto approve' workflow.
 	// Experimental.
 	AutoApproveOptions *AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
