@@ -35,7 +35,7 @@ const (
 // Experimental.
 type AllowFailure struct {
 	// Experimental.
-	ExitCodes interface{} `json:"exitCodes" yaml:"exitCodes"`
+	ExitCodes interface{} `field:"required" json:"exitCodes" yaml:"exitCodes"`
 }
 
 // Used to specify a list of files and directories that should be attached to the job if it succeeds.
@@ -47,34 +47,34 @@ type AllowFailure struct {
 type Artifacts struct {
 	// A list of paths to files/folders that should be excluded in the artifact.
 	// Experimental.
-	Exclude *[]*string `json:"exclude" yaml:"exclude"`
+	Exclude *[]*string `field:"optional" json:"exclude" yaml:"exclude"`
 	// How long artifacts should be kept.
 	//
 	// They are saved 30 days by default. Artifacts that have expired are removed periodically via cron job. Supports a wide variety of formats, e.g. '1 week', '3 mins 4 sec', '2 hrs 20 min', '2h20min', '6 mos 1 day', '47 yrs 6 mos and 4d', '3 weeks and 2 days'.
 	// Experimental.
-	ExpireIn *string `json:"expireIn" yaml:"expireIn"`
+	ExpireIn *string `field:"optional" json:"expireIn" yaml:"expireIn"`
 	// Can be used to expose job artifacts in the merge request UI.
 	//
 	// GitLab will add a link <expose_as> to the relevant merge request that points to the artifact.
 	// Experimental.
-	ExposeAs *string `json:"exposeAs" yaml:"exposeAs"`
+	ExposeAs *string `field:"optional" json:"exposeAs" yaml:"exposeAs"`
 	// Name for the archive created on job success.
 	//
 	// Can use variables in the name, e.g. '$CI_JOB_NAME'
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"optional" json:"name" yaml:"name"`
 	// A list of paths to files/folders that should be included in the artifact.
 	// Experimental.
-	Paths *[]*string `json:"paths" yaml:"paths"`
+	Paths *[]*string `field:"optional" json:"paths" yaml:"paths"`
 	// Reports will be uploaded as artifacts, and often displayed in the Gitlab UI, such as in Merge Requests.
 	// Experimental.
-	Reports *Reports `json:"reports" yaml:"reports"`
+	Reports *Reports `field:"optional" json:"reports" yaml:"reports"`
 	// Whether to add all untracked files (along with 'artifacts.paths') to the artifact.
 	// Experimental.
-	Untracked *bool `json:"untracked" yaml:"untracked"`
+	Untracked *bool `field:"optional" json:"untracked" yaml:"untracked"`
 	// Configure when artifacts are uploaded depended on job status.
 	// Experimental.
-	When CacheWhen `json:"when" yaml:"when"`
+	When CacheWhen `field:"optional" json:"when" yaml:"when"`
 }
 
 // Asset configuration for a release.
@@ -82,7 +82,7 @@ type Artifacts struct {
 type Assets struct {
 	// Include asset links in the release.
 	// Experimental.
-	Links *[]*Link `json:"links" yaml:"links"`
+	Links *[]*Link `field:"required" json:"links" yaml:"links"`
 }
 
 // Cache Definition.
@@ -94,19 +94,19 @@ type Cache struct {
 	//
 	// All jobs that use the same cache key use the same cache.
 	// Experimental.
-	Key interface{} `json:"key" yaml:"key"`
+	Key interface{} `field:"optional" json:"key" yaml:"key"`
 	// Defines which files or directories to cache.
 	// Experimental.
-	Paths *[]*string `json:"paths" yaml:"paths"`
+	Paths *[]*string `field:"optional" json:"paths" yaml:"paths"`
 	// Defines the upload and download behaviour of the cache.
 	// Experimental.
-	Policy CachePolicy `json:"policy" yaml:"policy"`
+	Policy CachePolicy `field:"optional" json:"policy" yaml:"policy"`
 	// If set to true all files that are untracked in your Git repository will be cached.
 	// Experimental.
-	Untracked *bool `json:"untracked" yaml:"untracked"`
+	Untracked *bool `field:"optional" json:"untracked" yaml:"untracked"`
 	// Defines when to save the cache, based on the status of the job (Default: Job Success).
 	// Experimental.
-	When CacheWhen `json:"when" yaml:"when"`
+	When CacheWhen `field:"optional" json:"when" yaml:"when"`
 }
 
 // Use this construct to generate a new key when one or two specific files change.
@@ -118,10 +118,10 @@ type CacheKeyFiles struct {
 	//
 	// If the SHA checksum changes, the cache becomes invalid.
 	// Experimental.
-	Files *[]*string `json:"files" yaml:"files"`
+	Files *[]*string `field:"required" json:"files" yaml:"files"`
 	// Adds a custom prefix to the checksums computed.
 	// Experimental.
-	Prefix *string `json:"prefix" yaml:"prefix"`
+	Prefix *string `field:"optional" json:"prefix" yaml:"prefix"`
 }
 
 // Configure the upload and download behaviour of a cache.
@@ -568,30 +568,30 @@ type CiConfigurationOptions struct {
 	//
 	// Jobs that do not define one or more of the listed keywords use the value defined in the default section.
 	// Experimental.
-	Default *Default `json:"default" yaml:"default"`
+	Default *Default `field:"optional" json:"default" yaml:"default"`
 	// An initial set of jobs to add to the configuration.
 	// Experimental.
-	Jobs *map[string]*Job `json:"jobs" yaml:"jobs"`
+	Jobs *map[string]*Job `field:"optional" json:"jobs" yaml:"jobs"`
 	// A special job used to upload static sites to Gitlab pages.
 	//
 	// Requires a `public/` directory
 	// with `artifacts.path` pointing to it.
 	// Experimental.
-	Pages *Job `json:"pages" yaml:"pages"`
+	Pages *Job `field:"optional" json:"pages" yaml:"pages"`
 	// Groups jobs into stages.
 	//
 	// All jobs in one stage must complete before next stage is
 	// executed. If no stages are specified. Defaults to ['build', 'test', 'deploy'].
 	// Experimental.
-	Stages *[]*string `json:"stages" yaml:"stages"`
+	Stages *[]*string `field:"optional" json:"stages" yaml:"stages"`
 	// Global variables that are passed to jobs.
 	//
 	// If the job already has that variable defined, the job-level variable takes precedence.
 	// Experimental.
-	Variables *map[string]interface{} `json:"variables" yaml:"variables"`
+	Variables *map[string]interface{} `field:"optional" json:"variables" yaml:"variables"`
 	// Used to control pipeline behavior.
 	// Experimental.
-	Workflow *Workflow `json:"workflow" yaml:"workflow"`
+	Workflow *Workflow `field:"optional" json:"workflow" yaml:"workflow"`
 }
 
 // Default settings for the CI Configuration.
@@ -602,25 +602,25 @@ type CiConfigurationOptions struct {
 // Experimental.
 type Default struct {
 	// Experimental.
-	AfterScript *[]*string `json:"afterScript" yaml:"afterScript"`
+	AfterScript *[]*string `field:"optional" json:"afterScript" yaml:"afterScript"`
 	// Experimental.
-	Artifacts *Artifacts `json:"artifacts" yaml:"artifacts"`
+	Artifacts *Artifacts `field:"optional" json:"artifacts" yaml:"artifacts"`
 	// Experimental.
-	BeforeScript *[]*string `json:"beforeScript" yaml:"beforeScript"`
+	BeforeScript *[]*string `field:"optional" json:"beforeScript" yaml:"beforeScript"`
 	// Experimental.
-	Cache *Cache `json:"cache" yaml:"cache"`
+	Cache *Cache `field:"optional" json:"cache" yaml:"cache"`
 	// Experimental.
-	Image *Image `json:"image" yaml:"image"`
+	Image *Image `field:"optional" json:"image" yaml:"image"`
 	// Experimental.
-	Interruptible *bool `json:"interruptible" yaml:"interruptible"`
+	Interruptible *bool `field:"optional" json:"interruptible" yaml:"interruptible"`
 	// Experimental.
-	Retry *Retry `json:"retry" yaml:"retry"`
+	Retry *Retry `field:"optional" json:"retry" yaml:"retry"`
 	// Experimental.
-	Services *[]*Service `json:"services" yaml:"services"`
+	Services *[]*Service `field:"optional" json:"services" yaml:"services"`
 	// Experimental.
-	Tags *[]*string `json:"tags" yaml:"tags"`
+	Tags *[]*string `field:"optional" json:"tags" yaml:"tags"`
 	// Experimental.
-	Timeout *string `json:"timeout" yaml:"timeout"`
+	Timeout *string `field:"optional" json:"timeout" yaml:"timeout"`
 }
 
 // Experimental.
@@ -671,10 +671,10 @@ const (
 type Engine struct {
 	// Name of the secrets engine.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 	// Path to the secrets engine.
 	// Experimental.
-	Path *string `json:"path" yaml:"path"`
+	Path *string `field:"required" json:"path" yaml:"path"`
 }
 
 // The environment that a job deploys to.
@@ -682,31 +682,31 @@ type Engine struct {
 type Environment struct {
 	// The name of the environment, e.g. 'qa', 'staging', 'production'.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 	// Specifies what this job will do.
 	//
 	// 'start' (default) indicates the job will start the deployment. 'prepare' indicates this will not affect the deployment. 'stop' indicates this will stop the deployment.
 	// Experimental.
-	Action Action `json:"action" yaml:"action"`
+	Action Action `field:"optional" json:"action" yaml:"action"`
 	// The amount of time it should take before Gitlab will automatically stop the environment.
 	//
 	// Supports a wide variety of formats, e.g. '1 week', '3 mins 4 sec', '2 hrs 20 min', '2h20min', '6 mos 1 day', '47 yrs 6 mos and 4d', '3 weeks and 2 days'.
 	// Experimental.
-	AutoStopIn *string `json:"autoStopIn" yaml:"autoStopIn"`
+	AutoStopIn *string `field:"optional" json:"autoStopIn" yaml:"autoStopIn"`
 	// Explicitly specifies the tier of the deployment environment if non-standard environment name is used.
 	// Experimental.
-	DeploymentTier DeploymentTier `json:"deploymentTier" yaml:"deploymentTier"`
+	DeploymentTier DeploymentTier `field:"optional" json:"deploymentTier" yaml:"deploymentTier"`
 	// Used to configure the kubernetes deployment for this environment.
 	//
 	// This is currently not supported for kubernetes clusters that are managed by Gitlab.
 	// Experimental.
-	Kubernetes *KubernetesConfig `json:"kubernetes" yaml:"kubernetes"`
+	Kubernetes *KubernetesConfig `field:"optional" json:"kubernetes" yaml:"kubernetes"`
 	// The name of a job to execute when the environment is about to be stopped.
 	// Experimental.
-	OnStop *string `json:"onStop" yaml:"onStop"`
+	OnStop *string `field:"optional" json:"onStop" yaml:"onStop"`
 	// When set, this will expose buttons in various places for the current environment in Gitlab, that will take you to the defined URL.
 	// Experimental.
-	Url *string `json:"url" yaml:"url"`
+	Url *string `field:"optional" json:"url" yaml:"url"`
 }
 
 // Filtering options for when a job will run.
@@ -714,18 +714,18 @@ type Environment struct {
 type Filter struct {
 	// Filter job creation based on files that were modified in a git push.
 	// Experimental.
-	Changes *[]*string `json:"changes" yaml:"changes"`
+	Changes *[]*string `field:"optional" json:"changes" yaml:"changes"`
 	// Filter job based on if Kubernetes integration is active.
 	// Experimental.
-	Kubernetes KubernetesEnum `json:"kubernetes" yaml:"kubernetes"`
+	Kubernetes KubernetesEnum `field:"optional" json:"kubernetes" yaml:"kubernetes"`
 	// Control when to add jobs to a pipeline based on branch names or pipeline types.
 	// Experimental.
-	Refs *[]*string `json:"refs" yaml:"refs"`
+	Refs *[]*string `field:"optional" json:"refs" yaml:"refs"`
 	// Filter job by checking comparing values of environment variables.
 	//
 	// Read more about variable expressions: https://docs.gitlab.com/ee/ci/variables/README.html#variables-expressions
 	// Experimental.
-	Variables *[]*string `json:"variables" yaml:"variables"`
+	Variables *[]*string `field:"optional" json:"variables" yaml:"variables"`
 }
 
 // A GitLab CI for the main `.gitlab-ci.yml` file.
@@ -1164,12 +1164,12 @@ type Image struct {
 	//
 	// It should contain the Registry part if needed.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 	// Command or script that should be executed as the container's entrypoint.
 	//
 	// It will be translated to Docker's --entrypoint option while creating the container. The syntax is similar to Dockerfile's ENTRYPOINT directive, where each shell token is a separate string in the array.
 	// Experimental.
-	Entrypoint *[]interface{} `json:"entrypoint" yaml:"entrypoint"`
+	Entrypoint *[]interface{} `field:"optional" json:"entrypoint" yaml:"entrypoint"`
 }
 
 // An included YAML file.
@@ -1181,27 +1181,27 @@ type Include struct {
 	//
 	// You can use `file` in combination with `project` only.
 	// Experimental.
-	File *[]*string `json:"file" yaml:"file"`
+	File *[]*string `field:"optional" json:"file" yaml:"file"`
 	// Relative path from local repository root (`/`) to the `yaml`/`yml` file template.
 	//
 	// The file must be on the same branch, and does not work across git submodules.
 	// Experimental.
-	Local *string `json:"local" yaml:"local"`
+	Local *string `field:"optional" json:"local" yaml:"local"`
 	// Path to the project, e.g. `group/project`, or `group/sub-group/project`.
 	// Experimental.
-	Project *string `json:"project" yaml:"project"`
+	Project *string `field:"optional" json:"project" yaml:"project"`
 	// Branch/Tag/Commit-hash for the target project.
 	// Experimental.
-	Ref *string `json:"ref" yaml:"ref"`
+	Ref *string `field:"optional" json:"ref" yaml:"ref"`
 	// URL to a `yaml`/`yml` template file using HTTP/HTTPS.
 	// Experimental.
-	Remote *string `json:"remote" yaml:"remote"`
+	Remote *string `field:"optional" json:"remote" yaml:"remote"`
 	// Rules allows for an array of individual rule objects to be evaluated in order, until one matches and dynamically provides attributes to the job.
 	// Experimental.
-	Rules *[]*IncludeRule `json:"rules" yaml:"rules"`
+	Rules *[]*IncludeRule `field:"optional" json:"rules" yaml:"rules"`
 	// Use a `.gitlab-ci.yml` template as a base, e.g. `Nodejs.gitlab-ci.yml`.
 	// Experimental.
-	Template *string `json:"template" yaml:"template"`
+	Template *string `field:"optional" json:"template" yaml:"template"`
 }
 
 // Rules allows for an array of individual rule objects to be evaluated in order, until one matches and dynamically provides attributes to the job.
@@ -1210,19 +1210,19 @@ type Include struct {
 // Experimental.
 type IncludeRule struct {
 	// Experimental.
-	AllowFailure interface{} `json:"allowFailure" yaml:"allowFailure"`
+	AllowFailure interface{} `field:"optional" json:"allowFailure" yaml:"allowFailure"`
 	// Experimental.
-	Changes *[]*string `json:"changes" yaml:"changes"`
+	Changes *[]*string `field:"optional" json:"changes" yaml:"changes"`
 	// Experimental.
-	Exists *[]*string `json:"exists" yaml:"exists"`
+	Exists *[]*string `field:"optional" json:"exists" yaml:"exists"`
 	// Experimental.
-	If *string `json:"if" yaml:"if"`
+	If *string `field:"optional" json:"if" yaml:"if"`
 	// Experimental.
-	StartIn *string `json:"startIn" yaml:"startIn"`
+	StartIn *string `field:"optional" json:"startIn" yaml:"startIn"`
 	// Experimental.
-	Variables *map[string]interface{} `json:"variables" yaml:"variables"`
+	Variables *map[string]interface{} `field:"optional" json:"variables" yaml:"variables"`
 	// Experimental.
-	When JobWhen `json:"when" yaml:"when"`
+	When JobWhen `field:"optional" json:"when" yaml:"when"`
 }
 
 // Controls inheritance of globally-defined defaults and variables.
@@ -1237,12 +1237,12 @@ type Inherit struct {
 	//
 	// Or subset of inherited defaults.
 	// Experimental.
-	Default interface{} `json:"default" yaml:"default"`
+	Default interface{} `field:"optional" json:"default" yaml:"default"`
 	// Whether to inherit all globally-defined variables or not.
 	//
 	// Or subset of inherited variables.
 	// Experimental.
-	Variables interface{} `json:"variables" yaml:"variables"`
+	Variables interface{} `field:"optional" json:"variables" yaml:"variables"`
 }
 
 // Jobs are the most fundamental element of a .gitlab-ci.yml file.
@@ -1251,100 +1251,100 @@ type Inherit struct {
 // Experimental.
 type Job struct {
 	// Experimental.
-	AfterScript *[]*string `json:"afterScript" yaml:"afterScript"`
+	AfterScript *[]*string `field:"optional" json:"afterScript" yaml:"afterScript"`
 	// Whether to allow the pipeline to continue running on job failure (Default: false).
 	// Experimental.
-	AllowFailure interface{} `json:"allowFailure" yaml:"allowFailure"`
+	AllowFailure interface{} `field:"optional" json:"allowFailure" yaml:"allowFailure"`
 	// Experimental.
-	Artifacts *Artifacts `json:"artifacts" yaml:"artifacts"`
+	Artifacts *Artifacts `field:"optional" json:"artifacts" yaml:"artifacts"`
 	// Experimental.
-	BeforeScript *[]*string `json:"beforeScript" yaml:"beforeScript"`
+	BeforeScript *[]*string `field:"optional" json:"beforeScript" yaml:"beforeScript"`
 	// Experimental.
-	Cache *Cache `json:"cache" yaml:"cache"`
+	Cache *Cache `field:"optional" json:"cache" yaml:"cache"`
 	// Must be a regular expression, optionally but recommended to be quoted, and must be surrounded with '/'.
 	//
 	// Example: '/Code coverage: \d+\.\d+/'
 	// Experimental.
-	Coverage *string `json:"coverage" yaml:"coverage"`
+	Coverage *string `field:"optional" json:"coverage" yaml:"coverage"`
 	// Specify a list of job names from earlier stages from which artifacts should be loaded.
 	//
 	// By default, all previous artifacts are passed. Use an empty array to skip downloading artifacts.
 	// Experimental.
-	Dependencies *[]*string `json:"dependencies" yaml:"dependencies"`
+	Dependencies *[]*string `field:"optional" json:"dependencies" yaml:"dependencies"`
 	// Used to associate environment metadata with a deploy.
 	//
 	// Environment can have a name and URL attached to it, and will be displayed under /environments under the project.
 	// Experimental.
-	Environment interface{} `json:"environment" yaml:"environment"`
+	Environment interface{} `field:"optional" json:"environment" yaml:"environment"`
 	// Job will run *except* for when these filtering options match.
 	// Experimental.
-	Except interface{} `json:"except" yaml:"except"`
+	Except interface{} `field:"optional" json:"except" yaml:"except"`
 	// The name of one or more jobs to inherit configuration from.
 	// Experimental.
-	Extends *[]*string `json:"extends" yaml:"extends"`
+	Extends *[]*string `field:"optional" json:"extends" yaml:"extends"`
 	// Experimental.
-	Image *Image `json:"image" yaml:"image"`
+	Image *Image `field:"optional" json:"image" yaml:"image"`
 	// Controls inheritance of globally-defined defaults and variables.
 	//
 	// Boolean values control inheritance of all default: or variables: keywords. To inherit only a subset of default: or variables: keywords, specify what you wish to inherit. Anything not listed is not inherited.
 	// Experimental.
-	Inherit *Inherit `json:"inherit" yaml:"inherit"`
+	Inherit *Inherit `field:"optional" json:"inherit" yaml:"inherit"`
 	// Experimental.
-	Interruptible *bool `json:"interruptible" yaml:"interruptible"`
+	Interruptible *bool `field:"optional" json:"interruptible" yaml:"interruptible"`
 	// The list of jobs in previous stages whose sole completion is needed to start the current job.
 	// Experimental.
-	Needs *[]interface{} `json:"needs" yaml:"needs"`
+	Needs *[]interface{} `field:"optional" json:"needs" yaml:"needs"`
 	// Job will run *only* when these filtering options match.
 	// Experimental.
-	Only interface{} `json:"only" yaml:"only"`
+	Only interface{} `field:"optional" json:"only" yaml:"only"`
 	// Parallel will split up a single job into several, and provide `CI_NODE_INDEX` and `CI_NODE_TOTAL` environment variables for the running jobs.
 	// Experimental.
-	Parallel interface{} `json:"parallel" yaml:"parallel"`
+	Parallel interface{} `field:"optional" json:"parallel" yaml:"parallel"`
 	// Indicates that the job creates a Release.
 	// Experimental.
-	Release *Release `json:"release" yaml:"release"`
+	Release *Release `field:"optional" json:"release" yaml:"release"`
 	// Limit job concurrency.
 	//
 	// Can be used to ensure that the Runner will not run certain jobs simultaneously.
 	// Experimental.
-	ResourceGroup *string `json:"resourceGroup" yaml:"resourceGroup"`
+	ResourceGroup *string `field:"optional" json:"resourceGroup" yaml:"resourceGroup"`
 	// Experimental.
-	Retry *Retry `json:"retry" yaml:"retry"`
+	Retry *Retry `field:"optional" json:"retry" yaml:"retry"`
 	// Rules allows for an array of individual rule objects to be evaluated in order, until one matches and dynamically provides attributes to the job.
 	// Experimental.
-	Rules *[]*IncludeRule `json:"rules" yaml:"rules"`
+	Rules *[]*IncludeRule `field:"optional" json:"rules" yaml:"rules"`
 	// Shell scripts executed by the Runner.
 	//
 	// The only required property of jobs. Be careful with special characters (e.g. `:`, `{`, `}`, `&`) and use single or double quotes to avoid issues.
 	// Experimental.
-	Script *[]*string `json:"script" yaml:"script"`
+	Script *[]*string `field:"optional" json:"script" yaml:"script"`
 	// CI/CD secrets.
 	// Experimental.
-	Secrets *map[string]*map[string]*Secret `json:"secrets" yaml:"secrets"`
+	Secrets *map[string]*map[string]*Secret `field:"optional" json:"secrets" yaml:"secrets"`
 	// Experimental.
-	Services *[]*Service `json:"services" yaml:"services"`
+	Services *[]*Service `field:"optional" json:"services" yaml:"services"`
 	// Define what stage the job will run in.
 	// Experimental.
-	Stage *string `json:"stage" yaml:"stage"`
+	Stage *string `field:"optional" json:"stage" yaml:"stage"`
 	// Experimental.
-	StartIn *string `json:"startIn" yaml:"startIn"`
+	StartIn *string `field:"optional" json:"startIn" yaml:"startIn"`
 	// Experimental.
-	Tags *[]*string `json:"tags" yaml:"tags"`
+	Tags *[]*string `field:"optional" json:"tags" yaml:"tags"`
 	// Experimental.
-	Timeout *string `json:"timeout" yaml:"timeout"`
+	Timeout *string `field:"optional" json:"timeout" yaml:"timeout"`
 	// Trigger allows you to define downstream pipeline trigger.
 	//
 	// When a job created from trigger definition is started by GitLab, a downstream pipeline gets created. Read more: https://docs.gitlab.com/ee/ci/yaml/README.html#trigger
 	// Experimental.
-	Trigger interface{} `json:"trigger" yaml:"trigger"`
+	Trigger interface{} `field:"optional" json:"trigger" yaml:"trigger"`
 	// Configurable values that are passed to the Job.
 	// Experimental.
-	Variables *map[string]interface{} `json:"variables" yaml:"variables"`
+	Variables *map[string]interface{} `field:"optional" json:"variables" yaml:"variables"`
 	// Describes the conditions for when to run the job.
 	//
 	// Defaults to 'on_success'.
 	// Experimental.
-	When JobWhen `json:"when" yaml:"when"`
+	When JobWhen `field:"optional" json:"when" yaml:"when"`
 }
 
 // Describes the conditions for when to run the job.
@@ -1378,7 +1378,7 @@ const (
 type KubernetesConfig struct {
 	// The kubernetes namespace where this environment should be deployed to.
 	// Experimental.
-	Namespace *string `json:"namespace" yaml:"namespace"`
+	Namespace *string `field:"optional" json:"namespace" yaml:"namespace"`
 }
 
 // Filter job based on if Kubernetes integration is active.
@@ -1395,16 +1395,16 @@ const (
 type Link struct {
 	// The name of the link.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 	// The URL to download a file.
 	// Experimental.
-	Url *string `json:"url" yaml:"url"`
+	Url *string `field:"required" json:"url" yaml:"url"`
 	// The redirect link to the url.
 	// Experimental.
-	Filepath *string `json:"filepath" yaml:"filepath"`
+	Filepath *string `field:"optional" json:"filepath" yaml:"filepath"`
 	// The content kind of what users can download via url.
 	// Experimental.
-	LinkType LinkType `json:"linkType" yaml:"linkType"`
+	LinkType LinkType `field:"optional" json:"linkType" yaml:"linkType"`
 }
 
 // The content kind of what users can download via url.
@@ -1426,17 +1426,17 @@ const (
 // Experimental.
 type Need struct {
 	// Experimental.
-	Job *string `json:"job" yaml:"job"`
+	Job *string `field:"required" json:"job" yaml:"job"`
 	// Experimental.
-	Artifacts *bool `json:"artifacts" yaml:"artifacts"`
+	Artifacts *bool `field:"optional" json:"artifacts" yaml:"artifacts"`
 	// Experimental.
-	Optional *bool `json:"optional" yaml:"optional"`
+	Optional *bool `field:"optional" json:"optional" yaml:"optional"`
 	// Experimental.
-	Pipeline *string `json:"pipeline" yaml:"pipeline"`
+	Pipeline *string `field:"optional" json:"pipeline" yaml:"pipeline"`
 	// Experimental.
-	Project *string `json:"project" yaml:"project"`
+	Project *string `field:"optional" json:"project" yaml:"project"`
 	// Experimental.
-	Ref *string `json:"ref" yaml:"ref"`
+	Ref *string `field:"optional" json:"ref" yaml:"ref"`
 }
 
 // A GitLab CI for templates that are created and included in the `.gitlab-ci.yml` file.
@@ -1853,7 +1853,7 @@ func (n *jsiiProxy_NestedConfiguration) Synthesize() {
 type Parallel struct {
 	// Defines different variables for jobs that are running in parallel.
 	// Experimental.
-	Matrix *[]*map[string]*[]interface{} `json:"matrix" yaml:"matrix"`
+	Matrix *[]*map[string]*[]interface{} `field:"required" json:"matrix" yaml:"matrix"`
 }
 
 // Indicates that the job creates a Release.
@@ -1861,32 +1861,32 @@ type Parallel struct {
 type Release struct {
 	// Specifies the longer description of the Release.
 	// Experimental.
-	Description *string `json:"description" yaml:"description"`
+	Description *string `field:"required" json:"description" yaml:"description"`
 	// The tag_name must be specified.
 	//
 	// It can refer to an existing Git tag or can be specified by the user.
 	// Experimental.
-	TagName *string `json:"tagName" yaml:"tagName"`
+	TagName *string `field:"required" json:"tagName" yaml:"tagName"`
 	// Experimental.
-	Assets *Assets `json:"assets" yaml:"assets"`
+	Assets *Assets `field:"optional" json:"assets" yaml:"assets"`
 	// The title of each milestone the release is associated with.
 	// Experimental.
-	Milestones *[]*string `json:"milestones" yaml:"milestones"`
+	Milestones *[]*string `field:"optional" json:"milestones" yaml:"milestones"`
 	// The Release name.
 	//
 	// If omitted, it is populated with the value of release: tag_name.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"optional" json:"name" yaml:"name"`
 	// If the release: tag_name doesn’t exist yet, the release is created from ref.
 	//
 	// ref can be a commit SHA, another tag name, or a branch name.
 	// Experimental.
-	Ref *string `json:"ref" yaml:"ref"`
+	Ref *string `field:"optional" json:"ref" yaml:"ref"`
 	// The date and time when the release is ready.
 	//
 	// Defaults to the current date and time if not defined. Should be enclosed in quotes and expressed in ISO 8601 format.
 	// Experimental.
-	ReleasedAt *string `json:"releasedAt" yaml:"releasedAt"`
+	ReleasedAt *string `field:"optional" json:"releasedAt" yaml:"releasedAt"`
 }
 
 // Reports will be uploaded as artifacts, and often displayed in the Gitlab UI, such as in Merge Requests.
@@ -1896,52 +1896,52 @@ type Release struct {
 type Reports struct {
 	// Path for file(s) that should be parsed as Cobertura XML coverage report.
 	// Experimental.
-	Cobertura *[]*string `json:"cobertura" yaml:"cobertura"`
+	Cobertura *[]*string `field:"optional" json:"cobertura" yaml:"cobertura"`
 	// Path to file or list of files with code quality report(s) (such as Code Climate).
 	// Experimental.
-	Codequality *[]*string `json:"codequality" yaml:"codequality"`
+	Codequality *[]*string `field:"optional" json:"codequality" yaml:"codequality"`
 	// Path to file or list of files with Container scanning vulnerabilities report(s).
 	// Experimental.
-	ContainerScanning *[]*string `json:"containerScanning" yaml:"containerScanning"`
+	ContainerScanning *[]*string `field:"optional" json:"containerScanning" yaml:"containerScanning"`
 	// Path to file or list of files with DAST vulnerabilities report(s).
 	// Experimental.
-	Dast *[]*string `json:"dast" yaml:"dast"`
+	Dast *[]*string `field:"optional" json:"dast" yaml:"dast"`
 	// Path to file or list of files with Dependency scanning vulnerabilities report(s).
 	// Experimental.
-	DependencyScanning *[]*string `json:"dependencyScanning" yaml:"dependencyScanning"`
+	DependencyScanning *[]*string `field:"optional" json:"dependencyScanning" yaml:"dependencyScanning"`
 	// Path to file or list of files containing runtime-created variables for this job.
 	// Experimental.
-	Dotenv *[]*string `json:"dotenv" yaml:"dotenv"`
+	Dotenv *[]*string `field:"optional" json:"dotenv" yaml:"dotenv"`
 	// Path for file(s) that should be parsed as JUnit XML result.
 	// Experimental.
-	Junit *[]*string `json:"junit" yaml:"junit"`
+	Junit *[]*string `field:"optional" json:"junit" yaml:"junit"`
 	// Deprecated in 12.8: Path to file or list of files with license report(s).
 	// Experimental.
-	LicenseManagement *[]*string `json:"licenseManagement" yaml:"licenseManagement"`
+	LicenseManagement *[]*string `field:"optional" json:"licenseManagement" yaml:"licenseManagement"`
 	// Path to file or list of files with license report(s).
 	// Experimental.
-	LicenseScanning *[]*string `json:"licenseScanning" yaml:"licenseScanning"`
+	LicenseScanning *[]*string `field:"optional" json:"licenseScanning" yaml:"licenseScanning"`
 	// Path to file or list of files containing code intelligence (Language Server Index Format).
 	// Experimental.
-	Lsif *[]*string `json:"lsif" yaml:"lsif"`
+	Lsif *[]*string `field:"optional" json:"lsif" yaml:"lsif"`
 	// Path to file or list of files with custom metrics report(s).
 	// Experimental.
-	Metrics *[]*string `json:"metrics" yaml:"metrics"`
+	Metrics *[]*string `field:"optional" json:"metrics" yaml:"metrics"`
 	// Path to file or list of files with performance metrics report(s).
 	// Experimental.
-	Performance *[]*string `json:"performance" yaml:"performance"`
+	Performance *[]*string `field:"optional" json:"performance" yaml:"performance"`
 	// Path to file or list of files with requirements report(s).
 	// Experimental.
-	Requirements *[]*string `json:"requirements" yaml:"requirements"`
+	Requirements *[]*string `field:"optional" json:"requirements" yaml:"requirements"`
 	// Path to file or list of files with SAST vulnerabilities report(s).
 	// Experimental.
-	Sast *[]*string `json:"sast" yaml:"sast"`
+	Sast *[]*string `field:"optional" json:"sast" yaml:"sast"`
 	// Path to file or list of files with secret detection report(s).
 	// Experimental.
-	SecretDetection *[]*string `json:"secretDetection" yaml:"secretDetection"`
+	SecretDetection *[]*string `field:"optional" json:"secretDetection" yaml:"secretDetection"`
 	// Path to file or list of files with terraform plan(s).
 	// Experimental.
-	Terraform *[]*string `json:"terraform" yaml:"terraform"`
+	Terraform *[]*string `field:"optional" json:"terraform" yaml:"terraform"`
 }
 
 // How many times a job is retried if it fails.
@@ -1953,17 +1953,17 @@ type Reports struct {
 type Retry struct {
 	// 0 (default), 1, or 2.
 	// Experimental.
-	Max *float64 `json:"max" yaml:"max"`
+	Max *float64 `field:"optional" json:"max" yaml:"max"`
 	// Either a single or array of error types to trigger job retry.
 	// Experimental.
-	When interface{} `json:"when" yaml:"when"`
+	When interface{} `field:"optional" json:"when" yaml:"when"`
 }
 
 // A CI/CD secret.
 // Experimental.
 type Secret struct {
 	// Experimental.
-	Vault *VaultConfig `json:"vault" yaml:"vault"`
+	Vault *VaultConfig `field:"required" json:"vault" yaml:"vault"`
 }
 
 // Used to specify an additional Docker image to run scripts in.
@@ -1977,22 +1977,22 @@ type Service struct {
 	//
 	// It should contain the Registry part if needed.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 	// Additional alias that can be used to access the service from the job's container.
 	//
 	// Read Accessing the services for more information.
 	// Experimental.
-	Alias *string `json:"alias" yaml:"alias"`
+	Alias *string `field:"optional" json:"alias" yaml:"alias"`
 	// Command or script that should be used as the container's command.
 	//
 	// It will be translated to arguments passed to Docker after the image's name. The syntax is similar to Dockerfile's CMD directive, where each shell token is a separate string in the array.
 	// Experimental.
-	Command *[]*string `json:"command" yaml:"command"`
+	Command *[]*string `field:"optional" json:"command" yaml:"command"`
 	// Command or script that should be executed as the container's entrypoint.
 	//
 	// It will be translated to Docker's --entrypoint option while creating the container. The syntax is similar to Dockerfile's ENTRYPOINT directive, where each shell token is a separate string in the array.
 	// Experimental.
-	Entrypoint *[]*string `json:"entrypoint" yaml:"entrypoint"`
+	Entrypoint *[]*string `field:"optional" json:"entrypoint" yaml:"entrypoint"`
 }
 
 // You can mirror the pipeline status from the triggered pipeline to the source bridge job by using strategy: depend.
@@ -2015,16 +2015,16 @@ const (
 type Trigger struct {
 	// The branch name that a downstream pipeline will use.
 	// Experimental.
-	Branch *string `json:"branch" yaml:"branch"`
+	Branch *string `field:"optional" json:"branch" yaml:"branch"`
 	// A list of local files or artifacts from other jobs to define the pipeline.
 	// Experimental.
-	Include *[]*TriggerInclude `json:"include" yaml:"include"`
+	Include *[]*TriggerInclude `field:"optional" json:"include" yaml:"include"`
 	// Path to the project, e.g. `group/project`, or `group/sub-group/project`.
 	// Experimental.
-	Project *string `json:"project" yaml:"project"`
+	Project *string `field:"optional" json:"project" yaml:"project"`
 	// You can mirror the pipeline status from the triggered pipeline to the source bridge job by using strategy: depend.
 	// Experimental.
-	Strategy Strategy `json:"strategy" yaml:"strategy"`
+	Strategy Strategy `field:"optional" json:"strategy" yaml:"strategy"`
 }
 
 // References a local file or an artifact from another job to define the pipeline configuration.
@@ -2034,25 +2034,25 @@ type Trigger struct {
 type TriggerInclude struct {
 	// Relative path to the generated YAML file which is extracted from the artifacts and used as the configuration for triggering the child pipeline.
 	// Experimental.
-	Artifact *string `json:"artifact" yaml:"artifact"`
+	Artifact *string `field:"optional" json:"artifact" yaml:"artifact"`
 	// Relative path from repository root (`/`) to the pipeline configuration YAML file.
 	// Experimental.
-	File *string `json:"file" yaml:"file"`
+	File *string `field:"optional" json:"file" yaml:"file"`
 	// Job name which generates the artifact.
 	// Experimental.
-	Job *string `json:"job" yaml:"job"`
+	Job *string `field:"optional" json:"job" yaml:"job"`
 	// Relative path from local repository root (`/`) to the local YAML file to define the pipeline configuration.
 	// Experimental.
-	Local *string `json:"local" yaml:"local"`
+	Local *string `field:"optional" json:"local" yaml:"local"`
 	// Path to another private project under the same GitLab instance, like `group/project` or `group/sub-group/project`.
 	// Experimental.
-	Project *string `json:"project" yaml:"project"`
+	Project *string `field:"optional" json:"project" yaml:"project"`
 	// Branch/Tag/Commit hash for the target project.
 	// Experimental.
-	Ref *string `json:"ref" yaml:"ref"`
+	Ref *string `field:"optional" json:"ref" yaml:"ref"`
 	// Name of the template YAML file to use in the pipeline configuration.
 	// Experimental.
-	Template *string `json:"template" yaml:"template"`
+	Template *string `field:"optional" json:"template" yaml:"template"`
 }
 
 // Explains what the global variable is used for, what the acceptable values are.
@@ -2064,10 +2064,10 @@ type VariableConfig struct {
 	//
 	// Must be used with value.
 	// Experimental.
-	Description *string `json:"description" yaml:"description"`
+	Description *string `field:"optional" json:"description" yaml:"description"`
 	// The variable value.
 	// Experimental.
-	Value *string `json:"value" yaml:"value"`
+	Value *string `field:"optional" json:"value" yaml:"value"`
 }
 
 // Specification for a secret provided by a HashiCorp Vault.
@@ -2076,12 +2076,12 @@ type VariableConfig struct {
 // Experimental.
 type VaultConfig struct {
 	// Experimental.
-	Engine *Engine `json:"engine" yaml:"engine"`
+	Engine *Engine `field:"required" json:"engine" yaml:"engine"`
 	// Experimental.
-	Field *string `json:"field" yaml:"field"`
+	Field *string `field:"required" json:"field" yaml:"field"`
 	// Path to the secret.
 	// Experimental.
-	Path *string `json:"path" yaml:"path"`
+	Path *string `field:"required" json:"path" yaml:"path"`
 }
 
 // Used to control pipeline behavior.
@@ -2091,7 +2091,7 @@ type VaultConfig struct {
 type Workflow struct {
 	// Used to control whether or not a whole pipeline is created.
 	// Experimental.
-	Rules *[]*WorkflowRule `json:"rules" yaml:"rules"`
+	Rules *[]*WorkflowRule `field:"optional" json:"rules" yaml:"rules"`
 }
 
 // Used to control whether or not a whole pipeline is created.
@@ -2100,15 +2100,15 @@ type Workflow struct {
 // Experimental.
 type WorkflowRule struct {
 	// Experimental.
-	Changes *[]*string `json:"changes" yaml:"changes"`
+	Changes *[]*string `field:"optional" json:"changes" yaml:"changes"`
 	// Experimental.
-	Exists *[]*string `json:"exists" yaml:"exists"`
+	Exists *[]*string `field:"optional" json:"exists" yaml:"exists"`
 	// Experimental.
-	If *string `json:"if" yaml:"if"`
+	If *string `field:"optional" json:"if" yaml:"if"`
 	// Experimental.
-	Variables *map[string]interface{} `json:"variables" yaml:"variables"`
+	Variables *map[string]interface{} `field:"optional" json:"variables" yaml:"variables"`
 	// Experimental.
-	When JobWhen `json:"when" yaml:"when"`
+	When JobWhen `field:"optional" json:"when" yaml:"when"`
 }
 
 // Describes the conditions for when to run the job.

@@ -15,13 +15,13 @@ import (
 type BranchOptions struct {
 	// The major versions released from this branch.
 	// Experimental.
-	MajorVersion *float64 `json:"majorVersion" yaml:"majorVersion"`
+	MajorVersion *float64 `field:"required" json:"majorVersion" yaml:"majorVersion"`
 	// The npm distribution tag to use for this branch.
 	// Experimental.
-	NpmDistTag *string `json:"npmDistTag" yaml:"npmDistTag"`
+	NpmDistTag *string `field:"optional" json:"npmDistTag" yaml:"npmDistTag"`
 	// Bump the version as a pre-release tag.
 	// Experimental.
-	Prerelease *string `json:"prerelease" yaml:"prerelease"`
+	Prerelease *string `field:"optional" json:"prerelease" yaml:"prerelease"`
 	// Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
 	//
 	// Note: this prefix is used to detect the latest tagged version
@@ -29,10 +29,10 @@ type BranchOptions struct {
 	// history, you may need to manually tag your latest release
 	// with the new prefix.
 	// Experimental.
-	TagPrefix *string `json:"tagPrefix" yaml:"tagPrefix"`
+	TagPrefix *string `field:"optional" json:"tagPrefix" yaml:"tagPrefix"`
 	// The name of the release workflow.
 	// Experimental.
-	WorkflowName *string `json:"workflowName" yaml:"workflowName"`
+	WorkflowName *string `field:"optional" json:"workflowName" yaml:"workflowName"`
 }
 
 // Experimental.
@@ -41,15 +41,15 @@ type CodeArtifactOptions struct {
 	//
 	// This property must be specified only when publishing to AWS CodeArtifact (`registry` contains AWS CodeArtifact URL).
 	// Experimental.
-	AccessKeyIdSecret *string `json:"accessKeyIdSecret" yaml:"accessKeyIdSecret"`
+	AccessKeyIdSecret *string `field:"optional" json:"accessKeyIdSecret" yaml:"accessKeyIdSecret"`
 	// ARN of AWS role to be assumed prior to get authorization token from AWS CodeArtifact This property must be specified only when publishing to AWS CodeArtifact (`registry` contains AWS CodeArtifact URL).
 	// Experimental.
-	RoleToAssume *string `json:"roleToAssume" yaml:"roleToAssume"`
+	RoleToAssume *string `field:"optional" json:"roleToAssume" yaml:"roleToAssume"`
 	// GitHub secret which contains the AWS secret access key to use when publishing packages to AWS CodeArtifact.
 	//
 	// This property must be specified only when publishing to AWS CodeArtifact (`registry` contains AWS CodeArtifact URL).
 	// Experimental.
-	SecretAccessKeySecret *string `json:"secretAccessKeySecret" yaml:"secretAccessKeySecret"`
+	SecretAccessKeySecret *string `field:"optional" json:"secretAccessKeySecret" yaml:"secretAccessKeySecret"`
 }
 
 // Common publishing options.
@@ -62,10 +62,10 @@ type CommonPublishOptions struct {
 	//
 	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
-	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps" yaml:"prePublishSteps"`
+	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
 	// Experimental.
-	PublishTools *workflows.Tools `json:"publishTools" yaml:"publishTools"`
+	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 }
 
 // Publishing options for GitHub releases.
@@ -78,31 +78,31 @@ type GitHubReleasesPublishOptions struct {
 	//
 	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
-	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps" yaml:"prePublishSteps"`
+	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
 	// Experimental.
-	PublishTools *workflows.Tools `json:"publishTools" yaml:"publishTools"`
+	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// The location of an .md file (relative to `dist/`) that includes the changelog for the release.
 	//
 	// Example:
 	//   changelog.md
 	//
 	// Experimental.
-	ChangelogFile *string `json:"changelogFile" yaml:"changelogFile"`
+	ChangelogFile *string `field:"required" json:"changelogFile" yaml:"changelogFile"`
 	// The location of a text file (relative to `dist/`) that contains the release tag.
 	//
 	// Example:
 	//   releasetag.txt
 	//
 	// Experimental.
-	ReleaseTagFile *string `json:"releaseTagFile" yaml:"releaseTagFile"`
+	ReleaseTagFile *string `field:"required" json:"releaseTagFile" yaml:"releaseTagFile"`
 	// The location of a text file (relative to `dist/`) that contains the version number.
 	//
 	// Example:
 	//   version.txt
 	//
 	// Experimental.
-	VersionFile *string `json:"versionFile" yaml:"versionFile"`
+	VersionFile *string `field:"required" json:"versionFile" yaml:"versionFile"`
 }
 
 // Publishing options for Git releases.
@@ -114,32 +114,32 @@ type GitPublishOptions struct {
 	//   changelog.md
 	//
 	// Experimental.
-	ChangelogFile *string `json:"changelogFile" yaml:"changelogFile"`
+	ChangelogFile *string `field:"required" json:"changelogFile" yaml:"changelogFile"`
 	// The location of a text file (relative to `dist/`) that contains the release tag.
 	//
 	// Example:
 	//   releasetag.txt
 	//
 	// Experimental.
-	ReleaseTagFile *string `json:"releaseTagFile" yaml:"releaseTagFile"`
+	ReleaseTagFile *string `field:"required" json:"releaseTagFile" yaml:"releaseTagFile"`
 	// The location of a text file (relative to `dist/`) that contains the version number.
 	//
 	// Example:
 	//   version.txt
 	//
 	// Experimental.
-	VersionFile *string `json:"versionFile" yaml:"versionFile"`
+	VersionFile *string `field:"required" json:"versionFile" yaml:"versionFile"`
 	// Branch to push to.
 	// Experimental.
-	GitBranch *string `json:"gitBranch" yaml:"gitBranch"`
+	GitBranch *string `field:"optional" json:"gitBranch" yaml:"gitBranch"`
 	// Override git-push command.
 	//
 	// Set to an empty string to disable pushing.
 	// Experimental.
-	GitPushCommand *string `json:"gitPushCommand" yaml:"gitPushCommand"`
+	GitPushCommand *string `field:"optional" json:"gitPushCommand" yaml:"gitPushCommand"`
 	// The location of an .md file that includes the project-level changelog.
 	// Experimental.
-	ProjectChangelogFile *string `json:"projectChangelogFile" yaml:"projectChangelogFile"`
+	ProjectChangelogFile *string `field:"optional" json:"projectChangelogFile" yaml:"projectChangelogFile"`
 }
 
 // Deprecated: Use `GoPublishOptions` instead.
@@ -157,49 +157,49 @@ type GoPublishOptions struct {
 	// export interface JsiiReleaseGo extends GoPublishOptions { }
 	// /**
 	// Options for Go releases.
-	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps" yaml:"prePublishSteps"`
+	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
 	// Deprecated: Use `GoPublishOptions` instead.
 	// export interface JsiiReleaseGo extends GoPublishOptions { }
 	// /**
 	// Options for Go releases.
-	PublishTools *workflows.Tools `json:"publishTools" yaml:"publishTools"`
+	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// Branch to push to.
 	// Deprecated: Use `GoPublishOptions` instead.
 	// export interface JsiiReleaseGo extends GoPublishOptions { }
 	// /**
 	// Options for Go releases.
-	GitBranch *string `json:"gitBranch" yaml:"gitBranch"`
+	GitBranch *string `field:"optional" json:"gitBranch" yaml:"gitBranch"`
 	// The commit message.
 	// Deprecated: Use `GoPublishOptions` instead.
 	// export interface JsiiReleaseGo extends GoPublishOptions { }
 	// /**
 	// Options for Go releases.
-	GitCommitMessage *string `json:"gitCommitMessage" yaml:"gitCommitMessage"`
+	GitCommitMessage *string `field:"optional" json:"gitCommitMessage" yaml:"gitCommitMessage"`
 	// GitHub repository to push to.
 	// Deprecated: Use `GoPublishOptions` instead.
 	// export interface JsiiReleaseGo extends GoPublishOptions { }
 	// /**
 	// Options for Go releases.
-	GithubRepo *string `json:"githubRepo" yaml:"githubRepo"`
+	GithubRepo *string `field:"optional" json:"githubRepo" yaml:"githubRepo"`
 	// The name of the secret that includes a personal GitHub access token used to push to the GitHub repository.
 	// Deprecated: Use `GoPublishOptions` instead.
 	// export interface JsiiReleaseGo extends GoPublishOptions { }
 	// /**
 	// Options for Go releases.
-	GithubTokenSecret *string `json:"githubTokenSecret" yaml:"githubTokenSecret"`
+	GithubTokenSecret *string `field:"optional" json:"githubTokenSecret" yaml:"githubTokenSecret"`
 	// The email to use in the release git commit.
 	// Deprecated: Use `GoPublishOptions` instead.
 	// export interface JsiiReleaseGo extends GoPublishOptions { }
 	// /**
 	// Options for Go releases.
-	GitUserEmail *string `json:"gitUserEmail" yaml:"gitUserEmail"`
+	GitUserEmail *string `field:"optional" json:"gitUserEmail" yaml:"gitUserEmail"`
 	// The user name to use for the release git commit.
 	// Deprecated: Use `GoPublishOptions` instead.
 	// export interface JsiiReleaseGo extends GoPublishOptions { }
 	// /**
 	// Options for Go releases.
-	GitUserName *string `json:"gitUserName" yaml:"gitUserName"`
+	GitUserName *string `field:"optional" json:"gitUserName" yaml:"gitUserName"`
 }
 
 // Deprecated: Use `MavenPublishOptions` instead.
@@ -211,22 +211,22 @@ type JsiiReleaseMaven struct {
 	//
 	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Deprecated: Use `MavenPublishOptions` instead.
-	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps" yaml:"prePublishSteps"`
+	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
 	// Deprecated: Use `MavenPublishOptions` instead.
-	PublishTools *workflows.Tools `json:"publishTools" yaml:"publishTools"`
+	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// URL of Nexus repository.
 	//
 	// if not set, defaults to https://oss.sonatype.org
 	// Deprecated: Use `MavenPublishOptions` instead.
-	MavenEndpoint *string `json:"mavenEndpoint" yaml:"mavenEndpoint"`
+	MavenEndpoint *string `field:"optional" json:"mavenEndpoint" yaml:"mavenEndpoint"`
 	// GitHub secret name which contains the GPG private key or file that includes it.
 	//
 	// This is used to sign your Maven packages. See instructions.
 	// See: https://github.com/aws/publib#maven
 	//
 	// Deprecated: Use `MavenPublishOptions` instead.
-	MavenGpgPrivateKeyPassphrase *string `json:"mavenGpgPrivateKeyPassphrase" yaml:"mavenGpgPrivateKeyPassphrase"`
+	MavenGpgPrivateKeyPassphrase *string `field:"optional" json:"mavenGpgPrivateKeyPassphrase" yaml:"mavenGpgPrivateKeyPassphrase"`
 	// GitHub secret name which contains the GPG private key or file that includes it.
 	//
 	// This is used to sign your Maven
@@ -234,7 +234,7 @@ type JsiiReleaseMaven struct {
 	// See: https://github.com/aws/publib#maven
 	//
 	// Deprecated: Use `MavenPublishOptions` instead.
-	MavenGpgPrivateKeySecret *string `json:"mavenGpgPrivateKeySecret" yaml:"mavenGpgPrivateKeySecret"`
+	MavenGpgPrivateKeySecret *string `field:"optional" json:"mavenGpgPrivateKeySecret" yaml:"mavenGpgPrivateKeySecret"`
 	// GitHub secret name which contains the Password for maven repository.
 	//
 	// For Maven Central, you will need to Create JIRA account and then request a
@@ -242,16 +242,16 @@ type JsiiReleaseMaven struct {
 	// See: https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134
 	//
 	// Deprecated: Use `MavenPublishOptions` instead.
-	MavenPassword *string `json:"mavenPassword" yaml:"mavenPassword"`
+	MavenPassword *string `field:"optional" json:"mavenPassword" yaml:"mavenPassword"`
 	// Deployment repository when not deploying to Maven Central.
 	// Deprecated: Use `MavenPublishOptions` instead.
-	MavenRepositoryUrl *string `json:"mavenRepositoryUrl" yaml:"mavenRepositoryUrl"`
+	MavenRepositoryUrl *string `field:"optional" json:"mavenRepositoryUrl" yaml:"mavenRepositoryUrl"`
 	// Used in maven settings for credential lookup (e.g. use github when publishing to GitHub).
 	// Deprecated: Use `MavenPublishOptions` instead.
-	MavenServerId *string `json:"mavenServerId" yaml:"mavenServerId"`
+	MavenServerId *string `field:"optional" json:"mavenServerId" yaml:"mavenServerId"`
 	// GitHub secret name which contains the Maven Central (sonatype) staging profile ID (e.g. 68a05363083174). Staging profile ID can be found in the URL of the "Releases" staging profile under "Staging Profiles" in https://oss.sonatype.org (e.g. https://oss.sonatype.org/#stagingProfiles;11a33451234521).
 	// Deprecated: Use `MavenPublishOptions` instead.
-	MavenStagingProfileId *string `json:"mavenStagingProfileId" yaml:"mavenStagingProfileId"`
+	MavenStagingProfileId *string `field:"optional" json:"mavenStagingProfileId" yaml:"mavenStagingProfileId"`
 	// GitHub secret name which contains the Username for maven repository.
 	//
 	// For Maven Central, you will need to Create JIRA account and then request a
@@ -259,7 +259,7 @@ type JsiiReleaseMaven struct {
 	// See: https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134
 	//
 	// Deprecated: Use `MavenPublishOptions` instead.
-	MavenUsername *string `json:"mavenUsername" yaml:"mavenUsername"`
+	MavenUsername *string `field:"optional" json:"mavenUsername" yaml:"mavenUsername"`
 }
 
 // Deprecated: Use `NpmPublishOptions` instead.
@@ -271,13 +271,13 @@ type JsiiReleaseNpm struct {
 	//
 	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Deprecated: Use `NpmPublishOptions` instead.
-	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps" yaml:"prePublishSteps"`
+	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
 	// Deprecated: Use `NpmPublishOptions` instead.
-	PublishTools *workflows.Tools `json:"publishTools" yaml:"publishTools"`
+	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// Options for publishing npm package to AWS CodeArtifact.
 	// Deprecated: Use `NpmPublishOptions` instead.
-	CodeArtifactOptions *CodeArtifactOptions `json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
+	CodeArtifactOptions *CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Tags can be used to provide an alias instead of version numbers.
 	//
 	// For example, a project might choose to have multiple streams of development
@@ -291,10 +291,10 @@ type JsiiReleaseNpm struct {
 	//
 	// The `next` tag is used by some projects to identify the upcoming version.
 	// Deprecated: Use `npmDistTag` for each release branch instead.
-	DistTag *string `json:"distTag" yaml:"distTag"`
+	DistTag *string `field:"optional" json:"distTag" yaml:"distTag"`
 	// GitHub secret which contains the NPM token to use when publishing packages.
 	// Deprecated: Use `NpmPublishOptions` instead.
-	NpmTokenSecret *string `json:"npmTokenSecret" yaml:"npmTokenSecret"`
+	NpmTokenSecret *string `field:"optional" json:"npmTokenSecret" yaml:"npmTokenSecret"`
 	// The domain name of the npm package registry.
 	//
 	// To publish to GitHub Packages, set this value to `"npm.pkg.github.com"`. In
@@ -307,7 +307,7 @@ type JsiiReleaseNpm struct {
 	//   "npm.pkg.github.com"
 	//
 	// Deprecated: Use `NpmPublishOptions` instead.
-	Registry *string `json:"registry" yaml:"registry"`
+	Registry *string `field:"optional" json:"registry" yaml:"registry"`
 }
 
 // Deprecated: Use `NugetPublishOptions` instead.
@@ -319,13 +319,13 @@ type JsiiReleaseNuget struct {
 	//
 	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Deprecated: Use `NugetPublishOptions` instead.
-	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps" yaml:"prePublishSteps"`
+	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
 	// Deprecated: Use `NugetPublishOptions` instead.
-	PublishTools *workflows.Tools `json:"publishTools" yaml:"publishTools"`
+	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// GitHub secret which contains the API key for NuGet.
 	// Deprecated: Use `NugetPublishOptions` instead.
-	NugetApiKeySecret *string `json:"nugetApiKeySecret" yaml:"nugetApiKeySecret"`
+	NugetApiKeySecret *string `field:"optional" json:"nugetApiKeySecret" yaml:"nugetApiKeySecret"`
 }
 
 // Deprecated: Use `PyPiPublishOptions` instead.
@@ -337,36 +337,36 @@ type JsiiReleasePyPi struct {
 	//
 	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Deprecated: Use `PyPiPublishOptions` instead.
-	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps" yaml:"prePublishSteps"`
+	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
 	// Deprecated: Use `PyPiPublishOptions` instead.
-	PublishTools *workflows.Tools `json:"publishTools" yaml:"publishTools"`
+	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// The GitHub secret which contains PyPI password.
 	// Deprecated: Use `PyPiPublishOptions` instead.
-	TwinePasswordSecret *string `json:"twinePasswordSecret" yaml:"twinePasswordSecret"`
+	TwinePasswordSecret *string `field:"optional" json:"twinePasswordSecret" yaml:"twinePasswordSecret"`
 	// The registry url to use when releasing packages.
 	// Deprecated: Use `PyPiPublishOptions` instead.
-	TwineRegistryUrl *string `json:"twineRegistryUrl" yaml:"twineRegistryUrl"`
+	TwineRegistryUrl *string `field:"optional" json:"twineRegistryUrl" yaml:"twineRegistryUrl"`
 	// The GitHub secret which contains PyPI user name.
 	// Deprecated: Use `PyPiPublishOptions` instead.
-	TwineUsernameSecret *string `json:"twineUsernameSecret" yaml:"twineUsernameSecret"`
+	TwineUsernameSecret *string `field:"optional" json:"twineUsernameSecret" yaml:"twineUsernameSecret"`
 }
 
 // Experimental.
 type ManualReleaseOptions struct {
 	// Maintain a project-level changelog.
 	// Experimental.
-	Changelog *bool `json:"changelog" yaml:"changelog"`
+	Changelog *bool `field:"optional" json:"changelog" yaml:"changelog"`
 	// Project-level changelog file path.
 	//
 	// Ignored if `changelog` is false.
 	// Experimental.
-	ChangelogPath *string `json:"changelogPath" yaml:"changelogPath"`
+	ChangelogPath *string `field:"optional" json:"changelogPath" yaml:"changelogPath"`
 	// Override git-push command.
 	//
 	// Set to an empty string to disable pushing.
 	// Experimental.
-	GitPushCommand *string `json:"gitPushCommand" yaml:"gitPushCommand"`
+	GitPushCommand *string `field:"optional" json:"gitPushCommand" yaml:"gitPushCommand"`
 }
 
 // Options for Maven releases.
@@ -379,22 +379,22 @@ type MavenPublishOptions struct {
 	//
 	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
-	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps" yaml:"prePublishSteps"`
+	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
 	// Experimental.
-	PublishTools *workflows.Tools `json:"publishTools" yaml:"publishTools"`
+	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// URL of Nexus repository.
 	//
 	// if not set, defaults to https://oss.sonatype.org
 	// Experimental.
-	MavenEndpoint *string `json:"mavenEndpoint" yaml:"mavenEndpoint"`
+	MavenEndpoint *string `field:"optional" json:"mavenEndpoint" yaml:"mavenEndpoint"`
 	// GitHub secret name which contains the GPG private key or file that includes it.
 	//
 	// This is used to sign your Maven packages. See instructions.
 	// See: https://github.com/aws/publib#maven
 	//
 	// Experimental.
-	MavenGpgPrivateKeyPassphrase *string `json:"mavenGpgPrivateKeyPassphrase" yaml:"mavenGpgPrivateKeyPassphrase"`
+	MavenGpgPrivateKeyPassphrase *string `field:"optional" json:"mavenGpgPrivateKeyPassphrase" yaml:"mavenGpgPrivateKeyPassphrase"`
 	// GitHub secret name which contains the GPG private key or file that includes it.
 	//
 	// This is used to sign your Maven
@@ -402,7 +402,7 @@ type MavenPublishOptions struct {
 	// See: https://github.com/aws/publib#maven
 	//
 	// Experimental.
-	MavenGpgPrivateKeySecret *string `json:"mavenGpgPrivateKeySecret" yaml:"mavenGpgPrivateKeySecret"`
+	MavenGpgPrivateKeySecret *string `field:"optional" json:"mavenGpgPrivateKeySecret" yaml:"mavenGpgPrivateKeySecret"`
 	// GitHub secret name which contains the Password for maven repository.
 	//
 	// For Maven Central, you will need to Create JIRA account and then request a
@@ -410,16 +410,16 @@ type MavenPublishOptions struct {
 	// See: https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134
 	//
 	// Experimental.
-	MavenPassword *string `json:"mavenPassword" yaml:"mavenPassword"`
+	MavenPassword *string `field:"optional" json:"mavenPassword" yaml:"mavenPassword"`
 	// Deployment repository when not deploying to Maven Central.
 	// Experimental.
-	MavenRepositoryUrl *string `json:"mavenRepositoryUrl" yaml:"mavenRepositoryUrl"`
+	MavenRepositoryUrl *string `field:"optional" json:"mavenRepositoryUrl" yaml:"mavenRepositoryUrl"`
 	// Used in maven settings for credential lookup (e.g. use github when publishing to GitHub).
 	// Experimental.
-	MavenServerId *string `json:"mavenServerId" yaml:"mavenServerId"`
+	MavenServerId *string `field:"optional" json:"mavenServerId" yaml:"mavenServerId"`
 	// GitHub secret name which contains the Maven Central (sonatype) staging profile ID (e.g. 68a05363083174). Staging profile ID can be found in the URL of the "Releases" staging profile under "Staging Profiles" in https://oss.sonatype.org (e.g. https://oss.sonatype.org/#stagingProfiles;11a33451234521).
 	// Experimental.
-	MavenStagingProfileId *string `json:"mavenStagingProfileId" yaml:"mavenStagingProfileId"`
+	MavenStagingProfileId *string `field:"optional" json:"mavenStagingProfileId" yaml:"mavenStagingProfileId"`
 	// GitHub secret name which contains the Username for maven repository.
 	//
 	// For Maven Central, you will need to Create JIRA account and then request a
@@ -427,7 +427,7 @@ type MavenPublishOptions struct {
 	// See: https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134
 	//
 	// Experimental.
-	MavenUsername *string `json:"mavenUsername" yaml:"mavenUsername"`
+	MavenUsername *string `field:"optional" json:"mavenUsername" yaml:"mavenUsername"`
 }
 
 // Options for npm release.
@@ -440,13 +440,13 @@ type NpmPublishOptions struct {
 	//
 	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
-	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps" yaml:"prePublishSteps"`
+	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
 	// Experimental.
-	PublishTools *workflows.Tools `json:"publishTools" yaml:"publishTools"`
+	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// Options for publishing npm package to AWS CodeArtifact.
 	// Experimental.
-	CodeArtifactOptions *CodeArtifactOptions `json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
+	CodeArtifactOptions *CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Tags can be used to provide an alias instead of version numbers.
 	//
 	// For example, a project might choose to have multiple streams of development
@@ -460,10 +460,10 @@ type NpmPublishOptions struct {
 	//
 	// The `next` tag is used by some projects to identify the upcoming version.
 	// Deprecated: Use `npmDistTag` for each release branch instead.
-	DistTag *string `json:"distTag" yaml:"distTag"`
+	DistTag *string `field:"optional" json:"distTag" yaml:"distTag"`
 	// GitHub secret which contains the NPM token to use when publishing packages.
 	// Experimental.
-	NpmTokenSecret *string `json:"npmTokenSecret" yaml:"npmTokenSecret"`
+	NpmTokenSecret *string `field:"optional" json:"npmTokenSecret" yaml:"npmTokenSecret"`
 	// The domain name of the npm package registry.
 	//
 	// To publish to GitHub Packages, set this value to `"npm.pkg.github.com"`. In
@@ -476,7 +476,7 @@ type NpmPublishOptions struct {
 	//   "npm.pkg.github.com"
 	//
 	// Experimental.
-	Registry *string `json:"registry" yaml:"registry"`
+	Registry *string `field:"optional" json:"registry" yaml:"registry"`
 }
 
 // Options for NuGet releases.
@@ -489,13 +489,13 @@ type NugetPublishOptions struct {
 	//
 	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
-	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps" yaml:"prePublishSteps"`
+	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
 	// Experimental.
-	PublishTools *workflows.Tools `json:"publishTools" yaml:"publishTools"`
+	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// GitHub secret which contains the API key for NuGet.
 	// Experimental.
-	NugetApiKeySecret *string `json:"nugetApiKeySecret" yaml:"nugetApiKeySecret"`
+	NugetApiKeySecret *string `field:"optional" json:"nugetApiKeySecret" yaml:"nugetApiKeySecret"`
 }
 
 // Implements GitHub jobs for publishing modules to package managers.
@@ -767,42 +767,42 @@ type PublisherOptions struct {
 	// See: https://github.com/aws/publib
 	//
 	// Experimental.
-	ArtifactName *string `json:"artifactName" yaml:"artifactName"`
+	ArtifactName *string `field:"required" json:"artifactName" yaml:"artifactName"`
 	// The job ID that produces the build artifacts.
 	//
 	// All publish jobs will take a dependency on this job.
 	// Experimental.
-	BuildJobId *string `json:"buildJobId" yaml:"buildJobId"`
+	BuildJobId *string `field:"required" json:"buildJobId" yaml:"buildJobId"`
 	// A GitHub workflow expression used as a condition for publishers.
 	// Experimental.
-	Condition *string `json:"condition" yaml:"condition"`
+	Condition *string `field:"optional" json:"condition" yaml:"condition"`
 	// Do not actually publish, only print the commands that would be executed instead.
 	//
 	// Useful if you wish to block all publishing from a single option.
 	// Experimental.
-	DryRun *bool `json:"dryRun" yaml:"dryRun"`
+	DryRun *bool `field:"optional" json:"dryRun" yaml:"dryRun"`
 	// Create an issue when a publish task fails.
 	// Experimental.
-	FailureIssue *bool `json:"failureIssue" yaml:"failureIssue"`
+	FailureIssue *bool `field:"optional" json:"failureIssue" yaml:"failureIssue"`
 	// The label to apply to the issue marking failed publish tasks.
 	//
 	// Only applies if `failureIssue` is true.
 	// Experimental.
-	FailureIssueLabel *string `json:"failureIssueLabel" yaml:"failureIssueLabel"`
+	FailureIssueLabel *string `field:"optional" json:"failureIssueLabel" yaml:"failureIssueLabel"`
 	// Deprecated: use `publibVersion` instead.
-	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
+	JsiiReleaseVersion *string `field:"optional" json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Version requirement for `publib`.
 	// Experimental.
-	PublibVersion *string `json:"publibVersion" yaml:"publibVersion"`
+	PublibVersion *string `field:"optional" json:"publibVersion" yaml:"publibVersion"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
 	// in order to create a publishing task for each publishing activity.
 	// Experimental.
-	PublishTasks *bool `json:"publishTasks" yaml:"publishTasks"`
+	PublishTasks *bool `field:"optional" json:"publishTasks" yaml:"publishTasks"`
 	// Github Runner selection labels.
 	// Experimental.
-	WorkflowRunsOn *[]*string `json:"workflowRunsOn" yaml:"workflowRunsOn"`
+	WorkflowRunsOn *[]*string `field:"optional" json:"workflowRunsOn" yaml:"workflowRunsOn"`
 }
 
 // Options for PyPI release.
@@ -815,19 +815,19 @@ type PyPiPublishOptions struct {
 	//
 	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPrePublishingSteps`.
 	// Experimental.
-	PrePublishSteps *[]*workflows.JobStep `json:"prePublishSteps" yaml:"prePublishSteps"`
+	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
 	// Experimental.
-	PublishTools *workflows.Tools `json:"publishTools" yaml:"publishTools"`
+	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// The GitHub secret which contains PyPI password.
 	// Experimental.
-	TwinePasswordSecret *string `json:"twinePasswordSecret" yaml:"twinePasswordSecret"`
+	TwinePasswordSecret *string `field:"optional" json:"twinePasswordSecret" yaml:"twinePasswordSecret"`
 	// The registry url to use when releasing packages.
 	// Experimental.
-	TwineRegistryUrl *string `json:"twineRegistryUrl" yaml:"twineRegistryUrl"`
+	TwineRegistryUrl *string `field:"optional" json:"twineRegistryUrl" yaml:"twineRegistryUrl"`
 	// The GitHub secret which contains PyPI user name.
 	// Experimental.
-	TwineUsernameSecret *string `json:"twineUsernameSecret" yaml:"twineUsernameSecret"`
+	TwineUsernameSecret *string `field:"optional" json:"twineUsernameSecret" yaml:"twineUsernameSecret"`
 }
 
 // Manages releases (currently through GitHub workflows).
@@ -1015,34 +1015,34 @@ func (r *jsiiProxy_Release) Synthesize() {
 type ReleaseOptions struct {
 	// Version requirement of `publib` which is used to publish modules to npm.
 	// Experimental.
-	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
+	JsiiReleaseVersion *string `field:"optional" json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.
 	//
 	// If this is specified, we bump the latest version of this major version line.
 	// If not specified, we bump the global latest version.
 	// Experimental.
-	MajorVersion *float64 `json:"majorVersion" yaml:"majorVersion"`
+	MajorVersion *float64 `field:"optional" json:"majorVersion" yaml:"majorVersion"`
 	// The npmDistTag to use when publishing from the default branch.
 	//
 	// To set the npm dist-tag for release branches, set the `npmDistTag` property
 	// for each branch.
 	// Experimental.
-	NpmDistTag *string `json:"npmDistTag" yaml:"npmDistTag"`
+	NpmDistTag *string `field:"optional" json:"npmDistTag" yaml:"npmDistTag"`
 	// Steps to execute after build as part of the release workflow.
 	// Experimental.
-	PostBuildSteps *[]*workflows.JobStep `json:"postBuildSteps" yaml:"postBuildSteps"`
+	PostBuildSteps *[]*workflows.JobStep `field:"optional" json:"postBuildSteps" yaml:"postBuildSteps"`
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
 	// Experimental.
-	Prerelease *string `json:"prerelease" yaml:"prerelease"`
+	Prerelease *string `field:"optional" json:"prerelease" yaml:"prerelease"`
 	// Instead of actually publishing to package managers, just print the publishing command.
 	// Experimental.
-	PublishDryRun *bool `json:"publishDryRun" yaml:"publishDryRun"`
+	PublishDryRun *bool `field:"optional" json:"publishDryRun" yaml:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
 	// in order to create a publishing task for each publishing activity.
 	// Experimental.
-	PublishTasks *bool `json:"publishTasks" yaml:"publishTasks"`
+	PublishTasks *bool `field:"optional" json:"publishTasks" yaml:"publishTasks"`
 	// Defines additional release branches.
 	//
 	// A workflow will be created for each
@@ -1052,21 +1052,21 @@ type ReleaseOptions struct {
 	// version. If multiple branches are used, the `majorVersion` field must also
 	// be provided for the default branch.
 	// Experimental.
-	ReleaseBranches *map[string]*BranchOptions `json:"releaseBranches" yaml:"releaseBranches"`
+	ReleaseBranches *map[string]*BranchOptions `field:"optional" json:"releaseBranches" yaml:"releaseBranches"`
 	// Automatically release new versions every commit to one of branches in `releaseBranches`.
 	// Deprecated: Use `releaseTrigger: ReleaseTrigger.continuous()` instead
-	ReleaseEveryCommit *bool `json:"releaseEveryCommit" yaml:"releaseEveryCommit"`
+	ReleaseEveryCommit *bool `field:"optional" json:"releaseEveryCommit" yaml:"releaseEveryCommit"`
 	// Create a github issue on every failed publishing task.
 	// Experimental.
-	ReleaseFailureIssue *bool `json:"releaseFailureIssue" yaml:"releaseFailureIssue"`
+	ReleaseFailureIssue *bool `field:"optional" json:"releaseFailureIssue" yaml:"releaseFailureIssue"`
 	// The label to apply to issues indicating publish failures.
 	//
 	// Only applies if `releaseFailureIssue` is true.
 	// Experimental.
-	ReleaseFailureIssueLabel *string `json:"releaseFailureIssueLabel" yaml:"releaseFailureIssueLabel"`
+	ReleaseFailureIssueLabel *string `field:"optional" json:"releaseFailureIssueLabel" yaml:"releaseFailureIssueLabel"`
 	// CRON schedule to trigger new releases.
 	// Deprecated: Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
-	ReleaseSchedule *string `json:"releaseSchedule" yaml:"releaseSchedule"`
+	ReleaseSchedule *string `field:"optional" json:"releaseSchedule" yaml:"releaseSchedule"`
 	// Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
 	//
 	// Note: this prefix is used to detect the latest tagged version
@@ -1074,30 +1074,30 @@ type ReleaseOptions struct {
 	// history, you may need to manually tag your latest release
 	// with the new prefix.
 	// Experimental.
-	ReleaseTagPrefix *string `json:"releaseTagPrefix" yaml:"releaseTagPrefix"`
+	ReleaseTagPrefix *string `field:"optional" json:"releaseTagPrefix" yaml:"releaseTagPrefix"`
 	// The release trigger to use.
 	// Experimental.
-	ReleaseTrigger ReleaseTrigger `json:"releaseTrigger" yaml:"releaseTrigger"`
+	ReleaseTrigger ReleaseTrigger `field:"optional" json:"releaseTrigger" yaml:"releaseTrigger"`
 	// The name of the default release workflow.
 	// Experimental.
-	ReleaseWorkflowName *string `json:"releaseWorkflowName" yaml:"releaseWorkflowName"`
+	ReleaseWorkflowName *string `field:"optional" json:"releaseWorkflowName" yaml:"releaseWorkflowName"`
 	// A set of workflow steps to execute in order to setup the workflow container.
 	// Experimental.
-	ReleaseWorkflowSetupSteps *[]*workflows.JobStep `json:"releaseWorkflowSetupSteps" yaml:"releaseWorkflowSetupSteps"`
+	ReleaseWorkflowSetupSteps *[]*workflows.JobStep `field:"optional" json:"releaseWorkflowSetupSteps" yaml:"releaseWorkflowSetupSteps"`
 	// Custom configuration used when creating changelog with standard-version package.
 	//
 	// Given values either append to default configuration or overwrite values in it.
 	// Experimental.
-	VersionrcOptions *map[string]interface{} `json:"versionrcOptions" yaml:"versionrcOptions"`
+	VersionrcOptions *map[string]interface{} `field:"optional" json:"versionrcOptions" yaml:"versionrcOptions"`
 	// Container image to use for GitHub workflows.
 	// Experimental.
-	WorkflowContainerImage *string `json:"workflowContainerImage" yaml:"workflowContainerImage"`
+	WorkflowContainerImage *string `field:"optional" json:"workflowContainerImage" yaml:"workflowContainerImage"`
 	// Github Runner selection labels.
 	// Experimental.
-	WorkflowRunsOn *[]*string `json:"workflowRunsOn" yaml:"workflowRunsOn"`
+	WorkflowRunsOn *[]*string `field:"optional" json:"workflowRunsOn" yaml:"workflowRunsOn"`
 	// A directory which will contain build artifacts.
 	// Experimental.
-	ArtifactsDirectory *string `json:"artifactsDirectory" yaml:"artifactsDirectory"`
+	ArtifactsDirectory *string `field:"required" json:"artifactsDirectory" yaml:"artifactsDirectory"`
 	// The default branch name to release from.
 	//
 	// Use `majorVersion` to restrict this branch to only publish releases with a
@@ -1105,24 +1105,24 @@ type ReleaseOptions struct {
 	//
 	// You can add additional branches using `addBranch()`.
 	// Experimental.
-	Branch *string `json:"branch" yaml:"branch"`
+	Branch *string `field:"required" json:"branch" yaml:"branch"`
 	// The task to execute in order to create the release artifacts.
 	//
 	// Artifacts are
 	// expected to reside under `artifactsDirectory` (defaults to `dist/`) once
 	// build is complete.
 	// Experimental.
-	Task projen.Task `json:"task" yaml:"task"`
+	Task projen.Task `field:"required" json:"task" yaml:"task"`
 	// A name of a .json file to set the `version` field in after a bump.
 	//
 	// Example:
 	//   "package.json"
 	//
 	// Experimental.
-	VersionFile *string `json:"versionFile" yaml:"versionFile"`
+	VersionFile *string `field:"required" json:"versionFile" yaml:"versionFile"`
 	// Create a GitHub release for each release.
 	// Experimental.
-	GithubRelease *bool `json:"githubRelease" yaml:"githubRelease"`
+	GithubRelease *bool `field:"optional" json:"githubRelease" yaml:"githubRelease"`
 }
 
 // Project options for release.
@@ -1130,34 +1130,34 @@ type ReleaseOptions struct {
 type ReleaseProjectOptions struct {
 	// Version requirement of `publib` which is used to publish modules to npm.
 	// Experimental.
-	JsiiReleaseVersion *string `json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
+	JsiiReleaseVersion *string `field:"optional" json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Major version to release from the default branch.
 	//
 	// If this is specified, we bump the latest version of this major version line.
 	// If not specified, we bump the global latest version.
 	// Experimental.
-	MajorVersion *float64 `json:"majorVersion" yaml:"majorVersion"`
+	MajorVersion *float64 `field:"optional" json:"majorVersion" yaml:"majorVersion"`
 	// The npmDistTag to use when publishing from the default branch.
 	//
 	// To set the npm dist-tag for release branches, set the `npmDistTag` property
 	// for each branch.
 	// Experimental.
-	NpmDistTag *string `json:"npmDistTag" yaml:"npmDistTag"`
+	NpmDistTag *string `field:"optional" json:"npmDistTag" yaml:"npmDistTag"`
 	// Steps to execute after build as part of the release workflow.
 	// Experimental.
-	PostBuildSteps *[]*workflows.JobStep `json:"postBuildSteps" yaml:"postBuildSteps"`
+	PostBuildSteps *[]*workflows.JobStep `field:"optional" json:"postBuildSteps" yaml:"postBuildSteps"`
 	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
 	// Experimental.
-	Prerelease *string `json:"prerelease" yaml:"prerelease"`
+	Prerelease *string `field:"optional" json:"prerelease" yaml:"prerelease"`
 	// Instead of actually publishing to package managers, just print the publishing command.
 	// Experimental.
-	PublishDryRun *bool `json:"publishDryRun" yaml:"publishDryRun"`
+	PublishDryRun *bool `field:"optional" json:"publishDryRun" yaml:"publishDryRun"`
 	// Define publishing tasks that can be executed manually as well as workflows.
 	//
 	// Normally, publishing only happens within automated workflows. Enable this
 	// in order to create a publishing task for each publishing activity.
 	// Experimental.
-	PublishTasks *bool `json:"publishTasks" yaml:"publishTasks"`
+	PublishTasks *bool `field:"optional" json:"publishTasks" yaml:"publishTasks"`
 	// Defines additional release branches.
 	//
 	// A workflow will be created for each
@@ -1167,21 +1167,21 @@ type ReleaseProjectOptions struct {
 	// version. If multiple branches are used, the `majorVersion` field must also
 	// be provided for the default branch.
 	// Experimental.
-	ReleaseBranches *map[string]*BranchOptions `json:"releaseBranches" yaml:"releaseBranches"`
+	ReleaseBranches *map[string]*BranchOptions `field:"optional" json:"releaseBranches" yaml:"releaseBranches"`
 	// Automatically release new versions every commit to one of branches in `releaseBranches`.
 	// Deprecated: Use `releaseTrigger: ReleaseTrigger.continuous()` instead
-	ReleaseEveryCommit *bool `json:"releaseEveryCommit" yaml:"releaseEveryCommit"`
+	ReleaseEveryCommit *bool `field:"optional" json:"releaseEveryCommit" yaml:"releaseEveryCommit"`
 	// Create a github issue on every failed publishing task.
 	// Experimental.
-	ReleaseFailureIssue *bool `json:"releaseFailureIssue" yaml:"releaseFailureIssue"`
+	ReleaseFailureIssue *bool `field:"optional" json:"releaseFailureIssue" yaml:"releaseFailureIssue"`
 	// The label to apply to issues indicating publish failures.
 	//
 	// Only applies if `releaseFailureIssue` is true.
 	// Experimental.
-	ReleaseFailureIssueLabel *string `json:"releaseFailureIssueLabel" yaml:"releaseFailureIssueLabel"`
+	ReleaseFailureIssueLabel *string `field:"optional" json:"releaseFailureIssueLabel" yaml:"releaseFailureIssueLabel"`
 	// CRON schedule to trigger new releases.
 	// Deprecated: Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
-	ReleaseSchedule *string `json:"releaseSchedule" yaml:"releaseSchedule"`
+	ReleaseSchedule *string `field:"optional" json:"releaseSchedule" yaml:"releaseSchedule"`
 	// Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
 	//
 	// Note: this prefix is used to detect the latest tagged version
@@ -1189,27 +1189,27 @@ type ReleaseProjectOptions struct {
 	// history, you may need to manually tag your latest release
 	// with the new prefix.
 	// Experimental.
-	ReleaseTagPrefix *string `json:"releaseTagPrefix" yaml:"releaseTagPrefix"`
+	ReleaseTagPrefix *string `field:"optional" json:"releaseTagPrefix" yaml:"releaseTagPrefix"`
 	// The release trigger to use.
 	// Experimental.
-	ReleaseTrigger ReleaseTrigger `json:"releaseTrigger" yaml:"releaseTrigger"`
+	ReleaseTrigger ReleaseTrigger `field:"optional" json:"releaseTrigger" yaml:"releaseTrigger"`
 	// The name of the default release workflow.
 	// Experimental.
-	ReleaseWorkflowName *string `json:"releaseWorkflowName" yaml:"releaseWorkflowName"`
+	ReleaseWorkflowName *string `field:"optional" json:"releaseWorkflowName" yaml:"releaseWorkflowName"`
 	// A set of workflow steps to execute in order to setup the workflow container.
 	// Experimental.
-	ReleaseWorkflowSetupSteps *[]*workflows.JobStep `json:"releaseWorkflowSetupSteps" yaml:"releaseWorkflowSetupSteps"`
+	ReleaseWorkflowSetupSteps *[]*workflows.JobStep `field:"optional" json:"releaseWorkflowSetupSteps" yaml:"releaseWorkflowSetupSteps"`
 	// Custom configuration used when creating changelog with standard-version package.
 	//
 	// Given values either append to default configuration or overwrite values in it.
 	// Experimental.
-	VersionrcOptions *map[string]interface{} `json:"versionrcOptions" yaml:"versionrcOptions"`
+	VersionrcOptions *map[string]interface{} `field:"optional" json:"versionrcOptions" yaml:"versionrcOptions"`
 	// Container image to use for GitHub workflows.
 	// Experimental.
-	WorkflowContainerImage *string `json:"workflowContainerImage" yaml:"workflowContainerImage"`
+	WorkflowContainerImage *string `field:"optional" json:"workflowContainerImage" yaml:"workflowContainerImage"`
 	// Github Runner selection labels.
 	// Experimental.
-	WorkflowRunsOn *[]*string `json:"workflowRunsOn" yaml:"workflowRunsOn"`
+	WorkflowRunsOn *[]*string `field:"optional" json:"workflowRunsOn" yaml:"workflowRunsOn"`
 }
 
 // Used to manage release strategies.
@@ -1376,6 +1376,6 @@ type ScheduledReleaseOptions struct {
 	//   '0 17 * * *' - every day at 5 pm
 	//
 	// Experimental.
-	Schedule *string `json:"schedule" yaml:"schedule"`
+	Schedule *string `field:"required" json:"schedule" yaml:"schedule"`
 }
 

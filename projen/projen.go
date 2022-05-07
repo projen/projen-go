@@ -94,14 +94,14 @@ func (c *jsiiProxy_Component) Synthesize() {
 type CreateProjectOptions struct {
 	// Directory that the project will be generated in.
 	// Experimental.
-	Dir *string `json:"dir" yaml:"dir"`
+	Dir *string `field:"required" json:"dir" yaml:"dir"`
 	// Fully-qualified name of the project type (usually formatted as `module.ProjectType`).
 	//
 	// Example:
 	//   `projen.TypescriptProject`
 	//
 	// Experimental.
-	ProjectFqn *string `json:"projectFqn" yaml:"projectFqn"`
+	ProjectFqn *string `field:"required" json:"projectFqn" yaml:"projectFqn"`
 	// Project options.
 	//
 	// Only JSON-like values can be passed in (strings,
@@ -111,20 +111,20 @@ type CreateProjectOptions struct {
 	// Consult the API reference of the project type you are generating for
 	// information about what fields and types are available.
 	// Experimental.
-	ProjectOptions *map[string]interface{} `json:"projectOptions" yaml:"projectOptions"`
+	ProjectOptions *map[string]interface{} `field:"required" json:"projectOptions" yaml:"projectOptions"`
 	// Should we render commented-out default options in the projenrc file?
 	//
 	// Does not apply to projenrc.json files.
 	// Experimental.
-	OptionHints InitProjectOptionHints `json:"optionHints" yaml:"optionHints"`
+	OptionHints InitProjectOptionHints `field:"optional" json:"optionHints" yaml:"optionHints"`
 	// Should we execute post synthesis hooks?
 	//
 	// (usually package manager install).
 	// Experimental.
-	Post *bool `json:"post" yaml:"post"`
+	Post *bool `field:"optional" json:"post" yaml:"post"`
 	// Should we call `project.synth()` or instantiate the project (could still have side-effects) and render the .projenrc file.
 	// Experimental.
-	Synth *bool `json:"synth" yaml:"synth"`
+	Synth *bool `field:"optional" json:"synth" yaml:"synth"`
 }
 
 // The `Dependencies` component is responsible to track the list of dependencies a project has, and then used by project types as the model for rendering project-specific dependency manifests such as the dependencies section `package.json` files.
@@ -341,16 +341,16 @@ type Dependency struct {
 	// NOTE: For package managers that use complex coordinates (like Maven), we
 	// will codify it into a string somehow.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 	// Semantic version version requirement.
 	// Experimental.
-	Version *string `json:"version" yaml:"version"`
+	Version *string `field:"optional" json:"version" yaml:"version"`
 	// Which type of dependency this is (runtime, build-time, etc).
 	// Experimental.
-	Type DependencyType `json:"type" yaml:"type"`
+	Type DependencyType `field:"required" json:"type" yaml:"type"`
 	// Additional JSON metadata associated with the dependency (package manager specific).
 	// Experimental.
-	Metadata *map[string]interface{} `json:"metadata" yaml:"metadata"`
+	Metadata *map[string]interface{} `field:"optional" json:"metadata" yaml:"metadata"`
 }
 
 // Coordinates of the dependency (name and version).
@@ -361,10 +361,10 @@ type DependencyCoordinates struct {
 	// NOTE: For package managers that use complex coordinates (like Maven), we
 	// will codify it into a string somehow.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 	// Semantic version version requirement.
 	// Experimental.
-	Version *string `json:"version" yaml:"version"`
+	Version *string `field:"optional" json:"version" yaml:"version"`
 }
 
 // Type of dependency.
@@ -396,7 +396,7 @@ const (
 type DepsManifest struct {
 	// All dependencies of this module.
 	// Experimental.
-	Dependencies *[]*Dependency `json:"dependencies" yaml:"dependencies"`
+	Dependencies *[]*Dependency `field:"required" json:"dependencies" yaml:"dependencies"`
 }
 
 // Options for specifying the Docker image of the container.
@@ -483,16 +483,16 @@ func DevEnvironmentDockerImage_FromImage(image *string) DevEnvironmentDockerImag
 type DevEnvironmentOptions struct {
 	// A Docker image or Dockerfile for the container.
 	// Experimental.
-	DockerImage DevEnvironmentDockerImage `json:"dockerImage" yaml:"dockerImage"`
+	DockerImage DevEnvironmentDockerImage `field:"optional" json:"dockerImage" yaml:"dockerImage"`
 	// An array of ports that should be exposed from the container.
 	// Experimental.
-	Ports *[]*string `json:"ports" yaml:"ports"`
+	Ports *[]*string `field:"optional" json:"ports" yaml:"ports"`
 	// An array of tasks that should be run when the container starts.
 	// Experimental.
-	Tasks *[]Task `json:"tasks" yaml:"tasks"`
+	Tasks *[]Task `field:"optional" json:"tasks" yaml:"tasks"`
 	// An array of extension IDs that specify the extensions that should be installed inside the container when it is created.
 	// Experimental.
-	VscodeExtensions *[]*string `json:"vscodeExtensions" yaml:"vscodeExtensions"`
+	VscodeExtensions *[]*string `field:"optional" json:"vscodeExtensions" yaml:"vscodeExtensions"`
 }
 
 // Create a docker-compose YAML file.
@@ -673,13 +673,13 @@ func (d *jsiiProxy_DockerCompose) Synthesize() {
 type DockerComposeBuild struct {
 	// Docker build context directory.
 	// Experimental.
-	Context *string `json:"context" yaml:"context"`
+	Context *string `field:"required" json:"context" yaml:"context"`
 	// Build args.
 	// Experimental.
-	Args *map[string]*string `json:"args" yaml:"args"`
+	Args *map[string]*string `field:"optional" json:"args" yaml:"args"`
 	// A dockerfile to build from.
 	// Experimental.
-	Dockerfile *string `json:"dockerfile" yaml:"dockerfile"`
+	Dockerfile *string `field:"optional" json:"dockerfile" yaml:"dockerfile"`
 }
 
 // Options for port mappings.
@@ -687,7 +687,7 @@ type DockerComposeBuild struct {
 type DockerComposePortMappingOptions struct {
 	// Port mapping protocol.
 	// Experimental.
-	Protocol DockerComposeProtocol `json:"protocol" yaml:"protocol"`
+	Protocol DockerComposeProtocol `field:"optional" json:"protocol" yaml:"protocol"`
 }
 
 // Props for DockerCompose.
@@ -699,13 +699,13 @@ type DockerComposeProps struct {
 	//   'myname' yields 'docker-compose.myname.yml'
 	//
 	// Experimental.
-	NameSuffix *string `json:"nameSuffix" yaml:"nameSuffix"`
+	NameSuffix *string `field:"optional" json:"nameSuffix" yaml:"nameSuffix"`
 	// Docker Compose schema version do be used.
 	// Experimental.
-	SchemaVersion *string `json:"schemaVersion" yaml:"schemaVersion"`
+	SchemaVersion *string `field:"optional" json:"schemaVersion" yaml:"schemaVersion"`
 	// Service descriptions.
 	// Experimental.
-	Services *map[string]*DockerComposeServiceDescription `json:"services" yaml:"services"`
+	Services *map[string]*DockerComposeServiceDescription `field:"optional" json:"services" yaml:"services"`
 }
 
 // Network protocol for port mapping.
@@ -912,37 +912,37 @@ func (d *jsiiProxy_DockerComposeService) AddVolume(volume IDockerComposeVolumeBi
 type DockerComposeServiceDescription struct {
 	// Provide a command to the docker container.
 	// Experimental.
-	Command *[]*string `json:"command" yaml:"command"`
+	Command *[]*string `field:"optional" json:"command" yaml:"command"`
 	// Names of other services this service depends on.
 	// Experimental.
-	DependsOn *[]IDockerComposeServiceName `json:"dependsOn" yaml:"dependsOn"`
+	DependsOn *[]IDockerComposeServiceName `field:"optional" json:"dependsOn" yaml:"dependsOn"`
 	// Add environment variables.
 	// Experimental.
-	Environment *map[string]*string `json:"environment" yaml:"environment"`
+	Environment *map[string]*string `field:"optional" json:"environment" yaml:"environment"`
 	// Use a docker image.
 	//
 	// Note: You must specify either `build` or `image` key.
 	// See: imageBuild.
 	//
 	// Experimental.
-	Image *string `json:"image" yaml:"image"`
+	Image *string `field:"optional" json:"image" yaml:"image"`
 	// Build a docker image.
 	//
 	// Note: You must specify either `imageBuild` or `image` key.
 	// See: image.
 	//
 	// Experimental.
-	ImageBuild *DockerComposeBuild `json:"imageBuild" yaml:"imageBuild"`
+	ImageBuild *DockerComposeBuild `field:"optional" json:"imageBuild" yaml:"imageBuild"`
 	// Map some ports.
 	// Experimental.
-	Ports *[]*DockerComposeServicePort `json:"ports" yaml:"ports"`
+	Ports *[]*DockerComposeServicePort `field:"optional" json:"ports" yaml:"ports"`
 	// Mount some volumes into the service.
 	//
 	// Use one of the following to create volumes:.
 	// See: DockerCompose.namedVolume() to create & mount a named volume
 	//
 	// Experimental.
-	Volumes *[]IDockerComposeVolumeBinding `json:"volumes" yaml:"volumes"`
+	Volumes *[]IDockerComposeVolumeBinding `field:"optional" json:"volumes" yaml:"volumes"`
 }
 
 // A service port mapping.
@@ -950,16 +950,16 @@ type DockerComposeServiceDescription struct {
 type DockerComposeServicePort struct {
 	// Port mapping mode.
 	// Experimental.
-	Mode *string `json:"mode" yaml:"mode"`
+	Mode *string `field:"required" json:"mode" yaml:"mode"`
 	// Network protocol.
 	// Experimental.
-	Protocol DockerComposeProtocol `json:"protocol" yaml:"protocol"`
+	Protocol DockerComposeProtocol `field:"required" json:"protocol" yaml:"protocol"`
 	// Published port number.
 	// Experimental.
-	Published *float64 `json:"published" yaml:"published"`
+	Published *float64 `field:"required" json:"published" yaml:"published"`
 	// Target port number.
 	// Experimental.
-	Target *float64 `json:"target" yaml:"target"`
+	Target *float64 `field:"required" json:"target" yaml:"target"`
 }
 
 // Volume configuration.
@@ -967,16 +967,16 @@ type DockerComposeServicePort struct {
 type DockerComposeVolumeConfig struct {
 	// Driver to use for the volume.
 	// Experimental.
-	Driver *string `json:"driver" yaml:"driver"`
+	Driver *string `field:"optional" json:"driver" yaml:"driver"`
 	// Options to provide to the driver.
 	// Experimental.
-	DriverOpts *map[string]*string `json:"driverOpts" yaml:"driverOpts"`
+	DriverOpts *map[string]*string `field:"optional" json:"driverOpts" yaml:"driverOpts"`
 	// Set to true to indicate that the volume is externally created.
 	// Experimental.
-	External *bool `json:"external" yaml:"external"`
+	External *bool `field:"optional" json:"external" yaml:"external"`
 	// Name of the volume for when the volume name isn't going to work in YAML.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"optional" json:"name" yaml:"name"`
 }
 
 // Service volume mounting information.
@@ -984,13 +984,13 @@ type DockerComposeVolumeConfig struct {
 type DockerComposeVolumeMount struct {
 	// Volume source.
 	// Experimental.
-	Source *string `json:"source" yaml:"source"`
+	Source *string `field:"required" json:"source" yaml:"source"`
 	// Volume target.
 	// Experimental.
-	Target *string `json:"target" yaml:"target"`
+	Target *string `field:"required" json:"target" yaml:"target"`
 	// Type of volume.
 	// Experimental.
-	Type *string `json:"type" yaml:"type"`
+	Type *string `field:"required" json:"type" yaml:"type"`
 }
 
 // Experimental.
@@ -1192,19 +1192,19 @@ type FileBaseOptions struct {
 	// default, all generated files are committed and anti-tamper is used to
 	// protect against manual modifications.
 	// Experimental.
-	Committed *bool `json:"committed" yaml:"committed"`
+	Committed *bool `field:"optional" json:"committed" yaml:"committed"`
 	// Update the project's .gitignore file.
 	// Experimental.
-	EditGitignore *bool `json:"editGitignore" yaml:"editGitignore"`
+	EditGitignore *bool `field:"optional" json:"editGitignore" yaml:"editGitignore"`
 	// Whether the generated file should be marked as executable.
 	// Experimental.
-	Executable *bool `json:"executable" yaml:"executable"`
+	Executable *bool `field:"optional" json:"executable" yaml:"executable"`
 	// Adds the projen marker to the file.
 	// Experimental.
-	Marker *bool `json:"marker" yaml:"marker"`
+	Marker *bool `field:"optional" json:"marker" yaml:"marker"`
 	// Whether the generated file should be readonly.
 	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
+	Readonly *bool `field:"optional" json:"readonly" yaml:"readonly"`
 }
 
 // Assign attributes to file names in a git repository.
@@ -1700,19 +1700,19 @@ const (
 type GitpodOptions struct {
 	// A Docker image or Dockerfile for the container.
 	// Experimental.
-	DockerImage DevEnvironmentDockerImage `json:"dockerImage" yaml:"dockerImage"`
+	DockerImage DevEnvironmentDockerImage `field:"optional" json:"dockerImage" yaml:"dockerImage"`
 	// An array of ports that should be exposed from the container.
 	// Experimental.
-	Ports *[]*string `json:"ports" yaml:"ports"`
+	Ports *[]*string `field:"optional" json:"ports" yaml:"ports"`
 	// An array of tasks that should be run when the container starts.
 	// Experimental.
-	Tasks *[]Task `json:"tasks" yaml:"tasks"`
+	Tasks *[]Task `field:"optional" json:"tasks" yaml:"tasks"`
 	// An array of extension IDs that specify the extensions that should be installed inside the container when it is created.
 	// Experimental.
-	VscodeExtensions *[]*string `json:"vscodeExtensions" yaml:"vscodeExtensions"`
+	VscodeExtensions *[]*string `field:"optional" json:"vscodeExtensions" yaml:"vscodeExtensions"`
 	// Optional Gitpod's Github App integration for prebuilds If this is not set and Gitpod's Github App is installed, then Gitpod will apply these defaults: https://www.gitpod.io/docs/prebuilds/#configure-the-github-app.
 	// Experimental.
-	Prebuilds *GitpodPrebuilds `json:"prebuilds" yaml:"prebuilds"`
+	Prebuilds *GitpodPrebuilds `field:"optional" json:"prebuilds" yaml:"prebuilds"`
 }
 
 // Options for an exposed port on Gitpod.
@@ -1720,17 +1720,17 @@ type GitpodOptions struct {
 type GitpodPort struct {
 	// What to do when a service on a port is detected.
 	// Experimental.
-	OnOpen GitpodOnOpen `json:"onOpen" yaml:"onOpen"`
+	OnOpen GitpodOnOpen `field:"optional" json:"onOpen" yaml:"onOpen"`
 	// A port that should be exposed (forwarded) from the container.
 	//
 	// Example:
 	//   "8080"
 	//
 	// Experimental.
-	Port *string `json:"port" yaml:"port"`
+	Port *string `field:"optional" json:"port" yaml:"port"`
 	// Whether the port visibility should be private or public.
 	// Experimental.
-	Visibility GitpodPortVisibility `json:"visibility" yaml:"visibility"`
+	Visibility GitpodPortVisibility `field:"optional" json:"visibility" yaml:"visibility"`
 }
 
 // Whether the port visibility should be private or public.
@@ -1755,28 +1755,28 @@ const (
 type GitpodPrebuilds struct {
 	// Add a "Review in Gitpod" button to the pull request's description.
 	// Experimental.
-	AddBadge *bool `json:"addBadge" yaml:"addBadge"`
+	AddBadge *bool `field:"optional" json:"addBadge" yaml:"addBadge"`
 	// Add a check to pull requests.
 	// Experimental.
-	AddCheck *bool `json:"addCheck" yaml:"addCheck"`
+	AddCheck *bool `field:"optional" json:"addCheck" yaml:"addCheck"`
 	// Add a "Review in Gitpod" button as a comment to pull requests.
 	// Experimental.
-	AddComment *bool `json:"addComment" yaml:"addComment"`
+	AddComment *bool `field:"optional" json:"addComment" yaml:"addComment"`
 	// Add a label once the prebuild is ready to pull requests.
 	// Experimental.
-	AddLabel *bool `json:"addLabel" yaml:"addLabel"`
+	AddLabel *bool `field:"optional" json:"addLabel" yaml:"addLabel"`
 	// Enable for all branches in this repo.
 	// Experimental.
-	Branches *bool `json:"branches" yaml:"branches"`
+	Branches *bool `field:"optional" json:"branches" yaml:"branches"`
 	// Enable for the master/default branch.
 	// Experimental.
-	Master *bool `json:"master" yaml:"master"`
+	Master *bool `field:"optional" json:"master" yaml:"master"`
 	// Enable for pull requests coming from this repo.
 	// Experimental.
-	PullRequests *bool `json:"pullRequests" yaml:"pullRequests"`
+	PullRequests *bool `field:"optional" json:"pullRequests" yaml:"pullRequests"`
 	// Enable for pull requests coming from forks.
 	// Experimental.
-	PullRequestsFromForks *bool `json:"pullRequestsFromForks" yaml:"pullRequestsFromForks"`
+	PullRequestsFromForks *bool `field:"optional" json:"pullRequestsFromForks" yaml:"pullRequestsFromForks"`
 }
 
 // Configure options for a task to be run when opening a Gitpod workspace (e.g. running tests, or starting a dev server).
@@ -1792,31 +1792,31 @@ type GitpodTask struct {
 	//
 	// The shell command to run.
 	// Experimental.
-	Command *string `json:"command" yaml:"command"`
+	Command *string `field:"required" json:"command" yaml:"command"`
 	// In case you need to run something even before init, that is a requirement for both init and command, you can use the before property.
 	// Experimental.
-	Before *string `json:"before" yaml:"before"`
+	Before *string `field:"optional" json:"before" yaml:"before"`
 	// The init property can be used to specify shell commands that should only be executed after a workspace was freshly cloned and needs to be initialized somehow.
 	//
 	// Such tasks are usually builds or downloading
 	// dependencies. Anything you only want to do once but not when you restart a workspace or start a snapshot.
 	// Experimental.
-	Init *string `json:"init" yaml:"init"`
+	Init *string `field:"optional" json:"init" yaml:"init"`
 	// A name for this task.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"optional" json:"name" yaml:"name"`
 	// You can configure where in the IDE the terminal should be opened.
 	// Experimental.
-	OpenIn GitpodOpenIn `json:"openIn" yaml:"openIn"`
+	OpenIn GitpodOpenIn `field:"optional" json:"openIn" yaml:"openIn"`
 	// You can configure how the terminal should be opened relative to the previous task.
 	// Experimental.
-	OpenMode GitpodOpenMode `json:"openMode" yaml:"openMode"`
+	OpenMode GitpodOpenMode `field:"optional" json:"openMode" yaml:"openMode"`
 	// The optional prebuild command will be executed during prebuilds.
 	//
 	// It is meant to run additional long running
 	// processes that could be useful, e.g. running test suites.
 	// Experimental.
-	Prebuild *string `json:"prebuild" yaml:"prebuild"`
+	Prebuild *string `field:"optional" json:"prebuild" yaml:"prebuild"`
 }
 
 // Abstract interface for container-based development environments, such as Gitpod and GitHub Codespaces.
@@ -2562,28 +2562,28 @@ type IniFileOptions struct {
 	// default, all generated files are committed and anti-tamper is used to
 	// protect against manual modifications.
 	// Experimental.
-	Committed *bool `json:"committed" yaml:"committed"`
+	Committed *bool `field:"optional" json:"committed" yaml:"committed"`
 	// Update the project's .gitignore file.
 	// Experimental.
-	EditGitignore *bool `json:"editGitignore" yaml:"editGitignore"`
+	EditGitignore *bool `field:"optional" json:"editGitignore" yaml:"editGitignore"`
 	// Whether the generated file should be marked as executable.
 	// Experimental.
-	Executable *bool `json:"executable" yaml:"executable"`
+	Executable *bool `field:"optional" json:"executable" yaml:"executable"`
 	// Adds the projen marker to the file.
 	// Experimental.
-	Marker *bool `json:"marker" yaml:"marker"`
+	Marker *bool `field:"optional" json:"marker" yaml:"marker"`
 	// Whether the generated file should be readonly.
 	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
+	Readonly *bool `field:"optional" json:"readonly" yaml:"readonly"`
 	// The object that will be serialized.
 	//
 	// You can modify the object's contents
 	// before synthesis.
 	// Experimental.
-	Obj interface{} `json:"obj" yaml:"obj"`
+	Obj interface{} `field:"optional" json:"obj" yaml:"obj"`
 	// Omits empty objects and arrays.
 	// Experimental.
-	OmitEmpty *bool `json:"omitEmpty" yaml:"omitEmpty"`
+	OmitEmpty *bool `field:"optional" json:"omitEmpty" yaml:"omitEmpty"`
 }
 
 // Information passed from `projen new` to the project object when the project is first created.
@@ -2593,18 +2593,18 @@ type IniFileOptions struct {
 type InitProject struct {
 	// Initial arguments passed to `projen new`.
 	// Experimental.
-	Args *map[string]interface{} `json:"args" yaml:"args"`
+	Args *map[string]interface{} `field:"required" json:"args" yaml:"args"`
 	// Include commented out options.
 	//
 	// Does not apply to projenrc.json files.
 	// Experimental.
-	Comments InitProjectOptionHints `json:"comments" yaml:"comments"`
+	Comments InitProjectOptionHints `field:"required" json:"comments" yaml:"comments"`
 	// The JSII FQN of the project type.
 	// Experimental.
-	Fqn *string `json:"fqn" yaml:"fqn"`
+	Fqn *string `field:"required" json:"fqn" yaml:"fqn"`
 	// Project metadata.
 	// Experimental.
-	Type ProjectType `json:"type" yaml:"type"`
+	Type ProjectType `field:"required" json:"type" yaml:"type"`
 }
 
 // Choices for how to display commented out options in projenrc files.
@@ -2900,31 +2900,31 @@ type JsonFileOptions struct {
 	// default, all generated files are committed and anti-tamper is used to
 	// protect against manual modifications.
 	// Experimental.
-	Committed *bool `json:"committed" yaml:"committed"`
+	Committed *bool `field:"optional" json:"committed" yaml:"committed"`
 	// Update the project's .gitignore file.
 	// Experimental.
-	EditGitignore *bool `json:"editGitignore" yaml:"editGitignore"`
+	EditGitignore *bool `field:"optional" json:"editGitignore" yaml:"editGitignore"`
 	// Whether the generated file should be marked as executable.
 	// Experimental.
-	Executable *bool `json:"executable" yaml:"executable"`
+	Executable *bool `field:"optional" json:"executable" yaml:"executable"`
 	// Adds the projen marker to the file.
 	// Experimental.
-	Marker *bool `json:"marker" yaml:"marker"`
+	Marker *bool `field:"optional" json:"marker" yaml:"marker"`
 	// Whether the generated file should be readonly.
 	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
+	Readonly *bool `field:"optional" json:"readonly" yaml:"readonly"`
 	// The object that will be serialized.
 	//
 	// You can modify the object's contents
 	// before synthesis.
 	// Experimental.
-	Obj interface{} `json:"obj" yaml:"obj"`
+	Obj interface{} `field:"optional" json:"obj" yaml:"obj"`
 	// Omits empty objects and arrays.
 	// Experimental.
-	OmitEmpty *bool `json:"omitEmpty" yaml:"omitEmpty"`
+	OmitEmpty *bool `field:"optional" json:"omitEmpty" yaml:"omitEmpty"`
 	// Adds a newline at the end of the file.
 	// Experimental.
-	Newline *bool `json:"newline" yaml:"newline"`
+	Newline *bool `field:"optional" json:"newline" yaml:"newline"`
 }
 
 // Experimental.
@@ -3137,17 +3137,17 @@ type LicenseOptions struct {
 	// See: https://github.com/projen/projen/tree/main/license-text for list of supported licenses
 	//
 	// Experimental.
-	Spdx *string `json:"spdx" yaml:"spdx"`
+	Spdx *string `field:"required" json:"spdx" yaml:"spdx"`
 	// Copyright owner.
 	//
 	// If the license text has $copyright_owner, this option must be specified.
 	// Experimental.
-	CopyrightOwner *string `json:"copyrightOwner" yaml:"copyrightOwner"`
+	CopyrightOwner *string `field:"optional" json:"copyrightOwner" yaml:"copyrightOwner"`
 	// Period of license (e.g. "1998-2023").
 	//
 	// The string `$copyright_period` will be substituted with this string.
 	// Experimental.
-	CopyrightPeriod *string `json:"copyrightPeriod" yaml:"copyrightPeriod"`
+	CopyrightPeriod *string `field:"optional" json:"copyrightPeriod" yaml:"copyrightPeriod"`
 }
 
 // Logging verbosity.
@@ -3361,10 +3361,10 @@ type LoggerOptions struct {
 	// The levels available (in increasing verbosity) are
 	// OFF, ERROR, WARN, INFO, DEBUG, and VERBOSE.
 	// Experimental.
-	Level LogLevel `json:"level" yaml:"level"`
+	Level LogLevel `field:"optional" json:"level" yaml:"level"`
 	// Include a prefix for all logging messages with the project name.
 	// Experimental.
-	UsePrefix *bool `json:"usePrefix" yaml:"usePrefix"`
+	UsePrefix *bool `field:"optional" json:"usePrefix" yaml:"usePrefix"`
 }
 
 // Minimal Makefile.
@@ -3668,25 +3668,25 @@ type MakefileOptions struct {
 	// default, all generated files are committed and anti-tamper is used to
 	// protect against manual modifications.
 	// Experimental.
-	Committed *bool `json:"committed" yaml:"committed"`
+	Committed *bool `field:"optional" json:"committed" yaml:"committed"`
 	// Update the project's .gitignore file.
 	// Experimental.
-	EditGitignore *bool `json:"editGitignore" yaml:"editGitignore"`
+	EditGitignore *bool `field:"optional" json:"editGitignore" yaml:"editGitignore"`
 	// Whether the generated file should be marked as executable.
 	// Experimental.
-	Executable *bool `json:"executable" yaml:"executable"`
+	Executable *bool `field:"optional" json:"executable" yaml:"executable"`
 	// Adds the projen marker to the file.
 	// Experimental.
-	Marker *bool `json:"marker" yaml:"marker"`
+	Marker *bool `field:"optional" json:"marker" yaml:"marker"`
 	// Whether the generated file should be readonly.
 	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
+	Readonly *bool `field:"optional" json:"readonly" yaml:"readonly"`
 	// List of targets to build when Make is invoked without specifying any targets.
 	// Experimental.
-	All *[]*string `json:"all" yaml:"all"`
+	All *[]*string `field:"optional" json:"all" yaml:"all"`
 	// Rules to include in the Makefile.
 	// Experimental.
-	Rules *[]*Rule `json:"rules" yaml:"rules"`
+	Rules *[]*Rule `field:"optional" json:"rules" yaml:"rules"`
 }
 
 // Represents an Object file.
@@ -3949,28 +3949,28 @@ type ObjectFileOptions struct {
 	// default, all generated files are committed and anti-tamper is used to
 	// protect against manual modifications.
 	// Experimental.
-	Committed *bool `json:"committed" yaml:"committed"`
+	Committed *bool `field:"optional" json:"committed" yaml:"committed"`
 	// Update the project's .gitignore file.
 	// Experimental.
-	EditGitignore *bool `json:"editGitignore" yaml:"editGitignore"`
+	EditGitignore *bool `field:"optional" json:"editGitignore" yaml:"editGitignore"`
 	// Whether the generated file should be marked as executable.
 	// Experimental.
-	Executable *bool `json:"executable" yaml:"executable"`
+	Executable *bool `field:"optional" json:"executable" yaml:"executable"`
 	// Adds the projen marker to the file.
 	// Experimental.
-	Marker *bool `json:"marker" yaml:"marker"`
+	Marker *bool `field:"optional" json:"marker" yaml:"marker"`
 	// Whether the generated file should be readonly.
 	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
+	Readonly *bool `field:"optional" json:"readonly" yaml:"readonly"`
 	// The object that will be serialized.
 	//
 	// You can modify the object's contents
 	// before synthesis.
 	// Experimental.
-	Obj interface{} `json:"obj" yaml:"obj"`
+	Obj interface{} `field:"optional" json:"obj" yaml:"obj"`
 	// Omits empty objects and arrays.
 	// Experimental.
-	OmitEmpty *bool `json:"omitEmpty" yaml:"omitEmpty"`
+	OmitEmpty *bool `field:"optional" json:"omitEmpty" yaml:"omitEmpty"`
 }
 
 // Base project.
@@ -4724,10 +4724,10 @@ func (p *jsiiProxy_ProjectBuild) Synthesize() {
 type ProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 	// Configure logging options such as verbosity.
 	// Experimental.
-	Logging *LoggerOptions `json:"logging" yaml:"logging"`
+	Logging *LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
 	// The root directory of the project.
 	//
 	// Relative to this directory, all files are synthesized.
@@ -4736,27 +4736,27 @@ type ProjectOptions struct {
 	// directory and it cannot be the same as the parent or any of it's other
 	// sub-projects.
 	// Experimental.
-	Outdir *string `json:"outdir" yaml:"outdir"`
+	Outdir *string `field:"optional" json:"outdir" yaml:"outdir"`
 	// The parent project, if this project is part of a bigger project.
 	// Experimental.
-	Parent Project `json:"parent" yaml:"parent"`
+	Parent Project `field:"optional" json:"parent" yaml:"parent"`
 	// The shell command to use in order to run the projen CLI.
 	//
 	// Can be used to customize in special environments.
 	// Experimental.
-	ProjenCommand *string `json:"projenCommand" yaml:"projenCommand"`
+	ProjenCommand *string `field:"optional" json:"projenCommand" yaml:"projenCommand"`
 	// Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
 	// Experimental.
-	ProjenrcJson *bool `json:"projenrcJson" yaml:"projenrcJson"`
+	ProjenrcJson *bool `field:"optional" json:"projenrcJson" yaml:"projenrcJson"`
 	// Options for .projenrc.json.
 	// Experimental.
-	ProjenrcJsonOptions *ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	ProjenrcJsonOptions *ProjenrcOptions `field:"optional" json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
 	// Use renovatebot to handle dependency upgrades.
 	// Experimental.
-	Renovatebot *bool `json:"renovatebot" yaml:"renovatebot"`
+	Renovatebot *bool `field:"optional" json:"renovatebot" yaml:"renovatebot"`
 	// Options for renovatebot.
 	// Experimental.
-	RenovatebotOptions *RenovatebotOptions `json:"renovatebotOptions" yaml:"renovatebotOptions"`
+	RenovatebotOptions *RenovatebotOptions `field:"optional" json:"renovatebotOptions" yaml:"renovatebotOptions"`
 }
 
 // Which type of project this is.
@@ -4896,7 +4896,7 @@ func (p *jsiiProxy_Projenrc) Synthesize() {
 type ProjenrcOptions struct {
 	// The name of the projenrc file.
 	// Experimental.
-	Filename *string `json:"filename" yaml:"filename"`
+	Filename *string `field:"optional" json:"filename" yaml:"filename"`
 }
 
 // Defines renovatebot configuration for projen project.
@@ -4993,7 +4993,7 @@ type RenovatebotOptions struct {
 	//
 	// The ignore option supports just package name.
 	// Experimental.
-	Ignore *[]*string `json:"ignore" yaml:"ignore"`
+	Ignore *[]*string `field:"optional" json:"ignore" yaml:"ignore"`
 	// Ignores updates to `projen`.
 	//
 	// This is required since projen updates may cause changes in committed files
@@ -5001,10 +5001,10 @@ type RenovatebotOptions struct {
 	//
 	// Projen upgrades are covered through the `ProjenUpgrade` class.
 	// Experimental.
-	IgnoreProjen *bool `json:"ignoreProjen" yaml:"ignoreProjen"`
+	IgnoreProjen *bool `field:"optional" json:"ignoreProjen" yaml:"ignoreProjen"`
 	// List of labels to apply to the created PR's.
 	// Experimental.
-	Labels *[]*string `json:"labels" yaml:"labels"`
+	Labels *[]*string `field:"optional" json:"labels" yaml:"labels"`
 	// How often to check for new versions and raise pull requests.
 	//
 	// Can be given in CRON or LATER format, and use multiple schedules
@@ -5015,7 +5015,7 @@ type RenovatebotOptions struct {
 	// See: https://docs.renovatebot.com/configuration-options/#schedule
 	//
 	// Experimental.
-	ScheduleInterval *[]*string `json:"scheduleInterval" yaml:"scheduleInterval"`
+	ScheduleInterval *[]*string `field:"optional" json:"scheduleInterval" yaml:"scheduleInterval"`
 }
 
 // How often to check for new versions and raise pull requests for version updates.
@@ -5053,10 +5053,10 @@ const (
 type ResolveOptions struct {
 	// Context arguments.
 	// Experimental.
-	Args *[]interface{} `json:"args" yaml:"args"`
+	Args *[]interface{} `field:"optional" json:"args" yaml:"args"`
 	// Omits empty arrays and objects.
 	// Experimental.
-	OmitEmpty *bool `json:"omitEmpty" yaml:"omitEmpty"`
+	OmitEmpty *bool `field:"optional" json:"omitEmpty" yaml:"omitEmpty"`
 }
 
 // A Make rule.
@@ -5066,16 +5066,16 @@ type Rule struct {
 	//
 	// If the rule is phony then instead this represents the command's name(s).
 	// Experimental.
-	Targets *[]*string `json:"targets" yaml:"targets"`
+	Targets *[]*string `field:"required" json:"targets" yaml:"targets"`
 	// Marks whether the target is phony.
 	// Experimental.
-	Phony *bool `json:"phony" yaml:"phony"`
+	Phony *bool `field:"optional" json:"phony" yaml:"phony"`
 	// Files that are used as inputs to create a target.
 	// Experimental.
-	Prerequisites *[]*string `json:"prerequisites" yaml:"prerequisites"`
+	Prerequisites *[]*string `field:"optional" json:"prerequisites" yaml:"prerequisites"`
 	// Commands that are run (using prerequisites as inputs) to create a target.
 	// Experimental.
-	Recipe *[]*string `json:"recipe" yaml:"recipe"`
+	Recipe *[]*string `field:"optional" json:"recipe" yaml:"recipe"`
 }
 
 // Renders the given files into the directory if the directory does not exist.
@@ -5176,7 +5176,7 @@ type SampleDirOptions struct {
 	// any files from `source` if that option is specified (replacing if names
 	// overlap).
 	// Experimental.
-	Files *map[string]*string `json:"files" yaml:"files"`
+	Files *map[string]*string `field:"optional" json:"files" yaml:"files"`
 	// Absolute path to a directory to copy files from (does not need to be text files).
 	//
 	// If your project is typescript-based and has configured `testdir` to be a
@@ -5186,7 +5186,7 @@ type SampleDirOptions struct {
 	// new SampleDir(this, 'public', { source: path.join(__dirname, '..', 'sample-assets') });
 	// ```.
 	// Experimental.
-	SourceDir *string `json:"sourceDir" yaml:"sourceDir"`
+	SourceDir *string `field:"optional" json:"sourceDir" yaml:"sourceDir"`
 }
 
 // Produces a file with the given contents but only once, if the file doesn't already exist.
@@ -5283,7 +5283,7 @@ func (s *jsiiProxy_SampleFile) Synthesize() {
 type SampleFileOptions struct {
 	// The contents of the file to write.
 	// Experimental.
-	Contents *string `json:"contents" yaml:"contents"`
+	Contents *string `field:"optional" json:"contents" yaml:"contents"`
 	// Absolute path to a file to copy the contents from (does not need to be a text file).
 	//
 	// If your project is Typescript-based and has configured `testdir` to be a
@@ -5293,7 +5293,7 @@ type SampleFileOptions struct {
 	// new SampleFile(this, 'assets/icon.png', { source: path.join(__dirname, '..', 'sample-assets', 'icon.png') });
 	// ```.
 	// Experimental.
-	SourcePath *string `json:"sourcePath" yaml:"sourcePath"`
+	SourcePath *string `field:"optional" json:"sourcePath" yaml:"sourcePath"`
 }
 
 // Represents a README.md sample file. You are expected to manage this file after creation.
@@ -5386,14 +5386,14 @@ func (s *jsiiProxy_SampleReadme) Synthesize() {
 type SampleReadmeProps struct {
 	// The contents.
 	// Experimental.
-	Contents *string `json:"contents" yaml:"contents"`
+	Contents *string `field:"optional" json:"contents" yaml:"contents"`
 	// The name of the README.md file.
 	//
 	// Example:
 	//   "readme.md"
 	//
 	// Experimental.
-	Filename *string `json:"filename" yaml:"filename"`
+	Filename *string `field:"optional" json:"filename" yaml:"filename"`
 }
 
 // Deprecated: This class will be removed in upcoming releases. if you wish to
@@ -5697,10 +5697,10 @@ func (s *jsiiProxy_SourceCode) Synthesize() {
 type SourceCodeOptions struct {
 	// Indentation size.
 	// Experimental.
-	Indent *float64 `json:"indent" yaml:"indent"`
+	Indent *float64 `field:"optional" json:"indent" yaml:"indent"`
 	// Whether the generated file should be readonly.
 	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
+	Readonly *bool `field:"optional" json:"readonly" yaml:"readonly"`
 }
 
 // A task that can be performed on the project.
@@ -5944,23 +5944,23 @@ type TaskCommonOptions struct {
 	// the program exits with a zero exit code, steps will be executed. A non-zero
 	// code means that task will be skipped.
 	// Experimental.
-	Condition *string `json:"condition" yaml:"condition"`
+	Condition *string `field:"optional" json:"condition" yaml:"condition"`
 	// The working directory for all steps in this task (unless overridden by the step).
 	// Experimental.
-	Cwd *string `json:"cwd" yaml:"cwd"`
+	Cwd *string `field:"optional" json:"cwd" yaml:"cwd"`
 	// The description of this build command.
 	// Experimental.
-	Description *string `json:"description" yaml:"description"`
+	Description *string `field:"optional" json:"description" yaml:"description"`
 	// Defines environment variables for the execution of this task.
 	//
 	// Values in this map will be evaluated in a shell, so you can do stuff like `$(echo "foo")`.
 	// Experimental.
-	Env *map[string]*string `json:"env" yaml:"env"`
+	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// A set of environment variables that must be defined in order to execute this task.
 	//
 	// Task execution will fail if one of these is not defined.
 	// Experimental.
-	RequiredEnv *[]*string `json:"requiredEnv" yaml:"requiredEnv"`
+	RequiredEnv *[]*string `field:"optional" json:"requiredEnv" yaml:"requiredEnv"`
 }
 
 // Experimental.
@@ -5971,29 +5971,29 @@ type TaskOptions struct {
 	// the program exits with a zero exit code, steps will be executed. A non-zero
 	// code means that task will be skipped.
 	// Experimental.
-	Condition *string `json:"condition" yaml:"condition"`
+	Condition *string `field:"optional" json:"condition" yaml:"condition"`
 	// The working directory for all steps in this task (unless overridden by the step).
 	// Experimental.
-	Cwd *string `json:"cwd" yaml:"cwd"`
+	Cwd *string `field:"optional" json:"cwd" yaml:"cwd"`
 	// The description of this build command.
 	// Experimental.
-	Description *string `json:"description" yaml:"description"`
+	Description *string `field:"optional" json:"description" yaml:"description"`
 	// Defines environment variables for the execution of this task.
 	//
 	// Values in this map will be evaluated in a shell, so you can do stuff like `$(echo "foo")`.
 	// Experimental.
-	Env *map[string]*string `json:"env" yaml:"env"`
+	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// A set of environment variables that must be defined in order to execute this task.
 	//
 	// Task execution will fail if one of these is not defined.
 	// Experimental.
-	RequiredEnv *[]*string `json:"requiredEnv" yaml:"requiredEnv"`
+	RequiredEnv *[]*string `field:"optional" json:"requiredEnv" yaml:"requiredEnv"`
 	// Shell command to execute as the first command of the task.
 	// Experimental.
-	Exec *string `json:"exec" yaml:"exec"`
+	Exec *string `field:"optional" json:"exec" yaml:"exec"`
 	// List of task steps to run.
 	// Experimental.
-	Steps *[]*TaskStep `json:"steps" yaml:"steps"`
+	Steps *[]*TaskStep `field:"optional" json:"steps" yaml:"steps"`
 }
 
 // The runtime component of the tasks engine.
@@ -6119,29 +6119,29 @@ type TaskSpec struct {
 	// the program exits with a zero exit code, steps will be executed. A non-zero
 	// code means that task will be skipped.
 	// Experimental.
-	Condition *string `json:"condition" yaml:"condition"`
+	Condition *string `field:"optional" json:"condition" yaml:"condition"`
 	// The working directory for all steps in this task (unless overridden by the step).
 	// Experimental.
-	Cwd *string `json:"cwd" yaml:"cwd"`
+	Cwd *string `field:"optional" json:"cwd" yaml:"cwd"`
 	// The description of this build command.
 	// Experimental.
-	Description *string `json:"description" yaml:"description"`
+	Description *string `field:"optional" json:"description" yaml:"description"`
 	// Defines environment variables for the execution of this task.
 	//
 	// Values in this map will be evaluated in a shell, so you can do stuff like `$(echo "foo")`.
 	// Experimental.
-	Env *map[string]*string `json:"env" yaml:"env"`
+	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// A set of environment variables that must be defined in order to execute this task.
 	//
 	// Task execution will fail if one of these is not defined.
 	// Experimental.
-	RequiredEnv *[]*string `json:"requiredEnv" yaml:"requiredEnv"`
+	RequiredEnv *[]*string `field:"optional" json:"requiredEnv" yaml:"requiredEnv"`
 	// Task name.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 	// Task steps.
 	// Experimental.
-	Steps *[]*TaskStep `json:"steps" yaml:"steps"`
+	Steps *[]*TaskStep `field:"optional" json:"steps" yaml:"steps"`
 }
 
 // A single step within a task.
@@ -6152,10 +6152,10 @@ type TaskSpec struct {
 type TaskStep struct {
 	// The working directory for this step.
 	// Experimental.
-	Cwd *string `json:"cwd" yaml:"cwd"`
+	Cwd *string `field:"optional" json:"cwd" yaml:"cwd"`
 	// Step name.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"optional" json:"name" yaml:"name"`
 	// The name of a built-in task to execute.
 	//
 	// Built-in tasks are node.js programs baked into the projen module and as
@@ -6165,16 +6165,16 @@ type TaskStep struct {
 	// For example, if your built in builtin task is under `src/release/resolve-version.task.ts`,
 	// then this would be `release/resolve-version`.
 	// Experimental.
-	Builtin *string `json:"builtin" yaml:"builtin"`
+	Builtin *string `field:"optional" json:"builtin" yaml:"builtin"`
 	// Shell command to execute.
 	// Experimental.
-	Exec *string `json:"exec" yaml:"exec"`
+	Exec *string `field:"optional" json:"exec" yaml:"exec"`
 	// Print a message.
 	// Experimental.
-	Say *string `json:"say" yaml:"say"`
+	Say *string `field:"optional" json:"say" yaml:"say"`
 	// Subtask to execute.
 	// Experimental.
-	Spawn *string `json:"spawn" yaml:"spawn"`
+	Spawn *string `field:"optional" json:"spawn" yaml:"spawn"`
 }
 
 // Options for task steps.
@@ -6182,10 +6182,10 @@ type TaskStep struct {
 type TaskStepOptions struct {
 	// The working directory for this step.
 	// Experimental.
-	Cwd *string `json:"cwd" yaml:"cwd"`
+	Cwd *string `field:"optional" json:"cwd" yaml:"cwd"`
 	// Step name.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"optional" json:"name" yaml:"name"`
 }
 
 // Defines project tasks.
@@ -6370,10 +6370,10 @@ func (t *jsiiProxy_Tasks) TryFind(name *string) Task {
 type TasksManifest struct {
 	// Environment for all tasks.
 	// Experimental.
-	Env *map[string]*string `json:"env" yaml:"env"`
+	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// All tasks available for this project.
 	// Experimental.
-	Tasks *map[string]*TaskSpec `json:"tasks" yaml:"tasks"`
+	Tasks *map[string]*TaskSpec `field:"optional" json:"tasks" yaml:"tasks"`
 }
 
 // A Testing static class with a .synth helper for getting a snapshots of construct outputs. Useful for snapshot testing with Jest.
@@ -6636,24 +6636,24 @@ type TextFileOptions struct {
 	// default, all generated files are committed and anti-tamper is used to
 	// protect against manual modifications.
 	// Experimental.
-	Committed *bool `json:"committed" yaml:"committed"`
+	Committed *bool `field:"optional" json:"committed" yaml:"committed"`
 	// Update the project's .gitignore file.
 	// Experimental.
-	EditGitignore *bool `json:"editGitignore" yaml:"editGitignore"`
+	EditGitignore *bool `field:"optional" json:"editGitignore" yaml:"editGitignore"`
 	// Whether the generated file should be marked as executable.
 	// Experimental.
-	Executable *bool `json:"executable" yaml:"executable"`
+	Executable *bool `field:"optional" json:"executable" yaml:"executable"`
 	// Adds the projen marker to the file.
 	// Experimental.
-	Marker *bool `json:"marker" yaml:"marker"`
+	Marker *bool `field:"optional" json:"marker" yaml:"marker"`
 	// Whether the generated file should be readonly.
 	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
+	Readonly *bool `field:"optional" json:"readonly" yaml:"readonly"`
 	// The contents of the text file.
 	//
 	// You can use `addLine()` to append lines.
 	// Experimental.
-	Lines *[]*string `json:"lines" yaml:"lines"`
+	Lines *[]*string `field:"optional" json:"lines" yaml:"lines"`
 }
 
 // Represents a TOML file.
@@ -6931,28 +6931,28 @@ type TomlFileOptions struct {
 	// default, all generated files are committed and anti-tamper is used to
 	// protect against manual modifications.
 	// Experimental.
-	Committed *bool `json:"committed" yaml:"committed"`
+	Committed *bool `field:"optional" json:"committed" yaml:"committed"`
 	// Update the project's .gitignore file.
 	// Experimental.
-	EditGitignore *bool `json:"editGitignore" yaml:"editGitignore"`
+	EditGitignore *bool `field:"optional" json:"editGitignore" yaml:"editGitignore"`
 	// Whether the generated file should be marked as executable.
 	// Experimental.
-	Executable *bool `json:"executable" yaml:"executable"`
+	Executable *bool `field:"optional" json:"executable" yaml:"executable"`
 	// Adds the projen marker to the file.
 	// Experimental.
-	Marker *bool `json:"marker" yaml:"marker"`
+	Marker *bool `field:"optional" json:"marker" yaml:"marker"`
 	// Whether the generated file should be readonly.
 	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
+	Readonly *bool `field:"optional" json:"readonly" yaml:"readonly"`
 	// The object that will be serialized.
 	//
 	// You can modify the object's contents
 	// before synthesis.
 	// Experimental.
-	Obj interface{} `json:"obj" yaml:"obj"`
+	Obj interface{} `field:"optional" json:"obj" yaml:"obj"`
 	// Omits empty objects and arrays.
 	// Experimental.
-	OmitEmpty *bool `json:"omitEmpty" yaml:"omitEmpty"`
+	OmitEmpty *bool `field:"optional" json:"omitEmpty" yaml:"omitEmpty"`
 }
 
 // Experimental.
@@ -7118,20 +7118,20 @@ func (v *jsiiProxy_Version) Synthesize() {
 type VersionOptions struct {
 	// The name of the directory into which `changelog.md` and `version.txt` files are emitted.
 	// Experimental.
-	ArtifactsDirectory *string `json:"artifactsDirectory" yaml:"artifactsDirectory"`
+	ArtifactsDirectory *string `field:"required" json:"artifactsDirectory" yaml:"artifactsDirectory"`
 	// A name of a .json file to set the `version` field in after a bump.
 	//
 	// Example:
 	//   "package.json"
 	//
 	// Experimental.
-	VersionInputFile *string `json:"versionInputFile" yaml:"versionInputFile"`
+	VersionInputFile *string `field:"required" json:"versionInputFile" yaml:"versionInputFile"`
 	// The tag prefix corresponding to this version.
 	// Experimental.
-	TagPrefix *string `json:"tagPrefix" yaml:"tagPrefix"`
+	TagPrefix *string `field:"optional" json:"tagPrefix" yaml:"tagPrefix"`
 	// Custom configuration for versionrc file used by standard-release.
 	// Experimental.
-	VersionrcOptions *map[string]interface{} `json:"versionrcOptions" yaml:"versionrcOptions"`
+	VersionrcOptions *map[string]interface{} `field:"optional" json:"versionrcOptions" yaml:"versionrcOptions"`
 }
 
 // Represents an XML file.
@@ -7413,28 +7413,28 @@ type XmlFileOptions struct {
 	// default, all generated files are committed and anti-tamper is used to
 	// protect against manual modifications.
 	// Experimental.
-	Committed *bool `json:"committed" yaml:"committed"`
+	Committed *bool `field:"optional" json:"committed" yaml:"committed"`
 	// Update the project's .gitignore file.
 	// Experimental.
-	EditGitignore *bool `json:"editGitignore" yaml:"editGitignore"`
+	EditGitignore *bool `field:"optional" json:"editGitignore" yaml:"editGitignore"`
 	// Whether the generated file should be marked as executable.
 	// Experimental.
-	Executable *bool `json:"executable" yaml:"executable"`
+	Executable *bool `field:"optional" json:"executable" yaml:"executable"`
 	// Adds the projen marker to the file.
 	// Experimental.
-	Marker *bool `json:"marker" yaml:"marker"`
+	Marker *bool `field:"optional" json:"marker" yaml:"marker"`
 	// Whether the generated file should be readonly.
 	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
+	Readonly *bool `field:"optional" json:"readonly" yaml:"readonly"`
 	// The object that will be serialized.
 	//
 	// You can modify the object's contents
 	// before synthesis.
 	// Experimental.
-	Obj interface{} `json:"obj" yaml:"obj"`
+	Obj interface{} `field:"optional" json:"obj" yaml:"obj"`
 	// Omits empty objects and arrays.
 	// Experimental.
-	OmitEmpty *bool `json:"omitEmpty" yaml:"omitEmpty"`
+	OmitEmpty *bool `field:"optional" json:"omitEmpty" yaml:"omitEmpty"`
 }
 
 // Represents a YAML file.
@@ -7735,30 +7735,30 @@ type YamlFileOptions struct {
 	// default, all generated files are committed and anti-tamper is used to
 	// protect against manual modifications.
 	// Experimental.
-	Committed *bool `json:"committed" yaml:"committed"`
+	Committed *bool `field:"optional" json:"committed" yaml:"committed"`
 	// Update the project's .gitignore file.
 	// Experimental.
-	EditGitignore *bool `json:"editGitignore" yaml:"editGitignore"`
+	EditGitignore *bool `field:"optional" json:"editGitignore" yaml:"editGitignore"`
 	// Whether the generated file should be marked as executable.
 	// Experimental.
-	Executable *bool `json:"executable" yaml:"executable"`
+	Executable *bool `field:"optional" json:"executable" yaml:"executable"`
 	// Adds the projen marker to the file.
 	// Experimental.
-	Marker *bool `json:"marker" yaml:"marker"`
+	Marker *bool `field:"optional" json:"marker" yaml:"marker"`
 	// Whether the generated file should be readonly.
 	// Experimental.
-	Readonly *bool `json:"readonly" yaml:"readonly"`
+	Readonly *bool `field:"optional" json:"readonly" yaml:"readonly"`
 	// The object that will be serialized.
 	//
 	// You can modify the object's contents
 	// before synthesis.
 	// Experimental.
-	Obj interface{} `json:"obj" yaml:"obj"`
+	Obj interface{} `field:"optional" json:"obj" yaml:"obj"`
 	// Omits empty objects and arrays.
 	// Experimental.
-	OmitEmpty *bool `json:"omitEmpty" yaml:"omitEmpty"`
+	OmitEmpty *bool `field:"optional" json:"omitEmpty" yaml:"omitEmpty"`
 	// Maximum line width (set to 0 to disable folding).
 	// Experimental.
-	LineWidth *float64 `json:"lineWidth" yaml:"lineWidth"`
+	LineWidth *float64 `field:"optional" json:"lineWidth" yaml:"lineWidth"`
 }
 

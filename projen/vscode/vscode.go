@@ -181,16 +181,16 @@ func (d *jsiiProxy_DevContainer) Synthesize() {
 type DevContainerOptions struct {
 	// A Docker image or Dockerfile for the container.
 	// Experimental.
-	DockerImage projen.DevEnvironmentDockerImage `json:"dockerImage" yaml:"dockerImage"`
+	DockerImage projen.DevEnvironmentDockerImage `field:"optional" json:"dockerImage" yaml:"dockerImage"`
 	// An array of ports that should be exposed from the container.
 	// Experimental.
-	Ports *[]*string `json:"ports" yaml:"ports"`
+	Ports *[]*string `field:"optional" json:"ports" yaml:"ports"`
 	// An array of tasks that should be run when the container starts.
 	// Experimental.
-	Tasks *[]projen.Task `json:"tasks" yaml:"tasks"`
+	Tasks *[]projen.Task `field:"optional" json:"tasks" yaml:"tasks"`
 	// An array of extension IDs that specify the extensions that should be installed inside the container when it is created.
 	// Experimental.
-	VscodeExtensions *[]*string `json:"vscodeExtensions" yaml:"vscodeExtensions"`
+	VscodeExtensions *[]*string `field:"optional" json:"vscodeExtensions" yaml:"vscodeExtensions"`
 }
 
 // Controls the visibility of the VSCode Debug Console panel during a debugging session Source: https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes.
@@ -210,22 +210,22 @@ const (
 // Experimental.
 type Presentation struct {
 	// Experimental.
-	Group *string `json:"group" yaml:"group"`
+	Group *string `field:"required" json:"group" yaml:"group"`
 	// Experimental.
-	Hidden *bool `json:"hidden" yaml:"hidden"`
+	Hidden *bool `field:"required" json:"hidden" yaml:"hidden"`
 	// Experimental.
-	Order *float64 `json:"order" yaml:"order"`
+	Order *float64 `field:"required" json:"order" yaml:"order"`
 }
 
 // VSCode launch configuration ServerReadyAction interface "if you want to open a URL in a web browser whenever the program under debugging outputs a specific message to the debug console or integrated terminal." Source: https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes.
 // Experimental.
 type ServerReadyAction struct {
 	// Experimental.
-	Action *string `json:"action" yaml:"action"`
+	Action *string `field:"required" json:"action" yaml:"action"`
 	// Experimental.
-	Pattern *string `json:"pattern" yaml:"pattern"`
+	Pattern *string `field:"optional" json:"pattern" yaml:"pattern"`
 	// Experimental.
-	UriFormat *string `json:"uriFormat" yaml:"uriFormat"`
+	UriFormat *string `field:"optional" json:"uriFormat" yaml:"uriFormat"`
 }
 
 // Experimental.
@@ -424,36 +424,36 @@ func (v *jsiiProxy_VsCodeLaunchConfig) Synthesize() {
 // Experimental.
 type VsCodeLaunchConfigurationEntry struct {
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 	// Experimental.
-	Request *string `json:"request" yaml:"request"`
+	Request *string `field:"required" json:"request" yaml:"request"`
 	// Experimental.
-	Type *string `json:"type" yaml:"type"`
+	Type *string `field:"required" json:"type" yaml:"type"`
 	// Experimental.
-	Args *[]*string `json:"args" yaml:"args"`
+	Args *[]*string `field:"optional" json:"args" yaml:"args"`
 	// Experimental.
-	DebugServer *float64 `json:"debugServer" yaml:"debugServer"`
+	DebugServer *float64 `field:"optional" json:"debugServer" yaml:"debugServer"`
 	// Experimental.
-	InternalConsoleOptions InternalConsoleOptions `json:"internalConsoleOptions" yaml:"internalConsoleOptions"`
+	InternalConsoleOptions InternalConsoleOptions `field:"optional" json:"internalConsoleOptions" yaml:"internalConsoleOptions"`
 	// Experimental.
-	OutFiles *[]*string `json:"outFiles" yaml:"outFiles"`
+	OutFiles *[]*string `field:"optional" json:"outFiles" yaml:"outFiles"`
 	// Experimental.
-	PostDebugTask *string `json:"postDebugTask" yaml:"postDebugTask"`
+	PostDebugTask *string `field:"optional" json:"postDebugTask" yaml:"postDebugTask"`
 	// Experimental.
-	PreLaunchTask *string `json:"preLaunchTask" yaml:"preLaunchTask"`
+	PreLaunchTask *string `field:"optional" json:"preLaunchTask" yaml:"preLaunchTask"`
 	// Experimental.
-	Presentation *Presentation `json:"presentation" yaml:"presentation"`
+	Presentation *Presentation `field:"optional" json:"presentation" yaml:"presentation"`
 	// Experimental.
-	Program *string `json:"program" yaml:"program"`
+	Program *string `field:"optional" json:"program" yaml:"program"`
 	// Experimental.
-	RuntimeArgs *[]*string `json:"runtimeArgs" yaml:"runtimeArgs"`
+	RuntimeArgs *[]*string `field:"optional" json:"runtimeArgs" yaml:"runtimeArgs"`
 	// Experimental.
-	ServerReadyAction *ServerReadyAction `json:"serverReadyAction" yaml:"serverReadyAction"`
+	ServerReadyAction *ServerReadyAction `field:"optional" json:"serverReadyAction" yaml:"serverReadyAction"`
 	// Experimental.
-	SkipFiles *[]*string `json:"skipFiles" yaml:"skipFiles"`
+	SkipFiles *[]*string `field:"optional" json:"skipFiles" yaml:"skipFiles"`
 	// Experimental.
-	Url *string `json:"url" yaml:"url"`
+	Url *string `field:"optional" json:"url" yaml:"url"`
 	// Experimental.
-	WebRoot *string `json:"webRoot" yaml:"webRoot"`
+	WebRoot *string `field:"optional" json:"webRoot" yaml:"webRoot"`
 }
 

@@ -550,80 +550,80 @@ type PoetryPyprojectOptions struct {
 	//
 	// Must be in the form "name <email>".
 	// Experimental.
-	Authors *[]*string `json:"authors" yaml:"authors"`
+	Authors *[]*string `field:"optional" json:"authors" yaml:"authors"`
 	// A list of PyPI trove classifiers that describe the project.
 	// See: https://pypi.org/classifiers/
 	//
 	// Experimental.
-	Classifiers *[]*string `json:"classifiers" yaml:"classifiers"`
+	Classifiers *[]*string `field:"optional" json:"classifiers" yaml:"classifiers"`
 	// A short description of the package (required).
 	// Experimental.
-	Description *string `json:"description" yaml:"description"`
+	Description *string `field:"optional" json:"description" yaml:"description"`
 	// A URL to the documentation of the project.
 	// Experimental.
-	Documentation *string `json:"documentation" yaml:"documentation"`
+	Documentation *string `field:"optional" json:"documentation" yaml:"documentation"`
 	// A list of patterns that will be excluded in the final package.
 	//
 	// If a VCS is being used for a package, the exclude field will be seeded with
 	// the VCS’ ignore settings (.gitignore for git for example).
 	// Experimental.
-	Exclude *[]*string `json:"exclude" yaml:"exclude"`
+	Exclude *[]*string `field:"optional" json:"exclude" yaml:"exclude"`
 	// Package extras.
 	// Experimental.
-	Extras *map[string]*[]*string `json:"extras" yaml:"extras"`
+	Extras *map[string]*[]*string `field:"optional" json:"extras" yaml:"extras"`
 	// A URL to the website of the project.
 	// Experimental.
-	Homepage *string `json:"homepage" yaml:"homepage"`
+	Homepage *string `field:"optional" json:"homepage" yaml:"homepage"`
 	// A list of patterns that will be included in the final package.
 	// Experimental.
-	Include *[]*string `json:"include" yaml:"include"`
+	Include *[]*string `field:"optional" json:"include" yaml:"include"`
 	// A list of keywords (max: 5) that the package is related to.
 	// Experimental.
-	Keywords *[]*string `json:"keywords" yaml:"keywords"`
+	Keywords *[]*string `field:"optional" json:"keywords" yaml:"keywords"`
 	// License of this package as an SPDX identifier.
 	//
 	// If the project is proprietary and does not use a specific license, you
 	// can set this value as "Proprietary".
 	// Experimental.
-	License *string `json:"license" yaml:"license"`
+	License *string `field:"optional" json:"license" yaml:"license"`
 	// the maintainers of the package.
 	//
 	// Must be in the form "name <email>".
 	// Experimental.
-	Maintainers *[]*string `json:"maintainers" yaml:"maintainers"`
+	Maintainers *[]*string `field:"optional" json:"maintainers" yaml:"maintainers"`
 	// Name of the package (required).
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"optional" json:"name" yaml:"name"`
 	// A list of packages and modules to include in the final distribution.
 	// Experimental.
-	Packages *[]interface{} `json:"packages" yaml:"packages"`
+	Packages *[]interface{} `field:"optional" json:"packages" yaml:"packages"`
 	// Plugins.
 	//
 	// Must be specified as a table.
 	// See: https://toml.io/en/v1.0.0#table
 	//
 	// Experimental.
-	Plugins interface{} `json:"plugins" yaml:"plugins"`
+	Plugins interface{} `field:"optional" json:"plugins" yaml:"plugins"`
 	// The name of the readme file of the package.
 	// Experimental.
-	Readme *string `json:"readme" yaml:"readme"`
+	Readme *string `field:"optional" json:"readme" yaml:"readme"`
 	// A URL to the repository of the project.
 	// Experimental.
-	Repository *string `json:"repository" yaml:"repository"`
+	Repository *string `field:"optional" json:"repository" yaml:"repository"`
 	// The scripts or executables that will be installed when installing the package.
 	// Experimental.
-	Scripts *map[string]interface{} `json:"scripts" yaml:"scripts"`
+	Scripts *map[string]interface{} `field:"optional" json:"scripts" yaml:"scripts"`
 	// Source registries from which packages are retrieved.
 	// Experimental.
-	Source *[]interface{} `json:"source" yaml:"source"`
+	Source *[]interface{} `field:"optional" json:"source" yaml:"source"`
 	// Project custom URLs, in addition to homepage, repository and documentation.
 	//
 	// E.g. "Bug Tracker"
 	// Experimental.
-	Urls *map[string]*string `json:"urls" yaml:"urls"`
+	Urls *map[string]*string `field:"optional" json:"urls" yaml:"urls"`
 	// Version of the package (required).
 	// Experimental.
-	Version *string `json:"version" yaml:"version"`
+	Version *string `field:"optional" json:"version" yaml:"version"`
 	// A list of dependencies for the project.
 	//
 	// The python version for which your package is compatible is also required.
@@ -632,14 +632,14 @@ type PoetryPyprojectOptions struct {
 	//   { requests: "^2.13.0" }
 	//
 	// Experimental.
-	Dependencies *map[string]interface{} `json:"dependencies" yaml:"dependencies"`
+	Dependencies *map[string]interface{} `field:"optional" json:"dependencies" yaml:"dependencies"`
 	// A list of development dependencies for the project.
 	//
 	// Example:
 	//   { requests: "^2.13.0" }
 	//
 	// Experimental.
-	DevDependencies *map[string]interface{} `json:"devDependencies" yaml:"devDependencies"`
+	DevDependencies *map[string]interface{} `field:"optional" json:"devDependencies" yaml:"devDependencies"`
 }
 
 // Poetry-specific options.
@@ -651,80 +651,80 @@ type PoetryPyprojectOptionsWithoutDeps struct {
 	//
 	// Must be in the form "name <email>".
 	// Experimental.
-	Authors *[]*string `json:"authors" yaml:"authors"`
+	Authors *[]*string `field:"optional" json:"authors" yaml:"authors"`
 	// A list of PyPI trove classifiers that describe the project.
 	// See: https://pypi.org/classifiers/
 	//
 	// Experimental.
-	Classifiers *[]*string `json:"classifiers" yaml:"classifiers"`
+	Classifiers *[]*string `field:"optional" json:"classifiers" yaml:"classifiers"`
 	// A short description of the package (required).
 	// Experimental.
-	Description *string `json:"description" yaml:"description"`
+	Description *string `field:"optional" json:"description" yaml:"description"`
 	// A URL to the documentation of the project.
 	// Experimental.
-	Documentation *string `json:"documentation" yaml:"documentation"`
+	Documentation *string `field:"optional" json:"documentation" yaml:"documentation"`
 	// A list of patterns that will be excluded in the final package.
 	//
 	// If a VCS is being used for a package, the exclude field will be seeded with
 	// the VCS’ ignore settings (.gitignore for git for example).
 	// Experimental.
-	Exclude *[]*string `json:"exclude" yaml:"exclude"`
+	Exclude *[]*string `field:"optional" json:"exclude" yaml:"exclude"`
 	// Package extras.
 	// Experimental.
-	Extras *map[string]*[]*string `json:"extras" yaml:"extras"`
+	Extras *map[string]*[]*string `field:"optional" json:"extras" yaml:"extras"`
 	// A URL to the website of the project.
 	// Experimental.
-	Homepage *string `json:"homepage" yaml:"homepage"`
+	Homepage *string `field:"optional" json:"homepage" yaml:"homepage"`
 	// A list of patterns that will be included in the final package.
 	// Experimental.
-	Include *[]*string `json:"include" yaml:"include"`
+	Include *[]*string `field:"optional" json:"include" yaml:"include"`
 	// A list of keywords (max: 5) that the package is related to.
 	// Experimental.
-	Keywords *[]*string `json:"keywords" yaml:"keywords"`
+	Keywords *[]*string `field:"optional" json:"keywords" yaml:"keywords"`
 	// License of this package as an SPDX identifier.
 	//
 	// If the project is proprietary and does not use a specific license, you
 	// can set this value as "Proprietary".
 	// Experimental.
-	License *string `json:"license" yaml:"license"`
+	License *string `field:"optional" json:"license" yaml:"license"`
 	// the maintainers of the package.
 	//
 	// Must be in the form "name <email>".
 	// Experimental.
-	Maintainers *[]*string `json:"maintainers" yaml:"maintainers"`
+	Maintainers *[]*string `field:"optional" json:"maintainers" yaml:"maintainers"`
 	// Name of the package (required).
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"optional" json:"name" yaml:"name"`
 	// A list of packages and modules to include in the final distribution.
 	// Experimental.
-	Packages *[]interface{} `json:"packages" yaml:"packages"`
+	Packages *[]interface{} `field:"optional" json:"packages" yaml:"packages"`
 	// Plugins.
 	//
 	// Must be specified as a table.
 	// See: https://toml.io/en/v1.0.0#table
 	//
 	// Experimental.
-	Plugins interface{} `json:"plugins" yaml:"plugins"`
+	Plugins interface{} `field:"optional" json:"plugins" yaml:"plugins"`
 	// The name of the readme file of the package.
 	// Experimental.
-	Readme *string `json:"readme" yaml:"readme"`
+	Readme *string `field:"optional" json:"readme" yaml:"readme"`
 	// A URL to the repository of the project.
 	// Experimental.
-	Repository *string `json:"repository" yaml:"repository"`
+	Repository *string `field:"optional" json:"repository" yaml:"repository"`
 	// The scripts or executables that will be installed when installing the package.
 	// Experimental.
-	Scripts *map[string]interface{} `json:"scripts" yaml:"scripts"`
+	Scripts *map[string]interface{} `field:"optional" json:"scripts" yaml:"scripts"`
 	// Source registries from which packages are retrieved.
 	// Experimental.
-	Source *[]interface{} `json:"source" yaml:"source"`
+	Source *[]interface{} `field:"optional" json:"source" yaml:"source"`
 	// Project custom URLs, in addition to homepage, repository and documentation.
 	//
 	// E.g. "Bug Tracker"
 	// Experimental.
-	Urls *map[string]*string `json:"urls" yaml:"urls"`
+	Urls *map[string]*string `field:"optional" json:"urls" yaml:"urls"`
 	// Version of the package (required).
 	// Experimental.
-	Version *string `json:"version" yaml:"version"`
+	Version *string `field:"optional" json:"version" yaml:"version"`
 }
 
 // Allows writing projenrc files in python.
@@ -820,10 +820,10 @@ func (p *jsiiProxy_Projenrc) Synthesize() {
 type ProjenrcOptions struct {
 	// The name of the projenrc file.
 	// Experimental.
-	Filename *string `json:"filename" yaml:"filename"`
+	Filename *string `field:"optional" json:"filename" yaml:"filename"`
 	// The projen version to use.
 	// Experimental.
-	ProjenVersion *string `json:"projenVersion" yaml:"projenVersion"`
+	ProjenVersion *string `field:"optional" json:"projenVersion" yaml:"projenVersion"`
 }
 
 // Experimental.
@@ -926,13 +926,13 @@ func (p *jsiiProxy_Pytest) Synthesize() {
 type PytestOptions struct {
 	// Stop the testing process after the first N failures.
 	// Experimental.
-	MaxFailures *float64 `json:"maxFailures" yaml:"maxFailures"`
+	MaxFailures *float64 `field:"optional" json:"maxFailures" yaml:"maxFailures"`
 	// Directory with tests.
 	// Experimental.
-	Testdir *string `json:"testdir" yaml:"testdir"`
+	Testdir *string `field:"optional" json:"testdir" yaml:"testdir"`
 	// Pytest version.
 	// Experimental.
-	Version *string `json:"version" yaml:"version"`
+	Version *string `field:"optional" json:"version" yaml:"version"`
 }
 
 // Experimental.
@@ -1023,33 +1023,33 @@ func (p *jsiiProxy_PytestSample) Synthesize() {
 type PythonPackagingOptions struct {
 	// Author's e-mail.
 	// Experimental.
-	AuthorEmail *string `json:"authorEmail" yaml:"authorEmail"`
+	AuthorEmail *string `field:"required" json:"authorEmail" yaml:"authorEmail"`
 	// Author's name.
 	// Experimental.
-	AuthorName *string `json:"authorName" yaml:"authorName"`
+	AuthorName *string `field:"required" json:"authorName" yaml:"authorName"`
 	// Version of the package.
 	// Experimental.
-	Version *string `json:"version" yaml:"version"`
+	Version *string `field:"required" json:"version" yaml:"version"`
 	// A list of PyPI trove classifiers that describe the project.
 	// See: https://pypi.org/classifiers/
 	//
 	// Experimental.
-	Classifiers *[]*string `json:"classifiers" yaml:"classifiers"`
+	Classifiers *[]*string `field:"optional" json:"classifiers" yaml:"classifiers"`
 	// A short description of the package.
 	// Experimental.
-	Description *string `json:"description" yaml:"description"`
+	Description *string `field:"optional" json:"description" yaml:"description"`
 	// A URL to the website of the project.
 	// Experimental.
-	Homepage *string `json:"homepage" yaml:"homepage"`
+	Homepage *string `field:"optional" json:"homepage" yaml:"homepage"`
 	// License of this package as an SPDX identifier.
 	// Experimental.
-	License *string `json:"license" yaml:"license"`
+	License *string `field:"optional" json:"license" yaml:"license"`
 	// Additional options to set for poetry if using poetry.
 	// Experimental.
-	PoetryOptions *PoetryPyprojectOptionsWithoutDeps `json:"poetryOptions" yaml:"poetryOptions"`
+	PoetryOptions *PoetryPyprojectOptionsWithoutDeps `field:"optional" json:"poetryOptions" yaml:"poetryOptions"`
 	// Additional fields to pass in the setup() function if using setuptools.
 	// Experimental.
-	SetupConfig *map[string]interface{} `json:"setupConfig" yaml:"setupConfig"`
+	SetupConfig *map[string]interface{} `field:"optional" json:"setupConfig" yaml:"setupConfig"`
 }
 
 // Python project.
@@ -1830,10 +1830,10 @@ func (p *jsiiProxy_PythonProject) TryRemoveFile(filePath *string) projen.FileBas
 type PythonProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 	// Configure logging options such as verbosity.
 	// Experimental.
-	Logging *projen.LoggerOptions `json:"logging" yaml:"logging"`
+	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
 	// The root directory of the project.
 	//
 	// Relative to this directory, all files are synthesized.
@@ -1842,189 +1842,189 @@ type PythonProjectOptions struct {
 	// directory and it cannot be the same as the parent or any of it's other
 	// sub-projects.
 	// Experimental.
-	Outdir *string `json:"outdir" yaml:"outdir"`
+	Outdir *string `field:"optional" json:"outdir" yaml:"outdir"`
 	// The parent project, if this project is part of a bigger project.
 	// Experimental.
-	Parent projen.Project `json:"parent" yaml:"parent"`
+	Parent projen.Project `field:"optional" json:"parent" yaml:"parent"`
 	// The shell command to use in order to run the projen CLI.
 	//
 	// Can be used to customize in special environments.
 	// Experimental.
-	ProjenCommand *string `json:"projenCommand" yaml:"projenCommand"`
+	ProjenCommand *string `field:"optional" json:"projenCommand" yaml:"projenCommand"`
 	// Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
 	// Experimental.
-	ProjenrcJson *bool `json:"projenrcJson" yaml:"projenrcJson"`
+	ProjenrcJson *bool `field:"optional" json:"projenrcJson" yaml:"projenrcJson"`
 	// Options for .projenrc.json.
 	// Experimental.
-	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	ProjenrcJsonOptions *projen.ProjenrcOptions `field:"optional" json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
 	// Use renovatebot to handle dependency upgrades.
 	// Experimental.
-	Renovatebot *bool `json:"renovatebot" yaml:"renovatebot"`
+	Renovatebot *bool `field:"optional" json:"renovatebot" yaml:"renovatebot"`
 	// Options for renovatebot.
 	// Experimental.
-	RenovatebotOptions *projen.RenovatebotOptions `json:"renovatebotOptions" yaml:"renovatebotOptions"`
+	RenovatebotOptions *projen.RenovatebotOptions `field:"optional" json:"renovatebotOptions" yaml:"renovatebotOptions"`
 	// Enable and configure the 'auto approve' workflow.
 	// Experimental.
-	AutoApproveOptions *github.AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
+	AutoApproveOptions *github.AutoApproveOptions `field:"optional" json:"autoApproveOptions" yaml:"autoApproveOptions"`
 	// Enable automatic merging on GitHub.
 	//
 	// Has no effect if `github.mergify`
 	// is set to false.
 	// Experimental.
-	AutoMerge *bool `json:"autoMerge" yaml:"autoMerge"`
+	AutoMerge *bool `field:"optional" json:"autoMerge" yaml:"autoMerge"`
 	// Configure options for automatic merging on GitHub.
 	//
 	// Has no effect if
 	// `github.mergify` or `autoMerge` is set to false.
 	// Experimental.
-	AutoMergeOptions *github.AutoMergeOptions `json:"autoMergeOptions" yaml:"autoMergeOptions"`
+	AutoMergeOptions *github.AutoMergeOptions `field:"optional" json:"autoMergeOptions" yaml:"autoMergeOptions"`
 	// Add a `clobber` task which resets the repo to origin.
 	// Experimental.
-	Clobber *bool `json:"clobber" yaml:"clobber"`
+	Clobber *bool `field:"optional" json:"clobber" yaml:"clobber"`
 	// Add a VSCode development environment (used for GitHub Codespaces).
 	// Experimental.
-	DevContainer *bool `json:"devContainer" yaml:"devContainer"`
+	DevContainer *bool `field:"optional" json:"devContainer" yaml:"devContainer"`
 	// Enable GitHub integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
 	// Experimental.
-	Github *bool `json:"github" yaml:"github"`
+	Github *bool `field:"optional" json:"github" yaml:"github"`
 	// Options for GitHub integration.
 	// Experimental.
-	GithubOptions *github.GitHubOptions `json:"githubOptions" yaml:"githubOptions"`
+	GithubOptions *github.GitHubOptions `field:"optional" json:"githubOptions" yaml:"githubOptions"`
 	// Add a Gitpod development environment.
 	// Experimental.
-	Gitpod *bool `json:"gitpod" yaml:"gitpod"`
+	Gitpod *bool `field:"optional" json:"gitpod" yaml:"gitpod"`
 	// Whether mergify should be enabled on this repository or not.
 	// Deprecated: use `githubOptions.mergify` instead
-	Mergify *bool `json:"mergify" yaml:"mergify"`
+	Mergify *bool `field:"optional" json:"mergify" yaml:"mergify"`
 	// Options for mergify.
 	// Deprecated: use `githubOptions.mergifyOptions` instead
-	MergifyOptions *github.MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
+	MergifyOptions *github.MergifyOptions `field:"optional" json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level.
-	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
+	ProjectType projen.ProjectType `field:"optional" json:"projectType" yaml:"projectType"`
 	// Choose a method of providing GitHub API access for projen workflows.
 	// Experimental.
-	ProjenCredentials github.GithubCredentials `json:"projenCredentials" yaml:"projenCredentials"`
+	ProjenCredentials github.GithubCredentials `field:"optional" json:"projenCredentials" yaml:"projenCredentials"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
 	// This token needs to have the `repo`, `workflows`
 	// and `packages` scope.
 	// Deprecated: use `projenCredentials`.
-	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
+	ProjenTokenSecret *string `field:"optional" json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
 	// Example:
 	//   "{ filename: 'readme.md', contents: '# title' }"
 	//
 	// Experimental.
-	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
+	Readme *projen.SampleReadmeProps `field:"optional" json:"readme" yaml:"readme"`
 	// Auto-close of stale issues and pull request.
 	//
 	// See `staleOptions` for options.
 	// Experimental.
-	Stale *bool `json:"stale" yaml:"stale"`
+	Stale *bool `field:"optional" json:"stale" yaml:"stale"`
 	// Auto-close stale issues and pull requests.
 	//
 	// To disable set `stale` to `false`.
 	// Experimental.
-	StaleOptions *github.StaleOptions `json:"staleOptions" yaml:"staleOptions"`
+	StaleOptions *github.StaleOptions `field:"optional" json:"staleOptions" yaml:"staleOptions"`
 	// Enable VSCode integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
 	// Experimental.
-	Vscode *bool `json:"vscode" yaml:"vscode"`
+	Vscode *bool `field:"optional" json:"vscode" yaml:"vscode"`
 	// Author's e-mail.
 	// Experimental.
-	AuthorEmail *string `json:"authorEmail" yaml:"authorEmail"`
+	AuthorEmail *string `field:"required" json:"authorEmail" yaml:"authorEmail"`
 	// Author's name.
 	// Experimental.
-	AuthorName *string `json:"authorName" yaml:"authorName"`
+	AuthorName *string `field:"required" json:"authorName" yaml:"authorName"`
 	// Version of the package.
 	// Experimental.
-	Version *string `json:"version" yaml:"version"`
+	Version *string `field:"required" json:"version" yaml:"version"`
 	// A list of PyPI trove classifiers that describe the project.
 	// See: https://pypi.org/classifiers/
 	//
 	// Experimental.
-	Classifiers *[]*string `json:"classifiers" yaml:"classifiers"`
+	Classifiers *[]*string `field:"optional" json:"classifiers" yaml:"classifiers"`
 	// A short description of the package.
 	// Experimental.
-	Description *string `json:"description" yaml:"description"`
+	Description *string `field:"optional" json:"description" yaml:"description"`
 	// A URL to the website of the project.
 	// Experimental.
-	Homepage *string `json:"homepage" yaml:"homepage"`
+	Homepage *string `field:"optional" json:"homepage" yaml:"homepage"`
 	// License of this package as an SPDX identifier.
 	// Experimental.
-	License *string `json:"license" yaml:"license"`
+	License *string `field:"optional" json:"license" yaml:"license"`
 	// Additional options to set for poetry if using poetry.
 	// Experimental.
-	PoetryOptions *PoetryPyprojectOptionsWithoutDeps `json:"poetryOptions" yaml:"poetryOptions"`
+	PoetryOptions *PoetryPyprojectOptionsWithoutDeps `field:"optional" json:"poetryOptions" yaml:"poetryOptions"`
 	// Additional fields to pass in the setup() function if using setuptools.
 	// Experimental.
-	SetupConfig *map[string]interface{} `json:"setupConfig" yaml:"setupConfig"`
+	SetupConfig *map[string]interface{} `field:"optional" json:"setupConfig" yaml:"setupConfig"`
 	// Name of the python package as used in imports and filenames.
 	//
 	// Must only consist of alphanumeric characters and underscores.
 	// Experimental.
-	ModuleName *string `json:"moduleName" yaml:"moduleName"`
+	ModuleName *string `field:"required" json:"moduleName" yaml:"moduleName"`
 	// List of runtime dependencies for this project.
 	//
 	// Dependencies use the format: `<module>@<semver>`
 	//
 	// Additional dependencies can be added via `project.addDependency()`.
 	// Experimental.
-	Deps *[]*string `json:"deps" yaml:"deps"`
+	Deps *[]*string `field:"optional" json:"deps" yaml:"deps"`
 	// List of dev dependencies for this project.
 	//
 	// Dependencies use the format: `<module>@<semver>`
 	//
 	// Additional dependencies can be added via `project.addDevDependency()`.
 	// Experimental.
-	DevDeps *[]*string `json:"devDeps" yaml:"devDeps"`
+	DevDeps *[]*string `field:"optional" json:"devDeps" yaml:"devDeps"`
 	// Use pip with a requirements.txt file to track project dependencies.
 	// Experimental.
-	Pip *bool `json:"pip" yaml:"pip"`
+	Pip *bool `field:"optional" json:"pip" yaml:"pip"`
 	// Use poetry to manage your project dependencies, virtual environment, and (optional) packaging/publishing.
 	// Experimental.
-	Poetry *bool `json:"poetry" yaml:"poetry"`
+	Poetry *bool `field:"optional" json:"poetry" yaml:"poetry"`
 	// Use projenrc in javascript.
 	//
 	// This will install `projen` as a JavaScript dependency and add a `synth`
 	// task which will run `.projenrc.js`.
 	// Experimental.
-	ProjenrcJs *bool `json:"projenrcJs" yaml:"projenrcJs"`
+	ProjenrcJs *bool `field:"optional" json:"projenrcJs" yaml:"projenrcJs"`
 	// Options related to projenrc in JavaScript.
 	// Experimental.
-	ProjenrcJsOptions *javascript.ProjenrcOptions `json:"projenrcJsOptions" yaml:"projenrcJsOptions"`
+	ProjenrcJsOptions *javascript.ProjenrcOptions `field:"optional" json:"projenrcJsOptions" yaml:"projenrcJsOptions"`
 	// Use projenrc in Python.
 	//
 	// This will install `projen` as a Python dependency and add a `synth`
 	// task which will run `.projenrc.py`.
 	// Experimental.
-	ProjenrcPython *bool `json:"projenrcPython" yaml:"projenrcPython"`
+	ProjenrcPython *bool `field:"optional" json:"projenrcPython" yaml:"projenrcPython"`
 	// Options related to projenrc in python.
 	// Experimental.
-	ProjenrcPythonOptions *ProjenrcOptions `json:"projenrcPythonOptions" yaml:"projenrcPythonOptions"`
+	ProjenrcPythonOptions *ProjenrcOptions `field:"optional" json:"projenrcPythonOptions" yaml:"projenrcPythonOptions"`
 	// Include pytest tests.
 	// Experimental.
-	Pytest *bool `json:"pytest" yaml:"pytest"`
+	Pytest *bool `field:"optional" json:"pytest" yaml:"pytest"`
 	// pytest options.
 	// Experimental.
-	PytestOptions *PytestOptions `json:"pytestOptions" yaml:"pytestOptions"`
+	PytestOptions *PytestOptions `field:"optional" json:"pytestOptions" yaml:"pytestOptions"`
 	// Include sample code and test if the relevant directories don't exist.
 	// Experimental.
-	Sample *bool `json:"sample" yaml:"sample"`
+	Sample *bool `field:"optional" json:"sample" yaml:"sample"`
 	// Use setuptools with a setup.py script for packaging and publishing.
 	// Experimental.
-	Setuptools *bool `json:"setuptools" yaml:"setuptools"`
+	Setuptools *bool `field:"optional" json:"setuptools" yaml:"setuptools"`
 	// Use venv to manage a virtual environment for installing dependencies inside.
 	// Experimental.
-	Venv *bool `json:"venv" yaml:"venv"`
+	Venv *bool `field:"optional" json:"venv" yaml:"venv"`
 	// Venv options.
 	// Experimental.
-	VenvOptions *VenvOptions `json:"venvOptions" yaml:"venvOptions"`
+	VenvOptions *VenvOptions `field:"optional" json:"venvOptions" yaml:"venvOptions"`
 }
 
 // Python code sample.
@@ -2346,7 +2346,7 @@ func (r *jsiiProxy_RequirementsFile) SynthesizeContent(resolver projen.IResolver
 type RequirementsFileOptions struct {
 	// Provide a list of packages that can be dynamically updated.
 	// Experimental.
-	PackageProvider IPackageProvider `json:"packageProvider" yaml:"packageProvider"`
+	PackageProvider IPackageProvider `field:"optional" json:"packageProvider" yaml:"packageProvider"`
 }
 
 // Python packaging script where package metadata can be placed.
@@ -2561,33 +2561,33 @@ func (s *jsiiProxy_SetupPy) SynthesizeContent(resolver projen.IResolver) *string
 type SetupPyOptions struct {
 	// Author's e-mail.
 	// Experimental.
-	AuthorEmail *string `json:"authorEmail" yaml:"authorEmail"`
+	AuthorEmail *string `field:"optional" json:"authorEmail" yaml:"authorEmail"`
 	// Author's name.
 	// Experimental.
-	AuthorName *string `json:"authorName" yaml:"authorName"`
+	AuthorName *string `field:"optional" json:"authorName" yaml:"authorName"`
 	// A list of PyPI trove classifiers that describe the project.
 	// See: https://pypi.org/classifiers/
 	//
 	// Experimental.
-	Classifiers *[]*string `json:"classifiers" yaml:"classifiers"`
+	Classifiers *[]*string `field:"optional" json:"classifiers" yaml:"classifiers"`
 	// A short project description.
 	// Experimental.
-	Description *string `json:"description" yaml:"description"`
+	Description *string `field:"optional" json:"description" yaml:"description"`
 	// Package's Homepage / Website.
 	// Experimental.
-	Homepage *string `json:"homepage" yaml:"homepage"`
+	Homepage *string `field:"optional" json:"homepage" yaml:"homepage"`
 	// The project license.
 	// Experimental.
-	License *string `json:"license" yaml:"license"`
+	License *string `field:"optional" json:"license" yaml:"license"`
 	// Name of the package.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"optional" json:"name" yaml:"name"`
 	// List of submodules to be packaged.
 	// Experimental.
-	Packages *[]*string `json:"packages" yaml:"packages"`
+	Packages *[]*string `field:"optional" json:"packages" yaml:"packages"`
 	// Manually specify package version.
 	// Experimental.
-	Version *string `json:"version" yaml:"version"`
+	Version *string `field:"optional" json:"version" yaml:"version"`
 }
 
 // Manages packaging through setuptools with a setup.py script.
@@ -2806,6 +2806,6 @@ func (v *jsiiProxy_Venv) Synthesize() {
 type VenvOptions struct {
 	// Name of directory to store the environment in.
 	// Experimental.
-	Envdir *string `json:"envdir" yaml:"envdir"`
+	Envdir *string `field:"optional" json:"envdir" yaml:"envdir"`
 }
 

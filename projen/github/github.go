@@ -112,13 +112,13 @@ func (a *jsiiProxy_AutoApprove) Synthesize() {
 type AutoApproveOptions struct {
 	// Only pull requests authored by these Github usernames will be auto-approved.
 	// Experimental.
-	AllowedUsernames *[]*string `json:"allowedUsernames" yaml:"allowedUsernames"`
+	AllowedUsernames *[]*string `field:"optional" json:"allowedUsernames" yaml:"allowedUsernames"`
 	// Only pull requests with this label will be auto-approved.
 	// Experimental.
-	Label *string `json:"label" yaml:"label"`
+	Label *string `field:"optional" json:"label" yaml:"label"`
 	// Github Runner selection labels.
 	// Experimental.
-	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
 	// A GitHub secret name which contains a GitHub Access Token with write permissions for the `pull_request` scope.
 	//
 	// This token is used to approve pull requests.
@@ -129,7 +129,7 @@ type AutoApproveOptions struct {
 	// - that you would like auto approved, such as when using the `depsUpgrade` property in
 	// `NodeProjectOptions`, then you must use a different token here.
 	// Experimental.
-	Secret *string `json:"secret" yaml:"secret"`
+	Secret *string `field:"optional" json:"secret" yaml:"secret"`
 }
 
 // Sets up mergify to merging approved pull requests.
@@ -254,10 +254,10 @@ func (a *jsiiProxy_AutoMerge) Synthesize() {
 type AutoMergeOptions struct {
 	// Number of approved code reviews.
 	// Experimental.
-	ApprovedReviews *float64 `json:"approvedReviews" yaml:"approvedReviews"`
+	ApprovedReviews *float64 `field:"optional" json:"approvedReviews" yaml:"approvedReviews"`
 	// List of labels that will prevent auto-merging.
 	// Experimental.
-	BlockingLabels *[]*string `json:"blockingLabels" yaml:"blockingLabels"`
+	BlockingLabels *[]*string `field:"optional" json:"blockingLabels" yaml:"blockingLabels"`
 }
 
 // Defines dependabot configuration for node projects.
@@ -403,14 +403,14 @@ type DependabotIgnore struct {
 	// For Java dependencies, the format of the dependency-name attribute is:
 	// `groupId:artifactId`, for example: `org.kohsuke:github-api`.
 	// Experimental.
-	DependencyName *string `json:"dependencyName" yaml:"dependencyName"`
+	DependencyName *string `field:"required" json:"dependencyName" yaml:"dependencyName"`
 	// Use to ignore specific versions or ranges of versions.
 	//
 	// If you want to
 	// define a range, use the standard pattern for the package manager (for
 	// example: `^1.0.0` for npm, or `~> 2.0` for Bundler).
 	// Experimental.
-	Versions *[]*string `json:"versions" yaml:"versions"`
+	Versions *[]*string `field:"optional" json:"versions" yaml:"versions"`
 }
 
 // Experimental.
@@ -419,7 +419,7 @@ type DependabotOptions struct {
 	//
 	// The ignore option supports the following options.
 	// Experimental.
-	Ignore *[]*DependabotIgnore `json:"ignore" yaml:"ignore"`
+	Ignore *[]*DependabotIgnore `field:"optional" json:"ignore" yaml:"ignore"`
 	// Ignores updates to `projen`.
 	//
 	// This is required since projen updates may cause changes in committed files
@@ -427,19 +427,19 @@ type DependabotOptions struct {
 	//
 	// Projen upgrades are covered through the `ProjenUpgrade` class.
 	// Experimental.
-	IgnoreProjen *bool `json:"ignoreProjen" yaml:"ignoreProjen"`
+	IgnoreProjen *bool `field:"optional" json:"ignoreProjen" yaml:"ignoreProjen"`
 	// List of labels to apply to the created PR's.
 	// Experimental.
-	Labels *[]*string `json:"labels" yaml:"labels"`
+	Labels *[]*string `field:"optional" json:"labels" yaml:"labels"`
 	// Map of package registries to use.
 	// Experimental.
-	Registries *map[string]*DependabotRegistry `json:"registries" yaml:"registries"`
+	Registries *map[string]*DependabotRegistry `field:"optional" json:"registries" yaml:"registries"`
 	// How often to check for new versions and raise pull requests.
 	// Experimental.
-	ScheduleInterval DependabotScheduleInterval `json:"scheduleInterval" yaml:"scheduleInterval"`
+	ScheduleInterval DependabotScheduleInterval `field:"optional" json:"scheduleInterval" yaml:"scheduleInterval"`
 	// The strategy to use when edits manifest and lock files.
 	// Experimental.
-	VersioningStrategy VersioningStrategy `json:"versioningStrategy" yaml:"versioningStrategy"`
+	VersioningStrategy VersioningStrategy `field:"optional" json:"versioningStrategy" yaml:"versioningStrategy"`
 }
 
 // Use to add private registry support for dependabot.
@@ -449,30 +449,30 @@ type DependabotOptions struct {
 type DependabotRegistry struct {
 	// Registry type e.g. 'npm-registry' or 'docker-registry'.
 	// Experimental.
-	Type DependabotRegistryType `json:"type" yaml:"type"`
+	Type DependabotRegistryType `field:"required" json:"type" yaml:"type"`
 	// Url for the registry e.g. 'https://npm.pkg.github.com' or 'registry.hub.docker.com'.
 	// Experimental.
-	Url *string `json:"url" yaml:"url"`
+	Url *string `field:"required" json:"url" yaml:"url"`
 	// A reference to a Dependabot secret containing an access key for this registry.
 	// Experimental.
-	Key *string `json:"key" yaml:"key"`
+	Key *string `field:"optional" json:"key" yaml:"key"`
 	// Used with the hex-organization registry type.
 	// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#hex-organization
 	//
 	// Experimental.
-	Organization *string `json:"organization" yaml:"organization"`
+	Organization *string `field:"optional" json:"organization" yaml:"organization"`
 	// A reference to a Dependabot secret containing the password for the specified user.
 	// Experimental.
-	Password *string `json:"password" yaml:"password"`
+	Password *string `field:"optional" json:"password" yaml:"password"`
 	// For registries with type: python-index, if the boolean value is true, pip esolves dependencies by using the specified URL rather than the base URL of the Python Package Index (by default https://pypi.org/simple).
 	// Experimental.
-	ReplacesBase *bool `json:"replacesBase" yaml:"replacesBase"`
+	ReplacesBase *bool `field:"optional" json:"replacesBase" yaml:"replacesBase"`
 	// Secret token for dependabot access e.g. '${{ secrets.DEPENDABOT_PACKAGE_TOKEN }}'.
 	// Experimental.
-	Token *string `json:"token" yaml:"token"`
+	Token *string `field:"optional" json:"token" yaml:"token"`
 	// The username that Dependabot uses to access the registry.
 	// Experimental.
-	Username *string `json:"username" yaml:"username"`
+	Username *string `field:"optional" json:"username" yaml:"username"`
 }
 
 // Each configuration type requires you to provide particular settings.
@@ -789,30 +789,30 @@ func (g *jsiiProxy_GitHub) TryFindWorkflow(name *string) GithubWorkflow {
 type GitHubOptions struct {
 	// Whether mergify should be enabled on this repository or not.
 	// Experimental.
-	Mergify *bool `json:"mergify" yaml:"mergify"`
+	Mergify *bool `field:"optional" json:"mergify" yaml:"mergify"`
 	// Options for Mergify.
 	// Experimental.
-	MergifyOptions *MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
+	MergifyOptions *MergifyOptions `field:"optional" json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Choose a method of providing GitHub API access for projen workflows.
 	// Experimental.
-	ProjenCredentials GithubCredentials `json:"projenCredentials" yaml:"projenCredentials"`
+	ProjenCredentials GithubCredentials `field:"optional" json:"projenCredentials" yaml:"projenCredentials"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
 	// This token needs to have the `repo`, `workflows`
 	// and `packages` scope.
 	// Deprecated: - use `projenCredentials`.
-	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
+	ProjenTokenSecret *string `field:"optional" json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// Add a workflow that performs basic checks for pull requests, like validating that PRs follow Conventional Commits.
 	// Experimental.
-	PullRequestLint *bool `json:"pullRequestLint" yaml:"pullRequestLint"`
+	PullRequestLint *bool `field:"optional" json:"pullRequestLint" yaml:"pullRequestLint"`
 	// Options for configuring a pull request linter.
 	// Experimental.
-	PullRequestLintOptions *PullRequestLintOptions `json:"pullRequestLintOptions" yaml:"pullRequestLintOptions"`
+	PullRequestLintOptions *PullRequestLintOptions `field:"optional" json:"pullRequestLintOptions" yaml:"pullRequestLintOptions"`
 	// Enables GitHub workflows.
 	//
 	// If this is set to `false`, workflows will not be created.
 	// Experimental.
-	Workflows *bool `json:"workflows" yaml:"workflows"`
+	Workflows *bool `field:"optional" json:"workflows" yaml:"workflows"`
 }
 
 // GitHub-based project.
@@ -1657,10 +1657,10 @@ func (g *jsiiProxy_GitHubProject) TryRemoveFile(filePath *string) projen.FileBas
 type GitHubProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 	// Configure logging options such as verbosity.
 	// Experimental.
-	Logging *projen.LoggerOptions `json:"logging" yaml:"logging"`
+	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
 	// The root directory of the project.
 	//
 	// Relative to this directory, all files are synthesized.
@@ -1669,99 +1669,99 @@ type GitHubProjectOptions struct {
 	// directory and it cannot be the same as the parent or any of it's other
 	// sub-projects.
 	// Experimental.
-	Outdir *string `json:"outdir" yaml:"outdir"`
+	Outdir *string `field:"optional" json:"outdir" yaml:"outdir"`
 	// The parent project, if this project is part of a bigger project.
 	// Experimental.
-	Parent projen.Project `json:"parent" yaml:"parent"`
+	Parent projen.Project `field:"optional" json:"parent" yaml:"parent"`
 	// The shell command to use in order to run the projen CLI.
 	//
 	// Can be used to customize in special environments.
 	// Experimental.
-	ProjenCommand *string `json:"projenCommand" yaml:"projenCommand"`
+	ProjenCommand *string `field:"optional" json:"projenCommand" yaml:"projenCommand"`
 	// Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
 	// Experimental.
-	ProjenrcJson *bool `json:"projenrcJson" yaml:"projenrcJson"`
+	ProjenrcJson *bool `field:"optional" json:"projenrcJson" yaml:"projenrcJson"`
 	// Options for .projenrc.json.
 	// Experimental.
-	ProjenrcJsonOptions *projen.ProjenrcOptions `json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	ProjenrcJsonOptions *projen.ProjenrcOptions `field:"optional" json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
 	// Use renovatebot to handle dependency upgrades.
 	// Experimental.
-	Renovatebot *bool `json:"renovatebot" yaml:"renovatebot"`
+	Renovatebot *bool `field:"optional" json:"renovatebot" yaml:"renovatebot"`
 	// Options for renovatebot.
 	// Experimental.
-	RenovatebotOptions *projen.RenovatebotOptions `json:"renovatebotOptions" yaml:"renovatebotOptions"`
+	RenovatebotOptions *projen.RenovatebotOptions `field:"optional" json:"renovatebotOptions" yaml:"renovatebotOptions"`
 	// Enable and configure the 'auto approve' workflow.
 	// Experimental.
-	AutoApproveOptions *AutoApproveOptions `json:"autoApproveOptions" yaml:"autoApproveOptions"`
+	AutoApproveOptions *AutoApproveOptions `field:"optional" json:"autoApproveOptions" yaml:"autoApproveOptions"`
 	// Enable automatic merging on GitHub.
 	//
 	// Has no effect if `github.mergify`
 	// is set to false.
 	// Experimental.
-	AutoMerge *bool `json:"autoMerge" yaml:"autoMerge"`
+	AutoMerge *bool `field:"optional" json:"autoMerge" yaml:"autoMerge"`
 	// Configure options for automatic merging on GitHub.
 	//
 	// Has no effect if
 	// `github.mergify` or `autoMerge` is set to false.
 	// Experimental.
-	AutoMergeOptions *AutoMergeOptions `json:"autoMergeOptions" yaml:"autoMergeOptions"`
+	AutoMergeOptions *AutoMergeOptions `field:"optional" json:"autoMergeOptions" yaml:"autoMergeOptions"`
 	// Add a `clobber` task which resets the repo to origin.
 	// Experimental.
-	Clobber *bool `json:"clobber" yaml:"clobber"`
+	Clobber *bool `field:"optional" json:"clobber" yaml:"clobber"`
 	// Add a VSCode development environment (used for GitHub Codespaces).
 	// Experimental.
-	DevContainer *bool `json:"devContainer" yaml:"devContainer"`
+	DevContainer *bool `field:"optional" json:"devContainer" yaml:"devContainer"`
 	// Enable GitHub integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
 	// Experimental.
-	Github *bool `json:"github" yaml:"github"`
+	Github *bool `field:"optional" json:"github" yaml:"github"`
 	// Options for GitHub integration.
 	// Experimental.
-	GithubOptions *GitHubOptions `json:"githubOptions" yaml:"githubOptions"`
+	GithubOptions *GitHubOptions `field:"optional" json:"githubOptions" yaml:"githubOptions"`
 	// Add a Gitpod development environment.
 	// Experimental.
-	Gitpod *bool `json:"gitpod" yaml:"gitpod"`
+	Gitpod *bool `field:"optional" json:"gitpod" yaml:"gitpod"`
 	// Whether mergify should be enabled on this repository or not.
 	// Deprecated: use `githubOptions.mergify` instead
-	Mergify *bool `json:"mergify" yaml:"mergify"`
+	Mergify *bool `field:"optional" json:"mergify" yaml:"mergify"`
 	// Options for mergify.
 	// Deprecated: use `githubOptions.mergifyOptions` instead
-	MergifyOptions *MergifyOptions `json:"mergifyOptions" yaml:"mergifyOptions"`
+	MergifyOptions *MergifyOptions `field:"optional" json:"mergifyOptions" yaml:"mergifyOptions"`
 	// Which type of project this is (library/app).
 	// Deprecated: no longer supported at the base project level.
-	ProjectType projen.ProjectType `json:"projectType" yaml:"projectType"`
+	ProjectType projen.ProjectType `field:"optional" json:"projectType" yaml:"projectType"`
 	// Choose a method of providing GitHub API access for projen workflows.
 	// Experimental.
-	ProjenCredentials GithubCredentials `json:"projenCredentials" yaml:"projenCredentials"`
+	ProjenCredentials GithubCredentials `field:"optional" json:"projenCredentials" yaml:"projenCredentials"`
 	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
 	//
 	// This token needs to have the `repo`, `workflows`
 	// and `packages` scope.
 	// Deprecated: use `projenCredentials`.
-	ProjenTokenSecret *string `json:"projenTokenSecret" yaml:"projenTokenSecret"`
+	ProjenTokenSecret *string `field:"optional" json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
 	// Example:
 	//   "{ filename: 'readme.md', contents: '# title' }"
 	//
 	// Experimental.
-	Readme *projen.SampleReadmeProps `json:"readme" yaml:"readme"`
+	Readme *projen.SampleReadmeProps `field:"optional" json:"readme" yaml:"readme"`
 	// Auto-close of stale issues and pull request.
 	//
 	// See `staleOptions` for options.
 	// Experimental.
-	Stale *bool `json:"stale" yaml:"stale"`
+	Stale *bool `field:"optional" json:"stale" yaml:"stale"`
 	// Auto-close stale issues and pull requests.
 	//
 	// To disable set `stale` to `false`.
 	// Experimental.
-	StaleOptions *StaleOptions `json:"staleOptions" yaml:"staleOptions"`
+	StaleOptions *StaleOptions `field:"optional" json:"staleOptions" yaml:"staleOptions"`
 	// Enable VSCode integration.
 	//
 	// Enabled by default for root projects. Disabled for non-root projects.
 	// Experimental.
-	Vscode *bool `json:"vscode" yaml:"vscode"`
+	Vscode *bool `field:"optional" json:"vscode" yaml:"vscode"`
 }
 
 // Represents the git identity.
@@ -1769,10 +1769,10 @@ type GitHubProjectOptions struct {
 type GitIdentity struct {
 	// The email address of the git user.
 	// Experimental.
-	Email *string `json:"email" yaml:"email"`
+	Email *string `field:"required" json:"email" yaml:"email"`
 	// The name of the user.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 }
 
 // Represents a method of providing GitHub API access for projen workflows.
@@ -1864,16 +1864,16 @@ func GithubCredentials_FromPersonalAccessToken(options *GithubCredentialsPersona
 // Experimental.
 type GithubCredentialsAppOptions struct {
 	// Experimental.
-	AppIdSecret *string `json:"appIdSecret" yaml:"appIdSecret"`
+	AppIdSecret *string `field:"optional" json:"appIdSecret" yaml:"appIdSecret"`
 	// Experimental.
-	PrivateKeySecret *string `json:"privateKeySecret" yaml:"privateKeySecret"`
+	PrivateKeySecret *string `field:"optional" json:"privateKeySecret" yaml:"privateKeySecret"`
 }
 
 // Options for `GithubCredentials.fromPersonalAccessToken`.
 // Experimental.
 type GithubCredentialsPersonalAccessTokenOptions struct {
 	// Experimental.
-	Secret *string `json:"secret" yaml:"secret"`
+	Secret *string `field:"optional" json:"secret" yaml:"secret"`
 }
 
 // Workflow for GitHub.
@@ -2061,10 +2061,10 @@ type GithubWorkflowOptions struct {
 	// See: https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#concurrency
 	//
 	// Experimental.
-	Concurrency *string `json:"concurrency" yaml:"concurrency"`
+	Concurrency *string `field:"optional" json:"concurrency" yaml:"concurrency"`
 	// Force the creation of the workflow even if `workflows` is disabled in `GitHub`.
 	// Experimental.
-	Force *bool `json:"force" yaml:"force"`
+	Force *bool `field:"optional" json:"force" yaml:"force"`
 }
 
 // Experimental.
@@ -2228,17 +2228,17 @@ func (m *jsiiProxy_Mergify) Synthesize() {
 // Experimental.
 type MergifyConditionalOperator struct {
 	// Experimental.
-	And *[]interface{} `json:"and" yaml:"and"`
+	And *[]interface{} `field:"optional" json:"and" yaml:"and"`
 	// Experimental.
-	Or *[]interface{} `json:"or" yaml:"or"`
+	Or *[]interface{} `field:"optional" json:"or" yaml:"or"`
 }
 
 // Experimental.
 type MergifyOptions struct {
 	// Experimental.
-	Queues *[]*MergifyQueue `json:"queues" yaml:"queues"`
+	Queues *[]*MergifyQueue `field:"optional" json:"queues" yaml:"queues"`
 	// Experimental.
-	Rules *[]*MergifyRule `json:"rules" yaml:"rules"`
+	Rules *[]*MergifyRule `field:"optional" json:"rules" yaml:"rules"`
 }
 
 // Experimental.
@@ -2247,10 +2247,10 @@ type MergifyQueue struct {
 	// See: https://docs.mergify.com/conditions/#conditions
 	//
 	// Experimental.
-	Conditions *[]interface{} `json:"conditions" yaml:"conditions"`
+	Conditions *[]interface{} `field:"required" json:"conditions" yaml:"conditions"`
 	// The name of the queue.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 }
 
 // Experimental.
@@ -2259,18 +2259,18 @@ type MergifyRule struct {
 	// See: https://docs.mergify.io/actions/#actions
 	//
 	// Experimental.
-	Actions *map[string]interface{} `json:"actions" yaml:"actions"`
+	Actions *map[string]interface{} `field:"required" json:"actions" yaml:"actions"`
 	// A list of Conditions string that must match against the pull request for the rule to be applied.
 	// See: https://docs.mergify.io/conditions/#conditions
 	//
 	// Experimental.
-	Conditions *[]interface{} `json:"conditions" yaml:"conditions"`
+	Conditions *[]interface{} `field:"required" json:"conditions" yaml:"conditions"`
 	// The name of the rule.
 	//
 	// This is not used by the engine directly,
 	// but is used when reporting information about a rule.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 }
 
 // Configure validations to run on GitHub pull requests.
@@ -2365,15 +2365,15 @@ func (p *jsiiProxy_PullRequestLint) Synthesize() {
 type PullRequestLintOptions struct {
 	// Github Runner selection labels.
 	// Experimental.
-	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
 	// Validate that pull request titles follow Conventional Commits.
 	// See: https://www.conventionalcommits.org/
 	//
 	// Experimental.
-	SemanticTitle *bool `json:"semanticTitle" yaml:"semanticTitle"`
+	SemanticTitle *bool `field:"optional" json:"semanticTitle" yaml:"semanticTitle"`
 	// Options for validating the conventional commit title linter.
 	// Experimental.
-	SemanticTitleOptions *SemanticTitleOptions `json:"semanticTitleOptions" yaml:"semanticTitleOptions"`
+	SemanticTitleOptions *SemanticTitleOptions `field:"optional" json:"semanticTitleOptions" yaml:"semanticTitleOptions"`
 }
 
 // Template for GitHub pull requests.
@@ -2599,7 +2599,7 @@ type PullRequestTemplateOptions struct {
 	//
 	// You can use `addLine()` to add additional lines.
 	// Experimental.
-	Lines *[]*string `json:"lines" yaml:"lines"`
+	Lines *[]*string `field:"optional" json:"lines" yaml:"lines"`
 }
 
 // Options for linting that PR titles follow Conventional Commits.
@@ -2611,10 +2611,10 @@ type SemanticTitleOptions struct {
 	//
 	// e.g. feat(ui), fix(core)
 	// Experimental.
-	RequireScope *bool `json:"requireScope" yaml:"requireScope"`
+	RequireScope *bool `field:"optional" json:"requireScope" yaml:"requireScope"`
 	// Configure a list of commit types that are allowed.
 	// Experimental.
-	Types *[]*string `json:"types" yaml:"types"`
+	Types *[]*string `field:"optional" json:"types" yaml:"types"`
 }
 
 // Warns and then closes issues and PRs that have had no activity for a specified amount of time.
@@ -2715,33 +2715,33 @@ func (s *jsiiProxy_Stale) Synthesize() {
 type StaleBehavior struct {
 	// The comment to add to the issue/PR when it's closed.
 	// Experimental.
-	CloseMessage *string `json:"closeMessage" yaml:"closeMessage"`
+	CloseMessage *string `field:"optional" json:"closeMessage" yaml:"closeMessage"`
 	// Days until the issue/PR is closed after it is marked as "Stale".
 	//
 	// Set to -1 to disable.
 	// Experimental.
-	DaysBeforeClose *float64 `json:"daysBeforeClose" yaml:"daysBeforeClose"`
+	DaysBeforeClose *float64 `field:"optional" json:"daysBeforeClose" yaml:"daysBeforeClose"`
 	// How many days until the issue or pull request is marked as "Stale".
 	//
 	// Set to -1 to disable.
 	// Experimental.
-	DaysBeforeStale *float64 `json:"daysBeforeStale" yaml:"daysBeforeStale"`
+	DaysBeforeStale *float64 `field:"optional" json:"daysBeforeStale" yaml:"daysBeforeStale"`
 	// Determines if this behavior is enabled.
 	//
 	// Same as setting `daysBeforeStale` and `daysBeforeClose` to `-1`.
 	// Experimental.
-	Enabled *bool `json:"enabled" yaml:"enabled"`
+	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 	// Label which exempt an issue/PR from becoming stale.
 	//
 	// Set to `[]` to disable.
 	// Experimental.
-	ExemptLabels *[]*string `json:"exemptLabels" yaml:"exemptLabels"`
+	ExemptLabels *[]*string `field:"optional" json:"exemptLabels" yaml:"exemptLabels"`
 	// The label to apply to the issue/PR when it becomes stale.
 	// Experimental.
-	StaleLabel *string `json:"staleLabel" yaml:"staleLabel"`
+	StaleLabel *string `field:"optional" json:"staleLabel" yaml:"staleLabel"`
 	// The comment to add to the issue/PR when it becomes stale.
 	// Experimental.
-	StaleMessage *string `json:"staleMessage" yaml:"staleMessage"`
+	StaleMessage *string `field:"optional" json:"staleMessage" yaml:"staleMessage"`
 }
 
 // Options for `Stale`.
@@ -2749,13 +2749,13 @@ type StaleBehavior struct {
 type StaleOptions struct {
 	// How to handle stale issues.
 	// Experimental.
-	Issues *StaleBehavior `json:"issues" yaml:"issues"`
+	Issues *StaleBehavior `field:"optional" json:"issues" yaml:"issues"`
 	// How to handle stale pull requests.
 	// Experimental.
-	PullRequest *StaleBehavior `json:"pullRequest" yaml:"pullRequest"`
+	PullRequest *StaleBehavior `field:"optional" json:"pullRequest" yaml:"pullRequest"`
 	// Github Runner selection labels.
 	// Experimental.
-	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
 }
 
 // A GitHub workflow for common build tasks within a project.
@@ -2958,51 +2958,51 @@ func (t *jsiiProxy_TaskWorkflow) Synthesize() {
 type TaskWorkflowOptions struct {
 	// The workflow name.
 	// Experimental.
-	Name *string `json:"name" yaml:"name"`
+	Name *string `field:"required" json:"name" yaml:"name"`
 	// Permissions for the build job.
 	// Experimental.
-	Permissions *workflows.JobPermissions `json:"permissions" yaml:"permissions"`
+	Permissions *workflows.JobPermissions `field:"required" json:"permissions" yaml:"permissions"`
 	// The main task to be executed.
 	// Experimental.
-	Task projen.Task `json:"task" yaml:"task"`
+	Task projen.Task `field:"required" json:"task" yaml:"task"`
 	// A directory name which contains artifacts to be uploaded (e.g. `dist`). If this is set, the contents of this directory will be uploaded as an artifact at the end of the workflow run, even if other steps fail.
 	// Experimental.
-	ArtifactsDirectory *string `json:"artifactsDirectory" yaml:"artifactsDirectory"`
+	ArtifactsDirectory *string `field:"optional" json:"artifactsDirectory" yaml:"artifactsDirectory"`
 	// Override for the `with` property of the source code checkout step.
 	// Experimental.
-	CheckoutWith *map[string]interface{} `json:"checkoutWith" yaml:"checkoutWith"`
+	CheckoutWith *map[string]interface{} `field:"optional" json:"checkoutWith" yaml:"checkoutWith"`
 	// Adds an 'if' condition to the workflow.
 	// Experimental.
-	Condition *string `json:"condition" yaml:"condition"`
+	Condition *string `field:"optional" json:"condition" yaml:"condition"`
 	// Experimental.
-	Container *workflows.ContainerOptions `json:"container" yaml:"container"`
+	Container *workflows.ContainerOptions `field:"optional" json:"container" yaml:"container"`
 	// Workflow environment variables.
 	// Experimental.
-	Env *map[string]*string `json:"env" yaml:"env"`
+	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// The git identity to use in this workflow.
 	// Experimental.
-	GitIdentity *GitIdentity `json:"gitIdentity" yaml:"gitIdentity"`
+	GitIdentity *GitIdentity `field:"optional" json:"gitIdentity" yaml:"gitIdentity"`
 	// The primary job id.
 	// Experimental.
-	JobId *string `json:"jobId" yaml:"jobId"`
+	JobId *string `field:"optional" json:"jobId" yaml:"jobId"`
 	// Mapping of job output names to values/expressions.
 	// Experimental.
-	Outputs *map[string]*workflows.JobStepOutput `json:"outputs" yaml:"outputs"`
+	Outputs *map[string]*workflows.JobStepOutput `field:"optional" json:"outputs" yaml:"outputs"`
 	// Actions to run after the main build step.
 	// Experimental.
-	PostBuildSteps *[]*workflows.JobStep `json:"postBuildSteps" yaml:"postBuildSteps"`
+	PostBuildSteps *[]*workflows.JobStep `field:"optional" json:"postBuildSteps" yaml:"postBuildSteps"`
 	// Steps to run before the main build step.
 	// Experimental.
-	PreBuildSteps *[]*workflows.JobStep `json:"preBuildSteps" yaml:"preBuildSteps"`
+	PreBuildSteps *[]*workflows.JobStep `field:"optional" json:"preBuildSteps" yaml:"preBuildSteps"`
 	// Initial steps to run before the source code checkout.
 	// Experimental.
-	PreCheckoutSteps *[]*workflows.JobStep `json:"preCheckoutSteps" yaml:"preCheckoutSteps"`
+	PreCheckoutSteps *[]*workflows.JobStep `field:"optional" json:"preCheckoutSteps" yaml:"preCheckoutSteps"`
 	// Github Runner selection labels.
 	// Experimental.
-	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
 	// The triggers for the workflow.
 	// Experimental.
-	Triggers *workflows.Triggers `json:"triggers" yaml:"triggers"`
+	Triggers *workflows.Triggers `field:"optional" json:"triggers" yaml:"triggers"`
 }
 
 // The strategy to use when edits manifest and lock files.

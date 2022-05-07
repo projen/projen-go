@@ -15,18 +15,18 @@ import (
 type AddPostBuildJobCommandsOptions struct {
 	// Check out the repository at the pull request branch before commands are run.
 	// Experimental.
-	CheckoutRepo *bool `json:"checkoutRepo" yaml:"checkoutRepo"`
+	CheckoutRepo *bool `field:"optional" json:"checkoutRepo" yaml:"checkoutRepo"`
 	// Install project dependencies before running commands. `checkoutRepo` must also be set to true.
 	//
 	// Currently only supported for `NodeProject`.
 	// Experimental.
-	InstallDeps *bool `json:"installDeps" yaml:"installDeps"`
+	InstallDeps *bool `field:"optional" json:"installDeps" yaml:"installDeps"`
 	// Github Runner selection labels.
 	// Experimental.
-	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
 	// Tools that should be installed before the commands are run.
 	// Experimental.
-	Tools *workflows.Tools `json:"tools" yaml:"tools"`
+	Tools *workflows.Tools `field:"optional" json:"tools" yaml:"tools"`
 }
 
 // Options for `BuildWorkflow.addPostBuildJobTask`.
@@ -34,10 +34,10 @@ type AddPostBuildJobCommandsOptions struct {
 type AddPostBuildJobTaskOptions struct {
 	// Github Runner selection labels.
 	// Experimental.
-	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
 	// Tools that should be installed before the task is run.
 	// Experimental.
-	Tools *workflows.Tools `json:"tools" yaml:"tools"`
+	Tools *workflows.Tools `field:"optional" json:"tools" yaml:"tools"`
 }
 
 // Experimental.
@@ -205,19 +205,19 @@ func (b *jsiiProxy_BuildWorkflow) Synthesize() {
 type BuildWorkflowOptions struct {
 	// A name of a directory that includes build artifacts.
 	// Experimental.
-	ArtifactsDirectory *string `json:"artifactsDirectory" yaml:"artifactsDirectory"`
+	ArtifactsDirectory *string `field:"required" json:"artifactsDirectory" yaml:"artifactsDirectory"`
 	// The task to execute in order to build the project.
 	// Experimental.
-	BuildTask projen.Task `json:"buildTask" yaml:"buildTask"`
+	BuildTask projen.Task `field:"required" json:"buildTask" yaml:"buildTask"`
 	// The container image to use for builds.
 	// Experimental.
-	ContainerImage *string `json:"containerImage" yaml:"containerImage"`
+	ContainerImage *string `field:"optional" json:"containerImage" yaml:"containerImage"`
 	// Build environment variables.
 	// Experimental.
-	Env *map[string]*string `json:"env" yaml:"env"`
+	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// Git identity to use for the workflow.
 	// Experimental.
-	GitIdentity *github.GitIdentity `json:"gitIdentity" yaml:"gitIdentity"`
+	GitIdentity *github.GitIdentity `field:"optional" json:"gitIdentity" yaml:"gitIdentity"`
 	// Automatically update files modified during builds to pull-request branches.
 	//
 	// This means that any files synthesized by projen or e.g. test snapshots will
@@ -229,18 +229,18 @@ type BuildWorkflowOptions struct {
 	// is disabled, which implies that file changes that happen during build will
 	// not be pushed back to the branch.
 	// Experimental.
-	MutableBuild *bool `json:"mutableBuild" yaml:"mutableBuild"`
+	MutableBuild *bool `field:"optional" json:"mutableBuild" yaml:"mutableBuild"`
 	// Steps to execute after build.
 	// Experimental.
-	PostBuildSteps *[]*workflows.JobStep `json:"postBuildSteps" yaml:"postBuildSteps"`
+	PostBuildSteps *[]*workflows.JobStep `field:"optional" json:"postBuildSteps" yaml:"postBuildSteps"`
 	// Steps to execute before the build.
 	// Experimental.
-	PreBuildSteps *[]*workflows.JobStep `json:"preBuildSteps" yaml:"preBuildSteps"`
+	PreBuildSteps *[]*workflows.JobStep `field:"optional" json:"preBuildSteps" yaml:"preBuildSteps"`
 	// Github Runner selection labels.
 	// Experimental.
-	RunsOn *[]*string `json:"runsOn" yaml:"runsOn"`
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
 	// Build workflow triggers.
 	// Experimental.
-	WorkflowTriggers *workflows.Triggers `json:"workflowTriggers" yaml:"workflowTriggers"`
+	WorkflowTriggers *workflows.Triggers `field:"optional" json:"workflowTriggers" yaml:"workflowTriggers"`
 }
 
