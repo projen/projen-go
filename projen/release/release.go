@@ -326,6 +326,9 @@ type JsiiReleaseNuget struct {
 	// GitHub secret which contains the API key for NuGet.
 	// Deprecated: Use `NugetPublishOptions` instead.
 	NugetApiKeySecret *string `field:"optional" json:"nugetApiKeySecret" yaml:"nugetApiKeySecret"`
+	// NuGet Server URL (defaults to nuget.org).
+	// Deprecated: Use `NugetPublishOptions` instead.
+	NugetServer *string `field:"optional" json:"nugetServer" yaml:"nugetServer"`
 }
 
 // Deprecated: Use `PyPiPublishOptions` instead.
@@ -496,6 +499,9 @@ type NugetPublishOptions struct {
 	// GitHub secret which contains the API key for NuGet.
 	// Experimental.
 	NugetApiKeySecret *string `field:"optional" json:"nugetApiKeySecret" yaml:"nugetApiKeySecret"`
+	// NuGet Server URL (defaults to nuget.org).
+	// Experimental.
+	NugetServer *string `field:"optional" json:"nugetServer" yaml:"nugetServer"`
 }
 
 // Implements GitHub jobs for publishing modules to package managers.

@@ -2299,6 +2299,9 @@ type JsiiDotNetTarget struct {
 	// GitHub secret which contains the API key for NuGet.
 	// Experimental.
 	NugetApiKeySecret *string `field:"optional" json:"nugetApiKeySecret" yaml:"nugetApiKeySecret"`
+	// NuGet Server URL (defaults to nuget.org).
+	// Experimental.
+	NugetServer *string `field:"optional" json:"nugetServer" yaml:"nugetServer"`
 	// Experimental.
 	DotNetNamespace *string `field:"required" json:"dotNetNamespace" yaml:"dotNetNamespace"`
 	// Experimental.
