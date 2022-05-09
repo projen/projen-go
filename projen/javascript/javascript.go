@@ -629,8 +629,13 @@ type EslintOptions struct {
 	// Experimental.
 	IgnorePatterns *[]*string `field:"optional" json:"ignorePatterns" yaml:"ignorePatterns"`
 	// Should we lint .projenrc.js.
-	// Experimental.
+	// Deprecated: use lintProjenRcFile instead.
 	LintProjenRc *bool `field:"optional" json:"lintProjenRc" yaml:"lintProjenRc"`
+	// Projenrc file to lint.
+	//
+	// Use empty string to disable.
+	// Experimental.
+	LintProjenRcFile *string `field:"optional" json:"lintProjenRcFile" yaml:"lintProjenRcFile"`
 	// Enable prettier for code formatting.
 	// Experimental.
 	Prettier *bool `field:"optional" json:"prettier" yaml:"prettier"`
