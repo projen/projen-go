@@ -9363,6 +9363,121 @@ type ConstructLibraryAwsOptions struct {
 	LambdaOptions *LambdaFunctionCommonOptions `field:"optional" json:"lambdaOptions" yaml:"lambdaOptions"`
 }
 
+// Creates edge lambdas from entry points discovered in the project's source tree.
+// Experimental.
+type EdgeLambdaAutoDiscover interface {
+	cdk.AutoDiscoverBase
+	// Auto-discovered entry points with paths relative to the project directory.
+	// Experimental.
+	Entrypoints() *[]*string
+	// Experimental.
+	Project() projen.Project
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
+	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
+	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
+	Synthesize()
+}
+
+// The jsii proxy struct for EdgeLambdaAutoDiscover
+type jsiiProxy_EdgeLambdaAutoDiscover struct {
+	internal.Type__cdkAutoDiscoverBase
+}
+
+func (j *jsiiProxy_EdgeLambdaAutoDiscover) Entrypoints() *[]*string {
+	var returns *[]*string
+	_jsii_.Get(
+		j,
+		"entrypoints",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_EdgeLambdaAutoDiscover) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewEdgeLambdaAutoDiscover(project projen.Project, options *EdgeLambdaAutoDiscoverOptions) EdgeLambdaAutoDiscover {
+	_init_.Initialize()
+
+	j := jsiiProxy_EdgeLambdaAutoDiscover{}
+
+	_jsii_.Create(
+		"projen.awscdk.EdgeLambdaAutoDiscover",
+		[]interface{}{project, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewEdgeLambdaAutoDiscover_Override(e EdgeLambdaAutoDiscover, project projen.Project, options *EdgeLambdaAutoDiscoverOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.awscdk.EdgeLambdaAutoDiscover",
+		[]interface{}{project, options},
+		e,
+	)
+}
+
+func (e *jsiiProxy_EdgeLambdaAutoDiscover) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		e,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+func (e *jsiiProxy_EdgeLambdaAutoDiscover) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		e,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+func (e *jsiiProxy_EdgeLambdaAutoDiscover) Synthesize() {
+	_jsii_.InvokeVoid(
+		e,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+// Options for `EdgeLambdaAutoDiscover`.
+// Experimental.
+type EdgeLambdaAutoDiscoverOptions struct {
+	// AWS CDK dependency manager.
+	// Experimental.
+	CdkDeps AwsCdkDeps `field:"required" json:"cdkDeps" yaml:"cdkDeps"`
+	// Path to the tsconfig file to use for integration tests.
+	// Experimental.
+	TsconfigPath *string `field:"required" json:"tsconfigPath" yaml:"tsconfigPath"`
+	// Project source tree (relative to project output directory).
+	// Experimental.
+	Srcdir *string `field:"required" json:"srcdir" yaml:"srcdir"`
+	// Options for AWS Lambda functions.
+	// Experimental.
+	LambdaOptions *LambdaFunctionCommonOptions `field:"optional" json:"lambdaOptions" yaml:"lambdaOptions"`
+}
+
 // Cloud integration tests.
 // Experimental.
 type IntegrationTest interface {
@@ -10196,6 +10311,9 @@ type LambdaFunctionCommonOptions struct {
 	//
 	// This sets the `AWS_NODEJS_CONNECTION_REUSE_ENABLED` environment variable
 	// to `1`.
+	//
+	// Not applicable when `edgeLambda` is set to `true` because environment
+	// variables are not supported in Lambda@Edge.
 	// See: https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/node-reusing-connections.html
 	//
 	// Experimental.
@@ -10206,6 +10324,9 @@ type LambdaFunctionCommonOptions struct {
 	// `Bundler` instance will be used.
 	// Experimental.
 	BundlingOptions *javascript.BundlingOptions `field:"optional" json:"bundlingOptions" yaml:"bundlingOptions"`
+	// Whether to create a `cloudfront.experimental.EdgeFunction` instead of a `lambda.Function`.
+	// Experimental.
+	EdgeLambda *bool `field:"optional" json:"edgeLambda" yaml:"edgeLambda"`
 	// The node.js version to target.
 	// Experimental.
 	Runtime LambdaRuntime `field:"optional" json:"runtime" yaml:"runtime"`
@@ -10218,6 +10339,9 @@ type LambdaFunctionOptions struct {
 	//
 	// This sets the `AWS_NODEJS_CONNECTION_REUSE_ENABLED` environment variable
 	// to `1`.
+	//
+	// Not applicable when `edgeLambda` is set to `true` because environment
+	// variables are not supported in Lambda@Edge.
 	// See: https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/node-reusing-connections.html
 	//
 	// Experimental.
@@ -10228,6 +10352,9 @@ type LambdaFunctionOptions struct {
 	// `Bundler` instance will be used.
 	// Experimental.
 	BundlingOptions *javascript.BundlingOptions `field:"optional" json:"bundlingOptions" yaml:"bundlingOptions"`
+	// Whether to create a `cloudfront.experimental.EdgeFunction` instead of a `lambda.Function`.
+	// Experimental.
+	EdgeLambda *bool `field:"optional" json:"edgeLambda" yaml:"edgeLambda"`
 	// The node.js version to target.
 	// Experimental.
 	Runtime LambdaRuntime `field:"optional" json:"runtime" yaml:"runtime"`
