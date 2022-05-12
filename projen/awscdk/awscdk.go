@@ -156,6 +156,9 @@ type AutoDiscoverOptions struct {
 	// Options for integration tests.
 	// Experimental.
 	IntegrationTestOptions *IntegrationTestCommonOptions `field:"optional" json:"integrationTestOptions" yaml:"integrationTestOptions"`
+	// Auto-discover edge lambda functions.
+	// Experimental.
+	EdgeLambdaAutoDiscover *bool `field:"optional" json:"edgeLambdaAutoDiscover" yaml:"edgeLambdaAutoDiscover"`
 	// Auto-discover integration tests.
 	// Experimental.
 	IntegrationTestAutoDiscover *bool `field:"optional" json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
@@ -2134,6 +2137,9 @@ type AwsCdkConstructLibraryOptions struct {
 	// Minimum version of the `constructs` library to depend on.
 	// Experimental.
 	ConstructsVersion *string `field:"optional" json:"constructsVersion" yaml:"constructsVersion"`
+	// Automatically adds an `cloudfront.experimental.EdgeFunction` for each `.edge-lambda.ts` handler in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project.
+	// Experimental.
+	EdgeLambdaAutoDiscover *bool `field:"optional" json:"edgeLambdaAutoDiscover" yaml:"edgeLambdaAutoDiscover"`
 	// Automatically discovers and creates integration tests for each `.integ.ts` file in under your test directory.
 	// Experimental.
 	IntegrationTestAutoDiscover *bool `field:"optional" json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
@@ -7037,6 +7043,9 @@ type AwsCdkTypeScriptAppOptions struct {
 	// The CDK app's entrypoint (relative to the source directory, which is "src" by default).
 	// Experimental.
 	AppEntrypoint *string `field:"optional" json:"appEntrypoint" yaml:"appEntrypoint"`
+	// Automatically adds an `cloudfront.experimental.EdgeFunction` for each `.edge-lambda.ts` handler in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project.
+	// Experimental.
+	EdgeLambdaAutoDiscover *bool `field:"optional" json:"edgeLambdaAutoDiscover" yaml:"edgeLambdaAutoDiscover"`
 	// Automatically discovers and creates integration tests for each `.integ.ts` file in under your test directory.
 	// Experimental.
 	IntegrationTestAutoDiscover *bool `field:"optional" json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
@@ -9349,6 +9358,9 @@ type ConstructLibraryAwsOptions struct {
 	// Minimum version of the `constructs` library to depend on.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ConstructsVersion *string `field:"optional" json:"constructsVersion" yaml:"constructsVersion"`
+	// Automatically adds an `cloudfront.experimental.EdgeFunction` for each `.edge-lambda.ts` handler in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	EdgeLambdaAutoDiscover *bool `field:"optional" json:"edgeLambdaAutoDiscover" yaml:"edgeLambdaAutoDiscover"`
 	// Automatically discovers and creates integration tests for each `.integ.ts` file in under your test directory.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	IntegrationTestAutoDiscover *bool `field:"optional" json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
