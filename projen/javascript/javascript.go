@@ -647,6 +647,9 @@ type EslintOptions struct {
 	// Path to `tsconfig.json` which should be used by eslint.
 	// Experimental.
 	TsconfigPath *string `field:"optional" json:"tsconfigPath" yaml:"tsconfigPath"`
+	// Write eslint configuration as YAML instead of JSON.
+	// Experimental.
+	Yaml *bool `field:"optional" json:"yaml" yaml:"yaml"`
 }
 
 // eslint rules override.
