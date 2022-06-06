@@ -176,6 +176,14 @@ type GoPublishOptions struct {
 	// /**
 	// Options for Go releases.
 	GitCommitMessage *string `field:"optional" json:"gitCommitMessage" yaml:"gitCommitMessage"`
+	// The name of the secret that includes a GitHub deploy key used to push to the GitHub repository.
+	//
+	// Ignored if `githubUseSsh` is `false`.
+	// Deprecated: Use `GoPublishOptions` instead.
+	// export interface JsiiReleaseGo extends GoPublishOptions { }
+	// /**
+	// Options for Go releases.
+	GithubDeployKeySecret *string `field:"optional" json:"githubDeployKeySecret" yaml:"githubDeployKeySecret"`
 	// GitHub repository to push to.
 	// Deprecated: Use `GoPublishOptions` instead.
 	// export interface JsiiReleaseGo extends GoPublishOptions { }
@@ -183,11 +191,19 @@ type GoPublishOptions struct {
 	// Options for Go releases.
 	GithubRepo *string `field:"optional" json:"githubRepo" yaml:"githubRepo"`
 	// The name of the secret that includes a personal GitHub access token used to push to the GitHub repository.
+	//
+	// Ignored if `githubUseSsh` is `true`.
 	// Deprecated: Use `GoPublishOptions` instead.
 	// export interface JsiiReleaseGo extends GoPublishOptions { }
 	// /**
 	// Options for Go releases.
 	GithubTokenSecret *string `field:"optional" json:"githubTokenSecret" yaml:"githubTokenSecret"`
+	// Use SSH to push to GitHub instead of a personal accses token.
+	// Deprecated: Use `GoPublishOptions` instead.
+	// export interface JsiiReleaseGo extends GoPublishOptions { }
+	// /**
+	// Options for Go releases.
+	GithubUseSsh *bool `field:"optional" json:"githubUseSsh" yaml:"githubUseSsh"`
 	// The email to use in the release git commit.
 	// Deprecated: Use `GoPublishOptions` instead.
 	// export interface JsiiReleaseGo extends GoPublishOptions { }

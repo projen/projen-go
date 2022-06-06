@@ -2328,12 +2328,22 @@ type JsiiGoTarget struct {
 	// The commit message.
 	// Deprecated.
 	GitCommitMessage *string `field:"optional" json:"gitCommitMessage" yaml:"gitCommitMessage"`
+	// The name of the secret that includes a GitHub deploy key used to push to the GitHub repository.
+	//
+	// Ignored if `githubUseSsh` is `false`.
+	// Deprecated.
+	GithubDeployKeySecret *string `field:"optional" json:"githubDeployKeySecret" yaml:"githubDeployKeySecret"`
 	// GitHub repository to push to.
 	// Deprecated.
 	GithubRepo *string `field:"optional" json:"githubRepo" yaml:"githubRepo"`
 	// The name of the secret that includes a personal GitHub access token used to push to the GitHub repository.
+	//
+	// Ignored if `githubUseSsh` is `true`.
 	// Deprecated.
 	GithubTokenSecret *string `field:"optional" json:"githubTokenSecret" yaml:"githubTokenSecret"`
+	// Use SSH to push to GitHub instead of a personal accses token.
+	// Deprecated.
+	GithubUseSsh *bool `field:"optional" json:"githubUseSsh" yaml:"githubUseSsh"`
 	// The email to use in the release git commit.
 	// Deprecated.
 	GitUserEmail *string `field:"optional" json:"gitUserEmail" yaml:"gitUserEmail"`
