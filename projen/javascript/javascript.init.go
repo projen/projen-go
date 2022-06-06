@@ -164,6 +164,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addEngine", GoMethod: "AddEngine"},
 			_jsii_.MemberMethod{JsiiMethod: "addField", GoMethod: "AddField"},
 			_jsii_.MemberMethod{JsiiMethod: "addKeywords", GoMethod: "AddKeywords"},
+			_jsii_.MemberMethod{JsiiMethod: "addPackageResolutions", GoMethod: "AddPackageResolutions"},
 			_jsii_.MemberMethod{JsiiMethod: "addPeerDeps", GoMethod: "AddPeerDeps"},
 			_jsii_.MemberMethod{JsiiMethod: "addVersion", GoMethod: "AddVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "allowLibraryDependencies", GoGetter: "AllowLibraryDependencies"},

@@ -1242,6 +1242,9 @@ type NodePackage interface {
 	// Adds keywords to package.json (deduplicated).
 	// Experimental.
 	AddKeywords(keywords ...*string)
+	// Defines resolutions for dependencies to change the normally resolved version of a dependency to something else.
+	// Experimental.
+	AddPackageResolutions(resolutions ...*string)
 	// Defines peer dependencies.
 	//
 	// When adding peer dependencies, a devDependency will also be added on the
@@ -1571,6 +1574,19 @@ func (n *jsiiProxy_NodePackage) AddKeywords(keywords ...*string) {
 	_jsii_.InvokeVoid(
 		n,
 		"addKeywords",
+		args,
+	)
+}
+
+func (n *jsiiProxy_NodePackage) AddPackageResolutions(resolutions ...*string) {
+	args := []interface{}{}
+	for _, a := range resolutions {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		n,
+		"addPackageResolutions",
 		args,
 	)
 }
