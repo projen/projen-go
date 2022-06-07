@@ -2323,32 +2323,32 @@ type JsiiGoTarget struct {
 	// Experimental.
 	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// Branch to push to.
-	// Deprecated.
+	// Experimental.
 	GitBranch *string `field:"optional" json:"gitBranch" yaml:"gitBranch"`
 	// The commit message.
-	// Deprecated.
+	// Experimental.
 	GitCommitMessage *string `field:"optional" json:"gitCommitMessage" yaml:"gitCommitMessage"`
 	// The name of the secret that includes a GitHub deploy key used to push to the GitHub repository.
 	//
 	// Ignored if `githubUseSsh` is `false`.
-	// Deprecated.
+	// Experimental.
 	GithubDeployKeySecret *string `field:"optional" json:"githubDeployKeySecret" yaml:"githubDeployKeySecret"`
 	// GitHub repository to push to.
-	// Deprecated.
+	// Experimental.
 	GithubRepo *string `field:"optional" json:"githubRepo" yaml:"githubRepo"`
 	// The name of the secret that includes a personal GitHub access token used to push to the GitHub repository.
 	//
 	// Ignored if `githubUseSsh` is `true`.
-	// Deprecated.
+	// Experimental.
 	GithubTokenSecret *string `field:"optional" json:"githubTokenSecret" yaml:"githubTokenSecret"`
 	// Use SSH to push to GitHub instead of a personal accses token.
-	// Deprecated.
+	// Experimental.
 	GithubUseSsh *bool `field:"optional" json:"githubUseSsh" yaml:"githubUseSsh"`
 	// The email to use in the release git commit.
-	// Deprecated.
+	// Experimental.
 	GitUserEmail *string `field:"optional" json:"gitUserEmail" yaml:"gitUserEmail"`
 	// The user name to use for the release git commit.
-	// Deprecated.
+	// Experimental.
 	GitUserName *string `field:"optional" json:"gitUserName" yaml:"gitUserName"`
 	// The name of the target go module.
 	//

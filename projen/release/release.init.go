@@ -32,6 +32,10 @@ func init() {
 		reflect.TypeOf((*GoPublishOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.release.JsiiReleaseGo",
+		reflect.TypeOf((*JsiiReleaseGo)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.release.JsiiReleaseMaven",
 		reflect.TypeOf((*JsiiReleaseMaven)(nil)).Elem(),
 	)
