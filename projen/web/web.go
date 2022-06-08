@@ -5514,52 +5514,52 @@ type ReactRewireOptions struct {
 	Rewire *map[string]interface{} `field:"optional" json:"rewire" yaml:"rewire"`
 }
 
-// Experimental.
+// Deprecated: No longer used.
 type ReactTypeDef interface {
 	projen.FileBase
 	// The absolute path of this file.
-	// Experimental.
+	// Deprecated: No longer used.
 	AbsolutePath() *string
 	// Indicates if the file has been changed during synthesis.
 	//
 	// This property is
 	// only available in `postSynthesize()` hooks. If this is `undefined`, the
 	// file has not been synthesized yet.
-	// Experimental.
+	// Deprecated: No longer used.
 	Changed() *bool
 	// Indicates if the file should be marked as executable.
-	// Experimental.
+	// Deprecated: No longer used.
 	Executable() *bool
-	// Experimental.
+	// Deprecated: No longer used.
 	SetExecutable(val *bool)
 	// The projen marker, used to identify files as projen-generated.
 	//
 	// Value is undefined if the project is being ejected.
-	// Experimental.
+	// Deprecated: No longer used.
 	Marker() *string
 	// The file path, relative to the project root.
-	// Experimental.
+	// Deprecated: No longer used.
 	Path() *string
-	// Experimental.
+	// Deprecated: No longer used.
 	Project() projen.Project
 	// Indicates if the file should be read-only or read-write.
-	// Experimental.
+	// Deprecated: No longer used.
 	Readonly() *bool
-	// Experimental.
+	// Deprecated: No longer used.
 	SetReadonly(val *bool)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
-	// Experimental.
+	// Deprecated: No longer used.
 	PostSynthesize()
 	// Called before synthesis.
-	// Experimental.
+	// Deprecated: No longer used.
 	PreSynthesize()
 	// Writes the file to the project's output directory.
-	// Experimental.
+	// Deprecated: No longer used.
 	Synthesize()
 	// Implemented by derived classes and returns the contents of the file to emit.
-	// Experimental.
+	// Deprecated: No longer used.
 	SynthesizeContent(_arg projen.IResolver) *string
 }
 
@@ -5639,7 +5639,7 @@ func (j *jsiiProxy_ReactTypeDef) Readonly() *bool {
 }
 
 
-// Experimental.
+// Deprecated: No longer used.
 func NewReactTypeDef(project ReactTypeScriptProject, filePath *string, options *ReactTypeDefOptions) ReactTypeDef {
 	_init_.Initialize()
 
@@ -5654,7 +5654,7 @@ func NewReactTypeDef(project ReactTypeScriptProject, filePath *string, options *
 	return &j
 }
 
-// Experimental.
+// Deprecated: No longer used.
 func NewReactTypeDef_Override(r ReactTypeDef, project ReactTypeScriptProject, filePath *string, options *ReactTypeDefOptions) {
 	_init_.Initialize()
 
@@ -5718,26 +5718,26 @@ func (r *jsiiProxy_ReactTypeDef) SynthesizeContent(_arg projen.IResolver) *strin
 	return returns
 }
 
-// Experimental.
+// Deprecated: No longer used.
 type ReactTypeDefOptions struct {
 	// Indicates whether this file should be committed to git or ignored.
 	//
 	// By
 	// default, all generated files are committed and anti-tamper is used to
 	// protect against manual modifications.
-	// Experimental.
+	// Deprecated: No longer used.
 	Committed *bool `field:"optional" json:"committed" yaml:"committed"`
 	// Update the project's .gitignore file.
-	// Experimental.
+	// Deprecated: No longer used.
 	EditGitignore *bool `field:"optional" json:"editGitignore" yaml:"editGitignore"`
 	// Whether the generated file should be marked as executable.
-	// Experimental.
+	// Deprecated: No longer used.
 	Executable *bool `field:"optional" json:"executable" yaml:"executable"`
 	// Adds the projen marker to the file.
-	// Experimental.
+	// Deprecated: No longer used.
 	Marker *bool `field:"optional" json:"marker" yaml:"marker"`
 	// Whether the generated file should be readonly.
-	// Experimental.
+	// Deprecated: No longer used.
 	Readonly *bool `field:"optional" json:"readonly" yaml:"readonly"`
 }
 
@@ -5890,9 +5890,6 @@ type ReactTypeScriptProject interface {
 	// release workflow.
 	// Deprecated: use `release.publisher`.
 	Publisher() release.Publisher
-	// TypeScript definition file included that ensures React types are picked up by the TypeScript compiler.
-	// Experimental.
-	ReactTypeDef() ReactTypeDef
 	// Release management.
 	// Experimental.
 	Release() release.Release
@@ -6509,16 +6506,6 @@ func (j *jsiiProxy_ReactTypeScriptProject) Publisher() release.Publisher {
 	_jsii_.Get(
 		j,
 		"publisher",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_ReactTypeScriptProject) ReactTypeDef() ReactTypeDef {
-	var returns ReactTypeDef
-	_jsii_.Get(
-		j,
-		"reactTypeDef",
 		&returns,
 	)
 	return returns

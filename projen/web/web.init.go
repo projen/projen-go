@@ -451,7 +451,6 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "projectType", GoGetter: "ProjectType"},
 			_jsii_.MemberProperty{JsiiProperty: "projenCommand", GoGetter: "ProjenCommand"},
 			_jsii_.MemberProperty{JsiiProperty: "publisher", GoGetter: "Publisher"},
-			_jsii_.MemberProperty{JsiiProperty: "reactTypeDef", GoGetter: "ReactTypeDef"},
 			_jsii_.MemberProperty{JsiiProperty: "release", GoGetter: "Release"},
 			_jsii_.MemberMethod{JsiiMethod: "removeScript", GoMethod: "RemoveScript"},
 			_jsii_.MemberMethod{JsiiMethod: "removeTask", GoMethod: "RemoveTask"},
