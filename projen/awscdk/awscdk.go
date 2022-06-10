@@ -7067,11 +7067,23 @@ type CdkConfig interface {
 	// Name of the cdk.out directory.
 	// Experimental.
 	Cdkout() *string
+	// List of glob patterns to be excluded by CDK.
+	// Experimental.
+	Exclude() *[]*string
+	// List of glob patterns to be included by CDK.
+	// Experimental.
+	Include() *[]*string
 	// Represents the JSON file.
 	// Experimental.
 	Json() projen.JsonFile
 	// Experimental.
 	Project() projen.Project
+	// Add excludes to `cdk.json`.
+	// Experimental.
+	AddExcludes(patterns ...*string)
+	// Add includes to `cdk.json`.
+	// Experimental.
+	AddIncludes(patterns ...*string)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -7095,6 +7107,26 @@ func (j *jsiiProxy_CdkConfig) Cdkout() *string {
 	_jsii_.Get(
 		j,
 		"cdkout",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_CdkConfig) Exclude() *[]*string {
+	var returns *[]*string
+	_jsii_.Get(
+		j,
+		"exclude",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_CdkConfig) Include() *[]*string {
+	var returns *[]*string
+	_jsii_.Get(
+		j,
+		"include",
 		&returns,
 	)
 	return returns
@@ -7144,6 +7176,32 @@ func NewCdkConfig_Override(c CdkConfig, project projen.Project, options *CdkConf
 		"projen.awscdk.CdkConfig",
 		[]interface{}{project, options},
 		c,
+	)
+}
+
+func (c *jsiiProxy_CdkConfig) AddExcludes(patterns ...*string) {
+	args := []interface{}{}
+	for _, a := range patterns {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		c,
+		"addExcludes",
+		args,
+	)
+}
+
+func (c *jsiiProxy_CdkConfig) AddIncludes(patterns ...*string) {
+	args := []interface{}{}
+	for _, a := range patterns {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		c,
+		"addIncludes",
+		args,
 	)
 }
 

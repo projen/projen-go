@@ -480,7 +480,11 @@ func init() {
 		"projen.awscdk.CdkConfig",
 		reflect.TypeOf((*CdkConfig)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addExcludes", GoMethod: "AddExcludes"},
+			_jsii_.MemberMethod{JsiiMethod: "addIncludes", GoMethod: "AddIncludes"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkout", GoGetter: "Cdkout"},
+			_jsii_.MemberProperty{JsiiProperty: "exclude", GoGetter: "Exclude"},
+			_jsii_.MemberProperty{JsiiProperty: "include", GoGetter: "Include"},
 			_jsii_.MemberProperty{JsiiProperty: "json", GoGetter: "Json"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
