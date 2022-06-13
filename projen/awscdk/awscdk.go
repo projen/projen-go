@@ -10533,3 +10533,14 @@ func LambdaRuntime_NODEJS_14_X() LambdaRuntime {
 	return returns
 }
 
+func LambdaRuntime_NODEJS_16_X() LambdaRuntime {
+	_init_.Initialize()
+	var returns LambdaRuntime
+	_jsii_.StaticGet(
+		"projen.awscdk.LambdaRuntime",
+		"NODEJS_16_X",
+		&returns,
+	)
+	return returns
+}
+
