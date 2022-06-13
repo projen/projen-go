@@ -2356,6 +2356,40 @@ type IniFile interface {
 	// ```.
 	// Experimental.
 	AddOverride(path *string, value interface{})
+	// Adds to an array in the synthesized object file.
+	//
+	// If the array is nested, separate each nested level using a dot (.) in the path parameter.
+	// If there is an array as part of the nesting, specify the index in the path.
+	//
+	// To include a literal `.` in the property name, prefix with a `\`. In most
+	// programming languages you will need to write this as `"\\."` because the
+	// `\` itself will need to be escaped.
+	//
+	// For example, with the following object file
+	// ```json
+	// "compilerOptions": {
+	//    "exclude": ["node_modules"],
+	//    "lib": ["es2019"]
+	//    ...
+	// }
+	// ...
+	// ```
+	//
+	// ```typescript
+	// project.tsconfig.file.addToArray('compilerOptions.exclude', 'coverage');
+	// project.tsconfig.file.addToArray('compilerOptions.lib', 'dom', 'dom.iterable', 'esnext');
+	// ```
+	// would result in the following object file
+	// ```json
+	// "compilerOptions": {
+	//    "exclude": ["node_modules", "coverage"],
+	//    "lib": ["es2019", "dom", "dom.iterable", "esnext"]
+	//    ...
+	// }
+	// ...
+	// ```.
+	// Experimental.
+	AddToArray(path *string, values ...interface{})
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -2513,6 +2547,19 @@ func (i *jsiiProxy_IniFile) AddOverride(path *string, value interface{}) {
 		i,
 		"addOverride",
 		[]interface{}{path, value},
+	)
+}
+
+func (i *jsiiProxy_IniFile) AddToArray(path *string, values ...interface{}) {
+	args := []interface{}{path}
+	for _, a := range values {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		i,
+		"addToArray",
+		args,
 	)
 }
 
@@ -2694,6 +2741,40 @@ type JsonFile interface {
 	// ```.
 	// Experimental.
 	AddOverride(path *string, value interface{})
+	// Adds to an array in the synthesized object file.
+	//
+	// If the array is nested, separate each nested level using a dot (.) in the path parameter.
+	// If there is an array as part of the nesting, specify the index in the path.
+	//
+	// To include a literal `.` in the property name, prefix with a `\`. In most
+	// programming languages you will need to write this as `"\\."` because the
+	// `\` itself will need to be escaped.
+	//
+	// For example, with the following object file
+	// ```json
+	// "compilerOptions": {
+	//    "exclude": ["node_modules"],
+	//    "lib": ["es2019"]
+	//    ...
+	// }
+	// ...
+	// ```
+	//
+	// ```typescript
+	// project.tsconfig.file.addToArray('compilerOptions.exclude', 'coverage');
+	// project.tsconfig.file.addToArray('compilerOptions.lib', 'dom', 'dom.iterable', 'esnext');
+	// ```
+	// would result in the following object file
+	// ```json
+	// "compilerOptions": {
+	//    "exclude": ["node_modules", "coverage"],
+	//    "lib": ["es2019", "dom", "dom.iterable", "esnext"]
+	//    ...
+	// }
+	// ...
+	// ```.
+	// Experimental.
+	AddToArray(path *string, values ...interface{})
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -2851,6 +2932,19 @@ func (j *jsiiProxy_JsonFile) AddOverride(path *string, value interface{}) {
 		j,
 		"addOverride",
 		[]interface{}{path, value},
+	)
+}
+
+func (j *jsiiProxy_JsonFile) AddToArray(path *string, values ...interface{}) {
+	args := []interface{}{path}
+	for _, a := range values {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		j,
+		"addToArray",
+		args,
 	)
 }
 
@@ -3758,6 +3852,40 @@ type ObjectFile interface {
 	// ```.
 	// Experimental.
 	AddOverride(path *string, value interface{})
+	// Adds to an array in the synthesized object file.
+	//
+	// If the array is nested, separate each nested level using a dot (.) in the path parameter.
+	// If there is an array as part of the nesting, specify the index in the path.
+	//
+	// To include a literal `.` in the property name, prefix with a `\`. In most
+	// programming languages you will need to write this as `"\\."` because the
+	// `\` itself will need to be escaped.
+	//
+	// For example, with the following object file
+	// ```json
+	// "compilerOptions": {
+	//    "exclude": ["node_modules"],
+	//    "lib": ["es2019"]
+	//    ...
+	// }
+	// ...
+	// ```
+	//
+	// ```typescript
+	// project.tsconfig.file.addToArray('compilerOptions.exclude', 'coverage');
+	// project.tsconfig.file.addToArray('compilerOptions.lib', 'dom', 'dom.iterable', 'esnext');
+	// ```
+	// would result in the following object file
+	// ```json
+	// "compilerOptions": {
+	//    "exclude": ["node_modules", "coverage"],
+	//    "lib": ["es2019", "dom", "dom.iterable", "esnext"]
+	//    ...
+	// }
+	// ...
+	// ```.
+	// Experimental.
+	AddToArray(path *string, values ...interface{})
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -3900,6 +4028,19 @@ func (o *jsiiProxy_ObjectFile) AddOverride(path *string, value interface{}) {
 		o,
 		"addOverride",
 		[]interface{}{path, value},
+	)
+}
+
+func (o *jsiiProxy_ObjectFile) AddToArray(path *string, values ...interface{}) {
+	args := []interface{}{path}
+	for _, a := range values {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		o,
+		"addToArray",
+		args,
 	)
 }
 
@@ -6725,6 +6866,40 @@ type TomlFile interface {
 	// ```.
 	// Experimental.
 	AddOverride(path *string, value interface{})
+	// Adds to an array in the synthesized object file.
+	//
+	// If the array is nested, separate each nested level using a dot (.) in the path parameter.
+	// If there is an array as part of the nesting, specify the index in the path.
+	//
+	// To include a literal `.` in the property name, prefix with a `\`. In most
+	// programming languages you will need to write this as `"\\."` because the
+	// `\` itself will need to be escaped.
+	//
+	// For example, with the following object file
+	// ```json
+	// "compilerOptions": {
+	//    "exclude": ["node_modules"],
+	//    "lib": ["es2019"]
+	//    ...
+	// }
+	// ...
+	// ```
+	//
+	// ```typescript
+	// project.tsconfig.file.addToArray('compilerOptions.exclude', 'coverage');
+	// project.tsconfig.file.addToArray('compilerOptions.lib', 'dom', 'dom.iterable', 'esnext');
+	// ```
+	// would result in the following object file
+	// ```json
+	// "compilerOptions": {
+	//    "exclude": ["node_modules", "coverage"],
+	//    "lib": ["es2019", "dom", "dom.iterable", "esnext"]
+	//    ...
+	// }
+	// ...
+	// ```.
+	// Experimental.
+	AddToArray(path *string, values ...interface{})
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -6882,6 +7057,19 @@ func (t *jsiiProxy_TomlFile) AddOverride(path *string, value interface{}) {
 		t,
 		"addOverride",
 		[]interface{}{path, value},
+	)
+}
+
+func (t *jsiiProxy_TomlFile) AddToArray(path *string, values ...interface{}) {
+	args := []interface{}{path}
+	for _, a := range values {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		t,
+		"addToArray",
+		args,
 	)
 }
 
@@ -7207,6 +7395,40 @@ type XmlFile interface {
 	// ```.
 	// Experimental.
 	AddOverride(path *string, value interface{})
+	// Adds to an array in the synthesized object file.
+	//
+	// If the array is nested, separate each nested level using a dot (.) in the path parameter.
+	// If there is an array as part of the nesting, specify the index in the path.
+	//
+	// To include a literal `.` in the property name, prefix with a `\`. In most
+	// programming languages you will need to write this as `"\\."` because the
+	// `\` itself will need to be escaped.
+	//
+	// For example, with the following object file
+	// ```json
+	// "compilerOptions": {
+	//    "exclude": ["node_modules"],
+	//    "lib": ["es2019"]
+	//    ...
+	// }
+	// ...
+	// ```
+	//
+	// ```typescript
+	// project.tsconfig.file.addToArray('compilerOptions.exclude', 'coverage');
+	// project.tsconfig.file.addToArray('compilerOptions.lib', 'dom', 'dom.iterable', 'esnext');
+	// ```
+	// would result in the following object file
+	// ```json
+	// "compilerOptions": {
+	//    "exclude": ["node_modules", "coverage"],
+	//    "lib": ["es2019", "dom", "dom.iterable", "esnext"]
+	//    ...
+	// }
+	// ...
+	// ```.
+	// Experimental.
+	AddToArray(path *string, values ...interface{})
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -7367,6 +7589,19 @@ func (x *jsiiProxy_XmlFile) AddOverride(path *string, value interface{}) {
 	)
 }
 
+func (x *jsiiProxy_XmlFile) AddToArray(path *string, values ...interface{}) {
+	args := []interface{}{path}
+	for _, a := range values {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		x,
+		"addToArray",
+		args,
+	)
+}
+
 func (x *jsiiProxy_XmlFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		x,
@@ -7511,6 +7746,40 @@ type YamlFile interface {
 	// ```.
 	// Experimental.
 	AddOverride(path *string, value interface{})
+	// Adds to an array in the synthesized object file.
+	//
+	// If the array is nested, separate each nested level using a dot (.) in the path parameter.
+	// If there is an array as part of the nesting, specify the index in the path.
+	//
+	// To include a literal `.` in the property name, prefix with a `\`. In most
+	// programming languages you will need to write this as `"\\."` because the
+	// `\` itself will need to be escaped.
+	//
+	// For example, with the following object file
+	// ```json
+	// "compilerOptions": {
+	//    "exclude": ["node_modules"],
+	//    "lib": ["es2019"]
+	//    ...
+	// }
+	// ...
+	// ```
+	//
+	// ```typescript
+	// project.tsconfig.file.addToArray('compilerOptions.exclude', 'coverage');
+	// project.tsconfig.file.addToArray('compilerOptions.lib', 'dom', 'dom.iterable', 'esnext');
+	// ```
+	// would result in the following object file
+	// ```json
+	// "compilerOptions": {
+	//    "exclude": ["node_modules", "coverage"],
+	//    "lib": ["es2019", "dom", "dom.iterable", "esnext"]
+	//    ...
+	// }
+	// ...
+	// ```.
+	// Experimental.
+	AddToArray(path *string, values ...interface{})
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -7686,6 +7955,19 @@ func (y *jsiiProxy_YamlFile) AddOverride(path *string, value interface{}) {
 		y,
 		"addOverride",
 		[]interface{}{path, value},
+	)
+}
+
+func (y *jsiiProxy_YamlFile) AddToArray(path *string, values ...interface{}) {
+	args := []interface{}{path}
+	for _, a := range values {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		y,
+		"addToArray",
+		args,
 	)
 }
 
