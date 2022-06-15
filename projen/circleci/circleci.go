@@ -478,7 +478,7 @@ type WorkflowJob struct {
 	Context *[]*string `field:"optional" json:"context" yaml:"context"`
 	// Job Filters can have the key branches or tags.
 	// Experimental.
-	Filter *Filter `field:"optional" json:"filter" yaml:"filter"`
+	Filters *Filter `field:"optional" json:"filters" yaml:"filters"`
 	// Experimental.
 	Matrix *Matrix `field:"optional" json:"matrix" yaml:"matrix"`
 	// A replacement for the job name.
