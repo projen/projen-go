@@ -52,7 +52,7 @@ $ npx projen new PROJECT-TYPE
 Currently supported project types (use `npx projen new` without a type for a
 full list):
 
-**Built-in:** (run `npx projen <type>`)
+**Built-in:** (run `npx projen new <type>`)
 
 <!-- <macro exec="node ./scripts/readme-projects.js"> -->
 
@@ -77,7 +77,7 @@ full list):
 
 <!-- </macro> -->
 
-**External:** (run `npx projen --from <type>`)
+**External:** (run `npx projen new --from <type>`)
 
 * [projen-github-action-typescript](https://github.com/projen/projen-github-action-typescript/blob/main/API.md) - GitHub Action in TypeScript project.
 
