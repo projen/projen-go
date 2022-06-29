@@ -1504,6 +1504,25 @@ type MavenPackagingOptions struct {
 	Sources *bool `field:"optional" json:"sources" yaml:"sources"`
 }
 
+// Represents a Maven repository.
+// See: https://maven.apache.org/guides/introduction/introduction-to-repositories.html
+//
+// Experimental.
+type MavenRepository struct {
+	// The identifier for the repository.
+	// Experimental.
+	Id *string `field:"required" json:"id" yaml:"id"`
+	// The url of the repository.
+	// Experimental.
+	Url *string `field:"required" json:"url" yaml:"url"`
+	// The layout of the repository.
+	// Experimental.
+	Layout *string `field:"optional" json:"layout" yaml:"layout"`
+	// The name of the repository.
+	// Experimental.
+	Name *string `field:"optional" json:"name" yaml:"name"`
+}
+
 // Java code sample.
 // Experimental.
 type MavenSample interface {
@@ -1668,6 +1687,9 @@ type Pom interface {
 	// Adds a key/value property to the pom.
 	// Experimental.
 	AddProperty(key *string, value *string)
+	// Adds a repository to the pom.
+	// Experimental.
+	AddRepository(repository *MavenRepository)
 	// Adds a test dependency.
 	// Experimental.
 	AddTestDependency(spec *string)
@@ -1832,6 +1854,14 @@ func (p *jsiiProxy_Pom) AddProperty(key *string, value *string) {
 		p,
 		"addProperty",
 		[]interface{}{key, value},
+	)
+}
+
+func (p *jsiiProxy_Pom) AddRepository(repository *MavenRepository) {
+	_jsii_.InvokeVoid(
+		p,
+		"addRepository",
+		[]interface{}{repository},
 	)
 }
 

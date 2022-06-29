@@ -135,6 +135,10 @@ func init() {
 		"projen.java.MavenPackagingOptions",
 		reflect.TypeOf((*MavenPackagingOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.java.MavenRepository",
+		reflect.TypeOf((*MavenRepository)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.java.MavenSample",
 		reflect.TypeOf((*MavenSample)(nil)).Elem(),
@@ -169,6 +173,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addDependency", GoMethod: "AddDependency"},
 			_jsii_.MemberMethod{JsiiMethod: "addPlugin", GoMethod: "AddPlugin"},
 			_jsii_.MemberMethod{JsiiMethod: "addProperty", GoMethod: "AddProperty"},
+			_jsii_.MemberMethod{JsiiMethod: "addRepository", GoMethod: "AddRepository"},
 			_jsii_.MemberMethod{JsiiMethod: "addTestDependency", GoMethod: "AddTestDependency"},
 			_jsii_.MemberProperty{JsiiProperty: "artifactId", GoGetter: "ArtifactId"},
 			_jsii_.MemberProperty{JsiiProperty: "description", GoGetter: "Description"},
