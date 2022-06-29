@@ -706,6 +706,8 @@ type Jest interface {
 	// Experimental.
 	Config() interface{}
 	// Experimental.
+	JestVersion() *string
+	// Experimental.
 	AddIgnorePattern(pattern *string)
 	// Experimental.
 	AddReporter(reporter interface{})
@@ -729,6 +731,16 @@ func (j *jsiiProxy_Jest) Config() interface{} {
 	_jsii_.Get(
 		j,
 		"config",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Jest) JestVersion() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"jestVersion",
 		&returns,
 	)
 	return returns
@@ -1147,6 +1159,8 @@ type JestOptions struct {
 	// Experimental.
 	JestConfig *JestConfigOptions `field:"optional" json:"jestConfig" yaml:"jestConfig"`
 	// The version of jest to use.
+	//
+	// Note that same version is used as version of `@types/jest` and `ts-jest` (if Typescript in use), so given version should work also for those.
 	// Experimental.
 	JestVersion *string `field:"optional" json:"jestVersion" yaml:"jestVersion"`
 	// Result processing with jest-junit.

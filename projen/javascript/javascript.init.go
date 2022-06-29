@@ -140,6 +140,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addTestMatch", GoMethod: "AddTestMatch"},
 			_jsii_.MemberMethod{JsiiMethod: "addWatchIgnorePattern", GoMethod: "AddWatchIgnorePattern"},
 			_jsii_.MemberProperty{JsiiProperty: "config", GoGetter: "Config"},
+			_jsii_.MemberProperty{JsiiProperty: "jestVersion", GoGetter: "JestVersion"},
 		},
 		func() interface{} {
 			return &jsiiProxy_Jest{}
