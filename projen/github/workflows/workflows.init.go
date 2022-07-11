@@ -20,6 +20,10 @@ func init() {
 		reflect.TypeOf((*CheckSuiteOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.github.workflows.CommonJobDefinition",
+		reflect.TypeOf((*CommonJobDefinition)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.github.workflows.ContainerCredentials",
 		reflect.TypeOf((*ContainerCredentials)(nil)).Elem(),
 	)
@@ -74,6 +78,10 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.github.workflows.Job",
 		reflect.TypeOf((*Job)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.workflows.JobCallingReusableWorkflow",
+		reflect.TypeOf((*JobCallingReusableWorkflow)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.github.workflows.JobDefaults",

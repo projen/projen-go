@@ -1902,10 +1902,10 @@ type GithubWorkflow interface {
 	ProjenCredentials() GithubCredentials
 	// Adds a single job to the workflow.
 	// Experimental.
-	AddJob(id *string, job *workflows.Job)
+	AddJob(id *string, job interface{})
 	// Add jobs to the workflow.
 	// Experimental.
-	AddJobs(jobs *map[string]*workflows.Job)
+	AddJobs(jobs *map[string]interface{})
 	// Add events to triggers the workflow.
 	// Experimental.
 	On(events *workflows.Triggers)
@@ -2004,7 +2004,7 @@ func NewGithubWorkflow_Override(g GithubWorkflow, github GitHub, name *string, o
 	)
 }
 
-func (g *jsiiProxy_GithubWorkflow) AddJob(id *string, job *workflows.Job) {
+func (g *jsiiProxy_GithubWorkflow) AddJob(id *string, job interface{}) {
 	_jsii_.InvokeVoid(
 		g,
 		"addJob",
@@ -2012,7 +2012,7 @@ func (g *jsiiProxy_GithubWorkflow) AddJob(id *string, job *workflows.Job) {
 	)
 }
 
-func (g *jsiiProxy_GithubWorkflow) AddJobs(jobs *map[string]*workflows.Job) {
+func (g *jsiiProxy_GithubWorkflow) AddJobs(jobs *map[string]interface{}) {
 	_jsii_.InvokeVoid(
 		g,
 		"addJobs",
@@ -2784,10 +2784,10 @@ type TaskWorkflow interface {
 	ProjenCredentials() GithubCredentials
 	// Adds a single job to the workflow.
 	// Experimental.
-	AddJob(id *string, job *workflows.Job)
+	AddJob(id *string, job interface{})
 	// Add jobs to the workflow.
 	// Experimental.
-	AddJobs(jobs *map[string]*workflows.Job)
+	AddJobs(jobs *map[string]interface{})
 	// Add events to triggers the workflow.
 	// Experimental.
 	On(events *workflows.Triggers)
@@ -2906,7 +2906,7 @@ func NewTaskWorkflow_Override(t TaskWorkflow, github GitHub, options *TaskWorkfl
 	)
 }
 
-func (t *jsiiProxy_TaskWorkflow) AddJob(id *string, job *workflows.Job) {
+func (t *jsiiProxy_TaskWorkflow) AddJob(id *string, job interface{}) {
 	_jsii_.InvokeVoid(
 		t,
 		"addJob",
@@ -2914,7 +2914,7 @@ func (t *jsiiProxy_TaskWorkflow) AddJob(id *string, job *workflows.Job) {
 	)
 }
 
-func (t *jsiiProxy_TaskWorkflow) AddJobs(jobs *map[string]*workflows.Job) {
+func (t *jsiiProxy_TaskWorkflow) AddJobs(jobs *map[string]interface{}) {
 	_jsii_.InvokeVoid(
 		t,
 		"addJobs",
