@@ -1152,6 +1152,9 @@ type JestOptions struct {
 	// Include the `text` coverage reporter, which means that coverage summary is printed at the end of the jest execution.
 	// Experimental.
 	CoverageText *bool `field:"optional" json:"coverageText" yaml:"coverageText"`
+	// Additional options to pass to the Jest CLI invocation.
+	// Experimental.
+	ExtraCliOptions *[]*string `field:"optional" json:"extraCliOptions" yaml:"extraCliOptions"`
 	// Defines `testPathIgnorePatterns` and `coveragePathIgnorePatterns`.
 	// Deprecated: use jestConfig.coveragePathIgnorePatterns or jestConfig.testPathIgnorePatterns respectively
 	IgnorePatterns *[]*string `field:"optional" json:"ignorePatterns" yaml:"ignorePatterns"`
