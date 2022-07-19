@@ -10459,7 +10459,7 @@ type LambdaRuntime interface {
 	// The esbuild setting to use.
 	// Experimental.
 	EsbuildTarget() *string
-	// The aws-lambda.Runtime member name to use.
+	// The Node.js runtime to use.
 	// Experimental.
 	FunctionRuntime() *string
 }
@@ -10499,6 +10499,32 @@ func (j *jsiiProxy_LambdaRuntime) FunctionRuntime() *string {
 	return returns
 }
 
+
+// Experimental.
+func NewLambdaRuntime(functionRuntime *string, esbuildTarget *string) LambdaRuntime {
+	_init_.Initialize()
+
+	j := jsiiProxy_LambdaRuntime{}
+
+	_jsii_.Create(
+		"projen.awscdk.LambdaRuntime",
+		[]interface{}{functionRuntime, esbuildTarget},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewLambdaRuntime_Override(l LambdaRuntime, functionRuntime *string, esbuildTarget *string) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.awscdk.LambdaRuntime",
+		[]interface{}{functionRuntime, esbuildTarget},
+		l,
+	)
+}
 
 func LambdaRuntime_NODEJS_10_X() LambdaRuntime {
 	_init_.Initialize()
