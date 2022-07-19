@@ -73,6 +73,20 @@ func init() {
 		"projen.circleci.Matrix",
 		reflect.TypeOf((*Matrix)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.circleci.PipelineParameter",
+		reflect.TypeOf((*PipelineParameter)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.circleci.PipelineParameterType",
+		reflect.TypeOf((*PipelineParameterType)(nil)).Elem(),
+		map[string]interface{}{
+			"STRING": PipelineParameterType_STRING,
+			"BOOLEAN": PipelineParameterType_BOOLEAN,
+			"INTEGER": PipelineParameterType_INTEGER,
+			"ENUM": PipelineParameterType_ENUM,
+		},
+	)
 	_jsii_.RegisterEnum(
 		"projen.circleci.ResourceClass",
 		reflect.TypeOf((*ResourceClass)(nil)).Elem(),

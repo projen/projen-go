@@ -255,7 +255,7 @@ type Job struct {
 	Parallelism *float64 `field:"optional" json:"parallelism" yaml:"parallelism"`
 	// Parameters for making a job explicitly configurable in a workflow.
 	// Experimental.
-	Parameters *map[string]*string `field:"optional" json:"parameters" yaml:"parameters"`
+	Parameters *map[string]*PipelineParameter `field:"optional" json:"parameters" yaml:"parameters"`
 	// {@link ResourceClass}.
 	// Experimental.
 	ResourceClass *string `field:"optional" json:"resourceClass" yaml:"resourceClass"`
@@ -342,6 +342,41 @@ type Matrix struct {
 	// Experimental.
 	Parameters *map[string]interface{} `field:"optional" json:"parameters" yaml:"parameters"`
 }
+
+// Parameters are declared by name under a job, command, or executor.
+// See: https://circleci.com/docs/2.0/reusing-config#using-the-parameters-declaration
+//
+// Experimental.
+type PipelineParameter struct {
+	// The parameter type, required.
+	// Experimental.
+	Type PipelineParameterType `field:"required" json:"type" yaml:"type"`
+	// The default value for the parameter.
+	//
+	// If not present, the parameter is implied to be required.
+	// Experimental.
+	Default interface{} `field:"optional" json:"default" yaml:"default"`
+	// Used to generate documentation for your orb.
+	// Experimental.
+	Description *string `field:"optional" json:"description" yaml:"description"`
+}
+
+// Pipeline parameter types.
+// See: https://circleci.com/docs/2.0/reusing-config#parameter-syntax
+//
+// Experimental.
+type PipelineParameterType string
+
+const (
+	// Experimental.
+	PipelineParameterType_STRING PipelineParameterType = "STRING"
+	// Experimental.
+	PipelineParameterType_BOOLEAN PipelineParameterType = "BOOLEAN"
+	// Experimental.
+	PipelineParameterType_INTEGER PipelineParameterType = "INTEGER"
+	// Experimental.
+	PipelineParameterType_ENUM PipelineParameterType = "ENUM"
+)
 
 // The resource_class feature allows configuring CPU and RAM resources for each job.
 //
@@ -489,9 +524,6 @@ type WorkflowJob struct {
 	// Parameters passed to job when referencing a job from orb.
 	// Experimental.
 	OrbParameters *map[string]interface{} `field:"optional" json:"orbParameters" yaml:"orbParameters"`
-	// Parameters for making a job explicitly configurable in a workflow.
-	// Experimental.
-	Parameters *map[string]interface{} `field:"optional" json:"parameters" yaml:"parameters"`
 	// A list of jobs that must succeed for the job to start.
 	// Experimental.
 	Requires *[]*string `field:"optional" json:"requires" yaml:"requires"`
