@@ -178,6 +178,10 @@ func init() {
 		},
 	)
 	_jsii_.RegisterStruct(
+		"projen.python.PytestSampleOptions",
+		reflect.TypeOf((*PytestSampleOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.python.PythonPackagingOptions",
 		reflect.TypeOf((*PythonPackagingOptions)(nil)).Elem(),
 	)

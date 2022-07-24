@@ -190,7 +190,7 @@ func (j *jsiiProxy_Pip) Project() projen.Project {
 
 
 // Experimental.
-func NewPip(project PythonProject, _options *PipOptions) Pip {
+func NewPip(project projen.Project, _options *PipOptions) Pip {
 	_init_.Initialize()
 
 	j := jsiiProxy_Pip{}
@@ -205,7 +205,7 @@ func NewPip(project PythonProject, _options *PipOptions) Pip {
 }
 
 // Experimental.
-func NewPip_Override(p Pip, project PythonProject, _options *PipOptions) {
+func NewPip_Override(p Pip, project projen.Project, _options *PipOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
@@ -361,7 +361,7 @@ func (j *jsiiProxy_Poetry) PublishTestTask() projen.Task {
 
 
 // Experimental.
-func NewPoetry(project PythonProject, options *PythonPackagingOptions) Poetry {
+func NewPoetry(project projen.Project, options *PythonPackagingOptions) Poetry {
 	_init_.Initialize()
 
 	j := jsiiProxy_Poetry{}
@@ -376,7 +376,7 @@ func NewPoetry(project PythonProject, options *PythonPackagingOptions) Poetry {
 }
 
 // Experimental.
-func NewPoetry_Override(p Poetry, project PythonProject, options *PythonPackagingOptions) {
+func NewPoetry_Override(p Poetry, project projen.Project, options *PythonPackagingOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
@@ -492,7 +492,7 @@ func (j *jsiiProxy_PoetryPyproject) Project() projen.Project {
 
 
 // Experimental.
-func NewPoetryPyproject(project PythonProject, options *PoetryPyprojectOptions) PoetryPyproject {
+func NewPoetryPyproject(project projen.Project, options *PoetryPyprojectOptions) PoetryPyproject {
 	_init_.Initialize()
 
 	j := jsiiProxy_PoetryPyproject{}
@@ -507,7 +507,7 @@ func NewPoetryPyproject(project PythonProject, options *PoetryPyprojectOptions) 
 }
 
 // Experimental.
-func NewPoetryPyproject_Override(p PoetryPyproject, project PythonProject, options *PoetryPyprojectOptions) {
+func NewPoetryPyproject_Override(p PoetryPyproject, project projen.Project, options *PoetryPyprojectOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
@@ -873,7 +873,7 @@ func (j *jsiiProxy_Pytest) Testdir() *string {
 
 
 // Experimental.
-func NewPytest(project PythonProject, options *PytestOptions) Pytest {
+func NewPytest(project projen.Project, options *PytestOptions) Pytest {
 	_init_.Initialize()
 
 	j := jsiiProxy_Pytest{}
@@ -888,7 +888,7 @@ func NewPytest(project PythonProject, options *PytestOptions) Pytest {
 }
 
 // Experimental.
-func NewPytest_Override(p Pytest, project PythonProject, options *PytestOptions) {
+func NewPytest_Override(p Pytest, project projen.Project, options *PytestOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
@@ -935,6 +935,7 @@ type PytestOptions struct {
 	Version *string `field:"optional" json:"version" yaml:"version"`
 }
 
+// Python test code sample.
 // Experimental.
 type PytestSample interface {
 	projen.Component
@@ -970,14 +971,14 @@ func (j *jsiiProxy_PytestSample) Project() projen.Project {
 
 
 // Experimental.
-func NewPytestSample(project PythonProject, testdir *string) PytestSample {
+func NewPytestSample(project projen.Project, options *PytestSampleOptions) PytestSample {
 	_init_.Initialize()
 
 	j := jsiiProxy_PytestSample{}
 
 	_jsii_.Create(
 		"projen.python.PytestSample",
-		[]interface{}{project, testdir},
+		[]interface{}{project, options},
 		&j,
 	)
 
@@ -985,12 +986,12 @@ func NewPytestSample(project PythonProject, testdir *string) PytestSample {
 }
 
 // Experimental.
-func NewPytestSample_Override(p PytestSample, project PythonProject, testdir *string) {
+func NewPytestSample_Override(p PytestSample, project projen.Project, options *PytestSampleOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.python.PytestSample",
-		[]interface{}{project, testdir},
+		[]interface{}{project, options},
 		p,
 	)
 }
@@ -1019,6 +1020,17 @@ func (p *jsiiProxy_PytestSample) Synthesize() {
 	)
 }
 
+// Options for python test code sample.
+// Experimental.
+type PytestSampleOptions struct {
+	// Name of the python package as used in imports and filenames.
+	// Experimental.
+	ModuleName *string `field:"required" json:"moduleName" yaml:"moduleName"`
+	// Test directory.
+	// Experimental.
+	Testdir *string `field:"required" json:"testdir" yaml:"testdir"`
+}
+
 // Experimental.
 type PythonPackagingOptions struct {
 	// Author's e-mail.
@@ -1044,6 +1056,9 @@ type PythonPackagingOptions struct {
 	// License of this package as an SPDX identifier.
 	// Experimental.
 	License *string `field:"optional" json:"license" yaml:"license"`
+	// Package name.
+	// Experimental.
+	PackageName *string `field:"optional" json:"packageName" yaml:"packageName"`
 	// Additional options to set for poetry if using poetry.
 	// Experimental.
 	PoetryOptions *PoetryPyprojectOptionsWithoutDeps `field:"optional" json:"poetryOptions" yaml:"poetryOptions"`
@@ -1958,6 +1973,9 @@ type PythonProjectOptions struct {
 	// License of this package as an SPDX identifier.
 	// Experimental.
 	License *string `field:"optional" json:"license" yaml:"license"`
+	// Package name.
+	// Experimental.
+	PackageName *string `field:"optional" json:"packageName" yaml:"packageName"`
 	// Additional options to set for poetry if using poetry.
 	// Experimental.
 	PoetryOptions *PoetryPyprojectOptionsWithoutDeps `field:"optional" json:"poetryOptions" yaml:"poetryOptions"`
@@ -2063,14 +2081,14 @@ func (j *jsiiProxy_PythonSample) Project() projen.Project {
 
 
 // Experimental.
-func NewPythonSample(project PythonProject, _options *PythonSampleOptions) PythonSample {
+func NewPythonSample(project projen.Project, options *PythonSampleOptions) PythonSample {
 	_init_.Initialize()
 
 	j := jsiiProxy_PythonSample{}
 
 	_jsii_.Create(
 		"projen.python.PythonSample",
-		[]interface{}{project, _options},
+		[]interface{}{project, options},
 		&j,
 	)
 
@@ -2078,12 +2096,12 @@ func NewPythonSample(project PythonProject, _options *PythonSampleOptions) Pytho
 }
 
 // Experimental.
-func NewPythonSample_Override(p PythonSample, project PythonProject, _options *PythonSampleOptions) {
+func NewPythonSample_Override(p PythonSample, project projen.Project, options *PythonSampleOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.python.PythonSample",
-		[]interface{}{project, _options},
+		[]interface{}{project, options},
 		p,
 	)
 }
@@ -2115,6 +2133,9 @@ func (p *jsiiProxy_PythonSample) Synthesize() {
 // Options for python sample code.
 // Experimental.
 type PythonSampleOptions struct {
+	// Sample code directory.
+	// Experimental.
+	Dir *string `field:"required" json:"dir" yaml:"dir"`
 }
 
 // Specifies a list of packages to be installed using pip.
@@ -2476,7 +2497,7 @@ func (j *jsiiProxy_SetupPy) Readonly() *bool {
 
 
 // Experimental.
-func NewSetupPy(project PythonProject, options *SetupPyOptions) SetupPy {
+func NewSetupPy(project projen.Project, options *SetupPyOptions) SetupPy {
 	_init_.Initialize()
 
 	j := jsiiProxy_SetupPy{}
@@ -2491,7 +2512,7 @@ func NewSetupPy(project PythonProject, options *SetupPyOptions) SetupPy {
 }
 
 // Experimental.
-func NewSetupPy_Override(s SetupPy, project PythonProject, options *SetupPyOptions) {
+func NewSetupPy_Override(s SetupPy, project projen.Project, options *SetupPyOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
@@ -2654,7 +2675,7 @@ func (j *jsiiProxy_Setuptools) PublishTestTask() projen.Task {
 
 
 // Experimental.
-func NewSetuptools(project PythonProject, options *PythonPackagingOptions) Setuptools {
+func NewSetuptools(project projen.Project, options *PythonPackagingOptions) Setuptools {
 	_init_.Initialize()
 
 	j := jsiiProxy_Setuptools{}
@@ -2669,7 +2690,7 @@ func NewSetuptools(project PythonProject, options *PythonPackagingOptions) Setup
 }
 
 // Experimental.
-func NewSetuptools_Override(s Setuptools, project PythonProject, options *PythonPackagingOptions) {
+func NewSetuptools_Override(s Setuptools, project projen.Project, options *PythonPackagingOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
@@ -2744,7 +2765,7 @@ func (j *jsiiProxy_Venv) Project() projen.Project {
 
 
 // Experimental.
-func NewVenv(project PythonProject, options *VenvOptions) Venv {
+func NewVenv(project projen.Project, options *VenvOptions) Venv {
 	_init_.Initialize()
 
 	j := jsiiProxy_Venv{}
@@ -2759,7 +2780,7 @@ func NewVenv(project PythonProject, options *VenvOptions) Venv {
 }
 
 // Experimental.
-func NewVenv_Override(v Venv, project PythonProject, options *VenvOptions) {
+func NewVenv_Override(v Venv, project projen.Project, options *VenvOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(

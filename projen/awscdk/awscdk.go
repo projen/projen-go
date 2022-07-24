@@ -4967,6 +4967,9 @@ type AwsCdkPythonAppOptions struct {
 	// License of this package as an SPDX identifier.
 	// Experimental.
 	License *string `field:"optional" json:"license" yaml:"license"`
+	// Package name.
+	// Experimental.
+	PackageName *string `field:"optional" json:"packageName" yaml:"packageName"`
 	// Additional options to set for poetry if using poetry.
 	// Experimental.
 	PoetryOptions *python.PoetryPyprojectOptionsWithoutDeps `field:"optional" json:"poetryOptions" yaml:"poetryOptions"`
