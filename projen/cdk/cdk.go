@@ -2357,6 +2357,9 @@ type JsiiGoTarget struct {
 	//
 	// Experimental.
 	ModuleName *string `field:"required" json:"moduleName" yaml:"moduleName"`
+	// The name of the go package.
+	// Experimental.
+	PackageName *string `field:"optional" json:"packageName" yaml:"packageName"`
 }
 
 // Experimental.
