@@ -1656,6 +1656,14 @@ type ConstructLibraryOptions struct {
 	// If not specified, we bump the global latest version.
 	// Experimental.
 	MajorVersion *float64 `field:"optional" json:"majorVersion" yaml:"majorVersion"`
+	// Minimal Major version to release.
+	//
+	// This can be useful to set to 1, as breaking changes before the 1.x major
+	// release are not incrementing the major version number.
+	//
+	// Can not be set together with `majorVersion`.
+	// Experimental.
+	MinMajorVersion *float64 `field:"optional" json:"minMajorVersion" yaml:"minMajorVersion"`
 	// The npmDistTag to use when publishing from the default branch.
 	//
 	// To set the npm dist-tag for release branches, set the `npmDistTag` property
@@ -3972,6 +3980,14 @@ type JsiiProjectOptions struct {
 	// If not specified, we bump the global latest version.
 	// Experimental.
 	MajorVersion *float64 `field:"optional" json:"majorVersion" yaml:"majorVersion"`
+	// Minimal Major version to release.
+	//
+	// This can be useful to set to 1, as breaking changes before the 1.x major
+	// release are not incrementing the major version number.
+	//
+	// Can not be set together with `majorVersion`.
+	// Experimental.
+	MinMajorVersion *float64 `field:"optional" json:"minMajorVersion" yaml:"minMajorVersion"`
 	// The npmDistTag to use when publishing from the default branch.
 	//
 	// To set the npm dist-tag for release branches, set the `npmDistTag` property
