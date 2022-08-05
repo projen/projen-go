@@ -19,6 +19,9 @@ type JavaProject interface {
 	AutoApprove() github.AutoApprove
 	// Experimental.
 	BuildTask() projen.Task
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Compile component.
 	// Experimental.
 	Compile() MavenCompile
@@ -237,6 +240,16 @@ func (j *jsiiProxy_JavaProject) BuildTask() projen.Task {
 	_jsii_.Get(
 		j,
 		"buildTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_JavaProject) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -795,6 +808,9 @@ type JavaProjectCommonOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
@@ -1001,6 +1017,9 @@ type JavaProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`

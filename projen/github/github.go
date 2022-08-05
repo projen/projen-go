@@ -836,6 +836,13 @@ type GitHubProject interface {
 	// the next steps to address this is to abstract workflows so that different
 	// "engines" can be used to implement our CI/CD solutions.
 	BuildTask() projen.Task
+	// Whether to commit the managed files by default.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
+	CommitGenerated() *bool
 	// Deprecated: This is a *temporary* class. At the moment, our base project
 	// types such as `NodeProject` and `JavaProject` are derived from this, but we
 	// want to be able to use these project types outside of GitHub as well. One of
@@ -1181,6 +1188,16 @@ func (j *jsiiProxy_GitHubProject) BuildTask() projen.Task {
 	_jsii_.Get(
 		j,
 		"buildTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -1658,6 +1675,9 @@ type GitHubProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`

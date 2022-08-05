@@ -161,6 +161,9 @@ type ConstructLibrary interface {
 	BuildWorkflowJobId() *string
 	// Experimental.
 	Bundler() javascript.Bundler
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -532,6 +535,16 @@ func (j *jsiiProxy_ConstructLibrary) Bundler() javascript.Bundler {
 	_jsii_.Get(
 		j,
 		"bundler",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibrary) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -1364,6 +1377,9 @@ type ConstructLibraryOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
@@ -2470,6 +2486,9 @@ type JsiiProject interface {
 	BuildWorkflowJobId() *string
 	// Experimental.
 	Bundler() javascript.Bundler
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -2841,6 +2860,16 @@ func (j *jsiiProxy_JsiiProject) Bundler() javascript.Bundler {
 	_jsii_.Get(
 		j,
 		"bundler",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_JsiiProject) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -3688,6 +3717,9 @@ type JsiiProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`

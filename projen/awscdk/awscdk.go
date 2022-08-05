@@ -213,6 +213,9 @@ type AwsCdkConstructLibrary interface {
 	// The target CDK version for this library.
 	// Experimental.
 	CdkVersion() *string
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -614,6 +617,16 @@ func (j *jsiiProxy_AwsCdkConstructLibrary) CdkVersion() *string {
 	_jsii_.Get(
 		j,
 		"cdkVersion",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkConstructLibrary) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -1498,6 +1511,9 @@ type AwsCdkConstructLibraryOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
@@ -2836,6 +2852,9 @@ type AwsCdkJavaApp interface {
 	// CDK tasks.
 	// Experimental.
 	CdkTasks() CdkTasks
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Compile component.
 	// Experimental.
 	Compile() java.MavenCompile
@@ -3096,6 +3115,16 @@ func (j *jsiiProxy_AwsCdkJavaApp) CdkTasks() CdkTasks {
 	_jsii_.Get(
 		j,
 		"cdkTasks",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkJavaApp) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -3696,6 +3725,9 @@ type AwsCdkJavaAppOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
@@ -4015,6 +4047,9 @@ type AwsCdkPythonApp interface {
 	// The CDK version this app is using.
 	// Experimental.
 	CdkVersion() *string
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -4285,6 +4320,16 @@ func (j *jsiiProxy_AwsCdkPythonApp) CdkVersion() *string {
 	_jsii_.Get(
 		j,
 		"cdkVersion",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -4848,6 +4893,9 @@ type AwsCdkPythonAppOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
@@ -5165,6 +5213,9 @@ type AwsCdkTypeScriptApp interface {
 	// The CDK version this app is using.
 	// Experimental.
 	CdkVersion() *string
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -5589,6 +5640,16 @@ func (j *jsiiProxy_AwsCdkTypeScriptApp) CdkVersion() *string {
 	_jsii_.Get(
 		j,
 		"cdkVersion",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkTypeScriptApp) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -6449,6 +6510,9 @@ type AwsCdkTypeScriptAppOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
@@ -7512,6 +7576,9 @@ type ConstructLibraryAws interface {
 	// The target CDK version for this library.
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	CdkVersion() *string
+	// Whether to commit the managed files by default.
+	// Deprecated: use `AwsCdkConstructLibrary`.
+	CommitGenerated() *bool
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -7913,6 +7980,16 @@ func (j *jsiiProxy_ConstructLibraryAws) CdkVersion() *string {
 	_jsii_.Get(
 		j,
 		"cdkVersion",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryAws) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -8796,6 +8873,9 @@ type ConstructLibraryAwsOptions struct {
 	// This is the name of your project.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`

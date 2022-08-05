@@ -35,6 +35,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "buildWorkflow", GoGetter: "BuildWorkflow"},
 			_jsii_.MemberProperty{JsiiProperty: "buildWorkflowJobId", GoGetter: "BuildWorkflowJobId"},
 			_jsii_.MemberProperty{JsiiProperty: "bundler", GoGetter: "Bundler"},
+			_jsii_.MemberProperty{JsiiProperty: "commitGenerated", GoGetter: "CommitGenerated"},
 			_jsii_.MemberProperty{JsiiProperty: "compileTask", GoGetter: "CompileTask"},
 			_jsii_.MemberProperty{JsiiProperty: "components", GoGetter: "Components"},
 			_jsii_.MemberProperty{JsiiProperty: "defaultTask", GoGetter: "DefaultTask"},

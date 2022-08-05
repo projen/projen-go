@@ -4119,6 +4119,9 @@ type ObjectFileOptions struct {
 type Project interface {
 	// Experimental.
 	BuildTask() Task
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() Task
 	// Returns all the components within this project.
@@ -4274,6 +4277,16 @@ func (j *jsiiProxy_Project) BuildTask() Task {
 	_jsii_.Get(
 		j,
 		"buildTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Project) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -4866,6 +4879,9 @@ type ProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *LoggerOptions `field:"optional" json:"logging" yaml:"logging"`

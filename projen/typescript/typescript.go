@@ -143,6 +143,9 @@ type TypeScriptAppProject interface {
 	BuildWorkflowJobId() *string
 	// Experimental.
 	Bundler() javascript.Bundler
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -514,6 +517,16 @@ func (j *jsiiProxy_TypeScriptAppProject) Bundler() javascript.Bundler {
 	_jsii_.Get(
 		j,
 		"bundler",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptAppProject) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -1389,6 +1402,9 @@ type TypeScriptLibraryProject interface {
 	BuildWorkflowJobId() *string
 	// Deprecated: use `TypeScriptProject`.
 	Bundler() javascript.Bundler
+	// Whether to commit the managed files by default.
+	// Deprecated: use `TypeScriptProject`.
+	CommitGenerated() *bool
 	// Deprecated: use `TypeScriptProject`.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -1760,6 +1776,16 @@ func (j *jsiiProxy_TypeScriptLibraryProject) Bundler() javascript.Bundler {
 	_jsii_.Get(
 		j,
 		"bundler",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptLibraryProject) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -2607,6 +2633,9 @@ type TypeScriptLibraryProjectOptions struct {
 	// This is the name of your project.
 	// Deprecated: use TypeScriptProjectOptions.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Deprecated: use TypeScriptProjectOptions.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Deprecated: use TypeScriptProjectOptions.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
@@ -3189,6 +3218,9 @@ type TypeScriptProject interface {
 	BuildWorkflowJobId() *string
 	// Experimental.
 	Bundler() javascript.Bundler
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -3560,6 +3592,16 @@ func (j *jsiiProxy_TypeScriptProject) Bundler() javascript.Bundler {
 	_jsii_.Get(
 		j,
 		"bundler",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptProject) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -4407,6 +4449,9 @@ type TypeScriptProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`

@@ -513,6 +513,9 @@ type Cdk8sPythonApp interface {
 	BuildTask() projen.Task
 	// Experimental.
 	Cdk8sDeps() Cdk8sDeps
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -750,6 +753,16 @@ func (j *jsiiProxy_Cdk8sPythonApp) Cdk8sDeps() Cdk8sDeps {
 	_jsii_.Get(
 		j,
 		"cdk8sDeps",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Cdk8sPythonApp) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -1303,6 +1316,9 @@ type Cdk8sPythonOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
@@ -1592,6 +1608,9 @@ type Cdk8sTypeScriptApp interface {
 	Bundler() javascript.Bundler
 	// Experimental.
 	Cdk8sDeps() Cdk8sDeps
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -1983,6 +2002,16 @@ func (j *jsiiProxy_Cdk8sTypeScriptApp) Cdk8sDeps() Cdk8sDeps {
 	_jsii_.Get(
 		j,
 		"cdk8sDeps",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Cdk8sTypeScriptApp) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -2830,6 +2859,9 @@ type Cdk8sTypeScriptAppOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
@@ -3473,6 +3505,9 @@ type ConstructLibraryCdk8s interface {
 	// The CDK8s version this app is using.
 	// Experimental.
 	Cdk8sVersion() *string
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -3857,6 +3892,16 @@ func (j *jsiiProxy_ConstructLibraryCdk8s) Cdk8sVersion() *string {
 	_jsii_.Get(
 		j,
 		"cdk8sVersion",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryCdk8s) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -4714,6 +4759,9 @@ type ConstructLibraryCdk8sOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`

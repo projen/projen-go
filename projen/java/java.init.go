@@ -22,6 +22,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "annotateGenerated", GoMethod: "AnnotateGenerated"},
 			_jsii_.MemberProperty{JsiiProperty: "autoApprove", GoGetter: "AutoApprove"},
 			_jsii_.MemberProperty{JsiiProperty: "buildTask", GoGetter: "BuildTask"},
+			_jsii_.MemberProperty{JsiiProperty: "commitGenerated", GoGetter: "CommitGenerated"},
 			_jsii_.MemberProperty{JsiiProperty: "compile", GoGetter: "Compile"},
 			_jsii_.MemberProperty{JsiiProperty: "compileTask", GoGetter: "CompileTask"},
 			_jsii_.MemberProperty{JsiiProperty: "components", GoGetter: "Components"},

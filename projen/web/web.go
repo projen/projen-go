@@ -160,6 +160,9 @@ type NextJsProject interface {
 	BuildWorkflowJobId() *string
 	// Experimental.
 	Bundler() javascript.Bundler
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -524,6 +527,16 @@ func (j *jsiiProxy_NextJsProject) Bundler() javascript.Bundler {
 	_jsii_.Get(
 		j,
 		"bundler",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NextJsProject) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -1299,6 +1312,9 @@ type NextJsProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
@@ -1834,6 +1850,9 @@ type NextJsTypeScriptProject interface {
 	BuildWorkflowJobId() *string
 	// Experimental.
 	Bundler() javascript.Bundler
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -2220,6 +2239,16 @@ func (j *jsiiProxy_NextJsTypeScriptProject) Bundler() javascript.Bundler {
 	_jsii_.Get(
 		j,
 		"bundler",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NextJsTypeScriptProject) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -3085,6 +3114,9 @@ type NextJsTypeScriptProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
@@ -3872,6 +3904,9 @@ type ReactProject interface {
 	BuildWorkflowJobId() *string
 	// Experimental.
 	Bundler() javascript.Bundler
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -4221,6 +4256,16 @@ func (j *jsiiProxy_ReactProject) Bundler() javascript.Bundler {
 	_jsii_.Get(
 		j,
 		"bundler",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ReactProject) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -4978,6 +5023,9 @@ type ReactProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
@@ -5799,6 +5847,9 @@ type ReactTypeScriptProject interface {
 	BuildWorkflowJobId() *string
 	// Experimental.
 	Bundler() javascript.Bundler
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -6170,6 +6221,16 @@ func (j *jsiiProxy_ReactTypeScriptProject) Bundler() javascript.Bundler {
 	_jsii_.Get(
 		j,
 		"bundler",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ReactTypeScriptProject) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -7017,6 +7078,9 @@ type ReactTypeScriptProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`

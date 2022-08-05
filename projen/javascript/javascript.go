@@ -1931,6 +1931,9 @@ type NodeProject interface {
 	BuildWorkflowJobId() *string
 	// Experimental.
 	Bundler() Bundler
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated() *bool
 	// Experimental.
 	CompileTask() projen.Task
 	// Returns all the components within this project.
@@ -2277,6 +2280,16 @@ func (j *jsiiProxy_NodeProject) Bundler() Bundler {
 	_jsii_.Get(
 		j,
 		"bundler",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NodeProject) CommitGenerated() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"commitGenerated",
 		&returns,
 	)
 	return returns
@@ -3024,6 +3037,9 @@ type NodeProjectOptions struct {
 	// This is the name of your project.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
