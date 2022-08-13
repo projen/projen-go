@@ -1,0 +1,237 @@
+package github
+
+import (
+	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
+	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/projen/projen-go/projen"
+	"github.com/projen/projen-go/projen/github/internal"
+)
+
+// Experimental.
+type GitHub interface {
+	projen.Component
+	// The `Mergify` configured on this repository.
+	//
+	// This is `undefined` if Mergify
+	// was not enabled when creating the repository.
+	// Experimental.
+	Mergify() Mergify
+	// Experimental.
+	Project() projen.Project
+	// GitHub API authentication method used by projen workflows.
+	// Experimental.
+	ProjenCredentials() GithubCredentials
+	// All workflows.
+	// Experimental.
+	Workflows() *[]GithubWorkflow
+	// Are workflows enabled?
+	// Experimental.
+	WorkflowsEnabled() *bool
+	// Experimental.
+	AddDependabot(options *DependabotOptions) Dependabot
+	// Experimental.
+	AddPullRequestTemplate(content ...*string) PullRequestTemplate
+	// Adds a workflow to the project.
+	//
+	// Returns: a GithubWorkflow instance.
+	// Experimental.
+	AddWorkflow(name *string) GithubWorkflow
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
+	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
+	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
+	Synthesize()
+	// Finds a GitHub workflow by name.
+	//
+	// Returns `undefined` if the workflow cannot be found.
+	// Experimental.
+	TryFindWorkflow(name *string) GithubWorkflow
+}
+
+// The jsii proxy struct for GitHub
+type jsiiProxy_GitHub struct {
+	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_GitHub) Mergify() Mergify {
+	var returns Mergify
+	_jsii_.Get(
+		j,
+		"mergify",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHub) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHub) ProjenCredentials() GithubCredentials {
+	var returns GithubCredentials
+	_jsii_.Get(
+		j,
+		"projenCredentials",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHub) Workflows() *[]GithubWorkflow {
+	var returns *[]GithubWorkflow
+	_jsii_.Get(
+		j,
+		"workflows",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHub) WorkflowsEnabled() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"workflowsEnabled",
+		&returns,
+	)
+	return returns
+}
+
+
+// Experimental.
+func NewGitHub(project projen.Project, options *GitHubOptions) GitHub {
+	_init_.Initialize()
+
+	j := jsiiProxy_GitHub{}
+
+	_jsii_.Create(
+		"projen.github.GitHub",
+		[]interface{}{project, options},
+		&j,
+	)
+
+	return &j
+}
+
+// Experimental.
+func NewGitHub_Override(g GitHub, project projen.Project, options *GitHubOptions) {
+	_init_.Initialize()
+
+	_jsii_.Create(
+		"projen.github.GitHub",
+		[]interface{}{project, options},
+		g,
+	)
+}
+
+// Returns the `GitHub` component of a project or `undefined` if the project does not have a GitHub component.
+// Experimental.
+func GitHub_Of(project projen.Project) GitHub {
+	_init_.Initialize()
+
+	var returns GitHub
+
+	_jsii_.StaticInvoke(
+		"projen.github.GitHub",
+		"of",
+		[]interface{}{project},
+		&returns,
+	)
+
+	return returns
+}
+
+func (g *jsiiProxy_GitHub) AddDependabot(options *DependabotOptions) Dependabot {
+	var returns Dependabot
+
+	_jsii_.Invoke(
+		g,
+		"addDependabot",
+		[]interface{}{options},
+		&returns,
+	)
+
+	return returns
+}
+
+func (g *jsiiProxy_GitHub) AddPullRequestTemplate(content ...*string) PullRequestTemplate {
+	args := []interface{}{}
+	for _, a := range content {
+		args = append(args, a)
+	}
+
+	var returns PullRequestTemplate
+
+	_jsii_.Invoke(
+		g,
+		"addPullRequestTemplate",
+		args,
+		&returns,
+	)
+
+	return returns
+}
+
+func (g *jsiiProxy_GitHub) AddWorkflow(name *string) GithubWorkflow {
+	var returns GithubWorkflow
+
+	_jsii_.Invoke(
+		g,
+		"addWorkflow",
+		[]interface{}{name},
+		&returns,
+	)
+
+	return returns
+}
+
+func (g *jsiiProxy_GitHub) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		g,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+func (g *jsiiProxy_GitHub) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		g,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+func (g *jsiiProxy_GitHub) Synthesize() {
+	_jsii_.InvokeVoid(
+		g,
+		"synthesize",
+		nil, // no parameters
+	)
+}
+
+func (g *jsiiProxy_GitHub) TryFindWorkflow(name *string) GithubWorkflow {
+	var returns GithubWorkflow
+
+	_jsii_.Invoke(
+		g,
+		"tryFindWorkflow",
+		[]interface{}{name},
+		&returns,
+	)
+
+	return returns
+}
+

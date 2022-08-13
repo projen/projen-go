@@ -1,2129 +1,342 @@
 package gitlab
 
 import (
+	"reflect"
+
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
-	_init_ "github.com/projen/projen-go/projen/jsii"
-
-	"github.com/projen/projen-go/projen"
-	"github.com/projen/projen-go/projen/gitlab/internal"
 )
 
-// Specifies what this job will do.
-//
-// 'start' (default) indicates the job will start the
-// deployment. 'prepare' indicates this will not affect the deployment. 'stop' indicates
-// this will stop the deployment.
-// Experimental.
-type Action string
-
-const (
-	// Experimental.
-	Action_PREPARE Action = "PREPARE"
-	// Experimental.
-	Action_START Action = "START"
-	// Experimental.
-	Action_STOP Action = "STOP"
-)
-
-// Exit code that are not considered failure.
-//
-// The job fails for any other exit code.
-// You can list which exit codes are not considered failures. The job fails for any other
-// exit code.
-// See: https://docs.gitlab.com/ee/ci/yaml/#allow_failure
-//
-// Experimental.
-type AllowFailure struct {
-	// Experimental.
-	ExitCodes interface{} `field:"required" json:"exitCodes" yaml:"exitCodes"`
-}
-
-// Used to specify a list of files and directories that should be attached to the job if it succeeds.
-//
-// Artifacts are sent to Gitlab where they can be downloaded.
-// See: https://docs.gitlab.com/ee/ci/yaml/#artifacts
-//
-// Experimental.
-type Artifacts struct {
-	// A list of paths to files/folders that should be excluded in the artifact.
-	// Experimental.
-	Exclude *[]*string `field:"optional" json:"exclude" yaml:"exclude"`
-	// How long artifacts should be kept.
-	//
-	// They are saved 30 days by default. Artifacts that have expired are removed periodically via cron job. Supports a wide variety of formats, e.g. '1 week', '3 mins 4 sec', '2 hrs 20 min', '2h20min', '6 mos 1 day', '47 yrs 6 mos and 4d', '3 weeks and 2 days'.
-	// Experimental.
-	ExpireIn *string `field:"optional" json:"expireIn" yaml:"expireIn"`
-	// Can be used to expose job artifacts in the merge request UI.
-	//
-	// GitLab will add a link <expose_as> to the relevant merge request that points to the artifact.
-	// Experimental.
-	ExposeAs *string `field:"optional" json:"exposeAs" yaml:"exposeAs"`
-	// Name for the archive created on job success.
-	//
-	// Can use variables in the name, e.g. '$CI_JOB_NAME'
-	// Experimental.
-	Name *string `field:"optional" json:"name" yaml:"name"`
-	// A list of paths to files/folders that should be included in the artifact.
-	// Experimental.
-	Paths *[]*string `field:"optional" json:"paths" yaml:"paths"`
-	// Reports will be uploaded as artifacts, and often displayed in the Gitlab UI, such as in Merge Requests.
-	// Experimental.
-	Reports *Reports `field:"optional" json:"reports" yaml:"reports"`
-	// Whether to add all untracked files (along with 'artifacts.paths') to the artifact.
-	// Experimental.
-	Untracked *bool `field:"optional" json:"untracked" yaml:"untracked"`
-	// Configure when artifacts are uploaded depended on job status.
-	// Experimental.
-	When CacheWhen `field:"optional" json:"when" yaml:"when"`
-}
-
-// Asset configuration for a release.
-// Experimental.
-type Assets struct {
-	// Include asset links in the release.
-	// Experimental.
-	Links *[]*Link `field:"required" json:"links" yaml:"links"`
-}
-
-// Cache Definition.
-// See: https://docs.gitlab.com/ee/ci/yaml/#cache
-//
-// Experimental.
-type Cache struct {
-	// Used the to give each cache a unique identifying key.
-	//
-	// All jobs that use the same cache key use the same cache.
-	// Experimental.
-	Key interface{} `field:"optional" json:"key" yaml:"key"`
-	// Defines which files or directories to cache.
-	// Experimental.
-	Paths *[]*string `field:"optional" json:"paths" yaml:"paths"`
-	// Defines the upload and download behaviour of the cache.
-	// Experimental.
-	Policy CachePolicy `field:"optional" json:"policy" yaml:"policy"`
-	// If set to true all files that are untracked in your Git repository will be cached.
-	// Experimental.
-	Untracked *bool `field:"optional" json:"untracked" yaml:"untracked"`
-	// Defines when to save the cache, based on the status of the job (Default: Job Success).
-	// Experimental.
-	When CacheWhen `field:"optional" json:"when" yaml:"when"`
-}
-
-// Use this construct to generate a new key when one or two specific files change.
-// See: https://docs.gitlab.com/ee/ci/yaml/#cachekeyfiles
-//
-// Experimental.
-type CacheKeyFiles struct {
-	// The files that are checked against.
-	//
-	// If the SHA checksum changes, the cache becomes invalid.
-	// Experimental.
-	Files *[]*string `field:"required" json:"files" yaml:"files"`
-	// Adds a custom prefix to the checksums computed.
-	// Experimental.
-	Prefix *string `field:"optional" json:"prefix" yaml:"prefix"`
-}
-
-// Configure the upload and download behaviour of a cache.
-// See: https://docs.gitlab.com/ee/ci/yaml/#cachepolicy
-//
-// Experimental.
-type CachePolicy string
-
-const (
-	// Only download the cache when the job starts, but never upload changes when the job finishes.
-	// Experimental.
-	CachePolicy_PULL CachePolicy = "PULL"
-	// Only upload a cache when the job finishes, but never download the cache when the job starts.
-	// Experimental.
-	CachePolicy_PUSH CachePolicy = "PUSH"
-	// The job downloads the cache when the job starts, and uploads changes to the cache when the job ends.
-	// Experimental.
-	CachePolicy_PULL_PUSH CachePolicy = "PULL_PUSH"
-)
-
-// Configure when artifacts are uploaded depended on job status.
-// See: https://docs.gitlab.com/ee/ci/yaml/#cachewhen
-//
-// Experimental.
-type CacheWhen string
-
-const (
-	// Upload artifacts regardless of job status.
-	// Experimental.
-	CacheWhen_ALWAYS CacheWhen = "ALWAYS"
-	// Upload artifacts only when the job fails.
-	// Experimental.
-	CacheWhen_ON_FAILURE CacheWhen = "ON_FAILURE"
-	// Upload artifacts only when the job succeeds (this is the default).
-	// Experimental.
-	CacheWhen_ON_SUCCESS CacheWhen = "ON_SUCCESS"
-)
-
-// CI for GitLab.
-//
-// A CI is a configurable automated process made up of one or more stages/jobs.
-// See: https://docs.gitlab.com/ee/ci/yaml/
-//
-// Experimental.
-type CiConfiguration interface {
-	projen.Component
-	// Defines default scripts that should run *after* all jobs.
-	//
-	// Can be overriden by the job level `afterScript`.
-	// Experimental.
-	DefaultAfterScript() *[]*string
-	// Default list of files and directories that should be attached to the job if it succeeds.
-	//
-	// Artifacts are sent to Gitlab where they can be downloaded.
-	// Experimental.
-	DefaultArtifacts() *Artifacts
-	// Defines default scripts that should run *before* all jobs.
-	//
-	// Can be overriden by the job level `afterScript`.
-	// Experimental.
-	DefaultBeforeScript() *[]*string
-	// A default list of files and directories to cache between jobs.
-	//
-	// You can only use paths that are in the local working copy.
-	// Experimental.
-	DefaultCache() *Cache
-	// Specifies the default docker image to use globally for all jobs.
-	// Experimental.
-	DefaultImage() *Image
-	// The default behavior for whether a job should be canceled when a newer pipeline starts before the job completes (Default: false).
-	// Experimental.
-	DefaultInterruptible() *bool
-	// How many times a job is retried if it fails.
-	//
-	// If not defined, defaults to 0 and jobs do not retry.
-	// Experimental.
-	DefaultRetry() *Retry
-	// Used to select a specific runner from the list of all runners that are available for the project.
-	// Experimental.
-	DefaultTags() *[]*string
-	// A default timeout job written in natural language (Ex.
-	//
-	// one hour, 3600 seconds, 60 minutes).
-	// Experimental.
-	DefaultTimeout() *string
-	// The workflow YAML file.
-	// Experimental.
-	File() projen.YamlFile
-	// The jobs in the CI configuration.
-	// Experimental.
-	Jobs() *map[string]*Job
-	// The name of the configuration.
-	// Experimental.
-	Name() *string
-	// A special job used to upload static sites to Gitlab pages.
-	//
-	// Requires a `public/` directory
-	// with `artifacts.path` pointing to it.
-	// Experimental.
-	Pages() *Job
-	// Path to CI file generated by the configuration.
-	// Experimental.
-	Path() *string
-	// The project the configuration belongs to.
-	// Experimental.
-	Project() projen.Project
-	// Groups jobs into stages.
-	//
-	// All jobs in one stage must complete before next stage is
-	// executed. Defaults to ['build', 'test', 'deploy'].
-	// Experimental.
-	Stages() *[]*string
-	// Global variables that are passed to jobs.
-	//
-	// If the job already has that variable defined, the job-level variable takes precedence.
-	// Experimental.
-	Variables() *map[string]interface{}
-	// Used to control pipeline behavior.
-	// Experimental.
-	Workflow() *Workflow
-	// Add a globally defined variable to the CI configuration.
-	// Experimental.
-	AddGlobalVariables(variables *map[string]interface{})
-	// Add additional yml/yaml files to the CI includes.
-	// Experimental.
-	AddIncludes(includes ...*Include)
-	// Add jobs and their stages to the CI configuration.
-	// Experimental.
-	AddJobs(jobs *map[string]*Job)
-	// Add additional services.
-	// Experimental.
-	AddServices(services ...*Service)
-	// Add stages to the CI configuration if not already present.
-	// Experimental.
-	AddStages(stages ...*string)
-	// Called after synthesis.
-	//
-	// Order is *not* guaranteed.
-	// Experimental.
-	PostSynthesize()
-	// Called before synthesis.
-	// Experimental.
-	PreSynthesize()
-	// Synthesizes files to the project output directory.
-	// Experimental.
-	Synthesize()
-}
-
-// The jsii proxy struct for CiConfiguration
-type jsiiProxy_CiConfiguration struct {
-	internal.Type__projenComponent
-}
-
-func (j *jsiiProxy_CiConfiguration) DefaultAfterScript() *[]*string {
-	var returns *[]*string
-	_jsii_.Get(
-		j,
-		"defaultAfterScript",
-		&returns,
+func init() {
+	_jsii_.RegisterEnum(
+		"projen.gitlab.Action",
+		reflect.TypeOf((*Action)(nil)).Elem(),
+		map[string]interface{}{
+			"PREPARE": Action_PREPARE,
+			"START": Action_START,
+			"STOP": Action_STOP,
+		},
 	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) DefaultArtifacts() *Artifacts {
-	var returns *Artifacts
-	_jsii_.Get(
-		j,
-		"defaultArtifacts",
-		&returns,
+	_jsii_.RegisterStruct(
+		"projen.gitlab.AllowFailure",
+		reflect.TypeOf((*AllowFailure)(nil)).Elem(),
 	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) DefaultBeforeScript() *[]*string {
-	var returns *[]*string
-	_jsii_.Get(
-		j,
-		"defaultBeforeScript",
-		&returns,
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Artifacts",
+		reflect.TypeOf((*Artifacts)(nil)).Elem(),
 	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) DefaultCache() *Cache {
-	var returns *Cache
-	_jsii_.Get(
-		j,
-		"defaultCache",
-		&returns,
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Assets",
+		reflect.TypeOf((*Assets)(nil)).Elem(),
 	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) DefaultImage() *Image {
-	var returns *Image
-	_jsii_.Get(
-		j,
-		"defaultImage",
-		&returns,
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Cache",
+		reflect.TypeOf((*Cache)(nil)).Elem(),
 	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) DefaultInterruptible() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"defaultInterruptible",
-		&returns,
+	_jsii_.RegisterStruct(
+		"projen.gitlab.CacheKeyFiles",
+		reflect.TypeOf((*CacheKeyFiles)(nil)).Elem(),
 	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) DefaultRetry() *Retry {
-	var returns *Retry
-	_jsii_.Get(
-		j,
-		"defaultRetry",
-		&returns,
+	_jsii_.RegisterEnum(
+		"projen.gitlab.CachePolicy",
+		reflect.TypeOf((*CachePolicy)(nil)).Elem(),
+		map[string]interface{}{
+			"PULL": CachePolicy_PULL,
+			"PUSH": CachePolicy_PUSH,
+			"PULL_PUSH": CachePolicy_PULL_PUSH,
+		},
 	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) DefaultTags() *[]*string {
-	var returns *[]*string
-	_jsii_.Get(
-		j,
-		"defaultTags",
-		&returns,
+	_jsii_.RegisterEnum(
+		"projen.gitlab.CacheWhen",
+		reflect.TypeOf((*CacheWhen)(nil)).Elem(),
+		map[string]interface{}{
+			"ALWAYS": CacheWhen_ALWAYS,
+			"ON_FAILURE": CacheWhen_ON_FAILURE,
+			"ON_SUCCESS": CacheWhen_ON_SUCCESS,
+		},
 	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) DefaultTimeout() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"defaultTimeout",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) File() projen.YamlFile {
-	var returns projen.YamlFile
-	_jsii_.Get(
-		j,
-		"file",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) Jobs() *map[string]*Job {
-	var returns *map[string]*Job
-	_jsii_.Get(
-		j,
-		"jobs",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) Name() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"name",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) Pages() *Job {
-	var returns *Job
-	_jsii_.Get(
-		j,
-		"pages",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) Path() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"path",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) Project() projen.Project {
-	var returns projen.Project
-	_jsii_.Get(
-		j,
-		"project",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) Stages() *[]*string {
-	var returns *[]*string
-	_jsii_.Get(
-		j,
-		"stages",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) Variables() *map[string]interface{} {
-	var returns *map[string]interface{}
-	_jsii_.Get(
-		j,
-		"variables",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_CiConfiguration) Workflow() *Workflow {
-	var returns *Workflow
-	_jsii_.Get(
-		j,
-		"workflow",
-		&returns,
-	)
-	return returns
-}
-
-
-// Experimental.
-func NewCiConfiguration(project projen.Project, name *string, options *CiConfigurationOptions) CiConfiguration {
-	_init_.Initialize()
-
-	j := jsiiProxy_CiConfiguration{}
-
-	_jsii_.Create(
+	_jsii_.RegisterClass(
 		"projen.gitlab.CiConfiguration",
-		[]interface{}{project, name, options},
-		&j,
+		reflect.TypeOf((*CiConfiguration)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addGlobalVariables", GoMethod: "AddGlobalVariables"},
+			_jsii_.MemberMethod{JsiiMethod: "addIncludes", GoMethod: "AddIncludes"},
+			_jsii_.MemberMethod{JsiiMethod: "addJobs", GoMethod: "AddJobs"},
+			_jsii_.MemberMethod{JsiiMethod: "addServices", GoMethod: "AddServices"},
+			_jsii_.MemberMethod{JsiiMethod: "addStages", GoMethod: "AddStages"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultAfterScript", GoGetter: "DefaultAfterScript"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultArtifacts", GoGetter: "DefaultArtifacts"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultBeforeScript", GoGetter: "DefaultBeforeScript"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultCache", GoGetter: "DefaultCache"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultImage", GoGetter: "DefaultImage"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultInterruptible", GoGetter: "DefaultInterruptible"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultRetry", GoGetter: "DefaultRetry"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultTags", GoGetter: "DefaultTags"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultTimeout", GoGetter: "DefaultTimeout"},
+			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
+			_jsii_.MemberProperty{JsiiProperty: "jobs", GoGetter: "Jobs"},
+			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
+			_jsii_.MemberProperty{JsiiProperty: "pages", GoGetter: "Pages"},
+			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberProperty{JsiiProperty: "stages", GoGetter: "Stages"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "variables", GoGetter: "Variables"},
+			_jsii_.MemberProperty{JsiiProperty: "workflow", GoGetter: "Workflow"},
+		},
+		func() interface{} {
+			j := jsiiProxy_CiConfiguration{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
 	)
-
-	return &j
-}
-
-// Experimental.
-func NewCiConfiguration_Override(c CiConfiguration, project projen.Project, name *string, options *CiConfigurationOptions) {
-	_init_.Initialize()
-
-	_jsii_.Create(
-		"projen.gitlab.CiConfiguration",
-		[]interface{}{project, name, options},
-		c,
+	_jsii_.RegisterStruct(
+		"projen.gitlab.CiConfigurationOptions",
+		reflect.TypeOf((*CiConfigurationOptions)(nil)).Elem(),
 	)
-}
-
-func (c *jsiiProxy_CiConfiguration) AddGlobalVariables(variables *map[string]interface{}) {
-	_jsii_.InvokeVoid(
-		c,
-		"addGlobalVariables",
-		[]interface{}{variables},
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Default",
+		reflect.TypeOf((*Default)(nil)).Elem(),
 	)
-}
-
-func (c *jsiiProxy_CiConfiguration) AddIncludes(includes ...*Include) {
-	args := []interface{}{}
-	for _, a := range includes {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		c,
-		"addIncludes",
-		args,
+	_jsii_.RegisterEnum(
+		"projen.gitlab.DefaultElement",
+		reflect.TypeOf((*DefaultElement)(nil)).Elem(),
+		map[string]interface{}{
+			"AFTER_SCRIPT": DefaultElement_AFTER_SCRIPT,
+			"ARTIFACTS": DefaultElement_ARTIFACTS,
+			"BEFORE_SCRIPT": DefaultElement_BEFORE_SCRIPT,
+			"CACHE": DefaultElement_CACHE,
+			"IMAGE": DefaultElement_IMAGE,
+			"INTERRUPTIBLE": DefaultElement_INTERRUPTIBLE,
+			"RETRY": DefaultElement_RETRY,
+			"SERVICES": DefaultElement_SERVICES,
+			"TAGS": DefaultElement_TAGS,
+			"TIMEOUT": DefaultElement_TIMEOUT,
+		},
 	)
-}
-
-func (c *jsiiProxy_CiConfiguration) AddJobs(jobs *map[string]*Job) {
-	_jsii_.InvokeVoid(
-		c,
-		"addJobs",
-		[]interface{}{jobs},
+	_jsii_.RegisterEnum(
+		"projen.gitlab.DeploymentTier",
+		reflect.TypeOf((*DeploymentTier)(nil)).Elem(),
+		map[string]interface{}{
+			"DEVELOPMENT": DeploymentTier_DEVELOPMENT,
+			"OTHER": DeploymentTier_OTHER,
+			"PRODUCTION": DeploymentTier_PRODUCTION,
+			"STAGING": DeploymentTier_STAGING,
+			"TESTING": DeploymentTier_TESTING,
+		},
 	)
-}
-
-func (c *jsiiProxy_CiConfiguration) AddServices(services ...*Service) {
-	args := []interface{}{}
-	for _, a := range services {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		c,
-		"addServices",
-		args,
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Engine",
+		reflect.TypeOf((*Engine)(nil)).Elem(),
 	)
-}
-
-func (c *jsiiProxy_CiConfiguration) AddStages(stages ...*string) {
-	args := []interface{}{}
-	for _, a := range stages {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		c,
-		"addStages",
-		args,
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Environment",
+		reflect.TypeOf((*Environment)(nil)).Elem(),
 	)
-}
-
-func (c *jsiiProxy_CiConfiguration) PostSynthesize() {
-	_jsii_.InvokeVoid(
-		c,
-		"postSynthesize",
-		nil, // no parameters
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Filter",
+		reflect.TypeOf((*Filter)(nil)).Elem(),
 	)
-}
-
-func (c *jsiiProxy_CiConfiguration) PreSynthesize() {
-	_jsii_.InvokeVoid(
-		c,
-		"preSynthesize",
-		nil, // no parameters
-	)
-}
-
-func (c *jsiiProxy_CiConfiguration) Synthesize() {
-	_jsii_.InvokeVoid(
-		c,
-		"synthesize",
-		nil, // no parameters
-	)
-}
-
-// Options for `CiConfiguration`.
-// Experimental.
-type CiConfigurationOptions struct {
-	// Default settings for the CI Configuration.
-	//
-	// Jobs that do not define one or more of the listed keywords use the value defined in the default section.
-	// Experimental.
-	Default *Default `field:"optional" json:"default" yaml:"default"`
-	// An initial set of jobs to add to the configuration.
-	// Experimental.
-	Jobs *map[string]*Job `field:"optional" json:"jobs" yaml:"jobs"`
-	// A special job used to upload static sites to Gitlab pages.
-	//
-	// Requires a `public/` directory
-	// with `artifacts.path` pointing to it.
-	// Experimental.
-	Pages *Job `field:"optional" json:"pages" yaml:"pages"`
-	// Groups jobs into stages.
-	//
-	// All jobs in one stage must complete before next stage is
-	// executed. If no stages are specified. Defaults to ['build', 'test', 'deploy'].
-	// Experimental.
-	Stages *[]*string `field:"optional" json:"stages" yaml:"stages"`
-	// Global variables that are passed to jobs.
-	//
-	// If the job already has that variable defined, the job-level variable takes precedence.
-	// Experimental.
-	Variables *map[string]interface{} `field:"optional" json:"variables" yaml:"variables"`
-	// Used to control pipeline behavior.
-	// Experimental.
-	Workflow *Workflow `field:"optional" json:"workflow" yaml:"workflow"`
-}
-
-// Default settings for the CI Configuration.
-//
-// Jobs that do not define one or more of the listed keywords use the value defined in the default section.
-// See: https://docs.gitlab.com/ee/ci/yaml/#default
-//
-// Experimental.
-type Default struct {
-	// Experimental.
-	AfterScript *[]*string `field:"optional" json:"afterScript" yaml:"afterScript"`
-	// Experimental.
-	Artifacts *Artifacts `field:"optional" json:"artifacts" yaml:"artifacts"`
-	// Experimental.
-	BeforeScript *[]*string `field:"optional" json:"beforeScript" yaml:"beforeScript"`
-	// Experimental.
-	Cache *Cache `field:"optional" json:"cache" yaml:"cache"`
-	// Experimental.
-	Image *Image `field:"optional" json:"image" yaml:"image"`
-	// Experimental.
-	Interruptible *bool `field:"optional" json:"interruptible" yaml:"interruptible"`
-	// Experimental.
-	Retry *Retry `field:"optional" json:"retry" yaml:"retry"`
-	// Experimental.
-	Services *[]*Service `field:"optional" json:"services" yaml:"services"`
-	// Experimental.
-	Tags *[]*string `field:"optional" json:"tags" yaml:"tags"`
-	// Experimental.
-	Timeout *string `field:"optional" json:"timeout" yaml:"timeout"`
-}
-
-// Experimental.
-type DefaultElement string
-
-const (
-	// Experimental.
-	DefaultElement_AFTER_SCRIPT DefaultElement = "AFTER_SCRIPT"
-	// Experimental.
-	DefaultElement_ARTIFACTS DefaultElement = "ARTIFACTS"
-	// Experimental.
-	DefaultElement_BEFORE_SCRIPT DefaultElement = "BEFORE_SCRIPT"
-	// Experimental.
-	DefaultElement_CACHE DefaultElement = "CACHE"
-	// Experimental.
-	DefaultElement_IMAGE DefaultElement = "IMAGE"
-	// Experimental.
-	DefaultElement_INTERRUPTIBLE DefaultElement = "INTERRUPTIBLE"
-	// Experimental.
-	DefaultElement_RETRY DefaultElement = "RETRY"
-	// Experimental.
-	DefaultElement_SERVICES DefaultElement = "SERVICES"
-	// Experimental.
-	DefaultElement_TAGS DefaultElement = "TAGS"
-	// Experimental.
-	DefaultElement_TIMEOUT DefaultElement = "TIMEOUT"
-)
-
-// Explicitly specifies the tier of the deployment environment if non-standard environment name is used.
-// Experimental.
-type DeploymentTier string
-
-const (
-	// Experimental.
-	DeploymentTier_DEVELOPMENT DeploymentTier = "DEVELOPMENT"
-	// Experimental.
-	DeploymentTier_OTHER DeploymentTier = "OTHER"
-	// Experimental.
-	DeploymentTier_PRODUCTION DeploymentTier = "PRODUCTION"
-	// Experimental.
-	DeploymentTier_STAGING DeploymentTier = "STAGING"
-	// Experimental.
-	DeploymentTier_TESTING DeploymentTier = "TESTING"
-)
-
-// The engine configuration for a secret.
-// Experimental.
-type Engine struct {
-	// Name of the secrets engine.
-	// Experimental.
-	Name *string `field:"required" json:"name" yaml:"name"`
-	// Path to the secrets engine.
-	// Experimental.
-	Path *string `field:"required" json:"path" yaml:"path"`
-}
-
-// The environment that a job deploys to.
-// Experimental.
-type Environment struct {
-	// The name of the environment, e.g. 'qa', 'staging', 'production'.
-	// Experimental.
-	Name *string `field:"required" json:"name" yaml:"name"`
-	// Specifies what this job will do.
-	//
-	// 'start' (default) indicates the job will start the deployment. 'prepare' indicates this will not affect the deployment. 'stop' indicates this will stop the deployment.
-	// Experimental.
-	Action Action `field:"optional" json:"action" yaml:"action"`
-	// The amount of time it should take before Gitlab will automatically stop the environment.
-	//
-	// Supports a wide variety of formats, e.g. '1 week', '3 mins 4 sec', '2 hrs 20 min', '2h20min', '6 mos 1 day', '47 yrs 6 mos and 4d', '3 weeks and 2 days'.
-	// Experimental.
-	AutoStopIn *string `field:"optional" json:"autoStopIn" yaml:"autoStopIn"`
-	// Explicitly specifies the tier of the deployment environment if non-standard environment name is used.
-	// Experimental.
-	DeploymentTier DeploymentTier `field:"optional" json:"deploymentTier" yaml:"deploymentTier"`
-	// Used to configure the kubernetes deployment for this environment.
-	//
-	// This is currently not supported for kubernetes clusters that are managed by Gitlab.
-	// Experimental.
-	Kubernetes *KubernetesConfig `field:"optional" json:"kubernetes" yaml:"kubernetes"`
-	// The name of a job to execute when the environment is about to be stopped.
-	// Experimental.
-	OnStop *string `field:"optional" json:"onStop" yaml:"onStop"`
-	// When set, this will expose buttons in various places for the current environment in Gitlab, that will take you to the defined URL.
-	// Experimental.
-	Url *string `field:"optional" json:"url" yaml:"url"`
-}
-
-// Filtering options for when a job will run.
-// Experimental.
-type Filter struct {
-	// Filter job creation based on files that were modified in a git push.
-	// Experimental.
-	Changes *[]*string `field:"optional" json:"changes" yaml:"changes"`
-	// Filter job based on if Kubernetes integration is active.
-	// Experimental.
-	Kubernetes KubernetesEnum `field:"optional" json:"kubernetes" yaml:"kubernetes"`
-	// Control when to add jobs to a pipeline based on branch names or pipeline types.
-	// Experimental.
-	Refs *[]*string `field:"optional" json:"refs" yaml:"refs"`
-	// Filter job by checking comparing values of environment variables.
-	//
-	// Read more about variable expressions: https://docs.gitlab.com/ee/ci/variables/README.html#variables-expressions
-	// Experimental.
-	Variables *[]*string `field:"optional" json:"variables" yaml:"variables"`
-}
-
-// A GitLab CI for the main `.gitlab-ci.yml` file.
-// Experimental.
-type GitlabConfiguration interface {
-	CiConfiguration
-	// Defines default scripts that should run *after* all jobs.
-	//
-	// Can be overriden by the job level `afterScript`.
-	// Experimental.
-	DefaultAfterScript() *[]*string
-	// Default list of files and directories that should be attached to the job if it succeeds.
-	//
-	// Artifacts are sent to Gitlab where they can be downloaded.
-	// Experimental.
-	DefaultArtifacts() *Artifacts
-	// Defines default scripts that should run *before* all jobs.
-	//
-	// Can be overriden by the job level `afterScript`.
-	// Experimental.
-	DefaultBeforeScript() *[]*string
-	// A default list of files and directories to cache between jobs.
-	//
-	// You can only use paths that are in the local working copy.
-	// Experimental.
-	DefaultCache() *Cache
-	// Specifies the default docker image to use globally for all jobs.
-	// Experimental.
-	DefaultImage() *Image
-	// The default behavior for whether a job should be canceled when a newer pipeline starts before the job completes (Default: false).
-	// Experimental.
-	DefaultInterruptible() *bool
-	// How many times a job is retried if it fails.
-	//
-	// If not defined, defaults to 0 and jobs do not retry.
-	// Experimental.
-	DefaultRetry() *Retry
-	// Used to select a specific runner from the list of all runners that are available for the project.
-	// Experimental.
-	DefaultTags() *[]*string
-	// A default timeout job written in natural language (Ex.
-	//
-	// one hour, 3600 seconds, 60 minutes).
-	// Experimental.
-	DefaultTimeout() *string
-	// The workflow YAML file.
-	// Experimental.
-	File() projen.YamlFile
-	// The jobs in the CI configuration.
-	// Experimental.
-	Jobs() *map[string]*Job
-	// The name of the configuration.
-	// Experimental.
-	Name() *string
-	// Experimental.
-	NestedTemplates() *map[string]NestedConfiguration
-	// A special job used to upload static sites to Gitlab pages.
-	//
-	// Requires a `public/` directory
-	// with `artifacts.path` pointing to it.
-	// Experimental.
-	Pages() *Job
-	// Path to CI file generated by the configuration.
-	// Experimental.
-	Path() *string
-	// The project the configuration belongs to.
-	// Experimental.
-	Project() projen.Project
-	// Groups jobs into stages.
-	//
-	// All jobs in one stage must complete before next stage is
-	// executed. Defaults to ['build', 'test', 'deploy'].
-	// Experimental.
-	Stages() *[]*string
-	// Global variables that are passed to jobs.
-	//
-	// If the job already has that variable defined, the job-level variable takes precedence.
-	// Experimental.
-	Variables() *map[string]interface{}
-	// Used to control pipeline behavior.
-	// Experimental.
-	Workflow() *Workflow
-	// Add a globally defined variable to the CI configuration.
-	// Experimental.
-	AddGlobalVariables(variables *map[string]interface{})
-	// Add additional yml/yaml files to the CI includes.
-	// Experimental.
-	AddIncludes(includes ...*Include)
-	// Add jobs and their stages to the CI configuration.
-	// Experimental.
-	AddJobs(jobs *map[string]*Job)
-	// Add additional services.
-	// Experimental.
-	AddServices(services ...*Service)
-	// Add stages to the CI configuration if not already present.
-	// Experimental.
-	AddStages(stages ...*string)
-	// Creates and adds nested templates to the includes of the main CI.
-	//
-	// Additionally adds their stages to the main CI if they are not already present.
-	// You can futher customize nested templates through the `nestedTemplates` property.
-	// E.g. gitlabConfig.nestedTemplates['templateName']?.addStages('stageName')
-	// Experimental.
-	CreateNestedTemplates(config *map[string]*CiConfigurationOptions)
-	// Called after synthesis.
-	//
-	// Order is *not* guaranteed.
-	// Experimental.
-	PostSynthesize()
-	// Called before synthesis.
-	// Experimental.
-	PreSynthesize()
-	// Synthesizes files to the project output directory.
-	// Experimental.
-	Synthesize()
-}
-
-// The jsii proxy struct for GitlabConfiguration
-type jsiiProxy_GitlabConfiguration struct {
-	jsiiProxy_CiConfiguration
-}
-
-func (j *jsiiProxy_GitlabConfiguration) DefaultAfterScript() *[]*string {
-	var returns *[]*string
-	_jsii_.Get(
-		j,
-		"defaultAfterScript",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) DefaultArtifacts() *Artifacts {
-	var returns *Artifacts
-	_jsii_.Get(
-		j,
-		"defaultArtifacts",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) DefaultBeforeScript() *[]*string {
-	var returns *[]*string
-	_jsii_.Get(
-		j,
-		"defaultBeforeScript",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) DefaultCache() *Cache {
-	var returns *Cache
-	_jsii_.Get(
-		j,
-		"defaultCache",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) DefaultImage() *Image {
-	var returns *Image
-	_jsii_.Get(
-		j,
-		"defaultImage",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) DefaultInterruptible() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"defaultInterruptible",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) DefaultRetry() *Retry {
-	var returns *Retry
-	_jsii_.Get(
-		j,
-		"defaultRetry",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) DefaultTags() *[]*string {
-	var returns *[]*string
-	_jsii_.Get(
-		j,
-		"defaultTags",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) DefaultTimeout() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"defaultTimeout",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) File() projen.YamlFile {
-	var returns projen.YamlFile
-	_jsii_.Get(
-		j,
-		"file",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) Jobs() *map[string]*Job {
-	var returns *map[string]*Job
-	_jsii_.Get(
-		j,
-		"jobs",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) Name() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"name",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) NestedTemplates() *map[string]NestedConfiguration {
-	var returns *map[string]NestedConfiguration
-	_jsii_.Get(
-		j,
-		"nestedTemplates",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) Pages() *Job {
-	var returns *Job
-	_jsii_.Get(
-		j,
-		"pages",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) Path() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"path",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) Project() projen.Project {
-	var returns projen.Project
-	_jsii_.Get(
-		j,
-		"project",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) Stages() *[]*string {
-	var returns *[]*string
-	_jsii_.Get(
-		j,
-		"stages",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) Variables() *map[string]interface{} {
-	var returns *map[string]interface{}
-	_jsii_.Get(
-		j,
-		"variables",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_GitlabConfiguration) Workflow() *Workflow {
-	var returns *Workflow
-	_jsii_.Get(
-		j,
-		"workflow",
-		&returns,
-	)
-	return returns
-}
-
-
-// Experimental.
-func NewGitlabConfiguration(project projen.Project, options *CiConfigurationOptions) GitlabConfiguration {
-	_init_.Initialize()
-
-	j := jsiiProxy_GitlabConfiguration{}
-
-	_jsii_.Create(
+	_jsii_.RegisterClass(
 		"projen.gitlab.GitlabConfiguration",
-		[]interface{}{project, options},
-		&j,
+		reflect.TypeOf((*GitlabConfiguration)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addGlobalVariables", GoMethod: "AddGlobalVariables"},
+			_jsii_.MemberMethod{JsiiMethod: "addIncludes", GoMethod: "AddIncludes"},
+			_jsii_.MemberMethod{JsiiMethod: "addJobs", GoMethod: "AddJobs"},
+			_jsii_.MemberMethod{JsiiMethod: "addServices", GoMethod: "AddServices"},
+			_jsii_.MemberMethod{JsiiMethod: "addStages", GoMethod: "AddStages"},
+			_jsii_.MemberMethod{JsiiMethod: "createNestedTemplates", GoMethod: "CreateNestedTemplates"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultAfterScript", GoGetter: "DefaultAfterScript"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultArtifacts", GoGetter: "DefaultArtifacts"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultBeforeScript", GoGetter: "DefaultBeforeScript"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultCache", GoGetter: "DefaultCache"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultImage", GoGetter: "DefaultImage"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultInterruptible", GoGetter: "DefaultInterruptible"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultRetry", GoGetter: "DefaultRetry"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultTags", GoGetter: "DefaultTags"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultTimeout", GoGetter: "DefaultTimeout"},
+			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
+			_jsii_.MemberProperty{JsiiProperty: "jobs", GoGetter: "Jobs"},
+			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
+			_jsii_.MemberProperty{JsiiProperty: "nestedTemplates", GoGetter: "NestedTemplates"},
+			_jsii_.MemberProperty{JsiiProperty: "pages", GoGetter: "Pages"},
+			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberProperty{JsiiProperty: "stages", GoGetter: "Stages"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "variables", GoGetter: "Variables"},
+			_jsii_.MemberProperty{JsiiProperty: "workflow", GoGetter: "Workflow"},
+		},
+		func() interface{} {
+			j := jsiiProxy_GitlabConfiguration{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_CiConfiguration)
+			return &j
+		},
 	)
-
-	return &j
-}
-
-// Experimental.
-func NewGitlabConfiguration_Override(g GitlabConfiguration, project projen.Project, options *CiConfigurationOptions) {
-	_init_.Initialize()
-
-	_jsii_.Create(
-		"projen.gitlab.GitlabConfiguration",
-		[]interface{}{project, options},
-		g,
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Image",
+		reflect.TypeOf((*Image)(nil)).Elem(),
 	)
-}
-
-func (g *jsiiProxy_GitlabConfiguration) AddGlobalVariables(variables *map[string]interface{}) {
-	_jsii_.InvokeVoid(
-		g,
-		"addGlobalVariables",
-		[]interface{}{variables},
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Include",
+		reflect.TypeOf((*Include)(nil)).Elem(),
 	)
-}
-
-func (g *jsiiProxy_GitlabConfiguration) AddIncludes(includes ...*Include) {
-	args := []interface{}{}
-	for _, a := range includes {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		g,
-		"addIncludes",
-		args,
+	_jsii_.RegisterStruct(
+		"projen.gitlab.IncludeRule",
+		reflect.TypeOf((*IncludeRule)(nil)).Elem(),
 	)
-}
-
-func (g *jsiiProxy_GitlabConfiguration) AddJobs(jobs *map[string]*Job) {
-	_jsii_.InvokeVoid(
-		g,
-		"addJobs",
-		[]interface{}{jobs},
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Inherit",
+		reflect.TypeOf((*Inherit)(nil)).Elem(),
 	)
-}
-
-func (g *jsiiProxy_GitlabConfiguration) AddServices(services ...*Service) {
-	args := []interface{}{}
-	for _, a := range services {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		g,
-		"addServices",
-		args,
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Job",
+		reflect.TypeOf((*Job)(nil)).Elem(),
 	)
-}
-
-func (g *jsiiProxy_GitlabConfiguration) AddStages(stages ...*string) {
-	args := []interface{}{}
-	for _, a := range stages {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		g,
-		"addStages",
-		args,
+	_jsii_.RegisterEnum(
+		"projen.gitlab.JobWhen",
+		reflect.TypeOf((*JobWhen)(nil)).Elem(),
+		map[string]interface{}{
+			"ALWAYS": JobWhen_ALWAYS,
+			"DELAYED": JobWhen_DELAYED,
+			"MANUAL": JobWhen_MANUAL,
+			"NEVER": JobWhen_NEVER,
+			"ON_FAILURE": JobWhen_ON_FAILURE,
+			"ON_SUCCESS": JobWhen_ON_SUCCESS,
+		},
 	)
-}
-
-func (g *jsiiProxy_GitlabConfiguration) CreateNestedTemplates(config *map[string]*CiConfigurationOptions) {
-	_jsii_.InvokeVoid(
-		g,
-		"createNestedTemplates",
-		[]interface{}{config},
+	_jsii_.RegisterStruct(
+		"projen.gitlab.KubernetesConfig",
+		reflect.TypeOf((*KubernetesConfig)(nil)).Elem(),
 	)
-}
-
-func (g *jsiiProxy_GitlabConfiguration) PostSynthesize() {
-	_jsii_.InvokeVoid(
-		g,
-		"postSynthesize",
-		nil, // no parameters
+	_jsii_.RegisterEnum(
+		"projen.gitlab.KubernetesEnum",
+		reflect.TypeOf((*KubernetesEnum)(nil)).Elem(),
+		map[string]interface{}{
+			"ACTIVE": KubernetesEnum_ACTIVE,
+		},
 	)
-}
-
-func (g *jsiiProxy_GitlabConfiguration) PreSynthesize() {
-	_jsii_.InvokeVoid(
-		g,
-		"preSynthesize",
-		nil, // no parameters
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Link",
+		reflect.TypeOf((*Link)(nil)).Elem(),
 	)
-}
-
-func (g *jsiiProxy_GitlabConfiguration) Synthesize() {
-	_jsii_.InvokeVoid(
-		g,
-		"synthesize",
-		nil, // no parameters
+	_jsii_.RegisterEnum(
+		"projen.gitlab.LinkType",
+		reflect.TypeOf((*LinkType)(nil)).Elem(),
+		map[string]interface{}{
+			"IMAGE": LinkType_IMAGE,
+			"OTHER": LinkType_OTHER,
+			"PACKAGE": LinkType_PACKAGE,
+			"RUNBOOK": LinkType_RUNBOOK,
+		},
 	)
-}
-
-// Specifies the docker image to use for the job or globally for all jobs.
-//
-// Job configuration
-// takes precedence over global setting. Requires a certain kind of Gitlab runner executor.
-// See: https://docs.gitlab.com/ee/ci/yaml/#image
-//
-// Experimental.
-type Image struct {
-	// Full name of the image that should be used.
-	//
-	// It should contain the Registry part if needed.
-	// Experimental.
-	Name *string `field:"required" json:"name" yaml:"name"`
-	// Command or script that should be executed as the container's entrypoint.
-	//
-	// It will be translated to Docker's --entrypoint option while creating the container. The syntax is similar to Dockerfile's ENTRYPOINT directive, where each shell token is a separate string in the array.
-	// Experimental.
-	Entrypoint *[]interface{} `field:"optional" json:"entrypoint" yaml:"entrypoint"`
-}
-
-// An included YAML file.
-// See: https://docs.gitlab.com/ee/ci/yaml/#include
-//
-// Experimental.
-type Include struct {
-	// Files from another private project on the same GitLab instance.
-	//
-	// You can use `file` in combination with `project` only.
-	// Experimental.
-	File *[]*string `field:"optional" json:"file" yaml:"file"`
-	// Relative path from local repository root (`/`) to the `yaml`/`yml` file template.
-	//
-	// The file must be on the same branch, and does not work across git submodules.
-	// Experimental.
-	Local *string `field:"optional" json:"local" yaml:"local"`
-	// Path to the project, e.g. `group/project`, or `group/sub-group/project`.
-	// Experimental.
-	Project *string `field:"optional" json:"project" yaml:"project"`
-	// Branch/Tag/Commit-hash for the target project.
-	// Experimental.
-	Ref *string `field:"optional" json:"ref" yaml:"ref"`
-	// URL to a `yaml`/`yml` template file using HTTP/HTTPS.
-	// Experimental.
-	Remote *string `field:"optional" json:"remote" yaml:"remote"`
-	// Rules allows for an array of individual rule objects to be evaluated in order, until one matches and dynamically provides attributes to the job.
-	// Experimental.
-	Rules *[]*IncludeRule `field:"optional" json:"rules" yaml:"rules"`
-	// Use a `.gitlab-ci.yml` template as a base, e.g. `Nodejs.gitlab-ci.yml`.
-	// Experimental.
-	Template *string `field:"optional" json:"template" yaml:"template"`
-}
-
-// Rules allows for an array of individual rule objects to be evaluated in order, until one matches and dynamically provides attributes to the job.
-// See: https://docs.gitlab.com/ee/ci/yaml/includes.html#use-rules-with-include
-//
-// Experimental.
-type IncludeRule struct {
-	// Experimental.
-	AllowFailure interface{} `field:"optional" json:"allowFailure" yaml:"allowFailure"`
-	// Experimental.
-	Changes *[]*string `field:"optional" json:"changes" yaml:"changes"`
-	// Experimental.
-	Exists *[]*string `field:"optional" json:"exists" yaml:"exists"`
-	// Experimental.
-	If *string `field:"optional" json:"if" yaml:"if"`
-	// Experimental.
-	StartIn *string `field:"optional" json:"startIn" yaml:"startIn"`
-	// Experimental.
-	Variables *map[string]interface{} `field:"optional" json:"variables" yaml:"variables"`
-	// Experimental.
-	When JobWhen `field:"optional" json:"when" yaml:"when"`
-}
-
-// Controls inheritance of globally-defined defaults and variables.
-//
-// Boolean values control
-// inheritance of all default: or variables: keywords. To inherit only a subset of default:
-// or variables: keywords, specify what you wish to inherit. Anything not listed is not
-// inherited.
-// Experimental.
-type Inherit struct {
-	// Whether to inherit all globally-defined defaults or not.
-	//
-	// Or subset of inherited defaults.
-	// Experimental.
-	Default interface{} `field:"optional" json:"default" yaml:"default"`
-	// Whether to inherit all globally-defined variables or not.
-	//
-	// Or subset of inherited variables.
-	// Experimental.
-	Variables interface{} `field:"optional" json:"variables" yaml:"variables"`
-}
-
-// Jobs are the most fundamental element of a .gitlab-ci.yml file.
-// See: https://docs.gitlab.com/ee/ci/jobs/
-//
-// Experimental.
-type Job struct {
-	// Experimental.
-	AfterScript *[]*string `field:"optional" json:"afterScript" yaml:"afterScript"`
-	// Whether to allow the pipeline to continue running on job failure (Default: false).
-	// Experimental.
-	AllowFailure interface{} `field:"optional" json:"allowFailure" yaml:"allowFailure"`
-	// Experimental.
-	Artifacts *Artifacts `field:"optional" json:"artifacts" yaml:"artifacts"`
-	// Experimental.
-	BeforeScript *[]*string `field:"optional" json:"beforeScript" yaml:"beforeScript"`
-	// Experimental.
-	Cache *Cache `field:"optional" json:"cache" yaml:"cache"`
-	// Must be a regular expression, optionally but recommended to be quoted, and must be surrounded with '/'.
-	//
-	// Example: '/Code coverage: \d+\.\d+/'
-	// Experimental.
-	Coverage *string `field:"optional" json:"coverage" yaml:"coverage"`
-	// Specify a list of job names from earlier stages from which artifacts should be loaded.
-	//
-	// By default, all previous artifacts are passed. Use an empty array to skip downloading artifacts.
-	// Experimental.
-	Dependencies *[]*string `field:"optional" json:"dependencies" yaml:"dependencies"`
-	// Used to associate environment metadata with a deploy.
-	//
-	// Environment can have a name and URL attached to it, and will be displayed under /environments under the project.
-	// Experimental.
-	Environment interface{} `field:"optional" json:"environment" yaml:"environment"`
-	// Job will run *except* for when these filtering options match.
-	// Experimental.
-	Except interface{} `field:"optional" json:"except" yaml:"except"`
-	// The name of one or more jobs to inherit configuration from.
-	// Experimental.
-	Extends *[]*string `field:"optional" json:"extends" yaml:"extends"`
-	// Experimental.
-	Image *Image `field:"optional" json:"image" yaml:"image"`
-	// Controls inheritance of globally-defined defaults and variables.
-	//
-	// Boolean values control inheritance of all default: or variables: keywords. To inherit only a subset of default: or variables: keywords, specify what you wish to inherit. Anything not listed is not inherited.
-	// Experimental.
-	Inherit *Inherit `field:"optional" json:"inherit" yaml:"inherit"`
-	// Experimental.
-	Interruptible *bool `field:"optional" json:"interruptible" yaml:"interruptible"`
-	// The list of jobs in previous stages whose sole completion is needed to start the current job.
-	// Experimental.
-	Needs *[]interface{} `field:"optional" json:"needs" yaml:"needs"`
-	// Job will run *only* when these filtering options match.
-	// Experimental.
-	Only interface{} `field:"optional" json:"only" yaml:"only"`
-	// Parallel will split up a single job into several, and provide `CI_NODE_INDEX` and `CI_NODE_TOTAL` environment variables for the running jobs.
-	// Experimental.
-	Parallel interface{} `field:"optional" json:"parallel" yaml:"parallel"`
-	// Indicates that the job creates a Release.
-	// Experimental.
-	Release *Release `field:"optional" json:"release" yaml:"release"`
-	// Limit job concurrency.
-	//
-	// Can be used to ensure that the Runner will not run certain jobs simultaneously.
-	// Experimental.
-	ResourceGroup *string `field:"optional" json:"resourceGroup" yaml:"resourceGroup"`
-	// Experimental.
-	Retry *Retry `field:"optional" json:"retry" yaml:"retry"`
-	// Rules allows for an array of individual rule objects to be evaluated in order, until one matches and dynamically provides attributes to the job.
-	// Experimental.
-	Rules *[]*IncludeRule `field:"optional" json:"rules" yaml:"rules"`
-	// Shell scripts executed by the Runner.
-	//
-	// The only required property of jobs. Be careful with special characters (e.g. `:`, `{`, `}`, `&`) and use single or double quotes to avoid issues.
-	// Experimental.
-	Script *[]*string `field:"optional" json:"script" yaml:"script"`
-	// CI/CD secrets.
-	// Experimental.
-	Secrets *map[string]*map[string]*Secret `field:"optional" json:"secrets" yaml:"secrets"`
-	// Experimental.
-	Services *[]*Service `field:"optional" json:"services" yaml:"services"`
-	// Define what stage the job will run in.
-	// Experimental.
-	Stage *string `field:"optional" json:"stage" yaml:"stage"`
-	// Experimental.
-	StartIn *string `field:"optional" json:"startIn" yaml:"startIn"`
-	// Experimental.
-	Tags *[]*string `field:"optional" json:"tags" yaml:"tags"`
-	// Experimental.
-	Timeout *string `field:"optional" json:"timeout" yaml:"timeout"`
-	// Trigger allows you to define downstream pipeline trigger.
-	//
-	// When a job created from trigger definition is started by GitLab, a downstream pipeline gets created. Read more: https://docs.gitlab.com/ee/ci/yaml/README.html#trigger
-	// Experimental.
-	Trigger interface{} `field:"optional" json:"trigger" yaml:"trigger"`
-	// Configurable values that are passed to the Job.
-	// Experimental.
-	Variables *map[string]interface{} `field:"optional" json:"variables" yaml:"variables"`
-	// Describes the conditions for when to run the job.
-	//
-	// Defaults to 'on_success'.
-	// Experimental.
-	When JobWhen `field:"optional" json:"when" yaml:"when"`
-}
-
-// Describes the conditions for when to run the job.
-//
-// Defaults to 'on_success'.
-// See: https://docs.gitlab.com/ee/ci/yaml/#when
-//
-// Experimental.
-type JobWhen string
-
-const (
-	// Experimental.
-	JobWhen_ALWAYS JobWhen = "ALWAYS"
-	// Experimental.
-	JobWhen_DELAYED JobWhen = "DELAYED"
-	// Experimental.
-	JobWhen_MANUAL JobWhen = "MANUAL"
-	// Experimental.
-	JobWhen_NEVER JobWhen = "NEVER"
-	// Experimental.
-	JobWhen_ON_FAILURE JobWhen = "ON_FAILURE"
-	// Experimental.
-	JobWhen_ON_SUCCESS JobWhen = "ON_SUCCESS"
-)
-
-// Used to configure the kubernetes deployment for this environment.
-//
-// This is currently not
-// supported for kubernetes clusters that are managed by Gitlab.
-// Experimental.
-type KubernetesConfig struct {
-	// The kubernetes namespace where this environment should be deployed to.
-	// Experimental.
-	Namespace *string `field:"optional" json:"namespace" yaml:"namespace"`
-}
-
-// Filter job based on if Kubernetes integration is active.
-// Experimental.
-type KubernetesEnum string
-
-const (
-	// Experimental.
-	KubernetesEnum_ACTIVE KubernetesEnum = "ACTIVE"
-)
-
-// Link configuration for an asset.
-// Experimental.
-type Link struct {
-	// The name of the link.
-	// Experimental.
-	Name *string `field:"required" json:"name" yaml:"name"`
-	// The URL to download a file.
-	// Experimental.
-	Url *string `field:"required" json:"url" yaml:"url"`
-	// The redirect link to the url.
-	// Experimental.
-	Filepath *string `field:"optional" json:"filepath" yaml:"filepath"`
-	// The content kind of what users can download via url.
-	// Experimental.
-	LinkType LinkType `field:"optional" json:"linkType" yaml:"linkType"`
-}
-
-// The content kind of what users can download via url.
-// Experimental.
-type LinkType string
-
-const (
-	// Experimental.
-	LinkType_IMAGE LinkType = "IMAGE"
-	// Experimental.
-	LinkType_OTHER LinkType = "OTHER"
-	// Experimental.
-	LinkType_PACKAGE LinkType = "PACKAGE"
-	// Experimental.
-	LinkType_RUNBOOK LinkType = "RUNBOOK"
-)
-
-// A jobs in a previous stage whose sole completion is needed to start the current job.
-// Experimental.
-type Need struct {
-	// Experimental.
-	Job *string `field:"required" json:"job" yaml:"job"`
-	// Experimental.
-	Artifacts *bool `field:"optional" json:"artifacts" yaml:"artifacts"`
-	// Experimental.
-	Optional *bool `field:"optional" json:"optional" yaml:"optional"`
-	// Experimental.
-	Pipeline *string `field:"optional" json:"pipeline" yaml:"pipeline"`
-	// Experimental.
-	Project *string `field:"optional" json:"project" yaml:"project"`
-	// Experimental.
-	Ref *string `field:"optional" json:"ref" yaml:"ref"`
-}
-
-// A GitLab CI for templates that are created and included in the `.gitlab-ci.yml` file.
-// Experimental.
-type NestedConfiguration interface {
-	CiConfiguration
-	// Defines default scripts that should run *after* all jobs.
-	//
-	// Can be overriden by the job level `afterScript`.
-	// Experimental.
-	DefaultAfterScript() *[]*string
-	// Default list of files and directories that should be attached to the job if it succeeds.
-	//
-	// Artifacts are sent to Gitlab where they can be downloaded.
-	// Experimental.
-	DefaultArtifacts() *Artifacts
-	// Defines default scripts that should run *before* all jobs.
-	//
-	// Can be overriden by the job level `afterScript`.
-	// Experimental.
-	DefaultBeforeScript() *[]*string
-	// A default list of files and directories to cache between jobs.
-	//
-	// You can only use paths that are in the local working copy.
-	// Experimental.
-	DefaultCache() *Cache
-	// Specifies the default docker image to use globally for all jobs.
-	// Experimental.
-	DefaultImage() *Image
-	// The default behavior for whether a job should be canceled when a newer pipeline starts before the job completes (Default: false).
-	// Experimental.
-	DefaultInterruptible() *bool
-	// How many times a job is retried if it fails.
-	//
-	// If not defined, defaults to 0 and jobs do not retry.
-	// Experimental.
-	DefaultRetry() *Retry
-	// Used to select a specific runner from the list of all runners that are available for the project.
-	// Experimental.
-	DefaultTags() *[]*string
-	// A default timeout job written in natural language (Ex.
-	//
-	// one hour, 3600 seconds, 60 minutes).
-	// Experimental.
-	DefaultTimeout() *string
-	// The workflow YAML file.
-	// Experimental.
-	File() projen.YamlFile
-	// The jobs in the CI configuration.
-	// Experimental.
-	Jobs() *map[string]*Job
-	// The name of the configuration.
-	// Experimental.
-	Name() *string
-	// A special job used to upload static sites to Gitlab pages.
-	//
-	// Requires a `public/` directory
-	// with `artifacts.path` pointing to it.
-	// Experimental.
-	Pages() *Job
-	// Experimental.
-	Parent() GitlabConfiguration
-	// Path to CI file generated by the configuration.
-	// Experimental.
-	Path() *string
-	// The project the configuration belongs to.
-	// Experimental.
-	Project() projen.Project
-	// Groups jobs into stages.
-	//
-	// All jobs in one stage must complete before next stage is
-	// executed. Defaults to ['build', 'test', 'deploy'].
-	// Experimental.
-	Stages() *[]*string
-	// Global variables that are passed to jobs.
-	//
-	// If the job already has that variable defined, the job-level variable takes precedence.
-	// Experimental.
-	Variables() *map[string]interface{}
-	// Used to control pipeline behavior.
-	// Experimental.
-	Workflow() *Workflow
-	// Add a globally defined variable to the CI configuration.
-	// Experimental.
-	AddGlobalVariables(variables *map[string]interface{})
-	// Add additional yml/yaml files to the CI includes.
-	// Experimental.
-	AddIncludes(includes ...*Include)
-	// Add jobs and their stages to the CI configuration.
-	// Experimental.
-	AddJobs(jobs *map[string]*Job)
-	// Add additional services.
-	// Experimental.
-	AddServices(services ...*Service)
-	// Add stages to the CI configuration if not already present.
-	// Experimental.
-	AddStages(stages ...*string)
-	// Called after synthesis.
-	//
-	// Order is *not* guaranteed.
-	// Experimental.
-	PostSynthesize()
-	// Called before synthesis.
-	// Experimental.
-	PreSynthesize()
-	// Synthesizes files to the project output directory.
-	// Experimental.
-	Synthesize()
-}
-
-// The jsii proxy struct for NestedConfiguration
-type jsiiProxy_NestedConfiguration struct {
-	jsiiProxy_CiConfiguration
-}
-
-func (j *jsiiProxy_NestedConfiguration) DefaultAfterScript() *[]*string {
-	var returns *[]*string
-	_jsii_.Get(
-		j,
-		"defaultAfterScript",
-		&returns,
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Need",
+		reflect.TypeOf((*Need)(nil)).Elem(),
 	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) DefaultArtifacts() *Artifacts {
-	var returns *Artifacts
-	_jsii_.Get(
-		j,
-		"defaultArtifacts",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) DefaultBeforeScript() *[]*string {
-	var returns *[]*string
-	_jsii_.Get(
-		j,
-		"defaultBeforeScript",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) DefaultCache() *Cache {
-	var returns *Cache
-	_jsii_.Get(
-		j,
-		"defaultCache",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) DefaultImage() *Image {
-	var returns *Image
-	_jsii_.Get(
-		j,
-		"defaultImage",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) DefaultInterruptible() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"defaultInterruptible",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) DefaultRetry() *Retry {
-	var returns *Retry
-	_jsii_.Get(
-		j,
-		"defaultRetry",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) DefaultTags() *[]*string {
-	var returns *[]*string
-	_jsii_.Get(
-		j,
-		"defaultTags",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) DefaultTimeout() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"defaultTimeout",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) File() projen.YamlFile {
-	var returns projen.YamlFile
-	_jsii_.Get(
-		j,
-		"file",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) Jobs() *map[string]*Job {
-	var returns *map[string]*Job
-	_jsii_.Get(
-		j,
-		"jobs",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) Name() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"name",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) Pages() *Job {
-	var returns *Job
-	_jsii_.Get(
-		j,
-		"pages",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) Parent() GitlabConfiguration {
-	var returns GitlabConfiguration
-	_jsii_.Get(
-		j,
-		"parent",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) Path() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"path",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) Project() projen.Project {
-	var returns projen.Project
-	_jsii_.Get(
-		j,
-		"project",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) Stages() *[]*string {
-	var returns *[]*string
-	_jsii_.Get(
-		j,
-		"stages",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) Variables() *map[string]interface{} {
-	var returns *map[string]interface{}
-	_jsii_.Get(
-		j,
-		"variables",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NestedConfiguration) Workflow() *Workflow {
-	var returns *Workflow
-	_jsii_.Get(
-		j,
-		"workflow",
-		&returns,
-	)
-	return returns
-}
-
-
-// Experimental.
-func NewNestedConfiguration(project projen.Project, parent GitlabConfiguration, name *string, options *CiConfigurationOptions) NestedConfiguration {
-	_init_.Initialize()
-
-	j := jsiiProxy_NestedConfiguration{}
-
-	_jsii_.Create(
+	_jsii_.RegisterClass(
 		"projen.gitlab.NestedConfiguration",
-		[]interface{}{project, parent, name, options},
-		&j,
+		reflect.TypeOf((*NestedConfiguration)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addGlobalVariables", GoMethod: "AddGlobalVariables"},
+			_jsii_.MemberMethod{JsiiMethod: "addIncludes", GoMethod: "AddIncludes"},
+			_jsii_.MemberMethod{JsiiMethod: "addJobs", GoMethod: "AddJobs"},
+			_jsii_.MemberMethod{JsiiMethod: "addServices", GoMethod: "AddServices"},
+			_jsii_.MemberMethod{JsiiMethod: "addStages", GoMethod: "AddStages"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultAfterScript", GoGetter: "DefaultAfterScript"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultArtifacts", GoGetter: "DefaultArtifacts"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultBeforeScript", GoGetter: "DefaultBeforeScript"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultCache", GoGetter: "DefaultCache"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultImage", GoGetter: "DefaultImage"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultInterruptible", GoGetter: "DefaultInterruptible"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultRetry", GoGetter: "DefaultRetry"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultTags", GoGetter: "DefaultTags"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultTimeout", GoGetter: "DefaultTimeout"},
+			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
+			_jsii_.MemberProperty{JsiiProperty: "jobs", GoGetter: "Jobs"},
+			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
+			_jsii_.MemberProperty{JsiiProperty: "pages", GoGetter: "Pages"},
+			_jsii_.MemberProperty{JsiiProperty: "parent", GoGetter: "Parent"},
+			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberProperty{JsiiProperty: "stages", GoGetter: "Stages"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "variables", GoGetter: "Variables"},
+			_jsii_.MemberProperty{JsiiProperty: "workflow", GoGetter: "Workflow"},
+		},
+		func() interface{} {
+			j := jsiiProxy_NestedConfiguration{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_CiConfiguration)
+			return &j
+		},
 	)
-
-	return &j
-}
-
-// Experimental.
-func NewNestedConfiguration_Override(n NestedConfiguration, project projen.Project, parent GitlabConfiguration, name *string, options *CiConfigurationOptions) {
-	_init_.Initialize()
-
-	_jsii_.Create(
-		"projen.gitlab.NestedConfiguration",
-		[]interface{}{project, parent, name, options},
-		n,
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Parallel",
+		reflect.TypeOf((*Parallel)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Release",
+		reflect.TypeOf((*Release)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Reports",
+		reflect.TypeOf((*Reports)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Retry",
+		reflect.TypeOf((*Retry)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Secret",
+		reflect.TypeOf((*Secret)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Service",
+		reflect.TypeOf((*Service)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.gitlab.Strategy",
+		reflect.TypeOf((*Strategy)(nil)).Elem(),
+		map[string]interface{}{
+			"DEPEND": Strategy_DEPEND,
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Trigger",
+		reflect.TypeOf((*Trigger)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.gitlab.TriggerInclude",
+		reflect.TypeOf((*TriggerInclude)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.gitlab.VariableConfig",
+		reflect.TypeOf((*VariableConfig)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.gitlab.VaultConfig",
+		reflect.TypeOf((*VaultConfig)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.gitlab.Workflow",
+		reflect.TypeOf((*Workflow)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.gitlab.WorkflowRule",
+		reflect.TypeOf((*WorkflowRule)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.gitlab.WorkflowWhen",
+		reflect.TypeOf((*WorkflowWhen)(nil)).Elem(),
+		map[string]interface{}{
+			"ALWAYS": WorkflowWhen_ALWAYS,
+			"NEVER": WorkflowWhen_NEVER,
+		},
 	)
 }
-
-func (n *jsiiProxy_NestedConfiguration) AddGlobalVariables(variables *map[string]interface{}) {
-	_jsii_.InvokeVoid(
-		n,
-		"addGlobalVariables",
-		[]interface{}{variables},
-	)
-}
-
-func (n *jsiiProxy_NestedConfiguration) AddIncludes(includes ...*Include) {
-	args := []interface{}{}
-	for _, a := range includes {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		n,
-		"addIncludes",
-		args,
-	)
-}
-
-func (n *jsiiProxy_NestedConfiguration) AddJobs(jobs *map[string]*Job) {
-	_jsii_.InvokeVoid(
-		n,
-		"addJobs",
-		[]interface{}{jobs},
-	)
-}
-
-func (n *jsiiProxy_NestedConfiguration) AddServices(services ...*Service) {
-	args := []interface{}{}
-	for _, a := range services {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		n,
-		"addServices",
-		args,
-	)
-}
-
-func (n *jsiiProxy_NestedConfiguration) AddStages(stages ...*string) {
-	args := []interface{}{}
-	for _, a := range stages {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		n,
-		"addStages",
-		args,
-	)
-}
-
-func (n *jsiiProxy_NestedConfiguration) PostSynthesize() {
-	_jsii_.InvokeVoid(
-		n,
-		"postSynthesize",
-		nil, // no parameters
-	)
-}
-
-func (n *jsiiProxy_NestedConfiguration) PreSynthesize() {
-	_jsii_.InvokeVoid(
-		n,
-		"preSynthesize",
-		nil, // no parameters
-	)
-}
-
-func (n *jsiiProxy_NestedConfiguration) Synthesize() {
-	_jsii_.InvokeVoid(
-		n,
-		"synthesize",
-		nil, // no parameters
-	)
-}
-
-// Used to run a job multiple times in parallel in a single pipeline.
-// Experimental.
-type Parallel struct {
-	// Defines different variables for jobs that are running in parallel.
-	// Experimental.
-	Matrix *[]*map[string]*[]interface{} `field:"required" json:"matrix" yaml:"matrix"`
-}
-
-// Indicates that the job creates a Release.
-// Experimental.
-type Release struct {
-	// Specifies the longer description of the Release.
-	// Experimental.
-	Description *string `field:"required" json:"description" yaml:"description"`
-	// The tag_name must be specified.
-	//
-	// It can refer to an existing Git tag or can be specified by the user.
-	// Experimental.
-	TagName *string `field:"required" json:"tagName" yaml:"tagName"`
-	// Experimental.
-	Assets *Assets `field:"optional" json:"assets" yaml:"assets"`
-	// The title of each milestone the release is associated with.
-	// Experimental.
-	Milestones *[]*string `field:"optional" json:"milestones" yaml:"milestones"`
-	// The Release name.
-	//
-	// If omitted, it is populated with the value of release: tag_name.
-	// Experimental.
-	Name *string `field:"optional" json:"name" yaml:"name"`
-	// If the release: tag_name doesn’t exist yet, the release is created from ref.
-	//
-	// ref can be a commit SHA, another tag name, or a branch name.
-	// Experimental.
-	Ref *string `field:"optional" json:"ref" yaml:"ref"`
-	// The date and time when the release is ready.
-	//
-	// Defaults to the current date and time if not defined. Should be enclosed in quotes and expressed in ISO 8601 format.
-	// Experimental.
-	ReleasedAt *string `field:"optional" json:"releasedAt" yaml:"releasedAt"`
-}
-
-// Reports will be uploaded as artifacts, and often displayed in the Gitlab UI, such as in Merge Requests.
-// See: https://docs.gitlab.com/ee/ci/yaml/#artifactsreports
-//
-// Experimental.
-type Reports struct {
-	// Path for file(s) that should be parsed as Cobertura XML coverage report.
-	// Experimental.
-	Cobertura *[]*string `field:"optional" json:"cobertura" yaml:"cobertura"`
-	// Path to file or list of files with code quality report(s) (such as Code Climate).
-	// Experimental.
-	Codequality *[]*string `field:"optional" json:"codequality" yaml:"codequality"`
-	// Path to file or list of files with Container scanning vulnerabilities report(s).
-	// Experimental.
-	ContainerScanning *[]*string `field:"optional" json:"containerScanning" yaml:"containerScanning"`
-	// Path to file or list of files with DAST vulnerabilities report(s).
-	// Experimental.
-	Dast *[]*string `field:"optional" json:"dast" yaml:"dast"`
-	// Path to file or list of files with Dependency scanning vulnerabilities report(s).
-	// Experimental.
-	DependencyScanning *[]*string `field:"optional" json:"dependencyScanning" yaml:"dependencyScanning"`
-	// Path to file or list of files containing runtime-created variables for this job.
-	// Experimental.
-	Dotenv *[]*string `field:"optional" json:"dotenv" yaml:"dotenv"`
-	// Path for file(s) that should be parsed as JUnit XML result.
-	// Experimental.
-	Junit *[]*string `field:"optional" json:"junit" yaml:"junit"`
-	// Deprecated in 12.8: Path to file or list of files with license report(s).
-	// Experimental.
-	LicenseManagement *[]*string `field:"optional" json:"licenseManagement" yaml:"licenseManagement"`
-	// Path to file or list of files with license report(s).
-	// Experimental.
-	LicenseScanning *[]*string `field:"optional" json:"licenseScanning" yaml:"licenseScanning"`
-	// Path to file or list of files containing code intelligence (Language Server Index Format).
-	// Experimental.
-	Lsif *[]*string `field:"optional" json:"lsif" yaml:"lsif"`
-	// Path to file or list of files with custom metrics report(s).
-	// Experimental.
-	Metrics *[]*string `field:"optional" json:"metrics" yaml:"metrics"`
-	// Path to file or list of files with performance metrics report(s).
-	// Experimental.
-	Performance *[]*string `field:"optional" json:"performance" yaml:"performance"`
-	// Path to file or list of files with requirements report(s).
-	// Experimental.
-	Requirements *[]*string `field:"optional" json:"requirements" yaml:"requirements"`
-	// Path to file or list of files with SAST vulnerabilities report(s).
-	// Experimental.
-	Sast *[]*string `field:"optional" json:"sast" yaml:"sast"`
-	// Path to file or list of files with secret detection report(s).
-	// Experimental.
-	SecretDetection *[]*string `field:"optional" json:"secretDetection" yaml:"secretDetection"`
-	// Path to file or list of files with terraform plan(s).
-	// Experimental.
-	Terraform *[]*string `field:"optional" json:"terraform" yaml:"terraform"`
-}
-
-// How many times a job is retried if it fails.
-//
-// If not defined, defaults to 0 and jobs do not retry.
-// See: https://docs.gitlab.com/ee/ci/yaml/#retry
-//
-// Experimental.
-type Retry struct {
-	// 0 (default), 1, or 2.
-	// Experimental.
-	Max *float64 `field:"optional" json:"max" yaml:"max"`
-	// Either a single or array of error types to trigger job retry.
-	// Experimental.
-	When interface{} `field:"optional" json:"when" yaml:"when"`
-}
-
-// A CI/CD secret.
-// Experimental.
-type Secret struct {
-	// Experimental.
-	Vault *VaultConfig `field:"required" json:"vault" yaml:"vault"`
-}
-
-// Used to specify an additional Docker image to run scripts in.
-//
-// The service image is linked to the image specified in the @Default image keyword.
-// See: https://docs.gitlab.com/ee/ci/yaml/#services
-//
-// Experimental.
-type Service struct {
-	// Full name of the image that should be used.
-	//
-	// It should contain the Registry part if needed.
-	// Experimental.
-	Name *string `field:"required" json:"name" yaml:"name"`
-	// Additional alias that can be used to access the service from the job's container.
-	//
-	// Read Accessing the services for more information.
-	// Experimental.
-	Alias *string `field:"optional" json:"alias" yaml:"alias"`
-	// Command or script that should be used as the container's command.
-	//
-	// It will be translated to arguments passed to Docker after the image's name. The syntax is similar to Dockerfile's CMD directive, where each shell token is a separate string in the array.
-	// Experimental.
-	Command *[]*string `field:"optional" json:"command" yaml:"command"`
-	// Command or script that should be executed as the container's entrypoint.
-	//
-	// It will be translated to Docker's --entrypoint option while creating the container. The syntax is similar to Dockerfile's ENTRYPOINT directive, where each shell token is a separate string in the array.
-	// Experimental.
-	Entrypoint *[]*string `field:"optional" json:"entrypoint" yaml:"entrypoint"`
-}
-
-// You can mirror the pipeline status from the triggered pipeline to the source bridge job by using strategy: depend.
-// See: https://docs.gitlab.com/ee/ci/yaml/#triggerstrategy
-//
-// Experimental.
-type Strategy string
-
-const (
-	// Experimental.
-	Strategy_DEPEND Strategy = "DEPEND"
-)
-
-// Trigger a multi-project or a child pipeline.
-//
-// Read more:.
-// See: https://docs.gitlab.com/ee/ci/yaml/README.html#trigger-syntax-for-child-pipeline
-//
-// Experimental.
-type Trigger struct {
-	// The branch name that a downstream pipeline will use.
-	// Experimental.
-	Branch *string `field:"optional" json:"branch" yaml:"branch"`
-	// A list of local files or artifacts from other jobs to define the pipeline.
-	// Experimental.
-	Include *[]*TriggerInclude `field:"optional" json:"include" yaml:"include"`
-	// Path to the project, e.g. `group/project`, or `group/sub-group/project`.
-	// Experimental.
-	Project *string `field:"optional" json:"project" yaml:"project"`
-	// You can mirror the pipeline status from the triggered pipeline to the source bridge job by using strategy: depend.
-	// Experimental.
-	Strategy Strategy `field:"optional" json:"strategy" yaml:"strategy"`
-}
-
-// References a local file or an artifact from another job to define the pipeline configuration.
-// See: https://docs.gitlab.com/ee/ci/yaml/#triggerinclude
-//
-// Experimental.
-type TriggerInclude struct {
-	// Relative path to the generated YAML file which is extracted from the artifacts and used as the configuration for triggering the child pipeline.
-	// Experimental.
-	Artifact *string `field:"optional" json:"artifact" yaml:"artifact"`
-	// Relative path from repository root (`/`) to the pipeline configuration YAML file.
-	// Experimental.
-	File *string `field:"optional" json:"file" yaml:"file"`
-	// Job name which generates the artifact.
-	// Experimental.
-	Job *string `field:"optional" json:"job" yaml:"job"`
-	// Relative path from local repository root (`/`) to the local YAML file to define the pipeline configuration.
-	// Experimental.
-	Local *string `field:"optional" json:"local" yaml:"local"`
-	// Path to another private project under the same GitLab instance, like `group/project` or `group/sub-group/project`.
-	// Experimental.
-	Project *string `field:"optional" json:"project" yaml:"project"`
-	// Branch/Tag/Commit hash for the target project.
-	// Experimental.
-	Ref *string `field:"optional" json:"ref" yaml:"ref"`
-	// Name of the template YAML file to use in the pipeline configuration.
-	// Experimental.
-	Template *string `field:"optional" json:"template" yaml:"template"`
-}
-
-// Explains what the global variable is used for, what the acceptable values are.
-// See: https://docs.gitlab.com/ee/ci/yaml/#variables
-//
-// Experimental.
-type VariableConfig struct {
-	// Define a global variable that is prefilled when running a pipeline manually.
-	//
-	// Must be used with value.
-	// Experimental.
-	Description *string `field:"optional" json:"description" yaml:"description"`
-	// The variable value.
-	// Experimental.
-	Value *string `field:"optional" json:"value" yaml:"value"`
-}
-
-// Specification for a secret provided by a HashiCorp Vault.
-// See: https://www.vaultproject.io/
-//
-// Experimental.
-type VaultConfig struct {
-	// Experimental.
-	Engine *Engine `field:"required" json:"engine" yaml:"engine"`
-	// Experimental.
-	Field *string `field:"required" json:"field" yaml:"field"`
-	// Path to the secret.
-	// Experimental.
-	Path *string `field:"required" json:"path" yaml:"path"`
-}
-
-// Used to control pipeline behavior.
-// See: https://docs.gitlab.com/ee/ci/yaml/#workflow
-//
-// Experimental.
-type Workflow struct {
-	// Used to control whether or not a whole pipeline is created.
-	// Experimental.
-	Rules *[]*WorkflowRule `field:"optional" json:"rules" yaml:"rules"`
-}
-
-// Used to control whether or not a whole pipeline is created.
-// See: https://docs.gitlab.com/ee/ci/yaml/#workflowrules
-//
-// Experimental.
-type WorkflowRule struct {
-	// Experimental.
-	Changes *[]*string `field:"optional" json:"changes" yaml:"changes"`
-	// Experimental.
-	Exists *[]*string `field:"optional" json:"exists" yaml:"exists"`
-	// Experimental.
-	If *string `field:"optional" json:"if" yaml:"if"`
-	// Experimental.
-	Variables *map[string]interface{} `field:"optional" json:"variables" yaml:"variables"`
-	// Experimental.
-	When JobWhen `field:"optional" json:"when" yaml:"when"`
-}
-
-// Describes the conditions for when to run the job.
-//
-// Defaults to 'on_success'.
-// The value can only be 'always' or 'never' when used with workflow.
-// See: https://docs.gitlab.com/ee/ci/yaml/#workflowrules
-//
-// Experimental.
-type WorkflowWhen string
-
-const (
-	// Experimental.
-	WorkflowWhen_ALWAYS WorkflowWhen = "ALWAYS"
-	// Experimental.
-	WorkflowWhen_NEVER WorkflowWhen = "NEVER"
-)
-

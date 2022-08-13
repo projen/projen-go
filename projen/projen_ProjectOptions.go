@@ -1,0 +1,47 @@
+// CDK for software projects
+package projen
+
+
+// Options for `Project`.
+// Experimental.
+type ProjectOptions struct {
+	// This is the name of your project.
+	// Experimental.
+	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
+	// Configure logging options such as verbosity.
+	// Experimental.
+	Logging *LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
+	// The root directory of the project.
+	//
+	// Relative to this directory, all files are synthesized.
+	//
+	// If this project has a parent, this directory is relative to the parent
+	// directory and it cannot be the same as the parent or any of it's other
+	// sub-projects.
+	// Experimental.
+	Outdir *string `field:"optional" json:"outdir" yaml:"outdir"`
+	// The parent project, if this project is part of a bigger project.
+	// Experimental.
+	Parent Project `field:"optional" json:"parent" yaml:"parent"`
+	// The shell command to use in order to run the projen CLI.
+	//
+	// Can be used to customize in special environments.
+	// Experimental.
+	ProjenCommand *string `field:"optional" json:"projenCommand" yaml:"projenCommand"`
+	// Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
+	// Experimental.
+	ProjenrcJson *bool `field:"optional" json:"projenrcJson" yaml:"projenrcJson"`
+	// Options for .projenrc.json.
+	// Experimental.
+	ProjenrcJsonOptions *ProjenrcOptions `field:"optional" json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	// Use renovatebot to handle dependency upgrades.
+	// Experimental.
+	Renovatebot *bool `field:"optional" json:"renovatebot" yaml:"renovatebot"`
+	// Options for renovatebot.
+	// Experimental.
+	RenovatebotOptions *RenovatebotOptions `field:"optional" json:"renovatebotOptions" yaml:"renovatebotOptions"`
+}
+

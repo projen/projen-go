@@ -1,0 +1,18 @@
+// CDK for software projects
+package projen
+
+
+// Build arguments for creating a docker image.
+// Experimental.
+type DockerComposeBuild struct {
+	// Docker build context directory.
+	// Experimental.
+	Context *string `field:"required" json:"context" yaml:"context"`
+	// Build args.
+	// Experimental.
+	Args *map[string]*string `field:"optional" json:"args" yaml:"args"`
+	// A dockerfile to build from.
+	// Experimental.
+	Dockerfile *string `field:"optional" json:"dockerfile" yaml:"dockerfile"`
+}
+
