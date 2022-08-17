@@ -27,5 +27,7 @@ type JsiiDotNetTarget struct {
 	DotNetNamespace *string `field:"required" json:"dotNetNamespace" yaml:"dotNetNamespace"`
 	// Experimental.
 	PackageId *string `field:"required" json:"packageId" yaml:"packageId"`
+	// Experimental.
+	IconUrl *string `field:"optional" json:"iconUrl" yaml:"iconUrl"`
 }
 
