@@ -387,6 +387,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
 			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
+			_jsii_.MemberMethod{JsiiMethod: "patch", GoMethod: "Patch"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
@@ -430,6 +431,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
 			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
+			_jsii_.MemberMethod{JsiiMethod: "patch", GoMethod: "Patch"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
@@ -447,6 +449,14 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.JsonFileOptions",
 		reflect.TypeOf((*JsonFileOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.JsonPatch",
+		reflect.TypeOf((*JsonPatch)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_JsonPatch{}
+		},
 	)
 	_jsii_.RegisterClass(
 		"projen.License",
@@ -554,6 +564,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
 			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
+			_jsii_.MemberMethod{JsiiMethod: "patch", GoMethod: "Patch"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
@@ -943,6 +954,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
 			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
+			_jsii_.MemberMethod{JsiiMethod: "patch", GoMethod: "Patch"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
@@ -997,6 +1009,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
 			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
+			_jsii_.MemberMethod{JsiiMethod: "patch", GoMethod: "Patch"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
@@ -1028,6 +1041,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "lineWidth", GoGetter: "LineWidth"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
 			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
+			_jsii_.MemberMethod{JsiiMethod: "patch", GoMethod: "Patch"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},

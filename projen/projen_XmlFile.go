@@ -113,6 +113,33 @@ type XmlFile interface {
 	// ```.
 	// Experimental.
 	AddToArray(path *string, values ...interface{})
+	// Applies an RFC 6902 JSON-patch to the synthesized object file. See https://datatracker.ietf.org/doc/html/rfc6902 for more information.
+	//
+	// For example, with the following object file
+	// ```json
+	// "compilerOptions": {
+	//    "exclude": ["node_modules"],
+	//    "lib": ["es2019"]
+	//    ...
+	// }
+	// ...
+	// ```
+	//
+	// ```typescript
+	// project.tsconfig.file.patch(JsonPatch.add("/compilerOptions/exclude/-", "coverage"));
+	// project.tsconfig.file.patch(JsonPatch.replace("/compilerOptions/lib", ["dom", "dom.iterable", "esnext"]));
+	// ```
+	// would result in the following object file
+	// ```json
+	// "compilerOptions": {
+	//    "exclude": ["node_modules", "coverage"],
+	//    "lib": ["dom", "dom.iterable", "esnext"]
+	//    ...
+	// }
+	// ...
+	// ```.
+	// Experimental.
+	Patch(patches ...JsonPatch)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -282,6 +309,19 @@ func (x *jsiiProxy_XmlFile) AddToArray(path *string, values ...interface{}) {
 	_jsii_.InvokeVoid(
 		x,
 		"addToArray",
+		args,
+	)
+}
+
+func (x *jsiiProxy_XmlFile) Patch(patches ...JsonPatch) {
+	args := []interface{}{}
+	for _, a := range patches {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		x,
+		"patch",
 		args,
 	)
 }
