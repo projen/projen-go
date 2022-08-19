@@ -7,6 +7,15 @@ import (
 )
 
 func init() {
+	_jsii_.RegisterEnum(
+		"projen.vscode.Console",
+		reflect.TypeOf((*Console)(nil)).Elem(),
+		map[string]interface{}{
+			"INTERNAL_CONSOLE": Console_INTERNAL_CONSOLE,
+			"INTEGRATED_TERMINAL": Console_INTEGRATED_TERMINAL,
+			"EXTERNAL_TERMINAL": Console_EXTERNAL_TERMINAL,
+		},
+	)
 	_jsii_.RegisterClass(
 		"projen.vscode.DevContainer",
 		reflect.TypeOf((*DevContainer)(nil)).Elem(),
