@@ -33,6 +33,9 @@ type JsonFileOptions struct {
 	// Omits empty objects and arrays.
 	// Experimental.
 	OmitEmpty *bool `field:"optional" json:"omitEmpty" yaml:"omitEmpty"`
+	// Allow the use of comments in this file.
+	// Experimental.
+	AllowComments *bool `field:"optional" json:"allowComments" yaml:"allowComments"`
 	// Adds a newline at the end of the file.
 	// Experimental.
 	Newline *bool `field:"optional" json:"newline" yaml:"newline"`

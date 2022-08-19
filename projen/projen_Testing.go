@@ -24,7 +24,7 @@ type jsiiProxy_Testing struct {
 //
 // Returns: : any }.
 // Experimental.
-func Testing_Synth(project Project) *map[string]interface{} {
+func Testing_Synth(project Project, options *SnapshotOptions) *map[string]interface{} {
 	_init_.Initialize()
 
 	var returns *map[string]interface{}
@@ -32,7 +32,7 @@ func Testing_Synth(project Project) *map[string]interface{} {
 	_jsii_.StaticInvoke(
 		"projen.Testing",
 		"synth",
-		[]interface{}{project},
+		[]interface{}{project, options},
 		&returns,
 	)
 

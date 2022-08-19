@@ -800,6 +800,10 @@ func init() {
 			return &jsiiProxy_Semver{}
 		},
 	)
+	_jsii_.RegisterStruct(
+		"projen.SnapshotOptions",
+		reflect.TypeOf((*SnapshotOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.SourceCode",
 		reflect.TypeOf((*SourceCode)(nil)).Elem(),
