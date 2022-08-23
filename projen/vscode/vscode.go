@@ -66,6 +66,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberProperty{JsiiProperty: "settings", GoGetter: "Settings"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 		},
 		func() interface{} {
@@ -93,5 +94,22 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.vscode.VsCodeLaunchConfigurationEntry",
 		reflect.TypeOf((*VsCodeLaunchConfigurationEntry)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.vscode.VsCodeSettings",
+		reflect.TypeOf((*VsCodeSettings)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addSetting", GoMethod: "AddSetting"},
+			_jsii_.MemberMethod{JsiiMethod: "addSettings", GoMethod: "AddSettings"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+		},
+		func() interface{} {
+			j := jsiiProxy_VsCodeSettings{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
 	)
 }

@@ -15,6 +15,8 @@ type VsCode interface {
 	LaunchConfiguration() VsCodeLaunchConfig
 	// Experimental.
 	Project() projen.Project
+	// Experimental.
+	Settings() VsCodeSettings
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -48,6 +50,16 @@ func (j *jsiiProxy_VsCode) Project() projen.Project {
 	_jsii_.Get(
 		j,
 		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_VsCode) Settings() VsCodeSettings {
+	var returns VsCodeSettings
+	_jsii_.Get(
+		j,
+		"settings",
 		&returns,
 	)
 	return returns
