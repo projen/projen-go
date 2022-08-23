@@ -12,6 +12,8 @@ import (
 type VsCode interface {
 	projen.Component
 	// Experimental.
+	Extensions() VsCodeRecommendedExtensions
+	// Experimental.
 	LaunchConfiguration() VsCodeLaunchConfig
 	// Experimental.
 	Project() projen.Project
@@ -33,6 +35,16 @@ type VsCode interface {
 // The jsii proxy struct for VsCode
 type jsiiProxy_VsCode struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_VsCode) Extensions() VsCodeRecommendedExtensions {
+	var returns VsCodeRecommendedExtensions
+	_jsii_.Get(
+		j,
+		"extensions",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_VsCode) LaunchConfiguration() VsCodeLaunchConfig {
