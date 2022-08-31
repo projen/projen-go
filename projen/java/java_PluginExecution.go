@@ -10,5 +10,8 @@ type PluginExecution struct {
 	// The ID.
 	// Experimental.
 	Id *string `field:"required" json:"id" yaml:"id"`
+	// The phase in which the plugin should execute.
+	// Experimental.
+	Phase *string `field:"optional" json:"phase" yaml:"phase"`
 }
 
