@@ -52,6 +52,9 @@ func (j *jsiiProxy_Venv) Project() projen.Project {
 func NewVenv(project projen.Project, options *VenvOptions) Venv {
 	_init_.Initialize()
 
+	if err := validateNewVenvParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Venv{}
 
 	_jsii_.Create(

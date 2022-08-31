@@ -48,6 +48,9 @@ func (j *jsiiProxy_SampleFile) Project() Project {
 func NewSampleFile(project Project, filePath *string, options *SampleFileOptions) SampleFile {
 	_init_.Initialize()
 
+	if err := validateNewSampleFileParameters(project, filePath, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_SampleFile{}
 
 	_jsii_.Create(

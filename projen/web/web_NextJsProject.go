@@ -848,6 +848,9 @@ func (j *jsiiProxy_NextJsProject) Vscode() vscode.VsCode {
 func NewNextJsProject(options *NextJsProjectOptions) NextJsProject {
 	_init_.Initialize()
 
+	if err := validateNewNextJsProjectParameters(options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_NextJsProject{}
 
 	_jsii_.Create(
@@ -882,6 +885,9 @@ func NextJsProject_DEFAULT_TASK() *string {
 }
 
 func (n *jsiiProxy_NextJsProject) AddBins(bins *map[string]*string) {
+	if err := n.validateAddBinsParameters(bins); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"addBins",
@@ -955,6 +961,9 @@ func (n *jsiiProxy_NextJsProject) AddExcludeFromCleanup(globs ...*string) {
 }
 
 func (n *jsiiProxy_NextJsProject) AddFields(fields *map[string]interface{}) {
+	if err := n.validateAddFieldsParameters(fields); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"addFields",
@@ -963,6 +972,9 @@ func (n *jsiiProxy_NextJsProject) AddFields(fields *map[string]interface{}) {
 }
 
 func (n *jsiiProxy_NextJsProject) AddGitIgnore(pattern *string) {
+	if err := n.validateAddGitIgnoreParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"addGitIgnore",
@@ -984,6 +996,9 @@ func (n *jsiiProxy_NextJsProject) AddKeywords(keywords ...*string) {
 }
 
 func (n *jsiiProxy_NextJsProject) AddPackageIgnore(pattern *string) {
+	if err := n.validateAddPackageIgnoreParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"addPackageIgnore",
@@ -1005,6 +1020,9 @@ func (n *jsiiProxy_NextJsProject) AddPeerDeps(deps ...*string) {
 }
 
 func (n *jsiiProxy_NextJsProject) AddTask(name *string, props *projen.TaskOptions) projen.Task {
+	if err := n.validateAddTaskParameters(name, props); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -1031,6 +1049,9 @@ func (n *jsiiProxy_NextJsProject) AddTestCommand(commands ...*string) {
 }
 
 func (n *jsiiProxy_NextJsProject) AddTip(message *string) {
+	if err := n.validateAddTipParameters(message); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"addTip",
@@ -1039,6 +1060,9 @@ func (n *jsiiProxy_NextJsProject) AddTip(message *string) {
 }
 
 func (n *jsiiProxy_NextJsProject) AnnotateGenerated(glob *string) {
+	if err := n.validateAnnotateGeneratedParameters(glob); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"annotateGenerated",
@@ -1047,6 +1071,9 @@ func (n *jsiiProxy_NextJsProject) AnnotateGenerated(glob *string) {
 }
 
 func (n *jsiiProxy_NextJsProject) HasScript(name *string) *bool {
+	if err := n.validateHasScriptParameters(name); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.Invoke(
@@ -1076,6 +1103,9 @@ func (n *jsiiProxy_NextJsProject) PreSynthesize() {
 }
 
 func (n *jsiiProxy_NextJsProject) RemoveScript(name *string) {
+	if err := n.validateRemoveScriptParameters(name); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"removeScript",
@@ -1084,6 +1114,9 @@ func (n *jsiiProxy_NextJsProject) RemoveScript(name *string) {
 }
 
 func (n *jsiiProxy_NextJsProject) RemoveTask(name *string) projen.Task {
+	if err := n.validateRemoveTaskParameters(name); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -1097,6 +1130,9 @@ func (n *jsiiProxy_NextJsProject) RemoveTask(name *string) projen.Task {
 }
 
 func (n *jsiiProxy_NextJsProject) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
+	if err := n.validateRenderWorkflowSetupParameters(options); err != nil {
+		panic(err)
+	}
 	var returns *[]*workflows.JobStep
 
 	_jsii_.Invoke(
@@ -1110,6 +1146,9 @@ func (n *jsiiProxy_NextJsProject) RenderWorkflowSetup(options *javascript.Render
 }
 
 func (n *jsiiProxy_NextJsProject) RunTaskCommand(task projen.Task) *string {
+	if err := n.validateRunTaskCommandParameters(task); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -1123,6 +1162,9 @@ func (n *jsiiProxy_NextJsProject) RunTaskCommand(task projen.Task) *string {
 }
 
 func (n *jsiiProxy_NextJsProject) SetScript(name *string, command *string) {
+	if err := n.validateSetScriptParameters(name, command); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"setScript",
@@ -1139,6 +1181,9 @@ func (n *jsiiProxy_NextJsProject) Synth() {
 }
 
 func (n *jsiiProxy_NextJsProject) TryFindFile(filePath *string) projen.FileBase {
+	if err := n.validateTryFindFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(
@@ -1152,6 +1197,9 @@ func (n *jsiiProxy_NextJsProject) TryFindFile(filePath *string) projen.FileBase 
 }
 
 func (n *jsiiProxy_NextJsProject) TryFindJsonFile(filePath *string) projen.JsonFile {
+	if err := n.validateTryFindJsonFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.JsonFile
 
 	_jsii_.Invoke(
@@ -1165,6 +1213,9 @@ func (n *jsiiProxy_NextJsProject) TryFindJsonFile(filePath *string) projen.JsonF
 }
 
 func (n *jsiiProxy_NextJsProject) TryFindObjectFile(filePath *string) projen.ObjectFile {
+	if err := n.validateTryFindObjectFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.ObjectFile
 
 	_jsii_.Invoke(
@@ -1178,6 +1229,9 @@ func (n *jsiiProxy_NextJsProject) TryFindObjectFile(filePath *string) projen.Obj
 }
 
 func (n *jsiiProxy_NextJsProject) TryRemoveFile(filePath *string) projen.FileBase {
+	if err := n.validateTryRemoveFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(

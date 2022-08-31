@@ -137,6 +137,9 @@ func (j *jsiiProxy_ReactTypeDef) Readonly() *bool {
 func NewReactTypeDef(project ReactTypeScriptProject, filePath *string, options *ReactTypeDefOptions) ReactTypeDef {
 	_init_.Initialize()
 
+	if err := validateNewReactTypeDefParameters(project, filePath, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_ReactTypeDef{}
 
 	_jsii_.Create(
@@ -159,7 +162,10 @@ func NewReactTypeDef_Override(r ReactTypeDef, project ReactTypeScriptProject, fi
 	)
 }
 
-func (j *jsiiProxy_ReactTypeDef) SetExecutable(val *bool) {
+func (j *jsiiProxy_ReactTypeDef)SetExecutable(val *bool) {
+	if err := j.validateSetExecutableParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"executable",
@@ -167,7 +173,10 @@ func (j *jsiiProxy_ReactTypeDef) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_ReactTypeDef) SetReadonly(val *bool) {
+func (j *jsiiProxy_ReactTypeDef)SetReadonly(val *bool) {
+	if err := j.validateSetReadonlyParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"readonly",
@@ -200,6 +209,9 @@ func (r *jsiiProxy_ReactTypeDef) Synthesize() {
 }
 
 func (r *jsiiProxy_ReactTypeDef) SynthesizeContent(_arg projen.IResolver) *string {
+	if err := r.validateSynthesizeContentParameters(_arg); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

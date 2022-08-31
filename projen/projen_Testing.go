@@ -27,6 +27,9 @@ type jsiiProxy_Testing struct {
 func Testing_Synth(project Project, options *SnapshotOptions) *map[string]interface{} {
 	_init_.Initialize()
 
+	if err := validateTesting_SynthParameters(project, options); err != nil {
+		panic(err)
+	}
 	var returns *map[string]interface{}
 
 	_jsii_.StaticInvoke(

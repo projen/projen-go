@@ -59,6 +59,9 @@ func (j *jsiiProxy_AutoApprove) Project() projen.Project {
 func NewAutoApprove(github GitHub, options *AutoApproveOptions) AutoApprove {
 	_init_.Initialize()
 
+	if err := validateNewAutoApproveParameters(github, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_AutoApprove{}
 
 	_jsii_.Create(

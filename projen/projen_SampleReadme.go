@@ -45,6 +45,9 @@ func (j *jsiiProxy_SampleReadme) Project() Project {
 func NewSampleReadme(project Project, props *SampleReadmeProps) SampleReadme {
 	_init_.Initialize()
 
+	if err := validateNewSampleReadmeParameters(project, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_SampleReadme{}
 
 	_jsii_.Create(

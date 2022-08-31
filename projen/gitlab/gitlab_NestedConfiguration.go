@@ -315,6 +315,9 @@ func (j *jsiiProxy_NestedConfiguration) Workflow() *Workflow {
 func NewNestedConfiguration(project projen.Project, parent GitlabConfiguration, name *string, options *CiConfigurationOptions) NestedConfiguration {
 	_init_.Initialize()
 
+	if err := validateNewNestedConfigurationParameters(project, parent, name, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_NestedConfiguration{}
 
 	_jsii_.Create(
@@ -338,6 +341,9 @@ func NewNestedConfiguration_Override(n NestedConfiguration, project projen.Proje
 }
 
 func (n *jsiiProxy_NestedConfiguration) AddGlobalVariables(variables *map[string]interface{}) {
+	if err := n.validateAddGlobalVariablesParameters(variables); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"addGlobalVariables",
@@ -346,6 +352,9 @@ func (n *jsiiProxy_NestedConfiguration) AddGlobalVariables(variables *map[string
 }
 
 func (n *jsiiProxy_NestedConfiguration) AddIncludes(includes ...*Include) {
+	if err := n.validateAddIncludesParameters(&includes); err != nil {
+		panic(err)
+	}
 	args := []interface{}{}
 	for _, a := range includes {
 		args = append(args, a)
@@ -359,6 +368,9 @@ func (n *jsiiProxy_NestedConfiguration) AddIncludes(includes ...*Include) {
 }
 
 func (n *jsiiProxy_NestedConfiguration) AddJobs(jobs *map[string]*Job) {
+	if err := n.validateAddJobsParameters(jobs); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"addJobs",
@@ -367,6 +379,9 @@ func (n *jsiiProxy_NestedConfiguration) AddJobs(jobs *map[string]*Job) {
 }
 
 func (n *jsiiProxy_NestedConfiguration) AddServices(services ...*Service) {
+	if err := n.validateAddServicesParameters(&services); err != nil {
+		panic(err)
+	}
 	args := []interface{}{}
 	for _, a := range services {
 		args = append(args, a)

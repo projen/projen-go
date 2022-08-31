@@ -19,6 +19,9 @@ type jsiiProxy_JsiiDocgen struct {
 func NewJsiiDocgen(project JsiiProject, options *JsiiDocgenOptions) JsiiDocgen {
 	_init_.Initialize()
 
+	if err := validateNewJsiiDocgenParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_JsiiDocgen{}
 
 	_jsii_.Create(

@@ -52,6 +52,9 @@ func (j *jsiiProxy_TailwindConfig) FileName() *string {
 func NewTailwindConfig(project javascript.NodeProject, options *TailwindConfigOptions) TailwindConfig {
 	_init_.Initialize()
 
+	if err := validateNewTailwindConfigParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_TailwindConfig{}
 
 	_jsii_.Create(

@@ -125,6 +125,9 @@ func (j *jsiiProxy_CdkTasks) Watch() projen.Task {
 func NewCdkTasks(project projen.Project) CdkTasks {
 	_init_.Initialize()
 
+	if err := validateNewCdkTasksParameters(project); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_CdkTasks{}
 
 	_jsii_.Create(

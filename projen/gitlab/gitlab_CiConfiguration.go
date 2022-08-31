@@ -308,6 +308,9 @@ func (j *jsiiProxy_CiConfiguration) Workflow() *Workflow {
 func NewCiConfiguration(project projen.Project, name *string, options *CiConfigurationOptions) CiConfiguration {
 	_init_.Initialize()
 
+	if err := validateNewCiConfigurationParameters(project, name, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_CiConfiguration{}
 
 	_jsii_.Create(
@@ -331,6 +334,9 @@ func NewCiConfiguration_Override(c CiConfiguration, project projen.Project, name
 }
 
 func (c *jsiiProxy_CiConfiguration) AddGlobalVariables(variables *map[string]interface{}) {
+	if err := c.validateAddGlobalVariablesParameters(variables); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addGlobalVariables",
@@ -339,6 +345,9 @@ func (c *jsiiProxy_CiConfiguration) AddGlobalVariables(variables *map[string]int
 }
 
 func (c *jsiiProxy_CiConfiguration) AddIncludes(includes ...*Include) {
+	if err := c.validateAddIncludesParameters(&includes); err != nil {
+		panic(err)
+	}
 	args := []interface{}{}
 	for _, a := range includes {
 		args = append(args, a)
@@ -352,6 +361,9 @@ func (c *jsiiProxy_CiConfiguration) AddIncludes(includes ...*Include) {
 }
 
 func (c *jsiiProxy_CiConfiguration) AddJobs(jobs *map[string]*Job) {
+	if err := c.validateAddJobsParameters(jobs); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addJobs",
@@ -360,6 +372,9 @@ func (c *jsiiProxy_CiConfiguration) AddJobs(jobs *map[string]*Job) {
 }
 
 func (c *jsiiProxy_CiConfiguration) AddServices(services ...*Service) {
+	if err := c.validateAddServicesParameters(&services); err != nil {
+		panic(err)
+	}
 	args := []interface{}{}
 	for _, a := range services {
 		args = append(args, a)

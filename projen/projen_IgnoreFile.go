@@ -155,6 +155,9 @@ func (j *jsiiProxy_IgnoreFile) Readonly() *bool {
 func NewIgnoreFile(project Project, filePath *string) IgnoreFile {
 	_init_.Initialize()
 
+	if err := validateNewIgnoreFileParameters(project, filePath); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_IgnoreFile{}
 
 	_jsii_.Create(
@@ -177,7 +180,10 @@ func NewIgnoreFile_Override(i IgnoreFile, project Project, filePath *string) {
 	)
 }
 
-func (j *jsiiProxy_IgnoreFile) SetExecutable(val *bool) {
+func (j *jsiiProxy_IgnoreFile)SetExecutable(val *bool) {
+	if err := j.validateSetExecutableParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"executable",
@@ -185,7 +191,10 @@ func (j *jsiiProxy_IgnoreFile) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_IgnoreFile) SetReadonly(val *bool) {
+func (j *jsiiProxy_IgnoreFile)SetReadonly(val *bool) {
+	if err := j.validateSetReadonlyParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"readonly",
@@ -270,6 +279,9 @@ func (i *jsiiProxy_IgnoreFile) Synthesize() {
 }
 
 func (i *jsiiProxy_IgnoreFile) SynthesizeContent(resolver IResolver) *string {
+	if err := i.validateSynthesizeContentParameters(resolver); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

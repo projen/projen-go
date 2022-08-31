@@ -249,7 +249,10 @@ func NewObjectFile_Override(o ObjectFile, project Project, filePath *string, opt
 	)
 }
 
-func (j *jsiiProxy_ObjectFile) SetExecutable(val *bool) {
+func (j *jsiiProxy_ObjectFile)SetExecutable(val *bool) {
+	if err := j.validateSetExecutableParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"executable",
@@ -257,7 +260,10 @@ func (j *jsiiProxy_ObjectFile) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_ObjectFile) SetReadonly(val *bool) {
+func (j *jsiiProxy_ObjectFile)SetReadonly(val *bool) {
+	if err := j.validateSetReadonlyParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"readonly",
@@ -266,6 +272,9 @@ func (j *jsiiProxy_ObjectFile) SetReadonly(val *bool) {
 }
 
 func (o *jsiiProxy_ObjectFile) AddDeletionOverride(path *string) {
+	if err := o.validateAddDeletionOverrideParameters(path); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		o,
 		"addDeletionOverride",
@@ -274,6 +283,9 @@ func (o *jsiiProxy_ObjectFile) AddDeletionOverride(path *string) {
 }
 
 func (o *jsiiProxy_ObjectFile) AddOverride(path *string, value interface{}) {
+	if err := o.validateAddOverrideParameters(path, value); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		o,
 		"addOverride",
@@ -282,6 +294,9 @@ func (o *jsiiProxy_ObjectFile) AddOverride(path *string, value interface{}) {
 }
 
 func (o *jsiiProxy_ObjectFile) AddToArray(path *string, values ...interface{}) {
+	if err := o.validateAddToArrayParameters(path); err != nil {
+		panic(err)
+	}
 	args := []interface{}{path}
 	for _, a := range values {
 		args = append(args, a)
@@ -332,6 +347,9 @@ func (o *jsiiProxy_ObjectFile) Synthesize() {
 }
 
 func (o *jsiiProxy_ObjectFile) SynthesizeContent(resolver IResolver) *string {
+	if err := o.validateSynthesizeContentParameters(resolver); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

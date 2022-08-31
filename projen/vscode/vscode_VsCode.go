@@ -82,6 +82,9 @@ func (j *jsiiProxy_VsCode) Settings() VsCodeSettings {
 func NewVsCode(project projen.Project) VsCode {
 	_init_.Initialize()
 
+	if err := validateNewVsCodeParameters(project); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_VsCode{}
 
 	_jsii_.Create(

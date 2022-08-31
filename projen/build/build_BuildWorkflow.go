@@ -87,6 +87,9 @@ func (j *jsiiProxy_BuildWorkflow) Project() projen.Project {
 func NewBuildWorkflow(project projen.Project, options *BuildWorkflowOptions) BuildWorkflow {
 	_init_.Initialize()
 
+	if err := validateNewBuildWorkflowParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_BuildWorkflow{}
 
 	_jsii_.Create(
@@ -110,6 +113,9 @@ func NewBuildWorkflow_Override(b BuildWorkflow, project projen.Project, options 
 }
 
 func (b *jsiiProxy_BuildWorkflow) AddPostBuildJob(id *string, job *workflows.Job) {
+	if err := b.validateAddPostBuildJobParameters(id, job); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		b,
 		"addPostBuildJob",
@@ -118,6 +124,9 @@ func (b *jsiiProxy_BuildWorkflow) AddPostBuildJob(id *string, job *workflows.Job
 }
 
 func (b *jsiiProxy_BuildWorkflow) AddPostBuildJobCommands(id *string, commands *[]*string, options *AddPostBuildJobCommandsOptions) {
+	if err := b.validateAddPostBuildJobCommandsParameters(id, commands, options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		b,
 		"addPostBuildJobCommands",
@@ -126,6 +135,9 @@ func (b *jsiiProxy_BuildWorkflow) AddPostBuildJobCommands(id *string, commands *
 }
 
 func (b *jsiiProxy_BuildWorkflow) AddPostBuildJobTask(task projen.Task, options *AddPostBuildJobTaskOptions) {
+	if err := b.validateAddPostBuildJobTaskParameters(task, options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		b,
 		"addPostBuildJobTask",
@@ -134,6 +146,9 @@ func (b *jsiiProxy_BuildWorkflow) AddPostBuildJobTask(task projen.Task, options 
 }
 
 func (b *jsiiProxy_BuildWorkflow) AddPostBuildSteps(steps ...*workflows.JobStep) {
+	if err := b.validateAddPostBuildStepsParameters(&steps); err != nil {
+		panic(err)
+	}
 	args := []interface{}{}
 	for _, a := range steps {
 		args = append(args, a)

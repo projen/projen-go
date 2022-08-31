@@ -52,6 +52,9 @@ func (j *jsiiProxy_DevEnvironmentDockerImage) Image() *string {
 func DevEnvironmentDockerImage_FromFile(dockerFile *string) DevEnvironmentDockerImage {
 	_init_.Initialize()
 
+	if err := validateDevEnvironmentDockerImage_FromFileParameters(dockerFile); err != nil {
+		panic(err)
+	}
 	var returns DevEnvironmentDockerImage
 
 	_jsii_.StaticInvoke(
@@ -73,6 +76,9 @@ func DevEnvironmentDockerImage_FromFile(dockerFile *string) DevEnvironmentDocker
 func DevEnvironmentDockerImage_FromImage(image *string) DevEnvironmentDockerImage {
 	_init_.Initialize()
 
+	if err := validateDevEnvironmentDockerImage_FromImageParameters(image); err != nil {
+		panic(err)
+	}
 	var returns DevEnvironmentDockerImage
 
 	_jsii_.StaticInvoke(

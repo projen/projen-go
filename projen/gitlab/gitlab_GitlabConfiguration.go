@@ -322,6 +322,9 @@ func (j *jsiiProxy_GitlabConfiguration) Workflow() *Workflow {
 func NewGitlabConfiguration(project projen.Project, options *CiConfigurationOptions) GitlabConfiguration {
 	_init_.Initialize()
 
+	if err := validateNewGitlabConfigurationParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_GitlabConfiguration{}
 
 	_jsii_.Create(
@@ -345,6 +348,9 @@ func NewGitlabConfiguration_Override(g GitlabConfiguration, project projen.Proje
 }
 
 func (g *jsiiProxy_GitlabConfiguration) AddGlobalVariables(variables *map[string]interface{}) {
+	if err := g.validateAddGlobalVariablesParameters(variables); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		g,
 		"addGlobalVariables",
@@ -353,6 +359,9 @@ func (g *jsiiProxy_GitlabConfiguration) AddGlobalVariables(variables *map[string
 }
 
 func (g *jsiiProxy_GitlabConfiguration) AddIncludes(includes ...*Include) {
+	if err := g.validateAddIncludesParameters(&includes); err != nil {
+		panic(err)
+	}
 	args := []interface{}{}
 	for _, a := range includes {
 		args = append(args, a)
@@ -366,6 +375,9 @@ func (g *jsiiProxy_GitlabConfiguration) AddIncludes(includes ...*Include) {
 }
 
 func (g *jsiiProxy_GitlabConfiguration) AddJobs(jobs *map[string]*Job) {
+	if err := g.validateAddJobsParameters(jobs); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		g,
 		"addJobs",
@@ -374,6 +386,9 @@ func (g *jsiiProxy_GitlabConfiguration) AddJobs(jobs *map[string]*Job) {
 }
 
 func (g *jsiiProxy_GitlabConfiguration) AddServices(services ...*Service) {
+	if err := g.validateAddServicesParameters(&services); err != nil {
+		panic(err)
+	}
 	args := []interface{}{}
 	for _, a := range services {
 		args = append(args, a)
@@ -400,6 +415,9 @@ func (g *jsiiProxy_GitlabConfiguration) AddStages(stages ...*string) {
 }
 
 func (g *jsiiProxy_GitlabConfiguration) CreateNestedTemplates(config *map[string]*CiConfigurationOptions) {
+	if err := g.validateCreateNestedTemplatesParameters(config); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		g,
 		"createNestedTemplates",

@@ -950,6 +950,9 @@ func ConstructLibrary_DEFAULT_TASK() *string {
 }
 
 func (c *jsiiProxy_ConstructLibrary) AddBins(bins *map[string]*string) {
+	if err := c.validateAddBinsParameters(bins); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addBins",
@@ -1023,6 +1026,9 @@ func (c *jsiiProxy_ConstructLibrary) AddExcludeFromCleanup(globs ...*string) {
 }
 
 func (c *jsiiProxy_ConstructLibrary) AddFields(fields *map[string]interface{}) {
+	if err := c.validateAddFieldsParameters(fields); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addFields",
@@ -1031,6 +1037,9 @@ func (c *jsiiProxy_ConstructLibrary) AddFields(fields *map[string]interface{}) {
 }
 
 func (c *jsiiProxy_ConstructLibrary) AddGitIgnore(pattern *string) {
+	if err := c.validateAddGitIgnoreParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addGitIgnore",
@@ -1052,6 +1061,9 @@ func (c *jsiiProxy_ConstructLibrary) AddKeywords(keywords ...*string) {
 }
 
 func (c *jsiiProxy_ConstructLibrary) AddPackageIgnore(pattern *string) {
+	if err := c.validateAddPackageIgnoreParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addPackageIgnore",
@@ -1073,6 +1085,9 @@ func (c *jsiiProxy_ConstructLibrary) AddPeerDeps(deps ...*string) {
 }
 
 func (c *jsiiProxy_ConstructLibrary) AddTask(name *string, props *projen.TaskOptions) projen.Task {
+	if err := c.validateAddTaskParameters(name, props); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -1099,6 +1114,9 @@ func (c *jsiiProxy_ConstructLibrary) AddTestCommand(commands ...*string) {
 }
 
 func (c *jsiiProxy_ConstructLibrary) AddTip(message *string) {
+	if err := c.validateAddTipParameters(message); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addTip",
@@ -1107,6 +1125,9 @@ func (c *jsiiProxy_ConstructLibrary) AddTip(message *string) {
 }
 
 func (c *jsiiProxy_ConstructLibrary) AnnotateGenerated(glob *string) {
+	if err := c.validateAnnotateGeneratedParameters(glob); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"annotateGenerated",
@@ -1115,6 +1136,9 @@ func (c *jsiiProxy_ConstructLibrary) AnnotateGenerated(glob *string) {
 }
 
 func (c *jsiiProxy_ConstructLibrary) HasScript(name *string) *bool {
+	if err := c.validateHasScriptParameters(name); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.Invoke(
@@ -1144,6 +1168,9 @@ func (c *jsiiProxy_ConstructLibrary) PreSynthesize() {
 }
 
 func (c *jsiiProxy_ConstructLibrary) RemoveScript(name *string) {
+	if err := c.validateRemoveScriptParameters(name); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"removeScript",
@@ -1152,6 +1179,9 @@ func (c *jsiiProxy_ConstructLibrary) RemoveScript(name *string) {
 }
 
 func (c *jsiiProxy_ConstructLibrary) RemoveTask(name *string) projen.Task {
+	if err := c.validateRemoveTaskParameters(name); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -1165,6 +1195,9 @@ func (c *jsiiProxy_ConstructLibrary) RemoveTask(name *string) projen.Task {
 }
 
 func (c *jsiiProxy_ConstructLibrary) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
+	if err := c.validateRenderWorkflowSetupParameters(options); err != nil {
+		panic(err)
+	}
 	var returns *[]*workflows.JobStep
 
 	_jsii_.Invoke(
@@ -1178,6 +1211,9 @@ func (c *jsiiProxy_ConstructLibrary) RenderWorkflowSetup(options *javascript.Ren
 }
 
 func (c *jsiiProxy_ConstructLibrary) RunTaskCommand(task projen.Task) *string {
+	if err := c.validateRunTaskCommandParameters(task); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -1191,6 +1227,9 @@ func (c *jsiiProxy_ConstructLibrary) RunTaskCommand(task projen.Task) *string {
 }
 
 func (c *jsiiProxy_ConstructLibrary) SetScript(name *string, command *string) {
+	if err := c.validateSetScriptParameters(name, command); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"setScript",
@@ -1207,6 +1246,9 @@ func (c *jsiiProxy_ConstructLibrary) Synth() {
 }
 
 func (c *jsiiProxy_ConstructLibrary) TryFindFile(filePath *string) projen.FileBase {
+	if err := c.validateTryFindFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(
@@ -1220,6 +1262,9 @@ func (c *jsiiProxy_ConstructLibrary) TryFindFile(filePath *string) projen.FileBa
 }
 
 func (c *jsiiProxy_ConstructLibrary) TryFindJsonFile(filePath *string) projen.JsonFile {
+	if err := c.validateTryFindJsonFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.JsonFile
 
 	_jsii_.Invoke(
@@ -1233,6 +1278,9 @@ func (c *jsiiProxy_ConstructLibrary) TryFindJsonFile(filePath *string) projen.Js
 }
 
 func (c *jsiiProxy_ConstructLibrary) TryFindObjectFile(filePath *string) projen.ObjectFile {
+	if err := c.validateTryFindObjectFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.ObjectFile
 
 	_jsii_.Invoke(
@@ -1246,6 +1294,9 @@ func (c *jsiiProxy_ConstructLibrary) TryFindObjectFile(filePath *string) projen.
 }
 
 func (c *jsiiProxy_ConstructLibrary) TryRemoveFile(filePath *string) projen.FileBase {
+	if err := c.validateTryRemoveFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(

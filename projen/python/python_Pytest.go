@@ -58,6 +58,9 @@ func (j *jsiiProxy_Pytest) Testdir() *string {
 func NewPytest(project projen.Project, options *PytestOptions) Pytest {
 	_init_.Initialize()
 
+	if err := validateNewPytestParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Pytest{}
 
 	_jsii_.Create(

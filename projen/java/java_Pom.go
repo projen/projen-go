@@ -172,6 +172,9 @@ func (j *jsiiProxy_Pom) Version() *string {
 func NewPom(project projen.Project, options *PomOptions) Pom {
 	_init_.Initialize()
 
+	if err := validateNewPomParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Pom{}
 
 	_jsii_.Create(
@@ -195,6 +198,9 @@ func NewPom_Override(p Pom, project projen.Project, options *PomOptions) {
 }
 
 func (p *jsiiProxy_Pom) AddDependency(spec *string) {
+	if err := p.validateAddDependencyParameters(spec); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"addDependency",
@@ -203,6 +209,9 @@ func (p *jsiiProxy_Pom) AddDependency(spec *string) {
 }
 
 func (p *jsiiProxy_Pom) AddPlugin(spec *string, options *PluginOptions) *projen.Dependency {
+	if err := p.validateAddPluginParameters(spec, options); err != nil {
+		panic(err)
+	}
 	var returns *projen.Dependency
 
 	_jsii_.Invoke(
@@ -216,6 +225,9 @@ func (p *jsiiProxy_Pom) AddPlugin(spec *string, options *PluginOptions) *projen.
 }
 
 func (p *jsiiProxy_Pom) AddProperty(key *string, value *string) {
+	if err := p.validateAddPropertyParameters(key, value); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"addProperty",
@@ -224,6 +236,9 @@ func (p *jsiiProxy_Pom) AddProperty(key *string, value *string) {
 }
 
 func (p *jsiiProxy_Pom) AddRepository(repository *MavenRepository) {
+	if err := p.validateAddRepositoryParameters(repository); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"addRepository",
@@ -232,6 +247,9 @@ func (p *jsiiProxy_Pom) AddRepository(repository *MavenRepository) {
 }
 
 func (p *jsiiProxy_Pom) AddTestDependency(spec *string) {
+	if err := p.validateAddTestDependencyParameters(spec); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"addTestDependency",

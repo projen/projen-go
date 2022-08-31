@@ -605,6 +605,9 @@ func (j *jsiiProxy_Cdk8sPythonApp) Vscode() vscode.VsCode {
 func NewCdk8sPythonApp(options *Cdk8sPythonOptions) Cdk8sPythonApp {
 	_init_.Initialize()
 
+	if err := validateNewCdk8sPythonAppParameters(options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Cdk8sPythonApp{}
 
 	_jsii_.Create(
@@ -627,7 +630,7 @@ func NewCdk8sPythonApp_Override(c Cdk8sPythonApp, options *Cdk8sPythonOptions) {
 	)
 }
 
-func (j *jsiiProxy_Cdk8sPythonApp) SetPytest(val python.Pytest) {
+func (j *jsiiProxy_Cdk8sPythonApp)SetPytest(val python.Pytest) {
 	_jsii_.Set(
 		j,
 		"pytest",
@@ -647,6 +650,9 @@ func Cdk8sPythonApp_DEFAULT_TASK() *string {
 }
 
 func (c *jsiiProxy_Cdk8sPythonApp) AddDependency(spec *string) {
+	if err := c.validateAddDependencyParameters(spec); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addDependency",
@@ -655,6 +661,9 @@ func (c *jsiiProxy_Cdk8sPythonApp) AddDependency(spec *string) {
 }
 
 func (c *jsiiProxy_Cdk8sPythonApp) AddDevDependency(spec *string) {
+	if err := c.validateAddDevDependencyParameters(spec); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addDevDependency",
@@ -676,6 +685,9 @@ func (c *jsiiProxy_Cdk8sPythonApp) AddExcludeFromCleanup(globs ...*string) {
 }
 
 func (c *jsiiProxy_Cdk8sPythonApp) AddGitIgnore(pattern *string) {
+	if err := c.validateAddGitIgnoreParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addGitIgnore",
@@ -684,6 +696,9 @@ func (c *jsiiProxy_Cdk8sPythonApp) AddGitIgnore(pattern *string) {
 }
 
 func (c *jsiiProxy_Cdk8sPythonApp) AddPackageIgnore(_pattern *string) {
+	if err := c.validateAddPackageIgnoreParameters(_pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addPackageIgnore",
@@ -692,6 +707,9 @@ func (c *jsiiProxy_Cdk8sPythonApp) AddPackageIgnore(_pattern *string) {
 }
 
 func (c *jsiiProxy_Cdk8sPythonApp) AddTask(name *string, props *projen.TaskOptions) projen.Task {
+	if err := c.validateAddTaskParameters(name, props); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -705,6 +723,9 @@ func (c *jsiiProxy_Cdk8sPythonApp) AddTask(name *string, props *projen.TaskOptio
 }
 
 func (c *jsiiProxy_Cdk8sPythonApp) AddTip(message *string) {
+	if err := c.validateAddTipParameters(message); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addTip",
@@ -713,6 +734,9 @@ func (c *jsiiProxy_Cdk8sPythonApp) AddTip(message *string) {
 }
 
 func (c *jsiiProxy_Cdk8sPythonApp) AnnotateGenerated(glob *string) {
+	if err := c.validateAnnotateGeneratedParameters(glob); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"annotateGenerated",
@@ -737,6 +761,9 @@ func (c *jsiiProxy_Cdk8sPythonApp) PreSynthesize() {
 }
 
 func (c *jsiiProxy_Cdk8sPythonApp) RemoveTask(name *string) projen.Task {
+	if err := c.validateRemoveTaskParameters(name); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -750,6 +777,9 @@ func (c *jsiiProxy_Cdk8sPythonApp) RemoveTask(name *string) projen.Task {
 }
 
 func (c *jsiiProxy_Cdk8sPythonApp) RunTaskCommand(task projen.Task) *string {
+	if err := c.validateRunTaskCommandParameters(task); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -771,6 +801,9 @@ func (c *jsiiProxy_Cdk8sPythonApp) Synth() {
 }
 
 func (c *jsiiProxy_Cdk8sPythonApp) TryFindFile(filePath *string) projen.FileBase {
+	if err := c.validateTryFindFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(
@@ -784,6 +817,9 @@ func (c *jsiiProxy_Cdk8sPythonApp) TryFindFile(filePath *string) projen.FileBase
 }
 
 func (c *jsiiProxy_Cdk8sPythonApp) TryFindJsonFile(filePath *string) projen.JsonFile {
+	if err := c.validateTryFindJsonFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.JsonFile
 
 	_jsii_.Invoke(
@@ -797,6 +833,9 @@ func (c *jsiiProxy_Cdk8sPythonApp) TryFindJsonFile(filePath *string) projen.Json
 }
 
 func (c *jsiiProxy_Cdk8sPythonApp) TryFindObjectFile(filePath *string) projen.ObjectFile {
+	if err := c.validateTryFindObjectFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.ObjectFile
 
 	_jsii_.Invoke(
@@ -810,6 +849,9 @@ func (c *jsiiProxy_Cdk8sPythonApp) TryFindObjectFile(filePath *string) projen.Ob
 }
 
 func (c *jsiiProxy_Cdk8sPythonApp) TryRemoveFile(filePath *string) projen.FileBase {
+	if err := c.validateTryRemoveFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(

@@ -115,6 +115,9 @@ func (j *jsiiProxy_AwsCdkDepsJava) Project() projen.Project {
 func NewAwsCdkDepsJava(project projen.Project, options *AwsCdkDepsOptions) AwsCdkDepsJava {
 	_init_.Initialize()
 
+	if err := validateNewAwsCdkDepsJavaParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_AwsCdkDepsJava{}
 
 	_jsii_.Create(

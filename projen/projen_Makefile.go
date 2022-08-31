@@ -161,6 +161,9 @@ func (j *jsiiProxy_Makefile) Rules() *[]*Rule {
 func NewMakefile(project Project, filePath *string, options *MakefileOptions) Makefile {
 	_init_.Initialize()
 
+	if err := validateNewMakefileParameters(project, filePath, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Makefile{}
 
 	_jsii_.Create(
@@ -183,7 +186,10 @@ func NewMakefile_Override(m Makefile, project Project, filePath *string, options
 	)
 }
 
-func (j *jsiiProxy_Makefile) SetExecutable(val *bool) {
+func (j *jsiiProxy_Makefile)SetExecutable(val *bool) {
+	if err := j.validateSetExecutableParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"executable",
@@ -191,7 +197,10 @@ func (j *jsiiProxy_Makefile) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_Makefile) SetReadonly(val *bool) {
+func (j *jsiiProxy_Makefile)SetReadonly(val *bool) {
+	if err := j.validateSetReadonlyParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"readonly",
@@ -200,6 +209,9 @@ func (j *jsiiProxy_Makefile) SetReadonly(val *bool) {
 }
 
 func (m *jsiiProxy_Makefile) AddAll(target *string) Makefile {
+	if err := m.validateAddAllParameters(target); err != nil {
+		panic(err)
+	}
 	var returns Makefile
 
 	_jsii_.Invoke(
@@ -231,6 +243,9 @@ func (m *jsiiProxy_Makefile) AddAlls(targets ...*string) Makefile {
 }
 
 func (m *jsiiProxy_Makefile) AddRule(rule *Rule) Makefile {
+	if err := m.validateAddRuleParameters(rule); err != nil {
+		panic(err)
+	}
 	var returns Makefile
 
 	_jsii_.Invoke(
@@ -244,6 +259,9 @@ func (m *jsiiProxy_Makefile) AddRule(rule *Rule) Makefile {
 }
 
 func (m *jsiiProxy_Makefile) AddRules(rules ...*Rule) Makefile {
+	if err := m.validateAddRulesParameters(&rules); err != nil {
+		panic(err)
+	}
 	args := []interface{}{}
 	for _, a := range rules {
 		args = append(args, a)
@@ -286,6 +304,9 @@ func (m *jsiiProxy_Makefile) Synthesize() {
 }
 
 func (m *jsiiProxy_Makefile) SynthesizeContent(resolver IResolver) *string {
+	if err := m.validateSynthesizeContentParameters(resolver); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

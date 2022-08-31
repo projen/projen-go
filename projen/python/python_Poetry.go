@@ -104,6 +104,9 @@ func (j *jsiiProxy_Poetry) PublishTestTask() projen.Task {
 func NewPoetry(project projen.Project, options *PythonPackagingOptions) Poetry {
 	_init_.Initialize()
 
+	if err := validateNewPoetryParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Poetry{}
 
 	_jsii_.Create(
@@ -127,6 +130,9 @@ func NewPoetry_Override(p Poetry, project projen.Project, options *PythonPackagi
 }
 
 func (p *jsiiProxy_Poetry) AddDependency(spec *string) {
+	if err := p.validateAddDependencyParameters(spec); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"addDependency",
@@ -135,6 +141,9 @@ func (p *jsiiProxy_Poetry) AddDependency(spec *string) {
 }
 
 func (p *jsiiProxy_Poetry) AddDevDependency(spec *string) {
+	if err := p.validateAddDevDependencyParameters(spec); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"addDevDependency",

@@ -75,6 +75,9 @@ func (j *jsiiProxy_Setuptools) PublishTestTask() projen.Task {
 func NewSetuptools(project projen.Project, options *PythonPackagingOptions) Setuptools {
 	_init_.Initialize()
 
+	if err := validateNewSetuptoolsParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Setuptools{}
 
 	_jsii_.Create(

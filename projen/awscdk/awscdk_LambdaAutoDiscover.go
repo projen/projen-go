@@ -61,6 +61,9 @@ func (j *jsiiProxy_LambdaAutoDiscover) Project() projen.Project {
 func NewLambdaAutoDiscover(project projen.Project, options *LambdaAutoDiscoverOptions) LambdaAutoDiscover {
 	_init_.Initialize()
 
+	if err := validateNewLambdaAutoDiscoverParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_LambdaAutoDiscover{}
 
 	_jsii_.Create(

@@ -55,6 +55,9 @@ func (j *jsiiProxy_Stale) Project() projen.Project {
 func NewStale(github GitHub, options *StaleOptions) Stale {
 	_init_.Initialize()
 
+	if err := validateNewStaleParameters(github, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Stale{}
 
 	_jsii_.Create(

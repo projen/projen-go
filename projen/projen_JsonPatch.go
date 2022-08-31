@@ -42,6 +42,9 @@ type jsiiProxy_JsonPatch struct {
 func JsonPatch_Add(path *string, value interface{}) JsonPatch {
 	_init_.Initialize()
 
+	if err := validateJsonPatch_AddParameters(path, value); err != nil {
+		panic(err)
+	}
 	var returns JsonPatch
 
 	_jsii_.StaticInvoke(
@@ -61,6 +64,9 @@ func JsonPatch_Add(path *string, value interface{}) JsonPatch {
 func JsonPatch_Apply(document interface{}, ops ...JsonPatch) interface{} {
 	_init_.Initialize()
 
+	if err := validateJsonPatch_ApplyParameters(document); err != nil {
+		panic(err)
+	}
 	args := []interface{}{document}
 	for _, a := range ops {
 		args = append(args, a)
@@ -90,6 +96,9 @@ func JsonPatch_Apply(document interface{}, ops ...JsonPatch) interface{} {
 func JsonPatch_Copy(from *string, path *string) JsonPatch {
 	_init_.Initialize()
 
+	if err := validateJsonPatch_CopyParameters(from, path); err != nil {
+		panic(err)
+	}
 	var returns JsonPatch
 
 	_jsii_.StaticInvoke(
@@ -113,6 +122,9 @@ func JsonPatch_Copy(from *string, path *string) JsonPatch {
 func JsonPatch_Move(from *string, path *string) JsonPatch {
 	_init_.Initialize()
 
+	if err := validateJsonPatch_MoveParameters(from, path); err != nil {
+		panic(err)
+	}
 	var returns JsonPatch
 
 	_jsii_.StaticInvoke(
@@ -134,6 +146,9 @@ func JsonPatch_Move(from *string, path *string) JsonPatch {
 func JsonPatch_Remove(path *string) JsonPatch {
 	_init_.Initialize()
 
+	if err := validateJsonPatch_RemoveParameters(path); err != nil {
+		panic(err)
+	}
 	var returns JsonPatch
 
 	_jsii_.StaticInvoke(
@@ -157,6 +172,9 @@ func JsonPatch_Remove(path *string) JsonPatch {
 func JsonPatch_Replace(path *string, value interface{}) JsonPatch {
 	_init_.Initialize()
 
+	if err := validateJsonPatch_ReplaceParameters(path, value); err != nil {
+		panic(err)
+	}
 	var returns JsonPatch
 
 	_jsii_.StaticInvoke(
@@ -181,6 +199,9 @@ func JsonPatch_Replace(path *string, value interface{}) JsonPatch {
 func JsonPatch_Test(path *string, value interface{}) JsonPatch {
 	_init_.Initialize()
 
+	if err := validateJsonPatch_TestParameters(path, value); err != nil {
+		panic(err)
+	}
 	var returns JsonPatch
 
 	_jsii_.StaticInvoke(

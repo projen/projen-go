@@ -58,6 +58,9 @@ func (j *jsiiProxy_GithubCredentials) TokenRef() *string {
 func GithubCredentials_FromApp(options *GithubCredentialsAppOptions) GithubCredentials {
 	_init_.Initialize()
 
+	if err := validateGithubCredentials_FromAppParameters(options); err != nil {
+		panic(err)
+	}
 	var returns GithubCredentials
 
 	_jsii_.StaticInvoke(
@@ -80,6 +83,9 @@ func GithubCredentials_FromApp(options *GithubCredentialsAppOptions) GithubCrede
 func GithubCredentials_FromPersonalAccessToken(options *GithubCredentialsPersonalAccessTokenOptions) GithubCredentials {
 	_init_.Initialize()
 
+	if err := validateGithubCredentials_FromPersonalAccessTokenParameters(options); err != nil {
+		panic(err)
+	}
 	var returns GithubCredentials
 
 	_jsii_.StaticInvoke(

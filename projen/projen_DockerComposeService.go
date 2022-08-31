@@ -138,6 +138,9 @@ func (j *jsiiProxy_DockerComposeService) Volumes() *[]IDockerComposeVolumeBindin
 func NewDockerComposeService(serviceName *string, serviceDescription *DockerComposeServiceDescription) DockerComposeService {
 	_init_.Initialize()
 
+	if err := validateNewDockerComposeServiceParameters(serviceName, serviceDescription); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_DockerComposeService{}
 
 	_jsii_.Create(
@@ -161,6 +164,9 @@ func NewDockerComposeService_Override(d DockerComposeService, serviceName *strin
 }
 
 func (d *jsiiProxy_DockerComposeService) AddDependsOn(serviceName IDockerComposeServiceName) {
+	if err := d.validateAddDependsOnParameters(serviceName); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		d,
 		"addDependsOn",
@@ -169,6 +175,9 @@ func (d *jsiiProxy_DockerComposeService) AddDependsOn(serviceName IDockerCompose
 }
 
 func (d *jsiiProxy_DockerComposeService) AddEnvironment(name *string, value *string) {
+	if err := d.validateAddEnvironmentParameters(name, value); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		d,
 		"addEnvironment",
@@ -177,6 +186,9 @@ func (d *jsiiProxy_DockerComposeService) AddEnvironment(name *string, value *str
 }
 
 func (d *jsiiProxy_DockerComposeService) AddPort(publishedPort *float64, targetPort *float64, options *DockerComposePortMappingOptions) {
+	if err := d.validateAddPortParameters(publishedPort, targetPort, options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		d,
 		"addPort",
@@ -185,6 +197,9 @@ func (d *jsiiProxy_DockerComposeService) AddPort(publishedPort *float64, targetP
 }
 
 func (d *jsiiProxy_DockerComposeService) AddVolume(volume IDockerComposeVolumeBinding) {
+	if err := d.validateAddVolumeParameters(volume); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		d,
 		"addVolume",

@@ -66,6 +66,9 @@ func (j *jsiiProxy_TaskRuntime) Workdir() *string {
 func NewTaskRuntime(workdir *string) TaskRuntime {
 	_init_.Initialize()
 
+	if err := validateNewTaskRuntimeParameters(workdir); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_TaskRuntime{}
 
 	_jsii_.Create(
@@ -100,6 +103,9 @@ func TaskRuntime_MANIFEST_FILE() *string {
 }
 
 func (t *jsiiProxy_TaskRuntime) RunTask(name *string, parents *[]*string) {
+	if err := t.validateRunTaskParameters(name); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"runTask",
@@ -108,6 +114,9 @@ func (t *jsiiProxy_TaskRuntime) RunTask(name *string, parents *[]*string) {
 }
 
 func (t *jsiiProxy_TaskRuntime) TryFindTask(name *string) *TaskSpec {
+	if err := t.validateTryFindTaskParameters(name); err != nil {
+		panic(err)
+	}
 	var returns *TaskSpec
 
 	_jsii_.Invoke(

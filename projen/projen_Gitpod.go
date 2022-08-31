@@ -92,6 +92,9 @@ func (j *jsiiProxy_Gitpod) Project() Project {
 func NewGitpod(project Project, options *GitpodOptions) Gitpod {
 	_init_.Initialize()
 
+	if err := validateNewGitpodParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Gitpod{}
 
 	_jsii_.Create(
@@ -115,6 +118,9 @@ func NewGitpod_Override(g Gitpod, project Project, options *GitpodOptions) {
 }
 
 func (g *jsiiProxy_Gitpod) AddCustomTask(options *GitpodTask) {
+	if err := g.validateAddCustomTaskParameters(options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		g,
 		"addCustomTask",
@@ -123,6 +129,9 @@ func (g *jsiiProxy_Gitpod) AddCustomTask(options *GitpodTask) {
 }
 
 func (g *jsiiProxy_Gitpod) AddDockerImage(image DevEnvironmentDockerImage) {
+	if err := g.validateAddDockerImageParameters(image); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		g,
 		"addDockerImage",
@@ -144,6 +153,9 @@ func (g *jsiiProxy_Gitpod) AddPorts(ports ...*string) {
 }
 
 func (g *jsiiProxy_Gitpod) AddPrebuilds(config *GitpodPrebuilds) {
+	if err := g.validateAddPrebuildsParameters(config); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		g,
 		"addPrebuilds",

@@ -1000,6 +1000,9 @@ func (j *jsiiProxy_AwsCdkTypeScriptApp) WatchTask() projen.Task {
 func NewAwsCdkTypeScriptApp(options *AwsCdkTypeScriptAppOptions) AwsCdkTypeScriptApp {
 	_init_.Initialize()
 
+	if err := validateNewAwsCdkTypeScriptAppParameters(options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_AwsCdkTypeScriptApp{}
 
 	_jsii_.Create(
@@ -1034,6 +1037,9 @@ func AwsCdkTypeScriptApp_DEFAULT_TASK() *string {
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddBins(bins *map[string]*string) {
+	if err := a.validateAddBinsParameters(bins); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"addBins",
@@ -1120,6 +1126,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddExcludeFromCleanup(globs ...*string) 
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddFields(fields *map[string]interface{}) {
+	if err := a.validateAddFieldsParameters(fields); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"addFields",
@@ -1128,6 +1137,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddFields(fields *map[string]interface{}
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddGitIgnore(pattern *string) {
+	if err := a.validateAddGitIgnoreParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"addGitIgnore",
@@ -1149,6 +1161,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddKeywords(keywords ...*string) {
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddPackageIgnore(pattern *string) {
+	if err := a.validateAddPackageIgnoreParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"addPackageIgnore",
@@ -1170,6 +1185,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddPeerDeps(deps ...*string) {
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddTask(name *string, props *projen.TaskOptions) projen.Task {
+	if err := a.validateAddTaskParameters(name, props); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -1196,6 +1214,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddTestCommand(commands ...*string) {
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AddTip(message *string) {
+	if err := a.validateAddTipParameters(message); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"addTip",
@@ -1204,6 +1225,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AddTip(message *string) {
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) AnnotateGenerated(glob *string) {
+	if err := a.validateAnnotateGeneratedParameters(glob); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"annotateGenerated",
@@ -1212,6 +1236,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) AnnotateGenerated(glob *string) {
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) HasScript(name *string) *bool {
+	if err := a.validateHasScriptParameters(name); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.Invoke(
@@ -1241,6 +1268,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) PreSynthesize() {
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) RemoveScript(name *string) {
+	if err := a.validateRemoveScriptParameters(name); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"removeScript",
@@ -1249,6 +1279,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) RemoveScript(name *string) {
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) RemoveTask(name *string) projen.Task {
+	if err := a.validateRemoveTaskParameters(name); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -1262,6 +1295,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) RemoveTask(name *string) projen.Task {
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
+	if err := a.validateRenderWorkflowSetupParameters(options); err != nil {
+		panic(err)
+	}
 	var returns *[]*workflows.JobStep
 
 	_jsii_.Invoke(
@@ -1275,6 +1311,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) RenderWorkflowSetup(options *javascript.
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) RunTaskCommand(task projen.Task) *string {
+	if err := a.validateRunTaskCommandParameters(task); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -1288,6 +1327,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) RunTaskCommand(task projen.Task) *string
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) SetScript(name *string, command *string) {
+	if err := a.validateSetScriptParameters(name, command); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"setScript",
@@ -1304,6 +1346,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) Synth() {
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) TryFindFile(filePath *string) projen.FileBase {
+	if err := a.validateTryFindFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(
@@ -1317,6 +1362,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) TryFindFile(filePath *string) projen.Fil
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) TryFindJsonFile(filePath *string) projen.JsonFile {
+	if err := a.validateTryFindJsonFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.JsonFile
 
 	_jsii_.Invoke(
@@ -1330,6 +1378,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) TryFindJsonFile(filePath *string) projen
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) TryFindObjectFile(filePath *string) projen.ObjectFile {
+	if err := a.validateTryFindObjectFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.ObjectFile
 
 	_jsii_.Invoke(
@@ -1343,6 +1394,9 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) TryFindObjectFile(filePath *string) proj
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) TryRemoveFile(filePath *string) projen.FileBase {
+	if err := a.validateTryRemoveFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(

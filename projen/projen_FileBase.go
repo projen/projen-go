@@ -144,7 +144,10 @@ func NewFileBase_Override(f FileBase, project Project, filePath *string, options
 	)
 }
 
-func (j *jsiiProxy_FileBase) SetExecutable(val *bool) {
+func (j *jsiiProxy_FileBase)SetExecutable(val *bool) {
+	if err := j.validateSetExecutableParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"executable",
@@ -152,7 +155,10 @@ func (j *jsiiProxy_FileBase) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_FileBase) SetReadonly(val *bool) {
+func (j *jsiiProxy_FileBase)SetReadonly(val *bool) {
+	if err := j.validateSetReadonlyParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"readonly",
@@ -185,6 +191,9 @@ func (f *jsiiProxy_FileBase) Synthesize() {
 }
 
 func (f *jsiiProxy_FileBase) SynthesizeContent(resolver IResolver) *string {
+	if err := f.validateSynthesizeContentParameters(resolver); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

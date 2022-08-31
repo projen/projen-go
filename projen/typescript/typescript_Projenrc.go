@@ -47,6 +47,9 @@ func (j *jsiiProxy_Projenrc) Project() projen.Project {
 func NewProjenrc(project TypeScriptProject, options *ProjenrcOptions) Projenrc {
 	_init_.Initialize()
 
+	if err := validateNewProjenrcParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Projenrc{}
 
 	_jsii_.Create(

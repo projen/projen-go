@@ -47,6 +47,9 @@ func (j *jsiiProxy_MavenSample) Project() projen.Project {
 func NewMavenSample(project projen.Project, options *MavenSampleOptions) MavenSample {
 	_init_.Initialize()
 
+	if err := validateNewMavenSampleParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_MavenSample{}
 
 	_jsii_.Create(

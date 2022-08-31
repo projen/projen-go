@@ -117,6 +117,9 @@ func (j *jsiiProxy_Eslint) Rules() *map[string]*[]interface{} {
 func NewEslint(project NodeProject, options *EslintOptions) Eslint {
 	_init_.Initialize()
 
+	if err := validateNewEslintParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Eslint{}
 
 	_jsii_.Create(
@@ -144,6 +147,9 @@ func NewEslint_Override(e Eslint, project NodeProject, options *EslintOptions) {
 func Eslint_Of(project projen.Project) Eslint {
 	_init_.Initialize()
 
+	if err := validateEslint_OfParameters(project); err != nil {
+		panic(err)
+	}
 	var returns Eslint
 
 	_jsii_.StaticInvoke(
@@ -170,6 +176,9 @@ func (e *jsiiProxy_Eslint) AddExtends(extendList ...*string) {
 }
 
 func (e *jsiiProxy_Eslint) AddIgnorePattern(pattern *string) {
+	if err := e.validateAddIgnorePatternParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		e,
 		"addIgnorePattern",
@@ -178,6 +187,9 @@ func (e *jsiiProxy_Eslint) AddIgnorePattern(pattern *string) {
 }
 
 func (e *jsiiProxy_Eslint) AddOverride(override *EslintOverride) {
+	if err := e.validateAddOverrideParameters(override); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		e,
 		"addOverride",
@@ -199,6 +211,9 @@ func (e *jsiiProxy_Eslint) AddPlugins(plugins ...*string) {
 }
 
 func (e *jsiiProxy_Eslint) AddRules(rules *map[string]interface{}) {
+	if err := e.validateAddRulesParameters(rules); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		e,
 		"addRules",
@@ -207,6 +222,9 @@ func (e *jsiiProxy_Eslint) AddRules(rules *map[string]interface{}) {
 }
 
 func (e *jsiiProxy_Eslint) AllowDevDeps(pattern *string) {
+	if err := e.validateAllowDevDepsParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		e,
 		"allowDevDeps",

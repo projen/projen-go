@@ -332,6 +332,9 @@ func (j *jsiiProxy_NodePackage) ScopedPackagesOptions() *[]*ScopedPackagesOption
 func NewNodePackage(project projen.Project, options *NodePackageOptions) NodePackage {
 	_init_.Initialize()
 
+	if err := validateNewNodePackageParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_NodePackage{}
 
 	_jsii_.Create(
@@ -355,6 +358,9 @@ func NewNodePackage_Override(n NodePackage, project projen.Project, options *Nod
 }
 
 func (n *jsiiProxy_NodePackage) AddBin(bins *map[string]*string) {
+	if err := n.validateAddBinParameters(bins); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"addBin",
@@ -402,6 +408,9 @@ func (n *jsiiProxy_NodePackage) AddDevDeps(deps ...*string) {
 }
 
 func (n *jsiiProxy_NodePackage) AddEngine(engine *string, version *string) {
+	if err := n.validateAddEngineParameters(engine, version); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"addEngine",
@@ -410,6 +419,9 @@ func (n *jsiiProxy_NodePackage) AddEngine(engine *string, version *string) {
 }
 
 func (n *jsiiProxy_NodePackage) AddField(name *string, value interface{}) {
+	if err := n.validateAddFieldParameters(name, value); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"addField",
@@ -457,6 +469,9 @@ func (n *jsiiProxy_NodePackage) AddPeerDeps(deps ...*string) {
 }
 
 func (n *jsiiProxy_NodePackage) AddVersion(version *string) {
+	if err := n.validateAddVersionParameters(version); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"addVersion",
@@ -465,6 +480,9 @@ func (n *jsiiProxy_NodePackage) AddVersion(version *string) {
 }
 
 func (n *jsiiProxy_NodePackage) HasScript(name *string) *bool {
+	if err := n.validateHasScriptParameters(name); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.Invoke(
@@ -494,6 +512,9 @@ func (n *jsiiProxy_NodePackage) PreSynthesize() {
 }
 
 func (n *jsiiProxy_NodePackage) RemoveScript(name *string) {
+	if err := n.validateRemoveScriptParameters(name); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"removeScript",
@@ -502,6 +523,9 @@ func (n *jsiiProxy_NodePackage) RemoveScript(name *string) {
 }
 
 func (n *jsiiProxy_NodePackage) RenderUpgradePackagesCommand(exclude *[]*string, include *[]*string) *string {
+	if err := n.validateRenderUpgradePackagesCommandParameters(exclude); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -515,6 +539,9 @@ func (n *jsiiProxy_NodePackage) RenderUpgradePackagesCommand(exclude *[]*string,
 }
 
 func (n *jsiiProxy_NodePackage) SetScript(name *string, command *string) {
+	if err := n.validateSetScriptParameters(name, command); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"setScript",

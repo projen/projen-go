@@ -108,6 +108,9 @@ func (j *jsiiProxy_UpgradeDependencies) Workflows() *[]github.GithubWorkflow {
 func NewUpgradeDependencies(project NodeProject, options *UpgradeDependenciesOptions) UpgradeDependencies {
 	_init_.Initialize()
 
+	if err := validateNewUpgradeDependenciesParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_UpgradeDependencies{}
 
 	_jsii_.Create(
@@ -130,7 +133,10 @@ func NewUpgradeDependencies_Override(u UpgradeDependencies, project NodeProject,
 	)
 }
 
-func (j *jsiiProxy_UpgradeDependencies) SetContainerOptions(val *workflows.ContainerOptions) {
+func (j *jsiiProxy_UpgradeDependencies)SetContainerOptions(val *workflows.ContainerOptions) {
+	if err := j.validateSetContainerOptionsParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"containerOptions",
@@ -139,6 +145,9 @@ func (j *jsiiProxy_UpgradeDependencies) SetContainerOptions(val *workflows.Conta
 }
 
 func (u *jsiiProxy_UpgradeDependencies) AddPostBuildSteps(steps ...*workflows.JobStep) {
+	if err := u.validateAddPostBuildStepsParameters(&steps); err != nil {
+		panic(err)
+	}
 	args := []interface{}{}
 	for _, a := range steps {
 		args = append(args, a)

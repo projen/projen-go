@@ -141,6 +141,9 @@ func (j *jsiiProxy_PullRequestTemplate) Readonly() *bool {
 func NewPullRequestTemplate(github GitHub, options *PullRequestTemplateOptions) PullRequestTemplate {
 	_init_.Initialize()
 
+	if err := validateNewPullRequestTemplateParameters(github, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_PullRequestTemplate{}
 
 	_jsii_.Create(
@@ -163,7 +166,10 @@ func NewPullRequestTemplate_Override(p PullRequestTemplate, github GitHub, optio
 	)
 }
 
-func (j *jsiiProxy_PullRequestTemplate) SetExecutable(val *bool) {
+func (j *jsiiProxy_PullRequestTemplate)SetExecutable(val *bool) {
+	if err := j.validateSetExecutableParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"executable",
@@ -171,7 +177,10 @@ func (j *jsiiProxy_PullRequestTemplate) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_PullRequestTemplate) SetReadonly(val *bool) {
+func (j *jsiiProxy_PullRequestTemplate)SetReadonly(val *bool) {
+	if err := j.validateSetReadonlyParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"readonly",
@@ -180,6 +189,9 @@ func (j *jsiiProxy_PullRequestTemplate) SetReadonly(val *bool) {
 }
 
 func (p *jsiiProxy_PullRequestTemplate) AddLine(line *string) {
+	if err := p.validateAddLineParameters(line); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"addLine",
@@ -212,6 +224,9 @@ func (p *jsiiProxy_PullRequestTemplate) Synthesize() {
 }
 
 func (p *jsiiProxy_PullRequestTemplate) SynthesizeContent(_arg projen.IResolver) *string {
+	if err := p.validateSynthesizeContentParameters(_arg); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

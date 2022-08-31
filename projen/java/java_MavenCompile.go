@@ -47,6 +47,9 @@ func (j *jsiiProxy_MavenCompile) Project() projen.Project {
 func NewMavenCompile(project projen.Project, pom Pom, options *MavenCompileOptions) MavenCompile {
 	_init_.Initialize()
 
+	if err := validateNewMavenCompileParameters(project, pom, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_MavenCompile{}
 
 	_jsii_.Create(

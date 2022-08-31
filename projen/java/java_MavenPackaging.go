@@ -47,6 +47,9 @@ func (j *jsiiProxy_MavenPackaging) Project() projen.Project {
 func NewMavenPackaging(project projen.Project, pom Pom, options *MavenPackagingOptions) MavenPackaging {
 	_init_.Initialize()
 
+	if err := validateNewMavenPackagingParameters(project, pom, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_MavenPackaging{}
 
 	_jsii_.Create(

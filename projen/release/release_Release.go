@@ -100,6 +100,9 @@ func (j *jsiiProxy_Release) Publisher() Publisher {
 func NewRelease(project github.GitHubProject, options *ReleaseOptions) Release {
 	_init_.Initialize()
 
+	if err := validateNewReleaseParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Release{}
 
 	_jsii_.Create(
@@ -127,6 +130,9 @@ func NewRelease_Override(r Release, project github.GitHubProject, options *Relea
 func Release_Of(project github.GitHubProject) Release {
 	_init_.Initialize()
 
+	if err := validateRelease_OfParameters(project); err != nil {
+		panic(err)
+	}
 	var returns Release
 
 	_jsii_.StaticInvoke(
@@ -151,6 +157,9 @@ func Release_ANTI_TAMPER_CMD() *string {
 }
 
 func (r *jsiiProxy_Release) AddBranch(branch *string, options *BranchOptions) {
+	if err := r.validateAddBranchParameters(branch, options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		r,
 		"addBranch",
@@ -159,6 +168,9 @@ func (r *jsiiProxy_Release) AddBranch(branch *string, options *BranchOptions) {
 }
 
 func (r *jsiiProxy_Release) AddJobs(jobs *map[string]*workflows.Job) {
+	if err := r.validateAddJobsParameters(jobs); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		r,
 		"addJobs",

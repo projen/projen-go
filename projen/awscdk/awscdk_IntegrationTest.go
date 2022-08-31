@@ -152,6 +152,9 @@ func (j *jsiiProxy_IntegrationTest) WatchTask() projen.Task {
 func NewIntegrationTest(project projen.Project, options *IntegrationTestOptions) IntegrationTest {
 	_init_.Initialize()
 
+	if err := validateNewIntegrationTestParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_IntegrationTest{}
 
 	_jsii_.Create(

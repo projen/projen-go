@@ -47,6 +47,9 @@ func (j *jsiiProxy_Renovatebot) Project() Project {
 func NewRenovatebot(project Project, options *RenovatebotOptions) Renovatebot {
 	_init_.Initialize()
 
+	if err := validateNewRenovatebotParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Renovatebot{}
 
 	_jsii_.Create(

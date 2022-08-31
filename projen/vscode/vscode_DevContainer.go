@@ -79,6 +79,9 @@ func (j *jsiiProxy_DevContainer) Project() projen.Project {
 func NewDevContainer(project projen.Project, options *DevContainerOptions) DevContainer {
 	_init_.Initialize()
 
+	if err := validateNewDevContainerParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_DevContainer{}
 
 	_jsii_.Create(
@@ -102,6 +105,9 @@ func NewDevContainer_Override(d DevContainer, project projen.Project, options *D
 }
 
 func (d *jsiiProxy_DevContainer) AddDockerImage(image projen.DevEnvironmentDockerImage) {
+	if err := d.validateAddDockerImageParameters(image); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		d,
 		"addDockerImage",

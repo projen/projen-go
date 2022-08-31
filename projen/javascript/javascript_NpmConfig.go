@@ -53,6 +53,9 @@ func (j *jsiiProxy_NpmConfig) Project() projen.Project {
 func NewNpmConfig(project NodeProject, options *NpmConfigOptions) NpmConfig {
 	_init_.Initialize()
 
+	if err := validateNewNpmConfigParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_NpmConfig{}
 
 	_jsii_.Create(
@@ -76,6 +79,9 @@ func NewNpmConfig_Override(n NpmConfig, project NodeProject, options *NpmConfigO
 }
 
 func (n *jsiiProxy_NpmConfig) AddConfig(name *string, value *string) {
+	if err := n.validateAddConfigParameters(name, value); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"addConfig",
@@ -84,6 +90,9 @@ func (n *jsiiProxy_NpmConfig) AddConfig(name *string, value *string) {
 }
 
 func (n *jsiiProxy_NpmConfig) AddRegistry(url *string, scope *string) {
+	if err := n.validateAddRegistryParameters(url); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		n,
 		"addRegistry",

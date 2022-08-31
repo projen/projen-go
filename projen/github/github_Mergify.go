@@ -50,6 +50,9 @@ func (j *jsiiProxy_Mergify) Project() projen.Project {
 func NewMergify(github GitHub, options *MergifyOptions) Mergify {
 	_init_.Initialize()
 
+	if err := validateNewMergifyParameters(github, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Mergify{}
 
 	_jsii_.Create(
@@ -73,6 +76,9 @@ func NewMergify_Override(m Mergify, github GitHub, options *MergifyOptions) {
 }
 
 func (m *jsiiProxy_Mergify) AddQueue(queue *MergifyQueue) {
+	if err := m.validateAddQueueParameters(queue); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		m,
 		"addQueue",
@@ -81,6 +87,9 @@ func (m *jsiiProxy_Mergify) AddQueue(queue *MergifyQueue) {
 }
 
 func (m *jsiiProxy_Mergify) AddRule(rule *MergifyRule) {
+	if err := m.validateAddRuleParameters(rule); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		m,
 		"addRule",

@@ -47,6 +47,9 @@ func (j *jsiiProxy_LambdaExtension) Project() projen.Project {
 func NewLambdaExtension(project projen.Project, options *LambdaExtensionOptions) LambdaExtension {
 	_init_.Initialize()
 
+	if err := validateNewLambdaExtensionParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_LambdaExtension{}
 
 	_jsii_.Create(

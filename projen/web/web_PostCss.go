@@ -59,6 +59,9 @@ func (j *jsiiProxy_PostCss) Tailwind() TailwindConfig {
 func NewPostCss(project javascript.NodeProject, options *PostCssOptions) PostCss {
 	_init_.Initialize()
 
+	if err := validateNewPostCssParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_PostCss{}
 
 	_jsii_.Create(

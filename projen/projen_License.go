@@ -135,6 +135,9 @@ func (j *jsiiProxy_License) Readonly() *bool {
 func NewLicense(project Project, options *LicenseOptions) License {
 	_init_.Initialize()
 
+	if err := validateNewLicenseParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_License{}
 
 	_jsii_.Create(
@@ -157,7 +160,10 @@ func NewLicense_Override(l License, project Project, options *LicenseOptions) {
 	)
 }
 
-func (j *jsiiProxy_License) SetExecutable(val *bool) {
+func (j *jsiiProxy_License)SetExecutable(val *bool) {
+	if err := j.validateSetExecutableParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"executable",
@@ -165,7 +171,10 @@ func (j *jsiiProxy_License) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_License) SetReadonly(val *bool) {
+func (j *jsiiProxy_License)SetReadonly(val *bool) {
+	if err := j.validateSetReadonlyParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"readonly",
@@ -198,6 +207,9 @@ func (l *jsiiProxy_License) Synthesize() {
 }
 
 func (l *jsiiProxy_License) SynthesizeContent(_arg IResolver) *string {
+	if err := l.validateSynthesizeContentParameters(_arg); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

@@ -138,6 +138,9 @@ func (j *jsiiProxy_SetupPy) Readonly() *bool {
 func NewSetupPy(project projen.Project, options *SetupPyOptions) SetupPy {
 	_init_.Initialize()
 
+	if err := validateNewSetupPyParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_SetupPy{}
 
 	_jsii_.Create(
@@ -160,7 +163,10 @@ func NewSetupPy_Override(s SetupPy, project projen.Project, options *SetupPyOpti
 	)
 }
 
-func (j *jsiiProxy_SetupPy) SetExecutable(val *bool) {
+func (j *jsiiProxy_SetupPy)SetExecutable(val *bool) {
+	if err := j.validateSetExecutableParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"executable",
@@ -168,7 +174,10 @@ func (j *jsiiProxy_SetupPy) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_SetupPy) SetReadonly(val *bool) {
+func (j *jsiiProxy_SetupPy)SetReadonly(val *bool) {
+	if err := j.validateSetReadonlyParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"readonly",
@@ -201,6 +210,9 @@ func (s *jsiiProxy_SetupPy) Synthesize() {
 }
 
 func (s *jsiiProxy_SetupPy) SynthesizeContent(resolver projen.IResolver) *string {
+	if err := s.validateSynthesizeContentParameters(resolver); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

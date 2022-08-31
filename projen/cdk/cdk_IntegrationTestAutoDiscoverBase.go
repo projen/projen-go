@@ -59,6 +59,9 @@ func (j *jsiiProxy_IntegrationTestAutoDiscoverBase) Project() projen.Project {
 func NewIntegrationTestAutoDiscoverBase(project projen.Project, options *IntegrationTestAutoDiscoverBaseOptions) IntegrationTestAutoDiscoverBase {
 	_init_.Initialize()
 
+	if err := validateNewIntegrationTestAutoDiscoverBaseParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_IntegrationTestAutoDiscoverBase{}
 
 	_jsii_.Create(

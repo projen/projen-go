@@ -70,6 +70,9 @@ func (j *jsiiProxy_Semver) Version() *string {
 func Semver_Caret(version *string) Semver {
 	_init_.Initialize()
 
+	if err := validateSemver_CaretParameters(version); err != nil {
+		panic(err)
+	}
 	var returns Semver
 
 	_jsii_.StaticInvoke(
@@ -107,6 +110,9 @@ func Semver_Latest() Semver {
 func Semver_Of(spec *string) Semver {
 	_init_.Initialize()
 
+	if err := validateSemver_OfParameters(spec); err != nil {
+		panic(err)
+	}
 	var returns Semver
 
 	_jsii_.StaticInvoke(
@@ -126,6 +132,9 @@ func Semver_Of(spec *string) Semver {
 func Semver_Pinned(version *string) Semver {
 	_init_.Initialize()
 
+	if err := validateSemver_PinnedParameters(version); err != nil {
+		panic(err)
+	}
 	var returns Semver
 
 	_jsii_.StaticInvoke(
@@ -148,6 +157,9 @@ func Semver_Pinned(version *string) Semver {
 func Semver_Tilde(version *string) Semver {
 	_init_.Initialize()
 
+	if err := validateSemver_TildeParameters(version); err != nil {
+		panic(err)
+	}
 	var returns Semver
 
 	_jsii_.StaticInvoke(

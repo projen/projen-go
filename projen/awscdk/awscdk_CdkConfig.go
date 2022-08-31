@@ -105,6 +105,9 @@ func (j *jsiiProxy_CdkConfig) Project() projen.Project {
 func NewCdkConfig(project projen.Project, options *CdkConfigOptions) CdkConfig {
 	_init_.Initialize()
 
+	if err := validateNewCdkConfigParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_CdkConfig{}
 
 	_jsii_.Create(

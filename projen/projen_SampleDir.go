@@ -48,6 +48,9 @@ func (j *jsiiProxy_SampleDir) Project() Project {
 func NewSampleDir(project Project, dir *string, options *SampleDirOptions) SampleDir {
 	_init_.Initialize()
 
+	if err := validateNewSampleDirParameters(project, dir, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_SampleDir{}
 
 	_jsii_.Create(

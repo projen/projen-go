@@ -107,6 +107,9 @@ func (j *jsiiProxy_Version) VersionFileName() *string {
 func NewVersion(project Project, options *VersionOptions) Version {
 	_init_.Initialize()
 
+	if err := validateNewVersionParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Version{}
 
 	_jsii_.Create(

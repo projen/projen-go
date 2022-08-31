@@ -50,6 +50,9 @@ func (j *jsiiProxy_VsCodeLaunchConfig) Project() projen.Project {
 func NewVsCodeLaunchConfig(vscode VsCode) VsCodeLaunchConfig {
 	_init_.Initialize()
 
+	if err := validateNewVsCodeLaunchConfigParameters(vscode); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_VsCodeLaunchConfig{}
 
 	_jsii_.Create(
@@ -73,6 +76,9 @@ func NewVsCodeLaunchConfig_Override(v VsCodeLaunchConfig, vscode VsCode) {
 }
 
 func (v *jsiiProxy_VsCodeLaunchConfig) AddConfiguration(cfg *VsCodeLaunchConfigurationEntry) {
+	if err := v.validateAddConfigurationParameters(cfg); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		v,
 		"addConfiguration",

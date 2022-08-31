@@ -53,6 +53,9 @@ func (j *jsiiProxy_VsCodeSettings) Project() projen.Project {
 func NewVsCodeSettings(vscode VsCode) VsCodeSettings {
 	_init_.Initialize()
 
+	if err := validateNewVsCodeSettingsParameters(vscode); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_VsCodeSettings{}
 
 	_jsii_.Create(
@@ -76,6 +79,9 @@ func NewVsCodeSettings_Override(v VsCodeSettings, vscode VsCode) {
 }
 
 func (v *jsiiProxy_VsCodeSettings) AddSetting(setting *string, value interface{}, language *string) {
+	if err := v.validateAddSettingParameters(setting, value); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		v,
 		"addSetting",
@@ -84,6 +90,9 @@ func (v *jsiiProxy_VsCodeSettings) AddSetting(setting *string, value interface{}
 }
 
 func (v *jsiiProxy_VsCodeSettings) AddSettings(settings *map[string]interface{}, languages interface{}) {
+	if err := v.validateAddSettingsParameters(settings, languages); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		v,
 		"addSettings",

@@ -242,6 +242,9 @@ func (j *jsiiProxy_TomlFile) Readonly() *bool {
 func NewTomlFile(project Project, filePath *string, options *TomlFileOptions) TomlFile {
 	_init_.Initialize()
 
+	if err := validateNewTomlFileParameters(project, filePath, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_TomlFile{}
 
 	_jsii_.Create(
@@ -264,7 +267,10 @@ func NewTomlFile_Override(t TomlFile, project Project, filePath *string, options
 	)
 }
 
-func (j *jsiiProxy_TomlFile) SetExecutable(val *bool) {
+func (j *jsiiProxy_TomlFile)SetExecutable(val *bool) {
+	if err := j.validateSetExecutableParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"executable",
@@ -272,7 +278,10 @@ func (j *jsiiProxy_TomlFile) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_TomlFile) SetReadonly(val *bool) {
+func (j *jsiiProxy_TomlFile)SetReadonly(val *bool) {
+	if err := j.validateSetReadonlyParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"readonly",
@@ -281,6 +290,9 @@ func (j *jsiiProxy_TomlFile) SetReadonly(val *bool) {
 }
 
 func (t *jsiiProxy_TomlFile) AddDeletionOverride(path *string) {
+	if err := t.validateAddDeletionOverrideParameters(path); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"addDeletionOverride",
@@ -289,6 +301,9 @@ func (t *jsiiProxy_TomlFile) AddDeletionOverride(path *string) {
 }
 
 func (t *jsiiProxy_TomlFile) AddOverride(path *string, value interface{}) {
+	if err := t.validateAddOverrideParameters(path, value); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"addOverride",
@@ -297,6 +312,9 @@ func (t *jsiiProxy_TomlFile) AddOverride(path *string, value interface{}) {
 }
 
 func (t *jsiiProxy_TomlFile) AddToArray(path *string, values ...interface{}) {
+	if err := t.validateAddToArrayParameters(path); err != nil {
+		panic(err)
+	}
 	args := []interface{}{path}
 	for _, a := range values {
 		args = append(args, a)
@@ -347,6 +365,9 @@ func (t *jsiiProxy_TomlFile) Synthesize() {
 }
 
 func (t *jsiiProxy_TomlFile) SynthesizeContent(resolver IResolver) *string {
+	if err := t.validateSynthesizeContentParameters(resolver); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

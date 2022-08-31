@@ -90,6 +90,9 @@ func (j *jsiiProxy_Tasks) Project() Project {
 func NewTasks(project Project) Tasks {
 	_init_.Initialize()
 
+	if err := validateNewTasksParameters(project); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Tasks{}
 
 	_jsii_.Create(
@@ -113,6 +116,9 @@ func NewTasks_Override(t Tasks, project Project) {
 }
 
 func (t *jsiiProxy_Tasks) AddEnvironment(name *string, value *string) {
+	if err := t.validateAddEnvironmentParameters(name, value); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"addEnvironment",
@@ -121,6 +127,9 @@ func (t *jsiiProxy_Tasks) AddEnvironment(name *string, value *string) {
 }
 
 func (t *jsiiProxy_Tasks) AddTask(name *string, options *TaskOptions) Task {
+	if err := t.validateAddTaskParameters(name, options); err != nil {
+		panic(err)
+	}
 	var returns Task
 
 	_jsii_.Invoke(
@@ -150,6 +159,9 @@ func (t *jsiiProxy_Tasks) PreSynthesize() {
 }
 
 func (t *jsiiProxy_Tasks) RemoveTask(name *string) Task {
+	if err := t.validateRemoveTaskParameters(name); err != nil {
+		panic(err)
+	}
 	var returns Task
 
 	_jsii_.Invoke(
@@ -171,6 +183,9 @@ func (t *jsiiProxy_Tasks) Synthesize() {
 }
 
 func (t *jsiiProxy_Tasks) TryFind(name *string) Task {
+	if err := t.validateTryFindParameters(name); err != nil {
+		panic(err)
+	}
 	var returns Task
 
 	_jsii_.Invoke(

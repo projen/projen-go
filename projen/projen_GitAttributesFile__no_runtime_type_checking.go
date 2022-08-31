@@ -1,0 +1,28 @@
+//go:build no_runtime_type_checking
+// +build no_runtime_type_checking
+
+// CDK for software projects
+package projen
+
+// Building without runtime type checking enabled, so all the below just return nil
+
+func (g *jsiiProxy_GitAttributesFile) validateAddAttributesParameters(glob *string) error {
+	return nil
+}
+
+func (g *jsiiProxy_GitAttributesFile) validateSynthesizeContentParameters(_arg IResolver) error {
+	return nil
+}
+
+func (j *jsiiProxy_GitAttributesFile) validateSetExecutableParameters(val *bool) error {
+	return nil
+}
+
+func (j *jsiiProxy_GitAttributesFile) validateSetReadonlyParameters(val *bool) error {
+	return nil
+}
+
+func validateNewGitAttributesFileParameters(project Project) error {
+	return nil
+}
+

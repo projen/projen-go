@@ -47,6 +47,9 @@ func (j *jsiiProxy_PythonSample) Project() projen.Project {
 func NewPythonSample(project projen.Project, options *PythonSampleOptions) PythonSample {
 	_init_.Initialize()
 
+	if err := validateNewPythonSampleParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_PythonSample{}
 
 	_jsii_.Create(

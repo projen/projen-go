@@ -121,6 +121,9 @@ func (j *jsiiProxy_Task) Steps() *[]*TaskStep {
 func NewTask(name *string, props *TaskOptions) Task {
 	_init_.Initialize()
 
+	if err := validateNewTaskParameters(name, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Task{}
 
 	_jsii_.Create(
@@ -143,7 +146,7 @@ func NewTask_Override(t Task, name *string, props *TaskOptions) {
 	)
 }
 
-func (j *jsiiProxy_Task) SetDescription(val *string) {
+func (j *jsiiProxy_Task)SetDescription(val *string) {
 	_jsii_.Set(
 		j,
 		"description",
@@ -152,6 +155,9 @@ func (j *jsiiProxy_Task) SetDescription(val *string) {
 }
 
 func (t *jsiiProxy_Task) Builtin(name *string) {
+	if err := t.validateBuiltinParameters(name); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"builtin",
@@ -160,6 +166,9 @@ func (t *jsiiProxy_Task) Builtin(name *string) {
 }
 
 func (t *jsiiProxy_Task) Env(name *string, value *string) {
+	if err := t.validateEnvParameters(name, value); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"env",
@@ -168,6 +177,9 @@ func (t *jsiiProxy_Task) Env(name *string, value *string) {
 }
 
 func (t *jsiiProxy_Task) Exec(command *string, options *TaskStepOptions) {
+	if err := t.validateExecParameters(command, options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"exec",
@@ -184,6 +196,9 @@ func (t *jsiiProxy_Task) Lock() {
 }
 
 func (t *jsiiProxy_Task) Prepend(shell *string, options *TaskStepOptions) {
+	if err := t.validatePrependParameters(shell, options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"prepend",
@@ -192,6 +207,9 @@ func (t *jsiiProxy_Task) Prepend(shell *string, options *TaskStepOptions) {
 }
 
 func (t *jsiiProxy_Task) PrependExec(shell *string, options *TaskStepOptions) {
+	if err := t.validatePrependExecParameters(shell, options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"prependExec",
@@ -200,6 +218,9 @@ func (t *jsiiProxy_Task) PrependExec(shell *string, options *TaskStepOptions) {
 }
 
 func (t *jsiiProxy_Task) PrependSay(message *string, options *TaskStepOptions) {
+	if err := t.validatePrependSayParameters(message, options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"prependSay",
@@ -208,6 +229,9 @@ func (t *jsiiProxy_Task) PrependSay(message *string, options *TaskStepOptions) {
 }
 
 func (t *jsiiProxy_Task) PrependSpawn(subtask Task, options *TaskStepOptions) {
+	if err := t.validatePrependSpawnParameters(subtask, options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"prependSpawn",
@@ -216,6 +240,9 @@ func (t *jsiiProxy_Task) PrependSpawn(subtask Task, options *TaskStepOptions) {
 }
 
 func (t *jsiiProxy_Task) Reset(command *string, options *TaskStepOptions) {
+	if err := t.validateResetParameters(options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"reset",
@@ -224,6 +251,9 @@ func (t *jsiiProxy_Task) Reset(command *string, options *TaskStepOptions) {
 }
 
 func (t *jsiiProxy_Task) Say(message *string, options *TaskStepOptions) {
+	if err := t.validateSayParameters(message, options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"say",
@@ -232,6 +262,9 @@ func (t *jsiiProxy_Task) Say(message *string, options *TaskStepOptions) {
 }
 
 func (t *jsiiProxy_Task) Spawn(subtask Task, options *TaskStepOptions) {
+	if err := t.validateSpawnParameters(subtask, options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"spawn",

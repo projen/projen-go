@@ -931,6 +931,9 @@ func (j *jsiiProxy_TypeScriptAppProject) WatchTask() projen.Task {
 func NewTypeScriptAppProject(options *TypeScriptProjectOptions) TypeScriptAppProject {
 	_init_.Initialize()
 
+	if err := validateNewTypeScriptAppProjectParameters(options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_TypeScriptAppProject{}
 
 	_jsii_.Create(
@@ -965,6 +968,9 @@ func TypeScriptAppProject_DEFAULT_TASK() *string {
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) AddBins(bins *map[string]*string) {
+	if err := t.validateAddBinsParameters(bins); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"addBins",
@@ -1038,6 +1044,9 @@ func (t *jsiiProxy_TypeScriptAppProject) AddExcludeFromCleanup(globs ...*string)
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) AddFields(fields *map[string]interface{}) {
+	if err := t.validateAddFieldsParameters(fields); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"addFields",
@@ -1046,6 +1055,9 @@ func (t *jsiiProxy_TypeScriptAppProject) AddFields(fields *map[string]interface{
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) AddGitIgnore(pattern *string) {
+	if err := t.validateAddGitIgnoreParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"addGitIgnore",
@@ -1067,6 +1079,9 @@ func (t *jsiiProxy_TypeScriptAppProject) AddKeywords(keywords ...*string) {
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) AddPackageIgnore(pattern *string) {
+	if err := t.validateAddPackageIgnoreParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"addPackageIgnore",
@@ -1088,6 +1103,9 @@ func (t *jsiiProxy_TypeScriptAppProject) AddPeerDeps(deps ...*string) {
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) AddTask(name *string, props *projen.TaskOptions) projen.Task {
+	if err := t.validateAddTaskParameters(name, props); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -1114,6 +1132,9 @@ func (t *jsiiProxy_TypeScriptAppProject) AddTestCommand(commands ...*string) {
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) AddTip(message *string) {
+	if err := t.validateAddTipParameters(message); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"addTip",
@@ -1122,6 +1143,9 @@ func (t *jsiiProxy_TypeScriptAppProject) AddTip(message *string) {
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) AnnotateGenerated(glob *string) {
+	if err := t.validateAnnotateGeneratedParameters(glob); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"annotateGenerated",
@@ -1130,6 +1154,9 @@ func (t *jsiiProxy_TypeScriptAppProject) AnnotateGenerated(glob *string) {
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) HasScript(name *string) *bool {
+	if err := t.validateHasScriptParameters(name); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.Invoke(
@@ -1159,6 +1186,9 @@ func (t *jsiiProxy_TypeScriptAppProject) PreSynthesize() {
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) RemoveScript(name *string) {
+	if err := t.validateRemoveScriptParameters(name); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"removeScript",
@@ -1167,6 +1197,9 @@ func (t *jsiiProxy_TypeScriptAppProject) RemoveScript(name *string) {
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) RemoveTask(name *string) projen.Task {
+	if err := t.validateRemoveTaskParameters(name); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -1180,6 +1213,9 @@ func (t *jsiiProxy_TypeScriptAppProject) RemoveTask(name *string) projen.Task {
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
+	if err := t.validateRenderWorkflowSetupParameters(options); err != nil {
+		panic(err)
+	}
 	var returns *[]*workflows.JobStep
 
 	_jsii_.Invoke(
@@ -1193,6 +1229,9 @@ func (t *jsiiProxy_TypeScriptAppProject) RenderWorkflowSetup(options *javascript
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) RunTaskCommand(task projen.Task) *string {
+	if err := t.validateRunTaskCommandParameters(task); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -1206,6 +1245,9 @@ func (t *jsiiProxy_TypeScriptAppProject) RunTaskCommand(task projen.Task) *strin
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) SetScript(name *string, command *string) {
+	if err := t.validateSetScriptParameters(name, command); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"setScript",
@@ -1222,6 +1264,9 @@ func (t *jsiiProxy_TypeScriptAppProject) Synth() {
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) TryFindFile(filePath *string) projen.FileBase {
+	if err := t.validateTryFindFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(
@@ -1235,6 +1280,9 @@ func (t *jsiiProxy_TypeScriptAppProject) TryFindFile(filePath *string) projen.Fi
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) TryFindJsonFile(filePath *string) projen.JsonFile {
+	if err := t.validateTryFindJsonFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.JsonFile
 
 	_jsii_.Invoke(
@@ -1248,6 +1296,9 @@ func (t *jsiiProxy_TypeScriptAppProject) TryFindJsonFile(filePath *string) proje
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) TryFindObjectFile(filePath *string) projen.ObjectFile {
+	if err := t.validateTryFindObjectFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.ObjectFile
 
 	_jsii_.Invoke(
@@ -1261,6 +1312,9 @@ func (t *jsiiProxy_TypeScriptAppProject) TryFindObjectFile(filePath *string) pro
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) TryRemoveFile(filePath *string) projen.FileBase {
+	if err := t.validateTryRemoveFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(

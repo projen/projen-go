@@ -257,6 +257,9 @@ func (j *jsiiProxy_YamlFile) Readonly() *bool {
 func NewYamlFile(project Project, filePath *string, options *YamlFileOptions) YamlFile {
 	_init_.Initialize()
 
+	if err := validateNewYamlFileParameters(project, filePath, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_YamlFile{}
 
 	_jsii_.Create(
@@ -279,7 +282,10 @@ func NewYamlFile_Override(y YamlFile, project Project, filePath *string, options
 	)
 }
 
-func (j *jsiiProxy_YamlFile) SetExecutable(val *bool) {
+func (j *jsiiProxy_YamlFile)SetExecutable(val *bool) {
+	if err := j.validateSetExecutableParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"executable",
@@ -287,7 +293,10 @@ func (j *jsiiProxy_YamlFile) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_YamlFile) SetLineWidth(val *float64) {
+func (j *jsiiProxy_YamlFile)SetLineWidth(val *float64) {
+	if err := j.validateSetLineWidthParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"lineWidth",
@@ -295,7 +304,10 @@ func (j *jsiiProxy_YamlFile) SetLineWidth(val *float64) {
 	)
 }
 
-func (j *jsiiProxy_YamlFile) SetReadonly(val *bool) {
+func (j *jsiiProxy_YamlFile)SetReadonly(val *bool) {
+	if err := j.validateSetReadonlyParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"readonly",
@@ -304,6 +316,9 @@ func (j *jsiiProxy_YamlFile) SetReadonly(val *bool) {
 }
 
 func (y *jsiiProxy_YamlFile) AddDeletionOverride(path *string) {
+	if err := y.validateAddDeletionOverrideParameters(path); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		y,
 		"addDeletionOverride",
@@ -312,6 +327,9 @@ func (y *jsiiProxy_YamlFile) AddDeletionOverride(path *string) {
 }
 
 func (y *jsiiProxy_YamlFile) AddOverride(path *string, value interface{}) {
+	if err := y.validateAddOverrideParameters(path, value); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		y,
 		"addOverride",
@@ -320,6 +338,9 @@ func (y *jsiiProxy_YamlFile) AddOverride(path *string, value interface{}) {
 }
 
 func (y *jsiiProxy_YamlFile) AddToArray(path *string, values ...interface{}) {
+	if err := y.validateAddToArrayParameters(path); err != nil {
+		panic(err)
+	}
 	args := []interface{}{path}
 	for _, a := range values {
 		args = append(args, a)
@@ -370,6 +391,9 @@ func (y *jsiiProxy_YamlFile) Synthesize() {
 }
 
 func (y *jsiiProxy_YamlFile) SynthesizeContent(resolver IResolver) *string {
+	if err := y.validateSynthesizeContentParameters(resolver); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

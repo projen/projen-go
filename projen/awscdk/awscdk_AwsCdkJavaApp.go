@@ -662,6 +662,9 @@ func (j *jsiiProxy_AwsCdkJavaApp) Vscode() vscode.VsCode {
 func NewAwsCdkJavaApp(options *AwsCdkJavaAppOptions) AwsCdkJavaApp {
 	_init_.Initialize()
 
+	if err := validateNewAwsCdkJavaAppParameters(options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_AwsCdkJavaApp{}
 
 	_jsii_.Create(
@@ -709,6 +712,9 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddCdkDependency(modules ...*string) {
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) AddDependency(spec *string) {
+	if err := a.validateAddDependencyParameters(spec); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"addDependency",
@@ -730,6 +736,9 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddExcludeFromCleanup(globs ...*string) {
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) AddGitIgnore(pattern *string) {
+	if err := a.validateAddGitIgnoreParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"addGitIgnore",
@@ -738,6 +747,9 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddGitIgnore(pattern *string) {
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) AddPackageIgnore(_pattern *string) {
+	if err := a.validateAddPackageIgnoreParameters(_pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"addPackageIgnore",
@@ -746,6 +758,9 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddPackageIgnore(_pattern *string) {
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) AddPlugin(spec *string, options *java.PluginOptions) *projen.Dependency {
+	if err := a.validateAddPluginParameters(spec, options); err != nil {
+		panic(err)
+	}
 	var returns *projen.Dependency
 
 	_jsii_.Invoke(
@@ -759,6 +774,9 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddPlugin(spec *string, options *java.PluginOp
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) AddTask(name *string, props *projen.TaskOptions) projen.Task {
+	if err := a.validateAddTaskParameters(name, props); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -772,6 +790,9 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddTask(name *string, props *projen.TaskOption
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) AddTestDependency(spec *string) {
+	if err := a.validateAddTestDependencyParameters(spec); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"addTestDependency",
@@ -780,6 +801,9 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddTestDependency(spec *string) {
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) AddTip(message *string) {
+	if err := a.validateAddTipParameters(message); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"addTip",
@@ -788,6 +812,9 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddTip(message *string) {
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) AnnotateGenerated(glob *string) {
+	if err := a.validateAnnotateGeneratedParameters(glob); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"annotateGenerated",
@@ -812,6 +839,9 @@ func (a *jsiiProxy_AwsCdkJavaApp) PreSynthesize() {
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) RemoveTask(name *string) projen.Task {
+	if err := a.validateRemoveTaskParameters(name); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -825,6 +855,9 @@ func (a *jsiiProxy_AwsCdkJavaApp) RemoveTask(name *string) projen.Task {
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) RunTaskCommand(task projen.Task) *string {
+	if err := a.validateRunTaskCommandParameters(task); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -846,6 +879,9 @@ func (a *jsiiProxy_AwsCdkJavaApp) Synth() {
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) TryFindFile(filePath *string) projen.FileBase {
+	if err := a.validateTryFindFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(
@@ -859,6 +895,9 @@ func (a *jsiiProxy_AwsCdkJavaApp) TryFindFile(filePath *string) projen.FileBase 
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) TryFindJsonFile(filePath *string) projen.JsonFile {
+	if err := a.validateTryFindJsonFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.JsonFile
 
 	_jsii_.Invoke(
@@ -872,6 +911,9 @@ func (a *jsiiProxy_AwsCdkJavaApp) TryFindJsonFile(filePath *string) projen.JsonF
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) TryFindObjectFile(filePath *string) projen.ObjectFile {
+	if err := a.validateTryFindObjectFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.ObjectFile
 
 	_jsii_.Invoke(
@@ -885,6 +927,9 @@ func (a *jsiiProxy_AwsCdkJavaApp) TryFindObjectFile(filePath *string) projen.Obj
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) TryRemoveFile(filePath *string) projen.FileBase {
+	if err := a.validateTryRemoveFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(

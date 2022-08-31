@@ -28,6 +28,9 @@ type jsiiProxy_IDevEnvironment struct {
 }
 
 func (i *jsiiProxy_IDevEnvironment) AddDockerImage(image DevEnvironmentDockerImage) {
+	if err := i.validateAddDockerImageParameters(image); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		i,
 		"addDockerImage",

@@ -82,6 +82,9 @@ func (j *jsiiProxy_Dependabot) Project() projen.Project {
 func NewDependabot(github GitHub, options *DependabotOptions) Dependabot {
 	_init_.Initialize()
 
+	if err := validateNewDependabotParameters(github, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Dependabot{}
 
 	_jsii_.Create(
@@ -105,6 +108,9 @@ func NewDependabot_Override(d Dependabot, github GitHub, options *DependabotOpti
 }
 
 func (d *jsiiProxy_Dependabot) AddIgnore(dependencyName *string, versions ...*string) {
+	if err := d.validateAddIgnoreParameters(dependencyName); err != nil {
+		panic(err)
+	}
 	args := []interface{}{dependencyName}
 	for _, a := range versions {
 		args = append(args, a)

@@ -44,6 +44,9 @@ func (j *jsiiProxy_Component) Project() Project {
 func NewComponent(project Project) Component {
 	_init_.Initialize()
 
+	if err := validateNewComponentParameters(project); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Component{}
 
 	_jsii_.Create(

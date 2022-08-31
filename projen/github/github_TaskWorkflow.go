@@ -134,6 +134,9 @@ func (j *jsiiProxy_TaskWorkflow) ProjenCredentials() GithubCredentials {
 func NewTaskWorkflow(github GitHub, options *TaskWorkflowOptions) TaskWorkflow {
 	_init_.Initialize()
 
+	if err := validateNewTaskWorkflowParameters(github, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_TaskWorkflow{}
 
 	_jsii_.Create(
@@ -157,6 +160,9 @@ func NewTaskWorkflow_Override(t TaskWorkflow, github GitHub, options *TaskWorkfl
 }
 
 func (t *jsiiProxy_TaskWorkflow) AddJob(id *string, job interface{}) {
+	if err := t.validateAddJobParameters(id, job); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"addJob",
@@ -165,6 +171,9 @@ func (t *jsiiProxy_TaskWorkflow) AddJob(id *string, job interface{}) {
 }
 
 func (t *jsiiProxy_TaskWorkflow) AddJobs(jobs *map[string]interface{}) {
+	if err := t.validateAddJobsParameters(jobs); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"addJobs",
@@ -173,6 +182,9 @@ func (t *jsiiProxy_TaskWorkflow) AddJobs(jobs *map[string]interface{}) {
 }
 
 func (t *jsiiProxy_TaskWorkflow) On(events *workflows.Triggers) {
+	if err := t.validateOnParameters(events); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"on",

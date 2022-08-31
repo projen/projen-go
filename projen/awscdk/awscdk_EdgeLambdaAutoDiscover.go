@@ -61,6 +61,9 @@ func (j *jsiiProxy_EdgeLambdaAutoDiscover) Project() projen.Project {
 func NewEdgeLambdaAutoDiscover(project projen.Project, options *EdgeLambdaAutoDiscoverOptions) EdgeLambdaAutoDiscover {
 	_init_.Initialize()
 
+	if err := validateNewEdgeLambdaAutoDiscoverParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_EdgeLambdaAutoDiscover{}
 
 	_jsii_.Create(

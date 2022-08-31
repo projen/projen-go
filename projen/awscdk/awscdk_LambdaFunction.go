@@ -65,6 +65,9 @@ func (j *jsiiProxy_LambdaFunction) Project() projen.Project {
 func NewLambdaFunction(project projen.Project, options *LambdaFunctionOptions) LambdaFunction {
 	_init_.Initialize()
 
+	if err := validateNewLambdaFunctionParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_LambdaFunction{}
 
 	_jsii_.Create(

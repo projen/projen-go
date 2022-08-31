@@ -85,6 +85,9 @@ func (j *jsiiProxy_TypescriptConfig) Include() *[]*string {
 func NewTypescriptConfig(project NodeProject, options *TypescriptConfigOptions) TypescriptConfig {
 	_init_.Initialize()
 
+	if err := validateNewTypescriptConfigParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_TypescriptConfig{}
 
 	_jsii_.Create(
@@ -108,6 +111,9 @@ func NewTypescriptConfig_Override(t TypescriptConfig, project NodeProject, optio
 }
 
 func (t *jsiiProxy_TypescriptConfig) AddExclude(pattern *string) {
+	if err := t.validateAddExcludeParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"addExclude",
@@ -116,6 +122,9 @@ func (t *jsiiProxy_TypescriptConfig) AddExclude(pattern *string) {
 }
 
 func (t *jsiiProxy_TypescriptConfig) AddInclude(pattern *string) {
+	if err := t.validateAddIncludeParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"addInclude",

@@ -95,6 +95,9 @@ func (j *jsiiProxy_Bundler) Project() projen.Project {
 func NewBundler(project projen.Project, options *BundlerOptions) Bundler {
 	_init_.Initialize()
 
+	if err := validateNewBundlerParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Bundler{}
 
 	_jsii_.Create(
@@ -125,6 +128,9 @@ func NewBundler_Override(b Bundler, project projen.Project, options *BundlerOpti
 func Bundler_Of(project projen.Project) Bundler {
 	_init_.Initialize()
 
+	if err := validateBundler_OfParameters(project); err != nil {
+		panic(err)
+	}
 	var returns Bundler
 
 	_jsii_.StaticInvoke(
@@ -138,6 +144,9 @@ func Bundler_Of(project projen.Project) Bundler {
 }
 
 func (b *jsiiProxy_Bundler) AddBundle(entrypoint *string, options *AddBundleOptions) *Bundle {
+	if err := b.validateAddBundleParameters(entrypoint, options); err != nil {
+		panic(err)
+	}
 	var returns *Bundle
 
 	_jsii_.Invoke(

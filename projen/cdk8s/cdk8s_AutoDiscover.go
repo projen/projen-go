@@ -47,6 +47,9 @@ func (j *jsiiProxy_AutoDiscover) Project() projen.Project {
 func NewAutoDiscover(project projen.Project, options *AutoDiscoverOptions) AutoDiscover {
 	_init_.Initialize()
 
+	if err := validateNewAutoDiscoverParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_AutoDiscover{}
 
 	_jsii_.Create(

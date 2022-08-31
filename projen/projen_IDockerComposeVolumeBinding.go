@@ -21,6 +21,9 @@ type jsiiProxy_IDockerComposeVolumeBinding struct {
 }
 
 func (i *jsiiProxy_IDockerComposeVolumeBinding) Bind(volumeConfig IDockerComposeVolumeConfig) *DockerComposeVolumeMount {
+	if err := i.validateBindParameters(volumeConfig); err != nil {
+		panic(err)
+	}
 	var returns *DockerComposeVolumeMount
 
 	_jsii_.Invoke(

@@ -28,6 +28,9 @@ type jsiiProxy_Projects struct {
 func Projects_CreateProject(options *CreateProjectOptions) {
 	_init_.Initialize()
 
+	if err := validateProjects_CreateProjectParameters(options); err != nil {
+		panic(err)
+	}
 	_jsii_.StaticInvokeVoid(
 		"projen.Projects",
 		"createProject",

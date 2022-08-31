@@ -145,6 +145,9 @@ func (j *jsiiProxy_RequirementsFile) Readonly() *bool {
 func NewRequirementsFile(project projen.Project, filePath *string, options *RequirementsFileOptions) RequirementsFile {
 	_init_.Initialize()
 
+	if err := validateNewRequirementsFileParameters(project, filePath, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_RequirementsFile{}
 
 	_jsii_.Create(
@@ -167,7 +170,10 @@ func NewRequirementsFile_Override(r RequirementsFile, project projen.Project, fi
 	)
 }
 
-func (j *jsiiProxy_RequirementsFile) SetExecutable(val *bool) {
+func (j *jsiiProxy_RequirementsFile)SetExecutable(val *bool) {
+	if err := j.validateSetExecutableParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"executable",
@@ -175,7 +181,10 @@ func (j *jsiiProxy_RequirementsFile) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_RequirementsFile) SetReadonly(val *bool) {
+func (j *jsiiProxy_RequirementsFile)SetReadonly(val *bool) {
+	if err := j.validateSetReadonlyParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"readonly",
@@ -221,6 +230,9 @@ func (r *jsiiProxy_RequirementsFile) Synthesize() {
 }
 
 func (r *jsiiProxy_RequirementsFile) SynthesizeContent(resolver projen.IResolver) *string {
+	if err := r.validateSynthesizeContentParameters(resolver); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

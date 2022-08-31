@@ -47,6 +47,9 @@ func (j *jsiiProxy_NextComponent) Project() projen.Project {
 func NewNextComponent(project javascript.NodeProject, options *NextComponentOptions) NextComponent {
 	_init_.Initialize()
 
+	if err := validateNewNextComponentParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_NextComponent{}
 
 	_jsii_.Create(

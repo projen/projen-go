@@ -975,6 +975,9 @@ func (j *jsiiProxy_ConstructLibraryAws) WatchTask() projen.Task {
 func NewConstructLibraryAws(options *AwsCdkConstructLibraryOptions) ConstructLibraryAws {
 	_init_.Initialize()
 
+	if err := validateNewConstructLibraryAwsParameters(options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_ConstructLibraryAws{}
 
 	_jsii_.Create(
@@ -1009,6 +1012,9 @@ func ConstructLibraryAws_DEFAULT_TASK() *string {
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) AddBins(bins *map[string]*string) {
+	if err := c.validateAddBinsParameters(bins); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addBins",
@@ -1108,6 +1114,9 @@ func (c *jsiiProxy_ConstructLibraryAws) AddExcludeFromCleanup(globs ...*string) 
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) AddFields(fields *map[string]interface{}) {
+	if err := c.validateAddFieldsParameters(fields); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addFields",
@@ -1116,6 +1125,9 @@ func (c *jsiiProxy_ConstructLibraryAws) AddFields(fields *map[string]interface{}
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) AddGitIgnore(pattern *string) {
+	if err := c.validateAddGitIgnoreParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addGitIgnore",
@@ -1137,6 +1149,9 @@ func (c *jsiiProxy_ConstructLibraryAws) AddKeywords(keywords ...*string) {
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) AddPackageIgnore(pattern *string) {
+	if err := c.validateAddPackageIgnoreParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addPackageIgnore",
@@ -1158,6 +1173,9 @@ func (c *jsiiProxy_ConstructLibraryAws) AddPeerDeps(deps ...*string) {
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) AddTask(name *string, props *projen.TaskOptions) projen.Task {
+	if err := c.validateAddTaskParameters(name, props); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -1184,6 +1202,9 @@ func (c *jsiiProxy_ConstructLibraryAws) AddTestCommand(commands ...*string) {
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) AddTip(message *string) {
+	if err := c.validateAddTipParameters(message); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addTip",
@@ -1192,6 +1213,9 @@ func (c *jsiiProxy_ConstructLibraryAws) AddTip(message *string) {
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) AnnotateGenerated(glob *string) {
+	if err := c.validateAnnotateGeneratedParameters(glob); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"annotateGenerated",
@@ -1200,6 +1224,9 @@ func (c *jsiiProxy_ConstructLibraryAws) AnnotateGenerated(glob *string) {
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) HasScript(name *string) *bool {
+	if err := c.validateHasScriptParameters(name); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.Invoke(
@@ -1229,6 +1256,9 @@ func (c *jsiiProxy_ConstructLibraryAws) PreSynthesize() {
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) RemoveScript(name *string) {
+	if err := c.validateRemoveScriptParameters(name); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"removeScript",
@@ -1237,6 +1267,9 @@ func (c *jsiiProxy_ConstructLibraryAws) RemoveScript(name *string) {
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) RemoveTask(name *string) projen.Task {
+	if err := c.validateRemoveTaskParameters(name); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -1250,6 +1283,9 @@ func (c *jsiiProxy_ConstructLibraryAws) RemoveTask(name *string) projen.Task {
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
+	if err := c.validateRenderWorkflowSetupParameters(options); err != nil {
+		panic(err)
+	}
 	var returns *[]*workflows.JobStep
 
 	_jsii_.Invoke(
@@ -1263,6 +1299,9 @@ func (c *jsiiProxy_ConstructLibraryAws) RenderWorkflowSetup(options *javascript.
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) RunTaskCommand(task projen.Task) *string {
+	if err := c.validateRunTaskCommandParameters(task); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -1276,6 +1315,9 @@ func (c *jsiiProxy_ConstructLibraryAws) RunTaskCommand(task projen.Task) *string
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) SetScript(name *string, command *string) {
+	if err := c.validateSetScriptParameters(name, command); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"setScript",
@@ -1292,6 +1334,9 @@ func (c *jsiiProxy_ConstructLibraryAws) Synth() {
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) TryFindFile(filePath *string) projen.FileBase {
+	if err := c.validateTryFindFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(
@@ -1305,6 +1350,9 @@ func (c *jsiiProxy_ConstructLibraryAws) TryFindFile(filePath *string) projen.Fil
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) TryFindJsonFile(filePath *string) projen.JsonFile {
+	if err := c.validateTryFindJsonFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.JsonFile
 
 	_jsii_.Invoke(
@@ -1318,6 +1366,9 @@ func (c *jsiiProxy_ConstructLibraryAws) TryFindJsonFile(filePath *string) projen
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) TryFindObjectFile(filePath *string) projen.ObjectFile {
+	if err := c.validateTryFindObjectFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.ObjectFile
 
 	_jsii_.Invoke(
@@ -1331,6 +1382,9 @@ func (c *jsiiProxy_ConstructLibraryAws) TryFindObjectFile(filePath *string) proj
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) TryRemoveFile(filePath *string) projen.FileBase {
+	if err := c.validateTryRemoveFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(

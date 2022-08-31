@@ -19,6 +19,9 @@ type jsiiProxy_IResolver struct {
 }
 
 func (i *jsiiProxy_IResolver) Resolve(value interface{}, options *ResolveOptions) interface{} {
+	if err := i.validateResolveParameters(value, options); err != nil {
+		panic(err)
+	}
 	var returns interface{}
 
 	_jsii_.Invoke(

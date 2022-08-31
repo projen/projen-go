@@ -71,6 +71,9 @@ func (j *jsiiProxy_Pip) Project() projen.Project {
 func NewPip(project projen.Project, _options *PipOptions) Pip {
 	_init_.Initialize()
 
+	if err := validateNewPipParameters(project, _options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Pip{}
 
 	_jsii_.Create(
@@ -94,6 +97,9 @@ func NewPip_Override(p Pip, project projen.Project, _options *PipOptions) {
 }
 
 func (p *jsiiProxy_Pip) AddDependency(spec *string) {
+	if err := p.validateAddDependencyParameters(spec); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"addDependency",
@@ -102,6 +108,9 @@ func (p *jsiiProxy_Pip) AddDependency(spec *string) {
 }
 
 func (p *jsiiProxy_Pip) AddDevDependency(spec *string) {
+	if err := p.validateAddDevDependencyParameters(spec); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"addDevDependency",

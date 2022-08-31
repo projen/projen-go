@@ -66,6 +66,9 @@ func (j *jsiiProxy_Logger) Project() Project {
 func NewLogger(project Project, options *LoggerOptions) Logger {
 	_init_.Initialize()
 
+	if err := validateNewLoggerParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Logger{}
 
 	_jsii_.Create(
@@ -128,6 +131,9 @@ func (l *jsiiProxy_Logger) Info(text ...interface{}) {
 }
 
 func (l *jsiiProxy_Logger) Log(level LogLevel, text ...interface{}) {
+	if err := l.validateLogParameters(level); err != nil {
+		panic(err)
+	}
 	args := []interface{}{level}
 	for _, a := range text {
 		args = append(args, a)

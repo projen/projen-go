@@ -87,6 +87,9 @@ func (j *jsiiProxy_Dependencies) Project() Project {
 func NewDependencies(project Project) Dependencies {
 	_init_.Initialize()
 
+	if err := validateNewDependenciesParameters(project); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Dependencies{}
 
 	_jsii_.Create(
@@ -118,6 +121,9 @@ func NewDependencies_Override(d Dependencies, project Project) {
 func Dependencies_ParseDependency(spec *string) *DependencyCoordinates {
 	_init_.Initialize()
 
+	if err := validateDependencies_ParseDependencyParameters(spec); err != nil {
+		panic(err)
+	}
 	var returns *DependencyCoordinates
 
 	_jsii_.StaticInvoke(
@@ -142,6 +148,9 @@ func Dependencies_MANIFEST_FILE() *string {
 }
 
 func (d *jsiiProxy_Dependencies) AddDependency(spec *string, type_ DependencyType, metadata *map[string]interface{}) *Dependency {
+	if err := d.validateAddDependencyParameters(spec, type_); err != nil {
+		panic(err)
+	}
 	var returns *Dependency
 
 	_jsii_.Invoke(
@@ -155,6 +164,9 @@ func (d *jsiiProxy_Dependencies) AddDependency(spec *string, type_ DependencyTyp
 }
 
 func (d *jsiiProxy_Dependencies) GetDependency(name *string, type_ DependencyType) *Dependency {
+	if err := d.validateGetDependencyParameters(name); err != nil {
+		panic(err)
+	}
 	var returns *Dependency
 
 	_jsii_.Invoke(
@@ -184,6 +196,9 @@ func (d *jsiiProxy_Dependencies) PreSynthesize() {
 }
 
 func (d *jsiiProxy_Dependencies) RemoveDependency(name *string, type_ DependencyType) {
+	if err := d.validateRemoveDependencyParameters(name); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		d,
 		"removeDependency",
@@ -200,6 +215,9 @@ func (d *jsiiProxy_Dependencies) Synthesize() {
 }
 
 func (d *jsiiProxy_Dependencies) TryGetDependency(name *string, type_ DependencyType) *Dependency {
+	if err := d.validateTryGetDependencyParameters(name); err != nil {
+		panic(err)
+	}
 	var returns *Dependency
 
 	_jsii_.Invoke(

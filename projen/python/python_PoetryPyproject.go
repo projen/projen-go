@@ -61,6 +61,9 @@ func (j *jsiiProxy_PoetryPyproject) Project() projen.Project {
 func NewPoetryPyproject(project projen.Project, options *PoetryPyprojectOptions) PoetryPyproject {
 	_init_.Initialize()
 
+	if err := validateNewPoetryPyprojectParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_PoetryPyproject{}
 
 	_jsii_.Create(

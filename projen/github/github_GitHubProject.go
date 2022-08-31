@@ -666,6 +666,9 @@ func (j *jsiiProxy_GitHubProject) Vscode() vscode.VsCode {
 func NewGitHubProject(options *GitHubProjectOptions) GitHubProject {
 	_init_.Initialize()
 
+	if err := validateNewGitHubProjectParameters(options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_GitHubProject{}
 
 	_jsii_.Create(
@@ -717,6 +720,9 @@ func (g *jsiiProxy_GitHubProject) AddExcludeFromCleanup(globs ...*string) {
 }
 
 func (g *jsiiProxy_GitHubProject) AddGitIgnore(pattern *string) {
+	if err := g.validateAddGitIgnoreParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		g,
 		"addGitIgnore",
@@ -725,6 +731,9 @@ func (g *jsiiProxy_GitHubProject) AddGitIgnore(pattern *string) {
 }
 
 func (g *jsiiProxy_GitHubProject) AddPackageIgnore(_pattern *string) {
+	if err := g.validateAddPackageIgnoreParameters(_pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		g,
 		"addPackageIgnore",
@@ -733,6 +742,9 @@ func (g *jsiiProxy_GitHubProject) AddPackageIgnore(_pattern *string) {
 }
 
 func (g *jsiiProxy_GitHubProject) AddTask(name *string, props *projen.TaskOptions) projen.Task {
+	if err := g.validateAddTaskParameters(name, props); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -746,6 +758,9 @@ func (g *jsiiProxy_GitHubProject) AddTask(name *string, props *projen.TaskOption
 }
 
 func (g *jsiiProxy_GitHubProject) AddTip(message *string) {
+	if err := g.validateAddTipParameters(message); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		g,
 		"addTip",
@@ -754,6 +769,9 @@ func (g *jsiiProxy_GitHubProject) AddTip(message *string) {
 }
 
 func (g *jsiiProxy_GitHubProject) AnnotateGenerated(glob *string) {
+	if err := g.validateAnnotateGeneratedParameters(glob); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		g,
 		"annotateGenerated",
@@ -778,6 +796,9 @@ func (g *jsiiProxy_GitHubProject) PreSynthesize() {
 }
 
 func (g *jsiiProxy_GitHubProject) RemoveTask(name *string) projen.Task {
+	if err := g.validateRemoveTaskParameters(name); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -791,6 +812,9 @@ func (g *jsiiProxy_GitHubProject) RemoveTask(name *string) projen.Task {
 }
 
 func (g *jsiiProxy_GitHubProject) RunTaskCommand(task projen.Task) *string {
+	if err := g.validateRunTaskCommandParameters(task); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -812,6 +836,9 @@ func (g *jsiiProxy_GitHubProject) Synth() {
 }
 
 func (g *jsiiProxy_GitHubProject) TryFindFile(filePath *string) projen.FileBase {
+	if err := g.validateTryFindFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(
@@ -825,6 +852,9 @@ func (g *jsiiProxy_GitHubProject) TryFindFile(filePath *string) projen.FileBase 
 }
 
 func (g *jsiiProxy_GitHubProject) TryFindJsonFile(filePath *string) projen.JsonFile {
+	if err := g.validateTryFindJsonFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.JsonFile
 
 	_jsii_.Invoke(
@@ -838,6 +868,9 @@ func (g *jsiiProxy_GitHubProject) TryFindJsonFile(filePath *string) projen.JsonF
 }
 
 func (g *jsiiProxy_GitHubProject) TryFindObjectFile(filePath *string) projen.ObjectFile {
+	if err := g.validateTryFindObjectFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.ObjectFile
 
 	_jsii_.Invoke(
@@ -851,6 +884,9 @@ func (g *jsiiProxy_GitHubProject) TryFindObjectFile(filePath *string) projen.Obj
 }
 
 func (g *jsiiProxy_GitHubProject) TryRemoveFile(filePath *string) projen.FileBase {
+	if err := g.validateTryRemoveFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns projen.FileBase
 
 	_jsii_.Invoke(

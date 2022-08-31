@@ -28,6 +28,9 @@ type jsiiProxy_IPythonDeps struct {
 }
 
 func (i *jsiiProxy_IPythonDeps) AddDependency(spec *string) {
+	if err := i.validateAddDependencyParameters(spec); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		i,
 		"addDependency",
@@ -36,6 +39,9 @@ func (i *jsiiProxy_IPythonDeps) AddDependency(spec *string) {
 }
 
 func (i *jsiiProxy_IPythonDeps) AddDevDependency(spec *string) {
+	if err := i.validateAddDevDependencyParameters(spec); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		i,
 		"addDevDependency",

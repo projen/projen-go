@@ -87,6 +87,9 @@ func (j *jsiiProxy_Cdk8sDepsPy) Project() projen.Project {
 func NewCdk8sDepsPy(project projen.Project, options *Cdk8sDepsOptions) Cdk8sDepsPy {
 	_init_.Initialize()
 
+	if err := validateNewCdk8sDepsPyParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Cdk8sDepsPy{}
 
 	_jsii_.Create(

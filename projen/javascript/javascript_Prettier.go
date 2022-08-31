@@ -94,6 +94,9 @@ func (j *jsiiProxy_Prettier) Settings() *PrettierSettings {
 func NewPrettier(project NodeProject, options *PrettierOptions) Prettier {
 	_init_.Initialize()
 
+	if err := validateNewPrettierParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Prettier{}
 
 	_jsii_.Create(
@@ -120,6 +123,9 @@ func NewPrettier_Override(p Prettier, project NodeProject, options *PrettierOpti
 func Prettier_Of(project projen.Project) Prettier {
 	_init_.Initialize()
 
+	if err := validatePrettier_OfParameters(project); err != nil {
+		panic(err)
+	}
 	var returns Prettier
 
 	_jsii_.StaticInvoke(
@@ -133,6 +139,9 @@ func Prettier_Of(project projen.Project) Prettier {
 }
 
 func (p *jsiiProxy_Prettier) AddIgnorePattern(pattern *string) {
+	if err := p.validateAddIgnorePatternParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"addIgnorePattern",
@@ -141,6 +150,9 @@ func (p *jsiiProxy_Prettier) AddIgnorePattern(pattern *string) {
 }
 
 func (p *jsiiProxy_Prettier) AddOverride(override *PrettierOverride) {
+	if err := p.validateAddOverrideParameters(override); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"addOverride",

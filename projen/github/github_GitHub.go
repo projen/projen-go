@@ -115,6 +115,9 @@ func (j *jsiiProxy_GitHub) WorkflowsEnabled() *bool {
 func NewGitHub(project projen.Project, options *GitHubOptions) GitHub {
 	_init_.Initialize()
 
+	if err := validateNewGitHubParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_GitHub{}
 
 	_jsii_.Create(
@@ -142,6 +145,9 @@ func NewGitHub_Override(g GitHub, project projen.Project, options *GitHubOptions
 func GitHub_Of(project projen.Project) GitHub {
 	_init_.Initialize()
 
+	if err := validateGitHub_OfParameters(project); err != nil {
+		panic(err)
+	}
 	var returns GitHub
 
 	_jsii_.StaticInvoke(
@@ -155,6 +161,9 @@ func GitHub_Of(project projen.Project) GitHub {
 }
 
 func (g *jsiiProxy_GitHub) AddDependabot(options *DependabotOptions) Dependabot {
+	if err := g.validateAddDependabotParameters(options); err != nil {
+		panic(err)
+	}
 	var returns Dependabot
 
 	_jsii_.Invoke(
@@ -186,6 +195,9 @@ func (g *jsiiProxy_GitHub) AddPullRequestTemplate(content ...*string) PullReques
 }
 
 func (g *jsiiProxy_GitHub) AddWorkflow(name *string) GithubWorkflow {
+	if err := g.validateAddWorkflowParameters(name); err != nil {
+		panic(err)
+	}
 	var returns GithubWorkflow
 
 	_jsii_.Invoke(
@@ -223,6 +235,9 @@ func (g *jsiiProxy_GitHub) Synthesize() {
 }
 
 func (g *jsiiProxy_GitHub) TryFindWorkflow(name *string) GithubWorkflow {
+	if err := g.validateTryFindWorkflowParameters(name); err != nil {
+		panic(err)
+	}
 	var returns GithubWorkflow
 
 	_jsii_.Invoke(

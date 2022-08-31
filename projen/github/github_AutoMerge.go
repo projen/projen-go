@@ -59,6 +59,9 @@ func (j *jsiiProxy_AutoMerge) Project() projen.Project {
 func NewAutoMerge(github GitHub, options *AutoMergeOptions) AutoMerge {
 	_init_.Initialize()
 
+	if err := validateNewAutoMergeParameters(github, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_AutoMerge{}
 
 	_jsii_.Create(
@@ -95,6 +98,9 @@ func (a *jsiiProxy_AutoMerge) AddConditions(conditions ...*string) {
 }
 
 func (a *jsiiProxy_AutoMerge) AddConditionsLater(later IAddConditionsLater) {
+	if err := a.validateAddConditionsLaterParameters(later); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		a,
 		"addConditionsLater",

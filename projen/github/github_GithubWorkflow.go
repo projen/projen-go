@@ -115,6 +115,9 @@ func (j *jsiiProxy_GithubWorkflow) ProjenCredentials() GithubCredentials {
 func NewGithubWorkflow(github GitHub, name *string, options *GithubWorkflowOptions) GithubWorkflow {
 	_init_.Initialize()
 
+	if err := validateNewGithubWorkflowParameters(github, name, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_GithubWorkflow{}
 
 	_jsii_.Create(
@@ -138,6 +141,9 @@ func NewGithubWorkflow_Override(g GithubWorkflow, github GitHub, name *string, o
 }
 
 func (g *jsiiProxy_GithubWorkflow) AddJob(id *string, job interface{}) {
+	if err := g.validateAddJobParameters(id, job); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		g,
 		"addJob",
@@ -146,6 +152,9 @@ func (g *jsiiProxy_GithubWorkflow) AddJob(id *string, job interface{}) {
 }
 
 func (g *jsiiProxy_GithubWorkflow) AddJobs(jobs *map[string]interface{}) {
+	if err := g.validateAddJobsParameters(jobs); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		g,
 		"addJobs",
@@ -154,6 +163,9 @@ func (g *jsiiProxy_GithubWorkflow) AddJobs(jobs *map[string]interface{}) {
 }
 
 func (g *jsiiProxy_GithubWorkflow) On(events *workflows.Triggers) {
+	if err := g.validateOnParameters(events); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		g,
 		"on",

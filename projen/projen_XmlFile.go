@@ -246,6 +246,9 @@ func (j *jsiiProxy_XmlFile) Readonly() *bool {
 func NewXmlFile(project Project, filePath *string, options *XmlFileOptions) XmlFile {
 	_init_.Initialize()
 
+	if err := validateNewXmlFileParameters(project, filePath, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_XmlFile{}
 
 	_jsii_.Create(
@@ -268,7 +271,10 @@ func NewXmlFile_Override(x XmlFile, project Project, filePath *string, options *
 	)
 }
 
-func (j *jsiiProxy_XmlFile) SetExecutable(val *bool) {
+func (j *jsiiProxy_XmlFile)SetExecutable(val *bool) {
+	if err := j.validateSetExecutableParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"executable",
@@ -276,7 +282,10 @@ func (j *jsiiProxy_XmlFile) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_XmlFile) SetReadonly(val *bool) {
+func (j *jsiiProxy_XmlFile)SetReadonly(val *bool) {
+	if err := j.validateSetReadonlyParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"readonly",
@@ -285,6 +294,9 @@ func (j *jsiiProxy_XmlFile) SetReadonly(val *bool) {
 }
 
 func (x *jsiiProxy_XmlFile) AddDeletionOverride(path *string) {
+	if err := x.validateAddDeletionOverrideParameters(path); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		x,
 		"addDeletionOverride",
@@ -293,6 +305,9 @@ func (x *jsiiProxy_XmlFile) AddDeletionOverride(path *string) {
 }
 
 func (x *jsiiProxy_XmlFile) AddOverride(path *string, value interface{}) {
+	if err := x.validateAddOverrideParameters(path, value); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		x,
 		"addOverride",
@@ -301,6 +316,9 @@ func (x *jsiiProxy_XmlFile) AddOverride(path *string, value interface{}) {
 }
 
 func (x *jsiiProxy_XmlFile) AddToArray(path *string, values ...interface{}) {
+	if err := x.validateAddToArrayParameters(path); err != nil {
+		panic(err)
+	}
 	args := []interface{}{path}
 	for _, a := range values {
 		args = append(args, a)
@@ -351,6 +369,9 @@ func (x *jsiiProxy_XmlFile) Synthesize() {
 }
 
 func (x *jsiiProxy_XmlFile) SynthesizeContent(resolver IResolver) *string {
+	if err := x.validateSynthesizeContentParameters(resolver); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

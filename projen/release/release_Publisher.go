@@ -136,6 +136,9 @@ func (j *jsiiProxy_Publisher) PublibVersion() *string {
 func NewPublisher(project projen.Project, options *PublisherOptions) Publisher {
 	_init_.Initialize()
 
+	if err := validateNewPublisherParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Publisher{}
 
 	_jsii_.Create(
@@ -170,6 +173,9 @@ func Publisher_PUBLISH_GIT_TASK_NAME() *string {
 }
 
 func (p *jsiiProxy_Publisher) AddGitHubPrePublishingSteps(steps ...*workflows.JobStep) {
+	if err := p.validateAddGitHubPrePublishingStepsParameters(&steps); err != nil {
+		panic(err)
+	}
 	args := []interface{}{}
 	for _, a := range steps {
 		args = append(args, a)
@@ -199,6 +205,9 @@ func (p *jsiiProxy_Publisher) PreSynthesize() {
 }
 
 func (p *jsiiProxy_Publisher) PublishToGit(options *GitPublishOptions) projen.Task {
+	if err := p.validatePublishToGitParameters(options); err != nil {
+		panic(err)
+	}
 	var returns projen.Task
 
 	_jsii_.Invoke(
@@ -212,6 +221,9 @@ func (p *jsiiProxy_Publisher) PublishToGit(options *GitPublishOptions) projen.Ta
 }
 
 func (p *jsiiProxy_Publisher) PublishToGitHubReleases(options *GitHubReleasesPublishOptions) {
+	if err := p.validatePublishToGitHubReleasesParameters(options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"publishToGitHubReleases",
@@ -220,6 +232,9 @@ func (p *jsiiProxy_Publisher) PublishToGitHubReleases(options *GitHubReleasesPub
 }
 
 func (p *jsiiProxy_Publisher) PublishToGo(options *GoPublishOptions) {
+	if err := p.validatePublishToGoParameters(options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"publishToGo",
@@ -228,6 +243,9 @@ func (p *jsiiProxy_Publisher) PublishToGo(options *GoPublishOptions) {
 }
 
 func (p *jsiiProxy_Publisher) PublishToMaven(options *MavenPublishOptions) {
+	if err := p.validatePublishToMavenParameters(options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"publishToMaven",
@@ -236,6 +254,9 @@ func (p *jsiiProxy_Publisher) PublishToMaven(options *MavenPublishOptions) {
 }
 
 func (p *jsiiProxy_Publisher) PublishToNpm(options *NpmPublishOptions) {
+	if err := p.validatePublishToNpmParameters(options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"publishToNpm",
@@ -244,6 +265,9 @@ func (p *jsiiProxy_Publisher) PublishToNpm(options *NpmPublishOptions) {
 }
 
 func (p *jsiiProxy_Publisher) PublishToNuget(options *NugetPublishOptions) {
+	if err := p.validatePublishToNugetParameters(options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"publishToNuget",
@@ -252,6 +276,9 @@ func (p *jsiiProxy_Publisher) PublishToNuget(options *NugetPublishOptions) {
 }
 
 func (p *jsiiProxy_Publisher) PublishToPyPi(options *PyPiPublishOptions) {
+	if err := p.validatePublishToPyPiParameters(options); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"publishToPyPi",

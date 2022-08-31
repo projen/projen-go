@@ -55,6 +55,9 @@ func (j *jsiiProxy_VsCodeRecommendedExtensions) Project() projen.Project {
 func NewVsCodeRecommendedExtensions(vscode VsCode) VsCodeRecommendedExtensions {
 	_init_.Initialize()
 
+	if err := validateNewVsCodeRecommendedExtensionsParameters(vscode); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_VsCodeRecommendedExtensions{}
 
 	_jsii_.Create(

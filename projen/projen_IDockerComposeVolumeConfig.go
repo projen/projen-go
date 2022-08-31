@@ -19,6 +19,9 @@ type jsiiProxy_IDockerComposeVolumeConfig struct {
 }
 
 func (i *jsiiProxy_IDockerComposeVolumeConfig) AddVolumeConfiguration(volumeName *string, configuration *DockerComposeVolumeConfig) {
+	if err := i.validateAddVolumeConfigurationParameters(volumeName, configuration); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		i,
 		"addVolumeConfiguration",

@@ -133,6 +133,9 @@ func (j *jsiiProxy_ProjectBuild) TestTask() Task {
 func NewProjectBuild(project Project) ProjectBuild {
 	_init_.Initialize()
 
+	if err := validateNewProjectBuildParameters(project); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_ProjectBuild{}
 
 	_jsii_.Create(

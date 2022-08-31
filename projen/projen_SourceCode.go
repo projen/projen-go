@@ -78,6 +78,9 @@ func (j *jsiiProxy_SourceCode) Project() Project {
 func NewSourceCode(project Project, filePath *string, options *SourceCodeOptions) SourceCode {
 	_init_.Initialize()
 
+	if err := validateNewSourceCodeParameters(project, filePath, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_SourceCode{}
 
 	_jsii_.Create(

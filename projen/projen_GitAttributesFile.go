@@ -141,6 +141,9 @@ func (j *jsiiProxy_GitAttributesFile) Readonly() *bool {
 func NewGitAttributesFile(project Project) GitAttributesFile {
 	_init_.Initialize()
 
+	if err := validateNewGitAttributesFileParameters(project); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_GitAttributesFile{}
 
 	_jsii_.Create(
@@ -163,7 +166,10 @@ func NewGitAttributesFile_Override(g GitAttributesFile, project Project) {
 	)
 }
 
-func (j *jsiiProxy_GitAttributesFile) SetExecutable(val *bool) {
+func (j *jsiiProxy_GitAttributesFile)SetExecutable(val *bool) {
+	if err := j.validateSetExecutableParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"executable",
@@ -171,7 +177,10 @@ func (j *jsiiProxy_GitAttributesFile) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_GitAttributesFile) SetReadonly(val *bool) {
+func (j *jsiiProxy_GitAttributesFile)SetReadonly(val *bool) {
+	if err := j.validateSetReadonlyParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"readonly",
@@ -180,6 +189,9 @@ func (j *jsiiProxy_GitAttributesFile) SetReadonly(val *bool) {
 }
 
 func (g *jsiiProxy_GitAttributesFile) AddAttributes(glob *string, attributes ...*string) {
+	if err := g.validateAddAttributesParameters(glob); err != nil {
+		panic(err)
+	}
 	args := []interface{}{glob}
 	for _, a := range attributes {
 		args = append(args, a)
@@ -217,6 +229,9 @@ func (g *jsiiProxy_GitAttributesFile) Synthesize() {
 }
 
 func (g *jsiiProxy_GitAttributesFile) SynthesizeContent(_arg IResolver) *string {
+	if err := g.validateSynthesizeContentParameters(_arg); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

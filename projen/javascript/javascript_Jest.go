@@ -61,6 +61,9 @@ func (j *jsiiProxy_Jest) JestVersion() *string {
 func NewJest(project NodeProject, options *JestOptions) Jest {
 	_init_.Initialize()
 
+	if err := validateNewJestParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Jest{}
 
 	_jsii_.Create(
@@ -84,6 +87,9 @@ func NewJest_Override(j Jest, project NodeProject, options *JestOptions) {
 }
 
 func (j *jsiiProxy_Jest) AddIgnorePattern(pattern *string) {
+	if err := j.validateAddIgnorePatternParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		j,
 		"addIgnorePattern",
@@ -92,6 +98,9 @@ func (j *jsiiProxy_Jest) AddIgnorePattern(pattern *string) {
 }
 
 func (j *jsiiProxy_Jest) AddReporter(reporter interface{}) {
+	if err := j.validateAddReporterParameters(reporter); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		j,
 		"addReporter",
@@ -100,6 +109,9 @@ func (j *jsiiProxy_Jest) AddReporter(reporter interface{}) {
 }
 
 func (j *jsiiProxy_Jest) AddSnapshotResolver(file *string) {
+	if err := j.validateAddSnapshotResolverParameters(file); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		j,
 		"addSnapshotResolver",
@@ -108,6 +120,9 @@ func (j *jsiiProxy_Jest) AddSnapshotResolver(file *string) {
 }
 
 func (j *jsiiProxy_Jest) AddTestMatch(pattern *string) {
+	if err := j.validateAddTestMatchParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		j,
 		"addTestMatch",
@@ -116,6 +131,9 @@ func (j *jsiiProxy_Jest) AddTestMatch(pattern *string) {
 }
 
 func (j *jsiiProxy_Jest) AddWatchIgnorePattern(pattern *string) {
+	if err := j.validateAddWatchIgnorePatternParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		j,
 		"addWatchIgnorePattern",

@@ -128,6 +128,9 @@ func ReleaseTrigger_Continuous() ReleaseTrigger {
 func ReleaseTrigger_Manual(options *ManualReleaseOptions) ReleaseTrigger {
 	_init_.Initialize()
 
+	if err := validateReleaseTrigger_ManualParameters(options); err != nil {
+		panic(err)
+	}
 	var returns ReleaseTrigger
 
 	_jsii_.StaticInvoke(
@@ -147,6 +150,9 @@ func ReleaseTrigger_Manual(options *ManualReleaseOptions) ReleaseTrigger {
 func ReleaseTrigger_Scheduled(options *ScheduledReleaseOptions) ReleaseTrigger {
 	_init_.Initialize()
 
+	if err := validateReleaseTrigger_ScheduledParameters(options); err != nil {
+		panic(err)
+	}
 	var returns ReleaseTrigger
 
 	_jsii_.StaticInvoke(

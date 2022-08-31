@@ -49,6 +49,9 @@ func (j *jsiiProxy_PullRequestLint) Project() projen.Project {
 func NewPullRequestLint(github GitHub, options *PullRequestLintOptions) PullRequestLint {
 	_init_.Initialize()
 
+	if err := validateNewPullRequestLintParameters(github, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_PullRequestLint{}
 
 	_jsii_.Create(

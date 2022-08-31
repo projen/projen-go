@@ -33,6 +33,9 @@ func (j *jsiiProxy_UpgradeDependenciesSchedule) Cron() *[]*string {
 func UpgradeDependenciesSchedule_Expressions(cron *[]*string) UpgradeDependenciesSchedule {
 	_init_.Initialize()
 
+	if err := validateUpgradeDependenciesSchedule_ExpressionsParameters(cron); err != nil {
+		panic(err)
+	}
 	var returns UpgradeDependenciesSchedule
 
 	_jsii_.StaticInvoke(

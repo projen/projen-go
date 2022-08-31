@@ -48,6 +48,9 @@ func (j *jsiiProxy_DockerCompose) Project() Project {
 func NewDockerCompose(project Project, props *DockerComposeProps) DockerCompose {
 	_init_.Initialize()
 
+	if err := validateNewDockerComposeParameters(project, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_DockerCompose{}
 
 	_jsii_.Create(
@@ -75,6 +78,9 @@ func NewDockerCompose_Override(d DockerCompose, project Project, props *DockerCo
 func DockerCompose_BindVolume(sourcePath *string, targetPath *string) IDockerComposeVolumeBinding {
 	_init_.Initialize()
 
+	if err := validateDockerCompose_BindVolumeParameters(sourcePath, targetPath); err != nil {
+		panic(err)
+	}
 	var returns IDockerComposeVolumeBinding
 
 	_jsii_.StaticInvoke(
@@ -96,6 +102,9 @@ func DockerCompose_BindVolume(sourcePath *string, targetPath *string) IDockerCom
 func DockerCompose_NamedVolume(volumeName *string, targetPath *string, options *DockerComposeVolumeConfig) IDockerComposeVolumeBinding {
 	_init_.Initialize()
 
+	if err := validateDockerCompose_NamedVolumeParameters(volumeName, targetPath, options); err != nil {
+		panic(err)
+	}
 	var returns IDockerComposeVolumeBinding
 
 	_jsii_.StaticInvoke(
@@ -113,6 +122,9 @@ func DockerCompose_NamedVolume(volumeName *string, targetPath *string, options *
 func DockerCompose_PortMapping(publishedPort *float64, targetPort *float64, options *DockerComposePortMappingOptions) *DockerComposeServicePort {
 	_init_.Initialize()
 
+	if err := validateDockerCompose_PortMappingParameters(publishedPort, targetPort, options); err != nil {
+		panic(err)
+	}
 	var returns *DockerComposeServicePort
 
 	_jsii_.StaticInvoke(
@@ -130,6 +142,9 @@ func DockerCompose_PortMapping(publishedPort *float64, targetPort *float64, opti
 func DockerCompose_ServiceName(serviceName *string) IDockerComposeServiceName {
 	_init_.Initialize()
 
+	if err := validateDockerCompose_ServiceNameParameters(serviceName); err != nil {
+		panic(err)
+	}
 	var returns IDockerComposeServiceName
 
 	_jsii_.StaticInvoke(
@@ -143,6 +158,9 @@ func DockerCompose_ServiceName(serviceName *string) IDockerComposeServiceName {
 }
 
 func (d *jsiiProxy_DockerCompose) AddService(serviceName *string, description *DockerComposeServiceDescription) DockerComposeService {
+	if err := d.validateAddServiceParameters(serviceName, description); err != nil {
+		panic(err)
+	}
 	var returns DockerComposeService
 
 	_jsii_.Invoke(

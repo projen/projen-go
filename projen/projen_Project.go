@@ -399,6 +399,9 @@ func (j *jsiiProxy_Project) TestTask() Task {
 func NewProject(options *ProjectOptions) Project {
 	_init_.Initialize()
 
+	if err := validateNewProjectParameters(options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Project{}
 
 	_jsii_.Create(
@@ -446,6 +449,9 @@ func (p *jsiiProxy_Project) AddExcludeFromCleanup(globs ...*string) {
 }
 
 func (p *jsiiProxy_Project) AddGitIgnore(pattern *string) {
+	if err := p.validateAddGitIgnoreParameters(pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"addGitIgnore",
@@ -454,6 +460,9 @@ func (p *jsiiProxy_Project) AddGitIgnore(pattern *string) {
 }
 
 func (p *jsiiProxy_Project) AddPackageIgnore(_pattern *string) {
+	if err := p.validateAddPackageIgnoreParameters(_pattern); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"addPackageIgnore",
@@ -462,6 +471,9 @@ func (p *jsiiProxy_Project) AddPackageIgnore(_pattern *string) {
 }
 
 func (p *jsiiProxy_Project) AddTask(name *string, props *TaskOptions) Task {
+	if err := p.validateAddTaskParameters(name, props); err != nil {
+		panic(err)
+	}
 	var returns Task
 
 	_jsii_.Invoke(
@@ -475,6 +487,9 @@ func (p *jsiiProxy_Project) AddTask(name *string, props *TaskOptions) Task {
 }
 
 func (p *jsiiProxy_Project) AddTip(message *string) {
+	if err := p.validateAddTipParameters(message); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"addTip",
@@ -483,6 +498,9 @@ func (p *jsiiProxy_Project) AddTip(message *string) {
 }
 
 func (p *jsiiProxy_Project) AnnotateGenerated(_glob *string) {
+	if err := p.validateAnnotateGeneratedParameters(_glob); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		p,
 		"annotateGenerated",
@@ -507,6 +525,9 @@ func (p *jsiiProxy_Project) PreSynthesize() {
 }
 
 func (p *jsiiProxy_Project) RemoveTask(name *string) Task {
+	if err := p.validateRemoveTaskParameters(name); err != nil {
+		panic(err)
+	}
 	var returns Task
 
 	_jsii_.Invoke(
@@ -520,6 +541,9 @@ func (p *jsiiProxy_Project) RemoveTask(name *string) Task {
 }
 
 func (p *jsiiProxy_Project) RunTaskCommand(task Task) *string {
+	if err := p.validateRunTaskCommandParameters(task); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -541,6 +565,9 @@ func (p *jsiiProxy_Project) Synth() {
 }
 
 func (p *jsiiProxy_Project) TryFindFile(filePath *string) FileBase {
+	if err := p.validateTryFindFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns FileBase
 
 	_jsii_.Invoke(
@@ -554,6 +581,9 @@ func (p *jsiiProxy_Project) TryFindFile(filePath *string) FileBase {
 }
 
 func (p *jsiiProxy_Project) TryFindJsonFile(filePath *string) JsonFile {
+	if err := p.validateTryFindJsonFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns JsonFile
 
 	_jsii_.Invoke(
@@ -567,6 +597,9 @@ func (p *jsiiProxy_Project) TryFindJsonFile(filePath *string) JsonFile {
 }
 
 func (p *jsiiProxy_Project) TryFindObjectFile(filePath *string) ObjectFile {
+	if err := p.validateTryFindObjectFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns ObjectFile
 
 	_jsii_.Invoke(
@@ -580,6 +613,9 @@ func (p *jsiiProxy_Project) TryFindObjectFile(filePath *string) ObjectFile {
 }
 
 func (p *jsiiProxy_Project) TryRemoveFile(filePath *string) FileBase {
+	if err := p.validateTryRemoveFileParameters(filePath); err != nil {
+		panic(err)
+	}
 	var returns FileBase
 
 	_jsii_.Invoke(

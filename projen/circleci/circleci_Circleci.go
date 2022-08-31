@@ -70,6 +70,9 @@ func (j *jsiiProxy_Circleci) Project() projen.Project {
 func NewCircleci(project projen.Project, options *CircleCiProps) Circleci {
 	_init_.Initialize()
 
+	if err := validateNewCircleciParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_Circleci{}
 
 	_jsii_.Create(
@@ -93,6 +96,9 @@ func NewCircleci_Override(c Circleci, project projen.Project, options *CircleCiP
 }
 
 func (c *jsiiProxy_Circleci) AddOrb(name *string, orb *string) {
+	if err := c.validateAddOrbParameters(name, orb); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addOrb",
@@ -101,6 +107,9 @@ func (c *jsiiProxy_Circleci) AddOrb(name *string, orb *string) {
 }
 
 func (c *jsiiProxy_Circleci) AddWorkflow(workflow *Workflow) {
+	if err := c.validateAddWorkflowParameters(workflow); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		c,
 		"addWorkflow",

@@ -140,6 +140,9 @@ func (j *jsiiProxy_TextFile) Readonly() *bool {
 func NewTextFile(project Project, filePath *string, options *TextFileOptions) TextFile {
 	_init_.Initialize()
 
+	if err := validateNewTextFileParameters(project, filePath, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_TextFile{}
 
 	_jsii_.Create(
@@ -163,7 +166,10 @@ func NewTextFile_Override(t TextFile, project Project, filePath *string, options
 	)
 }
 
-func (j *jsiiProxy_TextFile) SetExecutable(val *bool) {
+func (j *jsiiProxy_TextFile)SetExecutable(val *bool) {
+	if err := j.validateSetExecutableParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"executable",
@@ -171,7 +177,10 @@ func (j *jsiiProxy_TextFile) SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_TextFile) SetReadonly(val *bool) {
+func (j *jsiiProxy_TextFile)SetReadonly(val *bool) {
+	if err := j.validateSetReadonlyParameters(val); err != nil {
+		panic(err)
+	}
 	_jsii_.Set(
 		j,
 		"readonly",
@@ -180,6 +189,9 @@ func (j *jsiiProxy_TextFile) SetReadonly(val *bool) {
 }
 
 func (t *jsiiProxy_TextFile) AddLine(line *string) {
+	if err := t.validateAddLineParameters(line); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		t,
 		"addLine",
@@ -212,6 +224,9 @@ func (t *jsiiProxy_TextFile) Synthesize() {
 }
 
 func (t *jsiiProxy_TextFile) SynthesizeContent(_arg IResolver) *string {
+	if err := t.validateSynthesizeContentParameters(_arg); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

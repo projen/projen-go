@@ -47,6 +47,9 @@ func (j *jsiiProxy_ReactComponent) Project() projen.Project {
 func NewReactComponent(project javascript.NodeProject, options *ReactComponentOptions) ReactComponent {
 	_init_.Initialize()
 
+	if err := validateNewReactComponentParameters(project, options); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_ReactComponent{}
 
 	_jsii_.Create(

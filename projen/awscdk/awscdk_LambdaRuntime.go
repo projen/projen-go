@@ -58,6 +58,9 @@ func (j *jsiiProxy_LambdaRuntime) FunctionRuntime() *string {
 func NewLambdaRuntime(functionRuntime *string, esbuildTarget *string) LambdaRuntime {
 	_init_.Initialize()
 
+	if err := validateNewLambdaRuntimeParameters(functionRuntime, esbuildTarget); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_LambdaRuntime{}
 
 	_jsii_.Create(

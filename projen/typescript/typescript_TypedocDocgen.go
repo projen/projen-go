@@ -19,6 +19,9 @@ type jsiiProxy_TypedocDocgen struct {
 func NewTypedocDocgen(project TypeScriptProject) TypedocDocgen {
 	_init_.Initialize()
 
+	if err := validateNewTypedocDocgenParameters(project); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_TypedocDocgen{}
 
 	_jsii_.Create(
