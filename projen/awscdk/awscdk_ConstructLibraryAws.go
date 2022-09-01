@@ -130,6 +130,8 @@ type ConstructLibraryAws interface {
 	// Project name.
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	Name() *string
+	// Deprecated: use `AwsCdkConstructLibrary`.
+	NodeVersion() *string
 	// The .npmignore file.
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	Npmignore() projen.IgnoreFile
@@ -695,6 +697,16 @@ func (j *jsiiProxy_ConstructLibraryAws) Name() *string {
 	_jsii_.Get(
 		j,
 		"name",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryAws) NodeVersion() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"nodeVersion",
 		&returns,
 	)
 	return returns

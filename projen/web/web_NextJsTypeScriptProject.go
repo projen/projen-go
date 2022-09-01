@@ -131,6 +131,8 @@ type NextJsTypeScriptProject interface {
 	// Project name.
 	// Experimental.
 	Name() *string
+	// Experimental.
+	NodeVersion() *string
 	// The .npmignore file.
 	// Experimental.
 	Npmignore() projen.IgnoreFile
@@ -681,6 +683,16 @@ func (j *jsiiProxy_NextJsTypeScriptProject) Name() *string {
 	_jsii_.Get(
 		j,
 		"name",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NextJsTypeScriptProject) NodeVersion() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"nodeVersion",
 		&returns,
 	)
 	return returns

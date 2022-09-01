@@ -45,6 +45,12 @@ type PublisherOptions struct {
 	// in order to create a publishing task for each publishing activity.
 	// Experimental.
 	PublishTasks *bool `field:"optional" json:"publishTasks" yaml:"publishTasks"`
+	// Node version to setup in GitHub workflows if any node-based CLI utilities are needed.
+	//
+	// For example `publib`, the CLI projen uses to publish releases,
+	// is an npm library.
+	// Experimental.
+	WorkflowNodeVersion *string `field:"optional" json:"workflowNodeVersion" yaml:"workflowNodeVersion"`
 	// Github Runner selection labels.
 	// Experimental.
 	WorkflowRunsOn *[]*string `field:"optional" json:"workflowRunsOn" yaml:"workflowRunsOn"`

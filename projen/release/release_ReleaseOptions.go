@@ -126,5 +126,11 @@ type ReleaseOptions struct {
 	// Create a GitHub release for each release.
 	// Experimental.
 	GithubRelease *bool `field:"optional" json:"githubRelease" yaml:"githubRelease"`
+	// Node version to setup in GitHub workflows if any node-based CLI utilities are needed.
+	//
+	// For example `publib`, the CLI projen uses to publish releases,
+	// is an npm library.
+	// Experimental.
+	WorkflowNodeVersion *string `field:"optional" json:"workflowNodeVersion" yaml:"workflowNodeVersion"`
 }
 

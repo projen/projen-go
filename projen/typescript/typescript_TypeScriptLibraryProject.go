@@ -125,6 +125,8 @@ type TypeScriptLibraryProject interface {
 	// Project name.
 	// Deprecated: use `TypeScriptProject`.
 	Name() *string
+	// Deprecated: use `TypeScriptProject`.
+	NodeVersion() *string
 	// The .npmignore file.
 	// Deprecated: use `TypeScriptProject`.
 	Npmignore() projen.IgnoreFile
@@ -660,6 +662,16 @@ func (j *jsiiProxy_TypeScriptLibraryProject) Name() *string {
 	_jsii_.Get(
 		j,
 		"name",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptLibraryProject) NodeVersion() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"nodeVersion",
 		&returns,
 	)
 	return returns
