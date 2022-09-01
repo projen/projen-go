@@ -582,6 +582,9 @@ type ConstructLibraryAwsOptions struct {
 	// Name of the ignore file for API compatibility tests.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	CompatIgnore *string `field:"optional" json:"compatIgnore" yaml:"compatIgnore"`
+	// Emit a compressed version of the assembly.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	CompressAssembly *bool `field:"optional" json:"compressAssembly" yaml:"compressAssembly"`
 	// File path for generated docs.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	DocgenFilePath *string `field:"optional" json:"docgenFilePath" yaml:"docgenFilePath"`

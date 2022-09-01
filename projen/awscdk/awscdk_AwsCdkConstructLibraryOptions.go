@@ -583,6 +583,9 @@ type AwsCdkConstructLibraryOptions struct {
 	// Name of the ignore file for API compatibility tests.
 	// Experimental.
 	CompatIgnore *string `field:"optional" json:"compatIgnore" yaml:"compatIgnore"`
+	// Emit a compressed version of the assembly.
+	// Experimental.
+	CompressAssembly *bool `field:"optional" json:"compressAssembly" yaml:"compressAssembly"`
 	// File path for generated docs.
 	// Experimental.
 	DocgenFilePath *string `field:"optional" json:"docgenFilePath" yaml:"docgenFilePath"`
