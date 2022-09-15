@@ -222,6 +222,28 @@ func init() {
 		reflect.TypeOf((*AwsCdkDepsOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
+		"projen.awscdk.AwsCdkDepsPy",
+		reflect.TypeOf((*AwsCdkDepsPy)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addV1Dependencies", GoMethod: "AddV1Dependencies"},
+			_jsii_.MemberMethod{JsiiMethod: "addV1DevDependencies", GoMethod: "AddV1DevDependencies"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkDependenciesAsDeps", GoGetter: "CdkDependenciesAsDeps"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkMajorVersion", GoGetter: "CdkMajorVersion"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkMinimumVersion", GoGetter: "CdkMinimumVersion"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkVersion", GoGetter: "CdkVersion"},
+			_jsii_.MemberMethod{JsiiMethod: "packageNames", GoMethod: "PackageNames"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+		},
+		func() interface{} {
+			j := jsiiProxy_AwsCdkDepsPy{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_AwsCdkDeps)
+			return &j
+		},
+	)
+	_jsii_.RegisterClass(
 		"projen.awscdk.AwsCdkJavaApp",
 		reflect.TypeOf((*AwsCdkJavaApp)(nil)).Elem(),
 		[]_jsii_.Member{
