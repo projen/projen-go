@@ -48,5 +48,8 @@ type AddBundleOptions struct {
 	// Bundler output path relative to the asset's output directory.
 	// Experimental.
 	Outfile *string `field:"optional" json:"outfile" yaml:"outfile"`
+	// The path of the tsconfig.json file to use for bundling.
+	// Experimental.
+	TsconfigPath *string `field:"optional" json:"tsconfigPath" yaml:"tsconfigPath"`
 }
 
