@@ -25,5 +25,10 @@ const (
 	// The dependency is required for development (e.g. IDE plugins).
 	// Experimental.
 	DependencyType_DEVENV DependencyType = "DEVENV"
+	// Transient dependency that needs to be overwritten.
+	//
+	// Available for Node packages.
+	// Experimental.
+	DependencyType_OVERRIDE DependencyType = "OVERRIDE"
 )
 
