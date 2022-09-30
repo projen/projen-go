@@ -58,6 +58,14 @@ func init() {
 		"projen.javascript.BundlingOptions",
 		reflect.TypeOf((*BundlingOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.CodeArtifactAuthProvider",
+		reflect.TypeOf((*CodeArtifactAuthProvider)(nil)).Elem(),
+		map[string]interface{}{
+			"ACCESS_AND_SECRET_KEY_PAIR": CodeArtifactAuthProvider_ACCESS_AND_SECRET_KEY_PAIR,
+			"GITHUB_OIDC": CodeArtifactAuthProvider_GITHUB_OIDC,
+		},
+	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.CodeArtifactOptions",
 		reflect.TypeOf((*CodeArtifactOptions)(nil)).Elem(),

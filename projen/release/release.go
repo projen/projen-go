@@ -11,6 +11,14 @@ func init() {
 		"projen.release.BranchOptions",
 		reflect.TypeOf((*BranchOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterEnum(
+		"projen.release.CodeArtifactAuthProvider",
+		reflect.TypeOf((*CodeArtifactAuthProvider)(nil)).Elem(),
+		map[string]interface{}{
+			"ACCESS_AND_SECRET_KEY_PAIR": CodeArtifactAuthProvider_ACCESS_AND_SECRET_KEY_PAIR,
+			"GITHUB_OIDC": CodeArtifactAuthProvider_GITHUB_OIDC,
+		},
+	)
 	_jsii_.RegisterStruct(
 		"projen.release.CodeArtifactOptions",
 		reflect.TypeOf((*CodeArtifactOptions)(nil)).Elem(),
