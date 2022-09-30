@@ -477,6 +477,14 @@ func init() {
 		"projen.javascript.TypescriptConfigOptions",
 		reflect.TypeOf((*TypescriptConfigOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.UpdateSnapshot",
+		reflect.TypeOf((*UpdateSnapshot)(nil)).Elem(),
+		map[string]interface{}{
+			"ALWAYS": UpdateSnapshot_ALWAYS,
+			"NEVER": UpdateSnapshot_NEVER,
+		},
+	)
 	_jsii_.RegisterClass(
 		"projen.javascript.UpgradeDependencies",
 		reflect.TypeOf((*UpgradeDependencies)(nil)).Elem(),

@@ -36,5 +36,8 @@ type JestOptions struct {
 	// Preserve the default Jest reporter when additional reporters are added.
 	// Experimental.
 	PreserveDefaultReporters *bool `field:"optional" json:"preserveDefaultReporters" yaml:"preserveDefaultReporters"`
+	// Whether to update snapshots in task "test" (which is executed in task "build" and build workflows), or create a separate task "test:update" for updating snapshots.
+	// Experimental.
+	UpdateSnapshot UpdateSnapshot `field:"optional" json:"updateSnapshot" yaml:"updateSnapshot"`
 }
 
