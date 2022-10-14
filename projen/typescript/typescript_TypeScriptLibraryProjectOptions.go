@@ -132,7 +132,7 @@ type TypeScriptLibraryProjectOptions struct {
 	// Author's name.
 	// Deprecated: use TypeScriptProjectOptions.
 	AuthorName *string `field:"optional" json:"authorName" yaml:"authorName"`
-	// Author's Organization.
+	// Is the author an organization.
 	// Deprecated: use TypeScriptProjectOptions.
 	AuthorOrganization *bool `field:"optional" json:"authorOrganization" yaml:"authorOrganization"`
 	// Author's URL / Website.

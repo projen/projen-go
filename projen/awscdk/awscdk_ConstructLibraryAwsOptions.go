@@ -134,7 +134,7 @@ type ConstructLibraryAwsOptions struct {
 	// Author's name.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	AuthorName *string `field:"optional" json:"authorName" yaml:"authorName"`
-	// Author's Organization.
+	// Is the author an organization.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	AuthorOrganization *bool `field:"optional" json:"authorOrganization" yaml:"authorOrganization"`
 	// Author's URL / Website.

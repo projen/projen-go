@@ -131,7 +131,7 @@ type NodeProjectOptions struct {
 	// Author's name.
 	// Experimental.
 	AuthorName *string `field:"optional" json:"authorName" yaml:"authorName"`
-	// Author's Organization.
+	// Is the author an organization.
 	// Experimental.
 	AuthorOrganization *bool `field:"optional" json:"authorOrganization" yaml:"authorOrganization"`
 	// Author's URL / Website.
