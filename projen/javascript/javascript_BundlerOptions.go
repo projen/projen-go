@@ -13,5 +13,10 @@ type BundlerOptions struct {
 	// The semantic version requirement for `esbuild`.
 	// Experimental.
 	EsbuildVersion *string `field:"optional" json:"esbuildVersion" yaml:"esbuildVersion"`
+	// Map of file extensions (without dot) and loaders to use for this file type.
+	//
+	// Loaders are appended to the esbuild command by `--loader:.extension=loader`
+	// Experimental.
+	Loaders *map[string]*string `field:"optional" json:"loaders" yaml:"loaders"`
 }
 

@@ -45,6 +45,11 @@ type AddBundleOptions struct {
 	// Mark the output file as executable.
 	// Experimental.
 	Executable *bool `field:"optional" json:"executable" yaml:"executable"`
+	// Map of file extensions (without dot) and loaders to use for this file type.
+	//
+	// Loaders are appended to the esbuild command by `--loader:.extension=loader`
+	// Experimental.
+	Loaders *map[string]*string `field:"optional" json:"loaders" yaml:"loaders"`
 	// Bundler output path relative to the asset's output directory.
 	// Experimental.
 	Outfile *string `field:"optional" json:"outfile" yaml:"outfile"`
