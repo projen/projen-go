@@ -46,5 +46,10 @@ type Step struct {
 	// The variable is prefixed with INPUT_ and converted to upper case.
 	// Experimental.
 	With *map[string]interface{} `field:"optional" json:"with" yaml:"with"`
+	// Specifies a working directory for a step.
+	//
+	// Overrides a job's working directory.
+	// Experimental.
+	WorkingDirectory *string `field:"optional" json:"workingDirectory" yaml:"workingDirectory"`
 }
 
