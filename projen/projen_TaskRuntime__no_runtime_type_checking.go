@@ -5,7 +5,7 @@ package projen
 
 // Building without runtime type checking enabled, so all the below just return nil
 
-func (t *jsiiProxy_TaskRuntime) validateRunTaskParameters(name *string) error {
+func (t *jsiiProxy_TaskRuntime) validateRunTaskParameters(name *string, args *[]interface{}) error {
 	return nil
 }
 

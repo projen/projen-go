@@ -20,7 +20,7 @@ type TaskRuntime interface {
 	Workdir() *string
 	// Runs the task.
 	// Experimental.
-	RunTask(name *string, parents *[]*string)
+	RunTask(name *string, parents *[]*string, args *[]interface{})
 	// Find a task by name, or `undefined` if not found.
 	// Experimental.
 	TryFindTask(name *string) *TaskSpec
@@ -102,14 +102,14 @@ func TaskRuntime_MANIFEST_FILE() *string {
 	return returns
 }
 
-func (t *jsiiProxy_TaskRuntime) RunTask(name *string, parents *[]*string) {
-	if err := t.validateRunTaskParameters(name); err != nil {
+func (t *jsiiProxy_TaskRuntime) RunTask(name *string, parents *[]*string, args *[]interface{}) {
+	if err := t.validateRunTaskParameters(name, args); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		t,
 		"runTask",
-		[]interface{}{name, parents},
+		[]interface{}{name, parents, args},
 	)
 }
 

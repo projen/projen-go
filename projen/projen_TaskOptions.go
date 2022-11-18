@@ -30,6 +30,11 @@ type TaskOptions struct {
 	// Shell command to execute as the first command of the task.
 	// Experimental.
 	Exec *string `field:"optional" json:"exec" yaml:"exec"`
+	// Should the provided `exec` shell command receive args passed to the task.
+	// See: {@link TaskStepOptions.receiveArgs}
+	//
+	// Experimental.
+	ReceiveArgs *bool `field:"optional" json:"receiveArgs" yaml:"receiveArgs"`
 	// List of task steps to run.
 	// Experimental.
 	Steps *[]*TaskStep `field:"optional" json:"steps" yaml:"steps"`
