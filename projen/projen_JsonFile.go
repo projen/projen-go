@@ -43,6 +43,8 @@ type JsonFile interface {
 	Readonly() *bool
 	// Experimental.
 	SetReadonly(val *bool)
+	// Experimental.
+	SupportsComments() *bool
 	// Syntactic sugar for `addOverride(path, undefined)`.
 	// Experimental.
 	AddDeletionOverride(path *string)
@@ -232,6 +234,16 @@ func (j *jsiiProxy_JsonFile) Readonly() *bool {
 	_jsii_.Get(
 		j,
 		"readonly",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_JsonFile) SupportsComments() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"supportsComments",
 		&returns,
 	)
 	return returns
