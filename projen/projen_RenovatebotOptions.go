@@ -21,6 +21,10 @@ type RenovatebotOptions struct {
 	// List of labels to apply to the created PR's.
 	// Experimental.
 	Labels *[]*string `field:"optional" json:"labels" yaml:"labels"`
+	// Experimental.
+	Marker *bool `field:"optional" json:"marker" yaml:"marker"`
+	// Experimental.
+	OverrideConfig interface{} `field:"optional" json:"overrideConfig" yaml:"overrideConfig"`
 	// How often to check for new versions and raise pull requests.
 	//
 	// Can be given in CRON or LATER format, and use multiple schedules
