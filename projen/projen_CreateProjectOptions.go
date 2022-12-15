@@ -7,10 +7,10 @@ type CreateProjectOptions struct {
 	// Directory that the project will be generated in.
 	// Experimental.
 	Dir *string `field:"required" json:"dir" yaml:"dir"`
-	// Fully-qualified name of the project type (usually formatted as `module.ProjectType`).
+	// Fully-qualified name of the project type (usually formatted as `projen.module.ProjectType`).
 	//
 	// Example:
-	//   `projen.TypescriptProject`
+	//   `projen.typescript.TypescriptProject`
 	//
 	// Experimental.
 	ProjectFqn *string `field:"required" json:"projectFqn" yaml:"projectFqn"`
