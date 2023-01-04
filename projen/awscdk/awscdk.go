@@ -136,6 +136,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "version", GoGetter: "Version"},
 			_jsii_.MemberProperty{JsiiProperty: "vscode", GoGetter: "Vscode"},
 			_jsii_.MemberProperty{JsiiProperty: "watchTask", GoGetter: "WatchTask"},
+			_jsii_.MemberProperty{JsiiProperty: "workflowBootstrapSteps", GoGetter: "WorkflowBootstrapSteps"},
 		},
 		func() interface{} {
 			j := jsiiProxy_AwsCdkConstructLibrary{}
@@ -493,6 +494,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "upgradeWorkflow", GoGetter: "UpgradeWorkflow"},
 			_jsii_.MemberProperty{JsiiProperty: "vscode", GoGetter: "Vscode"},
 			_jsii_.MemberProperty{JsiiProperty: "watchTask", GoGetter: "WatchTask"},
+			_jsii_.MemberProperty{JsiiProperty: "workflowBootstrapSteps", GoGetter: "WorkflowBootstrapSteps"},
 		},
 		func() interface{} {
 			j := jsiiProxy_AwsCdkTypeScriptApp{}
@@ -651,6 +653,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "version", GoGetter: "Version"},
 			_jsii_.MemberProperty{JsiiProperty: "vscode", GoGetter: "Vscode"},
 			_jsii_.MemberProperty{JsiiProperty: "watchTask", GoGetter: "WatchTask"},
+			_jsii_.MemberProperty{JsiiProperty: "workflowBootstrapSteps", GoGetter: "WorkflowBootstrapSteps"},
 		},
 		func() interface{} {
 			j := jsiiProxy_ConstructLibraryAws{}

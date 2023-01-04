@@ -115,6 +115,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "tryRemoveFile", GoMethod: "TryRemoveFile"},
 			_jsii_.MemberProperty{JsiiProperty: "upgradeWorkflow", GoGetter: "UpgradeWorkflow"},
 			_jsii_.MemberProperty{JsiiProperty: "vscode", GoGetter: "Vscode"},
+			_jsii_.MemberProperty{JsiiProperty: "workflowBootstrapSteps", GoGetter: "WorkflowBootstrapSteps"},
 		},
 		func() interface{} {
 			j := jsiiProxy_NextJsProject{}
@@ -220,6 +221,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "upgradeWorkflow", GoGetter: "UpgradeWorkflow"},
 			_jsii_.MemberProperty{JsiiProperty: "vscode", GoGetter: "Vscode"},
 			_jsii_.MemberProperty{JsiiProperty: "watchTask", GoGetter: "WatchTask"},
+			_jsii_.MemberProperty{JsiiProperty: "workflowBootstrapSteps", GoGetter: "WorkflowBootstrapSteps"},
 		},
 		func() interface{} {
 			j := jsiiProxy_NextJsTypeScriptProject{}
@@ -349,6 +351,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "tryRemoveFile", GoMethod: "TryRemoveFile"},
 			_jsii_.MemberProperty{JsiiProperty: "upgradeWorkflow", GoGetter: "UpgradeWorkflow"},
 			_jsii_.MemberProperty{JsiiProperty: "vscode", GoGetter: "Vscode"},
+			_jsii_.MemberProperty{JsiiProperty: "workflowBootstrapSteps", GoGetter: "WorkflowBootstrapSteps"},
 		},
 		func() interface{} {
 			j := jsiiProxy_ReactProject{}
@@ -482,6 +485,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "upgradeWorkflow", GoGetter: "UpgradeWorkflow"},
 			_jsii_.MemberProperty{JsiiProperty: "vscode", GoGetter: "Vscode"},
 			_jsii_.MemberProperty{JsiiProperty: "watchTask", GoGetter: "WatchTask"},
+			_jsii_.MemberProperty{JsiiProperty: "workflowBootstrapSteps", GoGetter: "WorkflowBootstrapSteps"},
 		},
 		func() interface{} {
 			j := jsiiProxy_ReactTypeScriptProject{}

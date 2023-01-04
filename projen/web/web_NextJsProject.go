@@ -193,6 +193,8 @@ type NextJsProject interface {
 	// Deprecated.
 	Vscode() vscode.VsCode
 	// Experimental.
+	WorkflowBootstrapSteps() *[]*workflows.JobStep
+	// Experimental.
 	AddBins(bins *map[string]*string)
 	// Defines bundled dependencies.
 	//
@@ -850,6 +852,16 @@ func (j *jsiiProxy_NextJsProject) Vscode() vscode.VsCode {
 	_jsii_.Get(
 		j,
 		"vscode",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NextJsProject) WorkflowBootstrapSteps() *[]*workflows.JobStep {
+	var returns *[]*workflows.JobStep
+	_jsii_.Get(
+		j,
+		"workflowBootstrapSteps",
 		&returns,
 	)
 	return returns

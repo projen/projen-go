@@ -216,6 +216,8 @@ type NextJsTypeScriptProject interface {
 	// Experimental.
 	WatchTask() projen.Task
 	// Experimental.
+	WorkflowBootstrapSteps() *[]*workflows.JobStep
+	// Experimental.
 	AddBins(bins *map[string]*string)
 	// Defines bundled dependencies.
 	//
@@ -963,6 +965,16 @@ func (j *jsiiProxy_NextJsTypeScriptProject) WatchTask() projen.Task {
 	_jsii_.Get(
 		j,
 		"watchTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NextJsTypeScriptProject) WorkflowBootstrapSteps() *[]*workflows.JobStep {
+	var returns *[]*workflows.JobStep
+	_jsii_.Get(
+		j,
+		"workflowBootstrapSteps",
 		&returns,
 	)
 	return returns

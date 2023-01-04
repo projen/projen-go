@@ -205,6 +205,8 @@ type TypeScriptLibraryProject interface {
 	// Deprecated: use `TypeScriptProject`.
 	WatchTask() projen.Task
 	// Deprecated: use `TypeScriptProject`.
+	WorkflowBootstrapSteps() *[]*workflows.JobStep
+	// Deprecated: use `TypeScriptProject`.
 	AddBins(bins *map[string]*string)
 	// Defines bundled dependencies.
 	//
@@ -932,6 +934,16 @@ func (j *jsiiProxy_TypeScriptLibraryProject) WatchTask() projen.Task {
 	_jsii_.Get(
 		j,
 		"watchTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptLibraryProject) WorkflowBootstrapSteps() *[]*workflows.JobStep {
+	var returns *[]*workflows.JobStep
+	_jsii_.Get(
+		j,
+		"workflowBootstrapSteps",
 		&returns,
 	)
 	return returns

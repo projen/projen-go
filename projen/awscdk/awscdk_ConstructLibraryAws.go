@@ -212,6 +212,8 @@ type ConstructLibraryAws interface {
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	WatchTask() projen.Task
 	// Deprecated: use `AwsCdkConstructLibrary`.
+	WorkflowBootstrapSteps() *[]*workflows.JobStep
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddBins(bins *map[string]*string)
 	// Defines bundled dependencies.
 	//
@@ -977,6 +979,16 @@ func (j *jsiiProxy_ConstructLibraryAws) WatchTask() projen.Task {
 	_jsii_.Get(
 		j,
 		"watchTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryAws) WorkflowBootstrapSteps() *[]*workflows.JobStep {
+	var returns *[]*workflows.JobStep
+	_jsii_.Get(
+		j,
+		"workflowBootstrapSteps",
 		&returns,
 	)
 	return returns
