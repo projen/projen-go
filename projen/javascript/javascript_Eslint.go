@@ -15,6 +15,9 @@ type Eslint interface {
 	// Direct access to the eslint configuration (escape hatch).
 	// Experimental.
 	Config() interface{}
+	// eslint task.
+	// Experimental.
+	EslintTask() projen.Task
 	// File patterns that should not be linted.
 	// Experimental.
 	IgnorePatterns() *[]*string
@@ -67,6 +70,16 @@ func (j *jsiiProxy_Eslint) Config() interface{} {
 	_jsii_.Get(
 		j,
 		"config",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Eslint) EslintTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"eslintTask",
 		&returns,
 	)
 	return returns

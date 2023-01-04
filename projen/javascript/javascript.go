@@ -103,6 +103,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addRules", GoMethod: "AddRules"},
 			_jsii_.MemberMethod{JsiiMethod: "allowDevDeps", GoMethod: "AllowDevDeps"},
 			_jsii_.MemberProperty{JsiiProperty: "config", GoGetter: "Config"},
+			_jsii_.MemberProperty{JsiiProperty: "eslintTask", GoGetter: "EslintTask"},
 			_jsii_.MemberProperty{JsiiProperty: "ignorePatterns", GoGetter: "IgnorePatterns"},
 			_jsii_.MemberProperty{JsiiProperty: "overrides", GoGetter: "Overrides"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
