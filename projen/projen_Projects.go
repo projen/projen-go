@@ -24,6 +24,10 @@ type jsiiProxy_Projects struct {
 // At the moment, it also generates a `.projenrc.js` file with the same code
 // that was just executed. In the future, this will also be done by the project
 // type, so we can easily support multiple languages of projenrc.
+//
+// An environment variable (PROJEN_CREATE_PROJECT=true) is set within the VM
+// so that custom project types can detect whether the current synthesis is the
+// result of a new project creation (and take additional steps accordingly).
 // Experimental.
 func Projects_CreateProject(options *CreateProjectOptions) {
 	_init_.Initialize()
