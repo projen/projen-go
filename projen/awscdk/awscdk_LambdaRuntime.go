@@ -9,6 +9,8 @@ import (
 // Experimental.
 type LambdaRuntime interface {
 	// Experimental.
+	DefaultExternals() *[]*string
+	// Experimental.
 	EsbuildPlatform() *string
 	// The esbuild setting to use.
 	// Experimental.
@@ -21,6 +23,16 @@ type LambdaRuntime interface {
 // The jsii proxy struct for LambdaRuntime
 type jsiiProxy_LambdaRuntime struct {
 	_ byte // padding
+}
+
+func (j *jsiiProxy_LambdaRuntime) DefaultExternals() *[]*string {
+	var returns *[]*string
+	_jsii_.Get(
+		j,
+		"defaultExternals",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_LambdaRuntime) EsbuildPlatform() *string {
@@ -55,17 +67,17 @@ func (j *jsiiProxy_LambdaRuntime) FunctionRuntime() *string {
 
 
 // Experimental.
-func NewLambdaRuntime(functionRuntime *string, esbuildTarget *string) LambdaRuntime {
+func NewLambdaRuntime(functionRuntime *string, esbuildTarget *string, options *LambdaRuntimeOptions) LambdaRuntime {
 	_init_.Initialize()
 
-	if err := validateNewLambdaRuntimeParameters(functionRuntime, esbuildTarget); err != nil {
+	if err := validateNewLambdaRuntimeParameters(functionRuntime, esbuildTarget, options); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_LambdaRuntime{}
 
 	_jsii_.Create(
 		"projen.awscdk.LambdaRuntime",
-		[]interface{}{functionRuntime, esbuildTarget},
+		[]interface{}{functionRuntime, esbuildTarget, options},
 		&j,
 	)
 
@@ -73,12 +85,12 @@ func NewLambdaRuntime(functionRuntime *string, esbuildTarget *string) LambdaRunt
 }
 
 // Experimental.
-func NewLambdaRuntime_Override(l LambdaRuntime, functionRuntime *string, esbuildTarget *string) {
+func NewLambdaRuntime_Override(l LambdaRuntime, functionRuntime *string, esbuildTarget *string, options *LambdaRuntimeOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.awscdk.LambdaRuntime",
-		[]interface{}{functionRuntime, esbuildTarget},
+		[]interface{}{functionRuntime, esbuildTarget, options},
 		l,
 	)
 }

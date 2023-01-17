@@ -826,6 +826,7 @@ func init() {
 		"projen.awscdk.LambdaRuntime",
 		reflect.TypeOf((*LambdaRuntime)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "defaultExternals", GoGetter: "DefaultExternals"},
 			_jsii_.MemberProperty{JsiiProperty: "esbuildPlatform", GoGetter: "EsbuildPlatform"},
 			_jsii_.MemberProperty{JsiiProperty: "esbuildTarget", GoGetter: "EsbuildTarget"},
 			_jsii_.MemberProperty{JsiiProperty: "functionRuntime", GoGetter: "FunctionRuntime"},
@@ -833,5 +834,9 @@ func init() {
 		func() interface{} {
 			return &jsiiProxy_LambdaRuntime{}
 		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.awscdk.LambdaRuntimeOptions",
+		reflect.TypeOf((*LambdaRuntimeOptions)(nil)).Elem(),
 	)
 }
