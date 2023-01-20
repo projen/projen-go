@@ -174,6 +174,9 @@ type PythonProjectOptions struct {
 	// Experimental.
 	Pip *bool `field:"optional" json:"pip" yaml:"pip"`
 	// Use poetry to manage your project dependencies, virtual environment, and (optional) packaging/publishing.
+	//
+	// This feature is incompatible with pip, setuptools, or venv.
+	// If you set this option to `true`, then pip, setuptools, and venv must be set to `false`.
 	// Experimental.
 	Poetry *bool `field:"optional" json:"poetry" yaml:"poetry"`
 	// Use projenrc in javascript.
