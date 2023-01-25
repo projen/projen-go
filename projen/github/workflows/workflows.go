@@ -7,6 +7,19 @@ import (
 )
 
 func init() {
+	_jsii_.RegisterEnum(
+		"projen.github.workflows.AppPermission",
+		reflect.TypeOf((*AppPermission)(nil)).Elem(),
+		map[string]interface{}{
+			"READ": AppPermission_READ,
+			"WRITE": AppPermission_WRITE,
+			"ADMIN": AppPermission_ADMIN,
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.workflows.AppPermissions",
+		reflect.TypeOf((*AppPermissions)(nil)).Elem(),
+	)
 	_jsii_.RegisterStruct(
 		"projen.github.workflows.BranchProtectionRuleOptions",
 		reflect.TypeOf((*BranchProtectionRuleOptions)(nil)).Elem(),
