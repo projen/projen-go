@@ -15,7 +15,7 @@ type Prettier interface {
 	// The .prettierIgnore file.
 	// Experimental.
 	IgnoreFile() projen.IgnoreFile
-	// Access to the Prettieroverrides to extend those.
+	// Returns all Prettier overrides.
 	// Experimental.
 	Overrides() *[]*PrettierOverride
 	// Experimental.
