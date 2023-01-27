@@ -457,6 +457,8 @@ func init() {
 		map[string]interface{}{
 			"CLASSIC": TypeScriptModuleResolution_CLASSIC,
 			"NODE": TypeScriptModuleResolution_NODE,
+			"NODE16": TypeScriptModuleResolution_NODE16,
+			"NODE_NEXT": TypeScriptModuleResolution_NODE_NEXT,
 		},
 	)
 	_jsii_.RegisterClass(

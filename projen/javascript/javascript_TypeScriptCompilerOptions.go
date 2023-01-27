@@ -25,6 +25,9 @@ type TypeScriptCompilerOptions struct {
 	// Offers a way to configure the root directory for where declaration files are emitted.
 	// Experimental.
 	DeclarationDir *string `field:"optional" json:"declarationDir" yaml:"declarationDir"`
+	// Only emit .d.ts files; do not emit .js files.
+	// Experimental.
+	EmitDeclarationOnly *bool `field:"optional" json:"emitDeclarationOnly" yaml:"emitDeclarationOnly"`
 	// Enables experimental support for decorators, which is in stage 2 of the TC39 standardization process.
 	//
 	// Decorators are a language feature which hasn’t yet been fully ratified into the JavaScript specification.
@@ -123,6 +126,12 @@ type TypeScriptCompilerOptions struct {
 	// Skip type checking of all declaration files (*.d.ts).
 	// Experimental.
 	SkipLibCheck *bool `field:"optional" json:"skipLibCheck" yaml:"skipLibCheck"`
+	// Enables the generation of sourcemap files.
+	// Experimental.
+	SourceMap *bool `field:"optional" json:"sourceMap" yaml:"sourceMap"`
+	// Specify the location where a debugger should locate TypeScript files instead of relative source locations.
+	// Experimental.
+	SourceRoot *string `field:"optional" json:"sourceRoot" yaml:"sourceRoot"`
 	// The strict flag enables a wide range of type checking behavior that results in stronger guarantees of program correctness.
 	//
 	// Turning this on is equivalent to enabling all of the strict mode family

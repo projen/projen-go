@@ -18,5 +18,15 @@ const (
 	//
 	// Experimental.
 	TypeScriptModuleResolution_NODE TypeScriptModuleResolution = "NODE"
+	// Node.js’ ECMAScript Module Support from TypeScript 4.7 onwards.
+	// See: https://www.typescriptlang.org/tsconfig#moduleResolution
+	//
+	// Experimental.
+	TypeScriptModuleResolution_NODE16 TypeScriptModuleResolution = "NODE16"
+	// Node.js’ ECMAScript Module Support from TypeScript 4.7 onwards.
+	// See: https://www.typescriptlang.org/tsconfig#moduleResolution
+	//
+	// Experimental.
+	TypeScriptModuleResolution_NODE_NEXT TypeScriptModuleResolution = "NODE_NEXT"
 )
 
