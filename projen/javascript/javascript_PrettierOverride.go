@@ -8,7 +8,7 @@ type PrettierOverride struct {
 	Files interface{} `field:"required" json:"files" yaml:"files"`
 	// The options to apply for this override.
 	// Experimental.
-	Settings *PrettierSettings `field:"required" json:"settings" yaml:"settings"`
+	Options *PrettierSettings `field:"required" json:"options" yaml:"options"`
 	// Exclude these files from this override.
 	// Experimental.
 	ExcludeFiles interface{} `field:"optional" json:"excludeFiles" yaml:"excludeFiles"`
