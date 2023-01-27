@@ -15,5 +15,8 @@ type PrettierOptions struct {
 	// Prettier settings.
 	// Experimental.
 	Settings *PrettierSettings `field:"optional" json:"settings" yaml:"settings"`
+	// Write prettier configuration as YAML instead of JSON.
+	// Experimental.
+	Yaml *bool `field:"optional" json:"yaml" yaml:"yaml"`
 }
 
