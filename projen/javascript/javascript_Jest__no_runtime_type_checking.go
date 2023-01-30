@@ -24,6 +24,10 @@ func (j *jsiiProxy_Jest) validateAddWatchIgnorePatternParameters(pattern *string
 	return nil
 }
 
+func validateJest_OfParameters(project projen.Project) error {
+	return nil
+}
+
 func validateNewJestParameters(project NodeProject, options *JestOptions) error {
 	return nil
 }

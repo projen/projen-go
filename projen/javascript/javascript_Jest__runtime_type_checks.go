@@ -6,6 +6,8 @@ import (
 	"fmt"
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
+
+	"github.com/projen/projen-go/projen"
 )
 
 func (j *jsiiProxy_Jest) validateAddIgnorePatternParameters(pattern *string) error {
@@ -55,6 +57,14 @@ func (j *jsiiProxy_Jest) validateAddTestMatchParameters(pattern *string) error {
 func (j *jsiiProxy_Jest) validateAddWatchIgnorePatternParameters(pattern *string) error {
 	if pattern == nil {
 		return fmt.Errorf("parameter pattern is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateJest_OfParameters(project projen.Project) error {
+	if project == nil {
+		return fmt.Errorf("parameter project is required, but nil was provided")
 	}
 
 	return nil

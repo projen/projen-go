@@ -149,10 +149,17 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addTestMatch", GoMethod: "AddTestMatch"},
 			_jsii_.MemberMethod{JsiiMethod: "addWatchIgnorePattern", GoMethod: "AddWatchIgnorePattern"},
 			_jsii_.MemberProperty{JsiiProperty: "config", GoGetter: "Config"},
+			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
 			_jsii_.MemberProperty{JsiiProperty: "jestVersion", GoGetter: "JestVersion"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 		},
 		func() interface{} {
-			return &jsiiProxy_Jest{}
+			j := jsiiProxy_Jest{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
 		},
 	)
 	_jsii_.RegisterStruct(
