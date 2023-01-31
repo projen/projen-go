@@ -25,6 +25,9 @@ type DockerComposeService interface {
 	// Docker image build instructions.
 	// Experimental.
 	ImageBuild() *DockerComposeBuild
+	// Networks mounted in the container.
+	// Experimental.
+	Networks() *[]IDockerComposeNetworkBinding
 	// Published ports.
 	// Experimental.
 	Ports() *[]*DockerComposeServicePort
@@ -40,6 +43,9 @@ type DockerComposeService interface {
 	// Add an environment variable.
 	// Experimental.
 	AddEnvironment(name *string, value *string)
+	// Add a network to the service.
+	// Experimental.
+	AddNetwork(network IDockerComposeNetworkBinding)
 	// Add a port mapping.
 	// Experimental.
 	AddPort(publishedPort *float64, targetPort *float64, options *DockerComposePortMappingOptions)
@@ -98,6 +104,16 @@ func (j *jsiiProxy_DockerComposeService) ImageBuild() *DockerComposeBuild {
 	_jsii_.Get(
 		j,
 		"imageBuild",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_DockerComposeService) Networks() *[]IDockerComposeNetworkBinding {
+	var returns *[]IDockerComposeNetworkBinding
+	_jsii_.Get(
+		j,
+		"networks",
 		&returns,
 	)
 	return returns
@@ -182,6 +198,17 @@ func (d *jsiiProxy_DockerComposeService) AddEnvironment(name *string, value *str
 		d,
 		"addEnvironment",
 		[]interface{}{name, value},
+	)
+}
+
+func (d *jsiiProxy_DockerComposeService) AddNetwork(network IDockerComposeNetworkBinding) {
+	if err := d.validateAddNetworkParameters(network); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		d,
+		"addNetwork",
+		[]interface{}{network},
 	)
 }
 

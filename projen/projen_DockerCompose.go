@@ -117,6 +117,30 @@ func DockerCompose_NamedVolume(volumeName *string, targetPath *string, options *
 	return returns
 }
 
+// Create a named network and mount it to the target path.
+//
+// If you use this
+// named network in several services, the network will be shared. In this
+// case, the network configuration of the first-provided options are used.
+// Experimental.
+func DockerCompose_Network(networkName *string, options *DockerComposeNetworkConfig) IDockerComposeNetworkBinding {
+	_init_.Initialize()
+
+	if err := validateDockerCompose_NetworkParameters(networkName, options); err != nil {
+		panic(err)
+	}
+	var returns IDockerComposeNetworkBinding
+
+	_jsii_.StaticInvoke(
+		"projen.DockerCompose",
+		"network",
+		[]interface{}{networkName, options},
+		&returns,
+	)
+
+	return returns
+}
+
 // Create a port mapping.
 // Experimental.
 func DockerCompose_PortMapping(publishedPort *float64, targetPort *float64, options *DockerComposePortMappingOptions) *DockerComposeServicePort {

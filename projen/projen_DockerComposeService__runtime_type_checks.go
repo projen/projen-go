@@ -29,6 +29,14 @@ func (d *jsiiProxy_DockerComposeService) validateAddEnvironmentParameters(name *
 	return nil
 }
 
+func (d *jsiiProxy_DockerComposeService) validateAddNetworkParameters(network IDockerComposeNetworkBinding) error {
+	if network == nil {
+		return fmt.Errorf("parameter network is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (d *jsiiProxy_DockerComposeService) validateAddPortParameters(publishedPort *float64, targetPort *float64, options *DockerComposePortMappingOptions) error {
 	if publishedPort == nil {
 		return fmt.Errorf("parameter publishedPort is required, but nil was provided")

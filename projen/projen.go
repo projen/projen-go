@@ -105,6 +105,18 @@ func init() {
 		reflect.TypeOf((*DockerComposeBuild)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.DockerComposeNetworkConfig",
+		reflect.TypeOf((*DockerComposeNetworkConfig)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.DockerComposeNetworkIpamConfig",
+		reflect.TypeOf((*DockerComposeNetworkIpamConfig)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.DockerComposeNetworkIpamSubnetConfig",
+		reflect.TypeOf((*DockerComposeNetworkIpamSubnetConfig)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.DockerComposePortMappingOptions",
 		reflect.TypeOf((*DockerComposePortMappingOptions)(nil)).Elem(),
 	)
@@ -126,6 +138,7 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addDependsOn", GoMethod: "AddDependsOn"},
 			_jsii_.MemberMethod{JsiiMethod: "addEnvironment", GoMethod: "AddEnvironment"},
+			_jsii_.MemberMethod{JsiiMethod: "addNetwork", GoMethod: "AddNetwork"},
 			_jsii_.MemberMethod{JsiiMethod: "addPort", GoMethod: "AddPort"},
 			_jsii_.MemberMethod{JsiiMethod: "addVolume", GoMethod: "AddVolume"},
 			_jsii_.MemberProperty{JsiiProperty: "command", GoGetter: "Command"},
@@ -133,6 +146,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "environment", GoGetter: "Environment"},
 			_jsii_.MemberProperty{JsiiProperty: "image", GoGetter: "Image"},
 			_jsii_.MemberProperty{JsiiProperty: "imageBuild", GoGetter: "ImageBuild"},
+			_jsii_.MemberProperty{JsiiProperty: "networks", GoGetter: "Networks"},
 			_jsii_.MemberProperty{JsiiProperty: "ports", GoGetter: "Ports"},
 			_jsii_.MemberProperty{JsiiProperty: "serviceName", GoGetter: "ServiceName"},
 			_jsii_.MemberProperty{JsiiProperty: "volumes", GoGetter: "Volumes"},
@@ -298,6 +312,26 @@ func init() {
 		},
 		func() interface{} {
 			return &jsiiProxy_IDevEnvironment{}
+		},
+	)
+	_jsii_.RegisterInterface(
+		"projen.IDockerComposeNetworkBinding",
+		reflect.TypeOf((*IDockerComposeNetworkBinding)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "bind", GoMethod: "Bind"},
+		},
+		func() interface{} {
+			return &jsiiProxy_IDockerComposeNetworkBinding{}
+		},
+	)
+	_jsii_.RegisterInterface(
+		"projen.IDockerComposeNetworkConfig",
+		reflect.TypeOf((*IDockerComposeNetworkConfig)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addNetworkConfiguration", GoMethod: "AddNetworkConfiguration"},
+		},
+		func() interface{} {
+			return &jsiiProxy_IDockerComposeNetworkConfig{}
 		},
 	)
 	_jsii_.RegisterInterface(

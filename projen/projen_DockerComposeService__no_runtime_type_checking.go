@@ -13,6 +13,10 @@ func (d *jsiiProxy_DockerComposeService) validateAddEnvironmentParameters(name *
 	return nil
 }
 
+func (d *jsiiProxy_DockerComposeService) validateAddNetworkParameters(network IDockerComposeNetworkBinding) error {
+	return nil
+}
+
 func (d *jsiiProxy_DockerComposeService) validateAddPortParameters(publishedPort *float64, targetPort *float64, options *DockerComposePortMappingOptions) error {
 	return nil
 }

@@ -28,6 +28,11 @@ type DockerComposeServiceDescription struct {
 	//
 	// Experimental.
 	ImageBuild *DockerComposeBuild `field:"optional" json:"imageBuild" yaml:"imageBuild"`
+	// Add some networks to the service.
+	// See: DockerCompose.network() to create & mount a named network
+	//
+	// Experimental.
+	Networks *[]IDockerComposeNetworkBinding `field:"optional" json:"networks" yaml:"networks"`
 	// Map some ports.
 	// Experimental.
 	Ports *[]*DockerComposeServicePort `field:"optional" json:"ports" yaml:"ports"`

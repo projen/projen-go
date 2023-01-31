@@ -17,6 +17,10 @@ func validateDockerCompose_NamedVolumeParameters(volumeName *string, targetPath 
 	return nil
 }
 
+func validateDockerCompose_NetworkParameters(networkName *string, options *DockerComposeNetworkConfig) error {
+	return nil
+}
+
 func validateDockerCompose_PortMappingParameters(publishedPort *float64, targetPort *float64, options *DockerComposePortMappingOptions) error {
 	return nil
 }
