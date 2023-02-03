@@ -5,10 +5,12 @@ import (
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
 	"github.com/projen/projen-go/projen"
+	"github.com/projen/projen-go/projen/javascript/internal"
 )
 
 // Experimental.
 type TypescriptConfig interface {
+	projen.Component
 	// Experimental.
 	CompilerOptions() *TypeScriptCompilerOptions
 	// Experimental.
@@ -20,14 +22,27 @@ type TypescriptConfig interface {
 	// Experimental.
 	Include() *[]*string
 	// Experimental.
+	Project() projen.Project
+	// Experimental.
 	AddExclude(pattern *string)
 	// Experimental.
 	AddInclude(pattern *string)
+	// Called after synthesis.
+	//
+	// Order is *not* guaranteed.
+	// Experimental.
+	PostSynthesize()
+	// Called before synthesis.
+	// Experimental.
+	PreSynthesize()
+	// Synthesizes files to the project output directory.
+	// Experimental.
+	Synthesize()
 }
 
 // The jsii proxy struct for TypescriptConfig
 type jsiiProxy_TypescriptConfig struct {
-	_ byte // padding
+	internal.Type__projenComponent
 }
 
 func (j *jsiiProxy_TypescriptConfig) CompilerOptions() *TypeScriptCompilerOptions {
@@ -75,6 +90,16 @@ func (j *jsiiProxy_TypescriptConfig) Include() *[]*string {
 	_jsii_.Get(
 		j,
 		"include",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypescriptConfig) Project() projen.Project {
+	var returns projen.Project
+	_jsii_.Get(
+		j,
+		"project",
 		&returns,
 	)
 	return returns
@@ -129,6 +154,30 @@ func (t *jsiiProxy_TypescriptConfig) AddInclude(pattern *string) {
 		t,
 		"addInclude",
 		[]interface{}{pattern},
+	)
+}
+
+func (t *jsiiProxy_TypescriptConfig) PostSynthesize() {
+	_jsii_.InvokeVoid(
+		t,
+		"postSynthesize",
+		nil, // no parameters
+	)
+}
+
+func (t *jsiiProxy_TypescriptConfig) PreSynthesize() {
+	_jsii_.InvokeVoid(
+		t,
+		"preSynthesize",
+		nil, // no parameters
+	)
+}
+
+func (t *jsiiProxy_TypescriptConfig) Synthesize() {
+	_jsii_.InvokeVoid(
+		t,
+		"synthesize",
+		nil, // no parameters
 	)
 }
 

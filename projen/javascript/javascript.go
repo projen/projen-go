@@ -479,9 +479,15 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
 			_jsii_.MemberProperty{JsiiProperty: "fileName", GoGetter: "FileName"},
 			_jsii_.MemberProperty{JsiiProperty: "include", GoGetter: "Include"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 		},
 		func() interface{} {
-			return &jsiiProxy_TypescriptConfig{}
+			j := jsiiProxy_TypescriptConfig{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
 		},
 	)
 	_jsii_.RegisterStruct(
