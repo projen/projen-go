@@ -132,5 +132,8 @@ type ReleaseOptions struct {
 	// is an npm library.
 	// Experimental.
 	WorkflowNodeVersion *string `field:"optional" json:"workflowNodeVersion" yaml:"workflowNodeVersion"`
+	// Permissions granted to the release workflow job.
+	// Experimental.
+	WorkflowPermissions *workflows.JobPermissions `field:"optional" json:"workflowPermissions" yaml:"workflowPermissions"`
 }
 

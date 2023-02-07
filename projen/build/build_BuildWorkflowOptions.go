@@ -35,6 +35,9 @@ type BuildWorkflowOptions struct {
 	// not be pushed back to the branch.
 	// Experimental.
 	MutableBuild *bool `field:"optional" json:"mutableBuild" yaml:"mutableBuild"`
+	// Permissions granted to the build job To limit job permissions for `contents`, the desired permissions have to be explicitly set, e.g.: `{ contents: JobPermission.NONE }`.
+	// Experimental.
+	Permissions *workflows.JobPermissions `field:"optional" json:"permissions" yaml:"permissions"`
 	// Steps to execute after build.
 	// Experimental.
 	PostBuildSteps *[]*workflows.JobStep `field:"optional" json:"postBuildSteps" yaml:"postBuildSteps"`
