@@ -138,6 +138,7 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addDependsOn", GoMethod: "AddDependsOn"},
 			_jsii_.MemberMethod{JsiiMethod: "addEnvironment", GoMethod: "AddEnvironment"},
+			_jsii_.MemberMethod{JsiiMethod: "addLabel", GoMethod: "AddLabel"},
 			_jsii_.MemberMethod{JsiiMethod: "addNetwork", GoMethod: "AddNetwork"},
 			_jsii_.MemberMethod{JsiiMethod: "addPort", GoMethod: "AddPort"},
 			_jsii_.MemberMethod{JsiiMethod: "addVolume", GoMethod: "AddVolume"},
@@ -146,6 +147,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "environment", GoGetter: "Environment"},
 			_jsii_.MemberProperty{JsiiProperty: "image", GoGetter: "Image"},
 			_jsii_.MemberProperty{JsiiProperty: "imageBuild", GoGetter: "ImageBuild"},
+			_jsii_.MemberProperty{JsiiProperty: "labels", GoGetter: "Labels"},
 			_jsii_.MemberProperty{JsiiProperty: "networks", GoGetter: "Networks"},
 			_jsii_.MemberProperty{JsiiProperty: "ports", GoGetter: "Ports"},
 			_jsii_.MemberProperty{JsiiProperty: "serviceName", GoGetter: "ServiceName"},

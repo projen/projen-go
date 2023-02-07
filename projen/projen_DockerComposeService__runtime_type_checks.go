@@ -29,6 +29,18 @@ func (d *jsiiProxy_DockerComposeService) validateAddEnvironmentParameters(name *
 	return nil
 }
 
+func (d *jsiiProxy_DockerComposeService) validateAddLabelParameters(name *string, value *string) error {
+	if name == nil {
+		return fmt.Errorf("parameter name is required, but nil was provided")
+	}
+
+	if value == nil {
+		return fmt.Errorf("parameter value is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (d *jsiiProxy_DockerComposeService) validateAddNetworkParameters(network IDockerComposeNetworkBinding) error {
 	if network == nil {
 		return fmt.Errorf("parameter network is required, but nil was provided")

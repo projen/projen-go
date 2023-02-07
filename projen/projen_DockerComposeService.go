@@ -25,6 +25,9 @@ type DockerComposeService interface {
 	// Docker image build instructions.
 	// Experimental.
 	ImageBuild() *DockerComposeBuild
+	// Attached labels.
+	// Experimental.
+	Labels() *map[string]*string
 	// Networks mounted in the container.
 	// Experimental.
 	Networks() *[]IDockerComposeNetworkBinding
@@ -43,6 +46,9 @@ type DockerComposeService interface {
 	// Add an environment variable.
 	// Experimental.
 	AddEnvironment(name *string, value *string)
+	// Add a label.
+	// Experimental.
+	AddLabel(name *string, value *string)
 	// Add a network to the service.
 	// Experimental.
 	AddNetwork(network IDockerComposeNetworkBinding)
@@ -104,6 +110,16 @@ func (j *jsiiProxy_DockerComposeService) ImageBuild() *DockerComposeBuild {
 	_jsii_.Get(
 		j,
 		"imageBuild",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_DockerComposeService) Labels() *map[string]*string {
+	var returns *map[string]*string
+	_jsii_.Get(
+		j,
+		"labels",
 		&returns,
 	)
 	return returns
@@ -197,6 +213,17 @@ func (d *jsiiProxy_DockerComposeService) AddEnvironment(name *string, value *str
 	_jsii_.InvokeVoid(
 		d,
 		"addEnvironment",
+		[]interface{}{name, value},
+	)
+}
+
+func (d *jsiiProxy_DockerComposeService) AddLabel(name *string, value *string) {
+	if err := d.validateAddLabelParameters(name, value); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		d,
+		"addLabel",
 		[]interface{}{name, value},
 	)
 }

@@ -28,6 +28,9 @@ type DockerComposeServiceDescription struct {
 	//
 	// Experimental.
 	ImageBuild *DockerComposeBuild `field:"optional" json:"imageBuild" yaml:"imageBuild"`
+	// Add labels.
+	// Experimental.
+	Labels *map[string]*string `field:"optional" json:"labels" yaml:"labels"`
 	// Add some networks to the service.
 	// See: DockerCompose.network() to create & mount a named network
 	//
