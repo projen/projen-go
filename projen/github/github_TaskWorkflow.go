@@ -32,6 +32,21 @@ type TaskWorkflow interface {
 	// GitHub API authentication method used by projen workflows.
 	// Experimental.
 	ProjenCredentials() GithubCredentials
+	// The name for workflow runs generated from the workflow.
+	//
+	// GitHub displays the
+	// workflow run name in the list of workflow runs on your repository's
+	// "Actions" tab. If `run-name` is omitted or is only whitespace, then the run
+	// name is set to event-specific information for the workflow run. For
+	// example, for a workflow triggered by a `push` or `pull_request` event, it
+	// is set as the commit message.
+	//
+	// This value can include expressions and can reference `github` and `inputs`
+	// contexts.
+	// Experimental.
+	RunName() *string
+	// Experimental.
+	SetRunName(val *string)
 	// Adds a single job to the workflow.
 	// Experimental.
 	AddJob(id *string, job interface{})
@@ -129,6 +144,16 @@ func (j *jsiiProxy_TaskWorkflow) ProjenCredentials() GithubCredentials {
 	return returns
 }
 
+func (j *jsiiProxy_TaskWorkflow) RunName() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"runName",
+		&returns,
+	)
+	return returns
+}
+
 
 // Experimental.
 func NewTaskWorkflow(github GitHub, options *TaskWorkflowOptions) TaskWorkflow {
@@ -156,6 +181,14 @@ func NewTaskWorkflow_Override(t TaskWorkflow, github GitHub, options *TaskWorkfl
 		"projen.github.TaskWorkflow",
 		[]interface{}{github, options},
 		t,
+	)
+}
+
+func (j *jsiiProxy_TaskWorkflow)SetRunName(val *string) {
+	_jsii_.Set(
+		j,
+		"runName",
+		val,
 	)
 }
 
