@@ -222,6 +222,7 @@ func init() {
 		reflect.TypeOf((*NodePackageManager)(nil)).Elem(),
 		map[string]interface{}{
 			"YARN": NodePackageManager_YARN,
+			"YARN2": NodePackageManager_YARN2,
 			"NPM": NodePackageManager_NPM,
 			"PNPM": NodePackageManager_PNPM,
 		},
