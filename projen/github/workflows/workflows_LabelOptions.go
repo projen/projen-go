@@ -1,7 +1,7 @@
 package workflows
 
 
-// label options.
+// Label options.
 // Experimental.
 type LabelOptions struct {
 	// Which activity types to trigger on.

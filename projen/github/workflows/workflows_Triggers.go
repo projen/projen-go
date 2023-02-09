@@ -62,6 +62,9 @@ type Triggers struct {
 	// Runs your workflow anytime the label event occurs.
 	// Experimental.
 	Label *LabelOptions `field:"optional" json:"label" yaml:"label"`
+	// Runs your workflow when a pull request is added to a merge queue, which adds the pull request to a merge group.
+	// Experimental.
+	MergeGroup *MergeGroupOptions `field:"optional" json:"mergeGroup" yaml:"mergeGroup"`
 	// Runs your workflow anytime the milestone event occurs.
 	// Experimental.
 	Milestone *MilestoneOptions `field:"optional" json:"milestone" yaml:"milestone"`

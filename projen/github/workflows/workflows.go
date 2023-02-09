@@ -134,6 +134,10 @@ func init() {
 		reflect.TypeOf((*LabelOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.github.workflows.MergeGroupOptions",
+		reflect.TypeOf((*MergeGroupOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.github.workflows.MilestoneOptions",
 		reflect.TypeOf((*MilestoneOptions)(nil)).Elem(),
 	)
