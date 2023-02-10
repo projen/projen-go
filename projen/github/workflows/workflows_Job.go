@@ -38,6 +38,12 @@ type Job struct {
 	// that causes the job to continue.
 	// Experimental.
 	Needs *[]*string `field:"optional" json:"needs" yaml:"needs"`
+	// A strategy creates a build matrix for your jobs.
+	//
+	// You can define different
+	// variations to run each job in.
+	// Experimental.
+	Strategy *JobStrategy `field:"optional" json:"strategy" yaml:"strategy"`
 	// The type of machine to run the job on.
 	//
 	// The machine can be either a
@@ -107,12 +113,6 @@ type Job struct {
 	// cycle of the service containers.
 	// Experimental.
 	Services *map[string]*ContainerOptions `field:"optional" json:"services" yaml:"services"`
-	// A strategy creates a build matrix for your jobs.
-	//
-	// You can define different
-	// variations to run each job in.
-	// Experimental.
-	Strategy *JobStrategy `field:"optional" json:"strategy" yaml:"strategy"`
 	// The maximum number of minutes to let a job run before GitHub automatically cancels it.
 	// Experimental.
 	TimeoutMinutes *float64 `field:"optional" json:"timeoutMinutes" yaml:"timeoutMinutes"`

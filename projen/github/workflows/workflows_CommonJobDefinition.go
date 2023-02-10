@@ -37,5 +37,11 @@ type CommonJobDefinition struct {
 	// that causes the job to continue.
 	// Experimental.
 	Needs *[]*string `field:"optional" json:"needs" yaml:"needs"`
+	// A strategy creates a build matrix for your jobs.
+	//
+	// You can define different
+	// variations to run each job in.
+	// Experimental.
+	Strategy *JobStrategy `field:"optional" json:"strategy" yaml:"strategy"`
 }
 
