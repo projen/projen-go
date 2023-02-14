@@ -89,6 +89,13 @@ type TypeScriptCompilerOptions struct {
 	// In some cases where no type annotations are present, TypeScript will fall back to a type of any for a variable when it cannot infer the type.
 	// Experimental.
 	NoImplicitAny *bool `field:"optional" json:"noImplicitAny" yaml:"noImplicitAny"`
+	// Using `noImplicitOverride`, you can ensure that sub-classes never go out of sync as they are required to explicitly declare that they are overriding a member using the `override` keyword.
+	//
+	// This also improves readability of the programmer's intent.
+	//
+	// Available with TypeScript 4.3 and newer.
+	// Experimental.
+	NoImplicitOverride *bool `field:"optional" json:"noImplicitOverride" yaml:"noImplicitOverride"`
 	// When enabled, TypeScript will check all code paths in a function to ensure they return a value.
 	// Experimental.
 	NoImplicitReturns *bool `field:"optional" json:"noImplicitReturns" yaml:"noImplicitReturns"`
