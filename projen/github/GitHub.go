@@ -11,6 +11,8 @@ import (
 // Experimental.
 type GitHub interface {
 	projen.Component
+	// Experimental.
+	Actions() GitHubActionsProvider
 	// The `Mergify` configured on this repository.
 	//
 	// This is `undefined` if Mergify
@@ -58,6 +60,16 @@ type GitHub interface {
 // The jsii proxy struct for GitHub
 type jsiiProxy_GitHub struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_GitHub) Actions() GitHubActionsProvider {
+	var returns GitHubActionsProvider
+	_jsii_.Get(
+		j,
+		"actions",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_GitHub) Mergify() Mergify {

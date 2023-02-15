@@ -107,6 +107,7 @@ func init() {
 		"projen.github.GitHub",
 		reflect.TypeOf((*GitHub)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "actions", GoGetter: "Actions"},
 			_jsii_.MemberMethod{JsiiMethod: "addDependabot", GoMethod: "AddDependabot"},
 			_jsii_.MemberMethod{JsiiMethod: "addPullRequestTemplate", GoMethod: "AddPullRequestTemplate"},
 			_jsii_.MemberMethod{JsiiMethod: "addWorkflow", GoMethod: "AddWorkflow"},
@@ -124,6 +125,17 @@ func init() {
 			j := jsiiProxy_GitHub{}
 			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
 			return &j
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.github.GitHubActionsProvider",
+		reflect.TypeOf((*GitHubActionsProvider)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "get", GoMethod: "Get"},
+			_jsii_.MemberMethod{JsiiMethod: "set", GoMethod: "Set"},
+		},
+		func() interface{} {
+			return &jsiiProxy_GitHubActionsProvider{}
 		},
 	)
 	_jsii_.RegisterStruct(
@@ -247,16 +259,6 @@ func init() {
 		},
 		func() interface{} {
 			return &jsiiProxy_IAddConditionsLater{}
-		},
-	)
-	_jsii_.RegisterInterface(
-		"projen.github.IJobProvider",
-		reflect.TypeOf((*IJobProvider)(nil)).Elem(),
-		[]_jsii_.Member{
-			_jsii_.MemberMethod{JsiiMethod: "renderJobs", GoMethod: "RenderJobs"},
-		},
-		func() interface{} {
-			return &jsiiProxy_IJobProvider{}
 		},
 	)
 	_jsii_.RegisterClass(
