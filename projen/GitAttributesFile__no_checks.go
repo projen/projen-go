@@ -9,6 +9,10 @@ func (g *jsiiProxy_GitAttributesFile) validateAddAttributesParameters(glob *stri
 	return nil
 }
 
+func (g *jsiiProxy_GitAttributesFile) validateAddLfsPatternParameters(glob *string) error {
+	return nil
+}
+
 func (g *jsiiProxy_GitAttributesFile) validateSynthesizeContentParameters(_arg IResolver) error {
 	return nil
 }

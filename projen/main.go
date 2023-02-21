@@ -207,8 +207,10 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberProperty{JsiiProperty: "absolutePath", GoGetter: "AbsolutePath"},
 			_jsii_.MemberMethod{JsiiMethod: "addAttributes", GoMethod: "AddAttributes"},
+			_jsii_.MemberMethod{JsiiMethod: "addLfsPattern", GoMethod: "AddLfsPattern"},
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
+			_jsii_.MemberProperty{JsiiProperty: "hasLfsPatterns", GoGetter: "HasLfsPatterns"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
@@ -223,6 +225,10 @@ func init() {
 			_jsii_.InitJsiiProxy(&j.jsiiProxy_FileBase)
 			return &j
 		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.GitOptions",
+		reflect.TypeOf((*GitOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.Gitpod",

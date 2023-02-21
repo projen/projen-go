@@ -18,6 +18,9 @@ type ConstructLibraryAwsOptions struct {
 	// Whether to commit the managed files by default.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
+	// Configuration options for git.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	GitOptions *projen.GitOptions `field:"optional" json:"gitOptions" yaml:"gitOptions"`
 	// Configure logging options such as verbosity.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`

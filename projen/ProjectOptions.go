@@ -11,6 +11,9 @@ type ProjectOptions struct {
 	// Whether to commit the managed files by default.
 	// Experimental.
 	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
+	// Configuration options for git.
+	// Experimental.
+	GitOptions *GitOptions `field:"optional" json:"gitOptions" yaml:"gitOptions"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *LoggerOptions `field:"optional" json:"logging" yaml:"logging"`

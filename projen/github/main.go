@@ -111,6 +111,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addDependabot", GoMethod: "AddDependabot"},
 			_jsii_.MemberMethod{JsiiMethod: "addPullRequestTemplate", GoMethod: "AddPullRequestTemplate"},
 			_jsii_.MemberMethod{JsiiMethod: "addWorkflow", GoMethod: "AddWorkflow"},
+			_jsii_.MemberProperty{JsiiProperty: "downloadLfs", GoGetter: "DownloadLfs"},
 			_jsii_.MemberProperty{JsiiProperty: "mergify", GoGetter: "Mergify"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},

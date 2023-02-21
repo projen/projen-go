@@ -3,6 +3,9 @@ package github
 
 // Experimental.
 type GitHubOptions struct {
+	// Download files in LFS in workflows.
+	// Experimental.
+	DownloadLfs *bool `field:"optional" json:"downloadLfs" yaml:"downloadLfs"`
 	// Whether mergify should be enabled on this repository or not.
 	// Experimental.
 	Mergify *bool `field:"optional" json:"mergify" yaml:"mergify"`

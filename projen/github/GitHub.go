@@ -13,6 +13,9 @@ type GitHub interface {
 	projen.Component
 	// Experimental.
 	Actions() GitHubActionsProvider
+	// Whether downloading from LFS is enabled for this GitHub project.
+	// Experimental.
+	DownloadLfs() *bool
 	// The `Mergify` configured on this repository.
 	//
 	// This is `undefined` if Mergify
@@ -67,6 +70,16 @@ func (j *jsiiProxy_GitHub) Actions() GitHubActionsProvider {
 	_jsii_.Get(
 		j,
 		"actions",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHub) DownloadLfs() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"downloadLfs",
 		&returns,
 	)
 	return returns

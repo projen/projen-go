@@ -27,6 +27,9 @@ type TaskWorkflowOptions struct {
 	Condition *string `field:"optional" json:"condition" yaml:"condition"`
 	// Experimental.
 	Container *workflows.ContainerOptions `field:"optional" json:"container" yaml:"container"`
+	// Whether to download files from Git LFS for this workflow.
+	// Experimental.
+	DownloadLfs *bool `field:"optional" json:"downloadLfs" yaml:"downloadLfs"`
 	// Workflow environment variables.
 	// Experimental.
 	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`

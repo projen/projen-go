@@ -27,6 +27,9 @@ type GitAttributesFile interface {
 	Executable() *bool
 	// Experimental.
 	SetExecutable(val *bool)
+	// Whether the current gitattributes file has any LFS patterns.
+	// Experimental.
+	HasLfsPatterns() *bool
 	// The projen marker, used to identify files as projen-generated.
 	//
 	// Value is undefined if the project is being ejected.
@@ -45,6 +48,9 @@ type GitAttributesFile interface {
 	// Maps a set of attributes to a set of files.
 	// Experimental.
 	AddAttributes(glob *string, attributes ...*string)
+	// Add attributes necessary to mark these files as stored in LFS.
+	// Experimental.
+	AddLfsPattern(glob *string)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -91,6 +97,16 @@ func (j *jsiiProxy_GitAttributesFile) Executable() *bool {
 	_jsii_.Get(
 		j,
 		"executable",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitAttributesFile) HasLfsPatterns() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"hasLfsPatterns",
 		&returns,
 	)
 	return returns
@@ -201,6 +217,17 @@ func (g *jsiiProxy_GitAttributesFile) AddAttributes(glob *string, attributes ...
 		g,
 		"addAttributes",
 		args,
+	)
+}
+
+func (g *jsiiProxy_GitAttributesFile) AddLfsPattern(glob *string) {
+	if err := g.validateAddLfsPatternParameters(glob); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		g,
+		"addLfsPattern",
+		[]interface{}{glob},
 	)
 }
 

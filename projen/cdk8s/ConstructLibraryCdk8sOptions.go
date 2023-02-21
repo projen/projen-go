@@ -18,6 +18,9 @@ type ConstructLibraryCdk8sOptions struct {
 	// Whether to commit the managed files by default.
 	// Experimental.
 	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
+	// Configuration options for git.
+	// Experimental.
+	GitOptions *projen.GitOptions `field:"optional" json:"gitOptions" yaml:"gitOptions"`
 	// Configure logging options such as verbosity.
 	// Experimental.
 	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
