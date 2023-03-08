@@ -284,6 +284,9 @@ type ConstructLibraryAwsOptions struct {
 	// test your module against the lowest peer version required.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PeerDeps *[]*string `field:"optional" json:"peerDeps" yaml:"peerDeps"`
+	// The version of PNPM to use if using PNPM as a package manager.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	PnpmVersion *string `field:"optional" json:"pnpmVersion" yaml:"pnpmVersion"`
 	// The repository is the location where the actual code for your package lives.
 	//
 	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository

@@ -39,7 +39,7 @@ type NodePackage interface {
 	LockFile() *string
 	// Deprecated: use `addField(x, y)`.
 	Manifest() interface{}
-	// Maximum node version required by this pacakge.
+	// Maximum node version required by this package.
 	// Experimental.
 	MaxNodeVersion() *string
 	// Minimum node.js version required by this package.
@@ -63,6 +63,9 @@ type NodePackage interface {
 	// The name of the npm package.
 	// Experimental.
 	PackageName() *string
+	// The version of PNPM to use if using PNPM as a package manager.
+	// Experimental.
+	PnpmVersion() *string
 	// Experimental.
 	Project() projen.Project
 	// The command which executes "projen".
@@ -292,6 +295,16 @@ func (j *jsiiProxy_NodePackage) PackageName() *string {
 	_jsii_.Get(
 		j,
 		"packageName",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NodePackage) PnpmVersion() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"pnpmVersion",
 		&returns,
 	)
 	return returns

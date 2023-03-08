@@ -116,7 +116,7 @@ type TypeScriptLibraryProject interface {
 	Logger() projen.Logger
 	// Deprecated: use `package.addField(x, y)`
 	Manifest() interface{}
-	// Maximum node version required by this pacakge.
+	// Maximum node version required by this package.
 	// Deprecated: use `TypeScriptProject`.
 	MaxNodeVersion() *string
 	// Minimum node.js version required by this package.

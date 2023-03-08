@@ -129,7 +129,7 @@ type ConstructLibraryCdk8s interface {
 	Logger() projen.Logger
 	// Deprecated: use `package.addField(x, y)`
 	Manifest() interface{}
-	// Maximum node version required by this pacakge.
+	// Maximum node version required by this package.
 	// Experimental.
 	MaxNodeVersion() *string
 	// Minimum node.js version required by this package.

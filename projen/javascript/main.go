@@ -201,6 +201,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "npmTokenSecret", GoGetter: "NpmTokenSecret"},
 			_jsii_.MemberProperty{JsiiProperty: "packageManager", GoGetter: "PackageManager"},
 			_jsii_.MemberProperty{JsiiProperty: "packageName", GoGetter: "PackageName"},
+			_jsii_.MemberProperty{JsiiProperty: "pnpmVersion", GoGetter: "PnpmVersion"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
