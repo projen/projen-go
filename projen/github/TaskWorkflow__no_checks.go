@@ -12,7 +12,23 @@ func (t *jsiiProxy_TaskWorkflow) validateAddJobsParameters(jobs *map[string]inte
 	return nil
 }
 
+func (t *jsiiProxy_TaskWorkflow) validateGetJobParameters(id *string) error {
+	return nil
+}
+
 func (t *jsiiProxy_TaskWorkflow) validateOnParameters(events *workflows.Triggers) error {
+	return nil
+}
+
+func (t *jsiiProxy_TaskWorkflow) validateRemoveJobParameters(id *string) error {
+	return nil
+}
+
+func (t *jsiiProxy_TaskWorkflow) validateUpdateJobParameters(id *string, job interface{}) error {
+	return nil
+}
+
+func (t *jsiiProxy_TaskWorkflow) validateUpdateJobsParameters(jobs *map[string]interface{}) error {
 	return nil
 }
 

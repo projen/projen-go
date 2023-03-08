@@ -53,6 +53,9 @@ type TaskWorkflow interface {
 	// Add jobs to the workflow.
 	// Experimental.
 	AddJobs(jobs *map[string]interface{})
+	// Get a single job from the workflow.
+	// Experimental.
+	GetJob(id *string) interface{}
 	// Add events to triggers the workflow.
 	// Experimental.
 	On(events *workflows.Triggers)
@@ -64,9 +67,18 @@ type TaskWorkflow interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Removes a single job to the workflow.
+	// Experimental.
+	RemoveJob(id *string)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Updates a single job to the workflow.
+	// Experimental.
+	UpdateJob(id *string, job interface{})
+	// Updates jobs for this worklow Does a complete replace, it does not try to merge the jobs.
+	// Experimental.
+	UpdateJobs(jobs *map[string]interface{})
 }
 
 // The jsii proxy struct for TaskWorkflow
@@ -214,6 +226,22 @@ func (t *jsiiProxy_TaskWorkflow) AddJobs(jobs *map[string]interface{}) {
 	)
 }
 
+func (t *jsiiProxy_TaskWorkflow) GetJob(id *string) interface{} {
+	if err := t.validateGetJobParameters(id); err != nil {
+		panic(err)
+	}
+	var returns interface{}
+
+	_jsii_.Invoke(
+		t,
+		"getJob",
+		[]interface{}{id},
+		&returns,
+	)
+
+	return returns
+}
+
 func (t *jsiiProxy_TaskWorkflow) On(events *workflows.Triggers) {
 	if err := t.validateOnParameters(events); err != nil {
 		panic(err)
@@ -241,11 +269,44 @@ func (t *jsiiProxy_TaskWorkflow) PreSynthesize() {
 	)
 }
 
+func (t *jsiiProxy_TaskWorkflow) RemoveJob(id *string) {
+	if err := t.validateRemoveJobParameters(id); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"removeJob",
+		[]interface{}{id},
+	)
+}
+
 func (t *jsiiProxy_TaskWorkflow) Synthesize() {
 	_jsii_.InvokeVoid(
 		t,
 		"synthesize",
 		nil, // no parameters
+	)
+}
+
+func (t *jsiiProxy_TaskWorkflow) UpdateJob(id *string, job interface{}) {
+	if err := t.validateUpdateJobParameters(id, job); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"updateJob",
+		[]interface{}{id, job},
+	)
+}
+
+func (t *jsiiProxy_TaskWorkflow) UpdateJobs(jobs *map[string]interface{}) {
+	if err := t.validateUpdateJobsParameters(jobs); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"updateJobs",
+		[]interface{}{jobs},
 	)
 }
 

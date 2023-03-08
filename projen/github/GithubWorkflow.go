@@ -54,6 +54,9 @@ type GithubWorkflow interface {
 	// Add jobs to the workflow.
 	// Experimental.
 	AddJobs(jobs *map[string]interface{})
+	// Get a single job from the workflow.
+	// Experimental.
+	GetJob(id *string) interface{}
 	// Add events to triggers the workflow.
 	// Experimental.
 	On(events *workflows.Triggers)
@@ -65,9 +68,18 @@ type GithubWorkflow interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Removes a single job to the workflow.
+	// Experimental.
+	RemoveJob(id *string)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Updates a single job to the workflow.
+	// Experimental.
+	UpdateJob(id *string, job interface{})
+	// Updates jobs for this worklow Does a complete replace, it does not try to merge the jobs.
+	// Experimental.
+	UpdateJobs(jobs *map[string]interface{})
 }
 
 // The jsii proxy struct for GithubWorkflow
@@ -195,6 +207,22 @@ func (g *jsiiProxy_GithubWorkflow) AddJobs(jobs *map[string]interface{}) {
 	)
 }
 
+func (g *jsiiProxy_GithubWorkflow) GetJob(id *string) interface{} {
+	if err := g.validateGetJobParameters(id); err != nil {
+		panic(err)
+	}
+	var returns interface{}
+
+	_jsii_.Invoke(
+		g,
+		"getJob",
+		[]interface{}{id},
+		&returns,
+	)
+
+	return returns
+}
+
 func (g *jsiiProxy_GithubWorkflow) On(events *workflows.Triggers) {
 	if err := g.validateOnParameters(events); err != nil {
 		panic(err)
@@ -222,11 +250,44 @@ func (g *jsiiProxy_GithubWorkflow) PreSynthesize() {
 	)
 }
 
+func (g *jsiiProxy_GithubWorkflow) RemoveJob(id *string) {
+	if err := g.validateRemoveJobParameters(id); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		g,
+		"removeJob",
+		[]interface{}{id},
+	)
+}
+
 func (g *jsiiProxy_GithubWorkflow) Synthesize() {
 	_jsii_.InvokeVoid(
 		g,
 		"synthesize",
 		nil, // no parameters
+	)
+}
+
+func (g *jsiiProxy_GithubWorkflow) UpdateJob(id *string, job interface{}) {
+	if err := g.validateUpdateJobParameters(id, job); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		g,
+		"updateJob",
+		[]interface{}{id, job},
+	)
+}
+
+func (g *jsiiProxy_GithubWorkflow) UpdateJobs(jobs *map[string]interface{}) {
+	if err := g.validateUpdateJobsParameters(jobs); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		g,
+		"updateJobs",
+		[]interface{}{jobs},
 	)
 }
 

@@ -233,14 +233,18 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addJobs", GoMethod: "AddJobs"},
 			_jsii_.MemberProperty{JsiiProperty: "concurrency", GoGetter: "Concurrency"},
 			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
+			_jsii_.MemberMethod{JsiiMethod: "getJob", GoMethod: "GetJob"},
 			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
 			_jsii_.MemberMethod{JsiiMethod: "on", GoMethod: "On"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberProperty{JsiiProperty: "projenCredentials", GoGetter: "ProjenCredentials"},
+			_jsii_.MemberMethod{JsiiMethod: "removeJob", GoMethod: "RemoveJob"},
 			_jsii_.MemberProperty{JsiiProperty: "runName", GoGetter: "RunName"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "updateJob", GoMethod: "UpdateJob"},
+			_jsii_.MemberMethod{JsiiMethod: "updateJobs", GoMethod: "UpdateJobs"},
 		},
 		func() interface{} {
 			j := jsiiProxy_GithubWorkflow{}
@@ -377,6 +381,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "artifactsDirectory", GoGetter: "ArtifactsDirectory"},
 			_jsii_.MemberProperty{JsiiProperty: "concurrency", GoGetter: "Concurrency"},
 			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
+			_jsii_.MemberMethod{JsiiMethod: "getJob", GoMethod: "GetJob"},
 			_jsii_.MemberProperty{JsiiProperty: "jobId", GoGetter: "JobId"},
 			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
 			_jsii_.MemberMethod{JsiiMethod: "on", GoMethod: "On"},
@@ -384,8 +389,11 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberProperty{JsiiProperty: "projenCredentials", GoGetter: "ProjenCredentials"},
+			_jsii_.MemberMethod{JsiiMethod: "removeJob", GoMethod: "RemoveJob"},
 			_jsii_.MemberProperty{JsiiProperty: "runName", GoGetter: "RunName"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "updateJob", GoMethod: "UpdateJob"},
+			_jsii_.MemberMethod{JsiiMethod: "updateJobs", GoMethod: "UpdateJobs"},
 		},
 		func() interface{} {
 			j := jsiiProxy_TaskWorkflow{}

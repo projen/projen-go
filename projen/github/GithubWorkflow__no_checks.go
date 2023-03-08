@@ -12,7 +12,23 @@ func (g *jsiiProxy_GithubWorkflow) validateAddJobsParameters(jobs *map[string]in
 	return nil
 }
 
+func (g *jsiiProxy_GithubWorkflow) validateGetJobParameters(id *string) error {
+	return nil
+}
+
 func (g *jsiiProxy_GithubWorkflow) validateOnParameters(events *workflows.Triggers) error {
+	return nil
+}
+
+func (g *jsiiProxy_GithubWorkflow) validateRemoveJobParameters(id *string) error {
+	return nil
+}
+
+func (g *jsiiProxy_GithubWorkflow) validateUpdateJobParameters(id *string, job interface{}) error {
+	return nil
+}
+
+func (g *jsiiProxy_GithubWorkflow) validateUpdateJobsParameters(jobs *map[string]interface{}) error {
 	return nil
 }
 
