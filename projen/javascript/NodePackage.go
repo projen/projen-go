@@ -26,9 +26,15 @@ type NodePackage interface {
 	// Renders `yarn install` or `npm install` with lockfile update (not frozen).
 	// Experimental.
 	InstallAndUpdateLockfileCommand() *string
+	// The task for installing project dependencies (frozen).
+	// Experimental.
+	InstallCiTask() projen.Task
 	// Returns the command to execute in order to install all dependencies (always frozen).
 	// Experimental.
 	InstallCommand() *string
+	// The task for installing project dependencies (non-frozen).
+	// Experimental.
+	InstallTask() projen.Task
 	// The SPDX license of this module.
 	//
 	// `undefined` if this package is not licensed.
@@ -180,11 +186,31 @@ func (j *jsiiProxy_NodePackage) InstallAndUpdateLockfileCommand() *string {
 	return returns
 }
 
+func (j *jsiiProxy_NodePackage) InstallCiTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"installCiTask",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_NodePackage) InstallCommand() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
 		"installCommand",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NodePackage) InstallTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"installTask",
 		&returns,
 	)
 	return returns
