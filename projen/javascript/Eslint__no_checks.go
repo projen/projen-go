@@ -8,6 +8,10 @@ func (e *jsiiProxy_Eslint) validateAddIgnorePatternParameters(pattern *string) e
 	return nil
 }
 
+func (e *jsiiProxy_Eslint) validateAddLintPatternParameters(pattern *string) error {
+	return nil
+}
+
 func (e *jsiiProxy_Eslint) validateAddOverrideParameters(override *EslintOverride) error {
 	return nil
 }

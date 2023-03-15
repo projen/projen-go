@@ -18,6 +18,14 @@ func (e *jsiiProxy_Eslint) validateAddIgnorePatternParameters(pattern *string) e
 	return nil
 }
 
+func (e *jsiiProxy_Eslint) validateAddLintPatternParameters(pattern *string) error {
+	if pattern == nil {
+		return fmt.Errorf("parameter pattern is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (e *jsiiProxy_Eslint) validateAddOverrideParameters(override *EslintOverride) error {
 	if override == nil {
 		return fmt.Errorf("parameter override is required, but nil was provided")

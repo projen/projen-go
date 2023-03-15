@@ -98,6 +98,7 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addExtends", GoMethod: "AddExtends"},
 			_jsii_.MemberMethod{JsiiMethod: "addIgnorePattern", GoMethod: "AddIgnorePattern"},
+			_jsii_.MemberMethod{JsiiMethod: "addLintPattern", GoMethod: "AddLintPattern"},
 			_jsii_.MemberMethod{JsiiMethod: "addOverride", GoMethod: "AddOverride"},
 			_jsii_.MemberMethod{JsiiMethod: "addPlugins", GoMethod: "AddPlugins"},
 			_jsii_.MemberMethod{JsiiMethod: "addRules", GoMethod: "AddRules"},

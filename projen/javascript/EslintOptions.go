@@ -3,7 +3,7 @@ package javascript
 
 // Experimental.
 type EslintOptions struct {
-	// Directories with source files to lint (e.g. [ "src" ]).
+	// Files or glob patterns or directories with source files to lint (e.g. [ "src" ]).
 	// Experimental.
 	Dirs *[]*string `field:"required" json:"dirs" yaml:"dirs"`
 	// Enable import alias for module paths.
@@ -12,10 +12,9 @@ type EslintOptions struct {
 	// Enable import alias for module paths.
 	// Experimental.
 	AliasMap *map[string]*string `field:"optional" json:"aliasMap" yaml:"aliasMap"`
-	// Directories with source files that include tests and build tools.
+	// Files or glob patterns or directories with source files that include tests and build tools.
 	//
-	// These
-	// sources are linted but may also import packages from `devDependencies`.
+	// These sources are linted but may also import packages from `devDependencies`.
 	// Experimental.
 	Devdirs *[]*string `field:"optional" json:"devdirs" yaml:"devdirs"`
 	// File types that should be linted (e.g. [ ".js", ".ts" ]).
@@ -25,12 +24,12 @@ type EslintOptions struct {
 	// Experimental.
 	IgnorePatterns *[]*string `field:"optional" json:"ignorePatterns" yaml:"ignorePatterns"`
 	// Should we lint .projenrc.js.
-	// Deprecated: use lintProjenRcFile instead.
+	// Deprecated: set to `false` to remove any automatic rules and add manually.
 	LintProjenRc *bool `field:"optional" json:"lintProjenRc" yaml:"lintProjenRc"`
 	// Projenrc file to lint.
 	//
 	// Use empty string to disable.
-	// Experimental.
+	// Deprecated: provide as `devdirs`.
 	LintProjenRcFile *string `field:"optional" json:"lintProjenRcFile" yaml:"lintProjenRcFile"`
 	// Enable prettier for code formatting.
 	// Experimental.

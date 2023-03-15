@@ -35,6 +35,9 @@ type Eslint interface {
 	// Do not lint these files.
 	// Experimental.
 	AddIgnorePattern(pattern *string)
+	// Add a file, glob pattern or directory with source files to lint (e.g. [ "src" ]).
+	// Experimental.
+	AddLintPattern(pattern *string)
 	// Add an eslint override.
 	// Experimental.
 	AddOverride(override *EslintOverride)
@@ -195,6 +198,17 @@ func (e *jsiiProxy_Eslint) AddIgnorePattern(pattern *string) {
 	_jsii_.InvokeVoid(
 		e,
 		"addIgnorePattern",
+		[]interface{}{pattern},
+	)
+}
+
+func (e *jsiiProxy_Eslint) AddLintPattern(pattern *string) {
+	if err := e.validateAddLintPatternParameters(pattern); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		e,
+		"addLintPattern",
 		[]interface{}{pattern},
 	)
 }
