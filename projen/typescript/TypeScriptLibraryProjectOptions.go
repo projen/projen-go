@@ -16,6 +16,9 @@ type TypeScriptLibraryProjectOptions struct {
 	// Whether to commit the managed files by default.
 	// Deprecated: use TypeScriptProjectOptions.
 	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
+	// Configuration options for .gitignore file.
+	// Deprecated: use TypeScriptProjectOptions.
+	GitIgnoreOptions *projen.IgnoreFileOptions `field:"optional" json:"gitIgnoreOptions" yaml:"gitIgnoreOptions"`
 	// Configuration options for git.
 	// Deprecated: use TypeScriptProjectOptions.
 	GitOptions *projen.GitOptions `field:"optional" json:"gitOptions" yaml:"gitOptions"`
@@ -467,6 +470,9 @@ type TypeScriptLibraryProjectOptions struct {
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
 	// Deprecated: use TypeScriptProjectOptions.
 	NpmignoreEnabled *bool `field:"optional" json:"npmignoreEnabled" yaml:"npmignoreEnabled"`
+	// Configuration options for .npmignore file.
+	// Deprecated: use TypeScriptProjectOptions.
+	NpmIgnoreOptions *projen.IgnoreFileOptions `field:"optional" json:"npmIgnoreOptions" yaml:"npmIgnoreOptions"`
 	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
 	// Deprecated: use TypeScriptProjectOptions.
 	Package *bool `field:"optional" json:"package" yaml:"package"`

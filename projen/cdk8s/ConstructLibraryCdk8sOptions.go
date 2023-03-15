@@ -18,6 +18,9 @@ type ConstructLibraryCdk8sOptions struct {
 	// Whether to commit the managed files by default.
 	// Experimental.
 	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
+	// Configuration options for .gitignore file.
+	// Experimental.
+	GitIgnoreOptions *projen.IgnoreFileOptions `field:"optional" json:"gitIgnoreOptions" yaml:"gitIgnoreOptions"`
 	// Configuration options for git.
 	// Experimental.
 	GitOptions *projen.GitOptions `field:"optional" json:"gitOptions" yaml:"gitOptions"`
@@ -469,6 +472,9 @@ type ConstructLibraryCdk8sOptions struct {
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
 	// Experimental.
 	NpmignoreEnabled *bool `field:"optional" json:"npmignoreEnabled" yaml:"npmignoreEnabled"`
+	// Configuration options for .npmignore file.
+	// Experimental.
+	NpmIgnoreOptions *projen.IgnoreFileOptions `field:"optional" json:"npmIgnoreOptions" yaml:"npmIgnoreOptions"`
 	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
 	// Experimental.
 	Package *bool `field:"optional" json:"package" yaml:"package"`

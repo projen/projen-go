@@ -24,6 +24,10 @@ type IgnoreFile interface {
 	Executable() *bool
 	// Experimental.
 	SetExecutable(val *bool)
+	// Experimental.
+	FilterCommentLines() *bool
+	// Experimental.
+	FilterEmptyLines() *bool
 	// The projen marker, used to identify files as projen-generated.
 	//
 	// Value is undefined if the project is being ejected.
@@ -45,7 +49,8 @@ type IgnoreFile interface {
 	// pattern starts with a negation mark `!`, files that match will _not_ be
 	// ignored.
 	//
-	// Comment lines (start with `#`) are ignored.
+	// Comment lines (start with `#`) and blank lines ("") are filtered by default
+	// but can be included using options specified when instantiating the component.
 	// Experimental.
 	AddPatterns(patterns ...*string)
 	// Ignore the files that match these patterns.
@@ -110,6 +115,26 @@ func (j *jsiiProxy_IgnoreFile) Executable() *bool {
 	return returns
 }
 
+func (j *jsiiProxy_IgnoreFile) FilterCommentLines() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"filterCommentLines",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IgnoreFile) FilterEmptyLines() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"filterEmptyLines",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_IgnoreFile) Marker() *string {
 	var returns *string
 	_jsii_.Get(
@@ -152,17 +177,17 @@ func (j *jsiiProxy_IgnoreFile) Readonly() *bool {
 
 
 // Experimental.
-func NewIgnoreFile(project Project, filePath *string) IgnoreFile {
+func NewIgnoreFile(project Project, filePath *string, options *IgnoreFileOptions) IgnoreFile {
 	_init_.Initialize()
 
-	if err := validateNewIgnoreFileParameters(project, filePath); err != nil {
+	if err := validateNewIgnoreFileParameters(project, filePath, options); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_IgnoreFile{}
 
 	_jsii_.Create(
 		"projen.IgnoreFile",
-		[]interface{}{project, filePath},
+		[]interface{}{project, filePath, options},
 		&j,
 	)
 
@@ -170,12 +195,12 @@ func NewIgnoreFile(project Project, filePath *string) IgnoreFile {
 }
 
 // Experimental.
-func NewIgnoreFile_Override(i IgnoreFile, project Project, filePath *string) {
+func NewIgnoreFile_Override(i IgnoreFile, project Project, filePath *string, options *IgnoreFileOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.IgnoreFile",
-		[]interface{}{project, filePath},
+		[]interface{}{project, filePath, options},
 		i,
 	)
 }

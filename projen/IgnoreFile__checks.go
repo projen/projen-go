@@ -5,6 +5,8 @@ package projen
 
 import (
 	"fmt"
+
+	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 )
 
 func (i *jsiiProxy_IgnoreFile) validateSynthesizeContentParameters(resolver IResolver) error {
@@ -31,13 +33,17 @@ func (j *jsiiProxy_IgnoreFile) validateSetReadonlyParameters(val *bool) error {
 	return nil
 }
 
-func validateNewIgnoreFileParameters(project Project, filePath *string) error {
+func validateNewIgnoreFileParameters(project Project, filePath *string, options *IgnoreFileOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")
 	}
 
 	if filePath == nil {
 		return fmt.Errorf("parameter filePath is required, but nil was provided")
+	}
+
+	if err := _jsii_.ValidateStruct(options, func() string { return "parameter options" }); err != nil {
+		return err
 	}
 
 	return nil

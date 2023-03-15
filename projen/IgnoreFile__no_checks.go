@@ -17,7 +17,7 @@ func (j *jsiiProxy_IgnoreFile) validateSetReadonlyParameters(val *bool) error {
 	return nil
 }
 
-func validateNewIgnoreFileParameters(project Project, filePath *string) error {
+func validateNewIgnoreFileParameters(project Project, filePath *string, options *IgnoreFileOptions) error {
 	return nil
 }
 

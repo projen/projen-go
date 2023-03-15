@@ -401,6 +401,8 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
 			_jsii_.MemberMethod{JsiiMethod: "exclude", GoMethod: "Exclude"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
+			_jsii_.MemberProperty{JsiiProperty: "filterCommentLines", GoGetter: "FilterCommentLines"},
+			_jsii_.MemberProperty{JsiiProperty: "filterEmptyLines", GoGetter: "FilterEmptyLines"},
 			_jsii_.MemberMethod{JsiiMethod: "include", GoMethod: "Include"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
@@ -417,6 +419,10 @@ func init() {
 			_jsii_.InitJsiiProxy(&j.jsiiProxy_FileBase)
 			return &j
 		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.IgnoreFileOptions",
+		reflect.TypeOf((*IgnoreFileOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.IniFile",

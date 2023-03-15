@@ -13,6 +13,9 @@ type GitHubProjectOptions struct {
 	// Whether to commit the managed files by default.
 	// Experimental.
 	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
+	// Configuration options for .gitignore file.
+	// Experimental.
+	GitIgnoreOptions *projen.IgnoreFileOptions `field:"optional" json:"gitIgnoreOptions" yaml:"gitIgnoreOptions"`
 	// Configuration options for git.
 	// Experimental.
 	GitOptions *projen.GitOptions `field:"optional" json:"gitOptions" yaml:"gitOptions"`

@@ -18,6 +18,9 @@ type ConstructLibraryAwsOptions struct {
 	// Whether to commit the managed files by default.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
+	// Configuration options for .gitignore file.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	GitIgnoreOptions *projen.IgnoreFileOptions `field:"optional" json:"gitIgnoreOptions" yaml:"gitIgnoreOptions"`
 	// Configuration options for git.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	GitOptions *projen.GitOptions `field:"optional" json:"gitOptions" yaml:"gitOptions"`
@@ -469,6 +472,9 @@ type ConstructLibraryAwsOptions struct {
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	NpmignoreEnabled *bool `field:"optional" json:"npmignoreEnabled" yaml:"npmignoreEnabled"`
+	// Configuration options for .npmignore file.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	NpmIgnoreOptions *projen.IgnoreFileOptions `field:"optional" json:"npmIgnoreOptions" yaml:"npmIgnoreOptions"`
 	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Package *bool `field:"optional" json:"package" yaml:"package"`
