@@ -11,6 +11,9 @@ type DockerComposeServiceDescription struct {
 	// Names of other services this service depends on.
 	// Experimental.
 	DependsOn *[]IDockerComposeServiceName `field:"optional" json:"dependsOn" yaml:"dependsOn"`
+	// Entrypoint to run in the container.
+	// Experimental.
+	Entrypoint *[]*string `field:"optional" json:"entrypoint" yaml:"entrypoint"`
 	// Add environment variables.
 	// Experimental.
 	Environment *map[string]*string `field:"optional" json:"environment" yaml:"environment"`

@@ -16,6 +16,9 @@ type DockerComposeService interface {
 	// Other services that this service depends on.
 	// Experimental.
 	DependsOn() *[]IDockerComposeServiceName
+	// Entrypoint to run in the container.
+	// Experimental.
+	Entrypoint() *[]*string
 	// Environment variables.
 	// Experimental.
 	Environment() *map[string]*string
@@ -80,6 +83,16 @@ func (j *jsiiProxy_DockerComposeService) DependsOn() *[]IDockerComposeServiceNam
 	_jsii_.Get(
 		j,
 		"dependsOn",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_DockerComposeService) Entrypoint() *[]*string {
+	var returns *[]*string
+	_jsii_.Get(
+		j,
+		"entrypoint",
 		&returns,
 	)
 	return returns
