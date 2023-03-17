@@ -4,7 +4,7 @@ package workflows
 // Options for push-like events.
 // Experimental.
 type PushOptions struct {
-	// When using the push and pull_request events, you can configure a workflow to run on specific branches or tags.
+	// When using the push, pull_request and pull_request_target events, you can configure a workflow to run on specific branches or tags.
 	//
 	// For a pull_request event, only
 	// branches and tags on the base are evaluated. If you define only tags or
@@ -14,7 +14,7 @@ type PushOptions struct {
 	//
 	// Experimental.
 	Branches *[]*string `field:"optional" json:"branches" yaml:"branches"`
-	// When using the push and pull_request events, you can configure a workflow to run when at least one file does not match paths-ignore or at least one modified file matches the configured paths.
+	// When using the push, pull_request and pull_request_target events, you can configure a workflow to run when at least one file does not match paths-ignore or at least one modified file matches the configured paths.
 	//
 	// Path filters are not
 	// evaluated for pushes to tags.
@@ -22,7 +22,7 @@ type PushOptions struct {
 	//
 	// Experimental.
 	Paths *[]*string `field:"optional" json:"paths" yaml:"paths"`
-	// When using the push and pull_request events, you can configure a workflow to run on specific branches or tags.
+	// When using the push, pull_request and pull_request_target events, you can configure a workflow to run on specific branches or tags.
 	//
 	// For a pull_request event, only
 	// branches and tags on the base are evaluated. If you define only tags or
