@@ -12,6 +12,14 @@ func (j *jsiiProxy_Jest) validateAddReporterParameters(reporter interface{}) err
 	return nil
 }
 
+func (j *jsiiProxy_Jest) validateAddSetupFileParameters(file *string) error {
+	return nil
+}
+
+func (j *jsiiProxy_Jest) validateAddSetupFileAfterEnvParameters(file *string) error {
+	return nil
+}
+
 func (j *jsiiProxy_Jest) validateAddSnapshotResolverParameters(file *string) error {
 	return nil
 }

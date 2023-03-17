@@ -33,6 +33,12 @@ type Jest interface {
 	AddIgnorePattern(pattern *string)
 	// Experimental.
 	AddReporter(reporter interface{})
+	// Adds a a setup file to Jest's setupFiles configuration.
+	// Experimental.
+	AddSetupFile(file *string)
+	// Adds a a setup file to Jest's setupFilesAfterEnv configuration.
+	// Experimental.
+	AddSetupFileAfterEnv(file *string)
 	// Experimental.
 	AddSnapshotResolver(file *string)
 	// Adds a test match pattern.
@@ -168,6 +174,28 @@ func (j *jsiiProxy_Jest) AddReporter(reporter interface{}) {
 		j,
 		"addReporter",
 		[]interface{}{reporter},
+	)
+}
+
+func (j *jsiiProxy_Jest) AddSetupFile(file *string) {
+	if err := j.validateAddSetupFileParameters(file); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		j,
+		"addSetupFile",
+		[]interface{}{file},
+	)
+}
+
+func (j *jsiiProxy_Jest) AddSetupFileAfterEnv(file *string) {
+	if err := j.validateAddSetupFileAfterEnvParameters(file); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		j,
+		"addSetupFileAfterEnv",
+		[]interface{}{file},
 	)
 }
 

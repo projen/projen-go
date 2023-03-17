@@ -146,6 +146,8 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addIgnorePattern", GoMethod: "AddIgnorePattern"},
 			_jsii_.MemberMethod{JsiiMethod: "addReporter", GoMethod: "AddReporter"},
+			_jsii_.MemberMethod{JsiiMethod: "addSetupFile", GoMethod: "AddSetupFile"},
+			_jsii_.MemberMethod{JsiiMethod: "addSetupFileAfterEnv", GoMethod: "AddSetupFileAfterEnv"},
 			_jsii_.MemberMethod{JsiiMethod: "addSnapshotResolver", GoMethod: "AddSnapshotResolver"},
 			_jsii_.MemberMethod{JsiiMethod: "addTestMatch", GoMethod: "AddTestMatch"},
 			_jsii_.MemberMethod{JsiiMethod: "addWatchIgnorePattern", GoMethod: "AddWatchIgnorePattern"},

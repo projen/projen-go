@@ -38,6 +38,22 @@ func (j *jsiiProxy_Jest) validateAddReporterParameters(reporter interface{}) err
 	return nil
 }
 
+func (j *jsiiProxy_Jest) validateAddSetupFileParameters(file *string) error {
+	if file == nil {
+		return fmt.Errorf("parameter file is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (j *jsiiProxy_Jest) validateAddSetupFileAfterEnvParameters(file *string) error {
+	if file == nil {
+		return fmt.Errorf("parameter file is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (j *jsiiProxy_Jest) validateAddSnapshotResolverParameters(file *string) error {
 	if file == nil {
 		return fmt.Errorf("parameter file is required, but nil was provided")
