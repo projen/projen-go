@@ -46,6 +46,11 @@ type TypeScriptCompilerOptions struct {
 	// Disallow inconsistently-cased references to the same file.
 	// Experimental.
 	ForceConsistentCasingInFileNames *bool `field:"optional" json:"forceConsistentCasingInFileNames" yaml:"forceConsistentCasingInFileNames"`
+	// This flag works because you can use `import type` to explicitly create an `import` statement which should never be emitted into JavaScript.
+	// See: https://www.typescriptlang.org/tsconfig#importsNotUsedAsValues
+	//
+	// Experimental.
+	ImportsNotUsedAsValues TypeScriptImportsNotUsedAsValues `field:"optional" json:"importsNotUsedAsValues" yaml:"importsNotUsedAsValues"`
 	// When set, instead of writing out a .js.map file to provide source maps, TypeScript will embed the source map content in the .js files.
 	// Experimental.
 	InlineSourceMap *bool `field:"optional" json:"inlineSourceMap" yaml:"inlineSourceMap"`

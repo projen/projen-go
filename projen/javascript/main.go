@@ -455,6 +455,15 @@ func init() {
 		reflect.TypeOf((*TypeScriptCompilerOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterEnum(
+		"projen.javascript.TypeScriptImportsNotUsedAsValues",
+		reflect.TypeOf((*TypeScriptImportsNotUsedAsValues)(nil)).Elem(),
+		map[string]interface{}{
+			"REMOVE": TypeScriptImportsNotUsedAsValues_REMOVE,
+			"PRESERVE": TypeScriptImportsNotUsedAsValues_PRESERVE,
+			"ERROR": TypeScriptImportsNotUsedAsValues_ERROR,
+		},
+	)
+	_jsii_.RegisterEnum(
 		"projen.javascript.TypeScriptJsxMode",
 		reflect.TypeOf((*TypeScriptJsxMode)(nil)).Elem(),
 		map[string]interface{}{
