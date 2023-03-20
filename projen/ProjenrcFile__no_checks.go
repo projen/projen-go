@@ -5,11 +5,11 @@ package projen
 
 // Building without runtime type checking enabled, so all the below just return nil
 
-func validateProjenrc_OfParameters(project Project) error {
+func validateProjenrcFile_OfParameters(project Project) error {
 	return nil
 }
 
-func validateNewProjenrcParameters(project Project, options *ProjenrcJsonOptions) error {
+func validateNewProjenrcFileParameters(project Project) error {
 	return nil
 }
 

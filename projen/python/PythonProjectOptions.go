@@ -46,7 +46,7 @@ type PythonProjectOptions struct {
 	ProjenrcJson *bool `field:"optional" json:"projenrcJson" yaml:"projenrcJson"`
 	// Options for .projenrc.json.
 	// Experimental.
-	ProjenrcJsonOptions *projen.ProjenrcOptions `field:"optional" json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	ProjenrcJsonOptions *projen.ProjenrcJsonOptions `field:"optional" json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
 	// Use renovatebot to handle dependency upgrades.
 	// Experimental.
 	Renovatebot *bool `field:"optional" json:"renovatebot" yaml:"renovatebot"`

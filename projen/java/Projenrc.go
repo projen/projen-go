@@ -15,10 +15,13 @@ import (
 // `src/main/java/projenrc.java`.
 // Experimental.
 type Projenrc interface {
-	projen.Component
+	projen.ProjenrcFile
 	// The name of the java class that includes the projen entrypoint.
 	// Experimental.
 	ClassName() *string
+	// The path of the projenrc file.
+	// Experimental.
+	FilePath() *string
 	// Experimental.
 	Project() projen.Project
 	// Called after synthesis.
@@ -36,7 +39,7 @@ type Projenrc interface {
 
 // The jsii proxy struct for Projenrc
 type jsiiProxy_Projenrc struct {
-	internal.Type__projenComponent
+	internal.Type__projenProjenrcFile
 }
 
 func (j *jsiiProxy_Projenrc) ClassName() *string {
@@ -44,6 +47,16 @@ func (j *jsiiProxy_Projenrc) ClassName() *string {
 	_jsii_.Get(
 		j,
 		"className",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Projenrc) FilePath() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"filePath",
 		&returns,
 	)
 	return returns
@@ -87,6 +100,28 @@ func NewProjenrc_Override(p Projenrc, project projen.Project, pom Pom, options *
 		[]interface{}{project, pom, options},
 		p,
 	)
+}
+
+// Returns the `Projenrc` instance associated with a project or `undefined` if there is no Projenrc.
+//
+// Returns: A Projenrc.
+// Experimental.
+func Projenrc_Of(project projen.Project) projen.ProjenrcFile {
+	_init_.Initialize()
+
+	if err := validateProjenrc_OfParameters(project); err != nil {
+		panic(err)
+	}
+	var returns projen.ProjenrcFile
+
+	_jsii_.StaticInvoke(
+		"projen.java.Projenrc",
+		"of",
+		[]interface{}{project},
+		&returns,
+	)
+
+	return returns
 }
 
 func (p *jsiiProxy_Projenrc) PostSynthesize() {

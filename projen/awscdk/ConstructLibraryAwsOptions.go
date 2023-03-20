@@ -49,7 +49,7 @@ type ConstructLibraryAwsOptions struct {
 	ProjenrcJson *bool `field:"optional" json:"projenrcJson" yaml:"projenrcJson"`
 	// Options for .projenrc.json.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
-	ProjenrcJsonOptions *projen.ProjenrcOptions `field:"optional" json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	ProjenrcJsonOptions *projen.ProjenrcJsonOptions `field:"optional" json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
 	// Use renovatebot to handle dependency upgrades.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Renovatebot *bool `field:"optional" json:"renovatebot" yaml:"renovatebot"`

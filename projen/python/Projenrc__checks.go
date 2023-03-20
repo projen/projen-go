@@ -10,6 +10,14 @@ import (
 	"github.com/projen/projen-go/projen"
 )
 
+func validateProjenrc_OfParameters(project projen.Project) error {
+	if project == nil {
+		return fmt.Errorf("parameter project is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewProjenrcParameters(project projen.Project, options *ProjenrcOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

@@ -204,6 +204,7 @@ func init() {
 		reflect.TypeOf((*Projenrc)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberProperty{JsiiProperty: "className", GoGetter: "ClassName"},
+			_jsii_.MemberProperty{JsiiProperty: "filePath", GoGetter: "FilePath"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
@@ -211,7 +212,7 @@ func init() {
 		},
 		func() interface{} {
 			j := jsiiProxy_Projenrc{}
-			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			_jsii_.InitJsiiProxy(&j.Type__projenProjenrcFile)
 			return &j
 		},
 	)

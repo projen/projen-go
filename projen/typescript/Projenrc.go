@@ -11,7 +11,10 @@ import (
 // Sets up a typescript project to use TypeScript for projenrc.
 // Experimental.
 type Projenrc interface {
-	projen.Component
+	projen.ProjenrcFile
+	// The path of the projenrc file.
+	// Experimental.
+	FilePath() *string
 	// Experimental.
 	Project() projen.Project
 	// Called after synthesis.
@@ -29,7 +32,17 @@ type Projenrc interface {
 
 // The jsii proxy struct for Projenrc
 type jsiiProxy_Projenrc struct {
-	internal.Type__projenComponent
+	internal.Type__projenProjenrcFile
+}
+
+func (j *jsiiProxy_Projenrc) FilePath() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"filePath",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_Projenrc) Project() projen.Project {
@@ -70,6 +83,28 @@ func NewProjenrc_Override(p Projenrc, project TypeScriptProject, options *Projen
 		[]interface{}{project, options},
 		p,
 	)
+}
+
+// Returns the `Projenrc` instance associated with a project or `undefined` if there is no Projenrc.
+//
+// Returns: A Projenrc.
+// Experimental.
+func Projenrc_Of(project projen.Project) projen.ProjenrcFile {
+	_init_.Initialize()
+
+	if err := validateProjenrc_OfParameters(project); err != nil {
+		panic(err)
+	}
+	var returns projen.ProjenrcFile
+
+	_jsii_.StaticInvoke(
+		"projen.typescript.Projenrc",
+		"of",
+		[]interface{}{project},
+		&returns,
+	)
+
+	return returns
 }
 
 func (p *jsiiProxy_Projenrc) PostSynthesize() {

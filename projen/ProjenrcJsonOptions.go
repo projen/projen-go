@@ -2,10 +2,10 @@
 package projen
 
 
-// Deprecated: use `ProjenrcJsonOptions`.
-type ProjenrcOptions struct {
+// Experimental.
+type ProjenrcJsonOptions struct {
 	// The name of the projenrc file.
-	// Deprecated: use `ProjenrcJsonOptions`.
+	// Experimental.
 	Filename *string `field:"optional" json:"filename" yaml:"filename"`
 }
 

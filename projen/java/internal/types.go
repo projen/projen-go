@@ -5,3 +5,4 @@ import (
 )
 type Type__githubGitHubProject = github.GitHubProject
 type Type__projenComponent = projen.Component
+type Type__projenProjenrcFile = projen.ProjenrcFile

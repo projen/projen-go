@@ -1,22 +1,20 @@
-package javascript
+// CDK for software projects
+package projen
 
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
-
-	"github.com/projen/projen-go/projen"
-	"github.com/projen/projen-go/projen/javascript/internal"
 )
 
-// Sets up a javascript project to use TypeScript for projenrc.
+// Sets up a project to use JSON for projenrc.
 // Experimental.
-type Projenrc interface {
-	projen.ProjenrcFile
+type ProjenrcJson interface {
+	ProjenrcFile
 	// The path of the projenrc file.
 	// Experimental.
 	FilePath() *string
 	// Experimental.
-	Project() projen.Project
+	Project() Project
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -30,12 +28,12 @@ type Projenrc interface {
 	Synthesize()
 }
 
-// The jsii proxy struct for Projenrc
-type jsiiProxy_Projenrc struct {
-	internal.Type__projenProjenrcFile
+// The jsii proxy struct for ProjenrcJson
+type jsiiProxy_ProjenrcJson struct {
+	jsiiProxy_ProjenrcFile
 }
 
-func (j *jsiiProxy_Projenrc) FilePath() *string {
+func (j *jsiiProxy_ProjenrcJson) FilePath() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -45,8 +43,8 @@ func (j *jsiiProxy_Projenrc) FilePath() *string {
 	return returns
 }
 
-func (j *jsiiProxy_Projenrc) Project() projen.Project {
-	var returns projen.Project
+func (j *jsiiProxy_ProjenrcJson) Project() Project {
+	var returns Project
 	_jsii_.Get(
 		j,
 		"project",
@@ -57,16 +55,16 @@ func (j *jsiiProxy_Projenrc) Project() projen.Project {
 
 
 // Experimental.
-func NewProjenrc(project projen.Project, options *ProjenrcOptions) Projenrc {
+func NewProjenrcJson(project Project, options *ProjenrcJsonOptions) ProjenrcJson {
 	_init_.Initialize()
 
-	if err := validateNewProjenrcParameters(project, options); err != nil {
+	if err := validateNewProjenrcJsonParameters(project, options); err != nil {
 		panic(err)
 	}
-	j := jsiiProxy_Projenrc{}
+	j := jsiiProxy_ProjenrcJson{}
 
 	_jsii_.Create(
-		"projen.javascript.Projenrc",
+		"projen.ProjenrcJson",
 		[]interface{}{project, options},
 		&j,
 	)
@@ -75,11 +73,11 @@ func NewProjenrc(project projen.Project, options *ProjenrcOptions) Projenrc {
 }
 
 // Experimental.
-func NewProjenrc_Override(p Projenrc, project projen.Project, options *ProjenrcOptions) {
+func NewProjenrcJson_Override(p ProjenrcJson, project Project, options *ProjenrcJsonOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
-		"projen.javascript.Projenrc",
+		"projen.ProjenrcJson",
 		[]interface{}{project, options},
 		p,
 	)
@@ -89,16 +87,16 @@ func NewProjenrc_Override(p Projenrc, project projen.Project, options *ProjenrcO
 //
 // Returns: A Projenrc.
 // Experimental.
-func Projenrc_Of(project projen.Project) projen.ProjenrcFile {
+func ProjenrcJson_Of(project Project) ProjenrcFile {
 	_init_.Initialize()
 
-	if err := validateProjenrc_OfParameters(project); err != nil {
+	if err := validateProjenrcJson_OfParameters(project); err != nil {
 		panic(err)
 	}
-	var returns projen.ProjenrcFile
+	var returns ProjenrcFile
 
 	_jsii_.StaticInvoke(
-		"projen.javascript.Projenrc",
+		"projen.ProjenrcJson",
 		"of",
 		[]interface{}{project},
 		&returns,
@@ -107,7 +105,7 @@ func Projenrc_Of(project projen.Project) projen.ProjenrcFile {
 	return returns
 }
 
-func (p *jsiiProxy_Projenrc) PostSynthesize() {
+func (p *jsiiProxy_ProjenrcJson) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
 		"postSynthesize",
@@ -115,7 +113,7 @@ func (p *jsiiProxy_Projenrc) PostSynthesize() {
 	)
 }
 
-func (p *jsiiProxy_Projenrc) PreSynthesize() {
+func (p *jsiiProxy_ProjenrcJson) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
 		"preSynthesize",
@@ -123,7 +121,7 @@ func (p *jsiiProxy_Projenrc) PreSynthesize() {
 	)
 }
 
-func (p *jsiiProxy_Projenrc) Synthesize() {
+func (p *jsiiProxy_ProjenrcJson) Synthesize() {
 	_jsii_.InvokeVoid(
 		p,
 		"synthesize",
