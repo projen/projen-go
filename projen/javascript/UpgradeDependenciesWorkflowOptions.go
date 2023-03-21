@@ -23,6 +23,9 @@ type UpgradeDependenciesWorkflowOptions struct {
 	// Labels to apply on the PR.
 	// Experimental.
 	Labels *[]*string `field:"optional" json:"labels" yaml:"labels"`
+	// Permissions granted to the upgrade job To limit job permissions for `contents`, the desired permissions have to be explicitly set, e.g.: `{ contents: JobPermission.NONE }`.
+	// Experimental.
+	Permissions *workflows.JobPermissions `field:"optional" json:"permissions" yaml:"permissions"`
 	// Choose a method for authenticating with GitHub for creating the PR.
 	//
 	// When using the default github token, PR's created by this workflow
