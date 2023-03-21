@@ -6,6 +6,8 @@ import (
 	"fmt"
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
+
+	"github.com/projen/projen-go/projen"
 )
 
 func (t *jsiiProxy_TypescriptConfig) validateAddExcludeParameters(pattern *string) error {
@@ -24,7 +26,7 @@ func (t *jsiiProxy_TypescriptConfig) validateAddIncludeParameters(pattern *strin
 	return nil
 }
 
-func validateNewTypescriptConfigParameters(project NodeProject, options *TypescriptConfigOptions) error {
+func validateNewTypescriptConfigParameters(project projen.Project, options *TypescriptConfigOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")
 	}

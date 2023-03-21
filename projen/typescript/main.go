@@ -28,6 +28,27 @@ func init() {
 		reflect.TypeOf((*ProjenrcOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
+		"projen.typescript.ProjenrcTs",
+		reflect.TypeOf((*ProjenrcTs)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "filePath", GoGetter: "FilePath"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "tsconfig", GoGetter: "Tsconfig"},
+		},
+		func() interface{} {
+			j := jsiiProxy_ProjenrcTs{}
+			_jsii_.InitJsiiProxy(&j.Type__projenProjenrcFile)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.typescript.ProjenrcTsOptions",
+		reflect.TypeOf((*ProjenrcTsOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
 		"projen.typescript.TypeScriptAppProject",
 		reflect.TypeOf((*TypeScriptAppProject)(nil)).Elem(),
 		[]_jsii_.Member{

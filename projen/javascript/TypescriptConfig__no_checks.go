@@ -12,7 +12,7 @@ func (t *jsiiProxy_TypescriptConfig) validateAddIncludeParameters(pattern *strin
 	return nil
 }
 
-func validateNewTypescriptConfigParameters(project NodeProject, options *TypescriptConfigOptions) error {
+func validateNewTypescriptConfigParameters(project projen.Project, options *TypescriptConfigOptions) error {
 	return nil
 }
 

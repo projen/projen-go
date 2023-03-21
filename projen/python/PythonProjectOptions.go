@@ -4,6 +4,7 @@ import (
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github"
 	"github.com/projen/projen-go/projen/javascript"
+	"github.com/projen/projen-go/projen/typescript"
 )
 
 // Options for `PythonProject`.
@@ -203,6 +204,15 @@ type PythonProjectOptions struct {
 	// Options related to projenrc in python.
 	// Experimental.
 	ProjenrcPythonOptions *ProjenrcOptions `field:"optional" json:"projenrcPythonOptions" yaml:"projenrcPythonOptions"`
+	// Use projenrc in TypeScript.
+	//
+	// This will create a `tsconfig.json` file and use `ts-node` in the
+	// default task to parse the project configuration file.
+	// Experimental.
+	ProjenrcTs *bool `field:"optional" json:"projenrcTs" yaml:"projenrcTs"`
+	// Options related to projenrc in TypeScript.
+	// Experimental.
+	ProjenrcTsOptions *typescript.ProjenrcTsOptions `field:"optional" json:"projenrcTsOptions" yaml:"projenrcTsOptions"`
 	// Include pytest tests.
 	// Experimental.
 	Pytest *bool `field:"optional" json:"pytest" yaml:"pytest"`

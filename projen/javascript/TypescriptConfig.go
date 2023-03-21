@@ -107,7 +107,7 @@ func (j *jsiiProxy_TypescriptConfig) Project() projen.Project {
 
 
 // Experimental.
-func NewTypescriptConfig(project NodeProject, options *TypescriptConfigOptions) TypescriptConfig {
+func NewTypescriptConfig(project projen.Project, options *TypescriptConfigOptions) TypescriptConfig {
 	_init_.Initialize()
 
 	if err := validateNewTypescriptConfigParameters(project, options); err != nil {
@@ -125,7 +125,7 @@ func NewTypescriptConfig(project NodeProject, options *TypescriptConfigOptions) 
 }
 
 // Experimental.
-func NewTypescriptConfig_Override(t TypescriptConfig, project NodeProject, options *TypescriptConfigOptions) {
+func NewTypescriptConfig_Override(t TypescriptConfig, project projen.Project, options *TypescriptConfigOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
