@@ -610,6 +610,16 @@ type ConstructLibraryOptions struct {
 	// that cannot be compiled with jsii's compiler settings.
 	// Experimental.
 	ExcludeTypescript *[]*string `field:"optional" json:"excludeTypescript" yaml:"excludeTypescript"`
+	// Version of the jsii compiler to use.
+	//
+	// Set to "*" if you want to manually manage the version of jsii in your
+	// project by managing updates to `package.json` on your own.
+	//
+	// NOTE: The jsii compiler releases since 5.0.0 are not semantically versioned
+	// and should remain on the same minor, so we recommend using a `~` dependency
+	// (e.g. `~5.0.0`).
+	// Experimental.
+	JsiiVersion *string `field:"optional" json:"jsiiVersion" yaml:"jsiiVersion"`
 	// Publish Go bindings to a git repository.
 	// Experimental.
 	PublishToGo *JsiiGoTarget `field:"optional" json:"publishToGo" yaml:"publishToGo"`

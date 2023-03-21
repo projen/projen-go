@@ -611,6 +611,16 @@ type ConstructLibraryAwsOptions struct {
 	// that cannot be compiled with jsii's compiler settings.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ExcludeTypescript *[]*string `field:"optional" json:"excludeTypescript" yaml:"excludeTypescript"`
+	// Version of the jsii compiler to use.
+	//
+	// Set to "*" if you want to manually manage the version of jsii in your
+	// project by managing updates to `package.json` on your own.
+	//
+	// NOTE: The jsii compiler releases since 5.0.0 are not semantically versioned
+	// and should remain on the same minor, so we recommend using a `~` dependency
+	// (e.g. `~5.0.0`).
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	JsiiVersion *string `field:"optional" json:"jsiiVersion" yaml:"jsiiVersion"`
 	// Publish Go bindings to a git repository.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PublishToGo *cdk.JsiiGoTarget `field:"optional" json:"publishToGo" yaml:"publishToGo"`
