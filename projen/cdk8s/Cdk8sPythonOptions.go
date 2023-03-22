@@ -207,8 +207,8 @@ type Cdk8sPythonOptions struct {
 	ProjenrcPythonOptions *python.ProjenrcOptions `field:"optional" json:"projenrcPythonOptions" yaml:"projenrcPythonOptions"`
 	// Use projenrc in TypeScript.
 	//
-	// This will create a `tsconfig.json` file and use `ts-node` in the
-	// default task to parse the project configuration file.
+	// This will create a tsconfig file (default: `tsconfig.projen.json`)
+	// and use `ts-node` in the default task to parse the project source files.
 	// Experimental.
 	ProjenrcTs *bool `field:"optional" json:"projenrcTs" yaml:"projenrcTs"`
 	// Options related to projenrc in TypeScript.
