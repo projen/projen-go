@@ -63,6 +63,9 @@ type TypeScriptCompilerOptions struct {
 	// Support JSX in .tsx files: "react", "preserve", "react-native" etc.
 	// Experimental.
 	Jsx TypeScriptJsxMode `field:"optional" json:"jsx" yaml:"jsx"`
+	// Declares the module specifier to be used for importing the jsx and jsxs factory functions when using jsx.
+	// Experimental.
+	JsxImportSource *string `field:"optional" json:"jsxImportSource" yaml:"jsxImportSource"`
 	// Reference for type definitions / libraries to use (eg.
 	//
 	// ES2016, ES5, ES2018).
