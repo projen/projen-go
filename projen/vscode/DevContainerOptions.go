@@ -23,5 +23,8 @@ type DevContainerOptions struct {
 	// An array of extension IDs that specify the extensions that should be installed inside the container when it is created.
 	// Experimental.
 	VscodeExtensions *[]*string `field:"optional" json:"vscodeExtensions" yaml:"vscodeExtensions"`
+	// An array of VSCode features that specify the features that should be installed inside the container when it is created.
+	// Experimental.
+	Features *[]*DevContainerFeature `field:"optional" json:"features" yaml:"features"`
 }
 

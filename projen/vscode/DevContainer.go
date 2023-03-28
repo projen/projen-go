@@ -15,7 +15,7 @@ import (
 // Experimental.
 type DevContainer interface {
 	projen.Component
-	projen.IDevEnvironment
+	IDevContainerEnvironment
 	// Direct access to the devcontainer configuration (escape hatch).
 	// Experimental.
 	Config() interface{}
@@ -24,6 +24,9 @@ type DevContainer interface {
 	// Add a custom Docker image or Dockerfile for the container.
 	// Experimental.
 	AddDockerImage(image projen.DevEnvironmentDockerImage)
+	// Adds a list of VSCode features that should be automatically installed in the container.
+	// Experimental.
+	AddFeatures(features ...*DevContainerFeature)
 	// Adds ports that should be exposed (forwarded) from the container.
 	// Experimental.
 	AddPorts(ports ...*string)
@@ -51,7 +54,7 @@ type DevContainer interface {
 // The jsii proxy struct for DevContainer
 type jsiiProxy_DevContainer struct {
 	internal.Type__projenComponent
-	internal.Type__projenIDevEnvironment
+	jsiiProxy_IDevContainerEnvironment
 }
 
 func (j *jsiiProxy_DevContainer) Config() interface{} {
@@ -112,6 +115,22 @@ func (d *jsiiProxy_DevContainer) AddDockerImage(image projen.DevEnvironmentDocke
 		d,
 		"addDockerImage",
 		[]interface{}{image},
+	)
+}
+
+func (d *jsiiProxy_DevContainer) AddFeatures(features ...*DevContainerFeature) {
+	if err := d.validateAddFeaturesParameters(&features); err != nil {
+		panic(err)
+	}
+	args := []interface{}{}
+	for _, a := range features {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		d,
+		"addFeatures",
+		args,
 	)
 }
 

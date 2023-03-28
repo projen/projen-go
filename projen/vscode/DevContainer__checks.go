@@ -18,6 +18,16 @@ func (d *jsiiProxy_DevContainer) validateAddDockerImageParameters(image projen.D
 	return nil
 }
 
+func (d *jsiiProxy_DevContainer) validateAddFeaturesParameters(features *[]*DevContainerFeature) error {
+	for idx_5b8a8b, v := range *features {
+		if err := _jsii_.ValidateStruct(v, func() string { return fmt.Sprintf("parameter features[%#v]", idx_5b8a8b) }); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
 func validateNewDevContainerParameters(project projen.Project, options *DevContainerOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

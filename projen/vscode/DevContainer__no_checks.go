@@ -8,6 +8,10 @@ func (d *jsiiProxy_DevContainer) validateAddDockerImageParameters(image projen.D
 	return nil
 }
 
+func (d *jsiiProxy_DevContainer) validateAddFeaturesParameters(features *[]*DevContainerFeature) error {
+	return nil
+}
+
 func validateNewDevContainerParameters(project projen.Project, options *DevContainerOptions) error {
 	return nil
 }

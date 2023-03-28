@@ -21,6 +21,7 @@ func init() {
 		reflect.TypeOf((*DevContainer)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addDockerImage", GoMethod: "AddDockerImage"},
+			_jsii_.MemberMethod{JsiiMethod: "addFeatures", GoMethod: "AddFeatures"},
 			_jsii_.MemberMethod{JsiiMethod: "addPorts", GoMethod: "AddPorts"},
 			_jsii_.MemberMethod{JsiiMethod: "addTasks", GoMethod: "AddTasks"},
 			_jsii_.MemberMethod{JsiiMethod: "addVscodeExtensions", GoMethod: "AddVscodeExtensions"},
@@ -33,13 +34,33 @@ func init() {
 		func() interface{} {
 			j := jsiiProxy_DevContainer{}
 			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
-			_jsii_.InitJsiiProxy(&j.Type__projenIDevEnvironment)
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_IDevContainerEnvironment)
 			return &j
 		},
 	)
 	_jsii_.RegisterStruct(
+		"projen.vscode.DevContainerFeature",
+		reflect.TypeOf((*DevContainerFeature)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.vscode.DevContainerOptions",
 		reflect.TypeOf((*DevContainerOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterInterface(
+		"projen.vscode.IDevContainerEnvironment",
+		reflect.TypeOf((*IDevContainerEnvironment)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addDockerImage", GoMethod: "AddDockerImage"},
+			_jsii_.MemberMethod{JsiiMethod: "addFeatures", GoMethod: "AddFeatures"},
+			_jsii_.MemberMethod{JsiiMethod: "addPorts", GoMethod: "AddPorts"},
+			_jsii_.MemberMethod{JsiiMethod: "addTasks", GoMethod: "AddTasks"},
+			_jsii_.MemberMethod{JsiiMethod: "addVscodeExtensions", GoMethod: "AddVscodeExtensions"},
+		},
+		func() interface{} {
+			j := jsiiProxy_IDevContainerEnvironment{}
+			_jsii_.InitJsiiProxy(&j.Type__projenIDevEnvironment)
+			return &j
+		},
 	)
 	_jsii_.RegisterEnum(
 		"projen.vscode.InternalConsoleOptions",
