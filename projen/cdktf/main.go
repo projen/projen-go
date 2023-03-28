@@ -22,6 +22,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addKeywords", GoMethod: "AddKeywords"},
 			_jsii_.MemberMethod{JsiiMethod: "addPackageIgnore", GoMethod: "AddPackageIgnore"},
 			_jsii_.MemberMethod{JsiiMethod: "addPeerDeps", GoMethod: "AddPeerDeps"},
+			_jsii_.MemberMethod{JsiiMethod: "addScripts", GoMethod: "AddScripts"},
 			_jsii_.MemberMethod{JsiiMethod: "addTask", GoMethod: "AddTask"},
 			_jsii_.MemberMethod{JsiiMethod: "addTestCommand", GoMethod: "AddTestCommand"},
 			_jsii_.MemberMethod{JsiiMethod: "addTip", GoMethod: "AddTip"},

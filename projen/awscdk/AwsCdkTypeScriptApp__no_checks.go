@@ -20,6 +20,10 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAddPackageIgnoreParameters(patte
 	return nil
 }
 
+func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAddScriptsParameters(scripts *map[string]*string) error {
+	return nil
+}
+
 func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAddTaskParameters(name *string, props *projen.TaskOptions) error {
 	return nil
 }

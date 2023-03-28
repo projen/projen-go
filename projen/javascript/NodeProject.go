@@ -227,6 +227,9 @@ type NodeProject interface {
 	// your code against the minimum version required from your consumers.
 	// Experimental.
 	AddPeerDeps(deps ...*string)
+	// Replaces the contents of multiple npm package.json scripts.
+	// Experimental.
+	AddScripts(scripts *map[string]*string)
 	// Adds a new task to this project.
 	//
 	// This will fail if the project already has
@@ -998,6 +1001,17 @@ func (n *jsiiProxy_NodeProject) AddPeerDeps(deps ...*string) {
 		n,
 		"addPeerDeps",
 		args,
+	)
+}
+
+func (n *jsiiProxy_NodeProject) AddScripts(scripts *map[string]*string) {
+	if err := n.validateAddScriptsParameters(scripts); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		n,
+		"addScripts",
+		[]interface{}{scripts},
 	)
 }
 

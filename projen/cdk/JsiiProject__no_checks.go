@@ -20,6 +20,10 @@ func (j *jsiiProxy_JsiiProject) validateAddPackageIgnoreParameters(pattern *stri
 	return nil
 }
 
+func (j *jsiiProxy_JsiiProject) validateAddScriptsParameters(scripts *map[string]*string) error {
+	return nil
+}
+
 func (j *jsiiProxy_JsiiProject) validateAddTaskParameters(name *string, props *projen.TaskOptions) error {
 	return nil
 }

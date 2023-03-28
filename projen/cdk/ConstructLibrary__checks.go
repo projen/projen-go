@@ -43,6 +43,14 @@ func (c *jsiiProxy_ConstructLibrary) validateAddPackageIgnoreParameters(pattern 
 	return nil
 }
 
+func (c *jsiiProxy_ConstructLibrary) validateAddScriptsParameters(scripts *map[string]*string) error {
+	if scripts == nil {
+		return fmt.Errorf("parameter scripts is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (c *jsiiProxy_ConstructLibrary) validateAddTaskParameters(name *string, props *projen.TaskOptions) error {
 	if name == nil {
 		return fmt.Errorf("parameter name is required, but nil was provided")

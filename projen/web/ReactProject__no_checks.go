@@ -20,6 +20,10 @@ func (r *jsiiProxy_ReactProject) validateAddPackageIgnoreParameters(pattern *str
 	return nil
 }
 
+func (r *jsiiProxy_ReactProject) validateAddScriptsParameters(scripts *map[string]*string) error {
+	return nil
+}
+
 func (r *jsiiProxy_ReactProject) validateAddTaskParameters(name *string, props *projen.TaskOptions) error {
 	return nil
 }

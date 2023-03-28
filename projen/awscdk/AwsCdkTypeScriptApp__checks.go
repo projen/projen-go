@@ -43,6 +43,14 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAddPackageIgnoreParameters(patte
 	return nil
 }
 
+func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAddScriptsParameters(scripts *map[string]*string) error {
+	if scripts == nil {
+		return fmt.Errorf("parameter scripts is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAddTaskParameters(name *string, props *projen.TaskOptions) error {
 	if name == nil {
 		return fmt.Errorf("parameter name is required, but nil was provided")

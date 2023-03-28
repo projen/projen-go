@@ -20,6 +20,10 @@ func (c *jsiiProxy_ConstructLibraryCdktf) validateAddPackageIgnoreParameters(pat
 	return nil
 }
 
+func (c *jsiiProxy_ConstructLibraryCdktf) validateAddScriptsParameters(scripts *map[string]*string) error {
+	return nil
+}
+
 func (c *jsiiProxy_ConstructLibraryCdktf) validateAddTaskParameters(name *string, props *projen.TaskOptions) error {
 	return nil
 }

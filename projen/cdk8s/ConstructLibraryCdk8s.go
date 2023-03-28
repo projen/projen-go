@@ -264,6 +264,9 @@ type ConstructLibraryCdk8s interface {
 	// your code against the minimum version required from your consumers.
 	// Experimental.
 	AddPeerDeps(deps ...*string)
+	// Replaces the contents of multiple npm package.json scripts.
+	// Experimental.
+	AddScripts(scripts *map[string]*string)
 	// Adds a new task to this project.
 	//
 	// This will fail if the project already has
@@ -1155,6 +1158,17 @@ func (c *jsiiProxy_ConstructLibraryCdk8s) AddPeerDeps(deps ...*string) {
 		c,
 		"addPeerDeps",
 		args,
+	)
+}
+
+func (c *jsiiProxy_ConstructLibraryCdk8s) AddScripts(scripts *map[string]*string) {
+	if err := c.validateAddScriptsParameters(scripts); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		c,
+		"addScripts",
+		[]interface{}{scripts},
 	)
 }
 

@@ -20,6 +20,10 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) validateAddPackageIgnoreParameters(pa
 	return nil
 }
 
+func (a *jsiiProxy_AwsCdkConstructLibrary) validateAddScriptsParameters(scripts *map[string]*string) error {
+	return nil
+}
+
 func (a *jsiiProxy_AwsCdkConstructLibrary) validateAddTaskParameters(name *string, props *projen.TaskOptions) error {
 	return nil
 }

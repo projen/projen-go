@@ -251,6 +251,9 @@ type TypeScriptLibraryProject interface {
 	// your code against the minimum version required from your consumers.
 	// Deprecated: use `TypeScriptProject`.
 	AddPeerDeps(deps ...*string)
+	// Replaces the contents of multiple npm package.json scripts.
+	// Deprecated: use `TypeScriptProject`.
+	AddScripts(scripts *map[string]*string)
 	// Adds a new task to this project.
 	//
 	// This will fail if the project already has
@@ -1122,6 +1125,17 @@ func (t *jsiiProxy_TypeScriptLibraryProject) AddPeerDeps(deps ...*string) {
 		t,
 		"addPeerDeps",
 		args,
+	)
+}
+
+func (t *jsiiProxy_TypeScriptLibraryProject) AddScripts(scripts *map[string]*string) {
+	if err := t.validateAddScriptsParameters(scripts); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"addScripts",
+		[]interface{}{scripts},
 	)
 }
 

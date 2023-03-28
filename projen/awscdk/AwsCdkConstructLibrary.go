@@ -273,6 +273,9 @@ type AwsCdkConstructLibrary interface {
 	// your code against the minimum version required from your consumers.
 	// Experimental.
 	AddPeerDeps(deps ...*string)
+	// Replaces the contents of multiple npm package.json scripts.
+	// Experimental.
+	AddScripts(scripts *map[string]*string)
 	// Adds a new task to this project.
 	//
 	// This will fail if the project already has
@@ -1200,6 +1203,17 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddPeerDeps(deps ...*string) {
 		a,
 		"addPeerDeps",
 		args,
+	)
+}
+
+func (a *jsiiProxy_AwsCdkConstructLibrary) AddScripts(scripts *map[string]*string) {
+	if err := a.validateAddScriptsParameters(scripts); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		a,
+		"addScripts",
+		[]interface{}{scripts},
 	)
 }
 
