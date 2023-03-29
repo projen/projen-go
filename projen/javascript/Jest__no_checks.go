@@ -8,7 +8,7 @@ func (j *jsiiProxy_Jest) validateAddIgnorePatternParameters(pattern *string) err
 	return nil
 }
 
-func (j *jsiiProxy_Jest) validateAddReporterParameters(reporter interface{}) error {
+func (j *jsiiProxy_Jest) validateAddReporterParameters(reporter JestReporter) error {
 	return nil
 }
 

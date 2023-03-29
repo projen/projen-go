@@ -65,13 +65,13 @@ type JsonFile interface {
 	// would add the overrides
 	// ```json
 	// "compilerOptions": {
-	//    "alwaysStrict": true,
-	//    "lib": [
-	//      "dom",
-	//      "dom.iterable",
-	//      "esnext"
-	//    ]
-	//    ...
+	//   "alwaysStrict": true,
+	//   "lib": [
+	//     "dom",
+	//     "dom.iterable",
+	//     "esnext"
+	//   ]
+	//   ...
 	// }
 	// ...
 	// ```.
@@ -89,9 +89,9 @@ type JsonFile interface {
 	// For example, with the following object file
 	// ```json
 	// "compilerOptions": {
-	//    "exclude": ["node_modules"],
-	//    "lib": ["es2019"]
-	//    ...
+	//   "exclude": ["node_modules"],
+	//   "lib": ["es2019"]
+	//   ...
 	// }
 	// ...
 	// ```
@@ -103,9 +103,9 @@ type JsonFile interface {
 	// would result in the following object file
 	// ```json
 	// "compilerOptions": {
-	//    "exclude": ["node_modules", "coverage"],
-	//    "lib": ["es2019", "dom", "dom.iterable", "esnext"]
-	//    ...
+	//   "exclude": ["node_modules", "coverage"],
+	//   "lib": ["es2019", "dom", "dom.iterable", "esnext"]
+	//   ...
 	// }
 	// ...
 	// ```.
@@ -116,9 +116,9 @@ type JsonFile interface {
 	// For example, with the following object file
 	// ```json
 	// "compilerOptions": {
-	//    "exclude": ["node_modules"],
-	//    "lib": ["es2019"]
-	//    ...
+	//   "exclude": ["node_modules"],
+	//   "lib": ["es2019"]
+	//   ...
 	// }
 	// ...
 	// ```
@@ -130,9 +130,9 @@ type JsonFile interface {
 	// would result in the following object file
 	// ```json
 	// "compilerOptions": {
-	//    "exclude": ["node_modules", "coverage"],
-	//    "lib": ["dom", "dom.iterable", "esnext"]
-	//    ...
+	//   "exclude": ["node_modules", "coverage"],
+	//   "lib": ["dom", "dom.iterable", "esnext"]
+	//   ...
 	// }
 	// ...
 	// ```.

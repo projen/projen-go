@@ -20,7 +20,7 @@ type TaskStepOptions struct {
 	// The subtask must define steps receiving args for this to have any effect.
 	//
 	// Example:
-	//   task.exec("echo Hello $@World!", { receiveArgs: true });
+	//   task.exec("echo Hello $@ World!", { receiveArgs: true });
 	//
 	// Experimental.
 	ReceiveArgs *bool `field:"optional" json:"receiveArgs" yaml:"receiveArgs"`

@@ -35,7 +35,7 @@ type DockerComposeServiceDescription struct {
 	// Experimental.
 	Labels *map[string]*string `field:"optional" json:"labels" yaml:"labels"`
 	// Add some networks to the service.
-	// See: DockerCompose.network() to create & mount a named network
+	// See: DockerCompose.network () to create & mount a named network
 	//
 	// Experimental.
 	Networks *[]IDockerComposeNetworkBinding `field:"optional" json:"networks" yaml:"networks"`
@@ -45,7 +45,7 @@ type DockerComposeServiceDescription struct {
 	// Mount some volumes into the service.
 	//
 	// Use one of the following to create volumes:.
-	// See: DockerCompose.namedVolume() to create & mount a named volume
+	// See: DockerCompose.namedVolume () to create & mount a named volume
 	//
 	// Experimental.
 	Volumes *[]IDockerComposeVolumeBinding `field:"optional" json:"volumes" yaml:"volumes"`

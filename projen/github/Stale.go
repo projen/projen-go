@@ -12,9 +12,9 @@ import (
 //
 // The default configuration will:
 //
-//   * Add a "Stale" label to pull requests after 14 days and closed after 2 days
-//   * Add a "Stale" label to issues after 60 days and closed after 7 days
-//   * If a comment is added, the label will be removed and timer is restarted.
+//  * Add a "Stale" label to pull requests after 14 days and closed after 2 days
+//  * Add a "Stale" label to issues after 60 days and closed after 7 days
+//  * If a comment is added, the label will be removed and timer is restarted.
 // See: https://github.com/actions/stale
 //
 // Experimental.

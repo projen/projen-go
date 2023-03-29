@@ -6,6 +6,9 @@ package python
 //
 // Experimental.
 type SetupPyOptions struct {
+	// Escape hatch to allow any value.
+	// Experimental.
+	AdditionalOptions *map[string]interface{} `field:"optional" json:"additionalOptions" yaml:"additionalOptions"`
 	// Author's e-mail.
 	// Experimental.
 	AuthorEmail *string `field:"optional" json:"authorEmail" yaml:"authorEmail"`

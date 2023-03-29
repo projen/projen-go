@@ -18,21 +18,9 @@ func (j *jsiiProxy_Jest) validateAddIgnorePatternParameters(pattern *string) err
 	return nil
 }
 
-func (j *jsiiProxy_Jest) validateAddReporterParameters(reporter interface{}) error {
+func (j *jsiiProxy_Jest) validateAddReporterParameters(reporter JestReporter) error {
 	if reporter == nil {
 		return fmt.Errorf("parameter reporter is required, but nil was provided")
-	}
-	switch reporter.(type) {
-	case *string:
-		// ok
-	case string:
-		// ok
-	case *map[string]interface{}:
-		// ok
-	case map[string]interface{}:
-		// ok
-	default:
-		return fmt.Errorf("parameter reporter must be one of the allowed types: *string, *map[string]interface{}; received %#v (a %T)", reporter, reporter)
 	}
 
 	return nil

@@ -32,7 +32,7 @@ type Jest interface {
 	// Experimental.
 	AddIgnorePattern(pattern *string)
 	// Experimental.
-	AddReporter(reporter interface{})
+	AddReporter(reporter JestReporter)
 	// Adds a a setup file to Jest's setupFiles configuration.
 	// Experimental.
 	AddSetupFile(file *string)
@@ -166,7 +166,7 @@ func (j *jsiiProxy_Jest) AddIgnorePattern(pattern *string) {
 	)
 }
 
-func (j *jsiiProxy_Jest) AddReporter(reporter interface{}) {
+func (j *jsiiProxy_Jest) AddReporter(reporter JestReporter) {
 	if err := j.validateAddReporterParameters(reporter); err != nil {
 		panic(err)
 	}

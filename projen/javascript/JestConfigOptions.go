@@ -3,6 +3,9 @@ package javascript
 
 // Experimental.
 type JestConfigOptions struct {
+	// Escape hatch to allow any value.
+	// Experimental.
+	AdditionalOptions *map[string]interface{} `field:"optional" json:"additionalOptions" yaml:"additionalOptions"`
 	// This option tells Jest that all imported modules in your tests should be mocked automatically.
 	//
 	// All modules used in your tests will have a replacement implementation, keeping the API surface.
@@ -164,7 +167,7 @@ type JestConfigOptions struct {
 	// that implements onRunStart, onTestStart, onTestResult, onRunComplete methods that will be
 	// called when any of those events occurs.
 	// Experimental.
-	Reporters *[]interface{} `field:"optional" json:"reporters" yaml:"reporters"`
+	Reporters *[]JestReporter `field:"optional" json:"reporters" yaml:"reporters"`
 	// Automatically reset mock state before every test.
 	//
 	// Equivalent to calling jest.resetAllMocks()
@@ -295,7 +298,7 @@ type JestConfigOptions struct {
 	// A transformer is a module that provides a
 	// synchronous function for transforming source files.
 	// Experimental.
-	Transform *map[string]interface{} `field:"optional" json:"transform" yaml:"transform"`
+	Transform *map[string]Transform `field:"optional" json:"transform" yaml:"transform"`
 	// An array of regexp pattern strings that are matched against all source file paths before transformation.
 	//
 	// If the test path matches any of the patterns, it will not be transformed.
@@ -324,6 +327,6 @@ type JestConfigOptions struct {
 	// Experimental.
 	WatchPathIgnorePatterns *[]*string `field:"optional" json:"watchPathIgnorePatterns" yaml:"watchPathIgnorePatterns"`
 	// Experimental.
-	WatchPlugins *map[string]interface{} `field:"optional" json:"watchPlugins" yaml:"watchPlugins"`
+	WatchPlugins *[]WatchPlugin `field:"optional" json:"watchPlugins" yaml:"watchPlugins"`
 }
 

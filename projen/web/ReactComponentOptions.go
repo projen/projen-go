@@ -25,7 +25,7 @@ type ReactComponentOptions struct {
 	//
 	// ```js
 	// module.exports = function override(config, env) {
-	//    config.module.unknownContextCritical = false;
+	//   config.module.unknownContextCritical = false;
 	// }
 	// ```.
 	// See: https://github.com/timarney/react-app-rewired

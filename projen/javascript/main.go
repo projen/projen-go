@@ -174,6 +174,14 @@ func init() {
 		reflect.TypeOf((*JestOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
+		"projen.javascript.JestReporter",
+		reflect.TypeOf((*JestReporter)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_JestReporter{}
+		},
+	)
+	_jsii_.RegisterClass(
 		"projen.javascript.NodePackage",
 		reflect.TypeOf((*NodePackage)(nil)).Elem(),
 		[]_jsii_.Member{
@@ -452,6 +460,14 @@ func init() {
 			"NONE": TrailingComma_NONE,
 		},
 	)
+	_jsii_.RegisterClass(
+		"projen.javascript.Transform",
+		reflect.TypeOf((*Transform)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_Transform{}
+		},
+	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.TypeScriptCompilerOptions",
 		reflect.TypeOf((*TypeScriptCompilerOptions)(nil)).Elem(),
@@ -557,5 +573,13 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.UpgradeDependenciesWorkflowOptions",
 		reflect.TypeOf((*UpgradeDependenciesWorkflowOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.javascript.WatchPlugin",
+		reflect.TypeOf((*WatchPlugin)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_WatchPlugin{}
+		},
 	)
 }

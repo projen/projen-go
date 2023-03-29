@@ -31,7 +31,7 @@ type TaskOptions struct {
 	// Experimental.
 	Exec *string `field:"optional" json:"exec" yaml:"exec"`
 	// Should the provided `exec` shell command receive args passed to the task.
-	// See: {@link TaskStepOptions.receiveArgs}
+	// See: {@link TaskStepOptions.receiveArgs }
 	//
 	// Experimental.
 	ReceiveArgs *bool `field:"optional" json:"receiveArgs" yaml:"receiveArgs"`
