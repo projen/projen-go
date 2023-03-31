@@ -45,6 +45,9 @@ type PublisherOptions struct {
 	// in order to create a publishing task for each publishing activity.
 	// Experimental.
 	PublishTasks *bool `field:"optional" json:"publishTasks" yaml:"publishTasks"`
+	// Container image to use for GitHub workflows.
+	// Experimental.
+	WorkflowContainerImage *string `field:"optional" json:"workflowContainerImage" yaml:"workflowContainerImage"`
 	// Node version to setup in GitHub workflows if any node-based CLI utilities are needed.
 	//
 	// For example `publib`, the CLI projen uses to publish releases,
