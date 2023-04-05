@@ -27,6 +27,11 @@ type TaskOptions struct {
 	// Task execution will fail if one of these is not defined.
 	// Experimental.
 	RequiredEnv *[]*string `field:"optional" json:"requiredEnv" yaml:"requiredEnv"`
+	// Should the provided `exec` shell command receive fixed args.
+	// See: {@link TaskStepOptions.args }
+	//
+	// Experimental.
+	Args *[]*string `field:"optional" json:"args" yaml:"args"`
 	// Shell command to execute as the first command of the task.
 	// Experimental.
 	Exec *string `field:"optional" json:"exec" yaml:"exec"`
