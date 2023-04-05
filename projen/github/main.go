@@ -48,6 +48,10 @@ func init() {
 		"projen.github.AutoMergeOptions",
 		reflect.TypeOf((*AutoMergeOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.github.CheckoutWithPatchOptions",
+		reflect.TypeOf((*CheckoutWithPatchOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.github.Dependabot",
 		reflect.TypeOf((*Dependabot)(nil)).Elem(),
@@ -299,6 +303,10 @@ func init() {
 		"projen.github.MergifyRule",
 		reflect.TypeOf((*MergifyRule)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.github.PullRequestFromPatchOptions",
+		reflect.TypeOf((*PullRequestFromPatchOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.github.PullRequestLint",
 		reflect.TypeOf((*PullRequestLint)(nil)).Elem(),
@@ -317,6 +325,10 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.github.PullRequestLintOptions",
 		reflect.TypeOf((*PullRequestLintOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.PullRequestPatchSource",
+		reflect.TypeOf((*PullRequestPatchSource)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.github.PullRequestTemplate",
@@ -405,6 +417,10 @@ func init() {
 		"projen.github.TaskWorkflowOptions",
 		reflect.TypeOf((*TaskWorkflowOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.github.UploadGitPatchOptions",
+		reflect.TypeOf((*UploadGitPatchOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterEnum(
 		"projen.github.VersioningStrategy",
 		reflect.TypeOf((*VersioningStrategy)(nil)).Elem(),
@@ -414,6 +430,22 @@ func init() {
 			"WIDEN": VersioningStrategy_WIDEN,
 			"INCREASE": VersioningStrategy_INCREASE,
 			"INCREASE_IF_NECESSARY": VersioningStrategy_INCREASE_IF_NECESSARY,
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.github.WorkflowActions",
+		reflect.TypeOf((*WorkflowActions)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_WorkflowActions{}
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.github.WorkflowJobs",
+		reflect.TypeOf((*WorkflowJobs)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_WorkflowJobs{}
 		},
 	)
 }
