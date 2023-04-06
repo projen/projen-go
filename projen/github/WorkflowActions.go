@@ -65,6 +65,28 @@ func WorkflowActions_CheckoutWithPatch(options *CheckoutWithPatchOptions) *[]*wo
 	return returns
 }
 
+// A step that creates a pull request based on the current repo state.
+//
+// Returns: Job steps.
+// Experimental.
+func WorkflowActions_CreatePullRequest(options *CreatePullRequestOptions) *[]*workflows.JobStep {
+	_init_.Initialize()
+
+	if err := validateWorkflowActions_CreatePullRequestParameters(options); err != nil {
+		panic(err)
+	}
+	var returns *[]*workflows.JobStep
+
+	_jsii_.StaticInvoke(
+		"projen.github.WorkflowActions",
+		"createPullRequest",
+		[]interface{}{options},
+		&returns,
+	)
+
+	return returns
+}
+
 // Configures the git identity (user name and email).
 //
 // Returns: Job steps.

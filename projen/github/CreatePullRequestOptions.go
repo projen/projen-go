@@ -2,7 +2,7 @@ package github
 
 
 // Experimental.
-type PullRequestFromPatchOptions struct {
+type CreatePullRequestOptions struct {
 	// Description added to the pull request.
 	//
 	// Providence information are automatically added.
@@ -45,14 +45,5 @@ type PullRequestFromPatchOptions struct {
 	// The name of the step displayed on GitHub.
 	// Experimental.
 	StepName *string `field:"optional" json:"stepName" yaml:"stepName"`
-	// Information about the patch that is used to create the pull request.
-	// Experimental.
-	Patch *PullRequestPatchSource `field:"required" json:"patch" yaml:"patch"`
-	// The name of the job displayed on GitHub.
-	// Experimental.
-	JobName *string `field:"optional" json:"jobName" yaml:"jobName"`
-	// Github Runner selection labels.
-	// Experimental.
-	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
 }
 

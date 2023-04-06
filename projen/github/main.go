@@ -52,6 +52,10 @@ func init() {
 		"projen.github.CheckoutWithPatchOptions",
 		reflect.TypeOf((*CheckoutWithPatchOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.github.CreatePullRequestOptions",
+		reflect.TypeOf((*CreatePullRequestOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.github.Dependabot",
 		reflect.TypeOf((*Dependabot)(nil)).Elem(),

@@ -8,6 +8,10 @@ func validateWorkflowActions_CheckoutWithPatchParameters(options *CheckoutWithPa
 	return nil
 }
 
+func validateWorkflowActions_CreatePullRequestParameters(options *CreatePullRequestOptions) error {
+	return nil
+}
+
 func validateWorkflowActions_SetupGitIdentityParameters(id *GitIdentity) error {
 	return nil
 }
