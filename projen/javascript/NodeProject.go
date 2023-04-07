@@ -252,7 +252,7 @@ type NodeProject interface {
 	// Deprecated.
 	AnnotateGenerated(glob *string)
 	// Indicates if a script by the name name is defined.
-	// Experimental.
+	// Deprecated: Use `project.tasks.tryFind(name)`
 	HasScript(name *string) *bool
 	// Called after all components are synthesized.
 	//

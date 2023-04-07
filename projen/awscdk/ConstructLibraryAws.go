@@ -291,7 +291,7 @@ type ConstructLibraryAws interface {
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	AnnotateGenerated(glob *string)
 	// Indicates if a script by the name name is defined.
-	// Deprecated: use `AwsCdkConstructLibrary`.
+	// Deprecated: Use `project.tasks.tryFind(name)`
 	HasScript(name *string) *bool
 	// Called after all components are synthesized.
 	//

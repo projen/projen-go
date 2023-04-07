@@ -23,6 +23,9 @@ type NodePackage interface {
 	// The module's entrypoint (e.g. `lib/index.js`).
 	// Experimental.
 	Entrypoint() *string
+	// The package.json file.
+	// Experimental.
+	File() projen.JsonFile
 	// Renders `yarn install` or `npm install` with lockfile update (not frozen).
 	// Experimental.
 	InstallAndUpdateLockfileCommand() *string
@@ -127,13 +130,13 @@ type NodePackage interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
-	// Removes the npm script (always successful).
+	// Removes an npm script (always successful).
 	// Experimental.
 	RemoveScript(name *string)
 	// Render a package manager specific command to upgrade all requested dependencies.
 	// Experimental.
 	RenderUpgradePackagesCommand(exclude *[]*string, include *[]*string) *string
-	// Override the contents of an npm package.json script.
+	// Add a npm package.json script.
 	// Experimental.
 	SetScript(name *string, command *string)
 	// Synthesizes files to the project output directory.
@@ -171,6 +174,16 @@ func (j *jsiiProxy_NodePackage) Entrypoint() *string {
 	_jsii_.Get(
 		j,
 		"entrypoint",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NodePackage) File() projen.JsonFile {
+	var returns projen.JsonFile
+	_jsii_.Get(
+		j,
+		"file",
 		&returns,
 	)
 	return returns

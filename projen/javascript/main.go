@@ -198,6 +198,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "allowLibraryDependencies", GoGetter: "AllowLibraryDependencies"},
 			_jsii_.MemberProperty{JsiiProperty: "codeArtifactOptions", GoGetter: "CodeArtifactOptions"},
 			_jsii_.MemberProperty{JsiiProperty: "entrypoint", GoGetter: "Entrypoint"},
+			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
 			_jsii_.MemberMethod{JsiiMethod: "hasScript", GoMethod: "HasScript"},
 			_jsii_.MemberProperty{JsiiProperty: "installAndUpdateLockfileCommand", GoGetter: "InstallAndUpdateLockfileCommand"},
 			_jsii_.MemberProperty{JsiiProperty: "installCiTask", GoGetter: "InstallCiTask"},

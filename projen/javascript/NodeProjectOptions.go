@@ -302,7 +302,8 @@ type NodeProjectOptions struct {
 	//
 	// If a script has the same name as a standard script,
 	// the standard script will be overwritten.
-	// Experimental.
+	// Also adds the script as a task.
+	// Deprecated: use `project.addTask()` or `package.setScript()`
 	Scripts *map[string]*string `field:"optional" json:"scripts" yaml:"scripts"`
 	// Package's Stability.
 	// Experimental.

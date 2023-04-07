@@ -276,7 +276,7 @@ type TypeScriptLibraryProject interface {
 	// Deprecated: use `TypeScriptProject`.
 	AnnotateGenerated(glob *string)
 	// Indicates if a script by the name name is defined.
-	// Deprecated: use `TypeScriptProject`.
+	// Deprecated: Use `project.tasks.tryFind(name)`
 	HasScript(name *string) *bool
 	// Called after all components are synthesized.
 	//
