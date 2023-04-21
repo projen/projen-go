@@ -12,6 +12,9 @@ import (
 // Experimental.
 type MavenPackaging interface {
 	projen.Component
+	// The directory containing the package output, relative to the project outdir.
+	// Experimental.
+	Distdir() *string
 	// Experimental.
 	Project() projen.Project
 	// Called after synthesis.
@@ -30,6 +33,16 @@ type MavenPackaging interface {
 // The jsii proxy struct for MavenPackaging
 type jsiiProxy_MavenPackaging struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_MavenPackaging) Distdir() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"distdir",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_MavenPackaging) Project() projen.Project {

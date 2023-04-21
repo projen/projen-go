@@ -121,6 +121,7 @@ func init() {
 		"projen.java.MavenPackaging",
 		reflect.TypeOf((*MavenPackaging)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "distdir", GoGetter: "Distdir"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
