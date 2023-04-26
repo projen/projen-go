@@ -132,6 +132,9 @@ type TypeScriptProject interface {
 	// The .npmignore file.
 	// Experimental.
 	Npmignore() projen.IgnoreFile
+	// The .npmrc file.
+	// Experimental.
+	Npmrc() javascript.NpmConfig
 	// Absolute output directory of this project.
 	// Experimental.
 	Outdir() *string
@@ -689,6 +692,16 @@ func (j *jsiiProxy_TypeScriptProject) Npmignore() projen.IgnoreFile {
 	_jsii_.Get(
 		j,
 		"npmignore",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptProject) Npmrc() javascript.NpmConfig {
+	var returns javascript.NpmConfig
+	_jsii_.Get(
+		j,
+		"npmrc",
 		&returns,
 	)
 	return returns

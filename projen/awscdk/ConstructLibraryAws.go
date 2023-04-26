@@ -135,6 +135,9 @@ type ConstructLibraryAws interface {
 	// The .npmignore file.
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	Npmignore() projen.IgnoreFile
+	// The .npmrc file.
+	// Deprecated: use `AwsCdkConstructLibrary`.
+	Npmrc() javascript.NpmConfig
 	// Absolute output directory of this project.
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	Outdir() *string
@@ -722,6 +725,16 @@ func (j *jsiiProxy_ConstructLibraryAws) Npmignore() projen.IgnoreFile {
 	_jsii_.Get(
 		j,
 		"npmignore",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryAws) Npmrc() javascript.NpmConfig {
+	var returns javascript.NpmConfig
+	_jsii_.Get(
+		j,
+		"npmrc",
 		&returns,
 	)
 	return returns

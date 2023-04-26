@@ -122,6 +122,9 @@ type NodeProject interface {
 	// The .npmignore file.
 	// Experimental.
 	Npmignore() projen.IgnoreFile
+	// The .npmrc file.
+	// Experimental.
+	Npmrc() NpmConfig
 	// Absolute output directory of this project.
 	// Experimental.
 	Outdir() *string
@@ -623,6 +626,16 @@ func (j *jsiiProxy_NodeProject) Npmignore() projen.IgnoreFile {
 	_jsii_.Get(
 		j,
 		"npmignore",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NodeProject) Npmrc() NpmConfig {
+	var returns NpmConfig
+	_jsii_.Get(
+		j,
+		"npmrc",
 		&returns,
 	)
 	return returns
