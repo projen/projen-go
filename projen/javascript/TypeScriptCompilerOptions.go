@@ -3,6 +3,14 @@ package javascript
 
 // Experimental.
 type TypeScriptCompilerOptions struct {
+	// Suppress arbitrary extension import errors with the assumption that a bundler will be handling it.
+	// See: https://www.typescriptlang.org/tsconfig#allowArbitraryExtensions
+	//
+	// Experimental.
+	AllowArbitraryExtensions *bool `field:"optional" json:"allowArbitraryExtensions" yaml:"allowArbitraryExtensions"`
+	// Allows TypeScript files to import each other with TypeScript-specific extensions (`.ts`, `.mts`, `.tsx`). Requires `noEmit` or `emitDeclarationOnly`.
+	// Experimental.
+	AllowImportingTsExtensions *bool `field:"optional" json:"allowImportingTsExtensions" yaml:"allowImportingTsExtensions"`
 	// Allow JavaScript files to be compiled.
 	// Experimental.
 	AllowJs *bool `field:"optional" json:"allowJs" yaml:"allowJs"`
@@ -19,6 +27,11 @@ type TypeScriptCompilerOptions struct {
 	// You can define a root folder where you can do absolute file resolution.
 	// Experimental.
 	BaseUrl *string `field:"optional" json:"baseUrl" yaml:"baseUrl"`
+	// List of additional conditions that should succeed when TypeScript resolves from an `exports` or `imports` field of a `package.json`.
+	// See: https://www.typescriptlang.org/tsconfig#customConditions
+	//
+	// Experimental.
+	CustomConditions *[]*string `field:"optional" json:"customConditions" yaml:"customConditions"`
 	// To be specified along with the above.
 	// Experimental.
 	Declaration *bool `field:"optional" json:"declaration" yaml:"declaration"`
@@ -133,6 +146,12 @@ type TypeScriptCompilerOptions struct {
 	// Allows importing modules with a ‘.json’ extension, which is a common practice in node projects. This includes generating a type for the import based on the static JSON shape.
 	// Experimental.
 	ResolveJsonModule *bool `field:"optional" json:"resolveJsonModule" yaml:"resolveJsonModule"`
+	// Forces TypeScript to consult the `exports` field of `package.json` files if it ever reads from a package in `node_modules`.
+	// Experimental.
+	ResolvePackageJsonExports *bool `field:"optional" json:"resolvePackageJsonExports" yaml:"resolvePackageJsonExports"`
+	// Forces TypeScript to consult the `imports` field of `package.json` when performing a lookup that begins with `#` from a file that has a `package.json` as an ancestor.
+	// Experimental.
+	ResolvePackageJsonImports *bool `field:"optional" json:"resolvePackageJsonImports" yaml:"resolvePackageJsonImports"`
 	// Specifies the root directory of input files.
 	//
 	// Only use to control the output directory structure with `outDir`.
@@ -174,5 +193,10 @@ type TypeScriptCompilerOptions struct {
 	// code is guaranteed to run in newer environments.
 	// Experimental.
 	Target *string `field:"optional" json:"target" yaml:"target"`
+	// Simplifies TypeScript's handling of import/export `type` modifiers.
+	// See: https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax
+	//
+	// Experimental.
+	VerbatimModuleSyntax *bool `field:"optional" json:"verbatimModuleSyntax" yaml:"verbatimModuleSyntax"`
 }
 

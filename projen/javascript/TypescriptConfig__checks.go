@@ -18,9 +18,25 @@ func (t *jsiiProxy_TypescriptConfig) validateAddExcludeParameters(pattern *strin
 	return nil
 }
 
+func (t *jsiiProxy_TypescriptConfig) validateAddExtendsParameters(value TypescriptConfig) error {
+	if value == nil {
+		return fmt.Errorf("parameter value is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (t *jsiiProxy_TypescriptConfig) validateAddIncludeParameters(pattern *string) error {
 	if pattern == nil {
 		return fmt.Errorf("parameter pattern is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (t *jsiiProxy_TypescriptConfig) validateResolveExtendsPathParameters(configPath *string) error {
+	if configPath == nil {
+		return fmt.Errorf("parameter configPath is required, but nil was provided")
 	}
 
 	return nil

@@ -503,6 +503,7 @@ func init() {
 			"NODE": TypeScriptModuleResolution_NODE,
 			"NODE16": TypeScriptModuleResolution_NODE16,
 			"NODE_NEXT": TypeScriptModuleResolution_NODE_NEXT,
+			"BUNDLER": TypeScriptModuleResolution_BUNDLER,
 		},
 	)
 	_jsii_.RegisterClass(
@@ -510,21 +511,34 @@ func init() {
 		reflect.TypeOf((*TypescriptConfig)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addExclude", GoMethod: "AddExclude"},
+			_jsii_.MemberMethod{JsiiMethod: "addExtends", GoMethod: "AddExtends"},
 			_jsii_.MemberMethod{JsiiMethod: "addInclude", GoMethod: "AddInclude"},
 			_jsii_.MemberProperty{JsiiProperty: "compilerOptions", GoGetter: "CompilerOptions"},
 			_jsii_.MemberProperty{JsiiProperty: "exclude", GoGetter: "Exclude"},
+			_jsii_.MemberProperty{JsiiProperty: "extends", GoGetter: "Extends"},
 			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
 			_jsii_.MemberProperty{JsiiProperty: "fileName", GoGetter: "FileName"},
 			_jsii_.MemberProperty{JsiiProperty: "include", GoGetter: "Include"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "resolveExtendsPath", GoMethod: "ResolveExtendsPath"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 		},
 		func() interface{} {
 			j := jsiiProxy_TypescriptConfig{}
 			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
 			return &j
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.javascript.TypescriptConfigExtends",
+		reflect.TypeOf((*TypescriptConfigExtends)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "toJSON", GoMethod: "ToJSON"},
+		},
+		func() interface{} {
+			return &jsiiProxy_TypescriptConfigExtends{}
 		},
 	)
 	_jsii_.RegisterStruct(

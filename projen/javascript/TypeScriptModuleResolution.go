@@ -28,5 +28,12 @@ const (
 	//
 	// Experimental.
 	TypeScriptModuleResolution_NODE_NEXT TypeScriptModuleResolution = "NODE_NEXT"
+	// Resolution strategy which attempts to mimic resolution patterns of modern bundlers;
+	//
+	// from TypeScript 5.0 onwards.
+	// See: https://www.typescriptlang.org/tsconfig#moduleResolution
+	//
+	// Experimental.
+	TypeScriptModuleResolution_BUNDLER TypeScriptModuleResolution = "BUNDLER"
 )
 

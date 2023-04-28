@@ -8,7 +8,15 @@ func (t *jsiiProxy_TypescriptConfig) validateAddExcludeParameters(pattern *strin
 	return nil
 }
 
+func (t *jsiiProxy_TypescriptConfig) validateAddExtendsParameters(value TypescriptConfig) error {
+	return nil
+}
+
 func (t *jsiiProxy_TypescriptConfig) validateAddIncludeParameters(pattern *string) error {
+	return nil
+}
+
+func (t *jsiiProxy_TypescriptConfig) validateResolveExtendsPathParameters(configPath *string) error {
 	return nil
 }
 

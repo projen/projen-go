@@ -15,6 +15,9 @@ type TypescriptConfig interface {
 	CompilerOptions() *TypeScriptCompilerOptions
 	// Experimental.
 	Exclude() *[]*string
+	// Array of base `tsconfig.json` paths. Any absolute paths are resolved relative to this instance, while any relative paths are used as is.
+	// Experimental.
+	Extends() *[]*string
 	// Experimental.
 	File() projen.JsonFile
 	// Experimental.
@@ -25,6 +28,9 @@ type TypescriptConfig interface {
 	Project() projen.Project
 	// Experimental.
 	AddExclude(pattern *string)
+	// Extend from base `TypescriptConfig` instance.
+	// Experimental.
+	AddExtends(value TypescriptConfig)
 	// Experimental.
 	AddInclude(pattern *string)
 	// Called after synthesis.
@@ -35,6 +41,9 @@ type TypescriptConfig interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Resolve valid TypeScript extends paths relative to this config.
+	// Experimental.
+	ResolveExtendsPath(configPath *string) *string
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -60,6 +69,16 @@ func (j *jsiiProxy_TypescriptConfig) Exclude() *[]*string {
 	_jsii_.Get(
 		j,
 		"exclude",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypescriptConfig) Extends() *[]*string {
+	var returns *[]*string
+	_jsii_.Get(
+		j,
+		"extends",
 		&returns,
 	)
 	return returns
@@ -146,6 +165,17 @@ func (t *jsiiProxy_TypescriptConfig) AddExclude(pattern *string) {
 	)
 }
 
+func (t *jsiiProxy_TypescriptConfig) AddExtends(value TypescriptConfig) {
+	if err := t.validateAddExtendsParameters(value); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"addExtends",
+		[]interface{}{value},
+	)
+}
+
 func (t *jsiiProxy_TypescriptConfig) AddInclude(pattern *string) {
 	if err := t.validateAddIncludeParameters(pattern); err != nil {
 		panic(err)
@@ -171,6 +201,22 @@ func (t *jsiiProxy_TypescriptConfig) PreSynthesize() {
 		"preSynthesize",
 		nil, // no parameters
 	)
+}
+
+func (t *jsiiProxy_TypescriptConfig) ResolveExtendsPath(configPath *string) *string {
+	if err := t.validateResolveExtendsPathParameters(configPath); err != nil {
+		panic(err)
+	}
+	var returns *string
+
+	_jsii_.Invoke(
+		t,
+		"resolveExtendsPath",
+		[]interface{}{configPath},
+		&returns,
+	)
+
+	return returns
 }
 
 func (t *jsiiProxy_TypescriptConfig) Synthesize() {
