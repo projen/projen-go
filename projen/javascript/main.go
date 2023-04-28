@@ -225,6 +225,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "scopedPackagesOptions", GoGetter: "ScopedPackagesOptions"},
 			_jsii_.MemberMethod{JsiiMethod: "setScript", GoMethod: "SetScript"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "tryResolveDependencyVersion", GoMethod: "TryResolveDependencyVersion"},
 		},
 		func() interface{} {
 			j := jsiiProxy_NodePackage{}

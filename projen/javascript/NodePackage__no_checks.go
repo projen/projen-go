@@ -36,6 +36,10 @@ func (n *jsiiProxy_NodePackage) validateSetScriptParameters(name *string, comman
 	return nil
 }
 
+func (n *jsiiProxy_NodePackage) validateTryResolveDependencyVersionParameters(dependencyName *string) error {
+	return nil
+}
+
 func validateNewNodePackageParameters(project projen.Project, options *NodePackageOptions) error {
 	return nil
 }

@@ -142,6 +142,9 @@ type NodePackage interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Attempt to resolve the currently installed version for a given dependency.
+	// Experimental.
+	TryResolveDependencyVersion(dependencyName *string) *string
 }
 
 // The jsii proxy struct for NodePackage
@@ -607,5 +610,21 @@ func (n *jsiiProxy_NodePackage) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (n *jsiiProxy_NodePackage) TryResolveDependencyVersion(dependencyName *string) *string {
+	if err := n.validateTryResolveDependencyVersionParameters(dependencyName); err != nil {
+		panic(err)
+	}
+	var returns *string
+
+	_jsii_.Invoke(
+		n,
+		"tryResolveDependencyVersion",
+		[]interface{}{dependencyName},
+		&returns,
+	)
+
+	return returns
 }
 

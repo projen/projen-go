@@ -86,6 +86,14 @@ func (n *jsiiProxy_NodePackage) validateSetScriptParameters(name *string, comman
 	return nil
 }
 
+func (n *jsiiProxy_NodePackage) validateTryResolveDependencyVersionParameters(dependencyName *string) error {
+	if dependencyName == nil {
+		return fmt.Errorf("parameter dependencyName is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewNodePackageParameters(project projen.Project, options *NodePackageOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")
