@@ -87,6 +87,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "runTaskCommand", GoMethod: "RunTaskCommand"},
 			_jsii_.MemberMethod{JsiiMethod: "setScript", GoMethod: "SetScript"},
 			_jsii_.MemberProperty{JsiiProperty: "srcdir", GoGetter: "Srcdir"},
+			_jsii_.MemberProperty{JsiiProperty: "subprojects", GoGetter: "Subprojects"},
 			_jsii_.MemberMethod{JsiiMethod: "synth", GoMethod: "Synth"},
 			_jsii_.MemberProperty{JsiiProperty: "tasks", GoGetter: "Tasks"},
 			_jsii_.MemberProperty{JsiiProperty: "testdir", GoGetter: "Testdir"},

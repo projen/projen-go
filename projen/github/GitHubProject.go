@@ -208,6 +208,13 @@ type GitHubProject interface {
 	// the next steps to address this is to abstract workflows so that different
 	// "engines" can be used to implement our CI/CD solutions.
 	Root() projen.Project
+	// Returns all the subprojects within this project.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
+	Subprojects() *[]projen.Project
 	// Project tasks.
 	// Deprecated: This is a *temporary* class. At the moment, our base project
 	// types such as `NodeProject` and `JavaProject` are derived from this, but we
@@ -622,6 +629,16 @@ func (j *jsiiProxy_GitHubProject) Root() projen.Project {
 	_jsii_.Get(
 		j,
 		"root",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHubProject) Subprojects() *[]projen.Project {
+	var returns *[]projen.Project
+	_jsii_.Get(
+		j,
+		"subprojects",
 		&returns,
 	)
 	return returns

@@ -76,6 +76,9 @@ type Project interface {
 	// The root project.
 	// Experimental.
 	Root() Project
+	// Returns all the subprojects within this project.
+	// Experimental.
+	Subprojects() *[]Project
 	// Project tasks.
 	// Experimental.
 	Tasks() Tasks
@@ -369,6 +372,16 @@ func (j *jsiiProxy_Project) Root() Project {
 	_jsii_.Get(
 		j,
 		"root",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Project) Subprojects() *[]Project {
+	var returns *[]Project
+	_jsii_.Get(
+		j,
+		"subprojects",
 		&returns,
 	)
 	return returns

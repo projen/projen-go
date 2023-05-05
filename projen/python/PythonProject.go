@@ -120,6 +120,9 @@ type PythonProject interface {
 	// The root project.
 	// Experimental.
 	Root() projen.Project
+	// Returns all the subprojects within this project.
+	// Experimental.
+	Subprojects() *[]projen.Project
 	// Project tasks.
 	// Experimental.
 	Tasks() projen.Tasks
@@ -529,6 +532,16 @@ func (j *jsiiProxy_PythonProject) Root() projen.Project {
 	_jsii_.Get(
 		j,
 		"root",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_PythonProject) Subprojects() *[]projen.Project {
+	var returns *[]projen.Project
+	_jsii_.Get(
+		j,
+		"subprojects",
 		&returns,
 	)
 	return returns

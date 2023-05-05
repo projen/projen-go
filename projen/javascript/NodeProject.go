@@ -170,6 +170,9 @@ type NodeProject interface {
 	// The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager).
 	// Experimental.
 	RunScriptCommand() *string
+	// Returns all the subprojects within this project.
+	// Experimental.
+	Subprojects() *[]projen.Project
 	// Project tasks.
 	// Experimental.
 	Tasks() projen.Tasks
@@ -786,6 +789,16 @@ func (j *jsiiProxy_NodeProject) RunScriptCommand() *string {
 	_jsii_.Get(
 		j,
 		"runScriptCommand",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NodeProject) Subprojects() *[]projen.Project {
+	var returns *[]projen.Project
+	_jsii_.Get(
+		j,
+		"subprojects",
 		&returns,
 	)
 	return returns

@@ -177,6 +177,9 @@ type NextJsProject interface {
 	// The directory in which source files reside.
 	// Experimental.
 	Srcdir() *string
+	// Returns all the subprojects within this project.
+	// Experimental.
+	Subprojects() *[]projen.Project
 	// Setup Tailwind as a PostCSS plugin.
 	// See: https://tailwindcss.com/docs/installation
 	//
@@ -818,6 +821,16 @@ func (j *jsiiProxy_NextJsProject) Srcdir() *string {
 	_jsii_.Get(
 		j,
 		"srcdir",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NextJsProject) Subprojects() *[]projen.Project {
+	var returns *[]projen.Project
+	_jsii_.Get(
+		j,
+		"subprojects",
 		&returns,
 	)
 	return returns

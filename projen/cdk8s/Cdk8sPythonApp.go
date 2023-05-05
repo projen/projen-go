@@ -126,6 +126,9 @@ type Cdk8sPythonApp interface {
 	// The root project.
 	// Experimental.
 	Root() projen.Project
+	// Returns all the subprojects within this project.
+	// Experimental.
+	Subprojects() *[]projen.Project
 	// Project tasks.
 	// Experimental.
 	Tasks() projen.Tasks
@@ -555,6 +558,16 @@ func (j *jsiiProxy_Cdk8sPythonApp) Root() projen.Project {
 	_jsii_.Get(
 		j,
 		"root",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Cdk8sPythonApp) Subprojects() *[]projen.Project {
+	var returns *[]projen.Project
+	_jsii_.Get(
+		j,
+		"subprojects",
 		&returns,
 	)
 	return returns

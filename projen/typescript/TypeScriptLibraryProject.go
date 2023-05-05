@@ -181,6 +181,9 @@ type TypeScriptLibraryProject interface {
 	// The directory in which the .ts sources reside.
 	// Deprecated: use `TypeScriptProject`.
 	Srcdir() *string
+	// Returns all the subprojects within this project.
+	// Deprecated: use `TypeScriptProject`.
+	Subprojects() *[]projen.Project
 	// Project tasks.
 	// Deprecated: use `TypeScriptProject`.
 	Tasks() projen.Tasks
@@ -860,6 +863,16 @@ func (j *jsiiProxy_TypeScriptLibraryProject) Srcdir() *string {
 	_jsii_.Get(
 		j,
 		"srcdir",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptLibraryProject) Subprojects() *[]projen.Project {
+	var returns *[]projen.Project
+	_jsii_.Get(
+		j,
+		"subprojects",
 		&returns,
 	)
 	return returns

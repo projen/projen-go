@@ -322,6 +322,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "runScriptCommand", GoGetter: "RunScriptCommand"},
 			_jsii_.MemberMethod{JsiiMethod: "runTaskCommand", GoMethod: "RunTaskCommand"},
 			_jsii_.MemberMethod{JsiiMethod: "setScript", GoMethod: "SetScript"},
+			_jsii_.MemberProperty{JsiiProperty: "subprojects", GoGetter: "Subprojects"},
 			_jsii_.MemberMethod{JsiiMethod: "synth", GoMethod: "Synth"},
 			_jsii_.MemberProperty{JsiiProperty: "tasks", GoGetter: "Tasks"},
 			_jsii_.MemberProperty{JsiiProperty: "testTask", GoGetter: "TestTask"},

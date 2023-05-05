@@ -186,6 +186,9 @@ type ConstructLibraryAws interface {
 	// The directory in which the .ts sources reside.
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	Srcdir() *string
+	// Returns all the subprojects within this project.
+	// Deprecated: use `AwsCdkConstructLibrary`.
+	Subprojects() *[]projen.Project
 	// Project tasks.
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	Tasks() projen.Tasks
@@ -895,6 +898,16 @@ func (j *jsiiProxy_ConstructLibraryAws) Srcdir() *string {
 	_jsii_.Get(
 		j,
 		"srcdir",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryAws) Subprojects() *[]projen.Project {
+	var returns *[]projen.Project
+	_jsii_.Get(
+		j,
+		"subprojects",
 		&returns,
 	)
 	return returns
