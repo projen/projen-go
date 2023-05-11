@@ -1,3 +1,4 @@
+// CDK for software projects
 package projen
 
 import (
