@@ -20,6 +20,9 @@ type Projenrc interface {
 	FilePath() *string
 	// Experimental.
 	Project() projen.Project
+	// Path to the python executable to use.
+	// Experimental.
+	PythonExec() *string
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -53,6 +56,16 @@ func (j *jsiiProxy_Projenrc) Project() projen.Project {
 	_jsii_.Get(
 		j,
 		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Projenrc) PythonExec() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"pythonExec",
 		&returns,
 	)
 	return returns

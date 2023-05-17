@@ -220,6 +220,9 @@ type AwsCdkPythonAppOptions struct {
 	// pytest options.
 	// Experimental.
 	PytestOptions *python.PytestOptions `field:"optional" json:"pytestOptions" yaml:"pytestOptions"`
+	// Path to the python executable to use.
+	// Experimental.
+	PythonExec *string `field:"optional" json:"pythonExec" yaml:"pythonExec"`
 	// Include sample code and test if the relevant directories don't exist.
 	// Experimental.
 	Sample *bool `field:"optional" json:"sample" yaml:"sample"`

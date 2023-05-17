@@ -10,5 +10,8 @@ type ProjenrcOptions struct {
 	// The projen version to use.
 	// Experimental.
 	ProjenVersion *string `field:"optional" json:"projenVersion" yaml:"projenVersion"`
+	// Path to the python executable to use.
+	// Experimental.
+	PythonExec *string `field:"optional" json:"pythonExec" yaml:"pythonExec"`
 }
 
