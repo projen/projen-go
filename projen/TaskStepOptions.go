@@ -27,6 +27,15 @@ type TaskStepOptions struct {
 	// The working directory for this step.
 	// Experimental.
 	Cwd *string `field:"optional" json:"cwd" yaml:"cwd"`
+	// Defines environment variables for the execution of this step (`exec` and `builtin` only).
+	//
+	// Values in this map can be simple, literal values or shell expressions that will be evaluated at runtime e.g. `$(echo "foo")`.
+	//
+	// Example:
+	//   { "foo": "bar", "boo": "$(echo baz)" }
+	//
+	// Experimental.
+	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// Step name.
 	// Experimental.
 	Name *string `field:"optional" json:"name" yaml:"name"`
