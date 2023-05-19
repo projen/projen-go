@@ -7,7 +7,7 @@ package gitlab
 // Experimental.
 type Reports struct {
 	// Path for file(s) that should be parsed as Cobertura XML coverage report.
-	// Experimental.
+	// Deprecated: per {@link https://docs.gitlab.com/ee/update/deprecations.html#artifactsreportscobertura-keyword} use {@link coverageReport } instead
 	Cobertura *[]*string `field:"optional" json:"cobertura" yaml:"cobertura"`
 	// Path to file or list of files with code quality report(s) (such as Code Climate).
 	// Experimental.
@@ -15,6 +15,9 @@ type Reports struct {
 	// Path to file or list of files with Container scanning vulnerabilities report(s).
 	// Experimental.
 	ContainerScanning *[]*string `field:"optional" json:"containerScanning" yaml:"containerScanning"`
+	// Code coverage report information.
+	// Experimental.
+	CoverageReport *CoverageReport `field:"optional" json:"coverageReport" yaml:"coverageReport"`
 	// Path to file or list of files with DAST vulnerabilities report(s).
 	// Experimental.
 	Dast *[]*string `field:"optional" json:"dast" yaml:"dast"`

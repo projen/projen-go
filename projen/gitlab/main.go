@@ -96,6 +96,10 @@ func init() {
 		reflect.TypeOf((*CiConfigurationOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.gitlab.CoverageReport",
+		reflect.TypeOf((*CoverageReport)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.gitlab.Default",
 		reflect.TypeOf((*Default)(nil)).Elem(),
 	)
