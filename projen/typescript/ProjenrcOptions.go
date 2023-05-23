@@ -9,5 +9,8 @@ type ProjenrcOptions struct {
 	// A directory tree that may contain *.ts files that can be referenced from your projenrc typescript file.
 	// Experimental.
 	ProjenCodeDir *string `field:"optional" json:"projenCodeDir" yaml:"projenCodeDir"`
+	// Whether to use `SWC` for ts-node.
+	// Experimental.
+	Swc *bool `field:"optional" json:"swc" yaml:"swc"`
 }
 
