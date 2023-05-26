@@ -24,6 +24,13 @@ type TaskStepOptions struct {
 	//
 	// Experimental.
 	Args *[]*string `field:"optional" json:"args" yaml:"args"`
+	// A shell command which determines if the this step should be executed.
+	//
+	// If
+	// the program exits with a zero exit code, the step will be executed. A non-zero
+	// code means the step will be skipped (subsequent task steps will still be evaluated/executed).
+	// Experimental.
+	Condition *string `field:"optional" json:"condition" yaml:"condition"`
 	// The working directory for this step.
 	// Experimental.
 	Cwd *string `field:"optional" json:"cwd" yaml:"cwd"`
