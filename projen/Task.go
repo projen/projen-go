@@ -30,6 +30,13 @@ type Task interface {
 	// Returns an immutable copy of all the step specifications of the task.
 	// Experimental.
 	Steps() *[]*TaskStep
+	// Add a command to execute which determines if the task should be skipped.
+	//
+	// If a condition already exists, the new condition will be appended with ` && ` delimiter.
+	// See: {@link Task.condition }
+	//
+	// Experimental.
+	AddCondition(condition ...*string)
 	// Execute a builtin task.
 	//
 	// Builtin tasks are programs bundled as part of projen itself and used as
@@ -150,6 +157,19 @@ func (j *jsiiProxy_Task)SetDescription(val *string) {
 		j,
 		"description",
 		val,
+	)
+}
+
+func (t *jsiiProxy_Task) AddCondition(condition ...*string) {
+	args := []interface{}{}
+	for _, a := range condition {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		t,
+		"addCondition",
+		args,
 	)
 }
 

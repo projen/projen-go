@@ -922,6 +922,7 @@ func init() {
 		"projen.Task",
 		reflect.TypeOf((*Task)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addCondition", GoMethod: "AddCondition"},
 			_jsii_.MemberMethod{JsiiMethod: "builtin", GoMethod: "Builtin"},
 			_jsii_.MemberProperty{JsiiProperty: "condition", GoGetter: "Condition"},
 			_jsii_.MemberProperty{JsiiProperty: "description", GoGetter: "Description"},
