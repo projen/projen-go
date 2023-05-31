@@ -103,6 +103,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "vscode", GoGetter: "Vscode"},
 			_jsii_.MemberProperty{JsiiProperty: "watchTask", GoGetter: "WatchTask"},
 			_jsii_.MemberProperty{JsiiProperty: "workflowBootstrapSteps", GoGetter: "WorkflowBootstrapSteps"},
+			_jsii_.MemberProperty{JsiiProperty: "workflowPackageCache", GoGetter: "WorkflowPackageCache"},
 		},
 		func() interface{} {
 			j := jsiiProxy_ConstructLibraryCdktf{}

@@ -518,5 +518,8 @@ type NodeProjectOptions struct {
 	// The node version to use in GitHub workflows.
 	// Experimental.
 	WorkflowNodeVersion *string `field:"optional" json:"workflowNodeVersion" yaml:"workflowNodeVersion"`
+	// Enable Node.js package cache in GitHub workflows.
+	// Experimental.
+	WorkflowPackageCache *bool `field:"optional" json:"workflowPackageCache" yaml:"workflowPackageCache"`
 }
 

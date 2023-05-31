@@ -527,6 +527,9 @@ type NextJsProjectOptions struct {
 	// The node version to use in GitHub workflows.
 	// Experimental.
 	WorkflowNodeVersion *string `field:"optional" json:"workflowNodeVersion" yaml:"workflowNodeVersion"`
+	// Enable Node.js package cache in GitHub workflows.
+	// Experimental.
+	WorkflowPackageCache *bool `field:"optional" json:"workflowPackageCache" yaml:"workflowPackageCache"`
 	// Generate one-time sample in `pages/` and `public/` if there are no files there.
 	// Experimental.
 	SampleCode *bool `field:"optional" json:"sampleCode" yaml:"sampleCode"`

@@ -213,6 +213,8 @@ type TypeScriptLibraryProject interface {
 	// Deprecated: use `TypeScriptProject`.
 	WorkflowBootstrapSteps() *[]*workflows.JobStep
 	// Deprecated: use `TypeScriptProject`.
+	WorkflowPackageCache() *bool
+	// Deprecated: use `TypeScriptProject`.
 	AddBins(bins *map[string]*string)
 	// Defines bundled dependencies.
 	//
@@ -973,6 +975,16 @@ func (j *jsiiProxy_TypeScriptLibraryProject) WorkflowBootstrapSteps() *[]*workfl
 	_jsii_.Get(
 		j,
 		"workflowBootstrapSteps",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptLibraryProject) WorkflowPackageCache() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"workflowPackageCache",
 		&returns,
 	)
 	return returns

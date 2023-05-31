@@ -119,6 +119,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "upgradeWorkflow", GoGetter: "UpgradeWorkflow"},
 			_jsii_.MemberProperty{JsiiProperty: "vscode", GoGetter: "Vscode"},
 			_jsii_.MemberProperty{JsiiProperty: "workflowBootstrapSteps", GoGetter: "WorkflowBootstrapSteps"},
+			_jsii_.MemberProperty{JsiiProperty: "workflowPackageCache", GoGetter: "WorkflowPackageCache"},
 		},
 		func() interface{} {
 			j := jsiiProxy_NextJsProject{}
@@ -228,6 +229,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "vscode", GoGetter: "Vscode"},
 			_jsii_.MemberProperty{JsiiProperty: "watchTask", GoGetter: "WatchTask"},
 			_jsii_.MemberProperty{JsiiProperty: "workflowBootstrapSteps", GoGetter: "WorkflowBootstrapSteps"},
+			_jsii_.MemberProperty{JsiiProperty: "workflowPackageCache", GoGetter: "WorkflowPackageCache"},
 		},
 		func() interface{} {
 			j := jsiiProxy_NextJsTypeScriptProject{}
@@ -361,6 +363,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "upgradeWorkflow", GoGetter: "UpgradeWorkflow"},
 			_jsii_.MemberProperty{JsiiProperty: "vscode", GoGetter: "Vscode"},
 			_jsii_.MemberProperty{JsiiProperty: "workflowBootstrapSteps", GoGetter: "WorkflowBootstrapSteps"},
+			_jsii_.MemberProperty{JsiiProperty: "workflowPackageCache", GoGetter: "WorkflowPackageCache"},
 		},
 		func() interface{} {
 			j := jsiiProxy_ReactProject{}
@@ -498,6 +501,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "vscode", GoGetter: "Vscode"},
 			_jsii_.MemberProperty{JsiiProperty: "watchTask", GoGetter: "WatchTask"},
 			_jsii_.MemberProperty{JsiiProperty: "workflowBootstrapSteps", GoGetter: "WorkflowBootstrapSteps"},
+			_jsii_.MemberProperty{JsiiProperty: "workflowPackageCache", GoGetter: "WorkflowPackageCache"},
 		},
 		func() interface{} {
 			j := jsiiProxy_ReactTypeScriptProject{}

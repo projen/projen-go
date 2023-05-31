@@ -226,6 +226,8 @@ type ConstructLibraryCdk8s interface {
 	// Experimental.
 	WorkflowBootstrapSteps() *[]*workflows.JobStep
 	// Experimental.
+	WorkflowPackageCache() *bool
+	// Experimental.
 	AddBins(bins *map[string]*string)
 	// Defines bundled dependencies.
 	//
@@ -1006,6 +1008,16 @@ func (j *jsiiProxy_ConstructLibraryCdk8s) WorkflowBootstrapSteps() *[]*workflows
 	_jsii_.Get(
 		j,
 		"workflowBootstrapSteps",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryCdk8s) WorkflowPackageCache() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"workflowPackageCache",
 		&returns,
 	)
 	return returns

@@ -221,6 +221,8 @@ type Cdk8sTypeScriptApp interface {
 	// Experimental.
 	WorkflowBootstrapSteps() *[]*workflows.JobStep
 	// Experimental.
+	WorkflowPackageCache() *bool
+	// Experimental.
 	AddBins(bins *map[string]*string)
 	// Defines bundled dependencies.
 	//
@@ -1001,6 +1003,16 @@ func (j *jsiiProxy_Cdk8sTypeScriptApp) WorkflowBootstrapSteps() *[]*workflows.Jo
 	_jsii_.Get(
 		j,
 		"workflowBootstrapSteps",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Cdk8sTypeScriptApp) WorkflowPackageCache() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"workflowPackageCache",
 		&returns,
 	)
 	return returns

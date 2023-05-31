@@ -193,6 +193,8 @@ type ReactProject interface {
 	// Experimental.
 	WorkflowBootstrapSteps() *[]*workflows.JobStep
 	// Experimental.
+	WorkflowPackageCache() *bool
+	// Experimental.
 	AddBins(bins *map[string]*string)
 	// Defines bundled dependencies.
 	//
@@ -863,6 +865,16 @@ func (j *jsiiProxy_ReactProject) WorkflowBootstrapSteps() *[]*workflows.JobStep 
 	_jsii_.Get(
 		j,
 		"workflowBootstrapSteps",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ReactProject) WorkflowPackageCache() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"workflowPackageCache",
 		&returns,
 	)
 	return returns

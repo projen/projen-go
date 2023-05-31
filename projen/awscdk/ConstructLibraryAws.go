@@ -220,6 +220,8 @@ type ConstructLibraryAws interface {
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	WorkflowBootstrapSteps() *[]*workflows.JobStep
 	// Deprecated: use `AwsCdkConstructLibrary`.
+	WorkflowPackageCache() *bool
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddBins(bins *map[string]*string)
 	// Defines bundled dependencies.
 	//
@@ -1018,6 +1020,16 @@ func (j *jsiiProxy_ConstructLibraryAws) WorkflowBootstrapSteps() *[]*workflows.J
 	_jsii_.Get(
 		j,
 		"workflowBootstrapSteps",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryAws) WorkflowPackageCache() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"workflowPackageCache",
 		&returns,
 	)
 	return returns
