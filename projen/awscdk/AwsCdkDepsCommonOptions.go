@@ -9,7 +9,7 @@ type AwsCdkDepsCommonOptions struct {
 	CdkVersion *string `field:"required" json:"cdkVersion" yaml:"cdkVersion"`
 	// Warning: NodeJS only.
 	//
-	// Install the @aws-cdk/assert library?
+	// Install the.
 	// Deprecated: The.
 	CdkAssert *bool `field:"optional" json:"cdkAssert" yaml:"cdkAssert"`
 	// Install the assertions library?

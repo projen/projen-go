@@ -3,7 +3,7 @@ package gitlab
 
 // Used to specify an additional Docker image to run scripts in.
 //
-// The service image is linked to the image specified in the @Default image keyword.
+// The service image is linked to the image specified in the.
 // See: https://docs.gitlab.com/ee/ci/yaml/#services
 //
 // Experimental.

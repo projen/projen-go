@@ -420,7 +420,7 @@ type AwsCdkTypeScriptAppOptions struct {
 	// Options for `Bundler`.
 	// Experimental.
 	BundlerOptions *javascript.BundlerOptions `field:"optional" json:"bundlerOptions" yaml:"bundlerOptions"`
-	// Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with @codeCovTokenSecret.
+	// Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`.
 	// Experimental.
 	CodeCov *bool `field:"optional" json:"codeCov" yaml:"codeCov"`
 	// Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories.
@@ -612,7 +612,7 @@ type AwsCdkTypeScriptAppOptions struct {
 	CdkVersion *string `field:"required" json:"cdkVersion" yaml:"cdkVersion"`
 	// Warning: NodeJS only.
 	//
-	// Install the @aws-cdk/assert library?
+	// Install the.
 	// Deprecated: The.
 	CdkAssert *bool `field:"optional" json:"cdkAssert" yaml:"cdkAssert"`
 	// Install the assertions library?

@@ -70,7 +70,7 @@ type TypeScriptCompilerOptions struct {
 	// When set, TypeScript will include the original content of the .ts file as an embedded string in the source map. This is often useful in the same cases as inlineSourceMap.
 	// Experimental.
 	InlineSources *bool `field:"optional" json:"inlineSources" yaml:"inlineSources"`
-	// Perform additional checks to ensure that separate compilation (such as with transpileModule or @babel/plugin-transform-typescript) would be safe.
+	// Perform additional checks to ensure that separate compilation (such as with transpileModule or.
 	// Experimental.
 	IsolatedModules *bool `field:"optional" json:"isolatedModules" yaml:"isolatedModules"`
 	// Support JSX in .tsx files: "react", "preserve", "react-native" etc.
@@ -183,7 +183,7 @@ type TypeScriptCompilerOptions struct {
 	// When set to true, TypeScript will raise an error when a class property was declared but not set in the constructor.
 	// Experimental.
 	StrictPropertyInitialization *bool `field:"optional" json:"strictPropertyInitialization" yaml:"strictPropertyInitialization"`
-	// Do not emit declarations for code that has an @internal annotation in it’s JSDoc comment.
+	// Do not emit declarations for code that has an `@internal` annotation in it’s JSDoc comment.
 	// Experimental.
 	StripInternal *bool `field:"optional" json:"stripInternal" yaml:"stripInternal"`
 	// Modern browsers support all ES6 features, so ES6 is a good choice.

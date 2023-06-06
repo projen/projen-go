@@ -34,7 +34,7 @@ type PrettierSettings struct {
 	// How to handle whitespaces in HTML.
 	// Experimental.
 	HtmlWhitespaceSensitivity HTMLWhitespaceSensitivity `field:"optional" json:"htmlWhitespaceSensitivity" yaml:"htmlWhitespaceSensitivity"`
-	// Insert @format pragma into file's first docblock comment.
+	// Insert.
 	// Experimental.
 	InsertPragma *bool `field:"optional" json:"insertPragma" yaml:"insertPragma"`
 	// Use single quotes in JSX.

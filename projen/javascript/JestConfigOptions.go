@@ -97,7 +97,7 @@ type JestConfigOptions struct {
 	// This will be used to configure the behavior of jest-haste-map, Jest's internal file crawler/cache system.
 	// Experimental.
 	Haste *HasteConfig `field:"optional" json:"haste" yaml:"haste"`
-	// Insert Jest's globals (expect, test, describe, beforeEach etc.) into the global environment. If you set this to false, you should import from @jest/globals.
+	// Insert Jest's globals (expect, test, describe, beforeEach etc.) into the global environment. If you set this to false, you should import from.
 	// Experimental.
 	InjectGlobals *bool `field:"optional" json:"injectGlobals" yaml:"injectGlobals"`
 	// A number limiting the number of tests that are allowed to run at the same time when using test.concurrent. Any test above this limit will be queued and executed once a slot is released.
