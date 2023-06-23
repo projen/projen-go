@@ -35,6 +35,9 @@ type BuildWorkflowOptions struct {
 	// not be pushed back to the branch.
 	// Experimental.
 	MutableBuild *bool `field:"optional" json:"mutableBuild" yaml:"mutableBuild"`
+	// Name of the buildfile (e.g. "build" becomes "build.yml").
+	// Experimental.
+	Name *string `field:"optional" json:"name" yaml:"name"`
 	// Permissions granted to the build job To limit job permissions for `contents`, the desired permissions have to be explicitly set, e.g.: `{ contents: JobPermission.NONE }`.
 	// Experimental.
 	Permissions *workflows.JobPermissions `field:"optional" json:"permissions" yaml:"permissions"`
