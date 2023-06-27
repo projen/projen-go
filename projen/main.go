@@ -782,6 +782,16 @@ func init() {
 		reflect.TypeOf((*ProjenrcOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
+		"projen.ReleasableCommits",
+		reflect.TypeOf((*ReleasableCommits)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "cmd", GoGetter: "Cmd"},
+		},
+		func() interface{} {
+			return &jsiiProxy_ReleasableCommits{}
+		},
+	)
+	_jsii_.RegisterClass(
 		"projen.Renovatebot",
 		reflect.TypeOf((*Renovatebot)(nil)).Elem(),
 		[]_jsii_.Member{

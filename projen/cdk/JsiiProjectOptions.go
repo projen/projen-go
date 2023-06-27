@@ -348,6 +348,9 @@ type JsiiProjectOptions struct {
 	// in order to create a publishing task for each publishing activity.
 	// Experimental.
 	PublishTasks *bool `field:"optional" json:"publishTasks" yaml:"publishTasks"`
+	// Find commits that should be considered releasable Used to decide if a release is required.
+	// Experimental.
+	ReleasableCommits projen.ReleasableCommits `field:"optional" json:"releasableCommits" yaml:"releasableCommits"`
 	// Defines additional release branches.
 	//
 	// A workflow will be created for each

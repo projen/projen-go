@@ -14,6 +14,9 @@ type VersionOptions struct {
 	//
 	// Experimental.
 	VersionInputFile *string `field:"required" json:"versionInputFile" yaml:"versionInputFile"`
+	// Find commits that should be considered releasable Used to decide if a release is required.
+	// Experimental.
+	ReleasableCommits ReleasableCommits `field:"optional" json:"releasableCommits" yaml:"releasableCommits"`
 	// The tag prefix corresponding to this version.
 	// Experimental.
 	TagPrefix *string `field:"optional" json:"tagPrefix" yaml:"tagPrefix"`
