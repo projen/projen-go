@@ -24,6 +24,9 @@ type Task interface {
 	Description() *string
 	// Experimental.
 	SetDescription(val *string)
+	// Returns all environment variables in the task level.
+	// Experimental.
+	EnvVars() *map[string]*string
 	// Task name.
 	// Experimental.
 	Name() *string
@@ -97,6 +100,16 @@ func (j *jsiiProxy_Task) Description() *string {
 	_jsii_.Get(
 		j,
 		"description",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Task) EnvVars() *map[string]*string {
+	var returns *map[string]*string
+	_jsii_.Get(
+		j,
+		"envVars",
 		&returns,
 	)
 	return returns

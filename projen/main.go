@@ -937,6 +937,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "condition", GoGetter: "Condition"},
 			_jsii_.MemberProperty{JsiiProperty: "description", GoGetter: "Description"},
 			_jsii_.MemberMethod{JsiiMethod: "env", GoMethod: "Env"},
+			_jsii_.MemberProperty{JsiiProperty: "envVars", GoGetter: "EnvVars"},
 			_jsii_.MemberMethod{JsiiMethod: "exec", GoMethod: "Exec"},
 			_jsii_.MemberMethod{JsiiMethod: "lock", GoMethod: "Lock"},
 			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
