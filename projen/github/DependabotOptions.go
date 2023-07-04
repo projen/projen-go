@@ -19,9 +19,18 @@ type DependabotOptions struct {
 	// List of labels to apply to the created PR's.
 	// Experimental.
 	Labels *[]*string `field:"optional" json:"labels" yaml:"labels"`
+	// Sets the maximum of pull requests Dependabot opens for version updates.
+	//
+	// Dependabot will not open any new requests until some of those open requests
+	// are merged or closed.
+	// Experimental.
+	OpenPullRequestsLimit *float64 `field:"optional" json:"openPullRequestsLimit" yaml:"openPullRequestsLimit"`
 	// Map of package registries to use.
 	// Experimental.
 	Registries *map[string]*DependabotRegistry `field:"optional" json:"registries" yaml:"registries"`
+	// Specify individual reviewers or teams of reviewers for all pull requests raised for a package manager.
+	// Experimental.
+	Reviewers *[]*string `field:"optional" json:"reviewers" yaml:"reviewers"`
 	// How often to check for new versions and raise pull requests.
 	// Experimental.
 	ScheduleInterval DependabotScheduleInterval `field:"optional" json:"scheduleInterval" yaml:"scheduleInterval"`
