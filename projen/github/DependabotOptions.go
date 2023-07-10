@@ -3,6 +3,20 @@ package github
 
 // Experimental.
 type DependabotOptions struct {
+	// https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#allow.
+	//
+	// Use the allow option to customize which dependencies are updated. This
+	// applies to both version and security updates.
+	// Experimental.
+	Allow *[]*DependabotAllow `field:"optional" json:"allow" yaml:"allow"`
+	// Specify individual assignees or teams of assignees for all pull requests raised for a package manager.
+	// Experimental.
+	Assignees *[]*string `field:"optional" json:"assignees" yaml:"assignees"`
+	// https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#groups.
+	//
+	// You can create groups to package dependency updates together into a single PR.
+	// Experimental.
+	Groups *map[string]*DependabotGroup `field:"optional" json:"groups" yaml:"groups"`
 	// You can use the `ignore` option to customize which dependencies are updated.
 	//
 	// The ignore option supports the following options.

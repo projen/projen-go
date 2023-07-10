@@ -8,6 +8,14 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 )
 
+func (d *jsiiProxy_Dependabot) validateAddAllowParameters(dependencyName *string) error {
+	if dependencyName == nil {
+		return fmt.Errorf("parameter dependencyName is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (d *jsiiProxy_Dependabot) validateAddIgnoreParameters(dependencyName *string) error {
 	if dependencyName == nil {
 		return fmt.Errorf("parameter dependencyName is required, but nil was provided")

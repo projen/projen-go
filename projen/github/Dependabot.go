@@ -26,6 +26,9 @@ type Dependabot interface {
 	IgnoresProjen() *bool
 	// Experimental.
 	Project() projen.Project
+	// Allows a dependency from automatic updates.
+	// Experimental.
+	AddAllow(dependencyName *string)
 	// Ignores a dependency from automatic updates.
 	// Experimental.
 	AddIgnore(dependencyName *string, versions ...*string)
@@ -104,6 +107,17 @@ func NewDependabot_Override(d Dependabot, github GitHub, options *DependabotOpti
 		"projen.github.Dependabot",
 		[]interface{}{github, options},
 		d,
+	)
+}
+
+func (d *jsiiProxy_Dependabot) AddAllow(dependencyName *string) {
+	if err := d.validateAddAllowParameters(dependencyName); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		d,
+		"addAllow",
+		[]interface{}{dependencyName},
 	)
 }
 

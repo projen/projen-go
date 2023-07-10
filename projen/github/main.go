@@ -60,6 +60,7 @@ func init() {
 		"projen.github.Dependabot",
 		reflect.TypeOf((*Dependabot)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addAllow", GoMethod: "AddAllow"},
 			_jsii_.MemberMethod{JsiiMethod: "addIgnore", GoMethod: "AddIgnore"},
 			_jsii_.MemberProperty{JsiiProperty: "config", GoGetter: "Config"},
 			_jsii_.MemberProperty{JsiiProperty: "ignoresProjen", GoGetter: "IgnoresProjen"},
@@ -73,6 +74,14 @@ func init() {
 			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
 			return &j
 		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.DependabotAllow",
+		reflect.TypeOf((*DependabotAllow)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.DependabotGroup",
+		reflect.TypeOf((*DependabotGroup)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.github.DependabotIgnore",

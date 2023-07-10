@@ -4,6 +4,10 @@ package github
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (d *jsiiProxy_Dependabot) validateAddAllowParameters(dependencyName *string) error {
+	return nil
+}
+
 func (d *jsiiProxy_Dependabot) validateAddIgnoreParameters(dependencyName *string) error {
 	return nil
 }
