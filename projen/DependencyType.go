@@ -29,5 +29,10 @@ const (
 	// Available for Node packages.
 	// Experimental.
 	DependencyType_OVERRIDE DependencyType = "OVERRIDE"
+	// An optional dependency that may be used at runtime if available, but is not required.
+	//
+	// It is expected to be installed by the consumer.
+	// Experimental.
+	DependencyType_OPTIONAL DependencyType = "OPTIONAL"
 )
 

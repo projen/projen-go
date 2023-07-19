@@ -64,6 +64,7 @@ func init() {
 			"TEST": DependencyType_TEST,
 			"DEVENV": DependencyType_DEVENV,
 			"OVERRIDE": DependencyType_OVERRIDE,
+			"OPTIONAL": DependencyType_OPTIONAL,
 		},
 	)
 	_jsii_.RegisterStruct(

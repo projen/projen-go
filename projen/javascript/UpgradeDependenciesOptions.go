@@ -1,5 +1,8 @@
 package javascript
 
+import (
+	"github.com/projen/projen-go/projen"
+)
 
 // Options for `UpgradeDependencies`.
 // Experimental.
@@ -13,6 +16,9 @@ type UpgradeDependenciesOptions struct {
 	// Title of the pull request to use (should be all lower-case).
 	// Experimental.
 	PullRequestTitle *string `field:"optional" json:"pullRequestTitle" yaml:"pullRequestTitle"`
+	// The semantic commit type.
+	// Experimental.
+	SemanticCommit *string `field:"optional" json:"semanticCommit" yaml:"semanticCommit"`
 	// Add Signed-off-by line by the committer at the end of the commit log message.
 	// Experimental.
 	Signoff *bool `field:"optional" json:"signoff" yaml:"signoff"`
@@ -21,6 +27,9 @@ type UpgradeDependenciesOptions struct {
 	// This will also be the workflow name.
 	// Experimental.
 	TaskName *string `field:"optional" json:"taskName" yaml:"taskName"`
+	// Specify which dependency types the upgrade should operate on.
+	// Experimental.
+	Types *[]projen.DependencyType `field:"optional" json:"types" yaml:"types"`
 	// Include a github workflow for creating PR's that upgrades the required dependencies, either by manual dispatch, or by a schedule.
 	//
 	// If this is `false`, only a local projen task is created, which can be executed manually to
