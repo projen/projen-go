@@ -28,7 +28,7 @@ func (n *jsiiProxy_NodePackage) validateRemoveScriptParameters(name *string) err
 	return nil
 }
 
-func (n *jsiiProxy_NodePackage) validateRenderUpgradePackagesCommandParameters(exclude *[]*string) error {
+func (n *jsiiProxy_NodePackage) validateRenderUpgradePackagesCommandParameters(types *[]projen.DependencyType, exclude *[]*string) error {
 	return nil
 }
 

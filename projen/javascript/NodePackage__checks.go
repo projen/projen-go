@@ -66,7 +66,11 @@ func (n *jsiiProxy_NodePackage) validateRemoveScriptParameters(name *string) err
 	return nil
 }
 
-func (n *jsiiProxy_NodePackage) validateRenderUpgradePackagesCommandParameters(exclude *[]*string) error {
+func (n *jsiiProxy_NodePackage) validateRenderUpgradePackagesCommandParameters(types *[]projen.DependencyType, exclude *[]*string) error {
+	if types == nil {
+		return fmt.Errorf("parameter types is required, but nil was provided")
+	}
+
 	if exclude == nil {
 		return fmt.Errorf("parameter exclude is required, but nil was provided")
 	}
