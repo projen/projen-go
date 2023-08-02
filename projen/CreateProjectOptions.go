@@ -26,14 +26,20 @@ type CreateProjectOptions struct {
 	// Should we render commented-out default options in the projenrc file?
 	//
 	// Does not apply to projenrc.json files.
+	// Default: InitProjectOptionHints.FEATURED
+	//
 	// Experimental.
 	OptionHints InitProjectOptionHints `field:"optional" json:"optionHints" yaml:"optionHints"`
 	// Should we execute post synthesis hooks?
 	//
 	// (usually package manager install).
+	// Default: true.
+	//
 	// Experimental.
 	Post *bool `field:"optional" json:"post" yaml:"post"`
 	// Should we call `project.synth()` or instantiate the project (could still have side-effects) and render the .projenrc file.
+	// Default: true.
+	//
 	// Experimental.
 	Synth *bool `field:"optional" json:"synth" yaml:"synth"`
 }

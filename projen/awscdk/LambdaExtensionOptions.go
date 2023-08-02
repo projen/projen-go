@@ -11,6 +11,8 @@ type LambdaExtensionOptions struct {
 	//
 	// If not specified the default bundling options specified for the project
 	// `Bundler` instance will be used.
+	// Default: - defaults.
+	//
 	// Experimental.
 	BundlingOptions *javascript.BundlingOptions `field:"optional" json:"bundlingOptions" yaml:"bundlingOptions"`
 	// The extension's compatible runtimes.
@@ -32,12 +34,20 @@ type LambdaExtensionOptions struct {
 	//
 	// This file should also be
 	// under the source tree.
+	// Default: - The name of the entrypoint file, with the `-layer-version.ts`
+	// suffix instead of `.lambda-extension.ts`.
+	//
 	// Experimental.
 	ConstructFile *string `field:"optional" json:"constructFile" yaml:"constructFile"`
 	// The name of the generated `lambda.LayerVersion` subclass.
+	// Default: - A pascal cased version of the name of the entrypoint file, with
+	// the extension `LayerVersion` (e.g. `AppConfigLayerVersion`).
+	//
 	// Experimental.
 	ConstructName *string `field:"optional" json:"constructName" yaml:"constructName"`
 	// Name of the extension.
+	// Default: - Derived from the entrypoint filename.
+	//
 	// Experimental.
 	Name *string `field:"optional" json:"name" yaml:"name"`
 }

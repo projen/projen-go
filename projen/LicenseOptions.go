@@ -11,11 +11,15 @@ type LicenseOptions struct {
 	// Copyright owner.
 	//
 	// If the license text has $copyright_owner, this option must be specified.
+	// Default: -.
+	//
 	// Experimental.
 	CopyrightOwner *string `field:"optional" json:"copyrightOwner" yaml:"copyrightOwner"`
 	// Period of license (e.g. "1998-2023").
 	//
 	// The string `$copyright_period` will be substituted with this string.
+	// Default: - current year (e.g. "2020")
+	//
 	// Experimental.
 	CopyrightPeriod *string `field:"optional" json:"copyrightPeriod" yaml:"copyrightPeriod"`
 }

@@ -9,9 +9,13 @@ type DockerComposeProps struct {
 	// Example:
 	//   'myname' yields 'docker-compose.myname.yml'
 	//
+	// Default: - no name is added.
+	//
 	// Experimental.
 	NameSuffix *string `field:"optional" json:"nameSuffix" yaml:"nameSuffix"`
 	// Docker Compose schema version do be used.
+	// Default: 3.3
+	//
 	// Experimental.
 	SchemaVersion *string `field:"optional" json:"schemaVersion" yaml:"schemaVersion"`
 	// Service descriptions.

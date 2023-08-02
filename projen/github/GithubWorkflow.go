@@ -18,6 +18,8 @@ import (
 type GithubWorkflow interface {
 	projen.Component
 	// Concurrency ensures that only a single job or workflow using the same concurrency group will run at a time.
+	// Default: disabled.
+	//
 	// Experimental.
 	Concurrency() *string
 	// The workflow YAML file.

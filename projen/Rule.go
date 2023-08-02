@@ -10,12 +10,18 @@ type Rule struct {
 	// Experimental.
 	Targets *[]*string `field:"required" json:"targets" yaml:"targets"`
 	// Marks whether the target is phony.
+	// Default: false.
+	//
 	// Experimental.
 	Phony *bool `field:"optional" json:"phony" yaml:"phony"`
 	// Files that are used as inputs to create a target.
+	// Default: [].
+	//
 	// Experimental.
 	Prerequisites *[]*string `field:"optional" json:"prerequisites" yaml:"prerequisites"`
 	// Commands that are run (using prerequisites as inputs) to create a target.
+	// Default: [].
+	//
 	// Experimental.
 	Recipe *[]*string `field:"optional" json:"recipe" yaml:"recipe"`
 }

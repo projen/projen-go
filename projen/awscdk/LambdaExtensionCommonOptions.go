@@ -11,6 +11,8 @@ type LambdaExtensionCommonOptions struct {
 	//
 	// If not specified the default bundling options specified for the project
 	// `Bundler` instance will be used.
+	// Default: - defaults.
+	//
 	// Experimental.
 	BundlingOptions *javascript.BundlingOptions `field:"optional" json:"bundlingOptions" yaml:"bundlingOptions"`
 	// The extension's compatible runtimes.

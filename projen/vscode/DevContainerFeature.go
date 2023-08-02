@@ -10,6 +10,8 @@ type DevContainerFeature struct {
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
 	// feature version.
+	// Default: latest.
+	//
 	// Experimental.
 	Version *string `field:"optional" json:"version" yaml:"version"`
 }

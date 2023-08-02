@@ -22,6 +22,8 @@ type TaskStepOptions struct {
 	// Example:
 	//   task.spawn("deploy", { args: ["--force"] });
 	//
+	// Default: - no arguments are passed to the step.
+	//
 	// Experimental.
 	Args *[]*string `field:"optional" json:"args" yaml:"args"`
 	// A shell command which determines if the this step should be executed.
@@ -32,6 +34,8 @@ type TaskStepOptions struct {
 	// Experimental.
 	Condition *string `field:"optional" json:"condition" yaml:"condition"`
 	// The working directory for this step.
+	// Default: - determined by the task.
+	//
 	// Experimental.
 	Cwd *string `field:"optional" json:"cwd" yaml:"cwd"`
 	// Defines environment variables for the execution of this step (`exec` and `builtin` only).
@@ -41,9 +45,13 @@ type TaskStepOptions struct {
 	// Example:
 	//   { "foo": "bar", "boo": "$(echo baz)" }
 	//
+	// Default: - no environment variables defined in step.
+	//
 	// Experimental.
 	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// Step name.
+	// Default: - no name.
+	//
 	// Experimental.
 	Name *string `field:"optional" json:"name" yaml:"name"`
 	// Should this step receive args passed to the task.
@@ -56,6 +64,8 @@ type TaskStepOptions struct {
 	//
 	// Example:
 	//   task.exec("echo Hello $@ World!", { receiveArgs: true });
+	//
+	// Default: false.
 	//
 	// Experimental.
 	ReceiveArgs *bool `field:"optional" json:"receiveArgs" yaml:"receiveArgs"`

@@ -17,6 +17,8 @@ type IntegrationTestOptions struct {
 	// Experimental.
 	TsconfigPath *string `field:"required" json:"tsconfigPath" yaml:"tsconfigPath"`
 	// Name of the integration test.
+	// Default: - Derived from the entrypoint filename.
+	//
 	// Experimental.
 	Name *string `field:"optional" json:"name" yaml:"name"`
 }

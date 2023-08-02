@@ -26,15 +26,23 @@ type AutoDiscoverOptions struct {
 	// Experimental.
 	IntegrationTestOptions *IntegrationTestCommonOptions `field:"optional" json:"integrationTestOptions" yaml:"integrationTestOptions"`
 	// Auto-discover edge lambda functions.
+	// Default: true.
+	//
 	// Experimental.
 	EdgeLambdaAutoDiscover *bool `field:"optional" json:"edgeLambdaAutoDiscover" yaml:"edgeLambdaAutoDiscover"`
 	// Auto-discover integration tests.
+	// Default: true.
+	//
 	// Experimental.
 	IntegrationTestAutoDiscover *bool `field:"optional" json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
 	// Auto-discover lambda functions.
+	// Default: true.
+	//
 	// Experimental.
 	LambdaAutoDiscover *bool `field:"optional" json:"lambdaAutoDiscover" yaml:"lambdaAutoDiscover"`
 	// Auto-discover lambda extensions.
+	// Default: true.
+	//
 	// Experimental.
 	LambdaExtensionAutoDiscover *bool `field:"optional" json:"lambdaExtensionAutoDiscover" yaml:"lambdaExtensionAutoDiscover"`
 }

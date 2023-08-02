@@ -9,9 +9,13 @@ type GithubWorkflowOptions struct {
 	// Currently in beta.
 	// See: https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#concurrency
 	//
+	// Default: - disabled.
+	//
 	// Experimental.
 	Concurrency *string `field:"optional" json:"concurrency" yaml:"concurrency"`
 	// Force the creation of the workflow even if `workflows` is disabled in `GitHub`.
+	// Default: false.
+	//
 	// Experimental.
 	Force *bool `field:"optional" json:"force" yaml:"force"`
 }

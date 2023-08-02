@@ -16,6 +16,8 @@ type GitHubReleasesPublishOptions struct {
 	// Experimental.
 	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
+	// Default: - no additional tools are installed.
+	//
 	// Experimental.
 	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// The location of an .md file (relative to `dist/`) that includes the changelog for the release.

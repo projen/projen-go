@@ -17,15 +17,21 @@ type BundlingOptions struct {
 	// code in node at run time from a package that cannot be bundled. For
 	// example, the fsevents package contains a native extension, which esbuild
 	// doesn't support.
+	// Default: [].
+	//
 	// Experimental.
 	Externals *[]*string `field:"optional" json:"externals" yaml:"externals"`
 	// Include a source map in the bundle.
+	// Default: false.
+	//
 	// Experimental.
 	Sourcemap *bool `field:"optional" json:"sourcemap" yaml:"sourcemap"`
 	// In addition to the `bundle:xyz` task, creates `bundle:xyz:watch` task which will invoke the same esbuild command with the `--watch` flag.
 	//
 	// This can be used
 	// to continusouly watch for changes.
+	// Default: true.
+	//
 	// Experimental.
 	WatchTask *bool `field:"optional" json:"watchTask" yaml:"watchTask"`
 }

@@ -8,6 +8,8 @@ import (
 // Experimental.
 type AddPostBuildJobTaskOptions struct {
 	// Github Runner selection labels.
+	// Default: ["ubuntu-latest"].
+	//
 	// Experimental.
 	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
 	// Tools that should be installed before the task is run.

@@ -17,15 +17,21 @@ type AddBundleOptions struct {
 	// code in node at run time from a package that cannot be bundled. For
 	// example, the fsevents package contains a native extension, which esbuild
 	// doesn't support.
+	// Default: [].
+	//
 	// Experimental.
 	Externals *[]*string `field:"optional" json:"externals" yaml:"externals"`
 	// Include a source map in the bundle.
+	// Default: false.
+	//
 	// Experimental.
 	Sourcemap *bool `field:"optional" json:"sourcemap" yaml:"sourcemap"`
 	// In addition to the `bundle:xyz` task, creates `bundle:xyz:watch` task which will invoke the same esbuild command with the `--watch` flag.
 	//
 	// This can be used
 	// to continusouly watch for changes.
+	// Default: true.
+	//
 	// Experimental.
 	WatchTask *bool `field:"optional" json:"watchTask" yaml:"watchTask"`
 	// esbuild platform.
@@ -43,6 +49,8 @@ type AddBundleOptions struct {
 	// Experimental.
 	Target *string `field:"required" json:"target" yaml:"target"`
 	// Mark the output file as executable.
+	// Default: false.
+	//
 	// Experimental.
 	Executable *bool `field:"optional" json:"executable" yaml:"executable"`
 	// Map of file extensions (without dot) and loaders to use for this file type.
@@ -51,9 +59,13 @@ type AddBundleOptions struct {
 	// Experimental.
 	Loaders *map[string]*string `field:"optional" json:"loaders" yaml:"loaders"`
 	// Bundler output path relative to the asset's output directory.
+	// Default: "index.js"
+	//
 	// Experimental.
 	Outfile *string `field:"optional" json:"outfile" yaml:"outfile"`
 	// The path of the tsconfig.json file to use for bundling.
+	// Default: "tsconfig.json"
+	//
 	// Experimental.
 	TsconfigPath *string `field:"optional" json:"tsconfigPath" yaml:"tsconfigPath"`
 }

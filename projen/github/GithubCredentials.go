@@ -54,6 +54,8 @@ func (j *jsiiProxy_GithubCredentials) TokenRef() *string {
 // can be specified here.
 // See: https://projen.io/github.html#github-app
 //
+// Default: - app id stored in "PROJEN_APP_ID" and private key stored in "PROJEN_APP_PRIVATE_KEY" with all permissions attached to the app.
+//
 // Experimental.
 func GithubCredentials_FromApp(options *GithubCredentialsAppOptions) GithubCredentials {
 	_init_.Initialize()
@@ -78,6 +80,8 @@ func GithubCredentials_FromApp(options *GithubCredentialsAppOptions) GithubCrede
 // The token must be added as a secret to the GitHub repo, and the name of the
 // secret can be specified here.
 // See: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+//
+// Default: - a secret named "PROJEN_GITHUB_TOKEN".
 //
 // Experimental.
 func GithubCredentials_FromPersonalAccessToken(options *GithubCredentialsPersonalAccessTokenOptions) GithubCredentials {

@@ -26,6 +26,8 @@ type GitPublishOptions struct {
 	// Experimental.
 	VersionFile *string `field:"required" json:"versionFile" yaml:"versionFile"`
 	// Branch to push to.
+	// Default: "main".
+	//
 	// Experimental.
 	GitBranch *string `field:"optional" json:"gitBranch" yaml:"gitBranch"`
 	// Override git-push command.

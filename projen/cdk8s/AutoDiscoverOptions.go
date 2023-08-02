@@ -11,6 +11,8 @@ type AutoDiscoverOptions struct {
 	// Experimental.
 	TsconfigPath *string `field:"required" json:"tsconfigPath" yaml:"tsconfigPath"`
 	// Automatically discover integration tests.
+	// Default: true.
+	//
 	// Experimental.
 	IntegrationTestAutoDiscover *bool `field:"optional" json:"integrationTestAutoDiscover" yaml:"integrationTestAutoDiscover"`
 }

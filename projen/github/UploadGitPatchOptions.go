@@ -13,12 +13,18 @@ type UploadGitPatchOptions struct {
 	// Experimental.
 	StepId *string `field:"required" json:"stepId" yaml:"stepId"`
 	// Fail if a mutation was found and print this error message.
+	// Default: - do not fail upon mutation.
+	//
 	// Experimental.
 	MutationError *string `field:"optional" json:"mutationError" yaml:"mutationError"`
 	// The name of the artifact the patch is stored as.
+	// Default: ".repo.patch"
+	//
 	// Experimental.
 	PatchFile *string `field:"optional" json:"patchFile" yaml:"patchFile"`
 	// The name of the step.
+	// Default: "Find mutations".
+	//
 	// Experimental.
 	StepName *string `field:"optional" json:"stepName" yaml:"stepName"`
 }

@@ -5,12 +5,18 @@ package javascript
 // Experimental.
 type BundlerOptions struct {
 	// Install the `bundle` command as a pre-compile phase.
+	// Default: true.
+	//
 	// Experimental.
 	AddToPreCompile *bool `field:"optional" json:"addToPreCompile" yaml:"addToPreCompile"`
 	// Output directory for all bundles.
+	// Default: "assets".
+	//
 	// Experimental.
 	AssetsDir *string `field:"optional" json:"assetsDir" yaml:"assetsDir"`
 	// The semantic version requirement for `esbuild`.
+	// Default: - no specific version (implies latest).
+	//
 	// Experimental.
 	EsbuildVersion *string `field:"optional" json:"esbuildVersion" yaml:"esbuildVersion"`
 	// Map of file extensions (without dot) and loaders to use for this file type.

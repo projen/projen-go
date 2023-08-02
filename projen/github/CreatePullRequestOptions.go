@@ -17,12 +17,18 @@ type CreatePullRequestOptions struct {
 	// Experimental.
 	WorkflowName *string `field:"required" json:"workflowName" yaml:"workflowName"`
 	// Assignees to add on the PR.
+	// Default: - no assignees.
+	//
 	// Experimental.
 	Assignees *[]*string `field:"optional" json:"assignees" yaml:"assignees"`
 	// Sets the pull request base branch.
+	// Default: - The branch checked out in the workflow.
+	//
 	// Experimental.
 	BaseBranch *string `field:"optional" json:"baseBranch" yaml:"baseBranch"`
 	// The pull request branch name.
+	// Default: `github-actions/${options.workflowName}`
+	//
 	// Experimental.
 	BranchName *string `field:"optional" json:"branchName" yaml:"branchName"`
 	// The job credentials used to create the pull request.
@@ -31,18 +37,28 @@ type CreatePullRequestOptions struct {
 	// Experimental.
 	Credentials GithubCredentials `field:"optional" json:"credentials" yaml:"credentials"`
 	// The git identity used to create the commit.
+	// Default: - the default github-actions user.
+	//
 	// Experimental.
 	GitIdentity *GitIdentity `field:"optional" json:"gitIdentity" yaml:"gitIdentity"`
 	// Labels to apply on the PR.
+	// Default: - no labels.
+	//
 	// Experimental.
 	Labels *[]*string `field:"optional" json:"labels" yaml:"labels"`
 	// Add Signed-off-by line by the committer at the end of the commit log message.
+	// Default: true.
+	//
 	// Experimental.
 	Signoff *bool `field:"optional" json:"signoff" yaml:"signoff"`
 	// The step ID which produces the output which indicates if a patch was created.
+	// Default: "create_pr".
+	//
 	// Experimental.
 	StepId *string `field:"optional" json:"stepId" yaml:"stepId"`
 	// The name of the step displayed on GitHub.
+	// Default: "Create Pull Request".
+	//
 	// Experimental.
 	StepName *string `field:"optional" json:"stepName" yaml:"stepName"`
 }

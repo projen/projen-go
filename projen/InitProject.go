@@ -12,6 +12,8 @@ type InitProject struct {
 	// Include commented out options.
 	//
 	// Does not apply to projenrc.json files.
+	// Default: InitProjectOptionHints.FEATURED
+	//
 	// Experimental.
 	Comments InitProjectOptionHints `field:"required" json:"comments" yaml:"comments"`
 	// The JSII FQN of the project type.

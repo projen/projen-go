@@ -13,23 +13,35 @@ type DependabotRegistry struct {
 	// Experimental.
 	Url *string `field:"required" json:"url" yaml:"url"`
 	// A reference to a Dependabot secret containing an access key for this registry.
+	// Default: undefined.
+	//
 	// Experimental.
 	Key *string `field:"optional" json:"key" yaml:"key"`
 	// Used with the hex-organization registry type.
 	// See: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#hex-organization
 	//
+	// Default: undefined.
+	//
 	// Experimental.
 	Organization *string `field:"optional" json:"organization" yaml:"organization"`
 	// A reference to a Dependabot secret containing the password for the specified user.
+	// Default: undefined.
+	//
 	// Experimental.
 	Password *string `field:"optional" json:"password" yaml:"password"`
 	// For registries with type: python-index, if the boolean value is true, pip esolves dependencies by using the specified URL rather than the base URL of the Python Package Index (by default https://pypi.org/simple).
+	// Default: undefined.
+	//
 	// Experimental.
 	ReplacesBase *bool `field:"optional" json:"replacesBase" yaml:"replacesBase"`
 	// Secret token for dependabot access e.g. '${{ secrets.DEPENDABOT_PACKAGE_TOKEN }}'.
+	// Default: undefined.
+	//
 	// Experimental.
 	Token *string `field:"optional" json:"token" yaml:"token"`
 	// The username that Dependabot uses to access the registry.
+	// Default: - do not authenticate.
+	//
 	// Experimental.
 	Username *string `field:"optional" json:"username" yaml:"username"`
 }

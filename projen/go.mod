@@ -3,5 +3,5 @@ module github.com/projen/projen-go/projen
 go 1.18
 
 require (
-	github.com/aws/jsii-runtime-go v1.85.0
+	github.com/aws/jsii-runtime-go v1.86.0
 )

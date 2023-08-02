@@ -5,17 +5,23 @@ package awscdk
 // Experimental.
 type AwsCdkDepsCommonOptions struct {
 	// Minimum version of the AWS CDK to depend on.
+	// Default: "2.1.0"
+	//
 	// Experimental.
 	CdkVersion *string `field:"required" json:"cdkVersion" yaml:"cdkVersion"`
 	// Warning: NodeJS only.
 	//
 	// Install the.
+	// Default: - will be included by default for AWS CDK >= 1.0.0 < 2.0.0
+	//
 	// Deprecated: The.
 	CdkAssert *bool `field:"optional" json:"cdkAssert" yaml:"cdkAssert"`
 	// Install the assertions library?
 	//
 	// Only needed for CDK 1.x. If using CDK 2.x then
 	// assertions is already included in 'aws-cdk-lib'.
+	// Default: - will be included by default for AWS CDK >= 1.111.0 < 2.0.0
+	//
 	// Experimental.
 	CdkAssertions *bool `field:"optional" json:"cdkAssertions" yaml:"cdkAssertions"`
 	// Which AWS CDKv1 modules this project requires.
@@ -29,6 +35,8 @@ type AwsCdkDepsCommonOptions struct {
 	// they are present during development.
 	//
 	// Note: this setting only applies to construct library projects.
+	// Default: true.
+	//
 	// Deprecated: Not supported in CDK v2.
 	CdkDependenciesAsDeps *bool `field:"optional" json:"cdkDependenciesAsDeps" yaml:"cdkDependenciesAsDeps"`
 	// AWS CDK modules required for testing.
@@ -41,6 +49,9 @@ type AwsCdkDepsCommonOptions struct {
 	// Experimental.
 	CdkVersionPinning *bool `field:"optional" json:"cdkVersionPinning" yaml:"cdkVersionPinning"`
 	// Minimum version of the `constructs` library to depend on.
+	// Default: - for CDK 1.x the default is "3.2.27", for CDK 2.x the default is
+	// "10.0.5".
+	//
 	// Experimental.
 	ConstructsVersion *string `field:"optional" json:"constructsVersion" yaml:"constructsVersion"`
 }

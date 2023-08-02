@@ -15,6 +15,8 @@ type PomOptions struct {
 	// fully defines the artifact's living quarters within the repository. In the
 	// case of the above project, my-project lives in
 	// $M2_REPO/org/codehaus/mojo/my-project.
+	// Default: "my-app".
+	//
 	// Experimental.
 	ArtifactId *string `field:"required" json:"artifactId" yaml:"artifactId"`
 	// This is generally unique amongst an organization or a project.
@@ -30,6 +32,8 @@ type PomOptions struct {
 	// '/' in Unix) which becomes a relative directory structure from the base
 	// repository. In the example given, the org.codehaus.mojo group lives within
 	// the directory $M2_REPO/org/codehaus/mojo.
+	// Default: "org.acme"
+	//
 	// Experimental.
 	GroupId *string `field:"required" json:"groupId" yaml:"groupId"`
 	// This is the last piece of the naming puzzle.
@@ -42,6 +46,8 @@ type PomOptions struct {
 	// within an artifact's repository to separate versions from each other.
 	// my-project version 1.0 files live in the directory structure
 	// $M2_REPO/org/codehaus/mojo/my-project/1.0.
+	// Default: "0.1.0"
+	//
 	// Experimental.
 	Version *string `field:"required" json:"version" yaml:"version"`
 	// Description of a project is always good.
@@ -49,15 +55,21 @@ type PomOptions struct {
 	// Although this should not replace
 	// formal documentation, a quick comment to any readers of the POM is always
 	// helpful.
+	// Default: undefined.
+	//
 	// Experimental.
 	Description *string `field:"optional" json:"description" yaml:"description"`
 	// Project packaging format.
+	// Default: "jar".
+	//
 	// Experimental.
 	Packaging *string `field:"optional" json:"packaging" yaml:"packaging"`
 	// The URL, like the name, is not required.
 	//
 	// This is a nice gesture for
 	// projects users, however, so that they know where the project lives.
+	// Default: undefined.
+	//
 	// Experimental.
 	Url *string `field:"optional" json:"url" yaml:"url"`
 }

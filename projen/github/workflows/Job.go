@@ -114,6 +114,8 @@ type Job struct {
 	// Experimental.
 	Services *map[string]*ContainerOptions `field:"optional" json:"services" yaml:"services"`
 	// The maximum number of minutes to let a job run before GitHub automatically cancels it.
+	// Default: 360.
+	//
 	// Experimental.
 	TimeoutMinutes *float64 `field:"optional" json:"timeoutMinutes" yaml:"timeoutMinutes"`
 	// Tools required for this job.

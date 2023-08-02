@@ -11,14 +11,20 @@ type TaskOptions struct {
 	// Experimental.
 	Condition *string `field:"optional" json:"condition" yaml:"condition"`
 	// The working directory for all steps in this task (unless overridden by the step).
+	// Default: - process.cwd()
+	//
 	// Experimental.
 	Cwd *string `field:"optional" json:"cwd" yaml:"cwd"`
 	// The description of this build command.
+	// Default: - the task name.
+	//
 	// Experimental.
 	Description *string `field:"optional" json:"description" yaml:"description"`
 	// Defines environment variables for the execution of this task.
 	//
 	// Values in this map will be evaluated in a shell, so you can do stuff like `$(echo "foo")`.
+	// Default: {}.
+	//
 	// Experimental.
 	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// A set of environment variables that must be defined in order to execute this task.
@@ -29,13 +35,19 @@ type TaskOptions struct {
 	// Should the provided `exec` shell command receive fixed args.
 	// See: {@link TaskStepOptions.args }
 	//
+	// Default: - no arguments are passed to the step.
+	//
 	// Experimental.
 	Args *[]*string `field:"optional" json:"args" yaml:"args"`
 	// Shell command to execute as the first command of the task.
+	// Default: - add steps using `task.exec(command)` or `task.spawn(subtask)`
+	//
 	// Experimental.
 	Exec *string `field:"optional" json:"exec" yaml:"exec"`
 	// Should the provided `exec` shell command receive args passed to the task.
 	// See: {@link TaskStepOptions.receiveArgs }
+	//
+	// Default: false.
 	//
 	// Experimental.
 	ReceiveArgs *bool `field:"optional" json:"receiveArgs" yaml:"receiveArgs"`

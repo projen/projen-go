@@ -15,6 +15,8 @@ type MergifyQueue struct {
 	//
 	// Possible values are `merge`, `squash`, `rebase` or `fast-forward`.
 	// `fast-forward` is not supported on queues with `speculative_checks` > 1, `batch_size` > 1, or with `allow_inplace_checks` set to false.
+	// Default: "merge".
+	//
 	// Experimental.
 	MergeMethod *string `field:"optional" json:"mergeMethod" yaml:"mergeMethod"`
 	// Method to use to update the pull request with its base branch when the speculative check is done in-place.
@@ -25,6 +27,8 @@ type MergifyQueue struct {
 	//
 	// Note that the `rebase` method has some drawbacks, see Mergify docs for details.
 	// See: https://docs.mergify.com/actions/queue/#queue-rules
+	//
+	// Default: - `merge` for all merge methods except `fast-forward` where `rebase` is used.
 	//
 	// Experimental.
 	UpdateMethod *string `field:"optional" json:"updateMethod" yaml:"updateMethod"`

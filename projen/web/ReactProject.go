@@ -172,6 +172,8 @@ type ReactProject interface {
 	// Experimental.
 	RunScriptCommand() *string
 	// The directory in which source files reside.
+	// Default: "src".
+	//
 	// Experimental.
 	Srcdir() *string
 	// Returns all the subprojects within this project.

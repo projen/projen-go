@@ -4,12 +4,18 @@ package python
 // Experimental.
 type PythonPackagingOptions struct {
 	// Author's e-mail.
+	// Default: $GIT_USER_EMAIL.
+	//
 	// Experimental.
 	AuthorEmail *string `field:"required" json:"authorEmail" yaml:"authorEmail"`
 	// Author's name.
+	// Default: $GIT_USER_NAME.
+	//
 	// Experimental.
 	AuthorName *string `field:"required" json:"authorName" yaml:"authorName"`
 	// Version of the package.
+	// Default: "0.1.0"
+	//
 	// Experimental.
 	Version *string `field:"required" json:"version" yaml:"version"`
 	// A list of PyPI trove classifiers that describe the project.

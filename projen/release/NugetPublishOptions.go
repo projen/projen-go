@@ -16,9 +16,13 @@ type NugetPublishOptions struct {
 	// Experimental.
 	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
+	// Default: - no additional tools are installed.
+	//
 	// Experimental.
 	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// GitHub secret which contains the API key for NuGet.
+	// Default: "NUGET_API_KEY".
+	//
 	// Experimental.
 	NugetApiKeySecret *string `field:"optional" json:"nugetApiKeySecret" yaml:"nugetApiKeySecret"`
 	// NuGet Server URL (defaults to nuget.org).

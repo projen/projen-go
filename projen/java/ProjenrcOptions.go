@@ -5,9 +5,13 @@ package java
 // Experimental.
 type ProjenrcOptions struct {
 	// The name of the Java class which contains the `main()` method for projen.
+	// Default: "projenrc".
+	//
 	// Experimental.
 	ClassName *string `field:"optional" json:"className" yaml:"className"`
 	// The projen version to use.
+	// Default: - current version.
+	//
 	// Experimental.
 	ProjenVersion *string `field:"optional" json:"projenVersion" yaml:"projenVersion"`
 	// Defines projenrc under the test scope instead of the main scope, which is reserved to the app.
@@ -19,6 +23,8 @@ type ProjenrcOptions struct {
 	//
 	// If this is disabled, projenrc should be under
 	// `src/main/java/projenrc.java`.
+	// Default: true.
+	//
 	// Experimental.
 	TestScope *bool `field:"optional" json:"testScope" yaml:"testScope"`
 }

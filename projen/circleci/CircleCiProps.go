@@ -22,6 +22,8 @@ type CircleCiProps struct {
 	// pipeline version.
 	// See: https://circleci.com/docs/2.0/configuration-reference/#version
 	//
+	// Default: 2.1
+	//
 	// Experimental.
 	Version *float64 `field:"optional" json:"version" yaml:"version"`
 	// List of Workflows of pipeline, e.g. ```json workflows: {   {     identifier: "build",       jobs: [{          identifier: "node/install",          context: ["npm"],       }]   } } ```.

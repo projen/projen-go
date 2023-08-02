@@ -15,15 +15,23 @@ type JsiiReleasePyPi struct {
 	// Deprecated: Use `PyPiPublishOptions` instead.
 	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
+	// Default: - no additional tools are installed.
+	//
 	// Deprecated: Use `PyPiPublishOptions` instead.
 	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// The GitHub secret which contains PyPI password.
+	// Default: "TWINE_PASSWORD".
+	//
 	// Deprecated: Use `PyPiPublishOptions` instead.
 	TwinePasswordSecret *string `field:"optional" json:"twinePasswordSecret" yaml:"twinePasswordSecret"`
 	// The registry url to use when releasing packages.
+	// Default: - twine default.
+	//
 	// Deprecated: Use `PyPiPublishOptions` instead.
 	TwineRegistryUrl *string `field:"optional" json:"twineRegistryUrl" yaml:"twineRegistryUrl"`
 	// The GitHub secret which contains PyPI user name.
+	// Default: "TWINE_USERNAME".
+	//
 	// Deprecated: Use `PyPiPublishOptions` instead.
 	TwineUsernameSecret *string `field:"optional" json:"twineUsernameSecret" yaml:"twineUsernameSecret"`
 }

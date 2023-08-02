@@ -15,17 +15,23 @@ type JsiiReleaseMaven struct {
 	// Deprecated: Use `MavenPublishOptions` instead.
 	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
+	// Default: - no additional tools are installed.
+	//
 	// Deprecated: Use `MavenPublishOptions` instead.
 	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// URL of Nexus repository.
 	//
 	// if not set, defaults to https://oss.sonatype.org
+	// Default: "https://oss.sonatype.org"
+	//
 	// Deprecated: Use `MavenPublishOptions` instead.
 	MavenEndpoint *string `field:"optional" json:"mavenEndpoint" yaml:"mavenEndpoint"`
 	// GitHub secret name which contains the GPG private key or file that includes it.
 	//
 	// This is used to sign your Maven packages. See instructions.
 	// See: https://github.com/aws/publib#maven
+	//
+	// Default: "MAVEN_GPG_PRIVATE_KEY_PASSPHRASE" or not set when using GitHub Packages.
 	//
 	// Deprecated: Use `MavenPublishOptions` instead.
 	MavenGpgPrivateKeyPassphrase *string `field:"optional" json:"mavenGpgPrivateKeyPassphrase" yaml:"mavenGpgPrivateKeyPassphrase"`
@@ -35,6 +41,8 @@ type JsiiReleaseMaven struct {
 	// packages. See instructions.
 	// See: https://github.com/aws/publib#maven
 	//
+	// Default: "MAVEN_GPG_PRIVATE_KEY" or not set when using GitHub Packages.
+	//
 	// Deprecated: Use `MavenPublishOptions` instead.
 	MavenGpgPrivateKeySecret *string `field:"optional" json:"mavenGpgPrivateKeySecret" yaml:"mavenGpgPrivateKeySecret"`
 	// GitHub secret name which contains the Password for maven repository.
@@ -43,15 +51,23 @@ type JsiiReleaseMaven struct {
 	// new project (see links).
 	// See: https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134
 	//
+	// Default: "MAVEN_PASSWORD" or "GITHUB_TOKEN" when using GitHub Packages.
+	//
 	// Deprecated: Use `MavenPublishOptions` instead.
 	MavenPassword *string `field:"optional" json:"mavenPassword" yaml:"mavenPassword"`
 	// Deployment repository when not deploying to Maven Central.
+	// Default: - not set.
+	//
 	// Deprecated: Use `MavenPublishOptions` instead.
 	MavenRepositoryUrl *string `field:"optional" json:"mavenRepositoryUrl" yaml:"mavenRepositoryUrl"`
 	// Used in maven settings for credential lookup (e.g. use github when publishing to GitHub).
+	// Default: "ossrh" (Maven Central) or "github" when using GitHub Packages.
+	//
 	// Deprecated: Use `MavenPublishOptions` instead.
 	MavenServerId *string `field:"optional" json:"mavenServerId" yaml:"mavenServerId"`
 	// GitHub secret name which contains the Maven Central (sonatype) staging profile ID (e.g. 68a05363083174). Staging profile ID can be found in the URL of the "Releases" staging profile under "Staging Profiles" in https://oss.sonatype.org (e.g. https://oss.sonatype.org/#stagingProfiles;11a33451234521).
+	// Default: "MAVEN_STAGING_PROFILE_ID" or not set when using GitHub Packages.
+	//
 	// Deprecated: Use `MavenPublishOptions` instead.
 	MavenStagingProfileId *string `field:"optional" json:"mavenStagingProfileId" yaml:"mavenStagingProfileId"`
 	// GitHub secret name which contains the Username for maven repository.
@@ -59,6 +75,8 @@ type JsiiReleaseMaven struct {
 	// For Maven Central, you will need to Create JIRA account and then request a
 	// new project (see links).
 	// See: https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134
+	//
+	// Default: "MAVEN_USERNAME" or the GitHub Actor when using GitHub Packages.
 	//
 	// Deprecated: Use `MavenPublishOptions` instead.
 	MavenUsername *string `field:"optional" json:"mavenUsername" yaml:"mavenUsername"`

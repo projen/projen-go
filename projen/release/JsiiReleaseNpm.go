@@ -15,9 +15,13 @@ type JsiiReleaseNpm struct {
 	// Deprecated: Use `NpmPublishOptions` instead.
 	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
+	// Default: - no additional tools are installed.
+	//
 	// Deprecated: Use `NpmPublishOptions` instead.
 	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// Options for publishing npm package to AWS CodeArtifact.
+	// Default: - undefined.
+	//
 	// Deprecated: Use `NpmPublishOptions` instead.
 	CodeArtifactOptions *CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Tags can be used to provide an alias instead of version numbers.
@@ -32,9 +36,13 @@ type JsiiReleaseNpm struct {
 	// versions such as prereleases.
 	//
 	// The `next` tag is used by some projects to identify the upcoming version.
+	// Default: "latest".
+	//
 	// Deprecated: Use `npmDistTag` for each release branch instead.
 	DistTag *string `field:"optional" json:"distTag" yaml:"distTag"`
 	// GitHub secret which contains the NPM token to use when publishing packages.
+	// Default: - "NPM_TOKEN" or "GITHUB_TOKEN" if `registry` is set to `npm.pkg.github.com`.
+	//
 	// Deprecated: Use `NpmPublishOptions` instead.
 	NpmTokenSecret *string `field:"optional" json:"npmTokenSecret" yaml:"npmTokenSecret"`
 	// The domain name of the npm package registry.
@@ -47,6 +55,8 @@ type JsiiReleaseNpm struct {
 	//
 	// Example:
 	//   "npm.pkg.github.com"
+	//
+	// Default: "registry.npmjs.org"
 	//
 	// Deprecated: Use `NpmPublishOptions` instead.
 	Registry *string `field:"optional" json:"registry" yaml:"registry"`

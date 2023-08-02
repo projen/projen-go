@@ -24,6 +24,8 @@ type GitpodOptions struct {
 	// Experimental.
 	VscodeExtensions *[]*string `field:"optional" json:"vscodeExtensions" yaml:"vscodeExtensions"`
 	// Optional Gitpod's Github App integration for prebuilds If this is not set and Gitpod's Github App is installed, then Gitpod will apply these defaults: https://www.gitpod.io/docs/prebuilds/#configure-the-github-app.
+	// Default: undefined.
+	//
 	// Experimental.
 	Prebuilds *GitpodPrebuilds `field:"optional" json:"prebuilds" yaml:"prebuilds"`
 }

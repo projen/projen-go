@@ -7,9 +7,13 @@ type PytestOptions struct {
 	// Experimental.
 	MaxFailures *float64 `field:"optional" json:"maxFailures" yaml:"maxFailures"`
 	// Directory with tests.
+	// Default: 'tests'.
+	//
 	// Experimental.
 	Testdir *string `field:"optional" json:"testdir" yaml:"testdir"`
 	// Pytest version.
+	// Default: "6.2.1"
+	//
 	// Experimental.
 	Version *string `field:"optional" json:"version" yaml:"version"`
 }

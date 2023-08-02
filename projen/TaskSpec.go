@@ -12,14 +12,20 @@ type TaskSpec struct {
 	// Experimental.
 	Condition *string `field:"optional" json:"condition" yaml:"condition"`
 	// The working directory for all steps in this task (unless overridden by the step).
+	// Default: - process.cwd()
+	//
 	// Experimental.
 	Cwd *string `field:"optional" json:"cwd" yaml:"cwd"`
 	// The description of this build command.
+	// Default: - the task name.
+	//
 	// Experimental.
 	Description *string `field:"optional" json:"description" yaml:"description"`
 	// Defines environment variables for the execution of this task.
 	//
 	// Values in this map will be evaluated in a shell, so you can do stuff like `$(echo "foo")`.
+	// Default: {}.
+	//
 	// Experimental.
 	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// A set of environment variables that must be defined in order to execute this task.

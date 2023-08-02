@@ -25,12 +25,18 @@ type GitpodTask struct {
 	// Experimental.
 	Init *string `field:"optional" json:"init" yaml:"init"`
 	// A name for this task.
+	// Default: - task names are omitted when blank.
+	//
 	// Experimental.
 	Name *string `field:"optional" json:"name" yaml:"name"`
 	// You can configure where in the IDE the terminal should be opened.
+	// Default: GitpodOpenIn.BOTTOM
+	//
 	// Experimental.
 	OpenIn GitpodOpenIn `field:"optional" json:"openIn" yaml:"openIn"`
 	// You can configure how the terminal should be opened relative to the previous task.
+	// Default: GitpodOpenMode.TAB_AFTER
+	//
 	// Experimental.
 	OpenMode GitpodOpenMode `field:"optional" json:"openMode" yaml:"openMode"`
 	// The optional prebuild command will be executed during prebuilds.

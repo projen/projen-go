@@ -25,6 +25,8 @@ type TaskStep struct {
 	// Example:
 	//   task.spawn("deploy", { args: ["--force"] });
 	//
+	// Default: - no arguments are passed to the step.
+	//
 	// Experimental.
 	Args *[]*string `field:"optional" json:"args" yaml:"args"`
 	// A shell command which determines if the this step should be executed.
@@ -35,6 +37,8 @@ type TaskStep struct {
 	// Experimental.
 	Condition *string `field:"optional" json:"condition" yaml:"condition"`
 	// The working directory for this step.
+	// Default: - determined by the task.
+	//
 	// Experimental.
 	Cwd *string `field:"optional" json:"cwd" yaml:"cwd"`
 	// Defines environment variables for the execution of this step (`exec` and `builtin` only).
@@ -44,9 +48,13 @@ type TaskStep struct {
 	// Example:
 	//   { "foo": "bar", "boo": "$(echo baz)" }
 	//
+	// Default: - no environment variables defined in step.
+	//
 	// Experimental.
 	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// Step name.
+	// Default: - no name.
+	//
 	// Experimental.
 	Name *string `field:"optional" json:"name" yaml:"name"`
 	// Should this step receive args passed to the task.
@@ -60,6 +68,8 @@ type TaskStep struct {
 	// Example:
 	//   task.exec("echo Hello $@ World!", { receiveArgs: true });
 	//
+	// Default: false.
+	//
 	// Experimental.
 	ReceiveArgs *bool `field:"optional" json:"receiveArgs" yaml:"receiveArgs"`
 	// The name of a built-in task to execute.
@@ -70,15 +80,23 @@ type TaskStep struct {
 	// The name is a path relative to the projen lib/ directory (without the .task.js extension).
 	// For example, if your built in builtin task is under `src/release/resolve-version.task.ts`,
 	// then this would be `release/resolve-version`.
+	// Default: - do not execute a builtin task.
+	//
 	// Experimental.
 	Builtin *string `field:"optional" json:"builtin" yaml:"builtin"`
 	// Shell command to execute.
+	// Default: - don't execute a shell command.
+	//
 	// Experimental.
 	Exec *string `field:"optional" json:"exec" yaml:"exec"`
 	// Print a message.
+	// Default: - don't say anything.
+	//
 	// Experimental.
 	Say *string `field:"optional" json:"say" yaml:"say"`
 	// Subtask to execute.
+	// Default: - don't spawn a subtask.
+	//
 	// Experimental.
 	Spawn *string `field:"optional" json:"spawn" yaml:"spawn"`
 }

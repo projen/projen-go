@@ -7,6 +7,8 @@ type NodePackageOptions struct {
 	//
 	// This is normally only allowed for libraries. For apps, there's no meaning
 	// for specifying these.
+	// Default: true.
+	//
 	// Experimental.
 	AllowLibraryDependencies *bool `field:"optional" json:"allowLibraryDependencies" yaml:"allowLibraryDependencies"`
 	// Author's e-mail.
@@ -22,6 +24,8 @@ type NodePackageOptions struct {
 	// Experimental.
 	AuthorUrl *string `field:"optional" json:"authorUrl" yaml:"authorUrl"`
 	// Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
+	// Default: true.
+	//
 	// Experimental.
 	AutoDetectBin *bool `field:"optional" json:"autoDetectBin" yaml:"autoDetectBin"`
 	// Binary programs vended with your module.
@@ -54,6 +58,8 @@ type NodePackageOptions struct {
 	// Options for npm packages using AWS CodeArtifact.
 	//
 	// This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact.
+	// Default: - undefined.
+	//
 	// Experimental.
 	CodeArtifactOptions *CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Runtime dependencies of this module.
@@ -67,6 +73,8 @@ type NodePackageOptions struct {
 	//
 	// Example:
 	//   [ 'express', 'lodash', 'foo@^2' ]
+	//
+	// Default: [].
 	//
 	// Experimental.
 	Deps *[]*string `field:"optional" json:"deps" yaml:"deps"`
@@ -92,11 +100,15 @@ type NodePackageOptions struct {
 	// Example:
 	//   [ 'typescript', '@types/express' ]
 	//
+	// Default: [].
+	//
 	// Experimental.
 	DevDeps *[]*string `field:"optional" json:"devDeps" yaml:"devDeps"`
 	// Module entrypoint (`main` in `package.json`).
 	//
 	// Set to an empty string to not include `main` in your package.json
+	// Default: "lib/index.js"
+	//
 	// Experimental.
 	Entrypoint *string `field:"optional" json:"entrypoint" yaml:"entrypoint"`
 	// Package's Homepage / Website.
@@ -109,18 +121,30 @@ type NodePackageOptions struct {
 	//
 	// See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
 	// Use the `licensed` option if you want to no license to be specified.
+	// Default: "Apache-2.0"
+	//
 	// Experimental.
 	License *string `field:"optional" json:"license" yaml:"license"`
 	// Indicates if a license should be added.
+	// Default: true.
+	//
 	// Experimental.
 	Licensed *bool `field:"optional" json:"licensed" yaml:"licensed"`
 	// Minimum node.js version to require via `engines` (inclusive).
+	// Default: - no max.
+	//
 	// Experimental.
 	MaxNodeVersion *string `field:"optional" json:"maxNodeVersion" yaml:"maxNodeVersion"`
 	// Minimum Node.js version to require via package.json `engines` (inclusive).
+	// Default: - no "engines" specified.
+	//
 	// Experimental.
 	MinNodeVersion *string `field:"optional" json:"minNodeVersion" yaml:"minNodeVersion"`
 	// Access level of the npm package.
+	// Default: - for scoped packages (e.g. `foo@bar`), the default is
+	// `NpmAccess.RESTRICTED`, for non-scoped packages, the default is
+	// `NpmAccess.PUBLIC`.
+	//
 	// Experimental.
 	NpmAccess NpmAccess `field:"optional" json:"npmAccess" yaml:"npmAccess"`
 	// The host name of the npm registry to publish to.
@@ -131,15 +155,23 @@ type NodePackageOptions struct {
 	// The base URL of the npm package registry.
 	//
 	// Must be a URL (e.g. start with "https://" or "http://")
+	// Default: "https://registry.npmjs.org"
+	//
 	// Experimental.
 	NpmRegistryUrl *string `field:"optional" json:"npmRegistryUrl" yaml:"npmRegistryUrl"`
 	// GitHub secret which contains the NPM token to use when publishing packages.
+	// Default: "NPM_TOKEN".
+	//
 	// Experimental.
 	NpmTokenSecret *string `field:"optional" json:"npmTokenSecret" yaml:"npmTokenSecret"`
 	// The Node Package Manager used to execute scripts.
+	// Default: NodePackageManager.YARN
+	//
 	// Experimental.
 	PackageManager NodePackageManager `field:"optional" json:"packageManager" yaml:"packageManager"`
 	// The "name" in package.json.
+	// Default: - defaults to project name.
+	//
 	// Experimental.
 	PackageName *string `field:"optional" json:"packageName" yaml:"packageName"`
 	// Options for `peerDeps`.
@@ -160,9 +192,13 @@ type NodePackageOptions struct {
 	// enabled by default), projen will automatically add a dev dependency with a
 	// pinned version for each peer dependency. This will ensure that you build &
 	// test your module against the lowest peer version required.
+	// Default: [].
+	//
 	// Experimental.
 	PeerDeps *[]*string `field:"optional" json:"peerDeps" yaml:"peerDeps"`
 	// The version of PNPM to use if using PNPM as a package manager.
+	// Default: "7".
+	//
 	// Experimental.
 	PnpmVersion *string `field:"optional" json:"pnpmVersion" yaml:"pnpmVersion"`
 	// The repository is the location where the actual code for your package lives.
@@ -174,6 +210,8 @@ type NodePackageOptions struct {
 	// Experimental.
 	RepositoryDirectory *string `field:"optional" json:"repositoryDirectory" yaml:"repositoryDirectory"`
 	// Options for privately hosted scoped packages.
+	// Default: - fetch all scoped packages from the public npm registry.
+	//
 	// Experimental.
 	ScopedPackagesOptions *[]*ScopedPackagesOptions `field:"optional" json:"scopedPackagesOptions" yaml:"scopedPackagesOptions"`
 	// npm scripts to include.
@@ -181,6 +219,8 @@ type NodePackageOptions struct {
 	// If a script has the same name as a standard script,
 	// the standard script will be overwritten.
 	// Also adds the script as a task.
+	// Default: {}.
+	//
 	// Deprecated: use `project.addTask()` or `package.setScript()`
 	Scripts *map[string]*string `field:"optional" json:"scripts" yaml:"scripts"`
 	// Package's Stability.

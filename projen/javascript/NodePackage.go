@@ -18,6 +18,8 @@ type NodePackage interface {
 	// Options for npm packages using AWS CodeArtifact.
 	//
 	// This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact.
+	// Default: - undefined.
+	//
 	// Experimental.
 	CodeArtifactOptions() *CodeArtifactOptions
 	// The module's entrypoint (e.g. `lib/index.js`).
@@ -49,9 +51,13 @@ type NodePackage interface {
 	// Deprecated: use `addField(x, y)`.
 	Manifest() interface{}
 	// Maximum node version required by this package.
+	// Default: - no maximum.
+	//
 	// Experimental.
 	MaxNodeVersion() *string
 	// Minimum node.js version required by this package.
+	// Default: - no minimum.
+	//
 	// Experimental.
 	MinNodeVersion() *string
 	// npm package access level.
@@ -73,6 +79,8 @@ type NodePackage interface {
 	// Experimental.
 	PackageName() *string
 	// The version of PNPM to use if using PNPM as a package manager.
+	// Default: "7".
+	//
 	// Experimental.
 	PnpmVersion() *string
 	// Experimental.
@@ -81,6 +89,8 @@ type NodePackage interface {
 	// Experimental.
 	ProjenCommand() *string
 	// Options for privately hosted scoped packages.
+	// Default: undefined.
+	//
 	// Experimental.
 	ScopedPackagesOptions() *[]*ScopedPackagesOptions
 	// Experimental.

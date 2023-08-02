@@ -10,6 +10,8 @@ type GithubCredentialsAppOptions struct {
 	// Experimental.
 	AppIdSecret *string `field:"optional" json:"appIdSecret" yaml:"appIdSecret"`
 	// The permissions granted to the token.
+	// Default: - all permissions granted to the app.
+	//
 	// Experimental.
 	Permissions *workflows.AppPermissions `field:"optional" json:"permissions" yaml:"permissions"`
 	// Experimental.

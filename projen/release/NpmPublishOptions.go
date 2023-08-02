@@ -16,9 +16,13 @@ type NpmPublishOptions struct {
 	// Experimental.
 	PrePublishSteps *[]*workflows.JobStep `field:"optional" json:"prePublishSteps" yaml:"prePublishSteps"`
 	// Additional tools to install in the publishing job.
+	// Default: - no additional tools are installed.
+	//
 	// Experimental.
 	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// Options for publishing npm package to AWS CodeArtifact.
+	// Default: - undefined.
+	//
 	// Experimental.
 	CodeArtifactOptions *CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// Tags can be used to provide an alias instead of version numbers.
@@ -33,9 +37,13 @@ type NpmPublishOptions struct {
 	// versions such as prereleases.
 	//
 	// The `next` tag is used by some projects to identify the upcoming version.
+	// Default: "latest".
+	//
 	// Deprecated: Use `npmDistTag` for each release branch instead.
 	DistTag *string `field:"optional" json:"distTag" yaml:"distTag"`
 	// GitHub secret which contains the NPM token to use when publishing packages.
+	// Default: - "NPM_TOKEN" or "GITHUB_TOKEN" if `registry` is set to `npm.pkg.github.com`.
+	//
 	// Experimental.
 	NpmTokenSecret *string `field:"optional" json:"npmTokenSecret" yaml:"npmTokenSecret"`
 	// The domain name of the npm package registry.
@@ -48,6 +56,8 @@ type NpmPublishOptions struct {
 	//
 	// Example:
 	//   "npm.pkg.github.com"
+	//
+	// Default: "registry.npmjs.org"
 	//
 	// Experimental.
 	Registry *string `field:"optional" json:"registry" yaml:"registry"`

@@ -30,9 +30,13 @@ type ReactComponentOptions struct {
 	// ```.
 	// See: https://github.com/timarney/react-app-rewired
 	//
+	// Default: - No rewired config.
+	//
 	// Experimental.
 	Rewire *map[string]interface{} `field:"optional" json:"rewire" yaml:"rewire"`
 	// Whether to apply options specific for TypeScript React projects.
+	// Default: false.
+	//
 	// Experimental.
 	Typescript *bool `field:"optional" json:"typescript" yaml:"typescript"`
 }
