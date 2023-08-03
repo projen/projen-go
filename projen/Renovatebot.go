@@ -11,6 +11,9 @@ import (
 // Experimental.
 type Renovatebot interface {
 	Component
+	// The file holding the renovatebot configuration.
+	// Experimental.
+	File() JsonFile
 	// Experimental.
 	Project() Project
 	// Called after synthesis.
@@ -29,6 +32,16 @@ type Renovatebot interface {
 // The jsii proxy struct for Renovatebot
 type jsiiProxy_Renovatebot struct {
 	jsiiProxy_Component
+}
+
+func (j *jsiiProxy_Renovatebot) File() JsonFile {
+	var returns JsonFile
+	_jsii_.Get(
+		j,
+		"file",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_Renovatebot) Project() Project {
