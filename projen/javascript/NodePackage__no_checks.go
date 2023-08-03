@@ -28,10 +28,6 @@ func (n *jsiiProxy_NodePackage) validateRemoveScriptParameters(name *string) err
 	return nil
 }
 
-func (n *jsiiProxy_NodePackage) validateRenderUpgradePackagesCommandParameters(types *[]projen.DependencyType, exclude *[]*string) error {
-	return nil
-}
-
 func (n *jsiiProxy_NodePackage) validateSetScriptParameters(name *string, command *string) error {
 	return nil
 }

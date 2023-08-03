@@ -143,9 +143,6 @@ type NodePackage interface {
 	// Removes an npm script (always successful).
 	// Experimental.
 	RemoveScript(name *string)
-	// Render a package manager specific command to upgrade all requested dependencies.
-	// Experimental.
-	RenderUpgradePackagesCommand(types *[]projen.DependencyType, exclude *[]*string, include *[]*string) *string
 	// Add a npm package.json script.
 	// Experimental.
 	SetScript(name *string, command *string)
@@ -585,22 +582,6 @@ func (n *jsiiProxy_NodePackage) RemoveScript(name *string) {
 		"removeScript",
 		[]interface{}{name},
 	)
-}
-
-func (n *jsiiProxy_NodePackage) RenderUpgradePackagesCommand(types *[]projen.DependencyType, exclude *[]*string, include *[]*string) *string {
-	if err := n.validateRenderUpgradePackagesCommandParameters(types, exclude); err != nil {
-		panic(err)
-	}
-	var returns *string
-
-	_jsii_.Invoke(
-		n,
-		"renderUpgradePackagesCommand",
-		[]interface{}{types, exclude, include},
-		&returns,
-	)
-
-	return returns
 }
 
 func (n *jsiiProxy_NodePackage) SetScript(name *string, command *string) {
