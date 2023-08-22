@@ -33,6 +33,9 @@ type DockerComposeService interface {
 	// Networks mounted in the container.
 	// Experimental.
 	Networks() *[]IDockerComposeNetworkBinding
+	// Target platform.
+	// Experimental.
+	Platform() *string
 	// Published ports.
 	// Experimental.
 	Ports() *[]*DockerComposeServicePort
@@ -142,6 +145,16 @@ func (j *jsiiProxy_DockerComposeService) Networks() *[]IDockerComposeNetworkBind
 	_jsii_.Get(
 		j,
 		"networks",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_DockerComposeService) Platform() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"platform",
 		&returns,
 	)
 	return returns

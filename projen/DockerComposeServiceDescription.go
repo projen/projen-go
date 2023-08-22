@@ -46,6 +46,11 @@ type DockerComposeServiceDescription struct {
 	//
 	// Experimental.
 	Networks *[]IDockerComposeNetworkBinding `field:"optional" json:"networks" yaml:"networks"`
+	// Add platform.
+	// Default: - no platform is provided.
+	//
+	// Experimental.
+	Platform *string `field:"optional" json:"platform" yaml:"platform"`
 	// Map some ports.
 	// Default: - no ports are mapped.
 	//

@@ -152,6 +152,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "imageBuild", GoGetter: "ImageBuild"},
 			_jsii_.MemberProperty{JsiiProperty: "labels", GoGetter: "Labels"},
 			_jsii_.MemberProperty{JsiiProperty: "networks", GoGetter: "Networks"},
+			_jsii_.MemberProperty{JsiiProperty: "platform", GoGetter: "Platform"},
 			_jsii_.MemberProperty{JsiiProperty: "ports", GoGetter: "Ports"},
 			_jsii_.MemberProperty{JsiiProperty: "serviceName", GoGetter: "ServiceName"},
 			_jsii_.MemberProperty{JsiiProperty: "volumes", GoGetter: "Volumes"},
