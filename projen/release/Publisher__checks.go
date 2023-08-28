@@ -11,6 +11,16 @@ import (
 	"github.com/projen/projen-go/projen/github/workflows"
 )
 
+func (p *jsiiProxy_Publisher) validateAddGitHubPostPublishingStepsParameters(steps *[]*workflows.JobStep) error {
+	for idx_b7595e, v := range *steps {
+		if err := _jsii_.ValidateStruct(v, func() string { return fmt.Sprintf("parameter steps[%#v]", idx_b7595e) }); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (p *jsiiProxy_Publisher) validateAddGitHubPrePublishingStepsParameters(steps *[]*workflows.JobStep) error {
 	for idx_b7595e, v := range *steps {
 		if err := _jsii_.ValidateStruct(v, func() string { return fmt.Sprintf("parameter steps[%#v]", idx_b7595e) }); err != nil {

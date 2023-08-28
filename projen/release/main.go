@@ -79,6 +79,7 @@ func init() {
 		"projen.release.Publisher",
 		reflect.TypeOf((*Publisher)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addGitHubPostPublishingSteps", GoMethod: "AddGitHubPostPublishingSteps"},
 			_jsii_.MemberMethod{JsiiMethod: "addGitHubPrePublishingSteps", GoMethod: "AddGitHubPrePublishingSteps"},
 			_jsii_.MemberProperty{JsiiProperty: "artifactName", GoGetter: "ArtifactName"},
 			_jsii_.MemberProperty{JsiiProperty: "buildJobId", GoGetter: "BuildJobId"},

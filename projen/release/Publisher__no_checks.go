@@ -4,6 +4,10 @@ package release
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (p *jsiiProxy_Publisher) validateAddGitHubPostPublishingStepsParameters(steps *[]*workflows.JobStep) error {
+	return nil
+}
+
 func (p *jsiiProxy_Publisher) validateAddGitHubPrePublishingStepsParameters(steps *[]*workflows.JobStep) error {
 	return nil
 }

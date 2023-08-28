@@ -6,6 +6,15 @@ import (
 
 // Deprecated: Use `PyPiPublishOptions` instead.
 type JsiiReleasePyPi struct {
+	// Steps to execute after executing the publishing command.
+	//
+	// These can be used
+	// to add/update the release artifacts ot any other tasks needed.
+	//
+	//
+	// Note that when using this in `publishToGitHubReleases` this will override steps added via `addGitHubPostPublishingSteps`.
+	// Deprecated: Use `PyPiPublishOptions` instead.
+	PostPublishSteps *[]*workflows.JobStep `field:"optional" json:"postPublishSteps" yaml:"postPublishSteps"`
 	// Steps to execute before executing the publishing command. These can be used to prepare the artifact for publishing if neede.
 	//
 	// These steps are executed after `dist/` has been populated with the build

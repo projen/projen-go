@@ -27,6 +27,9 @@ type Publisher interface {
 	Project() projen.Project
 	// Experimental.
 	PublibVersion() *string
+	// Adds post publishing steps for the GitHub release job.
+	// Experimental.
+	AddGitHubPostPublishingSteps(steps ...*workflows.JobStep)
 	// Adds pre publishing steps for the GitHub release job.
 	// Experimental.
 	AddGitHubPrePublishingSteps(steps ...*workflows.JobStep)
@@ -170,6 +173,22 @@ func Publisher_PUBLISH_GIT_TASK_NAME() *string {
 		&returns,
 	)
 	return returns
+}
+
+func (p *jsiiProxy_Publisher) AddGitHubPostPublishingSteps(steps ...*workflows.JobStep) {
+	if err := p.validateAddGitHubPostPublishingStepsParameters(&steps); err != nil {
+		panic(err)
+	}
+	args := []interface{}{}
+	for _, a := range steps {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		p,
+		"addGitHubPostPublishingSteps",
+		args,
+	)
 }
 
 func (p *jsiiProxy_Publisher) AddGitHubPrePublishingSteps(steps ...*workflows.JobStep) {
