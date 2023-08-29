@@ -9,6 +9,9 @@ import (
 // Experimental.
 type DockerCompose interface {
 	Component
+	// The Docker Compose file.
+	// Experimental.
+	File() YamlFile
 	// Experimental.
 	Project() Project
 	// Add a service to the docker-compose file.
@@ -30,6 +33,16 @@ type DockerCompose interface {
 // The jsii proxy struct for DockerCompose
 type jsiiProxy_DockerCompose struct {
 	jsiiProxy_Component
+}
+
+func (j *jsiiProxy_DockerCompose) File() YamlFile {
+	var returns YamlFile
+	_jsii_.Get(
+		j,
+		"file",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_DockerCompose) Project() Project {
