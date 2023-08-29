@@ -53,6 +53,10 @@ func init() {
 		reflect.TypeOf((*CheckoutWithPatchOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.github.ContributorStatementOptions",
+		reflect.TypeOf((*ContributorStatementOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.github.CreatePullRequestOptions",
 		reflect.TypeOf((*CreatePullRequestOptions)(nil)).Elem(),
 	)

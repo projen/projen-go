@@ -188,6 +188,28 @@ func (j *jsiiProxy_PullRequestTemplate)SetReadonly(val *bool) {
 	)
 }
 
+// Returns the `PullRequestTemplate` instance associated with a project or `undefined` if there is no PullRequestTemplate.
+//
+// Returns: A PullRequestTemplate.
+// Experimental.
+func PullRequestTemplate_Of(project projen.Project) PullRequestTemplate {
+	_init_.Initialize()
+
+	if err := validatePullRequestTemplate_OfParameters(project); err != nil {
+		panic(err)
+	}
+	var returns PullRequestTemplate
+
+	_jsii_.StaticInvoke(
+		"projen.github.PullRequestTemplate",
+		"of",
+		[]interface{}{project},
+		&returns,
+	)
+
+	return returns
+}
+
 func (p *jsiiProxy_PullRequestTemplate) AddLine(line *string) {
 	if err := p.validateAddLineParameters(line); err != nil {
 		panic(err)

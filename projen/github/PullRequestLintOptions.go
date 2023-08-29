@@ -4,6 +4,20 @@ package github
 // Options for PullRequestLint.
 // Experimental.
 type PullRequestLintOptions struct {
+	// Require a contributor statement to be included in the PR description.
+	//
+	// For example confirming that the contribution has been made by the contributor and complies with the project's license.
+	//
+	// Appends the statement to the end of the Pull Request template.
+	// Default: - no contributor statement is required.
+	//
+	// Experimental.
+	ContributorStatement *string `field:"optional" json:"contributorStatement" yaml:"contributorStatement"`
+	// Options for requiring a contributor statement on Pull Requests.
+	// Default: - none.
+	//
+	// Experimental.
+	ContributorStatementOptions *ContributorStatementOptions `field:"optional" json:"contributorStatementOptions" yaml:"contributorStatementOptions"`
 	// Github Runner selection labels.
 	// Default: ["ubuntu-latest"].
 	//
