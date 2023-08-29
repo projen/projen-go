@@ -598,7 +598,7 @@ type AwsCdkTypeScriptAppOptions struct {
 	//
 	// Experimental.
 	DependabotOptions *github.DependabotOptions `field:"optional" json:"dependabotOptions" yaml:"dependabotOptions"`
-	// Use github workflows to handle dependency upgrades.
+	// Use tasks and github workflows to handle dependency upgrades.
 	//
 	// Cannot be used in conjunction with `dependabot`.
 	// Default: true.

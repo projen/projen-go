@@ -22,6 +22,16 @@ type UpgradeDependenciesOptions struct {
 	//
 	// Experimental.
 	PullRequestTitle *string `field:"optional" json:"pullRequestTitle" yaml:"pullRequestTitle"`
+	// Check peer dependencies of installed packages and filter updates to compatible versions.
+	//
+	// By default, the upgrade workflow will adhere to version constraints from peer dependencies.
+	// Sometimes this is not desirable and can be disabled.
+	// See: https://github.com/raineorshine/npm-check-updates#peer
+	//
+	// Default: true.
+	//
+	// Experimental.
+	SatisfyPeerDependencies *bool `field:"optional" json:"satisfyPeerDependencies" yaml:"satisfyPeerDependencies"`
 	// The semantic commit type.
 	// Default: 'chore'.
 	//
@@ -32,6 +42,13 @@ type UpgradeDependenciesOptions struct {
 	//
 	// Experimental.
 	Signoff *bool `field:"optional" json:"signoff" yaml:"signoff"`
+	// Determines the target version to upgrade dependencies to.
+	// See: https://github.com/raineorshine/npm-check-updates#target
+	//
+	// Default: "minor".
+	//
+	// Experimental.
+	Target *string `field:"optional" json:"target" yaml:"target"`
 	// The name of the task that will be created.
 	//
 	// This will also be the workflow name.
