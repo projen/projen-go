@@ -10,6 +10,9 @@ type BranchOptions struct {
 	// The minimum major version to release.
 	// Experimental.
 	MinMajorVersion *float64 `field:"optional" json:"minMajorVersion" yaml:"minMajorVersion"`
+	// The minor versions released from this branch.
+	// Experimental.
+	MinorVersion *float64 `field:"optional" json:"minorVersion" yaml:"minorVersion"`
 	// The npm distribution tag to use for this branch.
 	// Default: "latest".
 	//
