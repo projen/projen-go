@@ -535,6 +535,9 @@ type TypeScriptLibraryProjectOptions struct {
 	//
 	// Deprecated: use TypeScriptProjectOptions.
 	WorkflowRunsOn *[]*string `field:"optional" json:"workflowRunsOn" yaml:"workflowRunsOn"`
+	// Github Runner Group selection options.
+	// Deprecated: use TypeScriptProjectOptions.
+	WorkflowRunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"workflowRunsOnGroup" yaml:"workflowRunsOnGroup"`
 	// The name of the main release branch.
 	// Default: "main".
 	//

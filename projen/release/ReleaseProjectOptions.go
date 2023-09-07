@@ -142,5 +142,8 @@ type ReleaseProjectOptions struct {
 	//
 	// Experimental.
 	WorkflowRunsOn *[]*string `field:"optional" json:"workflowRunsOn" yaml:"workflowRunsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	WorkflowRunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"workflowRunsOnGroup" yaml:"workflowRunsOnGroup"`
 }
 

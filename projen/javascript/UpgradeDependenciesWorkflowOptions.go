@@ -1,6 +1,7 @@
 package javascript
 
 import (
+	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github"
 	"github.com/projen/projen-go/projen/github/workflows"
 )
@@ -55,6 +56,9 @@ type UpgradeDependenciesWorkflowOptions struct {
 	//
 	// Experimental.
 	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 	// Schedule to run on.
 	// Default: UpgradeDependenciesSchedule.DAILY
 	//

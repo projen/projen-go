@@ -76,6 +76,9 @@ type TaskWorkflowOptions struct {
 	//
 	// Experimental.
 	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 	// The triggers for the workflow.
 	// Default: - by default workflows can only be triggered by manually.
 	//

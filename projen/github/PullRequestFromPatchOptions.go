@@ -1,5 +1,8 @@
 package github
 
+import (
+	"github.com/projen/projen-go/projen"
+)
 
 // Experimental.
 type PullRequestFromPatchOptions struct {
@@ -74,5 +77,8 @@ type PullRequestFromPatchOptions struct {
 	//
 	// Experimental.
 	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 }
 

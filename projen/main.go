@@ -314,6 +314,10 @@ func init() {
 		"projen.GitpodTask",
 		reflect.TypeOf((*GitpodTask)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.GroupRunnerOptions",
+		reflect.TypeOf((*GroupRunnerOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterInterface(
 		"projen.IDevEnvironment",
 		reflect.TypeOf((*IDevEnvironment)(nil)).Elem(),

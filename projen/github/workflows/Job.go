@@ -1,5 +1,8 @@
 package workflows
 
+import (
+	"github.com/projen/projen-go/projen"
+)
 
 // A GitHub Workflow job definition.
 // Experimental.
@@ -44,16 +47,6 @@ type Job struct {
 	// variations to run each job in.
 	// Experimental.
 	Strategy *JobStrategy `field:"optional" json:"strategy" yaml:"strategy"`
-	// The type of machine to run the job on.
-	//
-	// The machine can be either a
-	// GitHub-hosted runner or a self-hosted runner.
-	//
-	// Example:
-	//   ["ubuntu-latest"]
-	//
-	// Experimental.
-	RunsOn *[]*string `field:"required" json:"runsOn" yaml:"runsOn"`
 	// A job contains a sequence of tasks called steps.
 	//
 	// Steps can run commands,
@@ -105,6 +98,19 @@ type Job struct {
 	// jobs that depend on this job.
 	// Experimental.
 	Outputs *map[string]*JobStepOutput `field:"optional" json:"outputs" yaml:"outputs"`
+	// The type of machine to run the job on.
+	//
+	// The machine can be either a
+	// GitHub-hosted runner or a self-hosted runner.
+	//
+	// Example:
+	//   ["ubuntu-latest"]
+	//
+	// Experimental.
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 	// Used to host service containers for a job in a workflow.
 	//
 	// Service

@@ -1,5 +1,8 @@
 package github
 
+import (
+	"github.com/projen/projen-go/projen"
+)
 
 // Options for PullRequestLint.
 // Experimental.
@@ -23,6 +26,9 @@ type PullRequestLintOptions struct {
 	//
 	// Experimental.
 	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 	// Validate that pull request titles follow Conventional Commits.
 	// See: https://www.conventionalcommits.org/
 	//

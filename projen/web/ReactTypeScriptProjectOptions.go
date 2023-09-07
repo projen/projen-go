@@ -536,6 +536,9 @@ type ReactTypeScriptProjectOptions struct {
 	//
 	// Experimental.
 	WorkflowRunsOn *[]*string `field:"optional" json:"workflowRunsOn" yaml:"workflowRunsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	WorkflowRunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"workflowRunsOnGroup" yaml:"workflowRunsOnGroup"`
 	// The name of the main release branch.
 	// Default: "main".
 	//
