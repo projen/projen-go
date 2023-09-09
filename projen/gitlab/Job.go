@@ -38,6 +38,9 @@ type Job struct {
 	// The name of one or more jobs to inherit configuration from.
 	// Experimental.
 	Extends *[]*string `field:"optional" json:"extends" yaml:"extends"`
+	// Configurable ID tokens (JSON Web Tokens) that are used for CI/CD authentication.
+	// Experimental.
+	IdTokens *map[string]IDToken `field:"optional" json:"idTokens" yaml:"idTokens"`
 	// Experimental.
 	Image *Image `field:"optional" json:"image" yaml:"image"`
 	// Controls inheritance of globally-defined defaults and variables.

@@ -181,6 +181,16 @@ func init() {
 			return &j
 		},
 	)
+	_jsii_.RegisterInterface(
+		"projen.gitlab.IDToken",
+		reflect.TypeOf((*IDToken)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "aud", GoGetter: "Aud"},
+		},
+		func() interface{} {
+			return &jsiiProxy_IDToken{}
+		},
+	)
 	_jsii_.RegisterStruct(
 		"projen.gitlab.Image",
 		reflect.TypeOf((*Image)(nil)).Elem(),
