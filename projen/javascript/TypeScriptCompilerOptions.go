@@ -69,6 +69,11 @@ type TypeScriptCompilerOptions struct {
 	//
 	// Experimental.
 	EsModuleInterop *bool `field:"optional" json:"esModuleInterop" yaml:"esModuleInterop"`
+	// Specifies that optional property types should be interpreted exactly as written, meaning that `| undefined` is not added to the type Available with TypeScript 4.4 and newer.
+	// Default: false.
+	//
+	// Experimental.
+	ExactOptionalPropertyTypes *bool `field:"optional" json:"exactOptionalPropertyTypes" yaml:"exactOptionalPropertyTypes"`
 	// Enables experimental support for decorators, which is in stage 2 of the TC39 standardization process.
 	// Default: true.
 	//
@@ -275,6 +280,11 @@ type TypeScriptCompilerOptions struct {
 	//
 	// Experimental.
 	Target *string `field:"optional" json:"target" yaml:"target"`
+	// Change the type of the variable in a catch clause from any to unknown Available with TypeScript 4.4 and newer.
+	// Default: true.
+	//
+	// Experimental.
+	UseUnknownInCatchVariables *bool `field:"optional" json:"useUnknownInCatchVariables" yaml:"useUnknownInCatchVariables"`
 	// Simplifies TypeScript's handling of import/export `type` modifiers.
 	// See: https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax
 	//
