@@ -4,12 +4,12 @@ package cdk8s
 // Options for `Cdk8sDeps`.
 // Experimental.
 type Cdk8sDepsCommonOptions struct {
-	// Minumum version of the cdk8s to depend on.
+	// Minimum version of the cdk8s to depend on.
 	// Default: "2.3.33"
 	//
 	// Experimental.
 	Cdk8sVersion *string `field:"required" json:"cdk8sVersion" yaml:"cdk8sVersion"`
-	// Minumum version of the cdk8s-cli to depend on.
+	// Minimum version of the cdk8s-cli to depend on.
 	// Default: "2.0.28"
 	//
 	// Experimental.
@@ -27,7 +27,7 @@ type Cdk8sDepsCommonOptions struct {
 	//
 	// Experimental.
 	Cdk8sPlus *bool `field:"optional" json:"cdk8sPlus" yaml:"cdk8sPlus"`
-	// Minumum version of the cdk8s-plus-XX to depend on.
+	// Minimum version of the cdk8s-plus-XX to depend on.
 	// Default: "2.0.0-rc.26"
 	//
 	// Experimental.
