@@ -978,6 +978,11 @@ type ConstructLibraryAwsOptions struct {
 	//
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	EdgeLambdaAutoDiscover *bool `field:"optional" json:"edgeLambdaAutoDiscover" yaml:"edgeLambdaAutoDiscover"`
+	// Enable experimental support for the AWS CDK integ-runner.
+	// Default: false.
+	//
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	ExperimentalIntegRunner *bool `field:"optional" json:"experimentalIntegRunner" yaml:"experimentalIntegRunner"`
 	// Automatically discovers and creates integration tests for each `.integ.ts` file in under your test directory.
 	// Default: true.
 	//
