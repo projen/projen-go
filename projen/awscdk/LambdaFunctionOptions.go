@@ -34,7 +34,7 @@ type LambdaFunctionOptions struct {
 	// Experimental.
 	EdgeLambda *bool `field:"optional" json:"edgeLambda" yaml:"edgeLambda"`
 	// The node.js version to target.
-	// Default: Runtime.NODEJS_16_X
+	// Default: Runtime.NODEJS_18_X
 	//
 	// Experimental.
 	Runtime LambdaRuntime `field:"optional" json:"runtime" yaml:"runtime"`
