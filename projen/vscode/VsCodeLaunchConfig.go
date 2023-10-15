@@ -13,6 +13,8 @@ import (
 type VsCodeLaunchConfig interface {
 	projen.Component
 	// Experimental.
+	File() projen.JsonFile
+	// Experimental.
 	Project() projen.Project
 	// Adds a VsCodeLaunchConfigurationEntry (e.g. a node.js debugger) to `.vscode/launch.json. Each configuration entry has following mandatory fields: type, request and name. See https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes for details.
 	// Experimental.
@@ -33,6 +35,16 @@ type VsCodeLaunchConfig interface {
 // The jsii proxy struct for VsCodeLaunchConfig
 type jsiiProxy_VsCodeLaunchConfig struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_VsCodeLaunchConfig) File() projen.JsonFile {
+	var returns projen.JsonFile
+	_jsii_.Get(
+		j,
+		"file",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_VsCodeLaunchConfig) Project() projen.Project {

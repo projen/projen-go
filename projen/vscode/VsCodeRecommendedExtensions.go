@@ -13,6 +13,8 @@ import (
 type VsCodeRecommendedExtensions interface {
 	projen.Component
 	// Experimental.
+	File() projen.JsonFile
+	// Experimental.
 	Project() projen.Project
 	// Adds a list of VS Code extensions as recommendations for this workspace.
 	// Experimental.
@@ -38,6 +40,16 @@ type VsCodeRecommendedExtensions interface {
 // The jsii proxy struct for VsCodeRecommendedExtensions
 type jsiiProxy_VsCodeRecommendedExtensions struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_VsCodeRecommendedExtensions) File() projen.JsonFile {
+	var returns projen.JsonFile
+	_jsii_.Get(
+		j,
+		"file",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_VsCodeRecommendedExtensions) Project() projen.Project {

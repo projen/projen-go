@@ -13,6 +13,8 @@ import (
 type VsCodeSettings interface {
 	projen.Component
 	// Experimental.
+	File() projen.JsonFile
+	// Experimental.
 	Project() projen.Project
 	// Adds a workspace setting.
 	// Experimental.
@@ -36,6 +38,16 @@ type VsCodeSettings interface {
 // The jsii proxy struct for VsCodeSettings
 type jsiiProxy_VsCodeSettings struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_VsCodeSettings) File() projen.JsonFile {
+	var returns projen.JsonFile
+	_jsii_.Get(
+		j,
+		"file",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_VsCodeSettings) Project() projen.Project {
