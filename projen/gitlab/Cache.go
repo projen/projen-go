@@ -6,6 +6,11 @@ package gitlab
 //
 // Experimental.
 type Cache struct {
+	// Use cache:fallback_keys to specify a list of keys to try to restore cache from if there is no cache found for the cache:key.
+	//
+	// Caches are retrieved in the order specified in the fallback_keys section.
+	// Experimental.
+	FallbackKeys *[]*string `field:"optional" json:"fallbackKeys" yaml:"fallbackKeys"`
 	// Used the to give each cache a unique identifying key.
 	//
 	// All jobs that use the same cache key use the same cache.
