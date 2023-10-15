@@ -48,6 +48,11 @@ type TypeScriptCompilerOptions struct {
 	// Offers a way to configure the root directory for where declaration files are emitted.
 	// Experimental.
 	DeclarationDir *string `field:"optional" json:"declarationDir" yaml:"declarationDir"`
+	// Generates a source map for .d.ts files which map back to the original .ts source file. This will allow editors such as VS Code to go to the original .ts file when using features like Go to Definition.
+	// See: {@link https://www.typescriptlang.org/tsconfig#declarationMap}
+	//
+	// Experimental.
+	DeclarationMap *bool `field:"optional" json:"declarationMap" yaml:"declarationMap"`
 	// Only emit .d.ts files; do not emit .js files.
 	// Default: false.
 	//
@@ -280,6 +285,11 @@ type TypeScriptCompilerOptions struct {
 	//
 	// Experimental.
 	Target *string `field:"optional" json:"target" yaml:"target"`
+	// If types is specified, only packages listed will be included in the global scope.
+	// See: {@link https://www.typescriptlang.org/tsconfig#types}
+	//
+	// Experimental.
+	Types *[]*string `field:"optional" json:"types" yaml:"types"`
 	// Change the type of the variable in a catch clause from any to unknown Available with TypeScript 4.4 and newer.
 	// Default: true.
 	//
