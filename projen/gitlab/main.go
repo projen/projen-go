@@ -294,6 +294,15 @@ func init() {
 		"projen.gitlab.Parallel",
 		reflect.TypeOf((*Parallel)(nil)).Elem(),
 	)
+	_jsii_.RegisterEnum(
+		"projen.gitlab.PullPolicy",
+		reflect.TypeOf((*PullPolicy)(nil)).Elem(),
+		map[string]interface{}{
+			"ALWAYS": PullPolicy_ALWAYS,
+			"NEVER": PullPolicy_NEVER,
+			"IF_NOT_PRESENT": PullPolicy_IF_NOT_PRESENT,
+		},
+	)
 	_jsii_.RegisterStruct(
 		"projen.gitlab.Release",
 		reflect.TypeOf((*Release)(nil)).Elem(),

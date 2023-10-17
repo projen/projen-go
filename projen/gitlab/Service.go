@@ -28,5 +28,11 @@ type Service struct {
 	// It will be translated to Docker's --entrypoint option while creating the container. The syntax is similar to Dockerfile's ENTRYPOINT directive, where each shell token is a separate string in the array.
 	// Experimental.
 	Entrypoint *[]*string `field:"optional" json:"entrypoint" yaml:"entrypoint"`
+	// The pull policy that the runner uses to fetch the Docker image.
+	// Experimental.
+	PullPolicy *[]PullPolicy `field:"optional" json:"pullPolicy" yaml:"pullPolicy"`
+	// Additional environment variables that are passed exclusively to the service..
+	// Experimental.
+	Variables *map[string]*string `field:"optional" json:"variables" yaml:"variables"`
 }
 

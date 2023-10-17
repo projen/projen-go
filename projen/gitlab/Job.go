@@ -98,7 +98,7 @@ type Job struct {
 	Trigger interface{} `field:"optional" json:"trigger" yaml:"trigger"`
 	// Configurable values that are passed to the Job.
 	// Experimental.
-	Variables *map[string]interface{} `field:"optional" json:"variables" yaml:"variables"`
+	Variables *map[string]*string `field:"optional" json:"variables" yaml:"variables"`
 	// Describes the conditions for when to run the job.
 	//
 	// Defaults to 'on_success'.

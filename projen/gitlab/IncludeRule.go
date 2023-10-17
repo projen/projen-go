@@ -17,7 +17,7 @@ type IncludeRule struct {
 	// Experimental.
 	StartIn *string `field:"optional" json:"startIn" yaml:"startIn"`
 	// Experimental.
-	Variables *map[string]interface{} `field:"optional" json:"variables" yaml:"variables"`
+	Variables *map[string]*string `field:"optional" json:"variables" yaml:"variables"`
 	// Experimental.
 	When JobWhen `field:"optional" json:"when" yaml:"when"`
 }
