@@ -240,6 +240,7 @@ func init() {
 			"YARN2": NodePackageManager_YARN2,
 			"NPM": NodePackageManager_NPM,
 			"PNPM": NodePackageManager_PNPM,
+			"BUN": NodePackageManager_BUN,
 		},
 	)
 	_jsii_.RegisterStruct(

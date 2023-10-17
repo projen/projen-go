@@ -18,5 +18,8 @@ const (
 	// Use `pnpm` as the package manager.
 	// Experimental.
 	NodePackageManager_PNPM NodePackageManager = "PNPM"
+	// Use `bun` as the package manager.
+	// Experimental.
+	NodePackageManager_BUN NodePackageManager = "BUN"
 )
 
