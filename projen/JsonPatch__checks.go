@@ -38,6 +38,14 @@ func validateJsonPatch_CopyParameters(from *string, path *string) error {
 	return nil
 }
 
+func validateJsonPatch_EscapePathParameters(path *string) error {
+	if path == nil {
+		return fmt.Errorf("parameter path is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateJsonPatch_MoveParameters(from *string, path *string) error {
 	if from == nil {
 		return fmt.Errorf("parameter from is required, but nil was provided")

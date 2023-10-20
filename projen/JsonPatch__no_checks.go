@@ -16,6 +16,10 @@ func validateJsonPatch_CopyParameters(from *string, path *string) error {
 	return nil
 }
 
+func validateJsonPatch_EscapePathParameters(path *string) error {
+	return nil
+}
+
 func validateJsonPatch_MoveParameters(from *string, path *string) error {
 	return nil
 }

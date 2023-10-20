@@ -1021,6 +1021,14 @@ func init() {
 		"projen.TasksManifest",
 		reflect.TypeOf((*TasksManifest)(nil)).Elem(),
 	)
+	_jsii_.RegisterEnum(
+		"projen.TestFailureBehavior",
+		reflect.TypeOf((*TestFailureBehavior)(nil)).Elem(),
+		map[string]interface{}{
+			"SKIP": TestFailureBehavior_SKIP,
+			"FAIL_SYNTHESIS": TestFailureBehavior_FAIL_SYNTHESIS,
+		},
+	)
 	_jsii_.RegisterClass(
 		"projen.Testing",
 		reflect.TypeOf((*Testing)(nil)).Elem(),

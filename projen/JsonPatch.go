@@ -110,6 +110,28 @@ func JsonPatch_Copy(from *string, path *string) JsonPatch {
 	return returns
 }
 
+// Escapes a json pointer path.
+//
+// Returns: the Escaped path.
+// Experimental.
+func JsonPatch_EscapePath(path *string) *string {
+	_init_.Initialize()
+
+	if err := validateJsonPatch_EscapePathParameters(path); err != nil {
+		panic(err)
+	}
+	var returns *string
+
+	_jsii_.StaticInvoke(
+		"projen.JsonPatch",
+		"escapePath",
+		[]interface{}{path},
+		&returns,
+	)
+
+	return returns
+}
+
 // Moves a value from one location to the other.
 //
 // Both from and path are JSON Pointers.
@@ -195,7 +217,7 @@ func JsonPatch_Replace(path *string, value interface{}) JsonPatch {
 //   JsonPatch.test('/best_biscuit/name', 'Choco Leibniz')
 //
 // Experimental.
-func JsonPatch_Test(path *string, value interface{}) JsonPatch {
+func JsonPatch_Test(path *string, value interface{}, failureBehavior TestFailureBehavior) JsonPatch {
 	_init_.Initialize()
 
 	if err := validateJsonPatch_TestParameters(path, value); err != nil {
@@ -206,7 +228,7 @@ func JsonPatch_Test(path *string, value interface{}) JsonPatch {
 	_jsii_.StaticInvoke(
 		"projen.JsonPatch",
 		"test",
-		[]interface{}{path, value},
+		[]interface{}{path, value, failureBehavior},
 		&returns,
 	)
 
