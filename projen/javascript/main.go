@@ -238,6 +238,8 @@ func init() {
 		map[string]interface{}{
 			"YARN": NodePackageManager_YARN,
 			"YARN2": NodePackageManager_YARN2,
+			"YARN_CLASSIC": NodePackageManager_YARN_CLASSIC,
+			"YARN_BERRY": NodePackageManager_YARN_BERRY,
 			"NPM": NodePackageManager_NPM,
 			"PNPM": NodePackageManager_PNPM,
 			"BUN": NodePackageManager_BUN,

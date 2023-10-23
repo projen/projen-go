@@ -340,7 +340,7 @@ type ReactProjectOptions struct {
 	// Experimental.
 	NpmTokenSecret *string `field:"optional" json:"npmTokenSecret" yaml:"npmTokenSecret"`
 	// The Node Package Manager used to execute scripts.
-	// Default: NodePackageManager.YARN
+	// Default: NodePackageManager.YARN_CLASSIC
 	//
 	// Experimental.
 	PackageManager javascript.NodePackageManager `field:"optional" json:"packageManager" yaml:"packageManager"`

@@ -342,7 +342,7 @@ type ConstructLibraryAwsOptions struct {
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	NpmTokenSecret *string `field:"optional" json:"npmTokenSecret" yaml:"npmTokenSecret"`
 	// The Node Package Manager used to execute scripts.
-	// Default: NodePackageManager.YARN
+	// Default: NodePackageManager.YARN_CLASSIC
 	//
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PackageManager javascript.NodePackageManager `field:"optional" json:"packageManager" yaml:"packageManager"`
