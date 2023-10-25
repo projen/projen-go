@@ -50,7 +50,7 @@ type NextJsTypeScriptProjectOptions struct {
 	//
 	// If this project has a parent, this directory is relative to the parent
 	// directory and it cannot be the same as the parent or any of it's other
-	// sub-projects.
+	// subprojects.
 	// Default: "."
 	//
 	// Experimental.

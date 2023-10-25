@@ -65,7 +65,7 @@ type UpgradeDependenciesOptions struct {
 	//
 	// If this is `false`, only a local projen task is created, which can be executed manually to
 	// upgrade the dependencies.
-	// Default: - true for root projects, false for sub-projects.
+	// Default: - true for root projects, false for subprojects.
 	//
 	// Experimental.
 	Workflow *bool `field:"optional" json:"workflow" yaml:"workflow"`

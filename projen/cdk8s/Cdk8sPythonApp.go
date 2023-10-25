@@ -203,7 +203,7 @@ type Cdk8sPythonApp interface {
 	//
 	// 1. Call "this.preSynthesize()"
 	// 2. Delete all generated files
-	// 3. Synthesize all sub-projects
+	// 3. Synthesize all subprojects
 	// 4. Synthesize all components of this project
 	// 5. Call "postSynthesize()" for all components of this project
 	// 6. Call "this.postSynthesize()"
