@@ -56,6 +56,18 @@ func (c *jsiiProxy_Cdk8sPythonApp) validateTryRemoveFileParameters(filePath *str
 	return nil
 }
 
+func validateCdk8sPythonApp_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateCdk8sPythonApp_IsProjectParameters(x interface{}) error {
+	return nil
+}
+
+func validateCdk8sPythonApp_OfParameters(construct constructs.IConstruct) error {
+	return nil
+}
+
 func validateNewCdk8sPythonAppParameters(options *Cdk8sPythonOptions) error {
 	return nil
 }

@@ -76,6 +76,18 @@ func (c *jsiiProxy_ConstructLibrary) validateTryRemoveFileParameters(filePath *s
 	return nil
 }
 
+func validateConstructLibrary_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateConstructLibrary_IsProjectParameters(x interface{}) error {
+	return nil
+}
+
+func validateConstructLibrary_OfParameters(construct constructs.IConstruct) error {
+	return nil
+}
+
 func validateNewConstructLibraryParameters(options *ConstructLibraryOptions) error {
 	return nil
 }

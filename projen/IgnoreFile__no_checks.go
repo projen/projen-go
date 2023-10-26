@@ -8,6 +8,14 @@ func (i *jsiiProxy_IgnoreFile) validateSynthesizeContentParameters(resolver IRes
 	return nil
 }
 
+func validateIgnoreFile_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateIgnoreFile_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_IgnoreFile) validateSetExecutableParameters(val *bool) error {
 	return nil
 }

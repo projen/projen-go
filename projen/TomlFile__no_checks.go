@@ -20,6 +20,14 @@ func (t *jsiiProxy_TomlFile) validateSynthesizeContentParameters(resolver IResol
 	return nil
 }
 
+func validateTomlFile_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateTomlFile_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_TomlFile) validateSetExecutableParameters(val *bool) error {
 	return nil
 }

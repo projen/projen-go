@@ -12,6 +12,14 @@ func (r *jsiiProxy_Release) validateAddJobsParameters(jobs *map[string]*workflow
 	return nil
 }
 
+func validateRelease_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateRelease_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateRelease_OfParameters(project github.GitHubProject) error {
 	return nil
 }

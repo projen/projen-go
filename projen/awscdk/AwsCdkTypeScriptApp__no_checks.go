@@ -76,6 +76,18 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) validateTryRemoveFileParameters(filePath
 	return nil
 }
 
+func validateAwsCdkTypeScriptApp_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateAwsCdkTypeScriptApp_IsProjectParameters(x interface{}) error {
+	return nil
+}
+
+func validateAwsCdkTypeScriptApp_OfParameters(construct constructs.IConstruct) error {
+	return nil
+}
+
 func validateNewAwsCdkTypeScriptAppParameters(options *AwsCdkTypeScriptAppOptions) error {
 	return nil
 }

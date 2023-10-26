@@ -8,6 +8,14 @@ func (r *jsiiProxy_ReactTypeDef) validateSynthesizeContentParameters(_arg projen
 	return nil
 }
 
+func validateReactTypeDef_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateReactTypeDef_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_ReactTypeDef) validateSetExecutableParameters(val *bool) error {
 	return nil
 }

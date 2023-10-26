@@ -76,6 +76,18 @@ func (c *jsiiProxy_ConstructLibraryCdktf) validateTryRemoveFileParameters(filePa
 	return nil
 }
 
+func validateConstructLibraryCdktf_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateConstructLibraryCdktf_IsProjectParameters(x interface{}) error {
+	return nil
+}
+
+func validateConstructLibraryCdktf_OfParameters(construct constructs.IConstruct) error {
+	return nil
+}
+
 func validateNewConstructLibraryCdktfParameters(options *ConstructLibraryCdktfOptions) error {
 	return nil
 }

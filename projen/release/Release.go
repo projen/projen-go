@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github"
 	"github.com/projen/projen-go/projen/github/workflows"
@@ -22,6 +23,9 @@ type Release interface {
 	// Retrieve all release branch names.
 	// Experimental.
 	Branches() *[]*string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Package publisher.
@@ -48,6 +52,9 @@ type Release interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for Release
@@ -70,6 +77,16 @@ func (j *jsiiProxy_Release) Branches() *[]*string {
 	_jsii_.Get(
 		j,
 		"branches",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Release) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -123,6 +140,48 @@ func NewRelease_Override(r Release, project github.GitHubProject, options *Relea
 		[]interface{}{project, options},
 		r,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func Release_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateRelease_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.release.Release",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Release_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateRelease_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.release.Release",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 // Returns the `Release` component of a project or `undefined` if the project does not have a Release component.
@@ -200,5 +259,18 @@ func (r *jsiiProxy_Release) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (r *jsiiProxy_Release) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		r,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

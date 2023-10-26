@@ -24,6 +24,22 @@ func (d *jsiiProxy_Dependabot) validateAddIgnoreParameters(dependencyName *strin
 	return nil
 }
 
+func validateDependabot_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateDependabot_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewDependabotParameters(github GitHub, options *DependabotOptions) error {
 	if github == nil {
 		return fmt.Errorf("parameter github is required, but nil was provided")

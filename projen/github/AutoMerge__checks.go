@@ -16,6 +16,22 @@ func (a *jsiiProxy_AutoMerge) validateAddConditionsLaterParameters(later IAddCon
 	return nil
 }
 
+func validateAutoMerge_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateAutoMerge_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewAutoMergeParameters(github GitHub, options *AutoMergeOptions) error {
 	if github == nil {
 		return fmt.Errorf("parameter github is required, but nil was provided")

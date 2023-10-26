@@ -3,6 +3,8 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // Defines project tasks.
@@ -18,6 +20,9 @@ type Tasks interface {
 	// Returns a copy of the currently global environment for this project.
 	// Experimental.
 	Env() *map[string]*string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() Project
 	// Adds global environment.
@@ -42,6 +47,9 @@ type Tasks interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 	// Finds a task by name.
 	//
 	// Returns `undefined` if the task cannot be found.
@@ -69,6 +77,16 @@ func (j *jsiiProxy_Tasks) Env() *map[string]*string {
 	_jsii_.Get(
 		j,
 		"env",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Tasks) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -112,6 +130,48 @@ func NewTasks_Override(t Tasks, project Project) {
 		[]interface{}{project},
 		t,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func Tasks_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateTasks_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.Tasks",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Tasks_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateTasks_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.Tasks",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (t *jsiiProxy_Tasks) AddEnvironment(name *string, value *string) {
@@ -179,6 +239,19 @@ func (t *jsiiProxy_Tasks) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (t *jsiiProxy_Tasks) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		t,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 func (t *jsiiProxy_Tasks) TryFind(name *string) Task {

@@ -4,6 +4,14 @@ package awscdk
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func validateAwsCdkDeps_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateAwsCdkDeps_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewAwsCdkDepsParameters(project projen.Project, options *AwsCdkDepsOptions) error {
 	return nil
 }

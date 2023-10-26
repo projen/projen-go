@@ -4,7 +4,15 @@ package projen
 
 // Building without runtime type checking enabled, so all the below just return nil
 
-func validateNewComponentParameters(project Project) error {
+func validateComponent_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateComponent_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateNewComponentParameters(scope constructs.IConstruct) error {
 	return nil
 }
 

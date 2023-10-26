@@ -3,6 +3,8 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // Experimental.
@@ -28,7 +30,10 @@ type License interface {
 	// Value is undefined if the project is being ejected.
 	// Experimental.
 	Marker() *string
-	// The file path, relative to the project root.
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
+	// The file path, relative to the project's outdir.
 	// Experimental.
 	Path() *string
 	// Experimental.
@@ -52,6 +57,9 @@ type License interface {
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
 	SynthesizeContent(_arg IResolver) *string
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for License
@@ -94,6 +102,16 @@ func (j *jsiiProxy_License) Marker() *string {
 	_jsii_.Get(
 		j,
 		"marker",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_License) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -181,6 +199,48 @@ func (j *jsiiProxy_License)SetReadonly(val *bool) {
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func License_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateLicense_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.License",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func License_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateLicense_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.License",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (l *jsiiProxy_License) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -215,6 +275,19 @@ func (l *jsiiProxy_License) SynthesizeContent(_arg IResolver) *string {
 		l,
 		"synthesizeContent",
 		[]interface{}{_arg},
+		&returns,
+	)
+
+	return returns
+}
+
+func (l *jsiiProxy_License) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		l,
+		"toString",
+		nil, // no parameters
 		&returns,
 	)
 

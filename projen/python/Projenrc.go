@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/python/internal"
 )
@@ -18,6 +19,9 @@ type Projenrc interface {
 	// The name of the projenrc file.
 	// Experimental.
 	FilePath() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Path to the python executable to use.
@@ -34,6 +38,9 @@ type Projenrc interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for Projenrc
@@ -46,6 +53,16 @@ func (j *jsiiProxy_Projenrc) FilePath() *string {
 	_jsii_.Get(
 		j,
 		"filePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Projenrc) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -101,6 +118,48 @@ func NewProjenrc_Override(p Projenrc, project projen.Project, options *ProjenrcO
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func Projenrc_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateProjenrc_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.python.Projenrc",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Projenrc_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateProjenrc_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.python.Projenrc",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 // Returns the `Projenrc` instance associated with a project or `undefined` if there is no Projenrc.
 //
 // Returns: A Projenrc.
@@ -145,5 +204,18 @@ func (p *jsiiProxy_Projenrc) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (p *jsiiProxy_Projenrc) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		p,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

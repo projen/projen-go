@@ -32,6 +32,14 @@ func (t *jsiiProxy_TaskWorkflow) validateUpdateJobsParameters(jobs *map[string]i
 	return nil
 }
 
+func validateTaskWorkflow_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateTaskWorkflow_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewTaskWorkflowParameters(github GitHub, options *TaskWorkflowOptions) error {
 	return nil
 }

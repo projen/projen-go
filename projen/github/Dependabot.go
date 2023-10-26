@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github/internal"
 )
@@ -24,6 +25,9 @@ type Dependabot interface {
 	// Whether or not projen is also upgraded in this config,.
 	// Experimental.
 	IgnoresProjen() *bool
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Allows a dependency from automatic updates.
@@ -43,6 +47,9 @@ type Dependabot interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for Dependabot
@@ -65,6 +72,16 @@ func (j *jsiiProxy_Dependabot) IgnoresProjen() *bool {
 	_jsii_.Get(
 		j,
 		"ignoresProjen",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Dependabot) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -108,6 +125,48 @@ func NewDependabot_Override(d Dependabot, github GitHub, options *DependabotOpti
 		[]interface{}{github, options},
 		d,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func Dependabot_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateDependabot_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.github.Dependabot",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Dependabot_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateDependabot_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.github.Dependabot",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (d *jsiiProxy_Dependabot) AddAllow(dependencyName *string) {
@@ -159,5 +218,18 @@ func (d *jsiiProxy_Dependabot) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (d *jsiiProxy_Dependabot) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		d,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

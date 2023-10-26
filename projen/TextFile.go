@@ -3,6 +3,8 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // A text file.
@@ -29,7 +31,10 @@ type TextFile interface {
 	// Value is undefined if the project is being ejected.
 	// Experimental.
 	Marker() *string
-	// The file path, relative to the project root.
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
+	// The file path, relative to the project's outdir.
 	// Experimental.
 	Path() *string
 	// Experimental.
@@ -56,6 +61,9 @@ type TextFile interface {
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
 	SynthesizeContent(_arg IResolver) *string
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for TextFile
@@ -103,6 +111,16 @@ func (j *jsiiProxy_TextFile) Marker() *string {
 	return returns
 }
 
+func (j *jsiiProxy_TextFile) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_TextFile) Path() *string {
 	var returns *string
 	_jsii_.Get(
@@ -136,17 +154,17 @@ func (j *jsiiProxy_TextFile) Readonly() *bool {
 
 // Defines a text file.
 // Experimental.
-func NewTextFile(project Project, filePath *string, options *TextFileOptions) TextFile {
+func NewTextFile(scope constructs.IConstruct, filePath *string, options *TextFileOptions) TextFile {
 	_init_.Initialize()
 
-	if err := validateNewTextFileParameters(project, filePath, options); err != nil {
+	if err := validateNewTextFileParameters(scope, filePath, options); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_TextFile{}
 
 	_jsii_.Create(
 		"projen.TextFile",
-		[]interface{}{project, filePath, options},
+		[]interface{}{scope, filePath, options},
 		&j,
 	)
 
@@ -155,12 +173,12 @@ func NewTextFile(project Project, filePath *string, options *TextFileOptions) Te
 
 // Defines a text file.
 // Experimental.
-func NewTextFile_Override(t TextFile, project Project, filePath *string, options *TextFileOptions) {
+func NewTextFile_Override(t TextFile, scope constructs.IConstruct, filePath *string, options *TextFileOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.TextFile",
-		[]interface{}{project, filePath, options},
+		[]interface{}{scope, filePath, options},
 		t,
 	)
 }
@@ -185,6 +203,48 @@ func (j *jsiiProxy_TextFile)SetReadonly(val *bool) {
 		"readonly",
 		val,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func TextFile_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateTextFile_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.TextFile",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func TextFile_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateTextFile_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.TextFile",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (t *jsiiProxy_TextFile) AddLine(line *string) {
@@ -232,6 +292,19 @@ func (t *jsiiProxy_TextFile) SynthesizeContent(_arg IResolver) *string {
 		t,
 		"synthesizeContent",
 		[]interface{}{_arg},
+		&returns,
+	)
+
+	return returns
+}
+
+func (t *jsiiProxy_TextFile) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		t,
+		"toString",
+		nil, // no parameters
 		&returns,
 	)
 

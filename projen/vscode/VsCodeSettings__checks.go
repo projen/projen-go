@@ -39,6 +39,22 @@ func (v *jsiiProxy_VsCodeSettings) validateAddSettingsParameters(settings *map[s
 	return nil
 }
 
+func validateVsCodeSettings_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateVsCodeSettings_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewVsCodeSettingsParameters(vscode VsCode) error {
 	if vscode == nil {
 		return fmt.Errorf("parameter vscode is required, but nil was provided")

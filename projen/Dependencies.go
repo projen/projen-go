@@ -3,6 +3,8 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // The `Dependencies` component is responsible to track the list of dependencies a project has, and then used by project types as the model for rendering project-specific dependency manifests such as the dependencies section `package.json` files.
@@ -17,6 +19,9 @@ type Dependencies interface {
 	// The list is sorted by type->name->version.
 	// Experimental.
 	All() *[]*Dependency
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() Project
 	// Adds a dependency to this project.
@@ -44,6 +49,9 @@ type Dependencies interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 	// Returns a dependency by name.
 	//
 	// Returns `undefined` if there is no dependency defined by that name or if
@@ -65,6 +73,16 @@ func (j *jsiiProxy_Dependencies) All() *[]*Dependency {
 	_jsii_.Get(
 		j,
 		"all",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Dependencies) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -110,6 +128,48 @@ func NewDependencies_Override(d Dependencies, project Project) {
 		[]interface{}{project},
 		d,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func Dependencies_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateDependencies_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.Dependencies",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Dependencies_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateDependencies_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.Dependencies",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 // Returns the coordinates of a dependency spec.
@@ -211,6 +271,19 @@ func (d *jsiiProxy_Dependencies) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (d *jsiiProxy_Dependencies) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		d,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 func (d *jsiiProxy_Dependencies) TryGetDependency(name *string, type_ DependencyType) *Dependency {

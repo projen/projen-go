@@ -8,6 +8,14 @@ func (v *jsiiProxy_VsCodeLaunchConfig) validateAddConfigurationParameters(cfg *V
 	return nil
 }
 
+func validateVsCodeLaunchConfig_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateVsCodeLaunchConfig_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewVsCodeLaunchConfigParameters(vscode VsCode) error {
 	return nil
 }

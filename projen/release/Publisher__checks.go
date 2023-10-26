@@ -93,6 +93,22 @@ func (p *jsiiProxy_Publisher) validatePublishToPyPiParameters(options *PyPiPubli
 	return nil
 }
 
+func validatePublisher_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validatePublisher_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewPublisherParameters(project projen.Project, options *PublisherOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

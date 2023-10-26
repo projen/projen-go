@@ -10,6 +10,22 @@ import (
 	"github.com/projen/projen-go/projen/javascript"
 )
 
+func validateReactComponent_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateReactComponent_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewReactComponentParameters(project javascript.NodeProject, options *ReactComponentOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

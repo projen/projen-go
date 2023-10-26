@@ -12,13 +12,17 @@ func init() {
 		"projen.Component",
 		reflect.TypeOf((*Component)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
-			return &jsiiProxy_Component{}
+			j := jsiiProxy_Component{}
+			_jsii_.InitJsiiProxy(&j.Type__constructsConstruct)
+			return &j
 		},
 	)
 	_jsii_.RegisterStruct(
@@ -32,11 +36,13 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addDependency", GoMethod: "AddDependency"},
 			_jsii_.MemberProperty{JsiiProperty: "all", GoGetter: "All"},
 			_jsii_.MemberMethod{JsiiMethod: "getDependency", GoMethod: "GetDependency"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "removeDependency", GoMethod: "RemoveDependency"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 			_jsii_.MemberMethod{JsiiMethod: "tryGetDependency", GoMethod: "TryGetDependency"},
 		},
 		func() interface{} {
@@ -92,10 +98,12 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addService", GoMethod: "AddService"},
 			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_DockerCompose{}
@@ -188,6 +196,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
@@ -195,6 +204,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "readonly", GoGetter: "Readonly"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_FileBase{}
@@ -217,6 +227,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "hasLfsPatterns", GoGetter: "HasLfsPatterns"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
@@ -224,6 +235,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "readonly", GoGetter: "Readonly"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_GitAttributesFile{}
@@ -246,10 +258,12 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addTasks", GoMethod: "AddTasks"},
 			_jsii_.MemberMethod{JsiiMethod: "addVscodeExtensions", GoMethod: "AddVscodeExtensions"},
 			_jsii_.MemberProperty{JsiiProperty: "config", GoGetter: "Config"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_Gitpod{}
@@ -414,6 +428,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "filterEmptyLines", GoGetter: "FilterEmptyLines"},
 			_jsii_.MemberMethod{JsiiMethod: "include", GoMethod: "Include"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
@@ -422,6 +437,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "removePatterns", GoMethod: "RemovePatterns"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_IgnoreFile{}
@@ -444,6 +460,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
 			_jsii_.MemberMethod{JsiiMethod: "patch", GoMethod: "Patch"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
@@ -453,6 +470,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "readonly", GoGetter: "Readonly"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_IniFile{}
@@ -488,6 +506,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
 			_jsii_.MemberMethod{JsiiMethod: "patch", GoMethod: "Patch"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
@@ -498,6 +517,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "supportsComments", GoGetter: "SupportsComments"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_JsonFile{}
@@ -525,6 +545,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
@@ -532,6 +553,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "readonly", GoGetter: "Readonly"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_License{}
@@ -563,10 +585,12 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "error", GoMethod: "Error"},
 			_jsii_.MemberMethod{JsiiMethod: "info", GoMethod: "Info"},
 			_jsii_.MemberMethod{JsiiMethod: "log", GoMethod: "Log"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 			_jsii_.MemberMethod{JsiiMethod: "verbose", GoMethod: "Verbose"},
 			_jsii_.MemberMethod{JsiiMethod: "warn", GoMethod: "Warn"},
 		},
@@ -592,6 +616,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
@@ -600,6 +625,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "rules", GoGetter: "Rules"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_Makefile{}
@@ -622,6 +648,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
 			_jsii_.MemberMethod{JsiiMethod: "patch", GoMethod: "Patch"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
@@ -631,6 +658,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "readonly", GoGetter: "Readonly"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_ObjectFile{}
@@ -665,6 +693,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "initProject", GoGetter: "InitProject"},
 			_jsii_.MemberProperty{JsiiProperty: "logger", GoGetter: "Logger"},
 			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "outdir", GoGetter: "Outdir"},
 			_jsii_.MemberProperty{JsiiProperty: "packageTask", GoGetter: "PackageTask"},
 			_jsii_.MemberProperty{JsiiProperty: "parent", GoGetter: "Parent"},
@@ -681,13 +710,16 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "synth", GoMethod: "Synth"},
 			_jsii_.MemberProperty{JsiiProperty: "tasks", GoGetter: "Tasks"},
 			_jsii_.MemberProperty{JsiiProperty: "testTask", GoGetter: "TestTask"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 			_jsii_.MemberMethod{JsiiMethod: "tryFindFile", GoMethod: "TryFindFile"},
 			_jsii_.MemberMethod{JsiiMethod: "tryFindJsonFile", GoMethod: "TryFindJsonFile"},
 			_jsii_.MemberMethod{JsiiMethod: "tryFindObjectFile", GoMethod: "TryFindObjectFile"},
 			_jsii_.MemberMethod{JsiiMethod: "tryRemoveFile", GoMethod: "TryRemoveFile"},
 		},
 		func() interface{} {
-			return &jsiiProxy_Project{}
+			j := jsiiProxy_Project{}
+			_jsii_.InitJsiiProxy(&j.Type__constructsConstruct)
+			return &j
 		},
 	)
 	_jsii_.RegisterClass(
@@ -696,6 +728,7 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberProperty{JsiiProperty: "buildTask", GoGetter: "BuildTask"},
 			_jsii_.MemberProperty{JsiiProperty: "compileTask", GoGetter: "CompileTask"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "packageTask", GoGetter: "PackageTask"},
 			_jsii_.MemberProperty{JsiiProperty: "postCompileTask", GoGetter: "PostCompileTask"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
@@ -704,6 +737,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "testTask", GoGetter: "TestTask"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_ProjectBuild{}
@@ -714,6 +748,24 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.ProjectOptions",
 		reflect.TypeOf((*ProjectOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.ProjectTree",
+		reflect.TypeOf((*ProjectTree)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+		},
+		func() interface{} {
+			j := jsiiProxy_ProjectTree{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_Component)
+			return &j
+		},
 	)
 	_jsii_.RegisterEnum(
 		"projen.ProjectType",
@@ -737,10 +789,12 @@ func init() {
 		reflect.TypeOf((*Projenrc)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberProperty{JsiiProperty: "filePath", GoGetter: "FilePath"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_Projenrc{}
@@ -753,10 +807,12 @@ func init() {
 		reflect.TypeOf((*ProjenrcFile)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberProperty{JsiiProperty: "filePath", GoGetter: "FilePath"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_ProjenrcFile{}
@@ -769,10 +825,12 @@ func init() {
 		reflect.TypeOf((*ProjenrcJson)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberProperty{JsiiProperty: "filePath", GoGetter: "FilePath"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_ProjenrcJson{}
@@ -803,10 +861,12 @@ func init() {
 		reflect.TypeOf((*Renovatebot)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_Renovatebot{}
@@ -843,10 +903,12 @@ func init() {
 		"projen.SampleDir",
 		reflect.TypeOf((*SampleDir)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_SampleDir{}
@@ -862,10 +924,12 @@ func init() {
 		"projen.SampleFile",
 		reflect.TypeOf((*SampleFile)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_SampleFile{}
@@ -881,10 +945,12 @@ func init() {
 		"projen.SampleReadme",
 		reflect.TypeOf((*SampleReadme)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_SampleReadme{}
@@ -920,11 +986,13 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "filePath", GoGetter: "FilePath"},
 			_jsii_.MemberMethod{JsiiMethod: "line", GoMethod: "Line"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "open", GoMethod: "Open"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_SourceCode{}
@@ -1004,11 +1072,13 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addTask", GoMethod: "AddTask"},
 			_jsii_.MemberProperty{JsiiProperty: "all", GoGetter: "All"},
 			_jsii_.MemberProperty{JsiiProperty: "env", GoGetter: "Env"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "removeTask", GoMethod: "RemoveTask"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 			_jsii_.MemberMethod{JsiiMethod: "tryFind", GoMethod: "TryFind"},
 		},
 		func() interface{} {
@@ -1046,6 +1116,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
@@ -1053,6 +1124,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "readonly", GoGetter: "Readonly"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_TextFile{}
@@ -1075,6 +1147,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
 			_jsii_.MemberMethod{JsiiMethod: "patch", GoMethod: "Patch"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
@@ -1084,6 +1157,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "readonly", GoGetter: "Readonly"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_TomlFile{}
@@ -1101,11 +1175,13 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberProperty{JsiiProperty: "bumpTask", GoGetter: "BumpTask"},
 			_jsii_.MemberProperty{JsiiProperty: "changelogFileName", GoGetter: "ChangelogFileName"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberProperty{JsiiProperty: "releaseTagFileName", GoGetter: "ReleaseTagFileName"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 			_jsii_.MemberProperty{JsiiProperty: "unbumpTask", GoGetter: "UnbumpTask"},
 			_jsii_.MemberProperty{JsiiProperty: "versionFileName", GoGetter: "VersionFileName"},
 		},
@@ -1130,6 +1206,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
 			_jsii_.MemberMethod{JsiiMethod: "patch", GoMethod: "Patch"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
@@ -1139,6 +1216,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "readonly", GoGetter: "Readonly"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_XmlFile{}
@@ -1162,6 +1240,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "lineWidth", GoGetter: "LineWidth"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
 			_jsii_.MemberMethod{JsiiMethod: "patch", GoMethod: "Patch"},
 			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
@@ -1171,6 +1250,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "readonly", GoGetter: "Readonly"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_YamlFile{}

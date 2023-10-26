@@ -30,6 +30,22 @@ func (m *jsiiProxy_Mergify) validateAddRuleParameters(rule *MergifyRule) error {
 	return nil
 }
 
+func validateMergify_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateMergify_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewMergifyParameters(github GitHub, options *MergifyOptions) error {
 	if github == nil {
 		return fmt.Errorf("parameter github is required, but nil was provided")

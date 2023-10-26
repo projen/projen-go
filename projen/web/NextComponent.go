@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/javascript"
 	"github.com/projen/projen-go/projen/web/internal"
@@ -12,6 +13,9 @@ import (
 // Experimental.
 type NextComponent interface {
 	projen.Component
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Called after synthesis.
@@ -25,11 +29,24 @@ type NextComponent interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for NextComponent
 type jsiiProxy_NextComponent struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_NextComponent) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_NextComponent) Project() projen.Project {
@@ -72,6 +89,48 @@ func NewNextComponent_Override(n NextComponent, project javascript.NodeProject, 
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func NextComponent_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateNextComponent_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.web.NextComponent",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func NextComponent_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateNextComponent_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.web.NextComponent",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (n *jsiiProxy_NextComponent) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		n,
@@ -94,5 +153,18 @@ func (n *jsiiProxy_NextComponent) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (n *jsiiProxy_NextComponent) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		n,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

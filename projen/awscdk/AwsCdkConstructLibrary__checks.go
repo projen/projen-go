@@ -7,6 +7,7 @@ import (
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/javascript"
 )
@@ -158,6 +159,30 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) validateTryFindObjectFileParameters(f
 func (a *jsiiProxy_AwsCdkConstructLibrary) validateTryRemoveFileParameters(filePath *string) error {
 	if filePath == nil {
 		return fmt.Errorf("parameter filePath is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateAwsCdkConstructLibrary_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateAwsCdkConstructLibrary_IsProjectParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateAwsCdkConstructLibrary_OfParameters(construct constructs.IConstruct) error {
+	if construct == nil {
+		return fmt.Errorf("parameter construct is required, but nil was provided")
 	}
 
 	return nil

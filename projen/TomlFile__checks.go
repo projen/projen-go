@@ -44,6 +44,22 @@ func (t *jsiiProxy_TomlFile) validateSynthesizeContentParameters(resolver IResol
 	return nil
 }
 
+func validateTomlFile_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateTomlFile_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (j *jsiiProxy_TomlFile) validateSetExecutableParameters(val *bool) error {
 	if val == nil {
 		return fmt.Errorf("parameter val is required, but nil was provided")

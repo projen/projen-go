@@ -3,12 +3,17 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // Project-level logging utilities.
 // Experimental.
 type Logger interface {
 	Component
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() Project
 	// Log a message to stderr with DEBUG severity.
@@ -37,6 +42,9 @@ type Logger interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 	// Log a message to stderr with VERBOSE severity.
 	// Experimental.
 	Verbose(text ...interface{})
@@ -48,6 +56,16 @@ type Logger interface {
 // The jsii proxy struct for Logger
 type jsiiProxy_Logger struct {
 	jsiiProxy_Component
+}
+
+func (j *jsiiProxy_Logger) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_Logger) Project() Project {
@@ -62,17 +80,17 @@ func (j *jsiiProxy_Logger) Project() Project {
 
 
 // Experimental.
-func NewLogger(project Project, options *LoggerOptions) Logger {
+func NewLogger(scope constructs.IConstruct, options *LoggerOptions) Logger {
 	_init_.Initialize()
 
-	if err := validateNewLoggerParameters(project, options); err != nil {
+	if err := validateNewLoggerParameters(scope, options); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_Logger{}
 
 	_jsii_.Create(
 		"projen.Logger",
-		[]interface{}{project, options},
+		[]interface{}{scope, options},
 		&j,
 	)
 
@@ -80,14 +98,56 @@ func NewLogger(project Project, options *LoggerOptions) Logger {
 }
 
 // Experimental.
-func NewLogger_Override(l Logger, project Project, options *LoggerOptions) {
+func NewLogger_Override(l Logger, scope constructs.IConstruct, options *LoggerOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.Logger",
-		[]interface{}{project, options},
+		[]interface{}{scope, options},
 		l,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func Logger_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateLogger_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.Logger",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Logger_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateLogger_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.Logger",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (l *jsiiProxy_Logger) Debug(text ...interface{}) {
@@ -167,6 +227,19 @@ func (l *jsiiProxy_Logger) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (l *jsiiProxy_Logger) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		l,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 func (l *jsiiProxy_Logger) Verbose(text ...interface{}) {

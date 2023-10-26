@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/java/internal"
 )
@@ -31,6 +32,9 @@ type Pom interface {
 	// Project display name.
 	// Experimental.
 	Name() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Maven packaging format.
 	// Experimental.
 	Packaging() *string
@@ -70,6 +74,9 @@ type Pom interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for Pom
@@ -122,6 +129,16 @@ func (j *jsiiProxy_Pom) Name() *string {
 	_jsii_.Get(
 		j,
 		"name",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Pom) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -195,6 +212,48 @@ func NewPom_Override(p Pom, project projen.Project, options *PomOptions) {
 		[]interface{}{project, options},
 		p,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func Pom_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validatePom_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.java.Pom",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Pom_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validatePom_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.java.Pom",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (p *jsiiProxy_Pom) AddDependency(spec *string) {
@@ -279,5 +338,18 @@ func (p *jsiiProxy_Pom) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (p *jsiiProxy_Pom) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		p,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

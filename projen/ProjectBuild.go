@@ -3,6 +3,8 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // Manages a standard build process for all projects.
@@ -25,6 +27,9 @@ type ProjectBuild interface {
 	// By default for node.js projects this task is empty.
 	// Experimental.
 	CompileTask() Task
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// The "package" task.
 	// Experimental.
 	PackageTask() Task
@@ -50,6 +55,9 @@ type ProjectBuild interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for ProjectBuild
@@ -72,6 +80,16 @@ func (j *jsiiProxy_ProjectBuild) CompileTask() Task {
 	_jsii_.Get(
 		j,
 		"compileTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ProjectBuild) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -157,6 +175,48 @@ func NewProjectBuild_Override(p ProjectBuild, project Project) {
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func ProjectBuild_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateProjectBuild_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.ProjectBuild",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func ProjectBuild_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateProjectBuild_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.ProjectBuild",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (p *jsiiProxy_ProjectBuild) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -179,5 +239,18 @@ func (p *jsiiProxy_ProjectBuild) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (p *jsiiProxy_ProjectBuild) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		p,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

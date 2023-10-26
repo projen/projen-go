@@ -12,6 +12,14 @@ func (v *jsiiProxy_VsCodeSettings) validateAddSettingsParameters(settings *map[s
 	return nil
 }
 
+func validateVsCodeSettings_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateVsCodeSettings_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewVsCodeSettingsParameters(vscode VsCode) error {
 	return nil
 }

@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/javascript/internal"
 )
@@ -27,6 +28,9 @@ type Jest interface {
 	// Jest version, including `@` symbol, like `@^29`.
 	// Experimental.
 	JestVersion() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Experimental.
@@ -58,6 +62,9 @@ type Jest interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for Jest
@@ -90,6 +97,16 @@ func (j *jsiiProxy_Jest) JestVersion() *string {
 	_jsii_.Get(
 		j,
 		"jestVersion",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Jest) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -133,6 +150,48 @@ func NewJest_Override(j Jest, project NodeProject, options *JestOptions) {
 		[]interface{}{project, options},
 		j,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func Jest_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateJest_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.javascript.Jest",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Jest_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateJest_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.javascript.Jest",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 // Returns the singletone Jest component of a project or undefined if there is none.
@@ -254,5 +313,18 @@ func (j *jsiiProxy_Jest) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (j *jsiiProxy_Jest) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		j,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

@@ -29,6 +29,22 @@ func (p *jsiiProxy_Prettier) validateAddOverrideParameters(override *PrettierOve
 	return nil
 }
 
+func validatePrettier_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validatePrettier_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validatePrettier_OfParameters(project projen.Project) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

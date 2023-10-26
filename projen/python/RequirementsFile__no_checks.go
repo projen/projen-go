@@ -8,6 +8,14 @@ func (r *jsiiProxy_RequirementsFile) validateSynthesizeContentParameters(resolve
 	return nil
 }
 
+func validateRequirementsFile_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateRequirementsFile_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_RequirementsFile) validateSetExecutableParameters(val *bool) error {
 	return nil
 }

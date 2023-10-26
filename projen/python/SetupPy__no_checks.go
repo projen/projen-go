@@ -8,6 +8,14 @@ func (s *jsiiProxy_SetupPy) validateSynthesizeContentParameters(resolver projen.
 	return nil
 }
 
+func validateSetupPy_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateSetupPy_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_SetupPy) validateSetExecutableParameters(val *bool) error {
 	return nil
 }

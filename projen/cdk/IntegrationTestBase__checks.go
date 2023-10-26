@@ -10,6 +10,22 @@ import (
 	"github.com/projen/projen-go/projen"
 )
 
+func validateIntegrationTestBase_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateIntegrationTestBase_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewIntegrationTestBaseParameters(project projen.Project, options *IntegrationTestBaseOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

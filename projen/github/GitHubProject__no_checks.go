@@ -48,6 +48,18 @@ func (g *jsiiProxy_GitHubProject) validateTryRemoveFileParameters(filePath *stri
 	return nil
 }
 
+func validateGitHubProject_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateGitHubProject_IsProjectParameters(x interface{}) error {
+	return nil
+}
+
+func validateGitHubProject_OfParameters(construct constructs.IConstruct) error {
+	return nil
+}
+
 func validateNewGitHubProjectParameters(options *GitHubProjectOptions) error {
 	return nil
 }

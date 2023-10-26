@@ -10,6 +10,22 @@ import (
 	"github.com/projen/projen-go/projen"
 )
 
+func validateAutoDiscover_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateAutoDiscover_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewAutoDiscoverParameters(project projen.Project, options *AutoDiscoverOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

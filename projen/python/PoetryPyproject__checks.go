@@ -10,6 +10,22 @@ import (
 	"github.com/projen/projen-go/projen"
 )
 
+func validatePoetryPyproject_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validatePoetryPyproject_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewPoetryPyprojectParameters(project projen.Project, options *PoetryPyprojectOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

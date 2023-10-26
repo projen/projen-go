@@ -86,6 +86,22 @@ func (n *jsiiProxy_NodePackage) validateTryResolveDependencyVersionParameters(de
 	return nil
 }
 
+func validateNodePackage_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateNodePackage_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewNodePackageParameters(project projen.Project, options *NodePackageOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

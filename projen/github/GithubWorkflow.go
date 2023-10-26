@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github/internal"
 	"github.com/projen/projen-go/projen/github/workflows"
@@ -30,6 +31,9 @@ type GithubWorkflow interface {
 	// The name of the workflow.
 	// Experimental.
 	Name() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// GitHub API authentication method used by projen workflows.
@@ -76,6 +80,9 @@ type GithubWorkflow interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 	// Updates a single job to the workflow.
 	// Experimental.
 	UpdateJob(id *string, job interface{})
@@ -114,6 +121,16 @@ func (j *jsiiProxy_GithubWorkflow) Name() *string {
 	_jsii_.Get(
 		j,
 		"name",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GithubWorkflow) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -185,6 +202,48 @@ func (j *jsiiProxy_GithubWorkflow)SetRunName(val *string) {
 		"runName",
 		val,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func GithubWorkflow_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateGithubWorkflow_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.github.GithubWorkflow",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func GithubWorkflow_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateGithubWorkflow_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.github.GithubWorkflow",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (g *jsiiProxy_GithubWorkflow) AddJob(id *string, job interface{}) {
@@ -269,6 +328,19 @@ func (g *jsiiProxy_GithubWorkflow) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (g *jsiiProxy_GithubWorkflow) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		g,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 func (g *jsiiProxy_GithubWorkflow) UpdateJob(id *string, job interface{}) {

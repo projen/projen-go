@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/build"
 	"github.com/projen/projen-go/projen/github"
@@ -121,6 +122,9 @@ type NextJsProject interface {
 	// Project name.
 	// Experimental.
 	Name() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	NodeVersion() *string
 	// The .npmignore file.
@@ -314,6 +318,9 @@ type NextJsProject interface {
 	// 6. Call "this.postSynthesize()"
 	// Experimental.
 	Synth()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 	// Finds a file at the specified relative path within this project and all its subprojects.
 	//
 	// Returns: a `FileBase` or undefined if there is no file in that path.
@@ -638,6 +645,16 @@ func (j *jsiiProxy_NextJsProject) Name() *string {
 	return returns
 }
 
+func (j *jsiiProxy_NextJsProject) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_NextJsProject) NodeVersion() *string {
 	var returns *string
 	_jsii_.Get(
@@ -936,6 +953,70 @@ func NewNextJsProject_Override(n NextJsProject, options *NextJsProjectOptions) {
 		[]interface{}{options},
 		n,
 	)
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func NextJsProject_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateNextJsProject_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.web.NextJsProject",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Test whether the given construct is a project.
+// Experimental.
+func NextJsProject_IsProject(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateNextJsProject_IsProjectParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.web.NextJsProject",
+		"isProject",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Find the closest ancestor project for given construct.
+//
+// When given a project, this it the project itself.
+// Experimental.
+func NextJsProject_Of(construct constructs.IConstruct) projen.Project {
+	_init_.Initialize()
+
+	if err := validateNextJsProject_OfParameters(construct); err != nil {
+		panic(err)
+	}
+	var returns projen.Project
+
+	_jsii_.StaticInvoke(
+		"projen.web.NextJsProject",
+		"of",
+		[]interface{}{construct},
+		&returns,
+	)
+
+	return returns
 }
 
 func NextJsProject_DEFAULT_TASK() *string {
@@ -1254,6 +1335,19 @@ func (n *jsiiProxy_NextJsProject) Synth() {
 		"synth",
 		nil, // no parameters
 	)
+}
+
+func (n *jsiiProxy_NextJsProject) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		n,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 func (n *jsiiProxy_NextJsProject) TryFindFile(filePath *string) projen.FileBase {

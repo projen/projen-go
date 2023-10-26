@@ -4,6 +4,8 @@ package projen
 
 import (
 	"fmt"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 func (g *jsiiProxy_GitAttributesFile) validateAddAttributesParameters(glob *string) error {
@@ -30,6 +32,22 @@ func (g *jsiiProxy_GitAttributesFile) validateSynthesizeContentParameters(_arg I
 	return nil
 }
 
+func validateGitAttributesFile_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateGitAttributesFile_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (j *jsiiProxy_GitAttributesFile) validateSetExecutableParameters(val *bool) error {
 	if val == nil {
 		return fmt.Errorf("parameter val is required, but nil was provided")
@@ -46,9 +64,9 @@ func (j *jsiiProxy_GitAttributesFile) validateSetReadonlyParameters(val *bool) e
 	return nil
 }
 
-func validateNewGitAttributesFileParameters(project Project) error {
-	if project == nil {
-		return fmt.Errorf("parameter project is required, but nil was provided")
+func validateNewGitAttributesFileParameters(scope constructs.IConstruct) error {
+	if scope == nil {
+		return fmt.Errorf("parameter scope is required, but nil was provided")
 	}
 
 	return nil

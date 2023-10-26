@@ -4,11 +4,29 @@ package projen
 
 import (
 	"fmt"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
-func validateNewComponentParameters(project Project) error {
-	if project == nil {
-		return fmt.Errorf("parameter project is required, but nil was provided")
+func validateComponent_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateComponent_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateNewComponentParameters(scope constructs.IConstruct) error {
+	if scope == nil {
+		return fmt.Errorf("parameter scope is required, but nil was provided")
 	}
 
 	return nil

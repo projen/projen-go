@@ -20,6 +20,14 @@ func (t *jsiiProxy_TypescriptConfig) validateResolveExtendsPathParameters(config
 	return nil
 }
 
+func validateTypescriptConfig_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateTypescriptConfig_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewTypescriptConfigParameters(project projen.Project, options *TypescriptConfigOptions) error {
 	return nil
 }

@@ -6,6 +6,8 @@ import (
 	"fmt"
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 func (y *jsiiProxy_YamlFile) validateAddDeletionOverrideParameters(path *string) error {
@@ -44,6 +46,22 @@ func (y *jsiiProxy_YamlFile) validateSynthesizeContentParameters(resolver IResol
 	return nil
 }
 
+func validateYamlFile_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateYamlFile_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (j *jsiiProxy_YamlFile) validateSetExecutableParameters(val *bool) error {
 	if val == nil {
 		return fmt.Errorf("parameter val is required, but nil was provided")
@@ -68,9 +86,9 @@ func (j *jsiiProxy_YamlFile) validateSetReadonlyParameters(val *bool) error {
 	return nil
 }
 
-func validateNewYamlFileParameters(project Project, filePath *string, options *YamlFileOptions) error {
-	if project == nil {
-		return fmt.Errorf("parameter project is required, but nil was provided")
+func validateNewYamlFileParameters(scope constructs.IConstruct, filePath *string, options *YamlFileOptions) error {
+	if scope == nil {
+		return fmt.Errorf("parameter scope is required, but nil was provided")
 	}
 
 	if filePath == nil {

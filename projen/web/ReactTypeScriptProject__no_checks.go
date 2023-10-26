@@ -76,6 +76,18 @@ func (r *jsiiProxy_ReactTypeScriptProject) validateTryRemoveFileParameters(fileP
 	return nil
 }
 
+func validateReactTypeScriptProject_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateReactTypeScriptProject_IsProjectParameters(x interface{}) error {
+	return nil
+}
+
+func validateReactTypeScriptProject_OfParameters(construct constructs.IConstruct) error {
+	return nil
+}
+
 func validateNewReactTypeScriptProjectParameters(options *ReactTypeScriptProjectOptions) error {
 	return nil
 }

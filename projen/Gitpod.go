@@ -3,6 +3,8 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // The Gitpod component which emits .gitpod.yml.
@@ -13,6 +15,9 @@ type Gitpod interface {
 	// Direct access to the gitpod configuration (escape hatch).
 	// Experimental.
 	Config() interface{}
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() Project
 	// Add a task with more granular options.
@@ -58,6 +63,9 @@ type Gitpod interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for Gitpod
@@ -71,6 +79,16 @@ func (j *jsiiProxy_Gitpod) Config() interface{} {
 	_jsii_.Get(
 		j,
 		"config",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Gitpod) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -114,6 +132,48 @@ func NewGitpod_Override(g Gitpod, project Project, options *GitpodOptions) {
 		[]interface{}{project, options},
 		g,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func Gitpod_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateGitpod_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.Gitpod",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Gitpod_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateGitpod_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.Gitpod",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (g *jsiiProxy_Gitpod) AddCustomTask(options *GitpodTask) {
@@ -210,5 +270,18 @@ func (g *jsiiProxy_Gitpod) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (g *jsiiProxy_Gitpod) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		g,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

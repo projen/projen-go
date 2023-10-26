@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/awscdk/internal"
 	"github.com/projen/projen-go/projen/cdk"
@@ -16,6 +17,9 @@ type IntegrationTestAutoDiscover interface {
 	// Auto-discovered entry points with paths relative to the project directory.
 	// Experimental.
 	Entrypoints() *[]*string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Called after synthesis.
@@ -29,6 +33,9 @@ type IntegrationTestAutoDiscover interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for IntegrationTestAutoDiscover
@@ -41,6 +48,16 @@ func (j *jsiiProxy_IntegrationTestAutoDiscover) Entrypoints() *[]*string {
 	_jsii_.Get(
 		j,
 		"entrypoints",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IntegrationTestAutoDiscover) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -86,6 +103,48 @@ func NewIntegrationTestAutoDiscover_Override(i IntegrationTestAutoDiscover, proj
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func IntegrationTestAutoDiscover_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateIntegrationTestAutoDiscover_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.awscdk.IntegrationTestAutoDiscover",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func IntegrationTestAutoDiscover_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateIntegrationTestAutoDiscover_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.awscdk.IntegrationTestAutoDiscover",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (i *jsiiProxy_IntegrationTestAutoDiscover) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -108,5 +167,18 @@ func (i *jsiiProxy_IntegrationTestAutoDiscover) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (i *jsiiProxy_IntegrationTestAutoDiscover) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		i,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

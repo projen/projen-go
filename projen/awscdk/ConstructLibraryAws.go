@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/build"
 	"github.com/projen/projen-go/projen/github"
@@ -130,6 +131,9 @@ type ConstructLibraryAws interface {
 	// Project name.
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	Name() *string
+	// The tree node.
+	// Deprecated: use `AwsCdkConstructLibrary`.
+	Node() constructs.Node
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	NodeVersion() *string
 	// The .npmignore file.
@@ -341,6 +345,9 @@ type ConstructLibraryAws interface {
 	// 6. Call "this.postSynthesize()"
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	Synth()
+	// Returns a string representation of this construct.
+	// Deprecated: use `AwsCdkConstructLibrary`.
+	ToString() *string
 	// Finds a file at the specified relative path within this project and all its subprojects.
 	//
 	// Returns: a `FileBase` or undefined if there is no file in that path.
@@ -715,6 +722,16 @@ func (j *jsiiProxy_ConstructLibraryAws) Name() *string {
 	return returns
 }
 
+func (j *jsiiProxy_ConstructLibraryAws) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_ConstructLibraryAws) NodeVersion() *string {
 	var returns *string
 	_jsii_.Get(
@@ -1065,6 +1082,70 @@ func NewConstructLibraryAws_Override(c ConstructLibraryAws, options *AwsCdkConst
 	)
 }
 
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func ConstructLibraryAws_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateConstructLibraryAws_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.awscdk.ConstructLibraryAws",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Test whether the given construct is a project.
+// Deprecated: use `AwsCdkConstructLibrary`.
+func ConstructLibraryAws_IsProject(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateConstructLibraryAws_IsProjectParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.awscdk.ConstructLibraryAws",
+		"isProject",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Find the closest ancestor project for given construct.
+//
+// When given a project, this it the project itself.
+// Deprecated: use `AwsCdkConstructLibrary`.
+func ConstructLibraryAws_Of(construct constructs.IConstruct) projen.Project {
+	_init_.Initialize()
+
+	if err := validateConstructLibraryAws_OfParameters(construct); err != nil {
+		panic(err)
+	}
+	var returns projen.Project
+
+	_jsii_.StaticInvoke(
+		"projen.awscdk.ConstructLibraryAws",
+		"of",
+		[]interface{}{construct},
+		&returns,
+	)
+
+	return returns
+}
+
 func ConstructLibraryAws_DEFAULT_TASK() *string {
 	_init_.Initialize()
 	var returns *string
@@ -1407,6 +1488,19 @@ func (c *jsiiProxy_ConstructLibraryAws) Synth() {
 		"synth",
 		nil, // no parameters
 	)
+}
+
+func (c *jsiiProxy_ConstructLibraryAws) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		c,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) TryFindFile(filePath *string) projen.FileBase {

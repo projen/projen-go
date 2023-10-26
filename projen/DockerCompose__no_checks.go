@@ -12,6 +12,14 @@ func validateDockerCompose_BindVolumeParameters(sourcePath *string, targetPath *
 	return nil
 }
 
+func validateDockerCompose_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateDockerCompose_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateDockerCompose_NamedVolumeParameters(volumeName *string, targetPath *string, options *DockerComposeVolumeConfig) error {
 	return nil
 }

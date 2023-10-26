@@ -85,6 +85,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "buildJobId", GoGetter: "BuildJobId"},
 			_jsii_.MemberProperty{JsiiProperty: "condition", GoGetter: "Condition"},
 			_jsii_.MemberProperty{JsiiProperty: "jsiiReleaseVersion", GoGetter: "JsiiReleaseVersion"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
@@ -97,6 +98,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "publishToNuget", GoMethod: "PublishToNuget"},
 			_jsii_.MemberMethod{JsiiMethod: "publishToPyPi", GoMethod: "PublishToPyPi"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_Publisher{}
@@ -120,11 +122,13 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addJobs", GoMethod: "AddJobs"},
 			_jsii_.MemberProperty{JsiiProperty: "artifactsDirectory", GoGetter: "ArtifactsDirectory"},
 			_jsii_.MemberProperty{JsiiProperty: "branches", GoGetter: "Branches"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberProperty{JsiiProperty: "publisher", GoGetter: "Publisher"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_Release{}

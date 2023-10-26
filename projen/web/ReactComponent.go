@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/javascript"
 	"github.com/projen/projen-go/projen/web/internal"
@@ -12,6 +13,9 @@ import (
 // Experimental.
 type ReactComponent interface {
 	projen.Component
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Called after synthesis.
@@ -25,11 +29,24 @@ type ReactComponent interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for ReactComponent
 type jsiiProxy_ReactComponent struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_ReactComponent) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_ReactComponent) Project() projen.Project {
@@ -72,6 +89,48 @@ func NewReactComponent_Override(r ReactComponent, project javascript.NodeProject
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func ReactComponent_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateReactComponent_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.web.ReactComponent",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func ReactComponent_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateReactComponent_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.web.ReactComponent",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (r *jsiiProxy_ReactComponent) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		r,
@@ -94,5 +153,18 @@ func (r *jsiiProxy_ReactComponent) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (r *jsiiProxy_ReactComponent) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		r,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

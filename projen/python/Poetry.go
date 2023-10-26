@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/python/internal"
 )
@@ -18,6 +19,9 @@ type Poetry interface {
 	// A task that installs and updates dependencies.
 	// Experimental.
 	InstallTask() projen.Task
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// A task that uploads the package to a package repository.
@@ -49,6 +53,9 @@ type Poetry interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for Poetry
@@ -64,6 +71,16 @@ func (j *jsiiProxy_Poetry) InstallTask() projen.Task {
 	_jsii_.Get(
 		j,
 		"installTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Poetry) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -129,6 +146,48 @@ func NewPoetry_Override(p Poetry, project projen.Project, options *PythonPackagi
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func Poetry_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validatePoetry_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.python.Poetry",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Poetry_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validatePoetry_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.python.Poetry",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (p *jsiiProxy_Poetry) AddDependency(spec *string) {
 	if err := p.validateAddDependencyParameters(spec); err != nil {
 		panic(err)
@@ -189,5 +248,18 @@ func (p *jsiiProxy_Poetry) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (p *jsiiProxy_Poetry) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		p,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

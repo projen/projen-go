@@ -76,6 +76,18 @@ func (c *jsiiProxy_Cdk8sTypeScriptApp) validateTryRemoveFileParameters(filePath 
 	return nil
 }
 
+func validateCdk8sTypeScriptApp_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateCdk8sTypeScriptApp_IsProjectParameters(x interface{}) error {
+	return nil
+}
+
+func validateCdk8sTypeScriptApp_OfParameters(construct constructs.IConstruct) error {
+	return nil
+}
+
 func validateNewCdk8sTypeScriptAppParameters(options *Cdk8sTypeScriptAppOptions) error {
 	return nil
 }

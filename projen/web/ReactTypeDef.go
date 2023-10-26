@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/web/internal"
 )
@@ -31,7 +32,10 @@ type ReactTypeDef interface {
 	// Value is undefined if the project is being ejected.
 	// Deprecated: No longer used.
 	Marker() *string
-	// The file path, relative to the project root.
+	// The tree node.
+	// Deprecated: No longer used.
+	Node() constructs.Node
+	// The file path, relative to the project's outdir.
 	// Deprecated: No longer used.
 	Path() *string
 	// Deprecated: No longer used.
@@ -55,6 +59,9 @@ type ReactTypeDef interface {
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Deprecated: No longer used.
 	SynthesizeContent(_arg projen.IResolver) *string
+	// Returns a string representation of this construct.
+	// Deprecated: No longer used.
+	ToString() *string
 }
 
 // The jsii proxy struct for ReactTypeDef
@@ -97,6 +104,16 @@ func (j *jsiiProxy_ReactTypeDef) Marker() *string {
 	_jsii_.Get(
 		j,
 		"marker",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ReactTypeDef) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -184,6 +201,48 @@ func (j *jsiiProxy_ReactTypeDef)SetReadonly(val *bool) {
 	)
 }
 
+// Test whether the given construct is a component.
+// Deprecated: No longer used.
+func ReactTypeDef_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateReactTypeDef_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.web.ReactTypeDef",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func ReactTypeDef_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateReactTypeDef_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.web.ReactTypeDef",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (r *jsiiProxy_ReactTypeDef) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		r,
@@ -218,6 +277,19 @@ func (r *jsiiProxy_ReactTypeDef) SynthesizeContent(_arg projen.IResolver) *strin
 		r,
 		"synthesizeContent",
 		[]interface{}{_arg},
+		&returns,
+	)
+
+	return returns
+}
+
+func (r *jsiiProxy_ReactTypeDef) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		r,
+		"toString",
+		nil, // no parameters
 		&returns,
 	)
 

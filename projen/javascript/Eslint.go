@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/javascript/internal"
 )
@@ -21,6 +22,9 @@ type Eslint interface {
 	// File patterns that should not be linted.
 	// Experimental.
 	IgnorePatterns() *[]*string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// eslint overrides.
 	// Experimental.
 	Overrides() *[]*EslintOverride
@@ -61,6 +65,9 @@ type Eslint interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for Eslint
@@ -93,6 +100,16 @@ func (j *jsiiProxy_Eslint) IgnorePatterns() *[]*string {
 	_jsii_.Get(
 		j,
 		"ignorePatterns",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Eslint) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -156,6 +173,48 @@ func NewEslint_Override(e Eslint, project NodeProject, options *EslintOptions) {
 		[]interface{}{project, options},
 		e,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func Eslint_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateEslint_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.javascript.Eslint",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Eslint_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateEslint_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.javascript.Eslint",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 // Returns the singletone Eslint component of a project or undefined if there is none.
@@ -281,5 +340,18 @@ func (e *jsiiProxy_Eslint) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (e *jsiiProxy_Eslint) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		e,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

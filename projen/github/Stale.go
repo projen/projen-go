@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github/internal"
 )
@@ -20,6 +21,9 @@ import (
 // Experimental.
 type Stale interface {
 	projen.Component
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Called after synthesis.
@@ -33,11 +37,24 @@ type Stale interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for Stale
 type jsiiProxy_Stale struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_Stale) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_Stale) Project() projen.Project {
@@ -80,6 +97,48 @@ func NewStale_Override(s Stale, github GitHub, options *StaleOptions) {
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func Stale_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateStale_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.github.Stale",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Stale_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateStale_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.github.Stale",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (s *jsiiProxy_Stale) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -102,5 +161,18 @@ func (s *jsiiProxy_Stale) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (s *jsiiProxy_Stale) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		s,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

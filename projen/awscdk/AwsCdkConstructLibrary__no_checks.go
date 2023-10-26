@@ -76,6 +76,18 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) validateTryRemoveFileParameters(fileP
 	return nil
 }
 
+func validateAwsCdkConstructLibrary_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateAwsCdkConstructLibrary_IsProjectParameters(x interface{}) error {
+	return nil
+}
+
+func validateAwsCdkConstructLibrary_OfParameters(construct constructs.IConstruct) error {
+	return nil
+}
+
 func validateNewAwsCdkConstructLibraryParameters(options *AwsCdkConstructLibraryOptions) error {
 	return nil
 }

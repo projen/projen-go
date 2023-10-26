@@ -10,6 +10,22 @@ import (
 	"github.com/projen/projen-go/projen"
 )
 
+func validateAwsCdkDepsJs_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateAwsCdkDepsJs_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewAwsCdkDepsJsParameters(project projen.Project, options *AwsCdkDepsOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

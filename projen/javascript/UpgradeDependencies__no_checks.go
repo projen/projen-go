@@ -8,6 +8,14 @@ func (u *jsiiProxy_UpgradeDependencies) validateAddPostBuildStepsParameters(step
 	return nil
 }
 
+func validateUpgradeDependencies_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateUpgradeDependencies_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_UpgradeDependencies) validateSetContainerOptionsParameters(val *workflows.ContainerOptions) error {
 	return nil
 }

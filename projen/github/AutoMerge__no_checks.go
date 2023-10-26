@@ -8,6 +8,14 @@ func (a *jsiiProxy_AutoMerge) validateAddConditionsLaterParameters(later IAddCon
 	return nil
 }
 
+func validateAutoMerge_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateAutoMerge_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewAutoMergeParameters(github GitHub, options *AutoMergeOptions) error {
 	return nil
 }

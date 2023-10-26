@@ -42,6 +42,22 @@ func (d *jsiiProxy_Dependencies) validateTryGetDependencyParameters(name *string
 	return nil
 }
 
+func validateDependencies_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateDependencies_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateDependencies_ParseDependencyParameters(spec *string) error {
 	if spec == nil {
 		return fmt.Errorf("parameter spec is required, but nil was provided")

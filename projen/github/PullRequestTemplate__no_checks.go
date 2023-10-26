@@ -12,6 +12,14 @@ func (p *jsiiProxy_PullRequestTemplate) validateSynthesizeContentParameters(_arg
 	return nil
 }
 
+func validatePullRequestTemplate_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validatePullRequestTemplate_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validatePullRequestTemplate_OfParameters(project projen.Project) error {
 	return nil
 }

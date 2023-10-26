@@ -20,6 +20,14 @@ func (n *jsiiProxy_NestedConfiguration) validateAddServicesParameters(services *
 	return nil
 }
 
+func validateNestedConfiguration_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateNestedConfiguration_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewNestedConfigurationParameters(project projen.Project, parent GitlabConfiguration, name *string, options *CiConfigurationOptions) error {
 	return nil
 }

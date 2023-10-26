@@ -3,6 +3,8 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // Represents an XML file.
@@ -33,10 +35,13 @@ type XmlFile interface {
 	// Value is undefined if the project is being ejected.
 	// Experimental.
 	Marker() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Indicates if empty objects and arrays are omitted from the output object.
 	// Experimental.
 	OmitEmpty() *bool
-	// The file path, relative to the project root.
+	// The file path, relative to the project's outdir.
 	// Experimental.
 	Path() *string
 	// Experimental.
@@ -153,6 +158,9 @@ type XmlFile interface {
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for XmlFile
@@ -195,6 +203,16 @@ func (j *jsiiProxy_XmlFile) Marker() *string {
 	_jsii_.Get(
 		j,
 		"marker",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_XmlFile) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -292,6 +310,48 @@ func (j *jsiiProxy_XmlFile)SetReadonly(val *bool) {
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func XmlFile_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateXmlFile_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.XmlFile",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func XmlFile_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateXmlFile_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.XmlFile",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (x *jsiiProxy_XmlFile) AddDeletionOverride(path *string) {
 	if err := x.validateAddDeletionOverrideParameters(path); err != nil {
 		panic(err)
@@ -377,6 +437,19 @@ func (x *jsiiProxy_XmlFile) SynthesizeContent(resolver IResolver) *string {
 		x,
 		"synthesizeContent",
 		[]interface{}{resolver},
+		&returns,
+	)
+
+	return returns
+}
+
+func (x *jsiiProxy_XmlFile) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		x,
+		"toString",
+		nil, // no parameters
 		&returns,
 	)
 

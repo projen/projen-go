@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/python/internal"
 )
@@ -34,7 +35,10 @@ type RequirementsFile interface {
 	// Value is undefined if the project is being ejected.
 	// Experimental.
 	Marker() *string
-	// The file path, relative to the project root.
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
+	// The file path, relative to the project's outdir.
 	// Experimental.
 	Path() *string
 	// Experimental.
@@ -63,6 +67,9 @@ type RequirementsFile interface {
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
 	SynthesizeContent(resolver projen.IResolver) *string
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for RequirementsFile
@@ -105,6 +112,16 @@ func (j *jsiiProxy_RequirementsFile) Marker() *string {
 	_jsii_.Get(
 		j,
 		"marker",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_RequirementsFile) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -192,6 +209,48 @@ func (j *jsiiProxy_RequirementsFile)SetReadonly(val *bool) {
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func RequirementsFile_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateRequirementsFile_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.python.RequirementsFile",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func RequirementsFile_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateRequirementsFile_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.python.RequirementsFile",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (r *jsiiProxy_RequirementsFile) AddPackages(packages ...*string) {
 	args := []interface{}{}
 	for _, a := range packages {
@@ -239,6 +298,19 @@ func (r *jsiiProxy_RequirementsFile) SynthesizeContent(resolver projen.IResolver
 		r,
 		"synthesizeContent",
 		[]interface{}{resolver},
+		&returns,
+	)
+
+	return returns
+}
+
+func (r *jsiiProxy_RequirementsFile) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		r,
+		"toString",
+		nil, // no parameters
 		&returns,
 	)
 

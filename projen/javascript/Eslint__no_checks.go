@@ -24,6 +24,14 @@ func (e *jsiiProxy_Eslint) validateAllowDevDepsParameters(pattern *string) error
 	return nil
 }
 
+func validateEslint_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateEslint_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateEslint_OfParameters(project projen.Project) error {
 	return nil
 }

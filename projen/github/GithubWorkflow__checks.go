@@ -193,6 +193,22 @@ func (g *jsiiProxy_GithubWorkflow) validateUpdateJobsParameters(jobs *map[string
 	return nil
 }
 
+func validateGithubWorkflow_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateGithubWorkflow_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewGithubWorkflowParameters(github GitHub, name *string, options *GithubWorkflowOptions) error {
 	if github == nil {
 		return fmt.Errorf("parameter github is required, but nil was provided")

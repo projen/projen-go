@@ -76,6 +76,18 @@ func (t *jsiiProxy_TypeScriptAppProject) validateTryRemoveFileParameters(filePat
 	return nil
 }
 
+func validateTypeScriptAppProject_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateTypeScriptAppProject_IsProjectParameters(x interface{}) error {
+	return nil
+}
+
+func validateTypeScriptAppProject_OfParameters(construct constructs.IConstruct) error {
+	return nil
+}
+
 func validateNewTypeScriptAppProjectParameters(options *TypeScriptProjectOptions) error {
 	return nil
 }

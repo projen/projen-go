@@ -8,6 +8,22 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 )
 
+func validateRenovatebot_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateRenovatebot_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewRenovatebotParameters(project Project, options *RenovatebotOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

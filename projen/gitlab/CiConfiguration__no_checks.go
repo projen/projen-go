@@ -20,6 +20,14 @@ func (c *jsiiProxy_CiConfiguration) validateAddServicesParameters(services *[]*S
 	return nil
 }
 
+func validateCiConfiguration_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateCiConfiguration_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewCiConfigurationParameters(project projen.Project, name *string, options *CiConfigurationOptions) error {
 	return nil
 }

@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/awscdk/internal"
 	"github.com/projen/projen-go/projen/cdk"
@@ -16,6 +17,9 @@ type LambdaAutoDiscover interface {
 	// Auto-discovered entry points with paths relative to the project directory.
 	// Experimental.
 	Entrypoints() *[]*string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Called after synthesis.
@@ -29,6 +33,9 @@ type LambdaAutoDiscover interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for LambdaAutoDiscover
@@ -41,6 +48,16 @@ func (j *jsiiProxy_LambdaAutoDiscover) Entrypoints() *[]*string {
 	_jsii_.Get(
 		j,
 		"entrypoints",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_LambdaAutoDiscover) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -86,6 +103,48 @@ func NewLambdaAutoDiscover_Override(l LambdaAutoDiscover, project projen.Project
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func LambdaAutoDiscover_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateLambdaAutoDiscover_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.awscdk.LambdaAutoDiscover",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func LambdaAutoDiscover_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateLambdaAutoDiscover_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.awscdk.LambdaAutoDiscover",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (l *jsiiProxy_LambdaAutoDiscover) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -108,5 +167,18 @@ func (l *jsiiProxy_LambdaAutoDiscover) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (l *jsiiProxy_LambdaAutoDiscover) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		l,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

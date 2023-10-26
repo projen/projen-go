@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/python/internal"
 )
@@ -11,6 +12,9 @@ import (
 // Experimental.
 type Pytest interface {
 	projen.Component
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Experimental.
@@ -26,11 +30,24 @@ type Pytest interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for Pytest
 type jsiiProxy_Pytest struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_Pytest) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_Pytest) Project() projen.Project {
@@ -83,6 +100,48 @@ func NewPytest_Override(p Pytest, project projen.Project, options *PytestOptions
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func Pytest_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validatePytest_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.python.Pytest",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Pytest_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validatePytest_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.python.Pytest",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (p *jsiiProxy_Pytest) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -105,5 +164,18 @@ func (p *jsiiProxy_Pytest) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (p *jsiiProxy_Pytest) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		p,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

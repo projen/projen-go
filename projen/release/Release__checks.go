@@ -39,6 +39,22 @@ func (r *jsiiProxy_Release) validateAddJobsParameters(jobs *map[string]*workflow
 	return nil
 }
 
+func validateRelease_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateRelease_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateRelease_OfParameters(project github.GitHubProject) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

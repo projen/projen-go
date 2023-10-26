@@ -20,6 +20,14 @@ func (j *jsiiProxy_JsonFile) validateSynthesizeContentParameters(resolver IResol
 	return nil
 }
 
+func validateJsonFile_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateJsonFile_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_JsonFile) validateSetExecutableParameters(val *bool) error {
 	return nil
 }
@@ -28,7 +36,7 @@ func (j *jsiiProxy_JsonFile) validateSetReadonlyParameters(val *bool) error {
 	return nil
 }
 
-func validateNewJsonFileParameters(project Project, filePath *string, options *JsonFileOptions) error {
+func validateNewJsonFileParameters(scope constructs.IConstruct, filePath *string, options *JsonFileOptions) error {
 	return nil
 }
 

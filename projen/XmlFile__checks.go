@@ -44,6 +44,22 @@ func (x *jsiiProxy_XmlFile) validateSynthesizeContentParameters(resolver IResolv
 	return nil
 }
 
+func validateXmlFile_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateXmlFile_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (j *jsiiProxy_XmlFile) validateSetExecutableParameters(val *bool) error {
 	if val == nil {
 		return fmt.Errorf("parameter val is required, but nil was provided")

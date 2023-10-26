@@ -32,6 +32,14 @@ func (j *jsiiProxy_Jest) validateAddWatchIgnorePatternParameters(pattern *string
 	return nil
 }
 
+func validateJest_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateJest_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateJest_OfParameters(project projen.Project) error {
 	return nil
 }

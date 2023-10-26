@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github"
 	"github.com/projen/projen-go/projen/github/workflows"
@@ -19,6 +20,9 @@ type UpgradeDependencies interface {
 	ContainerOptions() *workflows.ContainerOptions
 	// Experimental.
 	SetContainerOptions(val *workflows.ContainerOptions)
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// A task run after the upgrade task.
 	// Experimental.
 	PostUpgradeTask() projen.Task
@@ -46,6 +50,9 @@ type UpgradeDependencies interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for UpgradeDependencies
@@ -58,6 +65,16 @@ func (j *jsiiProxy_UpgradeDependencies) ContainerOptions() *workflows.ContainerO
 	_jsii_.Get(
 		j,
 		"containerOptions",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_UpgradeDependencies) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -144,6 +161,48 @@ func (j *jsiiProxy_UpgradeDependencies)SetContainerOptions(val *workflows.Contai
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func UpgradeDependencies_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateUpgradeDependencies_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.javascript.UpgradeDependencies",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func UpgradeDependencies_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateUpgradeDependencies_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.javascript.UpgradeDependencies",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (u *jsiiProxy_UpgradeDependencies) AddPostBuildSteps(steps ...*workflows.JobStep) {
 	if err := u.validateAddPostBuildStepsParameters(&steps); err != nil {
 		panic(err)
@@ -182,5 +241,18 @@ func (u *jsiiProxy_UpgradeDependencies) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (u *jsiiProxy_UpgradeDependencies) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		u,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

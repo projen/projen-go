@@ -12,6 +12,14 @@ func (d *jsiiProxy_Dependabot) validateAddIgnoreParameters(dependencyName *strin
 	return nil
 }
 
+func validateDependabot_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateDependabot_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewDependabotParameters(github GitHub, options *DependabotOptions) error {
 	return nil
 }

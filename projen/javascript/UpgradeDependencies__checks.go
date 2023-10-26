@@ -20,6 +20,22 @@ func (u *jsiiProxy_UpgradeDependencies) validateAddPostBuildStepsParameters(step
 	return nil
 }
 
+func validateUpgradeDependencies_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateUpgradeDependencies_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (j *jsiiProxy_UpgradeDependencies) validateSetContainerOptionsParameters(val *workflows.ContainerOptions) error {
 	if err := _jsii_.ValidateStruct(val, func() string { return "parameter val" }); err != nil {
 		return err

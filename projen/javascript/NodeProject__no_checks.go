@@ -76,6 +76,18 @@ func (n *jsiiProxy_NodeProject) validateTryRemoveFileParameters(filePath *string
 	return nil
 }
 
+func validateNodeProject_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateNodeProject_IsProjectParameters(x interface{}) error {
+	return nil
+}
+
+func validateNodeProject_OfParameters(construct constructs.IConstruct) error {
+	return nil
+}
+
 func validateNewNodeProjectParameters(options *NodeProjectOptions) error {
 	return nil
 }

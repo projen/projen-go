@@ -8,6 +8,14 @@ func (b *jsiiProxy_Bundler) validateAddBundleParameters(entrypoint *string, opti
 	return nil
 }
 
+func validateBundler_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateBundler_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateBundler_OfParameters(project projen.Project) error {
 	return nil
 }

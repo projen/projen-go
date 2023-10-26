@@ -64,6 +64,22 @@ func (b *jsiiProxy_BuildWorkflow) validateAddPostBuildStepsParameters(steps *[]*
 	return nil
 }
 
+func validateBuildWorkflow_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateBuildWorkflow_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewBuildWorkflowParameters(project projen.Project, options *BuildWorkflowOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

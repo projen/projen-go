@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github/internal"
 )
@@ -22,6 +23,9 @@ type GitHub interface {
 	// was not enabled when creating the repository.
 	// Experimental.
 	Mergify() Mergify
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// GitHub API authentication method used by projen workflows.
@@ -53,6 +57,9 @@ type GitHub interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 	// Finds a GitHub workflow by name.
 	//
 	// Returns `undefined` if the workflow cannot be found.
@@ -90,6 +97,16 @@ func (j *jsiiProxy_GitHub) Mergify() Mergify {
 	_jsii_.Get(
 		j,
 		"mergify",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHub) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -163,6 +180,48 @@ func NewGitHub_Override(g GitHub, project projen.Project, options *GitHubOptions
 		[]interface{}{project, options},
 		g,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func GitHub_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateGitHub_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.github.GitHub",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func GitHub_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateGitHub_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.github.GitHub",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 // Returns the `GitHub` component of a project or `undefined` if the project does not have a GitHub component.
@@ -257,6 +316,19 @@ func (g *jsiiProxy_GitHub) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (g *jsiiProxy_GitHub) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		g,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 func (g *jsiiProxy_GitHub) TryFindWorkflow(name *string) GithubWorkflow {

@@ -3,6 +3,8 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // Represents a TOML file.
@@ -29,10 +31,13 @@ type TomlFile interface {
 	// Value is undefined if the project is being ejected.
 	// Experimental.
 	Marker() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Indicates if empty objects and arrays are omitted from the output object.
 	// Experimental.
 	OmitEmpty() *bool
-	// The file path, relative to the project root.
+	// The file path, relative to the project's outdir.
 	// Experimental.
 	Path() *string
 	// Experimental.
@@ -149,6 +154,9 @@ type TomlFile interface {
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for TomlFile
@@ -191,6 +199,16 @@ func (j *jsiiProxy_TomlFile) Marker() *string {
 	_jsii_.Get(
 		j,
 		"marker",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TomlFile) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -288,6 +306,48 @@ func (j *jsiiProxy_TomlFile)SetReadonly(val *bool) {
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func TomlFile_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateTomlFile_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.TomlFile",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func TomlFile_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateTomlFile_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.TomlFile",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (t *jsiiProxy_TomlFile) AddDeletionOverride(path *string) {
 	if err := t.validateAddDeletionOverrideParameters(path); err != nil {
 		panic(err)
@@ -373,6 +433,19 @@ func (t *jsiiProxy_TomlFile) SynthesizeContent(resolver IResolver) *string {
 		t,
 		"synthesizeContent",
 		[]interface{}{resolver},
+		&returns,
+	)
+
+	return returns
+}
+
+func (t *jsiiProxy_TomlFile) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		t,
+		"toString",
+		nil, // no parameters
 		&returns,
 	)
 

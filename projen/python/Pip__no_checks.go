@@ -12,6 +12,14 @@ func (p *jsiiProxy_Pip) validateAddDevDependencyParameters(spec *string) error {
 	return nil
 }
 
+func validatePip_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validatePip_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewPipParameters(project projen.Project, _options *PipOptions) error {
 	return nil
 }

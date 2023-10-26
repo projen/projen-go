@@ -12,6 +12,14 @@ func (c *jsiiProxy_Circleci) validateAddWorkflowParameters(workflow *Workflow) e
 	return nil
 }
 
+func validateCircleci_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateCircleci_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewCircleciParameters(project projen.Project, options *CircleCiProps) error {
 	return nil
 }

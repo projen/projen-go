@@ -61,6 +61,22 @@ func (p *jsiiProxy_Pom) validateAddTestDependencyParameters(spec *string) error 
 	return nil
 }
 
+func validatePom_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validatePom_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewPomParameters(project projen.Project, options *PomOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

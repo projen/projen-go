@@ -3,6 +3,8 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // Assign attributes to file names in a git repository.
@@ -34,7 +36,10 @@ type GitAttributesFile interface {
 	// Value is undefined if the project is being ejected.
 	// Experimental.
 	Marker() *string
-	// The file path, relative to the project root.
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
+	// The file path, relative to the project's outdir.
 	// Experimental.
 	Path() *string
 	// Experimental.
@@ -64,6 +69,9 @@ type GitAttributesFile interface {
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
 	SynthesizeContent(_arg IResolver) *string
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for GitAttributesFile
@@ -121,6 +129,16 @@ func (j *jsiiProxy_GitAttributesFile) Marker() *string {
 	return returns
 }
 
+func (j *jsiiProxy_GitAttributesFile) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_GitAttributesFile) Path() *string {
 	var returns *string
 	_jsii_.Get(
@@ -153,17 +171,17 @@ func (j *jsiiProxy_GitAttributesFile) Readonly() *bool {
 
 
 // Experimental.
-func NewGitAttributesFile(project Project) GitAttributesFile {
+func NewGitAttributesFile(scope constructs.IConstruct) GitAttributesFile {
 	_init_.Initialize()
 
-	if err := validateNewGitAttributesFileParameters(project); err != nil {
+	if err := validateNewGitAttributesFileParameters(scope); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_GitAttributesFile{}
 
 	_jsii_.Create(
 		"projen.GitAttributesFile",
-		[]interface{}{project},
+		[]interface{}{scope},
 		&j,
 	)
 
@@ -171,12 +189,12 @@ func NewGitAttributesFile(project Project) GitAttributesFile {
 }
 
 // Experimental.
-func NewGitAttributesFile_Override(g GitAttributesFile, project Project) {
+func NewGitAttributesFile_Override(g GitAttributesFile, scope constructs.IConstruct) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.GitAttributesFile",
-		[]interface{}{project},
+		[]interface{}{scope},
 		g,
 	)
 }
@@ -201,6 +219,48 @@ func (j *jsiiProxy_GitAttributesFile)SetReadonly(val *bool) {
 		"readonly",
 		val,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func GitAttributesFile_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateGitAttributesFile_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.GitAttributesFile",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func GitAttributesFile_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateGitAttributesFile_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.GitAttributesFile",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (g *jsiiProxy_GitAttributesFile) AddAttributes(glob *string, attributes ...*string) {
@@ -264,6 +324,19 @@ func (g *jsiiProxy_GitAttributesFile) SynthesizeContent(_arg IResolver) *string 
 		g,
 		"synthesizeContent",
 		[]interface{}{_arg},
+		&returns,
+	)
+
+	return returns
+}
+
+func (g *jsiiProxy_GitAttributesFile) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		g,
+		"toString",
+		nil, // no parameters
 		&returns,
 	)
 

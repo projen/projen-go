@@ -8,6 +8,22 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 )
 
+func validateSourceCode_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateSourceCode_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewSourceCodeParameters(project Project, filePath *string, options *SourceCodeOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

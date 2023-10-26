@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/cdk/internal"
 )
@@ -15,6 +16,9 @@ type AutoDiscoverBase interface {
 	// Auto-discovered entry points with paths relative to the project directory.
 	// Experimental.
 	Entrypoints() *[]*string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Called after synthesis.
@@ -28,6 +32,9 @@ type AutoDiscoverBase interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for AutoDiscoverBase
@@ -40,6 +47,16 @@ func (j *jsiiProxy_AutoDiscoverBase) Entrypoints() *[]*string {
 	_jsii_.Get(
 		j,
 		"entrypoints",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AutoDiscoverBase) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -67,6 +84,48 @@ func NewAutoDiscoverBase_Override(a AutoDiscoverBase, project projen.Project, op
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func AutoDiscoverBase_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateAutoDiscoverBase_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.cdk.AutoDiscoverBase",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func AutoDiscoverBase_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateAutoDiscoverBase_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.cdk.AutoDiscoverBase",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (a *jsiiProxy_AutoDiscoverBase) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		a,
@@ -89,5 +148,18 @@ func (a *jsiiProxy_AutoDiscoverBase) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (a *jsiiProxy_AutoDiscoverBase) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		a,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

@@ -8,6 +8,14 @@ func (f *jsiiProxy_FileBase) validateSynthesizeContentParameters(resolver IResol
 	return nil
 }
 
+func validateFileBase_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateFileBase_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_FileBase) validateSetExecutableParameters(val *bool) error {
 	return nil
 }
@@ -16,7 +24,7 @@ func (j *jsiiProxy_FileBase) validateSetReadonlyParameters(val *bool) error {
 	return nil
 }
 
-func validateNewFileBaseParameters(project Project, filePath *string, options *FileBaseOptions) error {
+func validateNewFileBaseParameters(scope constructs.IConstruct, filePath *string, options *FileBaseOptions) error {
 	return nil
 }
 

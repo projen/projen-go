@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github/workflows"
 	"github.com/projen/projen-go/projen/release/internal"
@@ -23,6 +24,9 @@ type Publisher interface {
 	Condition() *string
 	// Deprecated: use `publibVersion`.
 	JsiiReleaseVersion() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Experimental.
@@ -67,6 +71,9 @@ type Publisher interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for Publisher
@@ -109,6 +116,16 @@ func (j *jsiiProxy_Publisher) JsiiReleaseVersion() *string {
 	_jsii_.Get(
 		j,
 		"jsiiReleaseVersion",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Publisher) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -162,6 +179,48 @@ func NewPublisher_Override(p Publisher, project projen.Project, options *Publish
 		[]interface{}{project, options},
 		p,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func Publisher_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validatePublisher_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.release.Publisher",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Publisher_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validatePublisher_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.release.Publisher",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func Publisher_PUBLISH_GIT_TASK_NAME() *string {
@@ -311,5 +370,18 @@ func (p *jsiiProxy_Publisher) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (p *jsiiProxy_Publisher) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		p,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

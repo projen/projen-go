@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github/internal"
 )
@@ -18,6 +19,9 @@ import (
 // Experimental.
 type AutoMerge interface {
 	projen.Component
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Adds conditions to the auto merge rule.
@@ -37,11 +41,24 @@ type AutoMerge interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for AutoMerge
 type jsiiProxy_AutoMerge struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_AutoMerge) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_AutoMerge) Project() projen.Project {
@@ -82,6 +99,48 @@ func NewAutoMerge_Override(a AutoMerge, github GitHub, options *AutoMergeOptions
 		[]interface{}{github, options},
 		a,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func AutoMerge_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateAutoMerge_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.github.AutoMerge",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func AutoMerge_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateAutoMerge_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.github.AutoMerge",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (a *jsiiProxy_AutoMerge) AddConditions(conditions ...*string) {
@@ -130,5 +189,18 @@ func (a *jsiiProxy_AutoMerge) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (a *jsiiProxy_AutoMerge) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		a,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

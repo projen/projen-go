@@ -40,6 +40,14 @@ func (p *jsiiProxy_Publisher) validatePublishToPyPiParameters(options *PyPiPubli
 	return nil
 }
 
+func validatePublisher_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validatePublisher_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewPublisherParameters(project projen.Project, options *PublisherOptions) error {
 	return nil
 }

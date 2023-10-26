@@ -7,6 +7,7 @@ import (
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 )
 
@@ -97,6 +98,30 @@ func (g *jsiiProxy_GitHubProject) validateTryFindObjectFileParameters(filePath *
 func (g *jsiiProxy_GitHubProject) validateTryRemoveFileParameters(filePath *string) error {
 	if filePath == nil {
 		return fmt.Errorf("parameter filePath is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateGitHubProject_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateGitHubProject_IsProjectParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateGitHubProject_OfParameters(construct constructs.IConstruct) error {
+	if construct == nil {
+		return fmt.Errorf("parameter construct is required, but nil was provided")
 	}
 
 	return nil

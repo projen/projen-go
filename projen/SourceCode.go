@@ -3,6 +3,8 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // Represents a source file.
@@ -13,6 +15,9 @@ type SourceCode interface {
 	FilePath() *string
 	// Experimental.
 	Marker() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() Project
 	// Decreases the indentation level and closes a code block.
@@ -35,6 +40,9 @@ type SourceCode interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for SourceCode
@@ -57,6 +65,16 @@ func (j *jsiiProxy_SourceCode) Marker() *string {
 	_jsii_.Get(
 		j,
 		"marker",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_SourceCode) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -100,6 +118,48 @@ func NewSourceCode_Override(s SourceCode, project Project, filePath *string, opt
 		[]interface{}{project, filePath, options},
 		s,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func SourceCode_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateSourceCode_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.SourceCode",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func SourceCode_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateSourceCode_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.SourceCode",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (s *jsiiProxy_SourceCode) Close(code *string) {
@@ -148,5 +208,18 @@ func (s *jsiiProxy_SourceCode) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (s *jsiiProxy_SourceCode) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		s,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

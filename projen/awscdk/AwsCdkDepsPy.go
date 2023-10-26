@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 )
 
@@ -23,6 +24,9 @@ type AwsCdkDepsPy interface {
 	// The dependency requirement for AWS CDK (e.g. `^2.0.0`).
 	// Experimental.
 	CdkVersion() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Adds dependencies to AWS CDK modules.
@@ -53,6 +57,9 @@ type AwsCdkDepsPy interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for AwsCdkDepsPy
@@ -100,6 +107,16 @@ func (j *jsiiProxy_AwsCdkDepsPy) CdkVersion() *string {
 	return returns
 }
 
+func (j *jsiiProxy_AwsCdkDepsPy) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_AwsCdkDepsPy) Project() projen.Project {
 	var returns projen.Project
 	_jsii_.Get(
@@ -138,6 +155,48 @@ func NewAwsCdkDepsPy_Override(a AwsCdkDepsPy, project projen.Project, options *A
 		[]interface{}{project, options},
 		a,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func AwsCdkDepsPy_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateAwsCdkDepsPy_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.awscdk.AwsCdkDepsPy",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func AwsCdkDepsPy_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateAwsCdkDepsPy_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.awscdk.AwsCdkDepsPy",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (a *jsiiProxy_AwsCdkDepsPy) AddV1Dependencies(deps ...*string) {
@@ -201,5 +260,18 @@ func (a *jsiiProxy_AwsCdkDepsPy) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (a *jsiiProxy_AwsCdkDepsPy) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		a,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

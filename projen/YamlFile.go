@@ -3,6 +3,8 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // Represents a YAML file.
@@ -34,10 +36,13 @@ type YamlFile interface {
 	// Value is undefined if the project is being ejected.
 	// Experimental.
 	Marker() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Indicates if empty objects and arrays are omitted from the output object.
 	// Experimental.
 	OmitEmpty() *bool
-	// The file path, relative to the project root.
+	// The file path, relative to the project's outdir.
 	// Experimental.
 	Path() *string
 	// Experimental.
@@ -154,6 +159,9 @@ type YamlFile interface {
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for YamlFile
@@ -211,6 +219,16 @@ func (j *jsiiProxy_YamlFile) Marker() *string {
 	return returns
 }
 
+func (j *jsiiProxy_YamlFile) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_YamlFile) OmitEmpty() *bool {
 	var returns *bool
 	_jsii_.Get(
@@ -253,17 +271,17 @@ func (j *jsiiProxy_YamlFile) Readonly() *bool {
 
 
 // Experimental.
-func NewYamlFile(project Project, filePath *string, options *YamlFileOptions) YamlFile {
+func NewYamlFile(scope constructs.IConstruct, filePath *string, options *YamlFileOptions) YamlFile {
 	_init_.Initialize()
 
-	if err := validateNewYamlFileParameters(project, filePath, options); err != nil {
+	if err := validateNewYamlFileParameters(scope, filePath, options); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_YamlFile{}
 
 	_jsii_.Create(
 		"projen.YamlFile",
-		[]interface{}{project, filePath, options},
+		[]interface{}{scope, filePath, options},
 		&j,
 	)
 
@@ -271,12 +289,12 @@ func NewYamlFile(project Project, filePath *string, options *YamlFileOptions) Ya
 }
 
 // Experimental.
-func NewYamlFile_Override(y YamlFile, project Project, filePath *string, options *YamlFileOptions) {
+func NewYamlFile_Override(y YamlFile, scope constructs.IConstruct, filePath *string, options *YamlFileOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.YamlFile",
-		[]interface{}{project, filePath, options},
+		[]interface{}{scope, filePath, options},
 		y,
 	)
 }
@@ -312,6 +330,48 @@ func (j *jsiiProxy_YamlFile)SetReadonly(val *bool) {
 		"readonly",
 		val,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func YamlFile_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateYamlFile_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.YamlFile",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func YamlFile_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateYamlFile_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.YamlFile",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (y *jsiiProxy_YamlFile) AddDeletionOverride(path *string) {
@@ -399,6 +459,19 @@ func (y *jsiiProxy_YamlFile) SynthesizeContent(resolver IResolver) *string {
 		y,
 		"synthesizeContent",
 		[]interface{}{resolver},
+		&returns,
+	)
+
+	return returns
+}
+
+func (y *jsiiProxy_YamlFile) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		y,
+		"toString",
+		nil, // no parameters
 		&returns,
 	)
 

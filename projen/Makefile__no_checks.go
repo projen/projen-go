@@ -20,6 +20,14 @@ func (m *jsiiProxy_Makefile) validateSynthesizeContentParameters(resolver IResol
 	return nil
 }
 
+func validateMakefile_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateMakefile_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_Makefile) validateSetExecutableParameters(val *bool) error {
 	return nil
 }

@@ -8,6 +8,14 @@ func (l *jsiiProxy_License) validateSynthesizeContentParameters(_arg IResolver) 
 	return nil
 }
 
+func validateLicense_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateLicense_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_License) validateSetExecutableParameters(val *bool) error {
 	return nil
 }

@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/java/internal"
 )
@@ -12,6 +13,9 @@ import (
 // Experimental.
 type MavenCompile interface {
 	projen.Component
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Called after synthesis.
@@ -25,11 +29,24 @@ type MavenCompile interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for MavenCompile
 type jsiiProxy_MavenCompile struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_MavenCompile) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_MavenCompile) Project() projen.Project {
@@ -72,6 +89,48 @@ func NewMavenCompile_Override(m MavenCompile, project projen.Project, pom Pom, o
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func MavenCompile_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateMavenCompile_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.java.MavenCompile",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func MavenCompile_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateMavenCompile_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.java.MavenCompile",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (m *jsiiProxy_MavenCompile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -94,5 +153,18 @@ func (m *jsiiProxy_MavenCompile) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (m *jsiiProxy_MavenCompile) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		m,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

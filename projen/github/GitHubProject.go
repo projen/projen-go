@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github/internal"
 	"github.com/projen/projen-go/projen/vscode"
@@ -147,6 +148,13 @@ type GitHubProject interface {
 	// the next steps to address this is to abstract workflows so that different
 	// "engines" can be used to implement our CI/CD solutions.
 	Name() *string
+	// The tree node.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
+	Node() constructs.Node
 	// Absolute output directory of this project.
 	// Deprecated: This is a *temporary* class. At the moment, our base project
 	// types such as `NodeProject` and `JavaProject` are derived from this, but we
@@ -338,6 +346,13 @@ type GitHubProject interface {
 	// the next steps to address this is to abstract workflows so that different
 	// "engines" can be used to implement our CI/CD solutions.
 	Synth()
+	// Returns a string representation of this construct.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
+	ToString() *string
 	// Finds a file at the specified relative path within this project and all its subprojects.
 	//
 	// Returns: a `FileBase` or undefined if there is no file in that path.
@@ -544,6 +559,16 @@ func (j *jsiiProxy_GitHubProject) Name() *string {
 	return returns
 }
 
+func (j *jsiiProxy_GitHubProject) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_GitHubProject) Outdir() *string {
 	var returns *string
 	_jsii_.Get(
@@ -712,6 +737,78 @@ func NewGitHubProject_Override(g GitHubProject, options *GitHubProjectOptions) {
 	)
 }
 
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func GitHubProject_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateGitHubProject_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.github.GitHubProject",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Test whether the given construct is a project.
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func GitHubProject_IsProject(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateGitHubProject_IsProjectParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.github.GitHubProject",
+		"isProject",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Find the closest ancestor project for given construct.
+//
+// When given a project, this it the project itself.
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
+func GitHubProject_Of(construct constructs.IConstruct) projen.Project {
+	_init_.Initialize()
+
+	if err := validateGitHubProject_OfParameters(construct); err != nil {
+		panic(err)
+	}
+	var returns projen.Project
+
+	_jsii_.StaticInvoke(
+		"projen.github.GitHubProject",
+		"of",
+		[]interface{}{construct},
+		&returns,
+	)
+
+	return returns
+}
+
 func GitHubProject_DEFAULT_TASK() *string {
 	_init_.Initialize()
 	var returns *string
@@ -850,6 +947,19 @@ func (g *jsiiProxy_GitHubProject) Synth() {
 		"synth",
 		nil, // no parameters
 	)
+}
+
+func (g *jsiiProxy_GitHubProject) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		g,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 func (g *jsiiProxy_GitHubProject) TryFindFile(filePath *string) projen.FileBase {

@@ -3,6 +3,8 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // Minimal Makefile.
@@ -29,7 +31,10 @@ type Makefile interface {
 	// Value is undefined if the project is being ejected.
 	// Experimental.
 	Marker() *string
-	// The file path, relative to the project root.
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
+	// The file path, relative to the project's outdir.
 	// Experimental.
 	Path() *string
 	// Experimental.
@@ -68,6 +73,9 @@ type Makefile interface {
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for Makefile
@@ -110,6 +118,16 @@ func (j *jsiiProxy_Makefile) Marker() *string {
 	_jsii_.Get(
 		j,
 		"marker",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Makefile) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -205,6 +223,48 @@ func (j *jsiiProxy_Makefile)SetReadonly(val *bool) {
 		"readonly",
 		val,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func Makefile_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateMakefile_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.Makefile",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Makefile_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateMakefile_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.Makefile",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (m *jsiiProxy_Makefile) AddAll(target *string) Makefile {
@@ -312,6 +372,19 @@ func (m *jsiiProxy_Makefile) SynthesizeContent(resolver IResolver) *string {
 		m,
 		"synthesizeContent",
 		[]interface{}{resolver},
+		&returns,
+	)
+
+	return returns
+}
+
+func (m *jsiiProxy_Makefile) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		m,
+		"toString",
+		nil, // no parameters
 		&returns,
 	)
 

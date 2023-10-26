@@ -24,10 +24,12 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addPostBuildJobTask", GoMethod: "AddPostBuildJobTask"},
 			_jsii_.MemberMethod{JsiiMethod: "addPostBuildSteps", GoMethod: "AddPostBuildSteps"},
 			_jsii_.MemberProperty{JsiiProperty: "buildJobIds", GoGetter: "BuildJobIds"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
 			j := jsiiProxy_BuildWorkflow{}

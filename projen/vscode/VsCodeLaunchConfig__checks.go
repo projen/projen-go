@@ -19,6 +19,22 @@ func (v *jsiiProxy_VsCodeLaunchConfig) validateAddConfigurationParameters(cfg *V
 	return nil
 }
 
+func validateVsCodeLaunchConfig_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateVsCodeLaunchConfig_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewVsCodeLaunchConfigParameters(vscode VsCode) error {
 	if vscode == nil {
 		return fmt.Errorf("parameter vscode is required, but nil was provided")

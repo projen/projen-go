@@ -8,7 +8,15 @@ func (l *jsiiProxy_Logger) validateLogParameters(level LogLevel) error {
 	return nil
 }
 
-func validateNewLoggerParameters(project Project, options *LoggerOptions) error {
+func validateLogger_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateLogger_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateNewLoggerParameters(scope constructs.IConstruct, options *LoggerOptions) error {
 	return nil
 }
 

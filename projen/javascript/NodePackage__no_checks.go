@@ -36,6 +36,14 @@ func (n *jsiiProxy_NodePackage) validateTryResolveDependencyVersionParameters(de
 	return nil
 }
 
+func validateNodePackage_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateNodePackage_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewNodePackageParameters(project projen.Project, options *NodePackageOptions) error {
 	return nil
 }

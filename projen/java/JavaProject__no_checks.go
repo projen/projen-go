@@ -60,6 +60,18 @@ func (j *jsiiProxy_JavaProject) validateTryRemoveFileParameters(filePath *string
 	return nil
 }
 
+func validateJavaProject_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateJavaProject_IsProjectParameters(x interface{}) error {
+	return nil
+}
+
+func validateJavaProject_OfParameters(construct constructs.IConstruct) error {
+	return nil
+}
+
 func validateNewJavaProjectParameters(options *JavaProjectOptions) error {
 	return nil
 }

@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github/internal"
 )
@@ -32,7 +33,10 @@ type PullRequestTemplate interface {
 	// Value is undefined if the project is being ejected.
 	// Experimental.
 	Marker() *string
-	// The file path, relative to the project root.
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
+	// The file path, relative to the project's outdir.
 	// Experimental.
 	Path() *string
 	// Experimental.
@@ -59,6 +63,9 @@ type PullRequestTemplate interface {
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
 	SynthesizeContent(_arg projen.IResolver) *string
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for PullRequestTemplate
@@ -101,6 +108,16 @@ func (j *jsiiProxy_PullRequestTemplate) Marker() *string {
 	_jsii_.Get(
 		j,
 		"marker",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_PullRequestTemplate) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -188,6 +205,48 @@ func (j *jsiiProxy_PullRequestTemplate)SetReadonly(val *bool) {
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func PullRequestTemplate_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validatePullRequestTemplate_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.github.PullRequestTemplate",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func PullRequestTemplate_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validatePullRequestTemplate_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.github.PullRequestTemplate",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 // Returns the `PullRequestTemplate` instance associated with a project or `undefined` if there is no PullRequestTemplate.
 //
 // Returns: A PullRequestTemplate.
@@ -255,6 +314,19 @@ func (p *jsiiProxy_PullRequestTemplate) SynthesizeContent(_arg projen.IResolver)
 		p,
 		"synthesizeContent",
 		[]interface{}{_arg},
+		&returns,
+	)
+
+	return returns
+}
+
+func (p *jsiiProxy_PullRequestTemplate) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		p,
+		"toString",
+		nil, // no parameters
 		&returns,
 	)
 

@@ -3,11 +3,15 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
+	"github.com/projen/projen-go/projen/internal"
 )
 
 // Base project.
 // Experimental.
 type Project interface {
+	constructs.Construct
 	// Experimental.
 	BuildTask() Task
 	// Whether to commit the managed files by default.
@@ -52,6 +56,9 @@ type Project interface {
 	// Project name.
 	// Experimental.
 	Name() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Absolute output directory of this project.
 	// Experimental.
 	Outdir() *string
@@ -142,6 +149,9 @@ type Project interface {
 	// 6. Call "this.postSynthesize()"
 	// Experimental.
 	Synth()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 	// Finds a file at the specified relative path within this project and all its subprojects.
 	//
 	// Returns: a `FileBase` or undefined if there is no file in that path.
@@ -163,7 +173,7 @@ type Project interface {
 
 // The jsii proxy struct for Project
 type jsiiProxy_Project struct {
-	_ byte // padding
+	internal.Type__constructsConstruct
 }
 
 func (j *jsiiProxy_Project) BuildTask() Task {
@@ -291,6 +301,16 @@ func (j *jsiiProxy_Project) Name() *string {
 	_jsii_.Get(
 		j,
 		"name",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Project) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -436,6 +456,70 @@ func NewProject_Override(p Project, options *ProjectOptions) {
 	)
 }
 
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func Project_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateProject_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.Project",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Test whether the given construct is a project.
+// Experimental.
+func Project_IsProject(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateProject_IsProjectParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.Project",
+		"isProject",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Find the closest ancestor project for given construct.
+//
+// When given a project, this it the project itself.
+// Experimental.
+func Project_Of(construct constructs.IConstruct) Project {
+	_init_.Initialize()
+
+	if err := validateProject_OfParameters(construct); err != nil {
+		panic(err)
+	}
+	var returns Project
+
+	_jsii_.StaticInvoke(
+		"projen.Project",
+		"of",
+		[]interface{}{construct},
+		&returns,
+	)
+
+	return returns
+}
+
 func Project_DEFAULT_TASK() *string {
 	_init_.Initialize()
 	var returns *string
@@ -574,6 +658,19 @@ func (p *jsiiProxy_Project) Synth() {
 		"synth",
 		nil, // no parameters
 	)
+}
+
+func (p *jsiiProxy_Project) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		p,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 func (p *jsiiProxy_Project) TryFindFile(filePath *string) FileBase {

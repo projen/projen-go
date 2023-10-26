@@ -26,6 +26,22 @@ func (p *jsiiProxy_Pip) validateAddDevDependencyParameters(spec *string) error {
 	return nil
 }
 
+func validatePip_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validatePip_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewPipParameters(project projen.Project, _options *PipOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

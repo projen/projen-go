@@ -3,6 +3,8 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // Represents an Object file.
@@ -29,10 +31,13 @@ type ObjectFile interface {
 	// Value is undefined if the project is being ejected.
 	// Experimental.
 	Marker() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Indicates if empty objects and arrays are omitted from the output object.
 	// Experimental.
 	OmitEmpty() *bool
-	// The file path, relative to the project root.
+	// The file path, relative to the project's outdir.
 	// Experimental.
 	Path() *string
 	// Experimental.
@@ -149,6 +154,9 @@ type ObjectFile interface {
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for ObjectFile
@@ -196,6 +204,16 @@ func (j *jsiiProxy_ObjectFile) Marker() *string {
 	return returns
 }
 
+func (j *jsiiProxy_ObjectFile) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_ObjectFile) OmitEmpty() *bool {
 	var returns *bool
 	_jsii_.Get(
@@ -238,12 +256,12 @@ func (j *jsiiProxy_ObjectFile) Readonly() *bool {
 
 
 // Experimental.
-func NewObjectFile_Override(o ObjectFile, project Project, filePath *string, options *ObjectFileOptions) {
+func NewObjectFile_Override(o ObjectFile, scope constructs.IConstruct, filePath *string, options *ObjectFileOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.ObjectFile",
-		[]interface{}{project, filePath, options},
+		[]interface{}{scope, filePath, options},
 		o,
 	)
 }
@@ -268,6 +286,48 @@ func (j *jsiiProxy_ObjectFile)SetReadonly(val *bool) {
 		"readonly",
 		val,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func ObjectFile_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateObjectFile_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.ObjectFile",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func ObjectFile_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateObjectFile_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.ObjectFile",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (o *jsiiProxy_ObjectFile) AddDeletionOverride(path *string) {
@@ -355,6 +415,19 @@ func (o *jsiiProxy_ObjectFile) SynthesizeContent(resolver IResolver) *string {
 		o,
 		"synthesizeContent",
 		[]interface{}{resolver},
+		&returns,
+	)
+
+	return returns
+}
+
+func (o *jsiiProxy_ObjectFile) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		o,
+		"toString",
+		nil, // no parameters
 		&returns,
 	)
 

@@ -20,6 +20,14 @@ func (x *jsiiProxy_XmlFile) validateSynthesizeContentParameters(resolver IResolv
 	return nil
 }
 
+func validateXmlFile_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateXmlFile_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_XmlFile) validateSetExecutableParameters(val *bool) error {
 	return nil
 }

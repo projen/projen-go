@@ -16,6 +16,14 @@ func (g *jsiiProxy_GitAttributesFile) validateSynthesizeContentParameters(_arg I
 	return nil
 }
 
+func validateGitAttributesFile_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateGitAttributesFile_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_GitAttributesFile) validateSetExecutableParameters(val *bool) error {
 	return nil
 }
@@ -24,7 +32,7 @@ func (j *jsiiProxy_GitAttributesFile) validateSetReadonlyParameters(val *bool) e
 	return nil
 }
 
-func validateNewGitAttributesFileParameters(project Project) error {
+func validateNewGitAttributesFileParameters(scope constructs.IConstruct) error {
 	return nil
 }
 

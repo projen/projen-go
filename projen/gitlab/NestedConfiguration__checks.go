@@ -51,6 +51,22 @@ func (n *jsiiProxy_NestedConfiguration) validateAddServicesParameters(services *
 	return nil
 }
 
+func validateNestedConfiguration_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateNestedConfiguration_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewNestedConfigurationParameters(project projen.Project, parent GitlabConfiguration, name *string, options *CiConfigurationOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

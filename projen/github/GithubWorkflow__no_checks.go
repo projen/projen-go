@@ -32,6 +32,14 @@ func (g *jsiiProxy_GithubWorkflow) validateUpdateJobsParameters(jobs *map[string
 	return nil
 }
 
+func validateGithubWorkflow_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateGithubWorkflow_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewGithubWorkflowParameters(github GitHub, name *string, options *GithubWorkflowOptions) error {
 	return nil
 }

@@ -8,6 +8,22 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 )
 
+func validatePullRequestLint_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validatePullRequestLint_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewPullRequestLintParameters(github GitHub, options *PullRequestLintOptions) error {
 	if github == nil {
 		return fmt.Errorf("parameter github is required, but nil was provided")

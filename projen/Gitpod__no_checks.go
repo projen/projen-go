@@ -16,6 +16,14 @@ func (g *jsiiProxy_Gitpod) validateAddPrebuildsParameters(config *GitpodPrebuild
 	return nil
 }
 
+func validateGitpod_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateGitpod_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewGitpodParameters(project Project, options *GitpodOptions) error {
 	return nil
 }

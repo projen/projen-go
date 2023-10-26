@@ -12,6 +12,14 @@ func (p *jsiiProxy_Prettier) validateAddOverrideParameters(override *PrettierOve
 	return nil
 }
 
+func validatePrettier_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validatePrettier_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validatePrettier_OfParameters(project projen.Project) error {
 	return nil
 }

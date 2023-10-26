@@ -76,6 +76,18 @@ func (n *jsiiProxy_NextJsTypeScriptProject) validateTryRemoveFileParameters(file
 	return nil
 }
 
+func validateNextJsTypeScriptProject_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateNextJsTypeScriptProject_IsProjectParameters(x interface{}) error {
+	return nil
+}
+
+func validateNextJsTypeScriptProject_OfParameters(construct constructs.IConstruct) error {
+	return nil
+}
+
 func validateNewNextJsTypeScriptProjectParameters(options *NextJsTypeScriptProjectOptions) error {
 	return nil
 }

@@ -20,6 +20,14 @@ func (o *jsiiProxy_ObjectFile) validateSynthesizeContentParameters(resolver IRes
 	return nil
 }
 
+func validateObjectFile_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateObjectFile_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_ObjectFile) validateSetExecutableParameters(val *bool) error {
 	return nil
 }
@@ -28,7 +36,7 @@ func (j *jsiiProxy_ObjectFile) validateSetReadonlyParameters(val *bool) error {
 	return nil
 }
 
-func validateNewObjectFileParameters(project Project, filePath *string, options *ObjectFileOptions) error {
+func validateNewObjectFileParameters(scope constructs.IConstruct, filePath *string, options *ObjectFileOptions) error {
 	return nil
 }
 

@@ -10,6 +10,22 @@ import (
 	"github.com/projen/projen-go/projen"
 )
 
+func validateCdk8sDeps_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateCdk8sDeps_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewCdk8sDepsParameters(project projen.Project, options *Cdk8sDepsOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

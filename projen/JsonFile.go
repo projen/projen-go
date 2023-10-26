@@ -3,6 +3,8 @@ package projen
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 // Represents a JSON file.
@@ -29,10 +31,13 @@ type JsonFile interface {
 	// Value is undefined if the project is being ejected.
 	// Experimental.
 	Marker() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Indicates if empty objects and arrays are omitted from the output object.
 	// Experimental.
 	OmitEmpty() *bool
-	// The file path, relative to the project root.
+	// The file path, relative to the project's outdir.
 	// Experimental.
 	Path() *string
 	// Experimental.
@@ -151,6 +156,9 @@ type JsonFile interface {
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
 	SynthesizeContent(resolver IResolver) *string
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for JsonFile
@@ -193,6 +201,16 @@ func (j *jsiiProxy_JsonFile) Marker() *string {
 	_jsii_.Get(
 		j,
 		"marker",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_JsonFile) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -250,17 +268,17 @@ func (j *jsiiProxy_JsonFile) SupportsComments() *bool {
 
 
 // Experimental.
-func NewJsonFile(project Project, filePath *string, options *JsonFileOptions) JsonFile {
+func NewJsonFile(scope constructs.IConstruct, filePath *string, options *JsonFileOptions) JsonFile {
 	_init_.Initialize()
 
-	if err := validateNewJsonFileParameters(project, filePath, options); err != nil {
+	if err := validateNewJsonFileParameters(scope, filePath, options); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_JsonFile{}
 
 	_jsii_.Create(
 		"projen.JsonFile",
-		[]interface{}{project, filePath, options},
+		[]interface{}{scope, filePath, options},
 		&j,
 	)
 
@@ -268,12 +286,12 @@ func NewJsonFile(project Project, filePath *string, options *JsonFileOptions) Js
 }
 
 // Experimental.
-func NewJsonFile_Override(j JsonFile, project Project, filePath *string, options *JsonFileOptions) {
+func NewJsonFile_Override(j JsonFile, scope constructs.IConstruct, filePath *string, options *JsonFileOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.JsonFile",
-		[]interface{}{project, filePath, options},
+		[]interface{}{scope, filePath, options},
 		j,
 	)
 }
@@ -298,6 +316,48 @@ func (j *jsiiProxy_JsonFile)SetReadonly(val *bool) {
 		"readonly",
 		val,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func JsonFile_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateJsonFile_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.JsonFile",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func JsonFile_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateJsonFile_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.JsonFile",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (j *jsiiProxy_JsonFile) AddDeletionOverride(path *string) {
@@ -385,6 +445,19 @@ func (j *jsiiProxy_JsonFile) SynthesizeContent(resolver IResolver) *string {
 		j,
 		"synthesizeContent",
 		[]interface{}{resolver},
+		&returns,
+	)
+
+	return returns
+}
+
+func (j *jsiiProxy_JsonFile) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		j,
+		"toString",
+		nil, // no parameters
 		&returns,
 	)
 

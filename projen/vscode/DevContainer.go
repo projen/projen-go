@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/vscode/internal"
 )
@@ -19,6 +20,9 @@ type DevContainer interface {
 	// Direct access to the devcontainer configuration (escape hatch).
 	// Experimental.
 	Config() interface{}
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Add a custom Docker image or Dockerfile for the container.
@@ -49,6 +53,9 @@ type DevContainer interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for DevContainer
@@ -62,6 +69,16 @@ func (j *jsiiProxy_DevContainer) Config() interface{} {
 	_jsii_.Get(
 		j,
 		"config",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_DevContainer) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -105,6 +122,48 @@ func NewDevContainer_Override(d DevContainer, project projen.Project, options *D
 		[]interface{}{project, options},
 		d,
 	)
+}
+
+// Test whether the given construct is a component.
+// Experimental.
+func DevContainer_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateDevContainer_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.vscode.DevContainer",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func DevContainer_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateDevContainer_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.vscode.DevContainer",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
 }
 
 func (d *jsiiProxy_DevContainer) AddDockerImage(image projen.DevEnvironmentDockerImage) {
@@ -195,5 +254,18 @@ func (d *jsiiProxy_DevContainer) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (d *jsiiProxy_DevContainer) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		d,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

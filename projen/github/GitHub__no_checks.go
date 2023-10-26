@@ -16,6 +16,14 @@ func (g *jsiiProxy_GitHub) validateTryFindWorkflowParameters(name *string) error
 	return nil
 }
 
+func validateGitHub_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateGitHub_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateGitHub_OfParameters(project projen.Project) error {
 	return nil
 }

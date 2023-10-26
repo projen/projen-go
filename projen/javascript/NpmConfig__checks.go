@@ -28,6 +28,22 @@ func (n *jsiiProxy_NpmConfig) validateAddRegistryParameters(url *string) error {
 	return nil
 }
 
+func validateNpmConfig_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateNpmConfig_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewNpmConfigParameters(project NodeProject, options *NpmConfigOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

@@ -12,6 +12,14 @@ func (t *jsiiProxy_TextFile) validateSynthesizeContentParameters(_arg IResolver)
 	return nil
 }
 
+func validateTextFile_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateTextFile_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_TextFile) validateSetExecutableParameters(val *bool) error {
 	return nil
 }
@@ -20,7 +28,7 @@ func (j *jsiiProxy_TextFile) validateSetReadonlyParameters(val *bool) error {
 	return nil
 }
 
-func validateNewTextFileParameters(project Project, filePath *string, options *TextFileOptions) error {
+func validateNewTextFileParameters(scope constructs.IConstruct, filePath *string, options *TextFileOptions) error {
 	return nil
 }
 

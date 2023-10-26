@@ -20,6 +20,14 @@ func (d *jsiiProxy_Dependencies) validateTryGetDependencyParameters(name *string
 	return nil
 }
 
+func validateDependencies_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateDependencies_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateDependencies_ParseDependencyParameters(spec *string) error {
 	return nil
 }

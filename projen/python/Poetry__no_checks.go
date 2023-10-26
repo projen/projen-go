@@ -12,6 +12,14 @@ func (p *jsiiProxy_Poetry) validateAddDevDependencyParameters(spec *string) erro
 	return nil
 }
 
+func validatePoetry_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validatePoetry_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewPoetryParameters(project projen.Project, options *PythonPackagingOptions) error {
 	return nil
 }

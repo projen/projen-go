@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/vscode/internal"
 )
@@ -14,6 +15,9 @@ type VsCodeLaunchConfig interface {
 	projen.Component
 	// Experimental.
 	File() projen.JsonFile
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Adds a VsCodeLaunchConfigurationEntry (e.g. a node.js debugger) to `.vscode/launch.json. Each configuration entry has following mandatory fields: type, request and name. See https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes for details.
@@ -30,6 +34,9 @@ type VsCodeLaunchConfig interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for VsCodeLaunchConfig
@@ -42,6 +49,16 @@ func (j *jsiiProxy_VsCodeLaunchConfig) File() projen.JsonFile {
 	_jsii_.Get(
 		j,
 		"file",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_VsCodeLaunchConfig) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -87,6 +104,48 @@ func NewVsCodeLaunchConfig_Override(v VsCodeLaunchConfig, vscode VsCode) {
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func VsCodeLaunchConfig_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateVsCodeLaunchConfig_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.vscode.VsCodeLaunchConfig",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func VsCodeLaunchConfig_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateVsCodeLaunchConfig_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.vscode.VsCodeLaunchConfig",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (v *jsiiProxy_VsCodeLaunchConfig) AddConfiguration(cfg *VsCodeLaunchConfigurationEntry) {
 	if err := v.validateAddConfigurationParameters(cfg); err != nil {
 		panic(err)
@@ -120,5 +179,18 @@ func (v *jsiiProxy_VsCodeLaunchConfig) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (v *jsiiProxy_VsCodeLaunchConfig) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		v,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

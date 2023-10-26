@@ -26,6 +26,22 @@ func (p *jsiiProxy_PullRequestTemplate) validateSynthesizeContentParameters(_arg
 	return nil
 }
 
+func validatePullRequestTemplate_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validatePullRequestTemplate_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validatePullRequestTemplate_OfParameters(project projen.Project) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

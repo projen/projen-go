@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/javascript"
 	"github.com/projen/projen-go/projen/typescript/internal"
@@ -21,6 +22,9 @@ type ProjenrcTs interface {
 	// The path of the projenrc file.
 	// Experimental.
 	FilePath() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// TypeScript configuration file used to compile projen source files.
@@ -37,6 +41,9 @@ type ProjenrcTs interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for ProjenrcTs
@@ -49,6 +56,16 @@ func (j *jsiiProxy_ProjenrcTs) FilePath() *string {
 	_jsii_.Get(
 		j,
 		"filePath",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ProjenrcTs) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -104,6 +121,48 @@ func NewProjenrcTs_Override(p ProjenrcTs, project projen.Project, options *Proje
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func ProjenrcTs_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateProjenrcTs_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.typescript.ProjenrcTs",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func ProjenrcTs_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateProjenrcTs_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.typescript.ProjenrcTs",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 // Returns the `Projenrc` instance associated with a project or `undefined` if there is no Projenrc.
 //
 // Returns: A Projenrc.
@@ -148,5 +207,18 @@ func (p *jsiiProxy_ProjenrcTs) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (p *jsiiProxy_ProjenrcTs) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		p,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 

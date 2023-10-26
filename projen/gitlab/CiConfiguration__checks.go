@@ -51,6 +51,22 @@ func (c *jsiiProxy_CiConfiguration) validateAddServicesParameters(services *[]*S
 	return nil
 }
 
+func validateCiConfiguration_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateCiConfiguration_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewCiConfigurationParameters(project projen.Project, name *string, options *CiConfigurationOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

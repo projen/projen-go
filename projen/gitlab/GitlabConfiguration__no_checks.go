@@ -24,6 +24,14 @@ func (g *jsiiProxy_GitlabConfiguration) validateCreateNestedTemplatesParameters(
 	return nil
 }
 
+func validateGitlabConfiguration_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateGitlabConfiguration_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewGitlabConfigurationParameters(project projen.Project, options *CiConfigurationOptions) error {
 	return nil
 }

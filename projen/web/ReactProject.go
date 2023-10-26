@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/build"
 	"github.com/projen/projen-go/projen/github"
@@ -118,6 +119,9 @@ type ReactProject interface {
 	// Project name.
 	// Experimental.
 	Name() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	NodeVersion() *string
 	// The .npmignore file.
@@ -308,6 +312,9 @@ type ReactProject interface {
 	// 6. Call "this.postSynthesize()"
 	// Experimental.
 	Synth()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 	// Finds a file at the specified relative path within this project and all its subprojects.
 	//
 	// Returns: a `FileBase` or undefined if there is no file in that path.
@@ -622,6 +629,16 @@ func (j *jsiiProxy_ReactProject) Name() *string {
 	return returns
 }
 
+func (j *jsiiProxy_ReactProject) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_ReactProject) NodeVersion() *string {
 	var returns *string
 	_jsii_.Get(
@@ -910,6 +927,70 @@ func NewReactProject_Override(r ReactProject, options *ReactProjectOptions) {
 		[]interface{}{options},
 		r,
 	)
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func ReactProject_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateReactProject_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.web.ReactProject",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Test whether the given construct is a project.
+// Experimental.
+func ReactProject_IsProject(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateReactProject_IsProjectParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.web.ReactProject",
+		"isProject",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Find the closest ancestor project for given construct.
+//
+// When given a project, this it the project itself.
+// Experimental.
+func ReactProject_Of(construct constructs.IConstruct) projen.Project {
+	_init_.Initialize()
+
+	if err := validateReactProject_OfParameters(construct); err != nil {
+		panic(err)
+	}
+	var returns projen.Project
+
+	_jsii_.StaticInvoke(
+		"projen.web.ReactProject",
+		"of",
+		[]interface{}{construct},
+		&returns,
+	)
+
+	return returns
 }
 
 func ReactProject_DEFAULT_TASK() *string {
@@ -1228,6 +1309,19 @@ func (r *jsiiProxy_ReactProject) Synth() {
 		"synth",
 		nil, // no parameters
 	)
+}
+
+func (r *jsiiProxy_ReactProject) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		r,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 func (r *jsiiProxy_ReactProject) TryFindFile(filePath *string) projen.FileBase {

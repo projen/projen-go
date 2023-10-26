@@ -28,6 +28,22 @@ func (d *jsiiProxy_DevContainer) validateAddFeaturesParameters(features *[]*DevC
 	return nil
 }
 
+func validateDevContainer_IsComponentParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateDevContainer_IsConstructParameters(x interface{}) error {
+	if x == nil {
+		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewDevContainerParameters(project projen.Project, options *DevContainerOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

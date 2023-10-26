@@ -20,6 +20,14 @@ func (t *jsiiProxy_Tasks) validateTryFindParameters(name *string) error {
 	return nil
 }
 
+func validateTasks_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateTasks_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
 func validateNewTasksParameters(project Project) error {
 	return nil
 }

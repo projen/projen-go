@@ -4,6 +4,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/cdk/internal"
 )
@@ -20,6 +21,9 @@ type IntegrationTestBase interface {
 	// Integration test name.
 	// Experimental.
 	Name() *string
+	// The tree node.
+	// Experimental.
+	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
 	// Snapshot output directory.
@@ -42,6 +46,9 @@ type IntegrationTestBase interface {
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
+	// Returns a string representation of this construct.
+	// Experimental.
+	ToString() *string
 }
 
 // The jsii proxy struct for IntegrationTestBase
@@ -74,6 +81,16 @@ func (j *jsiiProxy_IntegrationTestBase) Name() *string {
 	_jsii_.Get(
 		j,
 		"name",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_IntegrationTestBase) Node() constructs.Node {
+	var returns constructs.Node
+	_jsii_.Get(
+		j,
+		"node",
 		&returns,
 	)
 	return returns
@@ -131,6 +148,48 @@ func NewIntegrationTestBase_Override(i IntegrationTestBase, project projen.Proje
 	)
 }
 
+// Test whether the given construct is a component.
+// Experimental.
+func IntegrationTestBase_IsComponent(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateIntegrationTestBase_IsComponentParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.cdk.IntegrationTestBase",
+		"isComponent",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Checks if `x` is a construct.
+//
+// Returns: true if `x` is an object created from a class which extends `Construct`.
+// Deprecated: use `x instanceof Construct` instead.
+func IntegrationTestBase_IsConstruct(x interface{}) *bool {
+	_init_.Initialize()
+
+	if err := validateIntegrationTestBase_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.StaticInvoke(
+		"projen.cdk.IntegrationTestBase",
+		"isConstruct",
+		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
 func (i *jsiiProxy_IntegrationTestBase) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -153,5 +212,18 @@ func (i *jsiiProxy_IntegrationTestBase) Synthesize() {
 		"synthesize",
 		nil, // no parameters
 	)
+}
+
+func (i *jsiiProxy_IntegrationTestBase) ToString() *string {
+	var returns *string
+
+	_jsii_.Invoke(
+		i,
+		"toString",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
