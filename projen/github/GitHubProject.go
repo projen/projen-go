@@ -739,8 +739,26 @@ func NewGitHubProject_Override(g GitHubProject, options *GitHubProjectOptions) {
 
 // Checks if `x` is a construct.
 //
+// Use this method instead of `instanceof` to properly detect `Construct`
+// instances, even when the construct library is symlinked.
+//
+// Explanation: in JavaScript, multiple copies of the `constructs` library on
+// disk are seen as independent, completely different libraries. As a
+// consequence, the class `Construct` in each copy of the `constructs` library
+// is seen as a different class, and an instance of one class will not test as
+// `instanceof` the other class. `npm install` will not create installations
+// like this, but users may manually symlink construct libraries together or
+// use a monorepo tool: in those cases, multiple copies of the `constructs`
+// library can be accidentally installed, and `instanceof` will behave
+// unpredictably. It is safest to avoid using `instanceof`, and using
+// this type-testing method instead.
+//
 // Returns: true if `x` is an object created from a class which extends `Construct`.
-// Deprecated: use `x instanceof Construct` instead.
+// Deprecated: This is a *temporary* class. At the moment, our base project
+// types such as `NodeProject` and `JavaProject` are derived from this, but we
+// want to be able to use these project types outside of GitHub as well. One of
+// the next steps to address this is to abstract workflows so that different
+// "engines" can be used to implement our CI/CD solutions.
 func GitHubProject_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
