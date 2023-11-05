@@ -33,10 +33,13 @@ type ObjectFileOptions struct {
 	//
 	// Experimental.
 	Readonly *bool `field:"optional" json:"readonly" yaml:"readonly"`
-	// The object that will be serialized.
+	// The object that will be serialized. You can modify the object's contents before synthesis.
 	//
-	// You can modify the object's contents
-	// before synthesis.
+	// Serialization of the object is similar to JSON.stringify with few enhancements:
+	// - values that are functions will be called during synthesis and the result will be serialized - this allow to have lazy values.
+	// - `Set` will be converted to array
+	// - `Map` will be converted to a plain object ({ key: value, ... }})
+	// - `RegExp` without flags will be converted to string representation of the source.
 	// Default: {} an empty object (use `file.obj` to mutate).
 	//
 	// Experimental.
