@@ -226,5 +226,10 @@ type NodePackageOptions struct {
 	// Package's Stability.
 	// Experimental.
 	Stability *string `field:"optional" json:"stability" yaml:"stability"`
+	// Options for Yarn Berry.
+	// Default: - Yarn Berry v4 with all default options.
+	//
+	// Experimental.
+	YarnBerryOptions *YarnBerryOptions `field:"optional" json:"yarnBerryOptions" yaml:"yarnBerryOptions"`
 }
 

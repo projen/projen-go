@@ -623,4 +623,174 @@ func init() {
 			return &jsiiProxy_WatchPlugin{}
 		},
 	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.YarnBerryOptions",
+		reflect.TypeOf((*YarnBerryOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.YarnCacheMigrationMode",
+		reflect.TypeOf((*YarnCacheMigrationMode)(nil)).Elem(),
+		map[string]interface{}{
+			"REQUIRED_ONLY": YarnCacheMigrationMode_REQUIRED_ONLY,
+			"MATCH_SPEC": YarnCacheMigrationMode_MATCH_SPEC,
+			"ALWAYS": YarnCacheMigrationMode_ALWAYS,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.YarnChecksumBehavior",
+		reflect.TypeOf((*YarnChecksumBehavior)(nil)).Elem(),
+		map[string]interface{}{
+			"THROW": YarnChecksumBehavior_THROW,
+			"UPDATE": YarnChecksumBehavior_UPDATE,
+			"RESET": YarnChecksumBehavior_RESET,
+			"IGNORE": YarnChecksumBehavior_IGNORE,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.YarnDefaultSemverRangePrefix",
+		reflect.TypeOf((*YarnDefaultSemverRangePrefix)(nil)).Elem(),
+		map[string]interface{}{
+			"CARET": YarnDefaultSemverRangePrefix_CARET,
+			"TILDE": YarnDefaultSemverRangePrefix_TILDE,
+			"EMPTY_STRING": YarnDefaultSemverRangePrefix_EMPTY_STRING,
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.YarnLogFilter",
+		reflect.TypeOf((*YarnLogFilter)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.YarnLogFilterLevel",
+		reflect.TypeOf((*YarnLogFilterLevel)(nil)).Elem(),
+		map[string]interface{}{
+			"INFO": YarnLogFilterLevel_INFO,
+			"WARNING": YarnLogFilterLevel_WARNING,
+			"ERROR": YarnLogFilterLevel_ERROR,
+			"DISCARD": YarnLogFilterLevel_DISCARD,
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.YarnNetworkSetting",
+		reflect.TypeOf((*YarnNetworkSetting)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.YarnNmHoistingLimit",
+		reflect.TypeOf((*YarnNmHoistingLimit)(nil)).Elem(),
+		map[string]interface{}{
+			"DEPENDENCIES": YarnNmHoistingLimit_DEPENDENCIES,
+			"NONE": YarnNmHoistingLimit_NONE,
+			"WORKSPACES": YarnNmHoistingLimit_WORKSPACES,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.YarnNmMode",
+		reflect.TypeOf((*YarnNmMode)(nil)).Elem(),
+		map[string]interface{}{
+			"CLASSIC": YarnNmMode_CLASSIC,
+			"HARDLINKS_LOCAL": YarnNmMode_HARDLINKS_LOCAL,
+			"HARDLINKS_GLOBAL": YarnNmMode_HARDLINKS_GLOBAL,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.YarnNodeLinker",
+		reflect.TypeOf((*YarnNodeLinker)(nil)).Elem(),
+		map[string]interface{}{
+			"PNP": YarnNodeLinker_PNP,
+			"PNPM": YarnNodeLinker_PNPM,
+			"NODE_MODULES": YarnNodeLinker_NODE_MODULES,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.YarnNpmPublishAccess",
+		reflect.TypeOf((*YarnNpmPublishAccess)(nil)).Elem(),
+		map[string]interface{}{
+			"PUBLIC": YarnNpmPublishAccess_PUBLIC,
+			"RESTRICTED": YarnNpmPublishAccess_RESTRICTED,
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.YarnNpmRegistry",
+		reflect.TypeOf((*YarnNpmRegistry)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.YarnNpmScope",
+		reflect.TypeOf((*YarnNpmScope)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.YarnPackageExtension",
+		reflect.TypeOf((*YarnPackageExtension)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.YarnPeerDependencyMeta",
+		reflect.TypeOf((*YarnPeerDependencyMeta)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.YarnPnpFallbackMode",
+		reflect.TypeOf((*YarnPnpFallbackMode)(nil)).Elem(),
+		map[string]interface{}{
+			"NONE": YarnPnpFallbackMode_NONE,
+			"DEPENDENCIES_ONLY": YarnPnpFallbackMode_DEPENDENCIES_ONLY,
+			"ALL": YarnPnpFallbackMode_ALL,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.YarnPnpMode",
+		reflect.TypeOf((*YarnPnpMode)(nil)).Elem(),
+		map[string]interface{}{
+			"STRICT": YarnPnpMode_STRICT,
+			"LOOSE": YarnPnpMode_LOOSE,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.YarnProgressBarStyle",
+		reflect.TypeOf((*YarnProgressBarStyle)(nil)).Elem(),
+		map[string]interface{}{
+			"PATRICK": YarnProgressBarStyle_PATRICK,
+			"SIMBA": YarnProgressBarStyle_SIMBA,
+			"JACK": YarnProgressBarStyle_JACK,
+			"HOGSFATHER": YarnProgressBarStyle_HOGSFATHER,
+			"DEFAULT": YarnProgressBarStyle_DEFAULT,
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.YarnSupportedArchitectures",
+		reflect.TypeOf((*YarnSupportedArchitectures)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.YarnWinLinkType",
+		reflect.TypeOf((*YarnWinLinkType)(nil)).Elem(),
+		map[string]interface{}{
+			"JUNCTIONS": YarnWinLinkType_JUNCTIONS,
+			"SYMLINKS": YarnWinLinkType_SYMLINKS,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.YarnWorkerPoolMode",
+		reflect.TypeOf((*YarnWorkerPoolMode)(nil)).Elem(),
+		map[string]interface{}{
+			"ASYNC": YarnWorkerPoolMode_ASYNC,
+			"WORKERS": YarnWorkerPoolMode_WORKERS,
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.javascript.Yarnrc",
+		reflect.TypeOf((*Yarnrc)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+		},
+		func() interface{} {
+			j := jsiiProxy_Yarnrc{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.YarnrcOptions",
+		reflect.TypeOf((*YarnrcOptions)(nil)).Elem(),
+	)
 }

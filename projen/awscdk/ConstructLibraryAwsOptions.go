@@ -403,6 +403,11 @@ type ConstructLibraryAwsOptions struct {
 	// Package's Stability.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Stability *string `field:"optional" json:"stability" yaml:"stability"`
+	// Options for Yarn Berry.
+	// Default: - Yarn Berry v4 with all default options.
+	//
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	YarnBerryOptions *javascript.YarnBerryOptions `field:"optional" json:"yarnBerryOptions" yaml:"yarnBerryOptions"`
 	// Version requirement of `publib` which is used to publish modules to npm.
 	// Default: "latest".
 	//
