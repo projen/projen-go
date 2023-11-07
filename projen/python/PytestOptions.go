@@ -12,7 +12,7 @@ type PytestOptions struct {
 	// Experimental.
 	Testdir *string `field:"optional" json:"testdir" yaml:"testdir"`
 	// Pytest version.
-	// Default: "6.2.1"
+	// Default: "7.4.3"
 	//
 	// Experimental.
 	Version *string `field:"optional" json:"version" yaml:"version"`
