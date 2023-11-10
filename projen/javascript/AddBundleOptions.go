@@ -53,6 +53,22 @@ type AddBundleOptions struct {
 	//
 	// Experimental.
 	Executable *bool `field:"optional" json:"executable" yaml:"executable"`
+	// Output format for the generated JavaScript files.
+	//
+	// There are currently three possible values that can be configured: `"iife"`, `"cjs"`, and `"esm"`.
+	//
+	// If not set (`undefined`), esbuild picks an output format for you based on `platform`:
+	// - `"cjs"` if `platform` is `"node"`
+	// - `"iife"` if `platform` is `"browser"`
+	// - `"esm"` if `platform` is `"neutral"`
+	//
+	// Note: If making a bundle to run under node with ESM, set `format` to `"esm"` instead of setting `platform` to `"neutral"`.
+	// See: https://esbuild.github.io/api/#format
+	//
+	// Default: undefined.
+	//
+	// Experimental.
+	Format *string `field:"optional" json:"format" yaml:"format"`
 	// Map of file extensions (without dot) and loaders to use for this file type.
 	//
 	// Loaders are appended to the esbuild command by `--loader:.extension=loader`
