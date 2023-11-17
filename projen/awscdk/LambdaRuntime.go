@@ -150,3 +150,14 @@ func LambdaRuntime_NODEJS_18_X() LambdaRuntime {
 	return returns
 }
 
+func LambdaRuntime_NODEJS_20_X() LambdaRuntime {
+	_init_.Initialize()
+	var returns LambdaRuntime
+	_jsii_.StaticGet(
+		"projen.awscdk.LambdaRuntime",
+		"NODEJS_20_X",
+		&returns,
+	)
+	return returns
+}
+
