@@ -13,5 +13,15 @@ type AutoMergeOptions struct {
 	//
 	// Experimental.
 	BlockingLabels *[]*string `field:"optional" json:"blockingLabels" yaml:"blockingLabels"`
+	// Name of the mergify queue.
+	// Default: 'default'.
+	//
+	// Experimental.
+	QueueName *string `field:"optional" json:"queueName" yaml:"queueName"`
+	// Name of the mergify rule.
+	// Default: 'Automatic merge on approval and successful build'.
+	//
+	// Experimental.
+	RuleName *string `field:"optional" json:"ruleName" yaml:"ruleName"`
 }
 
