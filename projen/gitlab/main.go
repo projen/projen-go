@@ -58,6 +58,7 @@ func init() {
 		"projen.gitlab.CiConfiguration",
 		reflect.TypeOf((*CiConfiguration)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addDefaultCaches", GoMethod: "AddDefaultCaches"},
 			_jsii_.MemberMethod{JsiiMethod: "addGlobalVariables", GoMethod: "AddGlobalVariables"},
 			_jsii_.MemberMethod{JsiiMethod: "addIncludes", GoMethod: "AddIncludes"},
 			_jsii_.MemberMethod{JsiiMethod: "addJobs", GoMethod: "AddJobs"},
@@ -148,6 +149,7 @@ func init() {
 		"projen.gitlab.GitlabConfiguration",
 		reflect.TypeOf((*GitlabConfiguration)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addDefaultCaches", GoMethod: "AddDefaultCaches"},
 			_jsii_.MemberMethod{JsiiMethod: "addGlobalVariables", GoMethod: "AddGlobalVariables"},
 			_jsii_.MemberMethod{JsiiMethod: "addIncludes", GoMethod: "AddIncludes"},
 			_jsii_.MemberMethod{JsiiMethod: "addJobs", GoMethod: "AddJobs"},
@@ -260,6 +262,7 @@ func init() {
 		"projen.gitlab.NestedConfiguration",
 		reflect.TypeOf((*NestedConfiguration)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addDefaultCaches", GoMethod: "AddDefaultCaches"},
 			_jsii_.MemberMethod{JsiiMethod: "addGlobalVariables", GoMethod: "AddGlobalVariables"},
 			_jsii_.MemberMethod{JsiiMethod: "addIncludes", GoMethod: "AddIncludes"},
 			_jsii_.MemberMethod{JsiiMethod: "addJobs", GoMethod: "AddJobs"},

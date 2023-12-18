@@ -27,11 +27,8 @@ type GitlabConfiguration interface {
 	// Can be overriden by the job level `afterScript`.
 	// Experimental.
 	DefaultBeforeScript() *[]*string
-	// A default list of files and directories to cache between jobs.
-	//
-	// You can only use paths that are in the local working copy.
 	// Experimental.
-	DefaultCache() *Cache
+	DefaultCache() *[]*Cache
 	// Specifies the default docker image to use globally for all jobs.
 	// Experimental.
 	DefaultImage() *Image
@@ -90,6 +87,9 @@ type GitlabConfiguration interface {
 	// Used to control pipeline behavior.
 	// Experimental.
 	Workflow() *Workflow
+	// Adds up to 4 default caches configuration to the CI configuration.
+	// Experimental.
+	AddDefaultCaches(caches *[]*Cache)
 	// Add a globally defined variable to the CI configuration.
 	// Experimental.
 	AddGlobalVariables(variables *map[string]interface{})
@@ -163,8 +163,8 @@ func (j *jsiiProxy_GitlabConfiguration) DefaultBeforeScript() *[]*string {
 	return returns
 }
 
-func (j *jsiiProxy_GitlabConfiguration) DefaultCache() *Cache {
-	var returns *Cache
+func (j *jsiiProxy_GitlabConfiguration) DefaultCache() *[]*Cache {
+	var returns *[]*Cache
 	_jsii_.Get(
 		j,
 		"defaultCache",
@@ -417,6 +417,17 @@ func GitlabConfiguration_IsConstruct(x interface{}) *bool {
 	)
 
 	return returns
+}
+
+func (g *jsiiProxy_GitlabConfiguration) AddDefaultCaches(caches *[]*Cache) {
+	if err := g.validateAddDefaultCachesParameters(caches); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		g,
+		"addDefaultCaches",
+		[]interface{}{caches},
+	)
 }
 
 func (g *jsiiProxy_GitlabConfiguration) AddGlobalVariables(variables *map[string]interface{}) {

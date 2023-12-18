@@ -32,11 +32,8 @@ type CiConfiguration interface {
 	// Can be overriden by the job level `afterScript`.
 	// Experimental.
 	DefaultBeforeScript() *[]*string
-	// A default list of files and directories to cache between jobs.
-	//
-	// You can only use paths that are in the local working copy.
 	// Experimental.
-	DefaultCache() *Cache
+	DefaultCache() *[]*Cache
 	// Specifies the default docker image to use globally for all jobs.
 	// Experimental.
 	DefaultImage() *Image
@@ -93,6 +90,9 @@ type CiConfiguration interface {
 	// Used to control pipeline behavior.
 	// Experimental.
 	Workflow() *Workflow
+	// Adds up to 4 default caches configuration to the CI configuration.
+	// Experimental.
+	AddDefaultCaches(caches *[]*Cache)
 	// Add a globally defined variable to the CI configuration.
 	// Experimental.
 	AddGlobalVariables(variables *map[string]interface{})
@@ -159,8 +159,8 @@ func (j *jsiiProxy_CiConfiguration) DefaultBeforeScript() *[]*string {
 	return returns
 }
 
-func (j *jsiiProxy_CiConfiguration) DefaultCache() *Cache {
-	var returns *Cache
+func (j *jsiiProxy_CiConfiguration) DefaultCache() *[]*Cache {
+	var returns *[]*Cache
 	_jsii_.Get(
 		j,
 		"defaultCache",
@@ -403,6 +403,17 @@ func CiConfiguration_IsConstruct(x interface{}) *bool {
 	)
 
 	return returns
+}
+
+func (c *jsiiProxy_CiConfiguration) AddDefaultCaches(caches *[]*Cache) {
+	if err := c.validateAddDefaultCachesParameters(caches); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		c,
+		"addDefaultCaches",
+		[]interface{}{caches},
+	)
 }
 
 func (c *jsiiProxy_CiConfiguration) AddGlobalVariables(variables *map[string]interface{}) {

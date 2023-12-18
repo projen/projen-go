@@ -10,6 +10,19 @@ import (
 	"github.com/projen/projen-go/projen"
 )
 
+func (g *jsiiProxy_GitlabConfiguration) validateAddDefaultCachesParameters(caches *[]*Cache) error {
+	if caches == nil {
+		return fmt.Errorf("parameter caches is required, but nil was provided")
+	}
+	for idx_efbe9d, v := range *caches {
+		if err := _jsii_.ValidateStruct(v, func() string { return fmt.Sprintf("parameter caches[%#v]", idx_efbe9d) }); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (g *jsiiProxy_GitlabConfiguration) validateAddGlobalVariablesParameters(variables *map[string]interface{}) error {
 	if variables == nil {
 		return fmt.Errorf("parameter variables is required, but nil was provided")

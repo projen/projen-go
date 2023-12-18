@@ -4,6 +4,10 @@ package gitlab
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (n *jsiiProxy_NestedConfiguration) validateAddDefaultCachesParameters(caches *[]*Cache) error {
+	return nil
+}
+
 func (n *jsiiProxy_NestedConfiguration) validateAddGlobalVariablesParameters(variables *map[string]interface{}) error {
 	return nil
 }

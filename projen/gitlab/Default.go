@@ -15,7 +15,7 @@ type Default struct {
 	// Experimental.
 	BeforeScript *[]*string `field:"optional" json:"beforeScript" yaml:"beforeScript"`
 	// Experimental.
-	Cache *Cache `field:"optional" json:"cache" yaml:"cache"`
+	Cache *[]*Cache `field:"optional" json:"cache" yaml:"cache"`
 	// Experimental.
 	Image *Image `field:"optional" json:"image" yaml:"image"`
 	// Experimental.

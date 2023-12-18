@@ -16,7 +16,7 @@ type Job struct {
 	// Experimental.
 	BeforeScript *[]*string `field:"optional" json:"beforeScript" yaml:"beforeScript"`
 	// Experimental.
-	Cache *Cache `field:"optional" json:"cache" yaml:"cache"`
+	Cache *[]*Cache `field:"optional" json:"cache" yaml:"cache"`
 	// Must be a regular expression, optionally but recommended to be quoted, and must be surrounded with '/'.
 	//
 	// Example: '/Code coverage: \d+\.\d+/'

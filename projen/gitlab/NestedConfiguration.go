@@ -27,11 +27,8 @@ type NestedConfiguration interface {
 	// Can be overriden by the job level `afterScript`.
 	// Experimental.
 	DefaultBeforeScript() *[]*string
-	// A default list of files and directories to cache between jobs.
-	//
-	// You can only use paths that are in the local working copy.
 	// Experimental.
-	DefaultCache() *Cache
+	DefaultCache() *[]*Cache
 	// Specifies the default docker image to use globally for all jobs.
 	// Experimental.
 	DefaultImage() *Image
@@ -90,6 +87,9 @@ type NestedConfiguration interface {
 	// Used to control pipeline behavior.
 	// Experimental.
 	Workflow() *Workflow
+	// Adds up to 4 default caches configuration to the CI configuration.
+	// Experimental.
+	AddDefaultCaches(caches *[]*Cache)
 	// Add a globally defined variable to the CI configuration.
 	// Experimental.
 	AddGlobalVariables(variables *map[string]interface{})
@@ -156,8 +156,8 @@ func (j *jsiiProxy_NestedConfiguration) DefaultBeforeScript() *[]*string {
 	return returns
 }
 
-func (j *jsiiProxy_NestedConfiguration) DefaultCache() *Cache {
-	var returns *Cache
+func (j *jsiiProxy_NestedConfiguration) DefaultCache() *[]*Cache {
+	var returns *[]*Cache
 	_jsii_.Get(
 		j,
 		"defaultCache",
@@ -410,6 +410,17 @@ func NestedConfiguration_IsConstruct(x interface{}) *bool {
 	)
 
 	return returns
+}
+
+func (n *jsiiProxy_NestedConfiguration) AddDefaultCaches(caches *[]*Cache) {
+	if err := n.validateAddDefaultCachesParameters(caches); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		n,
+		"addDefaultCaches",
+		[]interface{}{caches},
+	)
 }
 
 func (n *jsiiProxy_NestedConfiguration) AddGlobalVariables(variables *map[string]interface{}) {
