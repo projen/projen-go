@@ -573,6 +573,13 @@ type TypeScriptLibraryProjectOptions struct {
 	// Options for `Bundler`.
 	// Deprecated: use TypeScriptProjectOptions.
 	BundlerOptions *javascript.BundlerOptions `field:"optional" json:"bundlerOptions" yaml:"bundlerOptions"`
+	// Configure which licenses should be deemed acceptable for use by dependencies.
+	//
+	// This setting will cause the build to fail, if any prohibited or not allowed licenses ares encountered.
+	// Default: - no license checks are run during the build and all licenses will be accepted.
+	//
+	// Deprecated: use TypeScriptProjectOptions.
+	CheckLicenses *javascript.LicenseCheckerOptions `field:"optional" json:"checkLicenses" yaml:"checkLicenses"`
 	// Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`.
 	// Default: false.
 	//

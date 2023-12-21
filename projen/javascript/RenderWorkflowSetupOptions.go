@@ -4,7 +4,7 @@ package javascript
 // Options for `renderInstallSteps()`.
 // Experimental.
 type RenderWorkflowSetupOptions struct {
-	// Should the pacakge lockfile be updated?
+	// Should the package lockfile be updated?
 	// Default: false.
 	//
 	// Experimental.

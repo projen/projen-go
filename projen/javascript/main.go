@@ -188,6 +188,28 @@ func init() {
 		},
 	)
 	_jsii_.RegisterClass(
+		"projen.javascript.LicenseChecker",
+		reflect.TypeOf((*LicenseChecker)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "task", GoGetter: "Task"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+		},
+		func() interface{} {
+			j := jsiiProxy_LicenseChecker{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.LicenseCheckerOptions",
+		reflect.TypeOf((*LicenseCheckerOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
 		"projen.javascript.NodePackage",
 		reflect.TypeOf((*NodePackage)(nil)).Elem(),
 		[]_jsii_.Member{
