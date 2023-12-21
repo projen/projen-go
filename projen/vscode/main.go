@@ -101,11 +101,18 @@ func init() {
 			return &j
 		},
 	)
+	_jsii_.RegisterStruct(
+		"projen.vscode.VsCodeLaunchCommandInputEntry",
+		reflect.TypeOf((*VsCodeLaunchCommandInputEntry)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.vscode.VsCodeLaunchConfig",
 		reflect.TypeOf((*VsCodeLaunchConfig)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addCommandInput", GoMethod: "AddCommandInput"},
 			_jsii_.MemberMethod{JsiiMethod: "addConfiguration", GoMethod: "AddConfiguration"},
+			_jsii_.MemberMethod{JsiiMethod: "addPickStringInput", GoMethod: "AddPickStringInput"},
+			_jsii_.MemberMethod{JsiiMethod: "addPromptStringInput", GoMethod: "AddPromptStringInput"},
 			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
 			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
@@ -123,6 +130,18 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.vscode.VsCodeLaunchConfigurationEntry",
 		reflect.TypeOf((*VsCodeLaunchConfigurationEntry)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.vscode.VsCodeLaunchInputEntry",
+		reflect.TypeOf((*VsCodeLaunchInputEntry)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.vscode.VsCodeLaunchPickStringInputEntry",
+		reflect.TypeOf((*VsCodeLaunchPickStringInputEntry)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.vscode.VsCodeLaunchPromptStringInputEntry",
+		reflect.TypeOf((*VsCodeLaunchPromptStringInputEntry)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.vscode.VsCodeRecommendedExtensions",

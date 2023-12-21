@@ -20,9 +20,24 @@ type VsCodeLaunchConfig interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
+	// Adds an input variable with type `command` to `.vscode/launch.json`.
+	//
+	// See https://code.visualstudio.com/docs/editor/variables-reference#_input-variables for details.
+	// Experimental.
+	AddCommandInput(cfg *VsCodeLaunchCommandInputEntry)
 	// Adds a VsCodeLaunchConfigurationEntry (e.g. a node.js debugger) to `.vscode/launch.json. Each configuration entry has following mandatory fields: type, request and name. See https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes for details.
 	// Experimental.
 	AddConfiguration(cfg *VsCodeLaunchConfigurationEntry)
+	// Adds an input variable with type `pickString` to `.vscode/launch.json`.
+	//
+	// See https://code.visualstudio.com/docs/editor/variables-reference#_input-variables for details.
+	// Experimental.
+	AddPickStringInput(cfg *VsCodeLaunchPickStringInputEntry)
+	// Adds an input variable with type `promptString` to `.vscode/launch.json`.
+	//
+	// See https://code.visualstudio.com/docs/editor/variables-reference#_input-variables for details.
+	// Experimental.
+	AddPromptStringInput(cfg *VsCodeLaunchPromptStringInputEntry)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -160,6 +175,17 @@ func VsCodeLaunchConfig_IsConstruct(x interface{}) *bool {
 	return returns
 }
 
+func (v *jsiiProxy_VsCodeLaunchConfig) AddCommandInput(cfg *VsCodeLaunchCommandInputEntry) {
+	if err := v.validateAddCommandInputParameters(cfg); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		v,
+		"addCommandInput",
+		[]interface{}{cfg},
+	)
+}
+
 func (v *jsiiProxy_VsCodeLaunchConfig) AddConfiguration(cfg *VsCodeLaunchConfigurationEntry) {
 	if err := v.validateAddConfigurationParameters(cfg); err != nil {
 		panic(err)
@@ -167,6 +193,28 @@ func (v *jsiiProxy_VsCodeLaunchConfig) AddConfiguration(cfg *VsCodeLaunchConfigu
 	_jsii_.InvokeVoid(
 		v,
 		"addConfiguration",
+		[]interface{}{cfg},
+	)
+}
+
+func (v *jsiiProxy_VsCodeLaunchConfig) AddPickStringInput(cfg *VsCodeLaunchPickStringInputEntry) {
+	if err := v.validateAddPickStringInputParameters(cfg); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		v,
+		"addPickStringInput",
+		[]interface{}{cfg},
+	)
+}
+
+func (v *jsiiProxy_VsCodeLaunchConfig) AddPromptStringInput(cfg *VsCodeLaunchPromptStringInputEntry) {
+	if err := v.validateAddPromptStringInputParameters(cfg); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		v,
+		"addPromptStringInput",
 		[]interface{}{cfg},
 	)
 }

@@ -4,7 +4,19 @@ package vscode
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (v *jsiiProxy_VsCodeLaunchConfig) validateAddCommandInputParameters(cfg *VsCodeLaunchCommandInputEntry) error {
+	return nil
+}
+
 func (v *jsiiProxy_VsCodeLaunchConfig) validateAddConfigurationParameters(cfg *VsCodeLaunchConfigurationEntry) error {
+	return nil
+}
+
+func (v *jsiiProxy_VsCodeLaunchConfig) validateAddPickStringInputParameters(cfg *VsCodeLaunchPickStringInputEntry) error {
+	return nil
+}
+
+func (v *jsiiProxy_VsCodeLaunchConfig) validateAddPromptStringInputParameters(cfg *VsCodeLaunchPromptStringInputEntry) error {
 	return nil
 }
 
