@@ -53,8 +53,20 @@ func init() {
 		reflect.TypeOf((*AutoMergeOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.github.CheckoutOptions",
+		reflect.TypeOf((*CheckoutOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.CheckoutWith",
+		reflect.TypeOf((*CheckoutWith)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.github.CheckoutWithPatchOptions",
 		reflect.TypeOf((*CheckoutWithPatchOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.CommonWorkflowStepOptions",
+		reflect.TypeOf((*CommonWorkflowStepOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.github.ContributorStatementOptions",
@@ -397,6 +409,10 @@ func init() {
 		"projen.github.SemanticTitleOptions",
 		reflect.TypeOf((*SemanticTitleOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.github.SetupGitIdentityOptions",
+		reflect.TypeOf((*SetupGitIdentityOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.github.Stale",
 		reflect.TypeOf((*Stale)(nil)).Elem(),
@@ -486,6 +502,14 @@ func init() {
 		nil, // no members
 		func() interface{} {
 			return &jsiiProxy_WorkflowJobs{}
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.github.WorkflowSteps",
+		reflect.TypeOf((*WorkflowSteps)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_WorkflowSteps{}
 		},
 	)
 }

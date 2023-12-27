@@ -90,7 +90,7 @@ func WorkflowActions_CreatePullRequest(options *CreatePullRequestOptions) *[]*wo
 // Configures the git identity (user name and email).
 //
 // Returns: Job steps.
-// Experimental.
+// Deprecated: use `WorkflowSteps.setupGitIdentity` instead
 func WorkflowActions_SetupGitIdentity(id *GitIdentity) *[]*workflows.JobStep {
 	_init_.Initialize()
 

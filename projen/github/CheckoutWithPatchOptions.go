@@ -4,16 +4,18 @@ package github
 // Options for `checkoutWithPatch`.
 // Experimental.
 type CheckoutWithPatchOptions struct {
+	// Number of commits to fetch.
+	//
+	// 0 indicates all history for all branches and tags.
+	// Default: 1.
+	//
+	// Experimental.
+	FetchDepth *float64 `field:"optional" json:"fetchDepth" yaml:"fetchDepth"`
 	// Whether LFS is enabled for the GitHub repository.
 	// Default: false.
 	//
 	// Experimental.
 	Lfs *bool `field:"optional" json:"lfs" yaml:"lfs"`
-	// The name of the artifact the patch is stored as.
-	// Default: ".repo.patch"
-	//
-	// Experimental.
-	PatchFile *string `field:"optional" json:"patchFile" yaml:"patchFile"`
 	// Branch or tag name.
 	// Default: - the default branch is implicitly used.
 	//
@@ -32,5 +34,10 @@ type CheckoutWithPatchOptions struct {
 	//
 	// Experimental.
 	Token *string `field:"optional" json:"token" yaml:"token"`
+	// The name of the artifact the patch is stored as.
+	// Default: ".repo.patch"
+	//
+	// Experimental.
+	PatchFile *string `field:"optional" json:"patchFile" yaml:"patchFile"`
 }
 

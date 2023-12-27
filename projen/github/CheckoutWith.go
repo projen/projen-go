@@ -1,8 +1,9 @@
 package github
 
 
+// Options for `checkout`.
 // Experimental.
-type PullRequestPatchSource struct {
+type CheckoutWith struct {
 	// Number of commits to fetch.
 	//
 	// 0 indicates all history for all branches and tags.
@@ -33,16 +34,5 @@ type PullRequestPatchSource struct {
 	//
 	// Experimental.
 	Token *string `field:"optional" json:"token" yaml:"token"`
-	// The name of the artifact the patch is stored as.
-	// Default: ".repo.patch"
-	//
-	// Experimental.
-	PatchFile *string `field:"optional" json:"patchFile" yaml:"patchFile"`
-	// The id of the job that created the patch file.
-	// Experimental.
-	JobId *string `field:"required" json:"jobId" yaml:"jobId"`
-	// The name of the output that indicates if a patch has been created.
-	// Experimental.
-	OutputName *string `field:"required" json:"outputName" yaml:"outputName"`
 }
 

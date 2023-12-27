@@ -25,7 +25,7 @@ type TaskWorkflowOptions struct {
 	// Default: - not set.
 	//
 	// Experimental.
-	CheckoutWith *map[string]interface{} `field:"optional" json:"checkoutWith" yaml:"checkoutWith"`
+	CheckoutWith *CheckoutWith `field:"optional" json:"checkoutWith" yaml:"checkoutWith"`
 	// Adds an 'if' condition to the workflow.
 	// Experimental.
 	Condition *string `field:"optional" json:"condition" yaml:"condition"`
