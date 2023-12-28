@@ -53,6 +53,38 @@ func init() {
 		reflect.TypeOf((*ProjenrcTsOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
+		"projen.typescript.TsJestBabelConfig",
+		reflect.TypeOf((*TsJestBabelConfig)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_TsJestBabelConfig{}
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.typescript.TsJestDiagnostics",
+		reflect.TypeOf((*TsJestDiagnostics)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_TsJestDiagnostics{}
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.typescript.TsJestOptions",
+		reflect.TypeOf((*TsJestOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.typescript.TsJestTransformOptions",
+		reflect.TypeOf((*TsJestTransformOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.typescript.TsJestTsconfig",
+		reflect.TypeOf((*TsJestTsconfig)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_TsJestTsconfig{}
+		},
+	)
+	_jsii_.RegisterClass(
 		"projen.typescript.TypeScriptAppProject",
 		reflect.TypeOf((*TypeScriptAppProject)(nil)).Elem(),
 		[]_jsii_.Member{

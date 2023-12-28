@@ -1171,6 +1171,17 @@ func ConstructLibraryAws_DEFAULT_TASK() *string {
 	return returns
 }
 
+func ConstructLibraryAws_DEFAULT_TS_JEST_TRANFORM_PATTERN() *string {
+	_init_.Initialize()
+	var returns *string
+	_jsii_.StaticGet(
+		"projen.awscdk.ConstructLibraryAws",
+		"DEFAULT_TS_JEST_TRANFORM_PATTERN",
+		&returns,
+	)
+	return returns
+}
+
 func (c *jsiiProxy_ConstructLibraryAws) AddBins(bins *map[string]*string) {
 	if err := c.validateAddBinsParameters(bins); err != nil {
 		panic(err)

@@ -1154,6 +1154,17 @@ func Cdk8sTypeScriptApp_DEFAULT_TASK() *string {
 	return returns
 }
 
+func Cdk8sTypeScriptApp_DEFAULT_TS_JEST_TRANFORM_PATTERN() *string {
+	_init_.Initialize()
+	var returns *string
+	_jsii_.StaticGet(
+		"projen.cdk8s.Cdk8sTypeScriptApp",
+		"DEFAULT_TS_JEST_TRANFORM_PATTERN",
+		&returns,
+	)
+	return returns
+}
+
 func (c *jsiiProxy_Cdk8sTypeScriptApp) AddBins(bins *map[string]*string) {
 	if err := c.validateAddBinsParameters(bins); err != nil {
 		panic(err)

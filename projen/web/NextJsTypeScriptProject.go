@@ -1157,6 +1157,17 @@ func NextJsTypeScriptProject_DEFAULT_TASK() *string {
 	return returns
 }
 
+func NextJsTypeScriptProject_DEFAULT_TS_JEST_TRANFORM_PATTERN() *string {
+	_init_.Initialize()
+	var returns *string
+	_jsii_.StaticGet(
+		"projen.web.NextJsTypeScriptProject",
+		"DEFAULT_TS_JEST_TRANFORM_PATTERN",
+		&returns,
+	)
+	return returns
+}
+
 func (n *jsiiProxy_NextJsTypeScriptProject) AddBins(bins *map[string]*string) {
 	if err := n.validateAddBinsParameters(bins); err != nil {
 		panic(err)

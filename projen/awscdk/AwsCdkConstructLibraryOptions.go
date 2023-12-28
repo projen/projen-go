@@ -825,6 +825,9 @@ type AwsCdkConstructLibraryOptions struct {
 	//
 	// Experimental.
 	TsconfigDevFile *string `field:"optional" json:"tsconfigDevFile" yaml:"tsconfigDevFile"`
+	// Options for ts-jest.
+	// Experimental.
+	TsJestOptions *typescript.TsJestOptions `field:"optional" json:"tsJestOptions" yaml:"tsJestOptions"`
 	// TypeScript version to use.
 	//
 	// NOTE: Typescript is not semantically versioned and should remain on the

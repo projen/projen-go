@@ -824,6 +824,9 @@ type ConstructLibraryAwsOptions struct {
 	//
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	TsconfigDevFile *string `field:"optional" json:"tsconfigDevFile" yaml:"tsconfigDevFile"`
+	// Options for ts-jest.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	TsJestOptions *typescript.TsJestOptions `field:"optional" json:"tsJestOptions" yaml:"tsJestOptions"`
 	// TypeScript version to use.
 	//
 	// NOTE: Typescript is not semantically versioned and should remain on the

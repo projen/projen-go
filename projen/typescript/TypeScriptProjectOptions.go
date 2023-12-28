@@ -822,6 +822,9 @@ type TypeScriptProjectOptions struct {
 	//
 	// Experimental.
 	TsconfigDevFile *string `field:"optional" json:"tsconfigDevFile" yaml:"tsconfigDevFile"`
+	// Options for ts-jest.
+	// Experimental.
+	TsJestOptions *TsJestOptions `field:"optional" json:"tsJestOptions" yaml:"tsJestOptions"`
 	// TypeScript version to use.
 	//
 	// NOTE: Typescript is not semantically versioned and should remain on the

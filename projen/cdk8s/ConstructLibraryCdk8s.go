@@ -1159,6 +1159,17 @@ func ConstructLibraryCdk8s_DEFAULT_TASK() *string {
 	return returns
 }
 
+func ConstructLibraryCdk8s_DEFAULT_TS_JEST_TRANFORM_PATTERN() *string {
+	_init_.Initialize()
+	var returns *string
+	_jsii_.StaticGet(
+		"projen.cdk8s.ConstructLibraryCdk8s",
+		"DEFAULT_TS_JEST_TRANFORM_PATTERN",
+		&returns,
+	)
+	return returns
+}
+
 func (c *jsiiProxy_ConstructLibraryCdk8s) AddBins(bins *map[string]*string) {
 	if err := c.validateAddBinsParameters(bins); err != nil {
 		panic(err)

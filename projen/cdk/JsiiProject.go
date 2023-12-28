@@ -1129,6 +1129,17 @@ func JsiiProject_DEFAULT_TASK() *string {
 	return returns
 }
 
+func JsiiProject_DEFAULT_TS_JEST_TRANFORM_PATTERN() *string {
+	_init_.Initialize()
+	var returns *string
+	_jsii_.StaticGet(
+		"projen.cdk.JsiiProject",
+		"DEFAULT_TS_JEST_TRANFORM_PATTERN",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_JsiiProject) AddBins(bins *map[string]*string) {
 	if err := j.validateAddBinsParameters(bins); err != nil {
 		panic(err)
