@@ -108,6 +108,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "config", GoGetter: "Config"},
 			_jsii_.MemberProperty{JsiiProperty: "eslintTask", GoGetter: "EslintTask"},
 			_jsii_.MemberProperty{JsiiProperty: "ignorePatterns", GoGetter: "IgnorePatterns"},
+			_jsii_.MemberProperty{JsiiProperty: "lintPatterns", GoGetter: "LintPatterns"},
 			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "overrides", GoGetter: "Overrides"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},

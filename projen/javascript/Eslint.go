@@ -22,6 +22,9 @@ type Eslint interface {
 	// File patterns that should not be linted.
 	// Experimental.
 	IgnorePatterns() *[]*string
+	// Returns an immutable copy of the lintPatterns being used by this eslint configuration.
+	// Experimental.
+	LintPatterns() *[]*string
 	// The tree node.
 	// Experimental.
 	Node() constructs.Node
@@ -100,6 +103,16 @@ func (j *jsiiProxy_Eslint) IgnorePatterns() *[]*string {
 	_jsii_.Get(
 		j,
 		"ignorePatterns",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Eslint) LintPatterns() *[]*string {
+	var returns *[]*string
+	_jsii_.Get(
+		j,
+		"lintPatterns",
 		&returns,
 	)
 	return returns
