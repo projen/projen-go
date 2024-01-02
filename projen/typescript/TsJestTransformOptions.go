@@ -48,6 +48,6 @@ type TsJestTransformOptions struct {
 	// Default: auto.
 	//
 	// Experimental.
-	UseEsm *bool `field:"optional" json:"useEsm" yaml:"useEsm"`
+	UseESM *bool `field:"optional" json:"useESM" yaml:"useESM"`
 }
 
