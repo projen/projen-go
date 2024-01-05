@@ -253,10 +253,7 @@ type JsiiProject interface {
 	// Adds keywords to package.json (deduplicated).
 	// Experimental.
 	AddKeywords(keywords ...*string)
-	// Exclude these files from the bundled package.
-	//
-	// Implemented by project types based on the
-	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Adds patterns to be ignored by npm.
 	// Experimental.
 	AddPackageIgnore(pattern *string)
 	// Defines peer dependencies.

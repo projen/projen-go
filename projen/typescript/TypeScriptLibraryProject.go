@@ -250,10 +250,7 @@ type TypeScriptLibraryProject interface {
 	// Adds keywords to package.json (deduplicated).
 	// Deprecated: use `TypeScriptProject`.
 	AddKeywords(keywords ...*string)
-	// Exclude these files from the bundled package.
-	//
-	// Implemented by project types based on the
-	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Adds patterns to be ignored by npm.
 	// Deprecated: use `TypeScriptProject`.
 	AddPackageIgnore(pattern *string)
 	// Defines peer dependencies.

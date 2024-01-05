@@ -265,10 +265,7 @@ type ConstructLibraryAws interface {
 	// Adds keywords to package.json (deduplicated).
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddKeywords(keywords ...*string)
-	// Exclude these files from the bundled package.
-	//
-	// Implemented by project types based on the
-	// packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
+	// Adds patterns to be ignored by npm.
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	AddPackageIgnore(pattern *string)
 	// Defines peer dependencies.

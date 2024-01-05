@@ -41,7 +41,7 @@ type EslintOptions struct {
 	// Projenrc file to lint.
 	//
 	// Use empty string to disable.
-	// Default: PROJEN_RC.
+	// Default: "projenrc.js"
 	//
 	// Deprecated: provide as `devdirs`.
 	LintProjenRcFile *string `field:"optional" json:"lintProjenRcFile" yaml:"lintProjenRcFile"`
