@@ -118,7 +118,7 @@ type ReleaseProjectOptions struct {
 	// Experimental.
 	ReleaseTrigger ReleaseTrigger `field:"optional" json:"releaseTrigger" yaml:"releaseTrigger"`
 	// The name of the default release workflow.
-	// Default: "Release".
+	// Default: "release".
 	//
 	// Experimental.
 	ReleaseWorkflowName *string `field:"optional" json:"releaseWorkflowName" yaml:"releaseWorkflowName"`

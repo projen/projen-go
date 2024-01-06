@@ -518,7 +518,7 @@ type ConstructLibraryCdktfOptions struct {
 	// Experimental.
 	ReleaseTrigger release.ReleaseTrigger `field:"optional" json:"releaseTrigger" yaml:"releaseTrigger"`
 	// The name of the default release workflow.
-	// Default: "Release".
+	// Default: "release".
 	//
 	// Experimental.
 	ReleaseWorkflowName *string `field:"optional" json:"releaseWorkflowName" yaml:"releaseWorkflowName"`

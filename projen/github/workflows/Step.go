@@ -1,7 +1,13 @@
 package workflows
 
 
-// A generic step.
+// This contains the fields that are common amongst both: - JobStep, which is a step that is part of a Job in Github Actions.
+//
+// This is by far the most common use case.
+// - The metadata file `action.yaml` that is used to define an Action when you are creating one. As in, if you were creating an Action to be used in a JobStep.
+// There is some overlap between the two, and this captures that overlap.
+// See: https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
+//
 // Experimental.
 type Step struct {
 	// Sets environment variables for steps to use in the runner environment.
@@ -24,6 +30,11 @@ type Step struct {
 	// A name for your step to display on GitHub.
 	// Experimental.
 	Name *string `field:"optional" json:"name" yaml:"name"`
+	// Specifies a working directory for a step.
+	//
+	// Overrides a job's working directory.
+	// Experimental.
+	WorkingDirectory *string `field:"optional" json:"workingDirectory" yaml:"workingDirectory"`
 	// Runs command-line programs using the operating system's shell.
 	//
 	// If you do
@@ -46,10 +57,5 @@ type Step struct {
 	// The variable is prefixed with INPUT_ and converted to upper case.
 	// Experimental.
 	With *map[string]interface{} `field:"optional" json:"with" yaml:"with"`
-	// Specifies a working directory for a step.
-	//
-	// Overrides a job's working directory.
-	// Experimental.
-	WorkingDirectory *string `field:"optional" json:"workingDirectory" yaml:"workingDirectory"`
 }
 

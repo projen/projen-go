@@ -122,6 +122,10 @@ func init() {
 		reflect.TypeOf((*JobStep)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.github.workflows.JobStepConfiguration",
+		reflect.TypeOf((*JobStepConfiguration)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.github.workflows.JobStepOutput",
 		reflect.TypeOf((*JobStepOutput)(nil)).Elem(),
 	)
@@ -204,6 +208,10 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.github.workflows.Step",
 		reflect.TypeOf((*Step)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.workflows.StepConfiguration",
+		reflect.TypeOf((*StepConfiguration)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.github.workflows.ToolRequirement",

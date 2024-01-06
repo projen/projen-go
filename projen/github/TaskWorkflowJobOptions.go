@@ -5,9 +5,9 @@ import (
 	"github.com/projen/projen-go/projen/github/workflows"
 )
 
-// Options to create a TaskWorkflow.
+// Options to create the Job associated with a TaskWorkflow.
 // Experimental.
-type TaskWorkflowOptions struct {
+type TaskWorkflowJobOptions struct {
 	// Permissions for the build job.
 	// Experimental.
 	Permissions *workflows.JobPermissions `field:"required" json:"permissions" yaml:"permissions"`
@@ -72,21 +72,5 @@ type TaskWorkflowOptions struct {
 	// Github Runner Group selection options.
 	// Experimental.
 	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
-	// The workflow name.
-	// Experimental.
-	Name *string `field:"required" json:"name" yaml:"name"`
-	// The main task to be executed.
-	// Experimental.
-	Task projen.Task `field:"required" json:"task" yaml:"task"`
-	// The primary job id.
-	// Default: "build".
-	//
-	// Experimental.
-	JobId *string `field:"optional" json:"jobId" yaml:"jobId"`
-	// The triggers for the workflow.
-	// Default: - by default workflows can only be triggered by manually.
-	//
-	// Experimental.
-	Triggers *workflows.Triggers `field:"optional" json:"triggers" yaml:"triggers"`
 }
 

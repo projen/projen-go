@@ -20,11 +20,11 @@ func validateRelease_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func validateRelease_OfParameters(project github.GitHubProject) error {
+func validateRelease_OfParameters(project projen.Project) error {
 	return nil
 }
 
-func validateNewReleaseParameters(project github.GitHubProject, options *ReleaseOptions) error {
+func validateNewReleaseParameters(scope constructs.IConstruct, options *ReleaseOptions) error {
 	return nil
 }
 

@@ -6,7 +6,6 @@ import (
 
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
-	"github.com/projen/projen-go/projen/github"
 	"github.com/projen/projen-go/projen/github/workflows"
 	"github.com/projen/projen-go/projen/release/internal"
 )
@@ -114,17 +113,17 @@ func (j *jsiiProxy_Release) Publisher() Publisher {
 
 
 // Experimental.
-func NewRelease(project github.GitHubProject, options *ReleaseOptions) Release {
+func NewRelease(scope constructs.IConstruct, options *ReleaseOptions) Release {
 	_init_.Initialize()
 
-	if err := validateNewReleaseParameters(project, options); err != nil {
+	if err := validateNewReleaseParameters(scope, options); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_Release{}
 
 	_jsii_.Create(
 		"projen.release.Release",
-		[]interface{}{project, options},
+		[]interface{}{scope, options},
 		&j,
 	)
 
@@ -132,12 +131,12 @@ func NewRelease(project github.GitHubProject, options *ReleaseOptions) Release {
 }
 
 // Experimental.
-func NewRelease_Override(r Release, project github.GitHubProject, options *ReleaseOptions) {
+func NewRelease_Override(r Release, scope constructs.IConstruct, options *ReleaseOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.release.Release",
-		[]interface{}{project, options},
+		[]interface{}{scope, options},
 		r,
 	)
 }
@@ -200,7 +199,7 @@ func Release_IsConstruct(x interface{}) *bool {
 
 // Returns the `Release` component of a project or `undefined` if the project does not have a Release component.
 // Experimental.
-func Release_Of(project github.GitHubProject) Release {
+func Release_Of(project projen.Project) Release {
 	_init_.Initialize()
 
 	if err := validateRelease_OfParameters(project); err != nil {

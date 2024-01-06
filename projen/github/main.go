@@ -65,10 +65,6 @@ func init() {
 		reflect.TypeOf((*CheckoutWithPatchOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
-		"projen.github.CommonWorkflowStepOptions",
-		reflect.TypeOf((*CommonWorkflowStepOptions)(nil)).Elem(),
-	)
-	_jsii_.RegisterStruct(
 		"projen.github.ContributorStatementOptions",
 		reflect.TypeOf((*ContributorStatementOptions)(nil)).Elem(),
 	)
@@ -469,9 +465,56 @@ func init() {
 			return &j
 		},
 	)
+	_jsii_.RegisterClass(
+		"projen.github.TaskWorkflowJob",
+		reflect.TypeOf((*TaskWorkflowJob)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "concurrency", GoGetter: "Concurrency"},
+			_jsii_.MemberProperty{JsiiProperty: "container", GoGetter: "Container"},
+			_jsii_.MemberProperty{JsiiProperty: "continueOnError", GoGetter: "ContinueOnError"},
+			_jsii_.MemberProperty{JsiiProperty: "defaults", GoGetter: "Defaults"},
+			_jsii_.MemberProperty{JsiiProperty: "env", GoGetter: "Env"},
+			_jsii_.MemberProperty{JsiiProperty: "environment", GoGetter: "Environment"},
+			_jsii_.MemberProperty{JsiiProperty: "if", GoGetter: "If"},
+			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
+			_jsii_.MemberProperty{JsiiProperty: "needs", GoGetter: "Needs"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberProperty{JsiiProperty: "outputs", GoGetter: "Outputs"},
+			_jsii_.MemberProperty{JsiiProperty: "permissions", GoGetter: "Permissions"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberProperty{JsiiProperty: "runsOn", GoGetter: "RunsOn"},
+			_jsii_.MemberProperty{JsiiProperty: "runsOnGroup", GoGetter: "RunsOnGroup"},
+			_jsii_.MemberProperty{JsiiProperty: "services", GoGetter: "Services"},
+			_jsii_.MemberProperty{JsiiProperty: "steps", GoGetter: "Steps"},
+			_jsii_.MemberProperty{JsiiProperty: "strategy", GoGetter: "Strategy"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "timeoutMinutes", GoGetter: "TimeoutMinutes"},
+			_jsii_.MemberProperty{JsiiProperty: "tools", GoGetter: "Tools"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+		},
+		func() interface{} {
+			j := jsiiProxy_TaskWorkflowJob{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.TaskWorkflowJobOptions",
+		reflect.TypeOf((*TaskWorkflowJobOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterStruct(
 		"projen.github.TaskWorkflowOptions",
 		reflect.TypeOf((*TaskWorkflowOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.UploadArtifactOptions",
+		reflect.TypeOf((*UploadArtifactOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.UploadArtifactWith",
+		reflect.TypeOf((*UploadArtifactWith)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.github.UploadGitPatchOptions",

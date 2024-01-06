@@ -7,7 +7,8 @@ import (
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 
-	"github.com/projen/projen-go/projen/github"
+	"github.com/aws/constructs-go/constructs/v10"
+	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github/workflows"
 )
 
@@ -55,7 +56,7 @@ func validateRelease_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func validateRelease_OfParameters(project github.GitHubProject) error {
+func validateRelease_OfParameters(project projen.Project) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")
 	}
@@ -63,9 +64,9 @@ func validateRelease_OfParameters(project github.GitHubProject) error {
 	return nil
 }
 
-func validateNewReleaseParameters(project github.GitHubProject, options *ReleaseOptions) error {
-	if project == nil {
-		return fmt.Errorf("parameter project is required, but nil was provided")
+func validateNewReleaseParameters(scope constructs.IConstruct, options *ReleaseOptions) error {
+	if scope == nil {
+		return fmt.Errorf("parameter scope is required, but nil was provided")
 	}
 
 	if options == nil {

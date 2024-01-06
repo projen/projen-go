@@ -87,3 +87,22 @@ func WorkflowSteps_SetupGitIdentity(options *SetupGitIdentityOptions) *workflows
 	return returns
 }
 
+// Experimental.
+func WorkflowSteps_UploadArtifact(options *UploadArtifactOptions) *workflows.JobStep {
+	_init_.Initialize()
+
+	if err := validateWorkflowSteps_UploadArtifactParameters(options); err != nil {
+		panic(err)
+	}
+	var returns *workflows.JobStep
+
+	_jsii_.StaticInvoke(
+		"projen.github.WorkflowSteps",
+		"uploadArtifact",
+		[]interface{}{options},
+		&returns,
+	)
+
+	return returns
+}
+
