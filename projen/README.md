@@ -18,7 +18,7 @@
 </p><br/>
 
 *projen* synthesizes project configuration files such as `package.json`,
-`tsconfig.json`, `.gitignore`, GitHub Workflows, eslint, jest, etc from a
+`tsconfig.json`, `.gitignore`, GitHub Workflows, eslint, jest, etc. from a
 well-typed definition written in JavaScript.
 
 As opposed to existing templating/scaffolding tools, *projen* is not a one-off
