@@ -492,6 +492,28 @@ func NodePackage_IsConstruct(x interface{}) *bool {
 	return returns
 }
 
+// Returns the `NodePackage` instance associated with a project or `undefined` if there is no NodePackage.
+//
+// Returns: A NodePackage, or undefined.
+// Experimental.
+func NodePackage_Of(project projen.Project) NodePackage {
+	_init_.Initialize()
+
+	if err := validateNodePackage_OfParameters(project); err != nil {
+		panic(err)
+	}
+	var returns NodePackage
+
+	_jsii_.StaticInvoke(
+		"projen.javascript.NodePackage",
+		"of",
+		[]interface{}{project},
+		&returns,
+	)
+
+	return returns
+}
+
 func (n *jsiiProxy_NodePackage) AddBin(bins *map[string]*string) {
 	if err := n.validateAddBinParameters(bins); err != nil {
 		panic(err)

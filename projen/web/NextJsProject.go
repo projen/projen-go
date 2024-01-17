@@ -15,7 +15,7 @@ import (
 	"github.com/projen/projen-go/projen/web/internal"
 )
 
-// Next.js project without TypeScript.
+// Next.js project using JavaScript.
 // Experimental.
 type NextJsProject interface {
 	javascript.NodeProject

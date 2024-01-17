@@ -16,7 +16,7 @@ import (
 	"github.com/projen/projen-go/projen/web/internal"
 )
 
-// Next.js project with TypeScript.
+// Next.js project using TypeScript.
 // Experimental.
 type NextJsTypeScriptProject interface {
 	typescript.TypeScriptAppProject

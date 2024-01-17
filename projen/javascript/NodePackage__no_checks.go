@@ -44,6 +44,10 @@ func validateNodePackage_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
+func validateNodePackage_OfParameters(project projen.Project) error {
+	return nil
+}
+
 func validateNewNodePackageParameters(project projen.Project, options *NodePackageOptions) error {
 	return nil
 }

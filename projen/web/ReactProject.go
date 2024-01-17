@@ -15,7 +15,7 @@ import (
 	"github.com/projen/projen-go/projen/web/internal"
 )
 
-// React project without TypeScript.
+// React project using JavaScript.
 // Experimental.
 type ReactProject interface {
 	javascript.NodeProject

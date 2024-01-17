@@ -16,7 +16,7 @@ import (
 	"github.com/projen/projen-go/projen/web/internal"
 )
 
-// React project with TypeScript.
+// React project using TypeScript.
 // Experimental.
 type ReactTypeScriptProject interface {
 	typescript.TypeScriptAppProject

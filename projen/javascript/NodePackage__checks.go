@@ -102,6 +102,14 @@ func validateNodePackage_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
+func validateNodePackage_OfParameters(project projen.Project) error {
+	if project == nil {
+		return fmt.Errorf("parameter project is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewNodePackageParameters(project projen.Project, options *NodePackageOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")
