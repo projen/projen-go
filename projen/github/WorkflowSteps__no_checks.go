@@ -12,6 +12,10 @@ func validateWorkflowSteps_SetupGitIdentityParameters(options *SetupGitIdentityO
 	return nil
 }
 
+func validateWorkflowSteps_TagExistsParameters(tag *string, options *workflows.JobStepConfiguration) error {
+	return nil
+}
+
 func validateWorkflowSteps_UploadArtifactParameters(options *UploadArtifactOptions) error {
 	return nil
 }

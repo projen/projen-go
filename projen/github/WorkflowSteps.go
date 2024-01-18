@@ -45,7 +45,7 @@ func NewWorkflowSteps_Override(w WorkflowSteps) {
 
 // Checks out a repository.
 //
-// Returns: Job steps.
+// Returns: A JobStep that checks out a repository.
 // Experimental.
 func WorkflowSteps_Checkout(options *CheckoutOptions) *workflows.JobStep {
 	_init_.Initialize()
@@ -67,7 +67,7 @@ func WorkflowSteps_Checkout(options *CheckoutOptions) *workflows.JobStep {
 
 // Configures the git identity (user name and email).
 //
-// Returns: Job steps.
+// Returns: Job step that configures the provided git identity.
 // Experimental.
 func WorkflowSteps_SetupGitIdentity(options *SetupGitIdentityOptions) *workflows.JobStep {
 	_init_.Initialize()
@@ -87,6 +87,36 @@ func WorkflowSteps_SetupGitIdentity(options *SetupGitIdentityOptions) *workflows
 	return returns
 }
 
+// Checks if a tag exists.
+//
+// Requires a checkout step to have been run before this step with "fetch-depth" set to "0".
+//
+// Outputs:
+// - `exists`: A string value of 'true' or 'false' indicating if the tag exists.
+//
+// Returns: Job step that checks if the provided tag exists.
+// Experimental.
+func WorkflowSteps_TagExists(tag *string, options *workflows.JobStepConfiguration) *workflows.JobStep {
+	_init_.Initialize()
+
+	if err := validateWorkflowSteps_TagExistsParameters(tag, options); err != nil {
+		panic(err)
+	}
+	var returns *workflows.JobStep
+
+	_jsii_.StaticInvoke(
+		"projen.github.WorkflowSteps",
+		"tagExists",
+		[]interface{}{tag, options},
+		&returns,
+	)
+
+	return returns
+}
+
+// Uploads an artifact.
+//
+// Returns: A JobStep that uploads an artifact.
 // Experimental.
 func WorkflowSteps_UploadArtifact(options *UploadArtifactOptions) *workflows.JobStep {
 	_init_.Initialize()
