@@ -35,8 +35,19 @@ type Jest interface {
 	Project() projen.Project
 	// Experimental.
 	AddIgnorePattern(pattern *string)
+	// Adds one or more moduleNameMapper entries to Jest's configuration.
+	//
+	// Will overwrite if the same key is used as a pre-existing one.
+	// Experimental.
+	AddModuleNameMappers(moduleNameMapperAdditions *map[string]interface{})
+	// Adds one or more modulePaths to Jest's configuration.
+	// Experimental.
+	AddModulePaths(modulePaths ...*string)
 	// Experimental.
 	AddReporter(reporter JestReporter)
+	// Adds one or more roots to Jest's configuration.
+	// Experimental.
+	AddRoots(roots ...*string)
 	// Adds a a setup file to Jest's setupFiles configuration.
 	// Experimental.
 	AddSetupFile(file *string)
@@ -208,7 +219,7 @@ func Jest_IsConstruct(x interface{}) *bool {
 	return returns
 }
 
-// Returns the singletone Jest component of a project or undefined if there is none.
+// Returns the singleton Jest component of a project or undefined if there is none.
 // Experimental.
 func Jest_Of(project projen.Project) Jest {
 	_init_.Initialize()
@@ -239,6 +250,30 @@ func (j *jsiiProxy_Jest) AddIgnorePattern(pattern *string) {
 	)
 }
 
+func (j *jsiiProxy_Jest) AddModuleNameMappers(moduleNameMapperAdditions *map[string]interface{}) {
+	if err := j.validateAddModuleNameMappersParameters(moduleNameMapperAdditions); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		j,
+		"addModuleNameMappers",
+		[]interface{}{moduleNameMapperAdditions},
+	)
+}
+
+func (j *jsiiProxy_Jest) AddModulePaths(modulePaths ...*string) {
+	args := []interface{}{}
+	for _, a := range modulePaths {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		j,
+		"addModulePaths",
+		args,
+	)
+}
+
 func (j *jsiiProxy_Jest) AddReporter(reporter JestReporter) {
 	if err := j.validateAddReporterParameters(reporter); err != nil {
 		panic(err)
@@ -247,6 +282,19 @@ func (j *jsiiProxy_Jest) AddReporter(reporter JestReporter) {
 		j,
 		"addReporter",
 		[]interface{}{reporter},
+	)
+}
+
+func (j *jsiiProxy_Jest) AddRoots(roots ...*string) {
+	args := []interface{}{}
+	for _, a := range roots {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		j,
+		"addRoots",
+		args,
 	)
 }
 

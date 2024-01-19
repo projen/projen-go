@@ -150,7 +150,10 @@ func init() {
 		reflect.TypeOf((*Jest)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addIgnorePattern", GoMethod: "AddIgnorePattern"},
+			_jsii_.MemberMethod{JsiiMethod: "addModuleNameMappers", GoMethod: "AddModuleNameMappers"},
+			_jsii_.MemberMethod{JsiiMethod: "addModulePaths", GoMethod: "AddModulePaths"},
 			_jsii_.MemberMethod{JsiiMethod: "addReporter", GoMethod: "AddReporter"},
+			_jsii_.MemberMethod{JsiiMethod: "addRoots", GoMethod: "AddRoots"},
 			_jsii_.MemberMethod{JsiiMethod: "addSetupFile", GoMethod: "AddSetupFile"},
 			_jsii_.MemberMethod{JsiiMethod: "addSetupFileAfterEnv", GoMethod: "AddSetupFileAfterEnv"},
 			_jsii_.MemberMethod{JsiiMethod: "addSnapshotResolver", GoMethod: "AddSnapshotResolver"},

@@ -8,6 +8,10 @@ func (j *jsiiProxy_Jest) validateAddIgnorePatternParameters(pattern *string) err
 	return nil
 }
 
+func (j *jsiiProxy_Jest) validateAddModuleNameMappersParameters(moduleNameMapperAdditions *map[string]interface{}) error {
+	return nil
+}
+
 func (j *jsiiProxy_Jest) validateAddReporterParameters(reporter JestReporter) error {
 	return nil
 }

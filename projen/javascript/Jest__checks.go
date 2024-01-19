@@ -18,6 +18,28 @@ func (j *jsiiProxy_Jest) validateAddIgnorePatternParameters(pattern *string) err
 	return nil
 }
 
+func (j *jsiiProxy_Jest) validateAddModuleNameMappersParameters(moduleNameMapperAdditions *map[string]interface{}) error {
+	if moduleNameMapperAdditions == nil {
+		return fmt.Errorf("parameter moduleNameMapperAdditions is required, but nil was provided")
+	}
+	for idx_2a0884, v := range *moduleNameMapperAdditions {
+		switch v.(type) {
+		case *string:
+			// ok
+		case string:
+			// ok
+		case *[]*string:
+			// ok
+		case []*string:
+			// ok
+		default:
+			return fmt.Errorf("parameter moduleNameMapperAdditions[%#v] must be one of the allowed types: *string, *[]*string; received %#v (a %T)", idx_2a0884, v, v)
+		}
+	}
+
+	return nil
+}
+
 func (j *jsiiProxy_Jest) validateAddReporterParameters(reporter JestReporter) error {
 	if reporter == nil {
 		return fmt.Errorf("parameter reporter is required, but nil was provided")
