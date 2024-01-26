@@ -217,6 +217,11 @@ type AwsCdkPythonAppOptions struct {
 	// Additional fields to pass in the setup() function if using setuptools.
 	// Experimental.
 	SetupConfig *map[string]interface{} `field:"optional" json:"setupConfig" yaml:"setupConfig"`
+	// Path to the python executable to use.
+	// Default: "python".
+	//
+	// Experimental.
+	PythonExec *string `field:"optional" json:"pythonExec" yaml:"pythonExec"`
 	// Name of the python package as used in imports and filenames.
 	//
 	// Must only consist of alphanumeric characters and underscores.
@@ -304,11 +309,6 @@ type AwsCdkPythonAppOptions struct {
 	//
 	// Experimental.
 	PytestOptions *python.PytestOptions `field:"optional" json:"pytestOptions" yaml:"pytestOptions"`
-	// Path to the python executable to use.
-	// Default: "python".
-	//
-	// Experimental.
-	PythonExec *string `field:"optional" json:"pythonExec" yaml:"pythonExec"`
 	// Include sample code and test if the relevant directories don't exist.
 	// Default: true.
 	//

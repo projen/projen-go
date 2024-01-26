@@ -103,6 +103,10 @@ func init() {
 			return &j
 		},
 	)
+	_jsii_.RegisterStruct(
+		"projen.python.PoetryOptions",
+		reflect.TypeOf((*PoetryOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.python.PoetryPyproject",
 		reflect.TypeOf((*PoetryPyproject)(nil)).Elem(),
@@ -194,6 +198,10 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.python.PytestSampleOptions",
 		reflect.TypeOf((*PytestSampleOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.python.PythonExecutableOptions",
+		reflect.TypeOf((*PythonExecutableOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.python.PythonPackagingOptions",
@@ -366,6 +374,10 @@ func init() {
 			_jsii_.InitJsiiProxy(&j.jsiiProxy_IPythonPackaging)
 			return &j
 		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.python.SetuptoolsOptions",
+		reflect.TypeOf((*SetuptoolsOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.python.Venv",

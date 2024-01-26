@@ -12,7 +12,7 @@ func validateSetuptools_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func validateNewSetuptoolsParameters(project projen.Project, options *PythonPackagingOptions) error {
+func validateNewSetuptoolsParameters(project projen.Project, options *SetuptoolsOptions) error {
 	return nil
 }
 

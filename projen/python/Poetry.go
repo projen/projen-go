@@ -118,7 +118,7 @@ func (j *jsiiProxy_Poetry) PublishTestTask() projen.Task {
 
 
 // Experimental.
-func NewPoetry(project projen.Project, options *PythonPackagingOptions) Poetry {
+func NewPoetry(project projen.Project, options *PoetryOptions) Poetry {
 	_init_.Initialize()
 
 	if err := validateNewPoetryParameters(project, options); err != nil {
@@ -136,7 +136,7 @@ func NewPoetry(project projen.Project, options *PythonPackagingOptions) Poetry {
 }
 
 // Experimental.
-func NewPoetry_Override(p Poetry, project projen.Project, options *PythonPackagingOptions) {
+func NewPoetry_Override(p Poetry, project projen.Project, options *PoetryOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(

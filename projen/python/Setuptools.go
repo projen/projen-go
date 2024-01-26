@@ -89,7 +89,7 @@ func (j *jsiiProxy_Setuptools) PublishTestTask() projen.Task {
 
 
 // Experimental.
-func NewSetuptools(project projen.Project, options *PythonPackagingOptions) Setuptools {
+func NewSetuptools(project projen.Project, options *SetuptoolsOptions) Setuptools {
 	_init_.Initialize()
 
 	if err := validateNewSetuptoolsParameters(project, options); err != nil {
@@ -107,7 +107,7 @@ func NewSetuptools(project projen.Project, options *PythonPackagingOptions) Setu
 }
 
 // Experimental.
-func NewSetuptools_Override(s Setuptools, project projen.Project, options *PythonPackagingOptions) {
+func NewSetuptools_Override(s Setuptools, project projen.Project, options *SetuptoolsOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(

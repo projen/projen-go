@@ -42,7 +42,7 @@ func validatePoetry_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func validateNewPoetryParameters(project projen.Project, options *PythonPackagingOptions) error {
+func validateNewPoetryParameters(project projen.Project, options *PoetryOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")
 	}

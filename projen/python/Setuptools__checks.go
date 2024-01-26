@@ -26,7 +26,7 @@ func validateSetuptools_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func validateNewSetuptoolsParameters(project projen.Project, options *PythonPackagingOptions) error {
+func validateNewSetuptoolsParameters(project projen.Project, options *SetuptoolsOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")
 	}
