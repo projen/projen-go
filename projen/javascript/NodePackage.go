@@ -90,7 +90,7 @@ type NodePackage interface {
 	// Experimental.
 	Project() projen.Project
 	// The command which executes "projen".
-	// Experimental.
+	// Deprecated: use `project.projenCommand` instead.
 	ProjenCommand() *string
 	// Options for privately hosted scoped packages.
 	// Default: undefined.
