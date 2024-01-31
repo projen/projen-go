@@ -53,6 +53,14 @@ type TypeScriptCompilerOptions struct {
 	//
 	// Experimental.
 	DeclarationMap *bool `field:"optional" json:"declarationMap" yaml:"declarationMap"`
+	// Downleveling is TypeScript’s term for transpiling to an older version of JavaScript.
+	//
+	// This flag is to enable support for a more accurate implementation of how modern JavaScript iterates through new concepts in older JavaScript runtimes.
+	//
+	// ECMAScript 6 added several new iteration primitives: the for / of loop (for (el of arr)), Array spread ([a, ...b]), argument spread (fn(...args)), and Symbol.iterator.
+	// downlevelIteration allows for these iteration primitives to be used more accurately in ES5 environments if a Symbol.iterator implementation is present.
+	// Experimental.
+	DownlevelIteration *bool `field:"optional" json:"downlevelIteration" yaml:"downlevelIteration"`
 	// Only emit .d.ts files; do not emit .js files.
 	// Default: false.
 	//
@@ -96,6 +104,17 @@ type TypeScriptCompilerOptions struct {
 	//
 	// Experimental.
 	ImportsNotUsedAsValues TypeScriptImportsNotUsedAsValues `field:"optional" json:"importsNotUsedAsValues" yaml:"importsNotUsedAsValues"`
+	// Tells TypeScript to save information about the project graph from the last compilation to files stored on disk.
+	//
+	// This creates a series of .tsbuildinfo files in the same folder as your compilation output.
+	// They are not used by your JavaScript at runtime and can be safely deleted.
+	// You can read more about the flag in the 3.4 release notes.
+	// See: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#faster-subsequent-builds-with-the---incremental-flag
+	//
+	// To control which folders you want to the files to be built to, use the config option tsBuildInfoFile.
+	//
+	// Experimental.
+	Incremental *bool `field:"optional" json:"incremental" yaml:"incremental"`
 	// When set, instead of writing out a .js.map file to provide source maps, TypeScript will embed the source map content in the .js files.
 	// Default: true.
 	//
@@ -285,6 +304,11 @@ type TypeScriptCompilerOptions struct {
 	//
 	// Experimental.
 	Target *string `field:"optional" json:"target" yaml:"target"`
+	// This setting lets you specify a file for storing incremental compilation information as a part of composite projects which enables faster building of larger TypeScript codebases.
+	//
+	// You can read more about composite projects in the handbook.
+	// Experimental.
+	TsBuildInfoFile *string `field:"optional" json:"tsBuildInfoFile" yaml:"tsBuildInfoFile"`
 	// If types is specified, only packages listed will be included in the global scope.
 	// See: {@link https://www.typescriptlang.org/tsconfig#types}
 	//
