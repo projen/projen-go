@@ -88,6 +88,14 @@ func (t *jsiiProxy_Task) validatePrependSpawnParameters(subtask Task, options *T
 	return nil
 }
 
+func (t *jsiiProxy_Task) validateRemoveStepParameters(index *float64) error {
+	if index == nil {
+		return fmt.Errorf("parameter index is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (t *jsiiProxy_Task) validateResetParameters(options *TaskStepOptions) error {
 	if err := _jsii_.ValidateStruct(options, func() string { return "parameter options" }); err != nil {
 		return err
@@ -114,6 +122,21 @@ func (t *jsiiProxy_Task) validateSpawnParameters(subtask Task, options *TaskStep
 	}
 
 	if err := _jsii_.ValidateStruct(options, func() string { return "parameter options" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (t *jsiiProxy_Task) validateUpdateStepParameters(index *float64, step *TaskStep) error {
+	if index == nil {
+		return fmt.Errorf("parameter index is required, but nil was provided")
+	}
+
+	if step == nil {
+		return fmt.Errorf("parameter step is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(step, func() string { return "parameter step" }); err != nil {
 		return err
 	}
 

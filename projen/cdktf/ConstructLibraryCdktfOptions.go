@@ -944,7 +944,7 @@ type ConstructLibraryCdktfOptions struct {
 	// Experimental.
 	CdktfVersion *string `field:"required" json:"cdktfVersion" yaml:"cdktfVersion"`
 	// Construct version to use.
-	// Default: "^10.0.12"
+	// Default: "^10.3.0"
 	//
 	// Experimental.
 	ConstructsVersion *string `field:"optional" json:"constructsVersion" yaml:"constructsVersion"`

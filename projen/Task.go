@@ -17,6 +17,13 @@ type Task interface {
 	// returns a zero exit code, the task will not be executed.
 	// Experimental.
 	Condition() *string
+	// Returns the working directory for this task.
+	//
+	// Sets the working directory for this task.
+	// Experimental.
+	Cwd() *string
+	// Experimental.
+	SetCwd(val *string)
 	// Returns the description of this task.
 	//
 	// Sets the description of this task.
@@ -69,6 +76,8 @@ type Task interface {
 	// Adds a spawn instruction at the beginning of the task.
 	// Experimental.
 	PrependSpawn(subtask Task, options *TaskStepOptions)
+	// Experimental.
+	RemoveStep(index *float64)
 	// Reset the task so it no longer has any commands.
 	// Experimental.
 	Reset(command *string, options *TaskStepOptions)
@@ -78,6 +87,8 @@ type Task interface {
 	// Spawns a sub-task.
 	// Experimental.
 	Spawn(subtask Task, options *TaskStepOptions)
+	// Experimental.
+	UpdateStep(index *float64, step *TaskStep)
 }
 
 // The jsii proxy struct for Task
@@ -90,6 +101,16 @@ func (j *jsiiProxy_Task) Condition() *string {
 	_jsii_.Get(
 		j,
 		"condition",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Task) Cwd() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"cwd",
 		&returns,
 	)
 	return returns
@@ -162,6 +183,14 @@ func NewTask_Override(t Task, name *string, props *TaskOptions) {
 		"projen.Task",
 		[]interface{}{name, props},
 		t,
+	)
+}
+
+func (j *jsiiProxy_Task)SetCwd(val *string) {
+	_jsii_.Set(
+		j,
+		"cwd",
+		val,
 	)
 }
 
@@ -271,6 +300,17 @@ func (t *jsiiProxy_Task) PrependSpawn(subtask Task, options *TaskStepOptions) {
 	)
 }
 
+func (t *jsiiProxy_Task) RemoveStep(index *float64) {
+	if err := t.validateRemoveStepParameters(index); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"removeStep",
+		[]interface{}{index},
+	)
+}
+
 func (t *jsiiProxy_Task) Reset(command *string, options *TaskStepOptions) {
 	if err := t.validateResetParameters(options); err != nil {
 		panic(err)
@@ -301,6 +341,17 @@ func (t *jsiiProxy_Task) Spawn(subtask Task, options *TaskStepOptions) {
 		t,
 		"spawn",
 		[]interface{}{subtask, options},
+	)
+}
+
+func (t *jsiiProxy_Task) UpdateStep(index *float64, step *TaskStep) {
+	if err := t.validateUpdateStepParameters(index, step); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"updateStep",
+		[]interface{}{index, step},
 	)
 }
 

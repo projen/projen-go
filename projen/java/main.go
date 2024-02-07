@@ -172,6 +172,10 @@ func init() {
 		reflect.TypeOf((*MavenSampleOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.java.ParentPom",
+		reflect.TypeOf((*ParentPom)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.java.PluginExecution",
 		reflect.TypeOf((*PluginExecution)(nil)).Elem(),
 	)

@@ -1011,6 +1011,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addCondition", GoMethod: "AddCondition"},
 			_jsii_.MemberMethod{JsiiMethod: "builtin", GoMethod: "Builtin"},
 			_jsii_.MemberProperty{JsiiProperty: "condition", GoGetter: "Condition"},
+			_jsii_.MemberProperty{JsiiProperty: "cwd", GoGetter: "Cwd"},
 			_jsii_.MemberProperty{JsiiProperty: "description", GoGetter: "Description"},
 			_jsii_.MemberMethod{JsiiMethod: "env", GoMethod: "Env"},
 			_jsii_.MemberProperty{JsiiProperty: "envVars", GoGetter: "EnvVars"},
@@ -1021,10 +1022,12 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "prependExec", GoMethod: "PrependExec"},
 			_jsii_.MemberMethod{JsiiMethod: "prependSay", GoMethod: "PrependSay"},
 			_jsii_.MemberMethod{JsiiMethod: "prependSpawn", GoMethod: "PrependSpawn"},
+			_jsii_.MemberMethod{JsiiMethod: "removeStep", GoMethod: "RemoveStep"},
 			_jsii_.MemberMethod{JsiiMethod: "reset", GoMethod: "Reset"},
 			_jsii_.MemberMethod{JsiiMethod: "say", GoMethod: "Say"},
 			_jsii_.MemberMethod{JsiiMethod: "spawn", GoMethod: "Spawn"},
 			_jsii_.MemberProperty{JsiiProperty: "steps", GoGetter: "Steps"},
+			_jsii_.MemberMethod{JsiiMethod: "updateStep", GoMethod: "UpdateStep"},
 		},
 		func() interface{} {
 			return &jsiiProxy_Task{}

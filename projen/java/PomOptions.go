@@ -64,6 +64,11 @@ type PomOptions struct {
 	//
 	// Experimental.
 	Packaging *string `field:"optional" json:"packaging" yaml:"packaging"`
+	// A Parent Pom can be used to have a child project inherit properties/plugins/ect in order to reduce duplication and keep standards across a large amount of repos.
+	// Default: undefined.
+	//
+	// Experimental.
+	ParentPom *ParentPom `field:"optional" json:"parentPom" yaml:"parentPom"`
 	// The URL, like the name, is not required.
 	//
 	// This is a nice gesture for

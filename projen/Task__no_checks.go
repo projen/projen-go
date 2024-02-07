@@ -32,6 +32,10 @@ func (t *jsiiProxy_Task) validatePrependSpawnParameters(subtask Task, options *T
 	return nil
 }
 
+func (t *jsiiProxy_Task) validateRemoveStepParameters(index *float64) error {
+	return nil
+}
+
 func (t *jsiiProxy_Task) validateResetParameters(options *TaskStepOptions) error {
 	return nil
 }
@@ -41,6 +45,10 @@ func (t *jsiiProxy_Task) validateSayParameters(message *string, options *TaskSte
 }
 
 func (t *jsiiProxy_Task) validateSpawnParameters(subtask Task, options *TaskStepOptions) error {
+	return nil
+}
+
+func (t *jsiiProxy_Task) validateUpdateStepParameters(index *float64, step *TaskStep) error {
 	return nil
 }
 
