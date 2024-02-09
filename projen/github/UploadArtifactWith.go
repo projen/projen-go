@@ -29,6 +29,14 @@ type UploadArtifactWith struct {
 	//
 	// Experimental.
 	Name *string `field:"optional" json:"name" yaml:"name"`
+	// Whether action should overwrite an existing artifact with the same name (should one exist).
+	//
+	// Introduced in v4 and represents a breaking change from the behavior of the v3 action.
+	// To maintain backwards compatibility with existing, this should be set the `true` (the default).
+	// Default: true.
+	//
+	// Experimental.
+	Overwrite *bool `field:"optional" json:"overwrite" yaml:"overwrite"`
 	// Duration after which artifact will expire in days. 0 means using default repository retention.
 	//
 	// Minimum 1 day.
