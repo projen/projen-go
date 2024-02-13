@@ -16,7 +16,7 @@ type Pip interface {
 	IPythonDeps
 	// A task that installs and updates dependencies.
 	// Experimental.
-	InstallTask() projen.Task
+	InstallCiTask() projen.Task
 	// The tree node.
 	// Experimental.
 	Node() constructs.Node
@@ -53,11 +53,11 @@ type jsiiProxy_Pip struct {
 	jsiiProxy_IPythonDeps
 }
 
-func (j *jsiiProxy_Pip) InstallTask() projen.Task {
+func (j *jsiiProxy_Pip) InstallCiTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
 		j,
-		"installTask",
+		"installCiTask",
 		&returns,
 	)
 	return returns

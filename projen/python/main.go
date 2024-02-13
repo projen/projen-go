@@ -23,8 +23,8 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addDependency", GoMethod: "AddDependency"},
 			_jsii_.MemberMethod{JsiiMethod: "addDevDependency", GoMethod: "AddDevDependency"},
+			_jsii_.MemberProperty{JsiiProperty: "installCiTask", GoGetter: "InstallCiTask"},
 			_jsii_.MemberMethod{JsiiMethod: "installDependencies", GoMethod: "InstallDependencies"},
-			_jsii_.MemberProperty{JsiiProperty: "installTask", GoGetter: "InstallTask"},
 		},
 		func() interface{} {
 			return &jsiiProxy_IPythonDeps{}
@@ -56,8 +56,8 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addDependency", GoMethod: "AddDependency"},
 			_jsii_.MemberMethod{JsiiMethod: "addDevDependency", GoMethod: "AddDevDependency"},
+			_jsii_.MemberProperty{JsiiProperty: "installCiTask", GoGetter: "InstallCiTask"},
 			_jsii_.MemberMethod{JsiiMethod: "installDependencies", GoMethod: "InstallDependencies"},
-			_jsii_.MemberProperty{JsiiProperty: "installTask", GoGetter: "InstallTask"},
 			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
@@ -82,6 +82,7 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addDependency", GoMethod: "AddDependency"},
 			_jsii_.MemberMethod{JsiiMethod: "addDevDependency", GoMethod: "AddDevDependency"},
+			_jsii_.MemberProperty{JsiiProperty: "installCiTask", GoGetter: "InstallCiTask"},
 			_jsii_.MemberMethod{JsiiMethod: "installDependencies", GoMethod: "InstallDependencies"},
 			_jsii_.MemberProperty{JsiiProperty: "installTask", GoGetter: "InstallTask"},
 			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
@@ -93,6 +94,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "setupEnvironment", GoMethod: "SetupEnvironment"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberProperty{JsiiProperty: "upgradeTask", GoGetter: "UpgradeTask"},
 		},
 		func() interface{} {
 			j := jsiiProxy_Poetry{}

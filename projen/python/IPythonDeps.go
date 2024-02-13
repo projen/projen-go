@@ -19,7 +19,7 @@ type IPythonDeps interface {
 	InstallDependencies()
 	// A task that installs and updates dependencies.
 	// Experimental.
-	InstallTask() projen.Task
+	InstallCiTask() projen.Task
 }
 
 // The jsii proxy for IPythonDeps
@@ -57,11 +57,11 @@ func (i *jsiiProxy_IPythonDeps) InstallDependencies() {
 	)
 }
 
-func (j *jsiiProxy_IPythonDeps) InstallTask() projen.Task {
+func (j *jsiiProxy_IPythonDeps) InstallCiTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
 		j,
-		"installTask",
+		"installCiTask",
 		&returns,
 	)
 	return returns
