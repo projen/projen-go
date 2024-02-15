@@ -18,6 +18,14 @@ func validateWorkflowSteps_CheckoutParameters(options *CheckoutOptions) error {
 	return nil
 }
 
+func validateWorkflowSteps_DownloadArtifactParameters(options *DownloadArtifactOptions) error {
+	if err := _jsii_.ValidateStruct(options, func() string { return "parameter options" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func validateWorkflowSteps_SetupGitIdentityParameters(options *SetupGitIdentityOptions) error {
 	if options == nil {
 		return fmt.Errorf("parameter options is required, but nil was provided")

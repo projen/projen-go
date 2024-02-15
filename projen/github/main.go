@@ -138,6 +138,14 @@ func init() {
 			"MONTHLY": DependabotScheduleInterval_MONTHLY,
 		},
 	)
+	_jsii_.RegisterStruct(
+		"projen.github.DownloadArtifactOptions",
+		reflect.TypeOf((*DownloadArtifactOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.DownloadArtifactWith",
+		reflect.TypeOf((*DownloadArtifactWith)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.github.GitHub",
 		reflect.TypeOf((*GitHub)(nil)).Elem(),

@@ -65,6 +65,28 @@ func WorkflowSteps_Checkout(options *CheckoutOptions) *workflows.JobStep {
 	return returns
 }
 
+// Downloads an artifact.
+//
+// Returns: A JobStep that downloads an artifact.
+// Experimental.
+func WorkflowSteps_DownloadArtifact(options *DownloadArtifactOptions) *workflows.JobStep {
+	_init_.Initialize()
+
+	if err := validateWorkflowSteps_DownloadArtifactParameters(options); err != nil {
+		panic(err)
+	}
+	var returns *workflows.JobStep
+
+	_jsii_.StaticInvoke(
+		"projen.github.WorkflowSteps",
+		"downloadArtifact",
+		[]interface{}{options},
+		&returns,
+	)
+
+	return returns
+}
+
 // Configures the git identity (user name and email).
 //
 // Returns: Job step that configures the provided git identity.

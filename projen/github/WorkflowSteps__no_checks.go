@@ -8,6 +8,10 @@ func validateWorkflowSteps_CheckoutParameters(options *CheckoutOptions) error {
 	return nil
 }
 
+func validateWorkflowSteps_DownloadArtifactParameters(options *DownloadArtifactOptions) error {
+	return nil
+}
+
 func validateWorkflowSteps_SetupGitIdentityParameters(options *SetupGitIdentityOptions) error {
 	return nil
 }
