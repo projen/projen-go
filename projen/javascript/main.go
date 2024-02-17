@@ -263,6 +263,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "minNodeVersion", GoGetter: "MinNodeVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberProperty{JsiiProperty: "npmAccess", GoGetter: "NpmAccess"},
+			_jsii_.MemberProperty{JsiiProperty: "npmProvenance", GoGetter: "NpmProvenance"},
 			_jsii_.MemberProperty{JsiiProperty: "npmRegistry", GoGetter: "NpmRegistry"},
 			_jsii_.MemberProperty{JsiiProperty: "npmRegistryUrl", GoGetter: "NpmRegistryUrl"},
 			_jsii_.MemberProperty{JsiiProperty: "npmTokenSecret", GoGetter: "NpmTokenSecret"},

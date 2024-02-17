@@ -67,6 +67,9 @@ type NodePackage interface {
 	// npm package access level.
 	// Experimental.
 	NpmAccess() NpmAccess
+	// Should provenance statements be generated when package is published.
+	// Experimental.
+	NpmProvenance() *bool
 	// The npm registry host (e.g. `registry.npmjs.org`).
 	// Experimental.
 	NpmRegistry() *string
@@ -311,6 +314,16 @@ func (j *jsiiProxy_NodePackage) NpmAccess() NpmAccess {
 	_jsii_.Get(
 		j,
 		"npmAccess",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NodePackage) NpmProvenance() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"npmProvenance",
 		&returns,
 	)
 	return returns

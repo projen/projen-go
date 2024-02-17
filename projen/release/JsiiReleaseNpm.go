@@ -49,6 +49,16 @@ type JsiiReleaseNpm struct {
 	//
 	// Deprecated: Use `npmDistTag` for each release branch instead.
 	DistTag *string `field:"optional" json:"distTag" yaml:"distTag"`
+	// Should provenance statements be generated when package is published.
+	//
+	// Note that this component is using `publib` to publish packages,
+	// which is using npm internally and supports provenance statements independently of the package manager used.
+	// See: https://docs.npmjs.com/generating-provenance-statements
+	//
+	// Default: - undefined.
+	//
+	// Deprecated: Use `NpmPublishOptions` instead.
+	NpmProvenance *bool `field:"optional" json:"npmProvenance" yaml:"npmProvenance"`
 	// GitHub secret which contains the NPM token to use when publishing packages.
 	// Default: - "NPM_TOKEN" or "GITHUB_TOKEN" if `registry` is set to `npm.pkg.github.com`.
 	//

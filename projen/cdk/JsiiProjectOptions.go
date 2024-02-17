@@ -323,6 +323,19 @@ type JsiiProjectOptions struct {
 	//
 	// Experimental.
 	NpmAccess javascript.NpmAccess `field:"optional" json:"npmAccess" yaml:"npmAccess"`
+	// Should provenance statements be generated when the package is published.
+	//
+	// A supported package manager is required to publish a package with npm provenance statements and
+	// you will need to use a supported CI/CD provider.
+	//
+	// Note that the projen `Release` and `Publisher` components are using `publib` to publish packages,
+	// which is using npm internally and supports provenance statements independently of the package manager used.
+	// See: https://docs.npmjs.com/generating-provenance-statements
+	//
+	// Default: - true for public packages, false otherwise.
+	//
+	// Experimental.
+	NpmProvenance *bool `field:"optional" json:"npmProvenance" yaml:"npmProvenance"`
 	// The host name of the npm registry to publish to.
 	//
 	// Cannot be set together with `npmRegistryUrl`.
