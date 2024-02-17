@@ -31,6 +31,18 @@ func init() {
 		"projen.javascript.Bundle",
 		reflect.TypeOf((*Bundle)(nil)).Elem(),
 	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.BundleLogLevel",
+		reflect.TypeOf((*BundleLogLevel)(nil)).Elem(),
+		map[string]interface{}{
+			"VERBOSE": BundleLogLevel_VERBOSE,
+			"DEBUG": BundleLogLevel_DEBUG,
+			"INFO": BundleLogLevel_INFO,
+			"WARNING": BundleLogLevel_WARNING,
+			"ERROR": BundleLogLevel_ERROR,
+			"SILENT": BundleLogLevel_SILENT,
+		},
+	)
 	_jsii_.RegisterClass(
 		"projen.javascript.Bundler",
 		reflect.TypeOf((*Bundler)(nil)).Elem(),
@@ -59,6 +71,14 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.BundlingOptions",
 		reflect.TypeOf((*BundlingOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.Charset",
+		reflect.TypeOf((*Charset)(nil)).Elem(),
+		map[string]interface{}{
+			"ASCII": Charset_ASCII,
+			"UTF8": Charset_UTF8,
+		},
 	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.CodeArtifactAuthProvider",
@@ -496,9 +516,28 @@ func init() {
 		"projen.javascript.RenderWorkflowSetupOptions",
 		reflect.TypeOf((*RenderWorkflowSetupOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.RunBundleTask",
+		reflect.TypeOf((*RunBundleTask)(nil)).Elem(),
+		map[string]interface{}{
+			"MANUAL": RunBundleTask_MANUAL,
+			"PRE_COMPILE": RunBundleTask_PRE_COMPILE,
+			"POST_COMPILE": RunBundleTask_POST_COMPILE,
+		},
+	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.ScopedPackagesOptions",
 		reflect.TypeOf((*ScopedPackagesOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.SourceMapMode",
+		reflect.TypeOf((*SourceMapMode)(nil)).Elem(),
+		map[string]interface{}{
+			"DEFAULT": SourceMapMode_DEFAULT,
+			"EXTERNAL": SourceMapMode_EXTERNAL,
+			"INLINE": SourceMapMode_INLINE,
+			"BOTH": SourceMapMode_BOTH,
+		},
 	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.TrailingComma",

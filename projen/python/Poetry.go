@@ -16,10 +16,10 @@ type Poetry interface {
 	IPythonDeps
 	IPythonEnv
 	IPythonPackaging
-	// A task that installs dependencies (honouring the lockfile).
+	// Task for installing dependencies according to the existing lockfile.
 	// Experimental.
 	InstallCiTask() projen.Task
-	// A task that updates the lockfile and installs dependencies.
+	// Task for updating the lockfile and installing project dependencies.
 	// Experimental.
 	InstallTask() projen.Task
 	// The tree node.
@@ -27,15 +27,12 @@ type Poetry interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
-	// A task that uploads the package to a package repository.
+	// Task for publishing the package to a package repository.
 	// Experimental.
 	PublishTask() projen.Task
-	// A task that uploads the package to the Test PyPI repository.
+	// Task for publishing the package to the Test PyPI repository for testing purposes.
 	// Experimental.
 	PublishTestTask() projen.Task
-	// A task that for upgrades dependencies.
-	// Experimental.
-	UpgradeTask() projen.Task
 	// Adds a runtime dependency.
 	// Experimental.
 	AddDependency(spec *string)
@@ -127,16 +124,6 @@ func (j *jsiiProxy_Poetry) PublishTestTask() projen.Task {
 	_jsii_.Get(
 		j,
 		"publishTestTask",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_Poetry) UpgradeTask() projen.Task {
-	var returns projen.Task
-	_jsii_.Get(
-		j,
-		"upgradeTask",
 		&returns,
 	)
 	return returns

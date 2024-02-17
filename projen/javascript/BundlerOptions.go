@@ -7,7 +7,7 @@ type BundlerOptions struct {
 	// Install the `bundle` command as a pre-compile phase.
 	// Default: true.
 	//
-	// Experimental.
+	// Deprecated: Use `runBundleTask` instead.
 	AddToPreCompile *bool `field:"optional" json:"addToPreCompile" yaml:"addToPreCompile"`
 	// Output directory for all bundles.
 	// Default: "assets".
@@ -24,5 +24,15 @@ type BundlerOptions struct {
 	// Loaders are appended to the esbuild command by `--loader:.extension=loader`
 	// Experimental.
 	Loaders *map[string]*string `field:"optional" json:"loaders" yaml:"loaders"`
+	// Choose which phase (if any) to add the `bundle` command to.
+	//
+	// Note: If using `addBundle()` with the `bundleCompiledResults`, this option
+	// must be set to `RunBundleTask.POST_COMPILE` or `RunBundleTask.MANUAL`.
+	// See: AddBundleOptions.bundleCompiledResults *
+	//
+	// Default: RunBundleTask.PRE_COMPILE
+	//
+	// Experimental.
+	RunBundleTask RunBundleTask `field:"optional" json:"runBundleTask" yaml:"runBundleTask"`
 }
 
