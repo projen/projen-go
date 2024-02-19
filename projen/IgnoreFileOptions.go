@@ -13,5 +13,10 @@ type IgnoreFileOptions struct {
 	//
 	// Experimental.
 	FilterEmptyLines *bool `field:"optional" json:"filterEmptyLines" yaml:"filterEmptyLines"`
+	// Patterns to add to the ignore file.
+	// Default: [].
+	//
+	// Experimental.
+	IgnorePatterns *[]*string `field:"optional" json:"ignorePatterns" yaml:"ignorePatterns"`
 }
 
