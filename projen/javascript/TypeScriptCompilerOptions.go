@@ -25,6 +25,42 @@ type TypeScriptCompilerOptions struct {
 	// This does not affect code emit, just typechecking.
 	// Experimental.
 	AllowSyntheticDefaultImports *bool `field:"optional" json:"allowSyntheticDefaultImports" yaml:"allowSyntheticDefaultImports"`
+	// Allow Unreachable Code.
+	//
+	// When:
+	//
+	// - `undefined` (default) provide suggestions as warnings to editors
+	// - `true` unreachable code is ignored
+	// - `false` raises compiler errors about unreachable code
+	//
+	// These warnings are only about code which is provably unreachable due to the use of JavaScript syntax.
+	// See: https://www.typescriptlang.org/tsconfig#allowUnreachableCode
+	//
+	// Experimental.
+	AllowUnreachableCode *bool `field:"optional" json:"allowUnreachableCode" yaml:"allowUnreachableCode"`
+	// Allow Unused Labels.
+	//
+	// When:
+	//
+	// - `undefined` (default) provide suggestions as warnings to editors
+	// - `true` unused labels are ignored
+	// - `false` raises compiler errors about unused labels
+	//
+	// Labels are very rare in JavaScript and typically indicate an attempt to write an object literal:
+	//
+	// ```ts
+	// function verifyAge(age: number) {
+	//   // Forgot 'return' statement
+	//   if (age > 18) {
+	//     verified: true;
+	// //  ^^^^^^^^ Unused label.
+	//   }
+	// }
+	// ```.
+	// See: https://www.typescriptlang.org/tsconfig#allowUnusedLabels
+	//
+	// Experimental.
+	AllowUnusedLabels *bool `field:"optional" json:"allowUnusedLabels" yaml:"allowUnusedLabels"`
 	// Ensures that your files are parsed in the ECMAScript strict mode, and emit “use strict” for each source file.
 	// Default: true.
 	//
@@ -35,6 +71,14 @@ type TypeScriptCompilerOptions struct {
 	// You can define a root folder where you can do absolute file resolution.
 	// Experimental.
 	BaseUrl *string `field:"optional" json:"baseUrl" yaml:"baseUrl"`
+	// Check JS.
+	//
+	// Works in tandem with [allowJs](https://www.typescriptlang.org/tsconfig#allowJs). When checkJs is enabled then
+	// errors are reported in JavaScript files. This is the equivalent of including //
+	// See: https://www.typescriptlang.org/tsconfig#checkJs
+	//
+	// Experimental.
+	CheckJs *bool `field:"optional" json:"checkJs" yaml:"checkJs"`
 	// List of additional conditions that should succeed when TypeScript resolves from an `exports` or `imports` field of a `package.json`.
 	// See: https://www.typescriptlang.org/tsconfig#customConditions
 	//
