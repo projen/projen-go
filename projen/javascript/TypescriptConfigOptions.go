@@ -5,7 +5,7 @@ package javascript
 type TypescriptConfigOptions struct {
 	// Compiler options to use.
 	// Experimental.
-	CompilerOptions *TypeScriptCompilerOptions `field:"required" json:"compilerOptions" yaml:"compilerOptions"`
+	CompilerOptions *TypeScriptCompilerOptions `field:"optional" json:"compilerOptions" yaml:"compilerOptions"`
 	// Filters results from the "include" option.
 	// Default: - node_modules is excluded by default.
 	//
