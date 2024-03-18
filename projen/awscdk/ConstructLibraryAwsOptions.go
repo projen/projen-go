@@ -1011,7 +1011,7 @@ type ConstructLibraryAwsOptions struct {
 	//
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ExperimentalIntegRunner *bool `field:"optional" json:"experimentalIntegRunner" yaml:"experimentalIntegRunner"`
-	// Automatically discovers and creates integration tests for each `.integ.ts` file in under your test directory.
+	// Automatically discovers and creates integration tests for each `.integ.ts` file under your test directory.
 	// Default: true.
 	//
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
