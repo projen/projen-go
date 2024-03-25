@@ -28,6 +28,11 @@ type JsiiReleasePyPi struct {
 	//
 	// Deprecated: Use `PyPiPublishOptions` instead.
 	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
+	// Options for publishing to AWS CodeArtifact.
+	// Default: - undefined.
+	//
+	// Deprecated: Use `PyPiPublishOptions` instead.
+	CodeArtifactOptions *CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// The GitHub secret which contains PyPI password.
 	// Default: "TWINE_PASSWORD".
 	//

@@ -2,6 +2,7 @@ package cdk
 
 import (
 	"github.com/projen/projen-go/projen/github/workflows"
+	"github.com/projen/projen-go/projen/release"
 )
 
 // Experimental.
@@ -28,6 +29,11 @@ type JsiiPythonTarget struct {
 	//
 	// Experimental.
 	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
+	// Options for publishing to AWS CodeArtifact.
+	// Default: - undefined.
+	//
+	// Experimental.
+	CodeArtifactOptions *release.CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// The GitHub secret which contains PyPI password.
 	// Default: "TWINE_PASSWORD".
 	//

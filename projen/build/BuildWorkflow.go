@@ -16,6 +16,9 @@ type BuildWorkflow interface {
 	// Returns a list of job IDs that are part of the build.
 	// Experimental.
 	BuildJobIds() *[]*string
+	// Name of generated github workflow.
+	// Experimental.
+	Name() *string
 	// The tree node.
 	// Experimental.
 	Node() constructs.Node
@@ -74,6 +77,16 @@ func (j *jsiiProxy_BuildWorkflow) BuildJobIds() *[]*string {
 	_jsii_.Get(
 		j,
 		"buildJobIds",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_BuildWorkflow) Name() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"name",
 		&returns,
 	)
 	return returns

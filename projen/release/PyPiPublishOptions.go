@@ -29,6 +29,11 @@ type PyPiPublishOptions struct {
 	//
 	// Experimental.
 	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
+	// Options for publishing to AWS CodeArtifact.
+	// Default: - undefined.
+	//
+	// Experimental.
+	CodeArtifactOptions *CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
 	// The GitHub secret which contains PyPI password.
 	// Default: "TWINE_PASSWORD".
 	//
