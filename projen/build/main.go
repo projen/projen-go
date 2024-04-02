@@ -39,6 +39,10 @@ func init() {
 		},
 	)
 	_jsii_.RegisterStruct(
+		"projen.build.BuildWorkflowCommonOptions",
+		reflect.TypeOf((*BuildWorkflowCommonOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.build.BuildWorkflowOptions",
 		reflect.TypeOf((*BuildWorkflowOptions)(nil)).Elem(),
 	)

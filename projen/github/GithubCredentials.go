@@ -52,7 +52,7 @@ func (j *jsiiProxy_GithubCredentials) TokenRef() *string {
 // The GitHub App must be installed on the GitHub repo, its App ID and a
 // private key must be added as secrets to the repo. The name of the secrets
 // can be specified here.
-// See: https://projen.io/github.html#github-app
+// See: https://projen.io/docs/integrations/github/#github-app
 //
 // Default: - app id stored in "PROJEN_APP_ID" and private key stored in "PROJEN_APP_PRIVATE_KEY" with all permissions attached to the app.
 //

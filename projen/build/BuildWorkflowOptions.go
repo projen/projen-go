@@ -8,6 +8,26 @@ import (
 
 // Experimental.
 type BuildWorkflowOptions struct {
+	// Name of the buildfile (e.g. "build" becomes "build.yml").
+	// Default: "build".
+	//
+	// Experimental.
+	Name *string `field:"optional" json:"name" yaml:"name"`
+	// Permissions granted to the build job To limit job permissions for `contents`, the desired permissions have to be explicitly set, e.g.: `{ contents: JobPermission.NONE }`.
+	// Default: `{ contents: JobPermission.WRITE }`
+	//
+	// Experimental.
+	Permissions *workflows.JobPermissions `field:"optional" json:"permissions" yaml:"permissions"`
+	// Steps to execute before the build.
+	// Default: [].
+	//
+	// Experimental.
+	PreBuildSteps *[]*workflows.JobStep `field:"optional" json:"preBuildSteps" yaml:"preBuildSteps"`
+	// Build workflow triggers.
+	// Default: "{ pullRequest: {}, workflowDispatch: {} }".
+	//
+	// Experimental.
+	WorkflowTriggers *workflows.Triggers `field:"optional" json:"workflowTriggers" yaml:"workflowTriggers"`
 	// A name of a directory that includes build artifacts.
 	// Experimental.
 	ArtifactsDirectory *string `field:"required" json:"artifactsDirectory" yaml:"artifactsDirectory"`
@@ -43,26 +63,11 @@ type BuildWorkflowOptions struct {
 	//
 	// Experimental.
 	MutableBuild *bool `field:"optional" json:"mutableBuild" yaml:"mutableBuild"`
-	// Name of the buildfile (e.g. "build" becomes "build.yml").
-	// Default: "build".
-	//
-	// Experimental.
-	Name *string `field:"optional" json:"name" yaml:"name"`
-	// Permissions granted to the build job To limit job permissions for `contents`, the desired permissions have to be explicitly set, e.g.: `{ contents: JobPermission.NONE }`.
-	// Default: `{ contents: JobPermission.WRITE }`
-	//
-	// Experimental.
-	Permissions *workflows.JobPermissions `field:"optional" json:"permissions" yaml:"permissions"`
 	// Steps to execute after build.
 	// Default: [].
 	//
 	// Experimental.
 	PostBuildSteps *[]*workflows.JobStep `field:"optional" json:"postBuildSteps" yaml:"postBuildSteps"`
-	// Steps to execute before the build.
-	// Default: [].
-	//
-	// Experimental.
-	PreBuildSteps *[]*workflows.JobStep `field:"optional" json:"preBuildSteps" yaml:"preBuildSteps"`
 	// Github Runner selection labels.
 	// Default: ["ubuntu-latest"].
 	//
@@ -71,10 +76,5 @@ type BuildWorkflowOptions struct {
 	// Github Runner Group selection options.
 	// Experimental.
 	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
-	// Build workflow triggers.
-	// Default: "{ pullRequest: {}, workflowDispatch: {} }".
-	//
-	// Experimental.
-	WorkflowTriggers *workflows.Triggers `field:"optional" json:"workflowTriggers" yaml:"workflowTriggers"`
 }
 

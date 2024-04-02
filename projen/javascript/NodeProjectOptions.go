@@ -577,10 +577,13 @@ type NodeProjectOptions struct {
 	//
 	// Experimental.
 	BuildWorkflow *bool `field:"optional" json:"buildWorkflow" yaml:"buildWorkflow"`
+	// Options for PR build workflow.
+	// Experimental.
+	BuildWorkflowOptions *BuildWorkflowOptions `field:"optional" json:"buildWorkflowOptions" yaml:"buildWorkflowOptions"`
 	// Build workflow triggers.
 	// Default: "{ pullRequest: {}, workflowDispatch: {} }".
 	//
-	// Experimental.
+	// Deprecated: - Use `buildWorkflowOptions.workflowTriggers`
 	BuildWorkflowTriggers *workflows.Triggers `field:"optional" json:"buildWorkflowTriggers" yaml:"buildWorkflowTriggers"`
 	// Options for `Bundler`.
 	// Experimental.
@@ -658,7 +661,7 @@ type NodeProjectOptions struct {
 	// Implies that PR builds do not have anti-tamper checks.
 	// Default: true.
 	//
-	// Experimental.
+	// Deprecated: - Use `buildWorkflowOptions.mutableBuild`
 	MutableBuild *bool `field:"optional" json:"mutableBuild" yaml:"mutableBuild"`
 	// Additional entries to .npmignore.
 	// Deprecated: - use `project.addPackageIgnore`

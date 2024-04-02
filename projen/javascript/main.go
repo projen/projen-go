@@ -28,6 +28,10 @@ func init() {
 		},
 	)
 	_jsii_.RegisterStruct(
+		"projen.javascript.BuildWorkflowOptions",
+		reflect.TypeOf((*BuildWorkflowOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.javascript.Bundle",
 		reflect.TypeOf((*Bundle)(nil)).Elem(),
 	)

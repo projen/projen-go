@@ -580,10 +580,13 @@ type ConstructLibraryAwsOptions struct {
 	//
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	BuildWorkflow *bool `field:"optional" json:"buildWorkflow" yaml:"buildWorkflow"`
+	// Options for PR build workflow.
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	BuildWorkflowOptions *javascript.BuildWorkflowOptions `field:"optional" json:"buildWorkflowOptions" yaml:"buildWorkflowOptions"`
 	// Build workflow triggers.
 	// Default: "{ pullRequest: {}, workflowDispatch: {} }".
 	//
-	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	// Deprecated: - Use `buildWorkflowOptions.workflowTriggers`
 	BuildWorkflowTriggers *workflows.Triggers `field:"optional" json:"buildWorkflowTriggers" yaml:"buildWorkflowTriggers"`
 	// Options for `Bundler`.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
@@ -661,7 +664,7 @@ type ConstructLibraryAwsOptions struct {
 	// Implies that PR builds do not have anti-tamper checks.
 	// Default: true.
 	//
-	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	// Deprecated: - Use `buildWorkflowOptions.mutableBuild`
 	MutableBuild *bool `field:"optional" json:"mutableBuild" yaml:"mutableBuild"`
 	// Additional entries to .npmignore.
 	// Deprecated: - use `project.addPackageIgnore`
