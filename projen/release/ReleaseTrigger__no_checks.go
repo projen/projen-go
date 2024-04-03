@@ -4,6 +4,10 @@ package release
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func validateReleaseTrigger_ContinuousParameters(options *ContinuousReleaseOptions) error {
+	return nil
+}
+
 func validateReleaseTrigger_ManualParameters(options *ManualReleaseOptions) error {
 	return nil
 }

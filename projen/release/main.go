@@ -28,6 +28,10 @@ func init() {
 		reflect.TypeOf((*CommonPublishOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.release.ContinuousReleaseOptions",
+		reflect.TypeOf((*ContinuousReleaseOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.release.GitHubReleasesPublishOptions",
 		reflect.TypeOf((*GitHubReleasesPublishOptions)(nil)).Elem(),
 	)
@@ -152,6 +156,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "gitPushCommand", GoGetter: "GitPushCommand"},
 			_jsii_.MemberProperty{JsiiProperty: "isContinuous", GoGetter: "IsContinuous"},
 			_jsii_.MemberProperty{JsiiProperty: "isManual", GoGetter: "IsManual"},
+			_jsii_.MemberProperty{JsiiProperty: "paths", GoGetter: "Paths"},
 			_jsii_.MemberProperty{JsiiProperty: "schedule", GoGetter: "Schedule"},
 		},
 		func() interface{} {

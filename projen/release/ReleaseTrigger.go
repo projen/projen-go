@@ -25,6 +25,9 @@ type ReleaseTrigger interface {
 	// Whether or not this is a manual release trigger.
 	// Experimental.
 	IsManual() *bool
+	// Paths for which pushes will trigger a release when `isContinuous` is `true`.
+	// Experimental.
+	Paths() *[]*string
 	// Cron schedule for releases.
 	//
 	// Only defined if this is a scheduled release.
@@ -81,6 +84,16 @@ func (j *jsiiProxy_ReleaseTrigger) IsManual() *bool {
 	return returns
 }
 
+func (j *jsiiProxy_ReleaseTrigger) Paths() *[]*string {
+	var returns *[]*string
+	_jsii_.Get(
+		j,
+		"paths",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_ReleaseTrigger) Schedule() *string {
 	var returns *string
 	_jsii_.Get(
@@ -96,15 +109,18 @@ func (j *jsiiProxy_ReleaseTrigger) Schedule() *string {
 //
 // Automated releases will occur on every commit.
 // Experimental.
-func ReleaseTrigger_Continuous() ReleaseTrigger {
+func ReleaseTrigger_Continuous(options *ContinuousReleaseOptions) ReleaseTrigger {
 	_init_.Initialize()
 
+	if err := validateReleaseTrigger_ContinuousParameters(options); err != nil {
+		panic(err)
+	}
 	var returns ReleaseTrigger
 
 	_jsii_.StaticInvoke(
 		"projen.release.ReleaseTrigger",
 		"continuous",
-		nil, // no parameters
+		[]interface{}{options},
 		&returns,
 	)
 
