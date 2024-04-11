@@ -693,7 +693,7 @@ type ConstructLibraryAwsOptions struct {
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PrettierOptions *javascript.PrettierOptions `field:"optional" json:"prettierOptions" yaml:"prettierOptions"`
 	// Indicates of "projen" should be installed as a devDependency.
-	// Default: true.
+	// Default: - true if not a subproject.
 	//
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ProjenDevDependency *bool `field:"optional" json:"projenDevDependency" yaml:"projenDevDependency"`

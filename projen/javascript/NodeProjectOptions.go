@@ -690,7 +690,7 @@ type NodeProjectOptions struct {
 	// Experimental.
 	PrettierOptions *PrettierOptions `field:"optional" json:"prettierOptions" yaml:"prettierOptions"`
 	// Indicates of "projen" should be installed as a devDependency.
-	// Default: true.
+	// Default: - true if not a subproject.
 	//
 	// Experimental.
 	ProjenDevDependency *bool `field:"optional" json:"projenDevDependency" yaml:"projenDevDependency"`
