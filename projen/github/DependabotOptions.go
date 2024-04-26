@@ -66,6 +66,9 @@ type DependabotOptions struct {
 	//
 	// Experimental.
 	ScheduleInterval DependabotScheduleInterval `field:"optional" json:"scheduleInterval" yaml:"scheduleInterval"`
+	// https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#target-branch You can configure the target branch for raising pull requests for version updates against.
+	// Experimental.
+	TargetBranch *string `field:"optional" json:"targetBranch" yaml:"targetBranch"`
 	// The strategy to use when edits manifest and lock files.
 	// Default: VersioningStrategy.LOCKFILE_ONLY The default is to only update the
 	// lock file because package.json is controlled by projen and any outside
