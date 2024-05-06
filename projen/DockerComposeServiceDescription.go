@@ -56,6 +56,11 @@ type DockerComposeServiceDescription struct {
 	//
 	// Experimental.
 	Ports *[]*DockerComposeServicePort `field:"optional" json:"ports" yaml:"ports"`
+	// Run in privileged mode.
+	// Default: - no privileged mode flag is provided.
+	//
+	// Experimental.
+	Privileged *bool `field:"optional" json:"privileged" yaml:"privileged"`
 	// Mount some volumes into the service.
 	//
 	// Use one of the following to create volumes:.

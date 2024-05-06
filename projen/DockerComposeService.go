@@ -39,6 +39,9 @@ type DockerComposeService interface {
 	// Published ports.
 	// Experimental.
 	Ports() *[]*DockerComposeServicePort
+	// Run in privileged mode.
+	// Experimental.
+	Privileged() *bool
 	// Name of the service.
 	// Experimental.
 	ServiceName() *string
@@ -165,6 +168,16 @@ func (j *jsiiProxy_DockerComposeService) Ports() *[]*DockerComposeServicePort {
 	_jsii_.Get(
 		j,
 		"ports",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_DockerComposeService) Privileged() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"privileged",
 		&returns,
 	)
 	return returns
