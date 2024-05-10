@@ -14,9 +14,10 @@ type DockerComposeProps struct {
 	// Experimental.
 	NameSuffix *string `field:"optional" json:"nameSuffix" yaml:"nameSuffix"`
 	// Docker Compose schema version do be used.
-	// Default: 3.3
+	// Default: - no version is provided.
 	//
-	// Experimental.
+	// Deprecated: - The top level `version` field is obsolete per the Compose Specification.
+	// {@link https://github.com/compose-spec/compose-spec/blob/master/spec.md#version-and-name-top-level-elements Compose Specification}
 	SchemaVersion *string `field:"optional" json:"schemaVersion" yaml:"schemaVersion"`
 	// Service descriptions.
 	// Experimental.
