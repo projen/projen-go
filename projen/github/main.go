@@ -351,6 +351,29 @@ func init() {
 		"projen.github.MergifyRule",
 		reflect.TypeOf((*MergifyRule)(nil)).Elem(),
 	)
+	_jsii_.RegisterClass(
+		"projen.github.PullRequestBackport",
+		reflect.TypeOf((*PullRequestBackport)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberProperty{JsiiProperty: "workflow", GoGetter: "Workflow"},
+		},
+		func() interface{} {
+			j := jsiiProxy_PullRequestBackport{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.PullRequestBackportOptions",
+		reflect.TypeOf((*PullRequestBackportOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterStruct(
 		"projen.github.PullRequestFromPatchOptions",
 		reflect.TypeOf((*PullRequestFromPatchOptions)(nil)).Elem(),

@@ -31,6 +31,21 @@ type GitHubOptions struct {
 	//
 	// Deprecated: - use `projenCredentials`.
 	ProjenTokenSecret *string `field:"optional" json:"projenTokenSecret" yaml:"projenTokenSecret"`
+	// Add a workflow that allows backport of PRs to other branches using labels.
+	//
+	// When opening a new PR add a backport label to it,
+	// and the PR will be backported to the target branches once the PR is merged.
+	//
+	// Should not be used together with mergify.
+	// Default: false.
+	//
+	// Experimental.
+	PullRequestBackport *bool `field:"optional" json:"pullRequestBackport" yaml:"pullRequestBackport"`
+	// Options for configuring pull request backport.
+	// Default: - see defaults in `PullRequestBackportOptions`.
+	//
+	// Experimental.
+	PullRequestBackportOptions *PullRequestBackportOptions `field:"optional" json:"pullRequestBackportOptions" yaml:"pullRequestBackportOptions"`
 	// Add a workflow that performs basic checks for pull requests, like validating that PRs follow Conventional Commits.
 	// Default: true.
 	//
