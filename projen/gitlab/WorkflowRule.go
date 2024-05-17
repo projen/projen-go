@@ -15,6 +15,6 @@ type WorkflowRule struct {
 	// Experimental.
 	Variables *map[string]interface{} `field:"optional" json:"variables" yaml:"variables"`
 	// Experimental.
-	When JobWhen `field:"optional" json:"when" yaml:"when"`
+	When WorkflowWhen `field:"optional" json:"when" yaml:"when"`
 }
 
