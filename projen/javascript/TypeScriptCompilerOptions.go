@@ -353,8 +353,13 @@ type TypeScriptCompilerOptions struct {
 	// You can read more about composite projects in the handbook.
 	// Experimental.
 	TsBuildInfoFile *string `field:"optional" json:"tsBuildInfoFile" yaml:"tsBuildInfoFile"`
+	// If typeRoots is specified, only packages under typeRoots will be included.
+	// See: https://www.typescriptlang.org/tsconfig/#typeRoots
+	//
+	// Experimental.
+	TypeRoots *[]*string `field:"optional" json:"typeRoots" yaml:"typeRoots"`
 	// If types is specified, only packages listed will be included in the global scope.
-	// See: {@link https://www.typescriptlang.org/tsconfig#types}
+	// See: https://www.typescriptlang.org/tsconfig#types
 	//
 	// Experimental.
 	Types *[]*string `field:"optional" json:"types" yaml:"types"`
