@@ -61,8 +61,8 @@ type JestConfigOptions struct {
 	CoveragePathIgnorePatterns *[]*string `field:"optional" json:"coveragePathIgnorePatterns" yaml:"coveragePathIgnorePatterns"`
 	// Indicates which provider should be used to instrument code for coverage.
 	//
-	// Allowed values are v8 (default) or babel.
-	// Default: - "v8".
+	// Allowed values are babel (default) or v8.
+	// Default: - "babel".
 	//
 	// Experimental.
 	CoverageProvider *string `field:"optional" json:"coverageProvider" yaml:"coverageProvider"`
