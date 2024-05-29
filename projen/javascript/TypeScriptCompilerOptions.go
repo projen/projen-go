@@ -198,6 +198,11 @@ type TypeScriptCompilerOptions struct {
 	//
 	// Experimental.
 	Module *string `field:"optional" json:"module" yaml:"module"`
+	// This setting controls how TypeScript determines whether a file is a [script or a module](https://www.typescriptlang.org/docs/handbook/modules/theory.html#scripts-and-modules-in-javascript).
+	// Default: "auto".
+	//
+	// Experimental.
+	ModuleDetection TypeScriptModuleDetection `field:"optional" json:"moduleDetection" yaml:"moduleDetection"`
 	// Determine how modules get resolved.
 	//
 	// Either "Node" for Node.js/io.js style resolution, or "Classic".

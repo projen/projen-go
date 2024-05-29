@@ -586,6 +586,15 @@ func init() {
 		},
 	)
 	_jsii_.RegisterEnum(
+		"projen.javascript.TypeScriptModuleDetection",
+		reflect.TypeOf((*TypeScriptModuleDetection)(nil)).Elem(),
+		map[string]interface{}{
+			"AUTO": TypeScriptModuleDetection_AUTO,
+			"LEGACY": TypeScriptModuleDetection_LEGACY,
+			"FORCE": TypeScriptModuleDetection_FORCE,
+		},
+	)
+	_jsii_.RegisterEnum(
 		"projen.javascript.TypeScriptModuleResolution",
 		reflect.TypeOf((*TypeScriptModuleResolution)(nil)).Elem(),
 		map[string]interface{}{
