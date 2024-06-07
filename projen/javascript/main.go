@@ -622,6 +622,8 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "removeExclude", GoMethod: "RemoveExclude"},
+			_jsii_.MemberMethod{JsiiMethod: "removeInclude", GoMethod: "RemoveInclude"},
 			_jsii_.MemberMethod{JsiiMethod: "resolveExtendsPath", GoMethod: "ResolveExtendsPath"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},

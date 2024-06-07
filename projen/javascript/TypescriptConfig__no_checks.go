@@ -16,6 +16,14 @@ func (t *jsiiProxy_TypescriptConfig) validateAddIncludeParameters(pattern *strin
 	return nil
 }
 
+func (t *jsiiProxy_TypescriptConfig) validateRemoveExcludeParameters(pattern *string) error {
+	return nil
+}
+
+func (t *jsiiProxy_TypescriptConfig) validateRemoveIncludeParameters(pattern *string) error {
+	return nil
+}
+
 func (t *jsiiProxy_TypescriptConfig) validateResolveExtendsPathParameters(configPath *string) error {
 	return nil
 }

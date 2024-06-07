@@ -30,11 +30,17 @@ type TypescriptConfig interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
+	// Add an exclude pattern to the `exclude` array of the TSConfig.
+	// See: https://www.typescriptlang.org/tsconfig#exclude
+	//
 	// Experimental.
 	AddExclude(pattern *string)
 	// Extend from base `TypescriptConfig` instance.
 	// Experimental.
 	AddExtends(value TypescriptConfig)
+	// Add an include pattern to the `include` array of the TSConfig.
+	// See: https://www.typescriptlang.org/tsconfig#include
+	//
 	// Experimental.
 	AddInclude(pattern *string)
 	// Called after synthesis.
@@ -45,6 +51,16 @@ type TypescriptConfig interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Remove an exclude pattern from the `exclude` array of the TSConfig.
+	// See: https://www.typescriptlang.org/tsconfig#exclude
+	//
+	// Experimental.
+	RemoveExclude(pattern *string)
+	// Remove an include pattern from the `include` array of the TSConfig.
+	// See: https://www.typescriptlang.org/tsconfig#include
+	//
+	// Experimental.
+	RemoveInclude(pattern *string)
 	// Resolve valid TypeScript extends paths relative to this config.
 	// Experimental.
 	ResolveExtendsPath(configPath *string) *string
@@ -273,6 +289,28 @@ func (t *jsiiProxy_TypescriptConfig) PreSynthesize() {
 		t,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (t *jsiiProxy_TypescriptConfig) RemoveExclude(pattern *string) {
+	if err := t.validateRemoveExcludeParameters(pattern); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"removeExclude",
+		[]interface{}{pattern},
+	)
+}
+
+func (t *jsiiProxy_TypescriptConfig) RemoveInclude(pattern *string) {
+	if err := t.validateRemoveIncludeParameters(pattern); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"removeInclude",
+		[]interface{}{pattern},
 	)
 }
 
