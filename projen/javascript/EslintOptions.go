@@ -1,5 +1,8 @@
 package javascript
 
+import (
+	"github.com/projen/projen-go/projen"
+)
 
 // Experimental.
 type EslintOptions struct {
@@ -50,6 +53,13 @@ type EslintOptions struct {
 	//
 	// Experimental.
 	Prettier *bool `field:"optional" json:"prettier" yaml:"prettier"`
+	// The extends array in eslint is order dependent.
+	//
+	// This option allows to sort the extends array in any way seen fit.
+	// Default: - Use known ESLint best practices to place "prettier" plugins at the end of the array.
+	//
+	// Experimental.
+	SortExtends projen.ICompareString `field:"optional" json:"sortExtends" yaml:"sortExtends"`
 	// Always try to resolve types under `<root>@types` directory even it doesn't contain any source code.
 	//
 	// This prevents `import/no-unresolved` eslint errors when importing a `@types/*` module that would otherwise remain unresolved.

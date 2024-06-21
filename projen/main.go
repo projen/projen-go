@@ -334,6 +334,16 @@ func init() {
 		reflect.TypeOf((*GroupRunnerOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterInterface(
+		"projen.ICompareString",
+		reflect.TypeOf((*ICompareString)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "compare", GoMethod: "Compare"},
+		},
+		func() interface{} {
+			return &jsiiProxy_ICompareString{}
+		},
+	)
+	_jsii_.RegisterInterface(
 		"projen.IDevEnvironment",
 		reflect.TypeOf((*IDevEnvironment)(nil)).Elem(),
 		[]_jsii_.Member{

@@ -244,7 +244,7 @@ func Eslint_IsConstruct(x interface{}) *bool {
 	return returns
 }
 
-// Returns the singletone Eslint component of a project or undefined if there is none.
+// Returns the singleton Eslint component of a project or undefined if there is none.
 // Experimental.
 func Eslint_Of(project projen.Project) Eslint {
 	_init_.Initialize()

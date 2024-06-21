@@ -21,7 +21,7 @@ type EslintOverride struct {
 	// `plugins` override.
 	// Experimental.
 	Plugins *[]*string `field:"optional" json:"plugins" yaml:"plugins"`
-	// The overriden rules.
+	// The overridden rules.
 	// Experimental.
 	Rules *map[string]interface{} `field:"optional" json:"rules" yaml:"rules"`
 }
