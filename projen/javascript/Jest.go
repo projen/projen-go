@@ -62,6 +62,9 @@ type Jest interface {
 	// Adds a watch ignore pattern.
 	// Experimental.
 	AddWatchIgnorePattern(pattern *string)
+	// Build standard test match patterns for a directory.
+	// Experimental.
+	DiscoverTestMatchPatternsForDirs(dirs *[]*string, options *JestDiscoverTestMatchPatternsForDirsOptions)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -350,6 +353,17 @@ func (j *jsiiProxy_Jest) AddWatchIgnorePattern(pattern *string) {
 		j,
 		"addWatchIgnorePattern",
 		[]interface{}{pattern},
+	)
+}
+
+func (j *jsiiProxy_Jest) DiscoverTestMatchPatternsForDirs(dirs *[]*string, options *JestDiscoverTestMatchPatternsForDirsOptions) {
+	if err := j.validateDiscoverTestMatchPatternsForDirsParameters(dirs, options); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		j,
+		"discoverTestMatchPatternsForDirs",
+		[]interface{}{dirs, options},
 	)
 }
 

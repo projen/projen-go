@@ -184,6 +184,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addTestMatch", GoMethod: "AddTestMatch"},
 			_jsii_.MemberMethod{JsiiMethod: "addWatchIgnorePattern", GoMethod: "AddWatchIgnorePattern"},
 			_jsii_.MemberProperty{JsiiProperty: "config", GoGetter: "Config"},
+			_jsii_.MemberMethod{JsiiMethod: "discoverTestMatchPatternsForDirs", GoMethod: "DiscoverTestMatchPatternsForDirs"},
 			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
 			_jsii_.MemberProperty{JsiiProperty: "jestVersion", GoGetter: "JestVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
@@ -202,6 +203,10 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.JestConfigOptions",
 		reflect.TypeOf((*JestConfigOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.JestDiscoverTestMatchPatternsForDirsOptions",
+		reflect.TypeOf((*JestDiscoverTestMatchPatternsForDirsOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.JestOptions",

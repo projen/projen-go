@@ -36,6 +36,10 @@ func (j *jsiiProxy_Jest) validateAddWatchIgnorePatternParameters(pattern *string
 	return nil
 }
 
+func (j *jsiiProxy_Jest) validateDiscoverTestMatchPatternsForDirsParameters(dirs *[]*string, options *JestDiscoverTestMatchPatternsForDirsOptions) error {
+	return nil
+}
+
 func validateJest_IsComponentParameters(x interface{}) error {
 	return nil
 }
