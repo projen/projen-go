@@ -15,6 +15,8 @@ type IncludeRule struct {
 	// Experimental.
 	If *string `field:"optional" json:"if" yaml:"if"`
 	// Experimental.
+	Needs *[]*string `field:"optional" json:"needs" yaml:"needs"`
+	// Experimental.
 	StartIn *string `field:"optional" json:"startIn" yaml:"startIn"`
 	// Experimental.
 	Variables *map[string]*string `field:"optional" json:"variables" yaml:"variables"`
