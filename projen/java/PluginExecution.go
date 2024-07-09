@@ -10,6 +10,11 @@ type PluginExecution struct {
 	// The ID.
 	// Experimental.
 	Id *string `field:"required" json:"id" yaml:"id"`
+	// Execution key/value configuration.
+	// Default: {}.
+	//
+	// Experimental.
+	Configuration *map[string]interface{} `field:"optional" json:"configuration" yaml:"configuration"`
 	// The phase in which the plugin should execute.
 	// Experimental.
 	Phase *string `field:"optional" json:"phase" yaml:"phase"`
