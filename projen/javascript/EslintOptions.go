@@ -19,6 +19,9 @@ type EslintOptions struct {
 	//
 	// Experimental.
 	AliasMap *map[string]*string `field:"optional" json:"aliasMap" yaml:"aliasMap"`
+	// Options for eslint command executed by eslint task.
+	// Experimental.
+	CommandOptions *EslintCommandOptions `field:"optional" json:"commandOptions" yaml:"commandOptions"`
 	// Files or glob patterns or directories with source files that include tests and build tools.
 	//
 	// These sources are linted but may also import packages from `devDependencies`.

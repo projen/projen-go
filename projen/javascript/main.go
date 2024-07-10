@@ -149,6 +149,10 @@ func init() {
 		},
 	)
 	_jsii_.RegisterStruct(
+		"projen.javascript.EslintCommandOptions",
+		reflect.TypeOf((*EslintCommandOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.javascript.EslintOptions",
 		reflect.TypeOf((*EslintOptions)(nil)).Elem(),
 	)
