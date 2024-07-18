@@ -350,7 +350,7 @@ type JestConfigOptions struct {
 	// By default it looks for .js, .jsx, .ts and .tsx
 	// files inside of __tests__ folders, as well as any files with a suffix of .test or .spec
 	// (e.g. Component.test.js or Component.spec.js). It will also find files called test.js or spec.js.
-	// Default: ['**\/__tests__/**\/*.[jt]s?(x)', '**\/?(*.)+(spec|test).[tj]s?(x)']
+	// Default: ['**\/__tests__/**\/*.[jt]s?(x)', '**\/*(*.)@(spec|test).[tj]s?(x)']
 	//
 	// Experimental.
 	TestMatch *[]*string `field:"optional" json:"testMatch" yaml:"testMatch"`
