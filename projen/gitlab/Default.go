@@ -16,6 +16,9 @@ type Default struct {
 	BeforeScript *[]*string `field:"optional" json:"beforeScript" yaml:"beforeScript"`
 	// Experimental.
 	Cache *[]*Cache `field:"optional" json:"cache" yaml:"cache"`
+	// Specifies the default ID tokens (JSON Web Tokens) that are used for CI/CD authentication to use globally for all jobs.
+	// Experimental.
+	IdTokens *map[string]IDToken `field:"optional" json:"idTokens" yaml:"idTokens"`
 	// Experimental.
 	Image *Image `field:"optional" json:"image" yaml:"image"`
 	// Experimental.

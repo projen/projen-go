@@ -34,6 +34,9 @@ type CiConfiguration interface {
 	DefaultBeforeScript() *[]*string
 	// Experimental.
 	DefaultCache() *[]*Cache
+	// Default ID tokens (JSON Web Tokens) that are used for CI/CD authentication to use globally for all jobs.
+	// Experimental.
+	DefaultIdTokens() *map[string]IDToken
 	// Specifies the default docker image to use globally for all jobs.
 	// Experimental.
 	DefaultImage() *Image
@@ -164,6 +167,16 @@ func (j *jsiiProxy_CiConfiguration) DefaultCache() *[]*Cache {
 	_jsii_.Get(
 		j,
 		"defaultCache",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_CiConfiguration) DefaultIdTokens() *map[string]IDToken {
+	var returns *map[string]IDToken
+	_jsii_.Get(
+		j,
+		"defaultIdTokens",
 		&returns,
 	)
 	return returns
