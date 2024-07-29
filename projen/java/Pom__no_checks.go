@@ -12,6 +12,10 @@ func (p *jsiiProxy_Pom) validateAddPluginParameters(spec *string, options *Plugi
 	return nil
 }
 
+func (p *jsiiProxy_Pom) validateAddPluginRepositoryParameters(repository *MavenRepository) error {
+	return nil
+}
+
 func (p *jsiiProxy_Pom) validateAddPropertyParameters(key *string, value *string) error {
 	return nil
 }

@@ -54,6 +54,8 @@ type Pom interface {
 	// The plug in is also added as a BUILD dep to the project.
 	// Experimental.
 	AddPlugin(spec *string, options *PluginOptions) *projen.Dependency
+	// Experimental.
+	AddPluginRepository(repository *MavenRepository)
 	// Adds a key/value property to the pom.
 	// Experimental.
 	AddProperty(key *string, value *string)
@@ -295,6 +297,17 @@ func (p *jsiiProxy_Pom) AddPlugin(spec *string, options *PluginOptions) *projen.
 	)
 
 	return returns
+}
+
+func (p *jsiiProxy_Pom) AddPluginRepository(repository *MavenRepository) {
+	if err := p.validateAddPluginRepositoryParameters(repository); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		p,
+		"addPluginRepository",
+		[]interface{}{repository},
+	)
 }
 
 func (p *jsiiProxy_Pom) AddProperty(key *string, value *string) {

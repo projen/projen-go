@@ -30,6 +30,17 @@ func (p *jsiiProxy_Pom) validateAddPluginParameters(spec *string, options *Plugi
 	return nil
 }
 
+func (p *jsiiProxy_Pom) validateAddPluginRepositoryParameters(repository *MavenRepository) error {
+	if repository == nil {
+		return fmt.Errorf("parameter repository is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(repository, func() string { return "parameter repository" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (p *jsiiProxy_Pom) validateAddPropertyParameters(key *string, value *string) error {
 	if key == nil {
 		return fmt.Errorf("parameter key is required, but nil was provided")

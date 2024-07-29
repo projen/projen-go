@@ -7,6 +7,15 @@ import (
 )
 
 func init() {
+	_jsii_.RegisterEnum(
+		"projen.java.ChecksumPolicy",
+		reflect.TypeOf((*ChecksumPolicy)(nil)).Elem(),
+		map[string]interface{}{
+			"IGNORE": ChecksumPolicy_IGNORE,
+			"FAIL": ChecksumPolicy_FAIL,
+			"WARN": ChecksumPolicy_WARN,
+		},
+	)
 	_jsii_.RegisterClass(
 		"projen.java.JavaProject",
 		reflect.TypeOf((*JavaProject)(nil)).Elem(),
@@ -150,6 +159,10 @@ func init() {
 		"projen.java.MavenRepository",
 		reflect.TypeOf((*MavenRepository)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.java.MavenRepositoryPolicy",
+		reflect.TypeOf((*MavenRepositoryPolicy)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.java.MavenSample",
 		reflect.TypeOf((*MavenSample)(nil)).Elem(),
@@ -189,6 +202,7 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addDependency", GoMethod: "AddDependency"},
 			_jsii_.MemberMethod{JsiiMethod: "addPlugin", GoMethod: "AddPlugin"},
+			_jsii_.MemberMethod{JsiiMethod: "addPluginRepository", GoMethod: "AddPluginRepository"},
 			_jsii_.MemberMethod{JsiiMethod: "addProperty", GoMethod: "AddProperty"},
 			_jsii_.MemberMethod{JsiiMethod: "addRepository", GoMethod: "AddRepository"},
 			_jsii_.MemberMethod{JsiiMethod: "addTestDependency", GoMethod: "AddTestDependency"},
@@ -239,5 +253,13 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.java.ProjenrcOptions",
 		reflect.TypeOf((*ProjenrcOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.java.UpdatePolicy",
+		reflect.TypeOf((*UpdatePolicy)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_UpdatePolicy{}
+		},
 	)
 }

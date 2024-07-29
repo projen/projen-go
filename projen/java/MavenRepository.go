@@ -18,5 +18,11 @@ type MavenRepository struct {
 	// The name of the repository.
 	// Experimental.
 	Name *string `field:"optional" json:"name" yaml:"name"`
+	// Repository Policy for Releases.
+	// Experimental.
+	Releases *MavenRepositoryPolicy `field:"optional" json:"releases" yaml:"releases"`
+	// Repository Policy for Snapshots.
+	// Experimental.
+	Snapshots *MavenRepositoryPolicy `field:"optional" json:"snapshots" yaml:"snapshots"`
 }
 
