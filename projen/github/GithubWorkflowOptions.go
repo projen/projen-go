@@ -9,14 +9,21 @@ type GithubWorkflowOptions struct {
 	// Currently in beta.
 	// See: https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#concurrency
 	//
-	// Default: - disabled.
+	// Default: - { group: undefined, cancelInProgress: false }.
 	//
 	// Experimental.
-	Concurrency *string `field:"optional" json:"concurrency" yaml:"concurrency"`
+	ConcurrencyOptions *ConcurrencyOptions `field:"optional" json:"concurrencyOptions" yaml:"concurrencyOptions"`
 	// Force the creation of the workflow even if `workflows` is disabled in `GitHub`.
 	// Default: false.
 	//
 	// Experimental.
 	Force *bool `field:"optional" json:"force" yaml:"force"`
+	// Enable concurrency limitations.
+	//
+	// Use `concurrencyOptions` to configure specific non default values.
+	// Default: false.
+	//
+	// Experimental.
+	LimitConcurrency *bool `field:"optional" json:"limitConcurrency" yaml:"limitConcurrency"`
 }
 

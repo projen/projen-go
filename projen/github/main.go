@@ -65,6 +65,10 @@ func init() {
 		reflect.TypeOf((*CheckoutWithPatchOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.github.ConcurrencyOptions",
+		reflect.TypeOf((*ConcurrencyOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.github.ContributorStatementOptions",
 		reflect.TypeOf((*ContributorStatementOptions)(nil)).Elem(),
 	)

@@ -15,11 +15,11 @@ type TaskWorkflow interface {
 	GithubWorkflow
 	// Experimental.
 	ArtifactsDirectory() *string
-	// Concurrency ensures that only a single job or workflow using the same concurrency group will run at a time.
-	// Default: disabled.
+	// The concurrency configuration of the workflow.
 	//
+	// undefined means no concurrency limitations.
 	// Experimental.
-	Concurrency() *string
+	Concurrency() *ConcurrencyOptions
 	// The workflow YAML file.
 	//
 	// May not exist if `workflowsEnabled` is false on `GitHub`.
@@ -105,8 +105,8 @@ func (j *jsiiProxy_TaskWorkflow) ArtifactsDirectory() *string {
 	return returns
 }
 
-func (j *jsiiProxy_TaskWorkflow) Concurrency() *string {
-	var returns *string
+func (j *jsiiProxy_TaskWorkflow) Concurrency() *ConcurrencyOptions {
+	var returns *ConcurrencyOptions
 	_jsii_.Get(
 		j,
 		"concurrency",

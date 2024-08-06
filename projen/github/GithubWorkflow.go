@@ -18,11 +18,11 @@ import (
 // Experimental.
 type GithubWorkflow interface {
 	projen.Component
-	// Concurrency ensures that only a single job or workflow using the same concurrency group will run at a time.
-	// Default: disabled.
+	// The concurrency configuration of the workflow.
 	//
+	// undefined means no concurrency limitations.
 	// Experimental.
-	Concurrency() *string
+	Concurrency() *ConcurrencyOptions
 	// The workflow YAML file.
 	//
 	// May not exist if `workflowsEnabled` is false on `GitHub`.
@@ -96,8 +96,8 @@ type jsiiProxy_GithubWorkflow struct {
 	internal.Type__projenComponent
 }
 
-func (j *jsiiProxy_GithubWorkflow) Concurrency() *string {
-	var returns *string
+func (j *jsiiProxy_GithubWorkflow) Concurrency() *ConcurrencyOptions {
+	var returns *ConcurrencyOptions
 	_jsii_.Get(
 		j,
 		"concurrency",
