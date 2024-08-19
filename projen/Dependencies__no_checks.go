@@ -12,6 +12,10 @@ func (d *jsiiProxy_Dependencies) validateGetDependencyParameters(name *string) e
 	return nil
 }
 
+func (d *jsiiProxy_Dependencies) validateIsDependencySatisfiedParameters(name *string, type_ DependencyType, expectedRange *string) error {
+	return nil
+}
+
 func (d *jsiiProxy_Dependencies) validateRemoveDependencyParameters(name *string) error {
 	return nil
 }

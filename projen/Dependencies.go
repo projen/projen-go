@@ -35,6 +35,12 @@ type Dependencies interface {
 	// Returns: a copy (cannot be modified).
 	// Experimental.
 	GetDependency(name *string, type_ DependencyType) *Dependency
+	// Checks if an existing dependency satisfies a dependency requirement.
+	//
+	// Returns: `true` if the dependency exists and its version satisfies the provided constraint. `false` otherwise.
+	// Notably returns `false` if a dependency exists, but has no version.
+	// Experimental.
+	IsDependencySatisfied(name *string, type_ DependencyType, expectedRange *string) *bool
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -246,6 +252,22 @@ func (d *jsiiProxy_Dependencies) GetDependency(name *string, type_ DependencyTyp
 		d,
 		"getDependency",
 		[]interface{}{name, type_},
+		&returns,
+	)
+
+	return returns
+}
+
+func (d *jsiiProxy_Dependencies) IsDependencySatisfied(name *string, type_ DependencyType, expectedRange *string) *bool {
+	if err := d.validateIsDependencySatisfiedParameters(name, type_, expectedRange); err != nil {
+		panic(err)
+	}
+	var returns *bool
+
+	_jsii_.Invoke(
+		d,
+		"isDependencySatisfied",
+		[]interface{}{name, type_, expectedRange},
 		&returns,
 	)
 

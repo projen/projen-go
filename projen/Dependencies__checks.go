@@ -26,6 +26,22 @@ func (d *jsiiProxy_Dependencies) validateGetDependencyParameters(name *string) e
 	return nil
 }
 
+func (d *jsiiProxy_Dependencies) validateIsDependencySatisfiedParameters(name *string, type_ DependencyType, expectedRange *string) error {
+	if name == nil {
+		return fmt.Errorf("parameter name is required, but nil was provided")
+	}
+
+	if type_ == "" {
+		return fmt.Errorf("parameter type_ is required, but nil was provided")
+	}
+
+	if expectedRange == nil {
+		return fmt.Errorf("parameter expectedRange is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (d *jsiiProxy_Dependencies) validateRemoveDependencyParameters(name *string) error {
 	if name == nil {
 		return fmt.Errorf("parameter name is required, but nil was provided")
