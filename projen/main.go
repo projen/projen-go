@@ -190,6 +190,16 @@ func init() {
 		"projen.DockerComposeVolumeMount",
 		reflect.TypeOf((*DockerComposeVolumeMount)(nil)).Elem(),
 	)
+	_jsii_.RegisterEnum(
+		"projen.EndOfLine",
+		reflect.TypeOf((*EndOfLine)(nil)).Elem(),
+		map[string]interface{}{
+			"AUTO": EndOfLine_AUTO,
+			"CRLF": EndOfLine_CRLF,
+			"LF": EndOfLine_LF,
+			"NONE": EndOfLine_NONE,
+		},
+	)
 	_jsii_.RegisterClass(
 		"projen.FileBase",
 		reflect.TypeOf((*FileBase)(nil)).Elem(),
@@ -226,6 +236,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addAttributes", GoMethod: "AddAttributes"},
 			_jsii_.MemberMethod{JsiiMethod: "addLfsPattern", GoMethod: "AddLfsPattern"},
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
+			_jsii_.MemberProperty{JsiiProperty: "endOfLine", GoGetter: "EndOfLine"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "hasLfsPatterns", GoGetter: "HasLfsPatterns"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
@@ -244,6 +255,10 @@ func init() {
 			_jsii_.InitJsiiProxy(&j.jsiiProxy_FileBase)
 			return &j
 		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.GitAttributesFileOptions",
+		reflect.TypeOf((*GitAttributesFileOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.GitOptions",

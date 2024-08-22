@@ -5,6 +5,8 @@ package projen
 import (
 	"fmt"
 
+	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
+
 	"github.com/aws/constructs-go/constructs/v10"
 )
 
@@ -64,9 +66,13 @@ func (j *jsiiProxy_GitAttributesFile) validateSetReadonlyParameters(val *bool) e
 	return nil
 }
 
-func validateNewGitAttributesFileParameters(scope constructs.IConstruct) error {
+func validateNewGitAttributesFileParameters(scope constructs.IConstruct, options *GitAttributesFileOptions) error {
 	if scope == nil {
 		return fmt.Errorf("parameter scope is required, but nil was provided")
+	}
+
+	if err := _jsii_.ValidateStruct(options, func() string { return "parameter options" }); err != nil {
+		return err
 	}
 
 	return nil

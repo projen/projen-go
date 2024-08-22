@@ -32,7 +32,7 @@ func (j *jsiiProxy_GitAttributesFile) validateSetReadonlyParameters(val *bool) e
 	return nil
 }
 
-func validateNewGitAttributesFileParameters(scope constructs.IConstruct) error {
+func validateNewGitAttributesFileParameters(scope constructs.IConstruct, options *GitAttributesFileOptions) error {
 	return nil
 }
 

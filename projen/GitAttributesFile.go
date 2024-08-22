@@ -23,6 +23,9 @@ type GitAttributesFile interface {
 	// file has not been synthesized yet.
 	// Experimental.
 	Changed() *bool
+	// The default end of line character for text files.
+	// Experimental.
+	EndOfLine() EndOfLine
 	// Indicates if the file should be marked as executable.
 	// Experimental.
 	Executable() *bool
@@ -94,6 +97,16 @@ func (j *jsiiProxy_GitAttributesFile) Changed() *bool {
 	_jsii_.Get(
 		j,
 		"changed",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitAttributesFile) EndOfLine() EndOfLine {
+	var returns EndOfLine
+	_jsii_.Get(
+		j,
+		"endOfLine",
 		&returns,
 	)
 	return returns
@@ -171,17 +184,17 @@ func (j *jsiiProxy_GitAttributesFile) Readonly() *bool {
 
 
 // Experimental.
-func NewGitAttributesFile(scope constructs.IConstruct) GitAttributesFile {
+func NewGitAttributesFile(scope constructs.IConstruct, options *GitAttributesFileOptions) GitAttributesFile {
 	_init_.Initialize()
 
-	if err := validateNewGitAttributesFileParameters(scope); err != nil {
+	if err := validateNewGitAttributesFileParameters(scope, options); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_GitAttributesFile{}
 
 	_jsii_.Create(
 		"projen.GitAttributesFile",
-		[]interface{}{scope},
+		[]interface{}{scope, options},
 		&j,
 	)
 
@@ -189,12 +202,12 @@ func NewGitAttributesFile(scope constructs.IConstruct) GitAttributesFile {
 }
 
 // Experimental.
-func NewGitAttributesFile_Override(g GitAttributesFile, scope constructs.IConstruct) {
+func NewGitAttributesFile_Override(g GitAttributesFile, scope constructs.IConstruct, options *GitAttributesFileOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.GitAttributesFile",
-		[]interface{}{scope},
+		[]interface{}{scope, options},
 		g,
 	)
 }
