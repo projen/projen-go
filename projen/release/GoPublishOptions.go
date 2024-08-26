@@ -46,11 +46,6 @@ type GoPublishOptions struct {
 	//
 	// Experimental.
 	GithubDeployKeySecret *string `field:"optional" json:"githubDeployKeySecret" yaml:"githubDeployKeySecret"`
-	// GitHub repository to push to.
-	// Default: - derived from `moduleName`.
-	//
-	// Experimental.
-	GithubRepo *string `field:"optional" json:"githubRepo" yaml:"githubRepo"`
 	// The name of the secret that includes a personal GitHub access token used to push to the GitHub repository.
 	//
 	// Ignored if `githubUseSsh` is `true`.

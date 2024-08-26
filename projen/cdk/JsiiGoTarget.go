@@ -46,11 +46,6 @@ type JsiiGoTarget struct {
 	//
 	// Experimental.
 	GithubDeployKeySecret *string `field:"optional" json:"githubDeployKeySecret" yaml:"githubDeployKeySecret"`
-	// GitHub repository to push to.
-	// Default: - derived from `moduleName`.
-	//
-	// Experimental.
-	GithubRepo *string `field:"optional" json:"githubRepo" yaml:"githubRepo"`
 	// The name of the secret that includes a personal GitHub access token used to push to the GitHub repository.
 	//
 	// Ignored if `githubUseSsh` is `true`.
@@ -73,17 +68,28 @@ type JsiiGoTarget struct {
 	//
 	// Experimental.
 	GitUserName *string `field:"optional" json:"gitUserName" yaml:"gitUserName"`
-	// The name of the target go module.
+	// The name of the target repository in which this module will be published (e.g. github.com/owner/repo).
+	//
+	// The module itself will always be published under a subdirectory named according
+	// to the `packageName` of the module (e.g. github.com/foo/bar/pkg).
 	//
 	// Example:
-	//   github.com/owner/repo/subdir
+	//   github.com/owner/repo
 	//
 	// Experimental.
 	ModuleName *string `field:"required" json:"moduleName" yaml:"moduleName"`
-	// The name of the go package.
-	// Default: - derived from the module name.
+	// The name of the Go package name.
+	//
+	// If not specified, package name will be derived from the JavaScript module name
+	// by removing non-alphanumeric characters (e.g.
+	// Default: - derived from the JavaScript module name.
 	//
 	// Experimental.
 	PackageName *string `field:"optional" json:"packageName" yaml:"packageName"`
+	// A suffix appended at the end of the module version (e.g `"-devprefix"`).
+	// Default: - none.
+	//
+	// Experimental.
+	VersionSuffix *string `field:"optional" json:"versionSuffix" yaml:"versionSuffix"`
 }
 

@@ -45,11 +45,6 @@ type JsiiReleaseGo struct {
 	//
 	// Deprecated: Use `GoPublishOptions` instead.
 	GithubDeployKeySecret *string `field:"optional" json:"githubDeployKeySecret" yaml:"githubDeployKeySecret"`
-	// GitHub repository to push to.
-	// Default: - derived from `moduleName`.
-	//
-	// Deprecated: Use `GoPublishOptions` instead.
-	GithubRepo *string `field:"optional" json:"githubRepo" yaml:"githubRepo"`
 	// The name of the secret that includes a personal GitHub access token used to push to the GitHub repository.
 	//
 	// Ignored if `githubUseSsh` is `true`.
