@@ -538,7 +538,7 @@ type ConstructLibraryAwsOptions struct {
 	// A set of workflow steps to execute in order to setup the workflow container.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	ReleaseWorkflowSetupSteps *[]*workflows.JobStep `field:"optional" json:"releaseWorkflowSetupSteps" yaml:"releaseWorkflowSetupSteps"`
-	// Custom configuration used when creating changelog with standard-version package.
+	// Custom configuration used when creating changelog with commit-and-tag-version package.
 	//
 	// Given values either append to default configuration or overwrite values in it.
 	// Default: - standard configuration applicable for GitHub repositories.

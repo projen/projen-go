@@ -12,7 +12,7 @@ func validateVersion_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func validateNewVersionParameters(project Project, options *VersionOptions) error {
+func validateNewVersionParameters(scope constructs.IConstruct, options *VersionOptions) error {
 	return nil
 }
 

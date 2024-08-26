@@ -6,6 +6,8 @@ import (
 	"fmt"
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
+
+	"github.com/aws/constructs-go/constructs/v10"
 )
 
 func validateVersion_IsComponentParameters(x interface{}) error {
@@ -24,9 +26,9 @@ func validateVersion_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func validateNewVersionParameters(project Project, options *VersionOptions) error {
-	if project == nil {
-		return fmt.Errorf("parameter project is required, but nil was provided")
+func validateNewVersionParameters(scope constructs.IConstruct, options *VersionOptions) error {
+	if scope == nil {
+		return fmt.Errorf("parameter scope is required, but nil was provided")
 	}
 
 	if options == nil {

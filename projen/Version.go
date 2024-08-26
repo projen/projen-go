@@ -10,6 +10,11 @@ import (
 // Experimental.
 type Version interface {
 	Component
+	// The package used to bump package versions, as a dependency string.
+	//
+	// This is a `commit-and-tag-version` compatible package.
+	// Experimental.
+	BumpPackage() *string
 	// Experimental.
 	BumpTask() Task
 	// The name of the changelog file (under `artifactsDirectory`).
@@ -47,6 +52,16 @@ type Version interface {
 // The jsii proxy struct for Version
 type jsiiProxy_Version struct {
 	jsiiProxy_Component
+}
+
+func (j *jsiiProxy_Version) BumpPackage() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"bumpPackage",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_Version) BumpTask() Task {
@@ -121,17 +136,17 @@ func (j *jsiiProxy_Version) VersionFileName() *string {
 
 
 // Experimental.
-func NewVersion(project Project, options *VersionOptions) Version {
+func NewVersion(scope constructs.IConstruct, options *VersionOptions) Version {
 	_init_.Initialize()
 
-	if err := validateNewVersionParameters(project, options); err != nil {
+	if err := validateNewVersionParameters(scope, options); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_Version{}
 
 	_jsii_.Create(
 		"projen.Version",
-		[]interface{}{project, options},
+		[]interface{}{scope, options},
 		&j,
 	)
 
@@ -139,12 +154,12 @@ func NewVersion(project Project, options *VersionOptions) Version {
 }
 
 // Experimental.
-func NewVersion_Override(v Version, project Project, options *VersionOptions) {
+func NewVersion_Override(v Version, scope constructs.IConstruct, options *VersionOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.Version",
-		[]interface{}{project, options},
+		[]interface{}{scope, options},
 		v,
 	)
 }

@@ -14,6 +14,13 @@ type VersionOptions struct {
 	//
 	// Experimental.
 	VersionInputFile *string `field:"required" json:"versionInputFile" yaml:"versionInputFile"`
+	// The `commit-and-tag-version` compatible package used to bump the package version, as a dependency string.
+	//
+	// This can be any compatible package version, including the deprecated `standard-version@9`.
+	// Default: "commit-and-tag-version@12".
+	//
+	// Experimental.
+	BumpPackage *string `field:"optional" json:"bumpPackage" yaml:"bumpPackage"`
 	// Find commits that should be considered releasable Used to decide if a release is required.
 	// Default: ReleasableCommits.everyCommit()
 	//

@@ -1203,6 +1203,7 @@ func init() {
 		"projen.Version",
 		reflect.TypeOf((*Version)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "bumpPackage", GoGetter: "BumpPackage"},
 			_jsii_.MemberProperty{JsiiProperty: "bumpTask", GoGetter: "BumpTask"},
 			_jsii_.MemberProperty{JsiiProperty: "changelogFileName", GoGetter: "ChangelogFileName"},
 			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
