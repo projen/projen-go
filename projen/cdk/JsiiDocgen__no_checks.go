@@ -4,7 +4,15 @@ package cdk
 
 // Building without runtime type checking enabled, so all the below just return nil
 
-func validateNewJsiiDocgenParameters(project JsiiProject, options *JsiiDocgenOptions) error {
+func validateJsiiDocgen_IsComponentParameters(x interface{}) error {
+	return nil
+}
+
+func validateJsiiDocgen_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func validateNewJsiiDocgenParameters(scope constructs.IConstruct, options *JsiiDocgenOptions) error {
 	return nil
 }
 

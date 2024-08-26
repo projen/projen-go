@@ -9,5 +9,10 @@ type JsiiDocgenOptions struct {
 	//
 	// Experimental.
 	FilePath *string `field:"optional" json:"filePath" yaml:"filePath"`
+	// A semver version string to install a specific version of jsii-docgen.
+	// Default: '*'.
+	//
+	// Experimental.
+	Version *string `field:"optional" json:"version" yaml:"version"`
 }
 

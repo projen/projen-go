@@ -195,9 +195,18 @@ func init() {
 	_jsii_.RegisterClass(
 		"projen.cdk.JsiiDocgen",
 		reflect.TypeOf((*JsiiDocgen)(nil)).Elem(),
-		nil, // no members
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+		},
 		func() interface{} {
-			return &jsiiProxy_JsiiDocgen{}
+			j := jsiiProxy_JsiiDocgen{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
 		},
 	)
 	_jsii_.RegisterStruct(
