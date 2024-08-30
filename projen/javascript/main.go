@@ -609,6 +609,7 @@ func init() {
 		map[string]interface{}{
 			"CLASSIC": TypeScriptModuleResolution_CLASSIC,
 			"NODE": TypeScriptModuleResolution_NODE,
+			"NODE10": TypeScriptModuleResolution_NODE10,
 			"NODE16": TypeScriptModuleResolution_NODE16,
 			"NODE_NEXT": TypeScriptModuleResolution_NODE_NEXT,
 			"BUNDLER": TypeScriptModuleResolution_BUNDLER,
