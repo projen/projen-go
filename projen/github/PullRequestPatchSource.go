@@ -15,6 +15,11 @@ type PullRequestPatchSource struct {
 	//
 	// Experimental.
 	Lfs *bool `field:"optional" json:"lfs" yaml:"lfs"`
+	// Relative path under $GITHUB_WORKSPACE to place the repository.
+	// Default: - $GITHUB_WORKSPACE.
+	//
+	// Experimental.
+	Path *string `field:"optional" json:"path" yaml:"path"`
 	// Branch or tag name.
 	// Default: - the default branch is implicitly used.
 	//
