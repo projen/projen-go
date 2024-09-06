@@ -28,12 +28,14 @@ type BuildWorkflowOptions struct {
 	//
 	// Experimental.
 	WorkflowTriggers *workflows.Triggers `field:"optional" json:"workflowTriggers" yaml:"workflowTriggers"`
-	// A name of a directory that includes build artifacts.
-	// Experimental.
-	ArtifactsDirectory *string `field:"required" json:"artifactsDirectory" yaml:"artifactsDirectory"`
 	// The task to execute in order to build the project.
 	// Experimental.
 	BuildTask projen.Task `field:"required" json:"buildTask" yaml:"buildTask"`
+	// A name of a directory that includes build artifacts.
+	// Default: "dist".
+	//
+	// Experimental.
+	ArtifactsDirectory *string `field:"optional" json:"artifactsDirectory" yaml:"artifactsDirectory"`
 	// The container image to use for builds.
 	// Default: - the default workflow container.
 	//

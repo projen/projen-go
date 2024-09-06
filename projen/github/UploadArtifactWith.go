@@ -24,6 +24,13 @@ type UploadArtifactWith struct {
 	//
 	// Experimental.
 	IfNoFilesFound *string `field:"optional" json:"ifNoFilesFound" yaml:"ifNoFilesFound"`
+	// Whether to include hidden files in the provided path in the artifact.
+	//
+	// The file contents of any hidden files in the path should be validated before enabled this to avoid uploading sensitive information.
+	// Default: false.
+	//
+	// Experimental.
+	IncludeHiddenFiles *bool `field:"optional" json:"includeHiddenFiles" yaml:"includeHiddenFiles"`
 	// Name of the artifact to upload.
 	// Default: "artifact".
 	//
