@@ -15,7 +15,7 @@ type ConcurrencyOptions struct {
 	// on the same branch cannot run concurrenty, but workflows runs triggered on different branches can.
 	// See: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/using-concurrency#example-concurrency-groups
 	//
-	// Default: - undefined. All runs belonging to this workflow have the same limited concurrency.
+	// Default: - ${{ github.workflow }}
 	//
 	// Experimental.
 	Group *string `field:"optional" json:"group" yaml:"group"`

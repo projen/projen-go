@@ -9,7 +9,7 @@ type GithubWorkflowOptions struct {
 	// Currently in beta.
 	// See: https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#concurrency
 	//
-	// Default: - { group: undefined, cancelInProgress: false }.
+	// Default: - { group: ${{ github.workflow }}, cancelInProgress: false }
 	//
 	// Experimental.
 	ConcurrencyOptions *ConcurrencyOptions `field:"optional" json:"concurrencyOptions" yaml:"concurrencyOptions"`
