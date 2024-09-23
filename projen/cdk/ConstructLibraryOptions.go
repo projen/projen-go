@@ -306,13 +306,29 @@ type ConstructLibraryOptions struct {
 	//
 	// Experimental.
 	Licensed *bool `field:"optional" json:"licensed" yaml:"licensed"`
-	// Minimum node.js version to require via `engines` (inclusive).
-	// Default: - no max.
+	// The maximum node version supported by this package. Most projects should not use this option.
+	//
+	// The value indicates that the package is incompatible with any newer versions of node.
+	// This requirement is enforced via the engines field.
+	//
+	// You will normally not need to set this option.
+	// Consider this option only if your package is known to not function with newer versions of node.
+	// Default: - no maximum version is enforced.
 	//
 	// Experimental.
 	MaxNodeVersion *string `field:"optional" json:"maxNodeVersion" yaml:"maxNodeVersion"`
-	// Minimum Node.js version to require via package.json `engines` (inclusive).
-	// Default: - no "engines" specified.
+	// The minimum node version required by this package to function. Most projects should not use this option.
+	//
+	// The value indicates that the package is incompatible with any older versions of node.
+	// This requirement is enforced via the engines field.
+	//
+	// You will normally not need to set this option, even if your package is incompatible with EOL versions of node.
+	// Consider this option only if your package depends on a specific feature, that is not available in other LTS versions.
+	// Setting this option has very high impact on the consumers of your package,
+	// as package managers will actively prevent usage with node versions you have marked as incompatible.
+	//
+	// To change the node version of your CI/CD workflows, use `workflowNodeVersion`.
+	// Default: - no minimum version is enforced.
 	//
 	// Experimental.
 	MinNodeVersion *string `field:"optional" json:"minNodeVersion" yaml:"minNodeVersion"`
@@ -746,8 +762,10 @@ type ConstructLibraryOptions struct {
 	//
 	// Experimental.
 	WorkflowGitIdentity *github.GitIdentity `field:"optional" json:"workflowGitIdentity" yaml:"workflowGitIdentity"`
-	// The node version to use in GitHub workflows.
-	// Default: - same as `minNodeVersion`.
+	// The node version used in GitHub Actions workflows.
+	//
+	// Always use this option if your GitHub Actions workflows require a specific to run.
+	// Default: - `minNodeVersion` if set, otherwise `lts/*`.
 	//
 	// Experimental.
 	WorkflowNodeVersion *string `field:"optional" json:"workflowNodeVersion" yaml:"workflowNodeVersion"`

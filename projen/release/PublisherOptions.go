@@ -67,7 +67,7 @@ type PublisherOptions struct {
 	//
 	// For example `publib`, the CLI projen uses to publish releases,
 	// is an npm library.
-	// Default: 18.x
+	// Default: lts/*.
 	//
 	// Experimental.
 	WorkflowNodeVersion *string `field:"optional" json:"workflowNodeVersion" yaml:"workflowNodeVersion"`

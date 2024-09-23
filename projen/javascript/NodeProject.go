@@ -109,10 +109,14 @@ type NodeProject interface {
 	Logger() projen.Logger
 	// Deprecated: use `package.addField(x, y)`
 	Manifest() interface{}
-	// Maximum node version required by this package.
+	// Maximum node version supported by this package.
+	//
+	// The value indicates the package is incompatible with newer versions.
 	// Experimental.
 	MaxNodeVersion() *string
-	// Minimum node.js version required by this package.
+	// The minimum node version required by this package to function.
+	//
+	// This value indicates the package is incompatible with older versions.
 	// Experimental.
 	MinNodeVersion() *string
 	// Project name.
