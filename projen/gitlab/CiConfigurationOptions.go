@@ -18,6 +18,9 @@ type CiConfigurationOptions struct {
 	// with `artifacts.path` pointing to it.
 	// Experimental.
 	Pages *Job `field:"optional" json:"pages" yaml:"pages"`
+	// The path of the file to generate.
+	// Experimental.
+	Path *string `field:"optional" json:"path" yaml:"path"`
 	// Groups jobs into stages.
 	//
 	// All jobs in one stage must complete before next stage is
