@@ -3,6 +3,9 @@ package github
 
 // Experimental.
 type MergifyQueue struct {
+	// Template to use as the commit message when using the merge or squash merge method.
+	// Experimental.
+	CommitMessageTemplate *string `field:"required" json:"commitMessageTemplate" yaml:"commitMessageTemplate"`
 	// A list of Conditions string that must match against the pull request for the pull request to be added to the queue.
 	// See: https://docs.mergify.com/conditions/#conditions
 	//
