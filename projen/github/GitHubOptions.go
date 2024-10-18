@@ -8,6 +8,18 @@ type GitHubOptions struct {
 	//
 	// Experimental.
 	DownloadLfs *bool `field:"optional" json:"downloadLfs" yaml:"downloadLfs"`
+	// Whether a merge queue should be used on this repository to merge pull requests.
+	//
+	// Requires additional configuration of the repositories branch protection rules.
+	// Default: true.
+	//
+	// Experimental.
+	MergeQueue *bool `field:"optional" json:"mergeQueue" yaml:"mergeQueue"`
+	// Options for MergeQueue.
+	// Default: - default options.
+	//
+	// Experimental.
+	MergeQueueOptions *MergeQueueOptions `field:"optional" json:"mergeQueueOptions" yaml:"mergeQueueOptions"`
 	// Whether mergify should be enabled on this repository or not.
 	// Default: true.
 	//

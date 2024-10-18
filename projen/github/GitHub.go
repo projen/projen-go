@@ -12,15 +12,16 @@ import (
 // Experimental.
 type GitHub interface {
 	projen.Component
+	// The GitHub Actions provider used to manage the versions of actions used in steps.
 	// Experimental.
 	Actions() GitHubActionsProvider
 	// Whether downloading from LFS is enabled for this GitHub project.
 	// Experimental.
 	DownloadLfs() *bool
-	// The `Mergify` configured on this repository.
-	//
-	// This is `undefined` if Mergify
-	// was not enabled when creating the repository.
+	// The `MergeQueue` component configured on this repository This is `undefined` if merge queues are not enabled for this repository.
+	// Experimental.
+	MergeQueue() MergeQueue
+	// The `Mergify` component configured on this repository This is `undefined` if Mergify is not enabled for this repository.
 	// Experimental.
 	Mergify() Mergify
 	// The tree node.
@@ -87,6 +88,16 @@ func (j *jsiiProxy_GitHub) DownloadLfs() *bool {
 	_jsii_.Get(
 		j,
 		"downloadLfs",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHub) MergeQueue() MergeQueue {
+	var returns MergeQueue
+	_jsii_.Get(
+		j,
+		"mergeQueue",
 		&returns,
 	)
 	return returns

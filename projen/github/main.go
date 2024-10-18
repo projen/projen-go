@@ -52,6 +52,27 @@ func init() {
 		"projen.github.AutoMergeOptions",
 		reflect.TypeOf((*AutoMergeOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterClass(
+		"projen.github.AutoQueue",
+		reflect.TypeOf((*AutoQueue)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+		},
+		func() interface{} {
+			j := jsiiProxy_AutoQueue{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.AutoQueueOptions",
+		reflect.TypeOf((*AutoQueueOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterStruct(
 		"projen.github.CheckoutOptions",
 		reflect.TypeOf((*CheckoutOptions)(nil)).Elem(),
@@ -159,6 +180,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addPullRequestTemplate", GoMethod: "AddPullRequestTemplate"},
 			_jsii_.MemberMethod{JsiiMethod: "addWorkflow", GoMethod: "AddWorkflow"},
 			_jsii_.MemberProperty{JsiiProperty: "downloadLfs", GoGetter: "DownloadLfs"},
+			_jsii_.MemberProperty{JsiiProperty: "mergeQueue", GoGetter: "MergeQueue"},
 			_jsii_.MemberProperty{JsiiProperty: "mergify", GoGetter: "Mergify"},
 			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
@@ -319,6 +341,36 @@ func init() {
 		func() interface{} {
 			return &jsiiProxy_IAddConditionsLater{}
 		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.github.MergeMethod",
+		reflect.TypeOf((*MergeMethod)(nil)).Elem(),
+		map[string]interface{}{
+			"SQUASH": MergeMethod_SQUASH,
+			"MERGE": MergeMethod_MERGE,
+			"REBASE": MergeMethod_REBASE,
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.github.MergeQueue",
+		reflect.TypeOf((*MergeQueue)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+		},
+		func() interface{} {
+			j := jsiiProxy_MergeQueue{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.MergeQueueOptions",
+		reflect.TypeOf((*MergeQueueOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.github.Mergify",
