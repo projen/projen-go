@@ -49,6 +49,11 @@ type JestOptions struct {
 	//
 	// Experimental.
 	JunitReporting *bool `field:"optional" json:"junitReporting" yaml:"junitReporting"`
+	// Pass with no tests.
+	// Default: - true.
+	//
+	// Experimental.
+	PassWithNoTests *bool `field:"optional" json:"passWithNoTests" yaml:"passWithNoTests"`
 	// Preserve the default Jest reporter when additional reporters are added.
 	// Default: true.
 	//
