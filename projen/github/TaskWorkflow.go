@@ -28,6 +28,11 @@ type TaskWorkflow interface {
 	// Experimental.
 	JobId() *string
 	// The name of the workflow.
+	//
+	// GitHub displays the names of your workflows under your repository's
+	// "Actions" tab.
+	// See: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#name
+	//
 	// Experimental.
 	Name() *string
 	// The tree node.

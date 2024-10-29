@@ -13,6 +13,17 @@ type GithubWorkflowOptions struct {
 	//
 	// Experimental.
 	ConcurrencyOptions *ConcurrencyOptions `field:"optional" json:"concurrencyOptions" yaml:"concurrencyOptions"`
+	// Set a custom file name for the workflow definition file. Must include either a .yml or .yaml file extension.
+	//
+	// Use this option to set a file name for the workflow file, that is different than the display name.
+	//
+	// Example:
+	//   "my-workflow.yaml"
+	//
+	// Default: - a path-safe version of the workflow name plus the .yml file ending, e.g. build.yml
+	//
+	// Experimental.
+	FileName *string `field:"optional" json:"fileName" yaml:"fileName"`
 	// Force the creation of the workflow even if `workflows` is disabled in `GitHub`.
 	// Default: false.
 	//
