@@ -19,17 +19,21 @@ type AutoQueueOptions struct {
 	//
 	// Experimental.
 	MergeMethod MergeMethod `field:"optional" json:"mergeMethod" yaml:"mergeMethod"`
+	// Choose a method for authenticating with GitHub to enable auto-queue on pull requests.
+	//
+	// The workflow cannot use a default github token. Queuing a PR
+	// with the default token will not trigger any merge queue workflows,
+	// which results in the PR just not getting merged at all.
+	// See: https://projen.io/docs/integrations/github/
+	//
+	// Default: - uses credentials from the GitHub component.
+	//
+	// Experimental.
+	ProjenCredentials GithubCredentials `field:"optional" json:"projenCredentials" yaml:"projenCredentials"`
 	// Github Runner selection labels.
 	// Default: ["ubuntu-latest"].
 	//
 	// Experimental.
 	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
-	// A GitHub secret name which contains a GitHub Access Token with write permissions for the `pull_request` scope.
-	//
-	// This token is used to enable auto-queue on pull requests.
-	// Default: "GITHUB_TOKEN".
-	//
-	// Experimental.
-	Secret *string `field:"optional" json:"secret" yaml:"secret"`
 }
 
