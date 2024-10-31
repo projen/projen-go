@@ -17,6 +17,15 @@ type UpgradeDependenciesOptions struct {
 	//
 	// Experimental.
 	Include *[]*string `field:"optional" json:"include" yaml:"include"`
+	// Include deprecated packages.
+	//
+	// By default, deprecated versions will be excluded from upgrades.
+	// See: https://github.com/raineorshine/npm-check-updates?tab=readme-ov-file#options
+	//
+	// Default: false.
+	//
+	// Experimental.
+	IncludeDeprecatedVersions *bool `field:"optional" json:"includeDeprecatedVersions" yaml:"includeDeprecatedVersions"`
 	// Title of the pull request to use (should be all lower-case).
 	// Default: "upgrade dependencies".
 	//
