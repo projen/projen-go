@@ -33,6 +33,15 @@ type Version interface {
 	// The name of the file that contains the version (under `artifactsDirectory`).
 	// Experimental.
 	VersionFileName() *string
+	// Return the environment variables to modify the bump command for release branches.
+	//
+	// These options are used to modify the behavior of the version bumping script
+	// for additional branches, by setting environment variables.
+	//
+	// No settings are inherited from the base `Version` object (but any parameters that
+	// control versions do conflict with the use of a `nextVersionCommand`).
+	// Experimental.
+	EnvForBranch(branchOptions *VersionBranchOptions) *map[string]*string
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -228,6 +237,22 @@ func Version_STANDARD_VERSION() *string {
 		"STANDARD_VERSION",
 		&returns,
 	)
+	return returns
+}
+
+func (v *jsiiProxy_Version) EnvForBranch(branchOptions *VersionBranchOptions) *map[string]*string {
+	if err := v.validateEnvForBranchParameters(branchOptions); err != nil {
+		panic(err)
+	}
+	var returns *map[string]*string
+
+	_jsii_.Invoke(
+		v,
+		"envForBranch",
+		[]interface{}{branchOptions},
+		&returns,
+	)
+
 	return returns
 }
 

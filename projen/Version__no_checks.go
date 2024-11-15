@@ -4,6 +4,10 @@ package projen
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (v *jsiiProxy_Version) validateEnvForBranchParameters(branchOptions *VersionBranchOptions) error {
+	return nil
+}
+
 func validateVersion_IsComponentParameters(x interface{}) error {
 	return nil
 }

@@ -10,6 +10,17 @@ import (
 	"github.com/aws/constructs-go/constructs/v10"
 )
 
+func (v *jsiiProxy_Version) validateEnvForBranchParameters(branchOptions *VersionBranchOptions) error {
+	if branchOptions == nil {
+		return fmt.Errorf("parameter branchOptions is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(branchOptions, func() string { return "parameter branchOptions" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func validateVersion_IsComponentParameters(x interface{}) error {
 	if x == nil {
 		return fmt.Errorf("parameter x is required, but nil was provided")

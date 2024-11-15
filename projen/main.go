@@ -1206,6 +1206,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "bumpPackage", GoGetter: "BumpPackage"},
 			_jsii_.MemberProperty{JsiiProperty: "bumpTask", GoGetter: "BumpTask"},
 			_jsii_.MemberProperty{JsiiProperty: "changelogFileName", GoGetter: "ChangelogFileName"},
+			_jsii_.MemberMethod{JsiiMethod: "envForBranch", GoMethod: "EnvForBranch"},
 			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
@@ -1221,6 +1222,10 @@ func init() {
 			_jsii_.InitJsiiProxy(&j.jsiiProxy_Component)
 			return &j
 		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.VersionBranchOptions",
+		reflect.TypeOf((*VersionBranchOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.VersionOptions",
