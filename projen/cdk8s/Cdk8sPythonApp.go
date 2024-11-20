@@ -130,6 +130,11 @@ type Cdk8sPythonApp interface {
 	// The root project.
 	// Experimental.
 	Root() projen.Project
+	// Directory where sample tests are located.
+	// Default: "tests".
+	//
+	// Experimental.
+	SampleTestdir() *string
 	// Returns all the subprojects within this project.
 	// Experimental.
 	Subprojects() *[]projen.Project
@@ -575,6 +580,16 @@ func (j *jsiiProxy_Cdk8sPythonApp) Root() projen.Project {
 	_jsii_.Get(
 		j,
 		"root",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Cdk8sPythonApp) SampleTestdir() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"sampleTestdir",
 		&returns,
 	)
 	return returns

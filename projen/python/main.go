@@ -167,6 +167,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "testdir", GoGetter: "Testdir"},
+			_jsii_.MemberProperty{JsiiProperty: "testMatch", GoGetter: "TestMatch"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 		},
 		func() interface{} {
@@ -256,6 +257,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "removeTask", GoMethod: "RemoveTask"},
 			_jsii_.MemberProperty{JsiiProperty: "root", GoGetter: "Root"},
 			_jsii_.MemberMethod{JsiiMethod: "runTaskCommand", GoMethod: "RunTaskCommand"},
+			_jsii_.MemberProperty{JsiiProperty: "sampleTestdir", GoGetter: "SampleTestdir"},
 			_jsii_.MemberProperty{JsiiProperty: "subprojects", GoGetter: "Subprojects"},
 			_jsii_.MemberMethod{JsiiMethod: "synth", GoMethod: "Synth"},
 			_jsii_.MemberProperty{JsiiProperty: "tasks", GoGetter: "Tasks"},

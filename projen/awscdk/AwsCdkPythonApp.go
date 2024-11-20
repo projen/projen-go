@@ -139,6 +139,9 @@ type AwsCdkPythonApp interface {
 	// The root project.
 	// Experimental.
 	Root() projen.Project
+	// The directory in which the python sample tests reside.
+	// Experimental.
+	SampleTestdir() *string
 	// Returns all the subprojects within this project.
 	// Experimental.
 	Subprojects() *[]projen.Project
@@ -146,7 +149,7 @@ type AwsCdkPythonApp interface {
 	// Experimental.
 	Tasks() projen.Tasks
 	// The directory in which the python tests reside.
-	// Experimental.
+	// Deprecated: Use `sampleTestdir` instead.
 	Testdir() *string
 	// Experimental.
 	TestTask() projen.Task
@@ -617,6 +620,16 @@ func (j *jsiiProxy_AwsCdkPythonApp) Root() projen.Project {
 	_jsii_.Get(
 		j,
 		"root",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_AwsCdkPythonApp) SampleTestdir() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"sampleTestdir",
 		&returns,
 	)
 	return returns

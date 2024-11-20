@@ -314,6 +314,13 @@ type AwsCdkPythonAppOptions struct {
 	//
 	// Experimental.
 	Sample *bool `field:"optional" json:"sample" yaml:"sample"`
+	// Location of sample tests.
+	//
+	// Typically the same directory where project tests will be located.
+	// Default: "tests".
+	//
+	// Experimental.
+	SampleTestdir *string `field:"optional" json:"sampleTestdir" yaml:"sampleTestdir"`
 	// Use setuptools with a setup.py script for packaging and publishing.
 	// Default: - true, unless poetry is true, then false.
 	//
@@ -426,7 +433,7 @@ type AwsCdkPythonAppOptions struct {
 	// Python sources directory.
 	// Default: "tests".
 	//
-	// Experimental.
+	// Deprecated: Use `sampleTestdir` instead.
 	Testdir *string `field:"optional" json:"testdir" yaml:"testdir"`
 }
 
