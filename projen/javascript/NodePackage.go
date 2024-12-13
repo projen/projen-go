@@ -86,8 +86,6 @@ type NodePackage interface {
 	// Experimental.
 	PackageName() *string
 	// The version of PNPM to use if using PNPM as a package manager.
-	// Default: "7".
-	//
 	// Experimental.
 	PnpmVersion() *string
 	// Experimental.

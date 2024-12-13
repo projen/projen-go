@@ -400,7 +400,7 @@ type NodeProjectOptions struct {
 	// Experimental.
 	PeerDeps *[]*string `field:"optional" json:"peerDeps" yaml:"peerDeps"`
 	// The version of PNPM to use if using PNPM as a package manager.
-	// Default: "7".
+	// Default: "9".
 	//
 	// Experimental.
 	PnpmVersion *string `field:"optional" json:"pnpmVersion" yaml:"pnpmVersion"`

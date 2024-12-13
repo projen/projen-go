@@ -403,7 +403,7 @@ type ConstructLibraryAwsOptions struct {
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PeerDeps *[]*string `field:"optional" json:"peerDeps" yaml:"peerDeps"`
 	// The version of PNPM to use if using PNPM as a package manager.
-	// Default: "7".
+	// Default: "9".
 	//
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PnpmVersion *string `field:"optional" json:"pnpmVersion" yaml:"pnpmVersion"`
@@ -956,7 +956,7 @@ type ConstructLibraryAwsOptions struct {
 	// NOTE: The jsii compiler releases since 5.0.0 are not semantically versioned
 	// and should remain on the same minor, so we recommend using a `~` dependency
 	// (e.g. `~5.0.0`).
-	// Default: "1.x"
+	// Default: "~5.6.0"
 	//
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	JsiiVersion *string `field:"optional" json:"jsiiVersion" yaml:"jsiiVersion"`
