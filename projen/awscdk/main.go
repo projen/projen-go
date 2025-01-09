@@ -162,6 +162,7 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addV1Dependencies", GoMethod: "AddV1Dependencies"},
 			_jsii_.MemberMethod{JsiiMethod: "addV1DevDependencies", GoMethod: "AddV1DevDependencies"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkCliVersion", GoGetter: "CdkCliVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkDependenciesAsDeps", GoGetter: "CdkDependenciesAsDeps"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkMajorVersion", GoGetter: "CdkMajorVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkMinimumVersion", GoGetter: "CdkMinimumVersion"},
@@ -190,6 +191,7 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addV1Dependencies", GoMethod: "AddV1Dependencies"},
 			_jsii_.MemberMethod{JsiiMethod: "addV1DevDependencies", GoMethod: "AddV1DevDependencies"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkCliVersion", GoGetter: "CdkCliVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkDependenciesAsDeps", GoGetter: "CdkDependenciesAsDeps"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkMajorVersion", GoGetter: "CdkMajorVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkMinimumVersion", GoGetter: "CdkMinimumVersion"},
@@ -214,6 +216,7 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addV1Dependencies", GoMethod: "AddV1Dependencies"},
 			_jsii_.MemberMethod{JsiiMethod: "addV1DevDependencies", GoMethod: "AddV1DevDependencies"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkCliVersion", GoGetter: "CdkCliVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkDependenciesAsDeps", GoGetter: "CdkDependenciesAsDeps"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkMajorVersion", GoGetter: "CdkMajorVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkMinimumVersion", GoGetter: "CdkMinimumVersion"},
@@ -242,6 +245,7 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addV1Dependencies", GoMethod: "AddV1Dependencies"},
 			_jsii_.MemberMethod{JsiiMethod: "addV1DevDependencies", GoMethod: "AddV1DevDependencies"},
+			_jsii_.MemberProperty{JsiiProperty: "cdkCliVersion", GoGetter: "CdkCliVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkDependenciesAsDeps", GoGetter: "CdkDependenciesAsDeps"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkMajorVersion", GoGetter: "CdkMajorVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkMinimumVersion", GoGetter: "CdkMinimumVersion"},

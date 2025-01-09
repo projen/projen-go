@@ -261,6 +261,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addPeerDeps", GoMethod: "AddPeerDeps"},
 			_jsii_.MemberMethod{JsiiMethod: "addVersion", GoMethod: "AddVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "allowLibraryDependencies", GoGetter: "AllowLibraryDependencies"},
+			_jsii_.MemberProperty{JsiiProperty: "bunVersion", GoGetter: "BunVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "codeArtifactOptions", GoGetter: "CodeArtifactOptions"},
 			_jsii_.MemberProperty{JsiiProperty: "entrypoint", GoGetter: "Entrypoint"},
 			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},

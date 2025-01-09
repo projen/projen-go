@@ -231,6 +231,11 @@ type JsiiProjectOptions struct {
 	// this will be what you `package.json` will eventually include.
 	// Experimental.
 	BundledDeps *[]*string `field:"optional" json:"bundledDeps" yaml:"bundledDeps"`
+	// The version of Bun to use if using Bun as a package manager.
+	// Default: "latest".
+	//
+	// Experimental.
+	BunVersion *string `field:"optional" json:"bunVersion" yaml:"bunVersion"`
 	// Options for npm packages using AWS CodeArtifact.
 	//
 	// This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact.

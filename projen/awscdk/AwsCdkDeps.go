@@ -13,6 +13,11 @@ import (
 // Experimental.
 type AwsCdkDeps interface {
 	projen.Component
+	// The dependency requirement for the CDK CLI (e.g. '^2.3.4').
+	//
+	// Will return `^2` if the version was unspecified by the user.
+	// Experimental.
+	CdkCliVersion() *string
 	// Whether CDK dependencies are added as normal dependencies (and peer dependencies).
 	// Deprecated: Not used for CDK 2.x
 	CdkDependenciesAsDeps() *bool
@@ -66,6 +71,16 @@ type AwsCdkDeps interface {
 // The jsii proxy struct for AwsCdkDeps
 type jsiiProxy_AwsCdkDeps struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_AwsCdkDeps) CdkCliVersion() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"cdkCliVersion",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_AwsCdkDeps) CdkDependenciesAsDeps() *bool {

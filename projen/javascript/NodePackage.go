@@ -16,6 +16,9 @@ type NodePackage interface {
 	// Allow project to take library dependencies.
 	// Experimental.
 	AllowLibraryDependencies() *bool
+	// The version of Bun to use if using Bun as a package manager.
+	// Experimental.
+	BunVersion() *string
 	// Options for npm packages using AWS CodeArtifact.
 	//
 	// This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact.
@@ -172,6 +175,16 @@ func (j *jsiiProxy_NodePackage) AllowLibraryDependencies() *bool {
 	_jsii_.Get(
 		j,
 		"allowLibraryDependencies",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NodePackage) BunVersion() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"bunVersion",
 		&returns,
 	)
 	return returns

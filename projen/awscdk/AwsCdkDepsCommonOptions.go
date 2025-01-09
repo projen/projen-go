@@ -24,6 +24,16 @@ type AwsCdkDepsCommonOptions struct {
 	//
 	// Experimental.
 	CdkAssertions *bool `field:"optional" json:"cdkAssertions" yaml:"cdkAssertions"`
+	// Version range of the AWS CDK CLI to depend on.
+	//
+	// Can be either a specific version, or an NPM version range.
+	//
+	// By default, the latest 2.x version will be installed; you can use this
+	// option to restrict it to a specific version or version range.
+	// Default: "^2".
+	//
+	// Experimental.
+	CdkCliVersion *string `field:"optional" json:"cdkCliVersion" yaml:"cdkCliVersion"`
 	// Which AWS CDKv1 modules this project requires.
 	// Deprecated: For CDK 2.x use "deps" instead. (or "peerDeps" if you're building a library)
 	CdkDependencies *[]*string `field:"optional" json:"cdkDependencies" yaml:"cdkDependencies"`
