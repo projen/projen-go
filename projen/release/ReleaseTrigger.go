@@ -22,7 +22,9 @@ type ReleaseTrigger interface {
 	// Whether or not this is a continuous release.
 	// Experimental.
 	IsContinuous() *bool
-	// Whether or not this is a manual release trigger.
+	// Whether or not this is a release trigger with a manual task run in a working copy.
+	//
+	// If the `ReleaseTrigger` is a GitHub-only manual task, this will return `false`.
 	// Experimental.
 	IsManual() *bool
 	// Paths for which pushes will trigger a release when `isContinuous` is `true`.
@@ -175,6 +177,23 @@ func ReleaseTrigger_Scheduled(options *ScheduledReleaseOptions) ReleaseTrigger {
 		"projen.release.ReleaseTrigger",
 		"scheduled",
 		[]interface{}{options},
+		&returns,
+	)
+
+	return returns
+}
+
+// The release can only be triggered using the GitHub UI.
+// Experimental.
+func ReleaseTrigger_WorkflowDispatch() ReleaseTrigger {
+	_init_.Initialize()
+
+	var returns ReleaseTrigger
+
+	_jsii_.StaticInvoke(
+		"projen.release.ReleaseTrigger",
+		"workflowDispatch",
+		nil, // no parameters
 		&returns,
 	)
 
