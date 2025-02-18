@@ -303,6 +303,9 @@ type ConstructLibraryAws interface {
 	//
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	AnnotateGenerated(glob *string)
+	// Projen default Typescript compiler options.
+	// Deprecated: use `AwsCdkConstructLibrary`.
+	DefaultTypeScriptCompilerOptions() *javascript.TypeScriptCompilerOptions
 	// Indicates if a script by the name name is defined.
 	// Deprecated: Use `project.tasks.tryFind(name)`
 	HasScript(name *string) *bool
@@ -1404,6 +1407,19 @@ func (c *jsiiProxy_ConstructLibraryAws) AnnotateGenerated(glob *string) {
 		"annotateGenerated",
 		[]interface{}{glob},
 	)
+}
+
+func (c *jsiiProxy_ConstructLibraryAws) DefaultTypeScriptCompilerOptions() *javascript.TypeScriptCompilerOptions {
+	var returns *javascript.TypeScriptCompilerOptions
+
+	_jsii_.Invoke(
+		c,
+		"defaultTypeScriptCompilerOptions",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 func (c *jsiiProxy_ConstructLibraryAws) HasScript(name *string) *bool {

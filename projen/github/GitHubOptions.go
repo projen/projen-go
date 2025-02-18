@@ -11,7 +11,7 @@ type GitHubOptions struct {
 	// Whether a merge queue should be used on this repository to merge pull requests.
 	//
 	// Requires additional configuration of the repositories branch protection rules.
-	// Default: true.
+	// Default: false.
 	//
 	// Experimental.
 	MergeQueue *bool `field:"optional" json:"mergeQueue" yaml:"mergeQueue"`

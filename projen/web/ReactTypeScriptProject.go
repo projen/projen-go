@@ -291,6 +291,9 @@ type ReactTypeScriptProject interface {
 	//
 	// Deprecated.
 	AnnotateGenerated(glob *string)
+	// Projen default Typescript compiler options.
+	// Experimental.
+	DefaultTypeScriptCompilerOptions() *javascript.TypeScriptCompilerOptions
 	// Indicates if a script by the name name is defined.
 	// Deprecated: Use `project.tasks.tryFind(name)`
 	HasScript(name *string) *bool
@@ -1336,6 +1339,19 @@ func (r *jsiiProxy_ReactTypeScriptProject) AnnotateGenerated(glob *string) {
 		"annotateGenerated",
 		[]interface{}{glob},
 	)
+}
+
+func (r *jsiiProxy_ReactTypeScriptProject) DefaultTypeScriptCompilerOptions() *javascript.TypeScriptCompilerOptions {
+	var returns *javascript.TypeScriptCompilerOptions
+
+	_jsii_.Invoke(
+		r,
+		"defaultTypeScriptCompilerOptions",
+		nil, // no parameters
+		&returns,
+	)
+
+	return returns
 }
 
 func (r *jsiiProxy_ReactTypeScriptProject) HasScript(name *string) *bool {

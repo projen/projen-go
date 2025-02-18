@@ -40,6 +40,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "compileTask", GoGetter: "CompileTask"},
 			_jsii_.MemberProperty{JsiiProperty: "components", GoGetter: "Components"},
 			_jsii_.MemberProperty{JsiiProperty: "defaultTask", GoGetter: "DefaultTask"},
+			_jsii_.MemberMethod{JsiiMethod: "defaultTypeScriptCompilerOptions", GoMethod: "DefaultTypeScriptCompilerOptions"},
 			_jsii_.MemberProperty{JsiiProperty: "deps", GoGetter: "Deps"},
 			_jsii_.MemberProperty{JsiiProperty: "devContainer", GoGetter: "DevContainer"},
 			_jsii_.MemberProperty{JsiiProperty: "docgen", GoGetter: "Docgen"},
