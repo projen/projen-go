@@ -54,6 +54,17 @@ type PoetryPyprojectOptions struct {
 	// Name of the package (required).
 	// Experimental.
 	Name *string `field:"optional" json:"name" yaml:"name"`
+	// Package mode (optional).
+	//
+	// Example:
+	//   false
+	//
+	// See: https://python-poetry.org/docs/pyproject/#package-mode
+	//
+	// Default: true.
+	//
+	// Experimental.
+	PackageMode *bool `field:"optional" json:"packageMode" yaml:"packageMode"`
 	// A list of packages and modules to include in the final distribution.
 	// Experimental.
 	Packages *[]interface{} `field:"optional" json:"packages" yaml:"packages"`
