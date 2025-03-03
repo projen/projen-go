@@ -61,6 +61,9 @@ type Task interface {
 	// Executes a shell command.
 	// Experimental.
 	Exec(command *string, options *TaskStepOptions)
+	// Insert one or more steps at a given index.
+	// Experimental.
+	InsertStep(index *float64, steps ...*TaskStep)
 	// Forbid additional changes to this task.
 	// Experimental.
 	Lock()
@@ -245,6 +248,22 @@ func (t *jsiiProxy_Task) Exec(command *string, options *TaskStepOptions) {
 		t,
 		"exec",
 		[]interface{}{command, options},
+	)
+}
+
+func (t *jsiiProxy_Task) InsertStep(index *float64, steps ...*TaskStep) {
+	if err := t.validateInsertStepParameters(index, &steps); err != nil {
+		panic(err)
+	}
+	args := []interface{}{index}
+	for _, a := range steps {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		t,
+		"insertStep",
+		args,
 	)
 }
 

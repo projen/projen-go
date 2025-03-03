@@ -40,6 +40,20 @@ func (t *jsiiProxy_Task) validateExecParameters(command *string, options *TaskSt
 	return nil
 }
 
+func (t *jsiiProxy_Task) validateInsertStepParameters(index *float64, steps *[]*TaskStep) error {
+	if index == nil {
+		return fmt.Errorf("parameter index is required, but nil was provided")
+	}
+
+	for idx_b7595e, v := range *steps {
+		if err := _jsii_.ValidateStruct(v, func() string { return fmt.Sprintf("parameter steps[%#v]", idx_b7595e) }); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (t *jsiiProxy_Task) validatePrependParameters(shell *string, options *TaskStepOptions) error {
 	if shell == nil {
 		return fmt.Errorf("parameter shell is required, but nil was provided")

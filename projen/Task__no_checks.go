@@ -16,6 +16,10 @@ func (t *jsiiProxy_Task) validateExecParameters(command *string, options *TaskSt
 	return nil
 }
 
+func (t *jsiiProxy_Task) validateInsertStepParameters(index *float64, steps *[]*TaskStep) error {
+	return nil
+}
+
 func (t *jsiiProxy_Task) validatePrependParameters(shell *string, options *TaskStepOptions) error {
 	return nil
 }
