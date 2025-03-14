@@ -13,7 +13,7 @@ type JobMatrix struct {
 	// matrix.os property as the value of the runs-on keyword to create a job
 	// for each operating system.
 	// Experimental.
-	Domain *map[string]*[]interface{} `field:"optional" json:"domain" yaml:"domain"`
+	Domain *map[string]interface{} `field:"optional" json:"domain" yaml:"domain"`
 	// You can remove a specific configurations defined in the build matrix using the exclude option.
 	//
 	// Using exclude removes a job defined by the
