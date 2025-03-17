@@ -13,6 +13,11 @@ type GithubWorkflowOptions struct {
 	//
 	// Experimental.
 	ConcurrencyOptions *ConcurrencyOptions `field:"optional" json:"concurrencyOptions" yaml:"concurrencyOptions"`
+	// Additional environment variables to set for the workflow.
+	// Default: - no additional environment variables.
+	//
+	// Experimental.
+	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// Set a custom file name for the workflow definition file. Must include either a .yml or .yaml file extension.
 	//
 	// Use this option to set a file name for the workflow file, that is different than the display name.

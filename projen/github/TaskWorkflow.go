@@ -20,6 +20,9 @@ type TaskWorkflow interface {
 	// undefined means no concurrency limitations.
 	// Experimental.
 	Concurrency() *ConcurrencyOptions
+	// Additional environment variables to set for the workflow.
+	// Experimental.
+	Env() *map[string]*string
 	// The workflow YAML file.
 	//
 	// May not exist if `workflowsEnabled` is false on `GitHub`.
@@ -115,6 +118,16 @@ func (j *jsiiProxy_TaskWorkflow) Concurrency() *ConcurrencyOptions {
 	_jsii_.Get(
 		j,
 		"concurrency",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TaskWorkflow) Env() *map[string]*string {
+	var returns *map[string]*string
+	_jsii_.Get(
+		j,
+		"env",
 		&returns,
 	)
 	return returns
