@@ -9,13 +9,19 @@ import (
 	"github.com/projen/projen-go/projen/github/internal"
 )
 
-// Sets up mergify to merging approved pull requests.
+// Automatically merge Pull Requests using Mergify.
+//
+// > [!NOTE]
+// > GitHub now natively provides the same features, so you don't need Mergify
+// > anymore. See `GitHubOptions.mergeQueue` and `MergeQueueOptions.autoQueue`.
 //
 // If `buildJob` is specified, the specified GitHub workflow job ID is required
 // to succeed in order for the PR to be merged.
 //
 // `approvedReviews` specified the number of code review approvals required for
 // the PR to be merged.
+// See: https://mergify.com/
+//
 // Experimental.
 type AutoMerge interface {
 	projen.Component

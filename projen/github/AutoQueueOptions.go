@@ -35,5 +35,35 @@ type AutoQueueOptions struct {
 	//
 	// Experimental.
 	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
+	// The branch names that we should auto-queue for.
+	//
+	// This set of branches should be a subset of `MergeQueueOptions.targetBranches`.
+	//
+	// Be sure not to enable `autoQueue` for branches that don't have branch rules
+	// with merge requirements set up, otherwise new PRs will be merged
+	// immediately after creating without a chance for review.
+	//
+	// ## Automatically merging a set of Stacked PRs
+	//
+	// If you set this to `['main']` you can automatically merge a set of Stacked PRs
+	// in the right order. It works like this:
+	//
+	// - Create PR #1 from branch `a`, targeting `main`.
+	// - Create PR #2 from branch `b`, targeting branch `a`.
+	// - Create PR #3 from branch `c`, targeting branch `b`.
+	//
+	// Initially, PR #1 will be set to auto-merge, PRs #2 and #3 will not.
+	//
+	// Once PR #1 passes all of its requirements it will merge. That will delete
+	// branch `a` and change  the target branch of PR #2 change to `main`. At that
+	// point, auto-queueing will switch on for PR #2 and it gets merged, etc.
+	//
+	// > [!IMPORTANT]
+	// > This component will never disable AutoMerge, only enable it. So if a PR is
+	// > initially targeted at one of the branches in this list, and then
+	// > subsequently retargeted to another branch, *AutoMerge is not
+	// > automatically turned off*.
+	// Experimental.
+	TargetBranches *[]*string `field:"optional" json:"targetBranches" yaml:"targetBranches"`
 }
 
