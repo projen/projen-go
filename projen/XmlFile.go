@@ -96,7 +96,7 @@ type XmlFile interface {
 	// ```json
 	// "compilerOptions": {
 	//   "exclude": ["node_modules"],
-	//   "lib": ["es2019"]
+	//   "lib": ["es2020"]
 	//   ...
 	// }
 	// ...
@@ -110,7 +110,7 @@ type XmlFile interface {
 	// ```json
 	// "compilerOptions": {
 	//   "exclude": ["node_modules", "coverage"],
-	//   "lib": ["es2019", "dom", "dom.iterable", "esnext"]
+	//   "lib": ["es2020", "dom", "dom.iterable", "esnext"]
 	//   ...
 	// }
 	// ...
@@ -123,7 +123,7 @@ type XmlFile interface {
 	// ```json
 	// "compilerOptions": {
 	//   "exclude": ["node_modules"],
-	//   "lib": ["es2019"]
+	//   "lib": ["es2020"]
 	//   ...
 	// }
 	// ...
