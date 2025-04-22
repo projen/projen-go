@@ -7,10 +7,14 @@ package workflows
 // specify the access for any of these scopes, all those that are not
 // specified are set to `JobPermission.NONE`, instead of the default behavior
 // when none is specified.
+// See: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token#defining-access-for-the-github_token-permissions
+//
 // Experimental.
 type JobPermissions struct {
 	// Experimental.
 	Actions JobPermission `field:"optional" json:"actions" yaml:"actions"`
+	// Experimental.
+	Attestations JobPermission `field:"optional" json:"attestations" yaml:"attestations"`
 	// Experimental.
 	Checks JobPermission `field:"optional" json:"checks" yaml:"checks"`
 	// Experimental.
@@ -24,12 +28,14 @@ type JobPermissions struct {
 	// Experimental.
 	Issues JobPermission `field:"optional" json:"issues" yaml:"issues"`
 	// Experimental.
+	Models JobPermission `field:"optional" json:"models" yaml:"models"`
+	// Experimental.
 	Packages JobPermission `field:"optional" json:"packages" yaml:"packages"`
 	// Experimental.
 	Pages JobPermission `field:"optional" json:"pages" yaml:"pages"`
 	// Experimental.
 	PullRequests JobPermission `field:"optional" json:"pullRequests" yaml:"pullRequests"`
-	// Experimental.
+	// Deprecated: removed by GitHub.
 	RepositoryProjects JobPermission `field:"optional" json:"repositoryProjects" yaml:"repositoryProjects"`
 	// Experimental.
 	SecurityEvents JobPermission `field:"optional" json:"securityEvents" yaml:"securityEvents"`
