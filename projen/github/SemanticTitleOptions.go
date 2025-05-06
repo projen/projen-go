@@ -13,6 +13,13 @@ type SemanticTitleOptions struct {
 	//
 	// Experimental.
 	RequireScope *bool `field:"optional" json:"requireScope" yaml:"requireScope"`
+	// Configure which scopes are allowed (newline-delimited).
+	//
+	// These are regex patterns auto-wrapped in `^ $`.
+	// Default: - all scopes allowed.
+	//
+	// Experimental.
+	Scopes *[]*string `field:"optional" json:"scopes" yaml:"scopes"`
 	// Configure a list of commit types that are allowed.
 	// Default: ["feat", "fix", "chore"].
 	//
