@@ -35,7 +35,7 @@ type Eslint interface {
 	Project() projen.Project
 	// eslint rules.
 	// Experimental.
-	Rules() *map[string]*[]interface{}
+	Rules() *map[string]interface{}
 	// Adds an `extends` item to the eslint configuration.
 	// Experimental.
 	AddExtends(extendList ...*string)
@@ -148,8 +148,8 @@ func (j *jsiiProxy_Eslint) Project() projen.Project {
 	return returns
 }
 
-func (j *jsiiProxy_Eslint) Rules() *map[string]*[]interface{} {
-	var returns *map[string]*[]interface{}
+func (j *jsiiProxy_Eslint) Rules() *map[string]interface{} {
+	var returns *map[string]interface{}
 	_jsii_.Get(
 		j,
 		"rules",
