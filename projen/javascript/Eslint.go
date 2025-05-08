@@ -19,6 +19,9 @@ type Eslint interface {
 	// eslint task.
 	// Experimental.
 	EslintTask() projen.Task
+	// The underlying config file.
+	// Experimental.
+	File() projen.ObjectFile
 	// File patterns that should not be linted.
 	// Experimental.
 	IgnorePatterns() *[]*string
@@ -93,6 +96,16 @@ func (j *jsiiProxy_Eslint) EslintTask() projen.Task {
 	_jsii_.Get(
 		j,
 		"eslintTask",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Eslint) File() projen.ObjectFile {
+	var returns projen.ObjectFile
+	_jsii_.Get(
+		j,
+		"file",
 		&returns,
 	)
 	return returns
