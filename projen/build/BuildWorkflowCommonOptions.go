@@ -6,6 +6,11 @@ import (
 
 // Experimental.
 type BuildWorkflowCommonOptions struct {
+	// Build environment variables.
+	// Default: {}.
+	//
+	// Experimental.
+	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// Name of the buildfile (e.g. "build" becomes "build.yml").
 	// Default: "build".
 	//

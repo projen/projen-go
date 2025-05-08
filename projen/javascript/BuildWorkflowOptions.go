@@ -7,6 +7,11 @@ import (
 // Build workflow options for NodeProject.
 // Experimental.
 type BuildWorkflowOptions struct {
+	// Build environment variables.
+	// Default: {}.
+	//
+	// Experimental.
+	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// Name of the buildfile (e.g. "build" becomes "build.yml").
 	// Default: "build".
 	//

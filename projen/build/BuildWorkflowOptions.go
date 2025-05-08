@@ -8,6 +8,11 @@ import (
 
 // Experimental.
 type BuildWorkflowOptions struct {
+	// Build environment variables.
+	// Default: {}.
+	//
+	// Experimental.
+	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// Name of the buildfile (e.g. "build" becomes "build.yml").
 	// Default: "build".
 	//
@@ -41,11 +46,6 @@ type BuildWorkflowOptions struct {
 	//
 	// Experimental.
 	ContainerImage *string `field:"optional" json:"containerImage" yaml:"containerImage"`
-	// Build environment variables.
-	// Default: {}.
-	//
-	// Experimental.
-	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// Git identity to use for the workflow.
 	// Default: - default identity.
 	//
