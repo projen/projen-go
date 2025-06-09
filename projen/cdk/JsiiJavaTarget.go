@@ -31,7 +31,7 @@ type JsiiJavaTarget struct {
 	// URL of Nexus repository.
 	//
 	// if not set, defaults to https://oss.sonatype.org
-	// Default: "https://oss.sonatype.org"
+	// Default: - "https://oss.sonatype.org" or none when publishing to Maven Central
 	//
 	// Experimental.
 	MavenEndpoint *string `field:"optional" json:"mavenEndpoint" yaml:"mavenEndpoint"`
@@ -70,6 +70,8 @@ type JsiiJavaTarget struct {
 	// Experimental.
 	MavenRepositoryUrl *string `field:"optional" json:"mavenRepositoryUrl" yaml:"mavenRepositoryUrl"`
 	// Used in maven settings for credential lookup (e.g. use github when publishing to GitHub).
+	//
+	// Set to `central-ossrh` to publish to Maven Central.
 	// Default: "ossrh" (Maven Central) or "github" when using GitHub Packages.
 	//
 	// Experimental.

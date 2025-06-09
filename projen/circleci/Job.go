@@ -14,6 +14,9 @@ type Job struct {
 	// name of dynamic key *.
 	// Experimental.
 	Identifier *string `field:"required" json:"identifier" yaml:"identifier"`
+	// Enables jobs to go through a set of well-defined IP address ranges.
+	// Experimental.
+	CircleciIpRanges *bool `field:"optional" json:"circleciIpRanges" yaml:"circleciIpRanges"`
 	// Experimental.
 	Docker *[]*Docker `field:"optional" json:"docker" yaml:"docker"`
 	// A map of environment variable names and values.
