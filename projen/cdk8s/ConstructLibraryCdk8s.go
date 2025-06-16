@@ -43,6 +43,8 @@ type ConstructLibraryCdk8s interface {
 	// Experimental.
 	AutoMerge() github.AutoMerge
 	// Experimental.
+	Biome() javascript.Biome
+	// Experimental.
 	BuildTask() projen.Task
 	// The PR build GitHub workflow.
 	//
@@ -419,6 +421,16 @@ func (j *jsiiProxy_ConstructLibraryCdk8s) AutoMerge() github.AutoMerge {
 	_jsii_.Get(
 		j,
 		"autoMerge",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryCdk8s) Biome() javascript.Biome {
+	var returns javascript.Biome
+	_jsii_.Get(
+		j,
+		"biome",
 		&returns,
 	)
 	return returns

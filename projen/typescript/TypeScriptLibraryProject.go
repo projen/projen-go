@@ -36,6 +36,8 @@ type TypeScriptLibraryProject interface {
 	// Deprecated: use `TypeScriptProject`.
 	AutoMerge() github.AutoMerge
 	// Deprecated: use `TypeScriptProject`.
+	Biome() javascript.Biome
+	// Deprecated: use `TypeScriptProject`.
 	BuildTask() projen.Task
 	// The PR build GitHub workflow.
 	//
@@ -406,6 +408,16 @@ func (j *jsiiProxy_TypeScriptLibraryProject) AutoMerge() github.AutoMerge {
 	_jsii_.Get(
 		j,
 		"autoMerge",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptLibraryProject) Biome() javascript.Biome {
+	var returns javascript.Biome
+	_jsii_.Get(
+		j,
+		"biome",
 		&returns,
 	)
 	return returns

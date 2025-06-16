@@ -36,6 +36,8 @@ type ConstructLibraryAws interface {
 	// Deprecated: use `AwsCdkConstructLibrary`.
 	AutoMerge() github.AutoMerge
 	// Deprecated: use `AwsCdkConstructLibrary`.
+	Biome() javascript.Biome
+	// Deprecated: use `AwsCdkConstructLibrary`.
 	BuildTask() projen.Task
 	// The PR build GitHub workflow.
 	//
@@ -421,6 +423,16 @@ func (j *jsiiProxy_ConstructLibraryAws) AutoMerge() github.AutoMerge {
 	_jsii_.Get(
 		j,
 		"autoMerge",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ConstructLibraryAws) Biome() javascript.Biome {
+	var returns javascript.Biome
+	_jsii_.Get(
+		j,
+		"biome",
 		&returns,
 	)
 	return returns

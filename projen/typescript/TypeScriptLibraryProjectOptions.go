@@ -625,6 +625,16 @@ type TypeScriptLibraryProjectOptions struct {
 	//
 	// Deprecated: use TypeScriptProjectOptions.
 	AutoApproveUpgrades *bool `field:"optional" json:"autoApproveUpgrades" yaml:"autoApproveUpgrades"`
+	// Setup Biome.
+	// Default: false.
+	//
+	// Deprecated: use TypeScriptProjectOptions.
+	Biome *bool `field:"optional" json:"biome" yaml:"biome"`
+	// Biome options.
+	// Default: - default options.
+	//
+	// Deprecated: use TypeScriptProjectOptions.
+	BiomeOptions *javascript.BiomeOptions `field:"optional" json:"biomeOptions" yaml:"biomeOptions"`
 	// Define a GitHub workflow for building PRs.
 	// Default: - true if not a subproject.
 	//
