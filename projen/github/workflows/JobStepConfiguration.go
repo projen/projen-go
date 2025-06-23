@@ -24,6 +24,13 @@ type JobStepConfiguration struct {
 	// A name for your step to display on GitHub.
 	// Experimental.
 	Name *string `field:"optional" json:"name" yaml:"name"`
+	// Overrides the default shell settings in the runner's operating system and the job's default.
+	//
+	// Refer to GitHub documentation for allowed values.
+	// See: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
+	//
+	// Experimental.
+	Shell *string `field:"optional" json:"shell" yaml:"shell"`
 	// Specifies a working directory for a step.
 	//
 	// Overrides a job's working directory.
