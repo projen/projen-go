@@ -9,6 +9,7 @@ import (
 	"github.com/projen/projen-go/projen/javascript/internal"
 )
 
+// Biome component.
 // Experimental.
 type Biome interface {
 	projen.Component
@@ -24,7 +25,7 @@ type Biome interface {
 	// Experimental.
 	Task() projen.Task
 	// Experimental.
-	AddLintPattern(pattern *string)
+	AddFilePattern(pattern *string)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -191,13 +192,13 @@ func Biome_Of(project projen.Project) Biome {
 	return returns
 }
 
-func (b *jsiiProxy_Biome) AddLintPattern(pattern *string) {
-	if err := b.validateAddLintPatternParameters(pattern); err != nil {
+func (b *jsiiProxy_Biome) AddFilePattern(pattern *string) {
+	if err := b.validateAddFilePatternParameters(pattern); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		b,
-		"addLintPattern",
+		"addFilePattern",
 		[]interface{}{pattern},
 	)
 }

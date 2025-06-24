@@ -848,7 +848,7 @@ type AwsCdkConstructLibraryOptions struct {
 	// Experimental.
 	EntrypointTypes *string `field:"optional" json:"entrypointTypes" yaml:"entrypointTypes"`
 	// Setup eslint.
-	// Default: true.
+	// Default: - true, unless biome is enabled.
 	//
 	// Experimental.
 	Eslint *bool `field:"optional" json:"eslint" yaml:"eslint"`

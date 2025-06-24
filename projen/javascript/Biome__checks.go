@@ -10,7 +10,7 @@ import (
 	"github.com/projen/projen-go/projen"
 )
 
-func (b *jsiiProxy_Biome) validateAddLintPatternParameters(pattern *string) error {
+func (b *jsiiProxy_Biome) validateAddFilePatternParameters(pattern *string) error {
 	if pattern == nil {
 		return fmt.Errorf("parameter pattern is required, but nil was provided")
 	}

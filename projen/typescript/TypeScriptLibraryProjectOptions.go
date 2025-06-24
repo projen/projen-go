@@ -845,7 +845,7 @@ type TypeScriptLibraryProjectOptions struct {
 	// Deprecated: use TypeScriptProjectOptions.
 	EntrypointTypes *string `field:"optional" json:"entrypointTypes" yaml:"entrypointTypes"`
 	// Setup eslint.
-	// Default: true.
+	// Default: - true, unless biome is enabled.
 	//
 	// Deprecated: use TypeScriptProjectOptions.
 	Eslint *bool `field:"optional" json:"eslint" yaml:"eslint"`

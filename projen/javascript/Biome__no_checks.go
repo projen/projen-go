@@ -4,7 +4,7 @@ package javascript
 
 // Building without runtime type checking enabled, so all the below just return nil
 
-func (b *jsiiProxy_Biome) validateAddLintPatternParameters(pattern *string) error {
+func (b *jsiiProxy_Biome) validateAddFilePatternParameters(pattern *string) error {
 	return nil
 }
 

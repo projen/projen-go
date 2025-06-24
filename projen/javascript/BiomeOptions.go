@@ -6,25 +6,23 @@ import (
 
 // Experimental.
 type BiomeOptions struct {
-	// Full Biome configuration.
-	//
-	// Note that this configuration dictates the final outcome if value is set.
-	//
-	// Example:
-	//   if linter is disabled on main level, it can be enabled on fullConfiguration.formatter.enabled.
+	// Enable code assist with recommended actions.
+	// Default: true.
 	//
 	// Experimental.
-	BiomeConfig biomeconfig.IConfiguration `field:"optional" json:"biomeConfig" yaml:"biomeConfig"`
-	// Enable code formatter.
+	Assist *bool `field:"optional" json:"assist" yaml:"assist"`
+	// Full Biome configuration.
 	//
-	// Replaces mainly Prettier.
-	// Default: false.
+	// This configuration dictates the final outcome if value is set.
+	// For example, if the linter is disabled at the top-level, it can be enabled with `biomeConfig.linter.enabled`.
+	// Experimental.
+	BiomeConfig *biomeconfig.BiomeConfiguration `field:"optional" json:"biomeConfig" yaml:"biomeConfig"`
+	// Enable code formatter with recommended settings.
+	// Default: true.
 	//
 	// Experimental.
 	Formatter *bool `field:"optional" json:"formatter" yaml:"formatter"`
-	// Enable linting.
-	//
-	// Replaces Eslint.
+	// Enable linting with recommended rules.
 	// Default: true.
 	//
 	// Experimental.
@@ -36,15 +34,8 @@ type BiomeOptions struct {
 	//
 	// Experimental.
 	MergeArraysInConfiguration *bool `field:"optional" json:"mergeArraysInConfiguration" yaml:"mergeArraysInConfiguration"`
-	// Enable import sorting/organizing.
-	//
-	// Replaces mainly Prettier.
-	// Default: false.
-	//
-	// Experimental.
-	OrganizeImports *bool `field:"optional" json:"organizeImports" yaml:"organizeImports"`
 	// Version of Biome to use.
-	// Default: "^1".
+	// Default: "^2".
 	//
 	// Experimental.
 	Version *string `field:"optional" json:"version" yaml:"version"`

@@ -31,7 +31,7 @@ func init() {
 		"projen.javascript.Biome",
 		reflect.TypeOf((*Biome)(nil)).Elem(),
 		[]_jsii_.Member{
-			_jsii_.MemberMethod{JsiiMethod: "addLintPattern", GoMethod: "AddLintPattern"},
+			_jsii_.MemberMethod{JsiiMethod: "addFilePattern", GoMethod: "AddFilePattern"},
 			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
 			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
