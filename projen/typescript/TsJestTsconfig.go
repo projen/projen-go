@@ -53,10 +53,10 @@ func TsJestTsconfig_BuiltInDefaults() TsJestTsconfig {
 }
 
 // Inline compiler options.
-// See: TypescriptConfigOptions.
+// See: TypeScriptCompilerOptions.
 //
 // Experimental.
-func TsJestTsconfig_Custom(config *javascript.TypescriptConfigOptions) TsJestTsconfig {
+func TsJestTsconfig_Custom(config *javascript.TypeScriptCompilerOptions) TsJestTsconfig {
 	_init_.Initialize()
 
 	if err := validateTsJestTsconfig_CustomParameters(config); err != nil {

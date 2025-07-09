@@ -10,7 +10,7 @@ import (
 	"github.com/projen/projen-go/projen/javascript"
 )
 
-func validateTsJestTsconfig_CustomParameters(config *javascript.TypescriptConfigOptions) error {
+func validateTsJestTsconfig_CustomParameters(config *javascript.TypeScriptCompilerOptions) error {
 	if config == nil {
 		return fmt.Errorf("parameter config is required, but nil was provided")
 	}
