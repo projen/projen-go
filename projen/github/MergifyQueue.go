@@ -6,14 +6,22 @@ type MergifyQueue struct {
 	// Template to use as the commit message when using the merge or squash merge method.
 	// Experimental.
 	CommitMessageTemplate *string `field:"required" json:"commitMessageTemplate" yaml:"commitMessageTemplate"`
-	// A list of Conditions string that must match against the pull request for the pull request to be added to the queue.
-	// See: https://docs.mergify.com/conditions/#conditions
-	//
-	// Experimental.
-	Conditions *[]interface{} `field:"required" json:"conditions" yaml:"conditions"`
 	// The name of the queue.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// The list of conditions that needs to match to queue the pull request.
+	// See: https://docs.mergify.com/configuration/file-format/#queue-rules
+	//
+	// Deprecated: use `queueConditions` instead.
+	Conditions *[]interface{} `field:"optional" json:"conditions" yaml:"conditions"`
+	// The list of conditions to match to get the queued pull request merged.
+	//
+	// This automatically includes the queueConditions.
+	// In case of speculative merge pull request, the merge conditions are evaluated against the temporary pull request instead of the original one.
+	// See: https://docs.mergify.com/conditions/#conditions
+	//
+	// Experimental.
+	MergeConditions *[]interface{} `field:"optional" json:"mergeConditions" yaml:"mergeConditions"`
 	// Merge method to use.
 	//
 	// Possible values are `merge`, `squash`, `rebase` or `fast-forward`.
@@ -22,6 +30,11 @@ type MergifyQueue struct {
 	//
 	// Experimental.
 	MergeMethod *string `field:"optional" json:"mergeMethod" yaml:"mergeMethod"`
+	// The list of conditions that needs to match to queue the pull request.
+	// See: https://docs.mergify.com/conditions/#conditions
+	//
+	// Experimental.
+	QueueConditions *[]interface{} `field:"optional" json:"queueConditions" yaml:"queueConditions"`
 	// Method to use to update the pull request with its base branch when the speculative check is done in-place.
 	//
 	// Possible values:
