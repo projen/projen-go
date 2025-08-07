@@ -22,6 +22,14 @@ type BiomeOptions struct {
 	//
 	// Experimental.
 	Formatter *bool `field:"optional" json:"formatter" yaml:"formatter"`
+	// Automatically ignore all generated files.
+	//
+	// This prevents Biome from trying to format or lint files that are marked as generated,
+	// which would fail since generated files are typically read-only.
+	// Default: true.
+	//
+	// Experimental.
+	IgnoreGeneratedFiles *bool `field:"optional" json:"ignoreGeneratedFiles" yaml:"ignoreGeneratedFiles"`
 	// Enable linting with recommended rules.
 	// Default: true.
 	//

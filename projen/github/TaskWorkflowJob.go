@@ -25,7 +25,7 @@ type TaskWorkflowJob interface {
 	// Experimental.
 	Env() *map[string]*string
 	// Experimental.
-	Environment() interface{}
+	Environment() *string
 	// Experimental.
 	If() *string
 	// Experimental.
@@ -126,8 +126,8 @@ func (j *jsiiProxy_TaskWorkflowJob) Env() *map[string]*string {
 	return returns
 }
 
-func (j *jsiiProxy_TaskWorkflowJob) Environment() interface{} {
-	var returns interface{}
+func (j *jsiiProxy_TaskWorkflowJob) Environment() *string {
+	var returns *string
 	_jsii_.Get(
 		j,
 		"environment",

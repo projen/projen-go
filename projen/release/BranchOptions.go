@@ -7,6 +7,17 @@ type BranchOptions struct {
 	// The major versions released from this branch.
 	// Experimental.
 	MajorVersion *float64 `field:"required" json:"majorVersion" yaml:"majorVersion"`
+	// The GitHub Actions environment used for the release.
+	//
+	// This can be used to add an explicit approval step to the release
+	// or limit who can initiate a release through environment protection rules.
+	//
+	// When multiple artifacts are released, the environment can be overwritten
+	// on a per artifact basis.
+	// Default: - no environment used, unless set at the artifact level.
+	//
+	// Experimental.
+	Environment *string `field:"optional" json:"environment" yaml:"environment"`
 	// The minimum major version to release.
 	// Experimental.
 	MinMajorVersion *float64 `field:"optional" json:"minMajorVersion" yaml:"minMajorVersion"`

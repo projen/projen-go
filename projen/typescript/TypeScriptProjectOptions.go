@@ -543,6 +543,17 @@ type TypeScriptProjectOptions struct {
 	//
 	// Experimental.
 	ReleaseBranches *map[string]*release.BranchOptions `field:"optional" json:"releaseBranches" yaml:"releaseBranches"`
+	// The GitHub Actions environment used for the release.
+	//
+	// This can be used to add an explicit approval step to the release
+	// or limit who can initiate a release through environment protection rules.
+	//
+	// When multiple artifacts are released, the environment can be overwritten
+	// on a per artifact basis.
+	// Default: - no environment used, unless set at the artifact level.
+	//
+	// Experimental.
+	ReleaseEnvironment *string `field:"optional" json:"releaseEnvironment" yaml:"releaseEnvironment"`
 	// Automatically release new versions every commit to one of branches in `releaseBranches`.
 	// Default: true.
 	//

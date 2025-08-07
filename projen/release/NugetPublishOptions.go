@@ -7,6 +7,16 @@ import (
 // Options for NuGet releases.
 // Experimental.
 type NugetPublishOptions struct {
+	// The GitHub Actions environment used for publishing.
+	//
+	// This can be used to add an explicit approval step to the release
+	// or limit who can initiate a release through environment protection rules.
+	//
+	// Set this to overwrite a package level publishing environment just for this artifact.
+	// Default: - no environment used, unless set at the package level.
+	//
+	// Experimental.
+	GithubEnvironment *string `field:"optional" json:"githubEnvironment" yaml:"githubEnvironment"`
 	// Steps to execute after executing the publishing command.
 	//
 	// These can be used

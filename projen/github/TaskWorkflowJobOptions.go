@@ -38,6 +38,11 @@ type TaskWorkflowJobOptions struct {
 	//
 	// Experimental.
 	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
+	// The GitHub Actions environment used for the job.
+	// Default: - no environment used.
+	//
+	// Experimental.
+	Environment *string `field:"optional" json:"environment" yaml:"environment"`
 	// The git identity to use in this workflow.
 	// Experimental.
 	GitIdentity *GitIdentity `field:"optional" json:"gitIdentity" yaml:"gitIdentity"`
