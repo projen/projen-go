@@ -375,6 +375,11 @@ type ConstructLibraryAwsOptions struct {
 	//
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	NpmTokenSecret *string `field:"optional" json:"npmTokenSecret" yaml:"npmTokenSecret"`
+	// Use trusted publishing for publishing to npmjs.com Needs to be pre-configured on npm.js to work.
+	// Default: - false.
+	//
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	NpmTrustedPublishing *bool `field:"optional" json:"npmTrustedPublishing" yaml:"npmTrustedPublishing"`
 	// The Node Package Manager used to execute scripts.
 	// Default: NodePackageManager.YARN_CLASSIC
 	//

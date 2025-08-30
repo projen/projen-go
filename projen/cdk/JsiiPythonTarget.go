@@ -39,11 +39,28 @@ type JsiiPythonTarget struct {
 	//
 	// Experimental.
 	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
+	// Generate and publish cryptographic attestations for files uploaded to PyPI.
+	//
+	// Attestations provide package provenance and integrity an can be viewed on PyPI.
+	// They are only available when using a Trusted Publisher for publishing.
+	// See: https://docs.pypi.org/attestations/producing-attestations/
+	//
+	// Default: - enabled when using trusted publishing, otherwise not applicable.
+	//
+	// Experimental.
+	Attestations *bool `field:"optional" json:"attestations" yaml:"attestations"`
 	// Options for publishing to AWS CodeArtifact.
 	// Default: - undefined.
 	//
 	// Experimental.
 	CodeArtifactOptions *release.CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
+	// Use PyPI trusted publishing instead of tokens or username & password.
+	//
+	// Needs to be setup in PyPI.
+	// See: https://docs.pypi.org/trusted-publishers/adding-a-publisher/
+	//
+	// Experimental.
+	TrustedPublishing *bool `field:"optional" json:"trustedPublishing" yaml:"trustedPublishing"`
 	// The GitHub secret which contains PyPI password.
 	// Default: "TWINE_PASSWORD".
 	//

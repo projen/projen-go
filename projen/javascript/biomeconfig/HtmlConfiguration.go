@@ -9,6 +9,6 @@ type HtmlConfiguration struct {
 	Formatter *HtmlFormatterConfiguration `field:"optional" json:"formatter" yaml:"formatter"`
 	// HTML parsing options.
 	// Experimental.
-	Parser interface{} `field:"optional" json:"parser" yaml:"parser"`
+	Parser *HtmlParserConfiguration `field:"optional" json:"parser" yaml:"parser"`
 }
 

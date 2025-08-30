@@ -112,6 +112,10 @@ func init() {
 		"projen.javascript.biome_config.HtmlFormatterConfiguration",
 		reflect.TypeOf((*HtmlFormatterConfiguration)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.biome_config.HtmlParserConfiguration",
+		reflect.TypeOf((*HtmlParserConfiguration)(nil)).Elem(),
+	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.biome_config.IndentStyle",
 		reflect.TypeOf((*IndentStyle)(nil)).Elem(),
@@ -180,6 +184,14 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.biome_config.LinterConfiguration",
 		reflect.TypeOf((*LinterConfiguration)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.biome_config.OperatorLinebreak",
+		reflect.TypeOf((*OperatorLinebreak)(nil)).Elem(),
+		map[string]interface{}{
+			"AFTER": OperatorLinebreak_AFTER,
+			"BEFORE": OperatorLinebreak_BEFORE,
+		},
 	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.biome_config.OverrideAssistConfiguration",

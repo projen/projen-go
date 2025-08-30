@@ -69,6 +69,13 @@ type JsFormatterConfiguration struct {
 	//
 	// Experimental.
 	LineWidth *float64 `field:"optional" json:"lineWidth" yaml:"lineWidth"`
+	// When breaking binary expressions into multiple lines, whether to break them before or after the binary operator.
+	//
+	// Defaults to "after".
+	// Default: after".
+	//
+	// Experimental.
+	OperatorLinebreak OperatorLinebreak `field:"optional" json:"operatorLinebreak" yaml:"operatorLinebreak"`
 	// When properties in objects are quoted.
 	//
 	// Defaults to asNeeded.

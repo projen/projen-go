@@ -39,7 +39,7 @@ type JsiiReleaseNpm struct {
 	// Deprecated: Use `NpmPublishOptions` instead.
 	PublishTools *workflows.Tools `field:"optional" json:"publishTools" yaml:"publishTools"`
 	// Options for publishing npm package to AWS CodeArtifact.
-	// Default: - undefined.
+	// Default: - package is not published to.
 	//
 	// Deprecated: Use `NpmPublishOptions` instead.
 	CodeArtifactOptions *CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
@@ -63,13 +63,15 @@ type JsiiReleaseNpm struct {
 	//
 	// Note that this component is using `publib` to publish packages,
 	// which is using npm internally and supports provenance statements independently of the package manager used.
+	//
+	// Only works in supported CI/CD environments.
 	// See: https://docs.npmjs.com/generating-provenance-statements
 	//
-	// Default: - undefined.
+	// Default: - enabled for for public packages using trusted publishing, disabled otherwise.
 	//
 	// Deprecated: Use `NpmPublishOptions` instead.
 	NpmProvenance *bool `field:"optional" json:"npmProvenance" yaml:"npmProvenance"`
-	// GitHub secret which contains the NPM token to use when publishing packages.
+	// GitHub secret which contains the NPM token to use for publishing packages.
 	// Default: - "NPM_TOKEN" or "GITHUB_TOKEN" if `registry` is set to `npm.pkg.github.com`.
 	//
 	// Deprecated: Use `NpmPublishOptions` instead.
@@ -89,5 +91,15 @@ type JsiiReleaseNpm struct {
 	//
 	// Deprecated: Use `NpmPublishOptions` instead.
 	Registry *string `field:"optional" json:"registry" yaml:"registry"`
+	// Use trusted publishing for publishing to npmjs.com Needs to be pre-configured on npm.js to work.
+	//
+	// Requires npm CLI version 11.5.1 or later, this is NOT ensured automatically.
+	// When used, `npmTokenSecret` will be ignored.
+	// See: https://docs.npmjs.com/trusted-publishers
+	//
+	// Default: - false.
+	//
+	// Deprecated: Use `NpmPublishOptions` instead.
+	TrustedPublishing *bool `field:"optional" json:"trustedPublishing" yaml:"trustedPublishing"`
 }
 
