@@ -30,6 +30,11 @@ type TaskWorkflow interface {
 	File() projen.YamlFile
 	// Experimental.
 	JobId() *string
+	// All current jobs of the workflow.
+	//
+	// This is a read-only copy, use the respective helper methods to add, update or remove jobs.
+	// Experimental.
+	Jobs() *map[string]interface{}
 	// The name of the workflow.
 	//
 	// GitHub displays the names of your workflows under your repository's
@@ -93,7 +98,7 @@ type TaskWorkflow interface {
 	// Updates a single job to the workflow.
 	// Experimental.
 	UpdateJob(id *string, job interface{})
-	// Updates jobs for this worklow Does a complete replace, it does not try to merge the jobs.
+	// Updates jobs for this workflow Does a complete replace, it does not try to merge the jobs.
 	// Experimental.
 	UpdateJobs(jobs *map[string]interface{})
 }
@@ -148,6 +153,16 @@ func (j *jsiiProxy_TaskWorkflow) JobId() *string {
 	_jsii_.Get(
 		j,
 		"jobId",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TaskWorkflow) Jobs() *map[string]interface{} {
+	var returns *map[string]interface{}
+	_jsii_.Get(
+		j,
+		"jobs",
 		&returns,
 	)
 	return returns

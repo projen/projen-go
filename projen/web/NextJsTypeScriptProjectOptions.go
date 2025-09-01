@@ -687,13 +687,13 @@ type NextJsTypeScriptProjectOptions struct {
 	//
 	// Experimental.
 	CheckLicenses *javascript.LicenseCheckerOptions `field:"optional" json:"checkLicenses" yaml:"checkLicenses"`
-	// Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v4 A secret is required for private repos. Configured with `@codeCovTokenSecret`.
+	// Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v5 By default, OIDC auth is used. Alternatively a token can be provided via `codeCovTokenSecret`.
 	// Default: false.
 	//
 	// Experimental.
 	CodeCov *bool `field:"optional" json:"codeCov" yaml:"codeCov"`
-	// Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories.
-	// Default: - if this option is not specified, only public repositories are supported.
+	// Define the secret name for a specified https://codecov.io/ token.
+	// Default: - OIDC auth is used.
 	//
 	// Experimental.
 	CodeCovTokenSecret *string `field:"optional" json:"codeCovTokenSecret" yaml:"codeCovTokenSecret"`

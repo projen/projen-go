@@ -31,6 +31,11 @@ type GithubWorkflow interface {
 	// May not exist if `workflowsEnabled` is false on `GitHub`.
 	// Experimental.
 	File() projen.YamlFile
+	// All current jobs of the workflow.
+	//
+	// This is a read-only copy, use the respective helper methods to add, update or remove jobs.
+	// Experimental.
+	Jobs() *map[string]interface{}
 	// The name of the workflow.
 	//
 	// GitHub displays the names of your workflows under your repository's
@@ -94,7 +99,7 @@ type GithubWorkflow interface {
 	// Updates a single job to the workflow.
 	// Experimental.
 	UpdateJob(id *string, job interface{})
-	// Updates jobs for this worklow Does a complete replace, it does not try to merge the jobs.
+	// Updates jobs for this workflow Does a complete replace, it does not try to merge the jobs.
 	// Experimental.
 	UpdateJobs(jobs *map[string]interface{})
 }
@@ -129,6 +134,16 @@ func (j *jsiiProxy_GithubWorkflow) File() projen.YamlFile {
 	_jsii_.Get(
 		j,
 		"file",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GithubWorkflow) Jobs() *map[string]interface{} {
+	var returns *map[string]interface{}
+	_jsii_.Get(
+		j,
+		"jobs",
 		&returns,
 	)
 	return returns
