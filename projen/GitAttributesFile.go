@@ -66,6 +66,11 @@ type GitAttributesFile interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Removes attributes from a set of files.
+	//
+	// If no attributes are provided, the glob pattern will be removed completely.
+	// Experimental.
+	RemoveAttributes(glob *string, attributes ...*string)
 	// Writes the file to the project's output directory.
 	// Experimental.
 	Synthesize()
@@ -330,6 +335,22 @@ func (g *jsiiProxy_GitAttributesFile) PreSynthesize() {
 		g,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (g *jsiiProxy_GitAttributesFile) RemoveAttributes(glob *string, attributes ...*string) {
+	if err := g.validateRemoveAttributesParameters(glob); err != nil {
+		panic(err)
+	}
+	args := []interface{}{glob}
+	for _, a := range attributes {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		g,
+		"removeAttributes",
+		args,
 	)
 }
 

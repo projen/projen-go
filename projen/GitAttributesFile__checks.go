@@ -26,6 +26,14 @@ func (g *jsiiProxy_GitAttributesFile) validateAddLfsPatternParameters(glob *stri
 	return nil
 }
 
+func (g *jsiiProxy_GitAttributesFile) validateRemoveAttributesParameters(glob *string) error {
+	if glob == nil {
+		return fmt.Errorf("parameter glob is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (g *jsiiProxy_GitAttributesFile) validateSynthesizeContentParameters(_arg IResolver) error {
 	if _arg == nil {
 		return fmt.Errorf("parameter _arg is required, but nil was provided")

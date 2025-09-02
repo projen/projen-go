@@ -246,6 +246,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberProperty{JsiiProperty: "readonly", GoGetter: "Readonly"},
+			_jsii_.MemberMethod{JsiiMethod: "removeAttributes", GoMethod: "RemoveAttributes"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
