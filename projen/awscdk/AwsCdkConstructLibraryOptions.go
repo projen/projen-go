@@ -989,7 +989,7 @@ type AwsCdkConstructLibraryOptions struct {
 	// NOTE: The jsii compiler releases since 5.0.0 are not semantically versioned
 	// and should remain on the same minor, so we recommend using a `~` dependency
 	// (e.g. `~5.0.0`).
-	// Default: "~5.6.0"
+	// Default: "~5.8.0"
 	//
 	// Experimental.
 	JsiiVersion *string `field:"optional" json:"jsiiVersion" yaml:"jsiiVersion"`
