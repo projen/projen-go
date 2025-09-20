@@ -24,6 +24,11 @@ type UpgradeDependenciesWorkflowOptions struct {
 	//
 	// Experimental.
 	Container *workflows.ContainerOptions `field:"optional" json:"container" yaml:"container"`
+	// Build environment variables for the upgrade job.
+	// Default: {}.
+	//
+	// Experimental.
+	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// The git identity to use for commits.
 	// Default: "github-actions@github.com"
 	//

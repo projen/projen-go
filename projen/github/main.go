@@ -126,6 +126,31 @@ func init() {
 		"projen.github.DependabotGroup",
 		reflect.TypeOf((*DependabotGroup)(nil)).Elem(),
 	)
+	_jsii_.RegisterEnum(
+		"projen.github.DependabotGroupAppliesTo",
+		reflect.TypeOf((*DependabotGroupAppliesTo)(nil)).Elem(),
+		map[string]interface{}{
+			"VERSION_UPDATES": DependabotGroupAppliesTo_VERSION_UPDATES,
+			"SECURITY_UPDATES": DependabotGroupAppliesTo_SECURITY_UPDATES,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.github.DependabotGroupDependencyType",
+		reflect.TypeOf((*DependabotGroupDependencyType)(nil)).Elem(),
+		map[string]interface{}{
+			"DEVELOPMENT": DependabotGroupDependencyType_DEVELOPMENT,
+			"PRODUCTION": DependabotGroupDependencyType_PRODUCTION,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.github.DependabotGroupUpdateType",
+		reflect.TypeOf((*DependabotGroupUpdateType)(nil)).Elem(),
+		map[string]interface{}{
+			"MAJOR": DependabotGroupUpdateType_MAJOR,
+			"MINOR": DependabotGroupUpdateType_MINOR,
+			"PATCH": DependabotGroupUpdateType_PATCH,
+		},
+	)
 	_jsii_.RegisterStruct(
 		"projen.github.DependabotIgnore",
 		reflect.TypeOf((*DependabotIgnore)(nil)).Elem(),

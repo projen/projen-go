@@ -159,6 +159,11 @@ type ReleaseOptions struct {
 	//
 	// Experimental.
 	ReleaseTrigger ReleaseTrigger `field:"optional" json:"releaseTrigger" yaml:"releaseTrigger"`
+	// Build environment variables for release workflows.
+	// Default: {}.
+	//
+	// Experimental.
+	ReleaseWorkflowEnv *map[string]*string `field:"optional" json:"releaseWorkflowEnv" yaml:"releaseWorkflowEnv"`
 	// The name of the default release workflow.
 	// Default: "release".
 	//
