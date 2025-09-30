@@ -46,6 +46,20 @@ type JsiiDotNetTarget struct {
 	// NuGet Server URL (defaults to nuget.org).
 	// Experimental.
 	NugetServer *string `field:"optional" json:"nugetServer" yaml:"nugetServer"`
+	// The NuGet.org username (profile name, not email address) for trusted publisher authentication.
+	//
+	// Required when using trusted publishing.
+	// Default: "NUGET_USERNAME".
+	//
+	// Experimental.
+	NugetUsernameSecret *string `field:"optional" json:"nugetUsernameSecret" yaml:"nugetUsernameSecret"`
+	// Use NuGet trusted publishing instead of API keys.
+	//
+	// Needs to be setup in NuGet.org.
+	// See: https://learn.microsoft.com/en-us/nuget/nuget-org/trusted-publishing
+	//
+	// Experimental.
+	TrustedPublishing *bool `field:"optional" json:"trustedPublishing" yaml:"trustedPublishing"`
 	// Experimental.
 	DotNetNamespace *string `field:"required" json:"dotNetNamespace" yaml:"dotNetNamespace"`
 	// Experimental.

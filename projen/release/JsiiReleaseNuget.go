@@ -46,5 +46,19 @@ type JsiiReleaseNuget struct {
 	// NuGet Server URL (defaults to nuget.org).
 	// Deprecated: Use `NugetPublishOptions` instead.
 	NugetServer *string `field:"optional" json:"nugetServer" yaml:"nugetServer"`
+	// The NuGet.org username (profile name, not email address) for trusted publisher authentication.
+	//
+	// Required when using trusted publishing.
+	// Default: "NUGET_USERNAME".
+	//
+	// Deprecated: Use `NugetPublishOptions` instead.
+	NugetUsernameSecret *string `field:"optional" json:"nugetUsernameSecret" yaml:"nugetUsernameSecret"`
+	// Use NuGet trusted publishing instead of API keys.
+	//
+	// Needs to be setup in NuGet.org.
+	// See: https://learn.microsoft.com/en-us/nuget/nuget-org/trusted-publishing
+	//
+	// Deprecated: Use `NugetPublishOptions` instead.
+	TrustedPublishing *bool `field:"optional" json:"trustedPublishing" yaml:"trustedPublishing"`
 }
 
