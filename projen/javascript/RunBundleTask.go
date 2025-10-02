@@ -41,7 +41,7 @@ const (
 	// // Tell the bundler to bundle the compiled results (from the "lib" directory)
 	// project.bundler.addBundle("./lib/index.js", {
 	//   platform: "node",
-	//   target: "node18",
+	//   target: "node22",
 	//   sourcemap: false,
 	//   format: "esm",
 	// });

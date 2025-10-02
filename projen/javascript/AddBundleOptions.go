@@ -85,7 +85,7 @@ type AddBundleOptions struct {
 	// ```text
 	// project.bundler.addBundle("./src/hello.ts", {
 	//   platform: "node",
-	//   target: "node18",
+	//   target: "node22",
 	//   sourcemap: true,
 	//   format: "esm",
 	//   esbuildArgs: {
