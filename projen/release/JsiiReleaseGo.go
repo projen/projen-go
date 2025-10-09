@@ -68,12 +68,12 @@ type JsiiReleaseGo struct {
 	// Deprecated: Use `GoPublishOptions` instead.
 	GithubUseSsh *bool `field:"optional" json:"githubUseSsh" yaml:"githubUseSsh"`
 	// The email to use in the release git commit.
-	// Default: "github-actions@github.com"
+	// Default: - default GitHub Actions user email.
 	//
 	// Deprecated: Use `GoPublishOptions` instead.
 	GitUserEmail *string `field:"optional" json:"gitUserEmail" yaml:"gitUserEmail"`
 	// The user name to use for the release git commit.
-	// Default: "github-actions".
+	// Default: - default GitHub Actions user name.
 	//
 	// Deprecated: Use `GoPublishOptions` instead.
 	GitUserName *string `field:"optional" json:"gitUserName" yaml:"gitUserName"`

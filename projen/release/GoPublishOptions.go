@@ -69,12 +69,12 @@ type GoPublishOptions struct {
 	// Experimental.
 	GithubUseSsh *bool `field:"optional" json:"githubUseSsh" yaml:"githubUseSsh"`
 	// The email to use in the release git commit.
-	// Default: "github-actions@github.com"
+	// Default: - default GitHub Actions user email.
 	//
 	// Experimental.
 	GitUserEmail *string `field:"optional" json:"gitUserEmail" yaml:"gitUserEmail"`
 	// The user name to use for the release git commit.
-	// Default: "github-actions".
+	// Default: - default GitHub Actions user name.
 	//
 	// Experimental.
 	GitUserName *string `field:"optional" json:"gitUserName" yaml:"gitUserName"`

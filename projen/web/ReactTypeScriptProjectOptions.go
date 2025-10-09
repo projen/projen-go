@@ -825,7 +825,7 @@ type ReactTypeScriptProjectOptions struct {
 	// Experimental.
 	WorkflowBootstrapSteps *[]*workflows.JobStep `field:"optional" json:"workflowBootstrapSteps" yaml:"workflowBootstrapSteps"`
 	// The git identity to use in workflows.
-	// Default: - GitHub Actions.
+	// Default: - default GitHub Actions user.
 	//
 	// Experimental.
 	WorkflowGitIdentity *github.GitIdentity `field:"optional" json:"workflowGitIdentity" yaml:"workflowGitIdentity"`

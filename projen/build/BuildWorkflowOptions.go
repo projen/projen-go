@@ -47,7 +47,7 @@ type BuildWorkflowOptions struct {
 	// Experimental.
 	ContainerImage *string `field:"optional" json:"containerImage" yaml:"containerImage"`
 	// Git identity to use for the workflow.
-	// Default: - default identity.
+	// Default: - default GitHub Actions user.
 	//
 	// Experimental.
 	GitIdentity *github.GitIdentity `field:"optional" json:"gitIdentity" yaml:"gitIdentity"`

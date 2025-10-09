@@ -44,6 +44,8 @@ type TaskWorkflowJobOptions struct {
 	// Experimental.
 	Environment *string `field:"optional" json:"environment" yaml:"environment"`
 	// The git identity to use in this workflow.
+	// Default: - default GitHub Actions user.
+	//
 	// Experimental.
 	GitIdentity *GitIdentity `field:"optional" json:"gitIdentity" yaml:"gitIdentity"`
 	// Default settings for all steps in the TaskWorkflow Job.

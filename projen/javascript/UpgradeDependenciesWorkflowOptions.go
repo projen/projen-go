@@ -30,7 +30,7 @@ type UpgradeDependenciesWorkflowOptions struct {
 	// Experimental.
 	Env *map[string]*string `field:"optional" json:"env" yaml:"env"`
 	// The git identity to use for commits.
-	// Default: "github-actions@github.com"
+	// Default: - default GitHub Actions user.
 	//
 	// Experimental.
 	GitIdentity *github.GitIdentity `field:"optional" json:"gitIdentity" yaml:"gitIdentity"`

@@ -40,7 +40,7 @@ type PullRequestFromPatchOptions struct {
 	// Experimental.
 	Credentials GithubCredentials `field:"optional" json:"credentials" yaml:"credentials"`
 	// The git identity used to create the commit.
-	// Default: - the default github-actions user.
+	// Default: - default GitHub Actions user.
 	//
 	// Experimental.
 	GitIdentity *GitIdentity `field:"optional" json:"gitIdentity" yaml:"gitIdentity"`

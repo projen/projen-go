@@ -824,7 +824,7 @@ type TypeScriptLibraryProjectOptions struct {
 	// Deprecated: use TypeScriptProjectOptions.
 	WorkflowBootstrapSteps *[]*workflows.JobStep `field:"optional" json:"workflowBootstrapSteps" yaml:"workflowBootstrapSteps"`
 	// The git identity to use in workflows.
-	// Default: - GitHub Actions.
+	// Default: - default GitHub Actions user.
 	//
 	// Deprecated: use TypeScriptProjectOptions.
 	WorkflowGitIdentity *github.GitIdentity `field:"optional" json:"workflowGitIdentity" yaml:"workflowGitIdentity"`
