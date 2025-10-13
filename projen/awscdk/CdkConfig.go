@@ -16,6 +16,9 @@ type CdkConfig interface {
 	// Name of the cdk.out directory.
 	// Experimental.
 	Cdkout() *string
+	// The context to write to cdk.json.
+	// Experimental.
+	Context() *map[string]interface{}
 	// List of glob patterns to be excluded by CDK.
 	// Experimental.
 	Exclude() *[]*string
@@ -62,6 +65,16 @@ func (j *jsiiProxy_CdkConfig) Cdkout() *string {
 	_jsii_.Get(
 		j,
 		"cdkout",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_CdkConfig) Context() *map[string]interface{} {
+	var returns *map[string]interface{}
+	_jsii_.Get(
+		j,
+		"context",
 		&returns,
 	)
 	return returns

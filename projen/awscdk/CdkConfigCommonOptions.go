@@ -23,11 +23,15 @@ type CdkConfigCommonOptions struct {
 	//
 	// Experimental.
 	Context *map[string]interface{} `field:"optional" json:"context" yaml:"context"`
-	// Include all feature flags in cdk.json.
-	// Default: true.
+	// Feature flags that should be enabled in `cdk.json`.
+	//
+	// Make sure to double-check any changes to feature flags in `cdk.json` before deploying.
+	// Unexpected changes may cause breaking changes in your CDK app.
+	// You can overwrite any feature flag by passing it into the context field.
+	// Default: - no feature flags are enabled by default.
 	//
 	// Experimental.
-	FeatureFlags *bool `field:"optional" json:"featureFlags" yaml:"featureFlags"`
+	FeatureFlags ICdkFeatureFlags `field:"optional" json:"featureFlags" yaml:"featureFlags"`
 	// To protect you against unintended changes that affect your security posture, the AWS CDK Toolkit prompts you to approve security-related changes before deploying them.
 	// Default: ApprovalLevel.BROADENING
 	//

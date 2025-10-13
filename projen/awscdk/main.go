@@ -550,6 +550,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addExcludes", GoMethod: "AddExcludes"},
 			_jsii_.MemberMethod{JsiiMethod: "addIncludes", GoMethod: "AddIncludes"},
 			_jsii_.MemberProperty{JsiiProperty: "cdkout", GoGetter: "Cdkout"},
+			_jsii_.MemberProperty{JsiiProperty: "context", GoGetter: "Context"},
 			_jsii_.MemberProperty{JsiiProperty: "exclude", GoGetter: "Exclude"},
 			_jsii_.MemberProperty{JsiiProperty: "include", GoGetter: "Include"},
 			_jsii_.MemberProperty{JsiiProperty: "json", GoGetter: "Json"},
@@ -573,6 +574,42 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.awscdk.CdkConfigOptions",
 		reflect.TypeOf((*CdkConfigOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.awscdk.CdkFeatureFlags",
+		reflect.TypeOf((*CdkFeatureFlags)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "flags", GoGetter: "Flags"},
+		},
+		func() interface{} {
+			j := jsiiProxy_CdkFeatureFlags{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_ICdkFeatureFlags)
+			return &j
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.awscdk.CdkFeatureFlagsV1",
+		reflect.TypeOf((*CdkFeatureFlagsV1)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "flags", GoGetter: "Flags"},
+		},
+		func() interface{} {
+			j := jsiiProxy_CdkFeatureFlagsV1{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_ICdkFeatureFlags)
+			return &j
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.awscdk.CdkFeatureFlagsV2",
+		reflect.TypeOf((*CdkFeatureFlagsV2)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "flags", GoGetter: "Flags"},
+		},
+		func() interface{} {
+			j := jsiiProxy_CdkFeatureFlagsV2{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_ICdkFeatureFlags)
+			return &j
+		},
 	)
 	_jsii_.RegisterClass(
 		"projen.awscdk.CdkTasks",
@@ -735,6 +772,16 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.awscdk.EdgeLambdaAutoDiscoverOptions",
 		reflect.TypeOf((*EdgeLambdaAutoDiscoverOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterInterface(
+		"projen.awscdk.ICdkFeatureFlags",
+		reflect.TypeOf((*ICdkFeatureFlags)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "flags", GoGetter: "Flags"},
+		},
+		func() interface{} {
+			return &jsiiProxy_ICdkFeatureFlags{}
+		},
 	)
 	_jsii_.RegisterClass(
 		"projen.awscdk.IntegrationTest",
