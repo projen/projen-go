@@ -7,6 +7,7 @@ import (
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 
+	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 )
 
@@ -124,9 +125,9 @@ func validateJest_OfParameters(project projen.Project) error {
 	return nil
 }
 
-func validateNewJestParameters(project NodeProject, options *JestOptions) error {
-	if project == nil {
-		return fmt.Errorf("parameter project is required, but nil was provided")
+func validateNewJestParameters(scope constructs.IConstruct, options *JestOptions) error {
+	if scope == nil {
+		return fmt.Errorf("parameter scope is required, but nil was provided")
 	}
 
 	if err := _jsii_.ValidateStruct(options, func() string { return "parameter options" }); err != nil {

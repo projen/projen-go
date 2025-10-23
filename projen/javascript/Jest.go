@@ -32,7 +32,7 @@ type Jest interface {
 	// Experimental.
 	Node() constructs.Node
 	// Experimental.
-	Project() projen.Project
+	Project() NodeProject
 	// Experimental.
 	AddIgnorePattern(pattern *string)
 	// Adds one or more moduleNameMapper entries to Jest's configuration.
@@ -126,8 +126,8 @@ func (j *jsiiProxy_Jest) Node() constructs.Node {
 	return returns
 }
 
-func (j *jsiiProxy_Jest) Project() projen.Project {
-	var returns projen.Project
+func (j *jsiiProxy_Jest) Project() NodeProject {
+	var returns NodeProject
 	_jsii_.Get(
 		j,
 		"project",
@@ -138,17 +138,17 @@ func (j *jsiiProxy_Jest) Project() projen.Project {
 
 
 // Experimental.
-func NewJest(project NodeProject, options *JestOptions) Jest {
+func NewJest(scope constructs.IConstruct, options *JestOptions) Jest {
 	_init_.Initialize()
 
-	if err := validateNewJestParameters(project, options); err != nil {
+	if err := validateNewJestParameters(scope, options); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_Jest{}
 
 	_jsii_.Create(
 		"projen.javascript.Jest",
-		[]interface{}{project, options},
+		[]interface{}{scope, options},
 		&j,
 	)
 
@@ -156,12 +156,12 @@ func NewJest(project NodeProject, options *JestOptions) Jest {
 }
 
 // Experimental.
-func NewJest_Override(j Jest, project NodeProject, options *JestOptions) {
+func NewJest_Override(j Jest, scope constructs.IConstruct, options *JestOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.javascript.Jest",
-		[]interface{}{project, options},
+		[]interface{}{scope, options},
 		j,
 	)
 }

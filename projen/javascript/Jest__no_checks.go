@@ -52,7 +52,7 @@ func validateJest_OfParameters(project projen.Project) error {
 	return nil
 }
 
-func validateNewJestParameters(project NodeProject, options *JestOptions) error {
+func validateNewJestParameters(scope constructs.IConstruct, options *JestOptions) error {
 	return nil
 }
 
