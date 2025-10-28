@@ -8,6 +8,65 @@ import (
 )
 
 func init() {
+	_jsii_.RegisterEnum(
+		"projen.AiAgent",
+		reflect.TypeOf((*AiAgent)(nil)).Elem(),
+		map[string]interface{}{
+			"GITHUB_COPILOT": AiAgent_GITHUB_COPILOT,
+			"CURSOR": AiAgent_CURSOR,
+			"CLAUDE": AiAgent_CLAUDE,
+			"AMAZON_Q": AiAgent_AMAZON_Q,
+			"KIRO": AiAgent_KIRO,
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.AiInstructions",
+		reflect.TypeOf((*AiInstructions)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addAgentSpecificInstructions", GoMethod: "AddAgentSpecificInstructions"},
+			_jsii_.MemberMethod{JsiiMethod: "addInstructions", GoMethod: "AddInstructions"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+		},
+		func() interface{} {
+			j := jsiiProxy_AiInstructions{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_Component)
+			return &j
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.AiInstructionsFile",
+		reflect.TypeOf((*AiInstructionsFile)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "absolutePath", GoGetter: "AbsolutePath"},
+			_jsii_.MemberMethod{JsiiMethod: "addInstructions", GoMethod: "AddInstructions"},
+			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
+			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
+			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberProperty{JsiiProperty: "readonly", GoGetter: "Readonly"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+		},
+		func() interface{} {
+			j := jsiiProxy_AiInstructionsFile{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_FileBase)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.AiInstructionsOptions",
+		reflect.TypeOf((*AiInstructionsOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.Component",
 		reflect.TypeOf((*Component)(nil)).Elem(),

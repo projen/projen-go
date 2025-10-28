@@ -60,6 +60,8 @@ type JsFormatterConfiguration struct {
 	// Experimental.
 	JsxQuoteStyle QuoteStyle `field:"optional" json:"jsxQuoteStyle" yaml:"jsxQuoteStyle"`
 	// The type of line ending applied to JavaScript (and its super languages) files.
+	//
+	// `auto` uses CRLF on Windows and LF on other platforms.
 	// Experimental.
 	LineEnding LineEnding `field:"optional" json:"lineEnding" yaml:"lineEnding"`
 	// What's the max width of a line applied to JavaScript (and its super languages) files.

@@ -31,6 +31,8 @@ type JsonFormatterConfiguration struct {
 	// Experimental.
 	IndentWidth *float64 `field:"optional" json:"indentWidth" yaml:"indentWidth"`
 	// The type of line ending applied to JSON (and its super languages) files.
+	//
+	// `auto` uses CRLF on Windows and LF on other platforms.
 	// Experimental.
 	LineEnding LineEnding `field:"optional" json:"lineEnding" yaml:"lineEnding"`
 	// What's the max width of a line applied to JSON (and its super languages) files.

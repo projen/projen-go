@@ -105,12 +105,20 @@ func init() {
 		reflect.TypeOf((*GritLinterConfiguration)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.javascript.biome_config.HtmlAssistConfiguration",
+		reflect.TypeOf((*HtmlAssistConfiguration)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.javascript.biome_config.HtmlConfiguration",
 		reflect.TypeOf((*HtmlConfiguration)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.biome_config.HtmlFormatterConfiguration",
 		reflect.TypeOf((*HtmlFormatterConfiguration)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.biome_config.HtmlLinterConfiguration",
+		reflect.TypeOf((*HtmlLinterConfiguration)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.biome_config.HtmlParserConfiguration",
@@ -179,6 +187,7 @@ func init() {
 			"LF": LineEnding_LF,
 			"CRLF": LineEnding_CRLF,
 			"CR": LineEnding_CR,
+			"AUTO": LineEnding_AUTO,
 		},
 	)
 	_jsii_.RegisterStruct(

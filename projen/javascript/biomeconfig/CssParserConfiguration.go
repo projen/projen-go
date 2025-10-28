@@ -10,5 +10,8 @@ type CssParserConfiguration struct {
 	// Enables parsing of CSS Modules specific features.
 	// Experimental.
 	CssModules *bool `field:"optional" json:"cssModules" yaml:"cssModules"`
+	// Enables parsing of Tailwind CSS 4.0 directives and functions.
+	// Experimental.
+	TailwindDirectives *bool `field:"optional" json:"tailwindDirectives" yaml:"tailwindDirectives"`
 }
 

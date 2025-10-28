@@ -30,7 +30,7 @@ type FormatterConfiguration struct {
 	//
 	// Experimental.
 	Expand Expand `field:"optional" json:"expand" yaml:"expand"`
-	// Stores whether formatting should be allowed to proceed if a given file has syntax errors.
+	// Whether formatting should be allowed to proceed if a given file has syntax errors.
 	// Experimental.
 	FormatWithErrors *bool `field:"optional" json:"formatWithErrors" yaml:"formatWithErrors"`
 	// A list of glob patterns.

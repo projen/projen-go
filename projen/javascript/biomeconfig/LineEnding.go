@@ -14,5 +14,8 @@ const (
 	// cr.
 	// Experimental.
 	LineEnding_CR LineEnding = "CR"
+	// auto.
+	// Experimental.
+	LineEnding_AUTO LineEnding = "AUTO"
 )
 
