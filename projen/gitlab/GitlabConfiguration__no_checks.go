@@ -8,6 +8,10 @@ func (g *jsiiProxy_GitlabConfiguration) validateAddDefaultCachesParameters(cache
 	return nil
 }
 
+func (g *jsiiProxy_GitlabConfiguration) validateAddDefaultHooksParameters(hooks *DefaultHooks) error {
+	return nil
+}
+
 func (g *jsiiProxy_GitlabConfiguration) validateAddGlobalVariablesParameters(variables *map[string]interface{}) error {
 	return nil
 }

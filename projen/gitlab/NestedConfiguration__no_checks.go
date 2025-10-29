@@ -8,6 +8,10 @@ func (n *jsiiProxy_NestedConfiguration) validateAddDefaultCachesParameters(cache
 	return nil
 }
 
+func (n *jsiiProxy_NestedConfiguration) validateAddDefaultHooksParameters(hooks *DefaultHooks) error {
+	return nil
+}
+
 func (n *jsiiProxy_NestedConfiguration) validateAddGlobalVariablesParameters(variables *map[string]interface{}) error {
 	return nil
 }

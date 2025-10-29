@@ -23,6 +23,17 @@ func (g *jsiiProxy_GitlabConfiguration) validateAddDefaultCachesParameters(cache
 	return nil
 }
 
+func (g *jsiiProxy_GitlabConfiguration) validateAddDefaultHooksParameters(hooks *DefaultHooks) error {
+	if hooks == nil {
+		return fmt.Errorf("parameter hooks is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(hooks, func() string { return "parameter hooks" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (g *jsiiProxy_GitlabConfiguration) validateAddGlobalVariablesParameters(variables *map[string]interface{}) error {
 	if variables == nil {
 		return fmt.Errorf("parameter variables is required, but nil was provided")

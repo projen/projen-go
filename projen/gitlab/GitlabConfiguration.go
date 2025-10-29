@@ -93,6 +93,9 @@ type GitlabConfiguration interface {
 	// Adds up to 4 default caches configuration to the CI configuration.
 	// Experimental.
 	AddDefaultCaches(caches *[]*Cache)
+	// Specify a list of commands to execute on the runner before cloning the Git repository and any submodules https://docs.gitlab.com/ci/yaml/#hookspre_get_sources_script.
+	// Experimental.
+	AddDefaultHooks(hooks *DefaultHooks)
 	// Add a globally defined variable to the CI configuration.
 	// Experimental.
 	AddGlobalVariables(variables *map[string]interface{})
@@ -440,6 +443,17 @@ func (g *jsiiProxy_GitlabConfiguration) AddDefaultCaches(caches *[]*Cache) {
 		g,
 		"addDefaultCaches",
 		[]interface{}{caches},
+	)
+}
+
+func (g *jsiiProxy_GitlabConfiguration) AddDefaultHooks(hooks *DefaultHooks) {
+	if err := g.validateAddDefaultHooksParameters(hooks); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		g,
+		"addDefaultHooks",
+		[]interface{}{hooks},
 	)
 }
 

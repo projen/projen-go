@@ -23,6 +23,17 @@ func (c *jsiiProxy_CiConfiguration) validateAddDefaultCachesParameters(caches *[
 	return nil
 }
 
+func (c *jsiiProxy_CiConfiguration) validateAddDefaultHooksParameters(hooks *DefaultHooks) error {
+	if hooks == nil {
+		return fmt.Errorf("parameter hooks is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(hooks, func() string { return "parameter hooks" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (c *jsiiProxy_CiConfiguration) validateAddGlobalVariablesParameters(variables *map[string]interface{}) error {
 	if variables == nil {
 		return fmt.Errorf("parameter variables is required, but nil was provided")

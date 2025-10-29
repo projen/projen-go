@@ -93,6 +93,9 @@ type NestedConfiguration interface {
 	// Adds up to 4 default caches configuration to the CI configuration.
 	// Experimental.
 	AddDefaultCaches(caches *[]*Cache)
+	// Specify a list of commands to execute on the runner before cloning the Git repository and any submodules https://docs.gitlab.com/ci/yaml/#hookspre_get_sources_script.
+	// Experimental.
+	AddDefaultHooks(hooks *DefaultHooks)
 	// Add a globally defined variable to the CI configuration.
 	// Experimental.
 	AddGlobalVariables(variables *map[string]interface{})
@@ -433,6 +436,17 @@ func (n *jsiiProxy_NestedConfiguration) AddDefaultCaches(caches *[]*Cache) {
 		n,
 		"addDefaultCaches",
 		[]interface{}{caches},
+	)
+}
+
+func (n *jsiiProxy_NestedConfiguration) AddDefaultHooks(hooks *DefaultHooks) {
+	if err := n.validateAddDefaultHooksParameters(hooks); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		n,
+		"addDefaultHooks",
+		[]interface{}{hooks},
 	)
 }
 

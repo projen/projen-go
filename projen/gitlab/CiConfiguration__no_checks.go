@@ -8,6 +8,10 @@ func (c *jsiiProxy_CiConfiguration) validateAddDefaultCachesParameters(caches *[
 	return nil
 }
 
+func (c *jsiiProxy_CiConfiguration) validateAddDefaultHooksParameters(hooks *DefaultHooks) error {
+	return nil
+}
+
 func (c *jsiiProxy_CiConfiguration) validateAddGlobalVariablesParameters(variables *map[string]interface{}) error {
 	return nil
 }

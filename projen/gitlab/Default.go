@@ -16,6 +16,9 @@ type Default struct {
 	BeforeScript *[]*string `field:"optional" json:"beforeScript" yaml:"beforeScript"`
 	// Experimental.
 	Cache *[]*Cache `field:"optional" json:"cache" yaml:"cache"`
+	// Specify a list of commands to execute on the runner before cloning the Git repository and any submodules https://docs.gitlab.com/ci/yaml/#hookspre_get_sources_script.
+	// Experimental.
+	Hooks *DefaultHooks `field:"optional" json:"hooks" yaml:"hooks"`
 	// Specifies the default ID tokens (JSON Web Tokens) that are used for CI/CD authentication to use globally for all jobs.
 	// Experimental.
 	IdTokens *map[string]IDToken `field:"optional" json:"idTokens" yaml:"idTokens"`

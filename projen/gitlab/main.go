@@ -59,6 +59,7 @@ func init() {
 		reflect.TypeOf((*CiConfiguration)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addDefaultCaches", GoMethod: "AddDefaultCaches"},
+			_jsii_.MemberMethod{JsiiMethod: "addDefaultHooks", GoMethod: "AddDefaultHooks"},
 			_jsii_.MemberMethod{JsiiMethod: "addGlobalVariables", GoMethod: "AddGlobalVariables"},
 			_jsii_.MemberMethod{JsiiMethod: "addIncludes", GoMethod: "AddIncludes"},
 			_jsii_.MemberMethod{JsiiMethod: "addJobs", GoMethod: "AddJobs"},
@@ -123,6 +124,10 @@ func init() {
 			"TIMEOUT": DefaultElement_TIMEOUT,
 		},
 	)
+	_jsii_.RegisterStruct(
+		"projen.gitlab.DefaultHooks",
+		reflect.TypeOf((*DefaultHooks)(nil)).Elem(),
+	)
 	_jsii_.RegisterEnum(
 		"projen.gitlab.DeploymentTier",
 		reflect.TypeOf((*DeploymentTier)(nil)).Elem(),
@@ -151,6 +156,7 @@ func init() {
 		reflect.TypeOf((*GitlabConfiguration)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addDefaultCaches", GoMethod: "AddDefaultCaches"},
+			_jsii_.MemberMethod{JsiiMethod: "addDefaultHooks", GoMethod: "AddDefaultHooks"},
 			_jsii_.MemberMethod{JsiiMethod: "addGlobalVariables", GoMethod: "AddGlobalVariables"},
 			_jsii_.MemberMethod{JsiiMethod: "addIncludes", GoMethod: "AddIncludes"},
 			_jsii_.MemberMethod{JsiiMethod: "addJobs", GoMethod: "AddJobs"},
@@ -265,6 +271,7 @@ func init() {
 		reflect.TypeOf((*NestedConfiguration)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addDefaultCaches", GoMethod: "AddDefaultCaches"},
+			_jsii_.MemberMethod{JsiiMethod: "addDefaultHooks", GoMethod: "AddDefaultHooks"},
 			_jsii_.MemberMethod{JsiiMethod: "addGlobalVariables", GoMethod: "AddGlobalVariables"},
 			_jsii_.MemberMethod{JsiiMethod: "addIncludes", GoMethod: "AddIncludes"},
 			_jsii_.MemberMethod{JsiiMethod: "addJobs", GoMethod: "AddJobs"},
