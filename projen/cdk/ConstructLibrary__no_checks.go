@@ -16,7 +16,7 @@ func (c *jsiiProxy_ConstructLibrary) validateAddGitIgnoreParameters(pattern *str
 	return nil
 }
 
-func (c *jsiiProxy_ConstructLibrary) validateAddPackageIgnoreParameters(pattern *string) error {
+func (c *jsiiProxy_ConstructLibrary) validateAddPackageIgnoreParameters(_pattern *string) error {
 	return nil
 }
 
@@ -32,7 +32,7 @@ func (c *jsiiProxy_ConstructLibrary) validateAddTipParameters(message *string) e
 	return nil
 }
 
-func (c *jsiiProxy_ConstructLibrary) validateAnnotateGeneratedParameters(glob *string) error {
+func (c *jsiiProxy_ConstructLibrary) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
 

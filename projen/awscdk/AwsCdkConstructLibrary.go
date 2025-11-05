@@ -280,7 +280,7 @@ type AwsCdkConstructLibrary interface {
 	AddKeywords(keywords ...*string)
 	// Adds patterns to be ignored by npm.
 	// Experimental.
-	AddPackageIgnore(pattern *string)
+	AddPackageIgnore(_pattern *string)
 	// Defines peer dependencies.
 	//
 	// When adding peer dependencies, a devDependency will also be added on the
@@ -311,7 +311,7 @@ type AwsCdkConstructLibrary interface {
 	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
 	//
 	// Deprecated.
-	AnnotateGenerated(glob *string)
+	AnnotateGenerated(_glob *string)
 	// Projen default Typescript compiler options.
 	// Experimental.
 	DefaultTypeScriptCompilerOptions() *javascript.TypeScriptCompilerOptions
@@ -1342,14 +1342,14 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddKeywords(keywords ...*string) {
 	)
 }
 
-func (a *jsiiProxy_AwsCdkConstructLibrary) AddPackageIgnore(pattern *string) {
-	if err := a.validateAddPackageIgnoreParameters(pattern); err != nil {
+func (a *jsiiProxy_AwsCdkConstructLibrary) AddPackageIgnore(_pattern *string) {
+	if err := a.validateAddPackageIgnoreParameters(_pattern); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		a,
 		"addPackageIgnore",
-		[]interface{}{pattern},
+		[]interface{}{_pattern},
 	)
 }
 
@@ -1417,14 +1417,14 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddTip(message *string) {
 	)
 }
 
-func (a *jsiiProxy_AwsCdkConstructLibrary) AnnotateGenerated(glob *string) {
-	if err := a.validateAnnotateGeneratedParameters(glob); err != nil {
+func (a *jsiiProxy_AwsCdkConstructLibrary) AnnotateGenerated(_glob *string) {
+	if err := a.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		a,
 		"annotateGenerated",
-		[]interface{}{glob},
+		[]interface{}{_glob},
 	)
 }
 

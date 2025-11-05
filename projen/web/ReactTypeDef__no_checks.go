@@ -4,7 +4,7 @@ package web
 
 // Building without runtime type checking enabled, so all the below just return nil
 
-func (r *jsiiProxy_ReactTypeDef) validateSynthesizeContentParameters(_arg projen.IResolver) error {
+func (r *jsiiProxy_ReactTypeDef) validateSynthesizeContentParameters(resolver projen.IResolver) error {
 	return nil
 }
 

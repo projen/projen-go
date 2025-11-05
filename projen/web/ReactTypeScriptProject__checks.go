@@ -36,9 +36,9 @@ func (r *jsiiProxy_ReactTypeScriptProject) validateAddGitIgnoreParameters(patter
 	return nil
 }
 
-func (r *jsiiProxy_ReactTypeScriptProject) validateAddPackageIgnoreParameters(pattern *string) error {
-	if pattern == nil {
-		return fmt.Errorf("parameter pattern is required, but nil was provided")
+func (r *jsiiProxy_ReactTypeScriptProject) validateAddPackageIgnoreParameters(_pattern *string) error {
+	if _pattern == nil {
+		return fmt.Errorf("parameter _pattern is required, but nil was provided")
 	}
 
 	return nil
@@ -72,9 +72,9 @@ func (r *jsiiProxy_ReactTypeScriptProject) validateAddTipParameters(message *str
 	return nil
 }
 
-func (r *jsiiProxy_ReactTypeScriptProject) validateAnnotateGeneratedParameters(glob *string) error {
-	if glob == nil {
-		return fmt.Errorf("parameter glob is required, but nil was provided")
+func (r *jsiiProxy_ReactTypeScriptProject) validateAnnotateGeneratedParameters(_glob *string) error {
+	if _glob == nil {
+		return fmt.Errorf("parameter _glob is required, but nil was provided")
 	}
 
 	return nil

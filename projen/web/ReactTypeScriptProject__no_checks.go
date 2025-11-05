@@ -16,7 +16,7 @@ func (r *jsiiProxy_ReactTypeScriptProject) validateAddGitIgnoreParameters(patter
 	return nil
 }
 
-func (r *jsiiProxy_ReactTypeScriptProject) validateAddPackageIgnoreParameters(pattern *string) error {
+func (r *jsiiProxy_ReactTypeScriptProject) validateAddPackageIgnoreParameters(_pattern *string) error {
 	return nil
 }
 
@@ -32,7 +32,7 @@ func (r *jsiiProxy_ReactTypeScriptProject) validateAddTipParameters(message *str
 	return nil
 }
 
-func (r *jsiiProxy_ReactTypeScriptProject) validateAnnotateGeneratedParameters(glob *string) error {
+func (r *jsiiProxy_ReactTypeScriptProject) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
 

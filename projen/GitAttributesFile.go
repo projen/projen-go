@@ -76,7 +76,7 @@ type GitAttributesFile interface {
 	Synthesize()
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
-	SynthesizeContent(_arg IResolver) *string
+	SynthesizeContent(resolver IResolver) *string
 	// Returns a string representation of this construct.
 	// Experimental.
 	ToString() *string
@@ -362,8 +362,8 @@ func (g *jsiiProxy_GitAttributesFile) Synthesize() {
 	)
 }
 
-func (g *jsiiProxy_GitAttributesFile) SynthesizeContent(_arg IResolver) *string {
-	if err := g.validateSynthesizeContentParameters(_arg); err != nil {
+func (g *jsiiProxy_GitAttributesFile) SynthesizeContent(resolver IResolver) *string {
+	if err := g.validateSynthesizeContentParameters(resolver); err != nil {
 		panic(err)
 	}
 	var returns *string
@@ -371,7 +371,7 @@ func (g *jsiiProxy_GitAttributesFile) SynthesizeContent(_arg IResolver) *string 
 	_jsii_.Invoke(
 		g,
 		"synthesizeContent",
-		[]interface{}{_arg},
+		[]interface{}{resolver},
 		&returns,
 	)
 

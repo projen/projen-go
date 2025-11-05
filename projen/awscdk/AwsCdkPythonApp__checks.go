@@ -63,9 +63,9 @@ func (a *jsiiProxy_AwsCdkPythonApp) validateAddTipParameters(message *string) er
 	return nil
 }
 
-func (a *jsiiProxy_AwsCdkPythonApp) validateAnnotateGeneratedParameters(glob *string) error {
-	if glob == nil {
-		return fmt.Errorf("parameter glob is required, but nil was provided")
+func (a *jsiiProxy_AwsCdkPythonApp) validateAnnotateGeneratedParameters(_glob *string) error {
+	if _glob == nil {
+		return fmt.Errorf("parameter _glob is required, but nil was provided")
 	}
 
 	return nil

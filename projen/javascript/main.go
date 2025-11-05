@@ -19,6 +19,10 @@ func init() {
 			"AVOID": ArrowParens_AVOID,
 		},
 	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.AuditOptions",
+		reflect.TypeOf((*AuditOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.AutoRelease",
 		reflect.TypeOf((*AutoRelease)(nil)).Elem(),

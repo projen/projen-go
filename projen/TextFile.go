@@ -60,7 +60,7 @@ type TextFile interface {
 	Synthesize()
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
-	SynthesizeContent(_arg IResolver) *string
+	SynthesizeContent(resolver IResolver) *string
 	// Returns a string representation of this construct.
 	// Experimental.
 	ToString() *string
@@ -296,8 +296,8 @@ func (t *jsiiProxy_TextFile) Synthesize() {
 	)
 }
 
-func (t *jsiiProxy_TextFile) SynthesizeContent(_arg IResolver) *string {
-	if err := t.validateSynthesizeContentParameters(_arg); err != nil {
+func (t *jsiiProxy_TextFile) SynthesizeContent(resolver IResolver) *string {
+	if err := t.validateSynthesizeContentParameters(resolver); err != nil {
 		panic(err)
 	}
 	var returns *string
@@ -305,7 +305,7 @@ func (t *jsiiProxy_TextFile) SynthesizeContent(_arg IResolver) *string {
 	_jsii_.Invoke(
 		t,
 		"synthesizeContent",
-		[]interface{}{_arg},
+		[]interface{}{resolver},
 		&returns,
 	)
 

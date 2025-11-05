@@ -260,7 +260,7 @@ type TypeScriptProject interface {
 	AddKeywords(keywords ...*string)
 	// Adds patterns to be ignored by npm.
 	// Experimental.
-	AddPackageIgnore(pattern *string)
+	AddPackageIgnore(_pattern *string)
 	// Defines peer dependencies.
 	//
 	// When adding peer dependencies, a devDependency will also be added on the
@@ -291,7 +291,7 @@ type TypeScriptProject interface {
 	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
 	//
 	// Deprecated.
-	AnnotateGenerated(glob *string)
+	AnnotateGenerated(_glob *string)
 	// Projen default Typescript compiler options.
 	// Experimental.
 	DefaultTypeScriptCompilerOptions() *javascript.TypeScriptCompilerOptions
@@ -1266,14 +1266,14 @@ func (t *jsiiProxy_TypeScriptProject) AddKeywords(keywords ...*string) {
 	)
 }
 
-func (t *jsiiProxy_TypeScriptProject) AddPackageIgnore(pattern *string) {
-	if err := t.validateAddPackageIgnoreParameters(pattern); err != nil {
+func (t *jsiiProxy_TypeScriptProject) AddPackageIgnore(_pattern *string) {
+	if err := t.validateAddPackageIgnoreParameters(_pattern); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		t,
 		"addPackageIgnore",
-		[]interface{}{pattern},
+		[]interface{}{_pattern},
 	)
 }
 
@@ -1341,14 +1341,14 @@ func (t *jsiiProxy_TypeScriptProject) AddTip(message *string) {
 	)
 }
 
-func (t *jsiiProxy_TypeScriptProject) AnnotateGenerated(glob *string) {
-	if err := t.validateAnnotateGeneratedParameters(glob); err != nil {
+func (t *jsiiProxy_TypeScriptProject) AnnotateGenerated(_glob *string) {
+	if err := t.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		t,
 		"annotateGenerated",
-		[]interface{}{glob},
+		[]interface{}{_glob},
 	)
 }
 

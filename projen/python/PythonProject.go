@@ -183,7 +183,7 @@ type PythonProject interface {
 	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
 	//
 	// Deprecated.
-	AnnotateGenerated(glob *string)
+	AnnotateGenerated(_glob *string)
 	// Called after all components are synthesized.
 	//
 	// Order is *not* guaranteed.
@@ -830,14 +830,14 @@ func (p *jsiiProxy_PythonProject) AddTip(message *string) {
 	)
 }
 
-func (p *jsiiProxy_PythonProject) AnnotateGenerated(glob *string) {
-	if err := p.validateAnnotateGeneratedParameters(glob); err != nil {
+func (p *jsiiProxy_PythonProject) AnnotateGenerated(_glob *string) {
+	if err := p.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		p,
 		"annotateGenerated",
-		[]interface{}{glob},
+		[]interface{}{_glob},
 	)
 }
 

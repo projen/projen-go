@@ -36,9 +36,9 @@ func (j *jsiiProxy_JsiiProject) validateAddGitIgnoreParameters(pattern *string) 
 	return nil
 }
 
-func (j *jsiiProxy_JsiiProject) validateAddPackageIgnoreParameters(pattern *string) error {
-	if pattern == nil {
-		return fmt.Errorf("parameter pattern is required, but nil was provided")
+func (j *jsiiProxy_JsiiProject) validateAddPackageIgnoreParameters(_pattern *string) error {
+	if _pattern == nil {
+		return fmt.Errorf("parameter _pattern is required, but nil was provided")
 	}
 
 	return nil
@@ -72,9 +72,9 @@ func (j *jsiiProxy_JsiiProject) validateAddTipParameters(message *string) error 
 	return nil
 }
 
-func (j *jsiiProxy_JsiiProject) validateAnnotateGeneratedParameters(glob *string) error {
-	if glob == nil {
-		return fmt.Errorf("parameter glob is required, but nil was provided")
+func (j *jsiiProxy_JsiiProject) validateAnnotateGeneratedParameters(_glob *string) error {
+	if _glob == nil {
+		return fmt.Errorf("parameter _glob is required, but nil was provided")
 	}
 
 	return nil

@@ -234,7 +234,7 @@ type NodeProject interface {
 	AddKeywords(keywords ...*string)
 	// Adds patterns to be ignored by npm.
 	// Experimental.
-	AddPackageIgnore(pattern *string)
+	AddPackageIgnore(_pattern *string)
 	// Defines peer dependencies.
 	//
 	// When adding peer dependencies, a devDependency will also be added on the
@@ -265,7 +265,7 @@ type NodeProject interface {
 	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
 	//
 	// Deprecated.
-	AnnotateGenerated(glob *string)
+	AnnotateGenerated(_glob *string)
 	// Indicates if a script by the name name is defined.
 	// Deprecated: Use `project.tasks.tryFind(name)`
 	HasScript(name *string) *bool
@@ -1126,14 +1126,14 @@ func (n *jsiiProxy_NodeProject) AddKeywords(keywords ...*string) {
 	)
 }
 
-func (n *jsiiProxy_NodeProject) AddPackageIgnore(pattern *string) {
-	if err := n.validateAddPackageIgnoreParameters(pattern); err != nil {
+func (n *jsiiProxy_NodeProject) AddPackageIgnore(_pattern *string) {
+	if err := n.validateAddPackageIgnoreParameters(_pattern); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		n,
 		"addPackageIgnore",
-		[]interface{}{pattern},
+		[]interface{}{_pattern},
 	)
 }
 
@@ -1201,14 +1201,14 @@ func (n *jsiiProxy_NodeProject) AddTip(message *string) {
 	)
 }
 
-func (n *jsiiProxy_NodeProject) AnnotateGenerated(glob *string) {
-	if err := n.validateAnnotateGeneratedParameters(glob); err != nil {
+func (n *jsiiProxy_NodeProject) AnnotateGenerated(_glob *string) {
+	if err := n.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		n,
 		"annotateGenerated",
-		[]interface{}{glob},
+		[]interface{}{_glob},
 	)
 }
 

@@ -32,7 +32,7 @@ func (j *jsiiProxy_JavaProject) validateAddTipParameters(message *string) error 
 	return nil
 }
 
-func (j *jsiiProxy_JavaProject) validateAnnotateGeneratedParameters(glob *string) error {
+func (j *jsiiProxy_JavaProject) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
 

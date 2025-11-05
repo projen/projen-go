@@ -16,7 +16,7 @@ func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAddGitIgnoreParameters(pattern *s
 	return nil
 }
 
-func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAddPackageIgnoreParameters(pattern *string) error {
+func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAddPackageIgnoreParameters(_pattern *string) error {
 	return nil
 }
 
@@ -32,7 +32,7 @@ func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAddTipParameters(message *string)
 	return nil
 }
 
-func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAnnotateGeneratedParameters(glob *string) error {
+func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
 

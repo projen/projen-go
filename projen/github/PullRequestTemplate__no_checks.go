@@ -8,7 +8,7 @@ func (p *jsiiProxy_PullRequestTemplate) validateAddLineParameters(line *string) 
 	return nil
 }
 
-func (p *jsiiProxy_PullRequestTemplate) validateSynthesizeContentParameters(_arg projen.IResolver) error {
+func (p *jsiiProxy_PullRequestTemplate) validateSynthesizeContentParameters(resolver projen.IResolver) error {
 	return nil
 }
 

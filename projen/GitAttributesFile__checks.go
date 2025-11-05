@@ -34,9 +34,9 @@ func (g *jsiiProxy_GitAttributesFile) validateRemoveAttributesParameters(glob *s
 	return nil
 }
 
-func (g *jsiiProxy_GitAttributesFile) validateSynthesizeContentParameters(_arg IResolver) error {
-	if _arg == nil {
-		return fmt.Errorf("parameter _arg is required, but nil was provided")
+func (g *jsiiProxy_GitAttributesFile) validateSynthesizeContentParameters(resolver IResolver) error {
+	if resolver == nil {
+		return fmt.Errorf("parameter resolver is required, but nil was provided")
 	}
 
 	return nil

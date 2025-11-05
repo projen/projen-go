@@ -28,7 +28,7 @@ func (p *jsiiProxy_PythonProject) validateAddTipParameters(message *string) erro
 	return nil
 }
 
-func (p *jsiiProxy_PythonProject) validateAnnotateGeneratedParameters(glob *string) error {
+func (p *jsiiProxy_PythonProject) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
 

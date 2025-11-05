@@ -56,7 +56,7 @@ type License interface {
 	Synthesize()
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
-	SynthesizeContent(_arg IResolver) *string
+	SynthesizeContent(resolver IResolver) *string
 	// Returns a string representation of this construct.
 	// Experimental.
 	ToString() *string
@@ -279,8 +279,8 @@ func (l *jsiiProxy_License) Synthesize() {
 	)
 }
 
-func (l *jsiiProxy_License) SynthesizeContent(_arg IResolver) *string {
-	if err := l.validateSynthesizeContentParameters(_arg); err != nil {
+func (l *jsiiProxy_License) SynthesizeContent(resolver IResolver) *string {
+	if err := l.validateSynthesizeContentParameters(resolver); err != nil {
 		panic(err)
 	}
 	var returns *string
@@ -288,7 +288,7 @@ func (l *jsiiProxy_License) SynthesizeContent(_arg IResolver) *string {
 	_jsii_.Invoke(
 		l,
 		"synthesizeContent",
-		[]interface{}{_arg},
+		[]interface{}{resolver},
 		&returns,
 	)
 

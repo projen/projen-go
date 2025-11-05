@@ -28,7 +28,7 @@ func (c *jsiiProxy_Cdk8sPythonApp) validateAddTipParameters(message *string) err
 	return nil
 }
 
-func (c *jsiiProxy_Cdk8sPythonApp) validateAnnotateGeneratedParameters(glob *string) error {
+func (c *jsiiProxy_Cdk8sPythonApp) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
 

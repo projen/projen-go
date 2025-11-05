@@ -205,13 +205,6 @@ type ReleaseOptions struct {
 	// You can add additional branches using `addBranch()`.
 	// Experimental.
 	Branch *string `field:"required" json:"branch" yaml:"branch"`
-	// The task to execute in order to create the release artifacts.
-	//
-	// Artifacts are
-	// expected to reside under `artifactsDirectory` (defaults to `dist/`) once
-	// build is complete.
-	// Experimental.
-	Task projen.Task `field:"required" json:"task" yaml:"task"`
 	// A name of a .json file to set the `version` field in after a bump.
 	//
 	// Example:
@@ -224,6 +217,20 @@ type ReleaseOptions struct {
 	//
 	// Experimental.
 	GithubRelease *bool `field:"optional" json:"githubRelease" yaml:"githubRelease"`
+	// The task to execute in order to create the release artifacts.
+	//
+	// Artifacts are
+	// expected to reside under `artifactsDirectory` (defaults to `dist/`) once
+	// build is complete.
+	// Deprecated: Use `tasks` instead.
+	Task projen.Task `field:"optional" json:"task" yaml:"task"`
+	// The tasks to execute in order to create the release artifacts.
+	//
+	// Artifacts are
+	// expected to reside under `artifactsDirectory` (defaults to `dist/`) once
+	// build is complete.
+	// Experimental.
+	Tasks *[]projen.Task `field:"optional" json:"tasks" yaml:"tasks"`
 	// Node version to setup in GitHub workflows if any node-based CLI utilities are needed.
 	//
 	// For example `publib`, the CLI projen uses to publish releases,

@@ -4,7 +4,7 @@ package biomeconfig
 // The configuration of the filesystem.
 // Experimental.
 type FilesConfiguration struct {
-	// **Deprecated:** Please use _force-ignore syntax_ in `files.includes` instead: https://biomejs.dev/reference/configuration/#filesincludes.
+	// **Deprecated:** Please use _force-ignore syntax_ in `files.includes` instead: <https://biomejs.dev/reference/configuration/#filesincludes>.
 	//
 	// Set of file and folder names that should be unconditionally ignored by Biome's scanner.
 	// Experimental.

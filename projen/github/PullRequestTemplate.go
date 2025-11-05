@@ -62,7 +62,7 @@ type PullRequestTemplate interface {
 	Synthesize()
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
-	SynthesizeContent(_arg projen.IResolver) *string
+	SynthesizeContent(resolver projen.IResolver) *string
 	// Returns a string representation of this construct.
 	// Experimental.
 	ToString() *string
@@ -318,8 +318,8 @@ func (p *jsiiProxy_PullRequestTemplate) Synthesize() {
 	)
 }
 
-func (p *jsiiProxy_PullRequestTemplate) SynthesizeContent(_arg projen.IResolver) *string {
-	if err := p.validateSynthesizeContentParameters(_arg); err != nil {
+func (p *jsiiProxy_PullRequestTemplate) SynthesizeContent(resolver projen.IResolver) *string {
+	if err := p.validateSynthesizeContentParameters(resolver); err != nil {
 		panic(err)
 	}
 	var returns *string
@@ -327,7 +327,7 @@ func (p *jsiiProxy_PullRequestTemplate) SynthesizeContent(_arg projen.IResolver)
 	_jsii_.Invoke(
 		p,
 		"synthesizeContent",
-		[]interface{}{_arg},
+		[]interface{}{resolver},
 		&returns,
 	)
 

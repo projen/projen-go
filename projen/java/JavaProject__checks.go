@@ -75,9 +75,9 @@ func (j *jsiiProxy_JavaProject) validateAddTipParameters(message *string) error 
 	return nil
 }
 
-func (j *jsiiProxy_JavaProject) validateAnnotateGeneratedParameters(glob *string) error {
-	if glob == nil {
-		return fmt.Errorf("parameter glob is required, but nil was provided")
+func (j *jsiiProxy_JavaProject) validateAnnotateGeneratedParameters(_glob *string) error {
+	if _glob == nil {
+		return fmt.Errorf("parameter _glob is required, but nil was provided")
 	}
 
 	return nil

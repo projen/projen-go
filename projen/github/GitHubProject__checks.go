@@ -47,9 +47,9 @@ func (g *jsiiProxy_GitHubProject) validateAddTipParameters(message *string) erro
 	return nil
 }
 
-func (g *jsiiProxy_GitHubProject) validateAnnotateGeneratedParameters(glob *string) error {
-	if glob == nil {
-		return fmt.Errorf("parameter glob is required, but nil was provided")
+func (g *jsiiProxy_GitHubProject) validateAnnotateGeneratedParameters(_glob *string) error {
+	if _glob == nil {
+		return fmt.Errorf("parameter _glob is required, but nil was provided")
 	}
 
 	return nil

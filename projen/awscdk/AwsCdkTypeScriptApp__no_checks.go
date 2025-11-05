@@ -16,7 +16,7 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAddGitIgnoreParameters(pattern *
 	return nil
 }
 
-func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAddPackageIgnoreParameters(pattern *string) error {
+func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAddPackageIgnoreParameters(_pattern *string) error {
 	return nil
 }
 
@@ -32,7 +32,7 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAddTipParameters(message *string
 	return nil
 }
 
-func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAnnotateGeneratedParameters(glob *string) error {
+func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
 

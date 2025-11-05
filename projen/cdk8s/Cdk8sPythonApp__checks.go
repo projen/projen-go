@@ -63,9 +63,9 @@ func (c *jsiiProxy_Cdk8sPythonApp) validateAddTipParameters(message *string) err
 	return nil
 }
 
-func (c *jsiiProxy_Cdk8sPythonApp) validateAnnotateGeneratedParameters(glob *string) error {
-	if glob == nil {
-		return fmt.Errorf("parameter glob is required, but nil was provided")
+func (c *jsiiProxy_Cdk8sPythonApp) validateAnnotateGeneratedParameters(_glob *string) error {
+	if _glob == nil {
+		return fmt.Errorf("parameter _glob is required, but nil was provided")
 	}
 
 	return nil

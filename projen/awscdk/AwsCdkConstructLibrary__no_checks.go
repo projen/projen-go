@@ -16,7 +16,7 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) validateAddGitIgnoreParameters(patter
 	return nil
 }
 
-func (a *jsiiProxy_AwsCdkConstructLibrary) validateAddPackageIgnoreParameters(pattern *string) error {
+func (a *jsiiProxy_AwsCdkConstructLibrary) validateAddPackageIgnoreParameters(_pattern *string) error {
 	return nil
 }
 
@@ -32,7 +32,7 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) validateAddTipParameters(message *str
 	return nil
 }
 
-func (a *jsiiProxy_AwsCdkConstructLibrary) validateAnnotateGeneratedParameters(glob *string) error {
+func (a *jsiiProxy_AwsCdkConstructLibrary) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
 

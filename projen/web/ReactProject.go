@@ -240,7 +240,7 @@ type ReactProject interface {
 	AddKeywords(keywords ...*string)
 	// Adds patterns to be ignored by npm.
 	// Experimental.
-	AddPackageIgnore(pattern *string)
+	AddPackageIgnore(_pattern *string)
 	// Defines peer dependencies.
 	//
 	// When adding peer dependencies, a devDependency will also be added on the
@@ -271,7 +271,7 @@ type ReactProject interface {
 	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
 	//
 	// Deprecated.
-	AnnotateGenerated(glob *string)
+	AnnotateGenerated(_glob *string)
 	// Indicates if a script by the name name is defined.
 	// Deprecated: Use `project.tasks.tryFind(name)`
 	HasScript(name *string) *bool
@@ -1142,14 +1142,14 @@ func (r *jsiiProxy_ReactProject) AddKeywords(keywords ...*string) {
 	)
 }
 
-func (r *jsiiProxy_ReactProject) AddPackageIgnore(pattern *string) {
-	if err := r.validateAddPackageIgnoreParameters(pattern); err != nil {
+func (r *jsiiProxy_ReactProject) AddPackageIgnore(_pattern *string) {
+	if err := r.validateAddPackageIgnoreParameters(_pattern); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		r,
 		"addPackageIgnore",
-		[]interface{}{pattern},
+		[]interface{}{_pattern},
 	)
 }
 
@@ -1217,14 +1217,14 @@ func (r *jsiiProxy_ReactProject) AddTip(message *string) {
 	)
 }
 
-func (r *jsiiProxy_ReactProject) AnnotateGenerated(glob *string) {
-	if err := r.validateAnnotateGeneratedParameters(glob); err != nil {
+func (r *jsiiProxy_ReactProject) AnnotateGenerated(_glob *string) {
+	if err := r.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		r,
 		"annotateGenerated",
-		[]interface{}{glob},
+		[]interface{}{_glob},
 	)
 }
 

@@ -58,7 +58,7 @@ type ReactTypeDef interface {
 	Synthesize()
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Deprecated: No longer used.
-	SynthesizeContent(_arg projen.IResolver) *string
+	SynthesizeContent(resolver projen.IResolver) *string
 	// Returns a string representation of this construct.
 	// Deprecated: No longer used.
 	ToString() *string
@@ -281,8 +281,8 @@ func (r *jsiiProxy_ReactTypeDef) Synthesize() {
 	)
 }
 
-func (r *jsiiProxy_ReactTypeDef) SynthesizeContent(_arg projen.IResolver) *string {
-	if err := r.validateSynthesizeContentParameters(_arg); err != nil {
+func (r *jsiiProxy_ReactTypeDef) SynthesizeContent(resolver projen.IResolver) *string {
+	if err := r.validateSynthesizeContentParameters(resolver); err != nil {
 		panic(err)
 	}
 	var returns *string
@@ -290,7 +290,7 @@ func (r *jsiiProxy_ReactTypeDef) SynthesizeContent(_arg projen.IResolver) *strin
 	_jsii_.Invoke(
 		r,
 		"synthesizeContent",
-		[]interface{}{_arg},
+		[]interface{}{resolver},
 		&returns,
 	)
 

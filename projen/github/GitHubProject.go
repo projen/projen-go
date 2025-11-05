@@ -297,7 +297,7 @@ type GitHubProject interface {
 	// want to be able to use these project types outside of GitHub as well. One of
 	// the next steps to address this is to abstract workflows so that different
 	// "engines" can be used to implement our CI/CD solutions.
-	AnnotateGenerated(glob *string)
+	AnnotateGenerated(_glob *string)
 	// Called after all components are synthesized.
 	//
 	// Order is *not* guaranteed.
@@ -900,14 +900,14 @@ func (g *jsiiProxy_GitHubProject) AddTip(message *string) {
 	)
 }
 
-func (g *jsiiProxy_GitHubProject) AnnotateGenerated(glob *string) {
-	if err := g.validateAnnotateGeneratedParameters(glob); err != nil {
+func (g *jsiiProxy_GitHubProject) AnnotateGenerated(_glob *string) {
+	if err := g.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		g,
 		"annotateGenerated",
-		[]interface{}{glob},
+		[]interface{}{_glob},
 	)
 }
 

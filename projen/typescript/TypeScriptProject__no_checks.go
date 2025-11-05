@@ -16,7 +16,7 @@ func (t *jsiiProxy_TypeScriptProject) validateAddGitIgnoreParameters(pattern *st
 	return nil
 }
 
-func (t *jsiiProxy_TypeScriptProject) validateAddPackageIgnoreParameters(pattern *string) error {
+func (t *jsiiProxy_TypeScriptProject) validateAddPackageIgnoreParameters(_pattern *string) error {
 	return nil
 }
 
@@ -32,7 +32,7 @@ func (t *jsiiProxy_TypeScriptProject) validateAddTipParameters(message *string) 
 	return nil
 }
 
-func (t *jsiiProxy_TypeScriptProject) validateAnnotateGeneratedParameters(glob *string) error {
+func (t *jsiiProxy_TypeScriptProject) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
 

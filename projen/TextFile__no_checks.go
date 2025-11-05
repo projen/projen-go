@@ -8,7 +8,7 @@ func (t *jsiiProxy_TextFile) validateAddLineParameters(line *string) error {
 	return nil
 }
 
-func (t *jsiiProxy_TextFile) validateSynthesizeContentParameters(_arg IResolver) error {
+func (t *jsiiProxy_TextFile) validateSynthesizeContentParameters(resolver IResolver) error {
 	return nil
 }
 

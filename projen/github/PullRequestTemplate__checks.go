@@ -18,9 +18,9 @@ func (p *jsiiProxy_PullRequestTemplate) validateAddLineParameters(line *string) 
 	return nil
 }
 
-func (p *jsiiProxy_PullRequestTemplate) validateSynthesizeContentParameters(_arg projen.IResolver) error {
-	if _arg == nil {
-		return fmt.Errorf("parameter _arg is required, but nil was provided")
+func (p *jsiiProxy_PullRequestTemplate) validateSynthesizeContentParameters(resolver projen.IResolver) error {
+	if resolver == nil {
+		return fmt.Errorf("parameter resolver is required, but nil was provided")
 	}
 
 	return nil

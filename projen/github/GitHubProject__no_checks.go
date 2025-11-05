@@ -20,7 +20,7 @@ func (g *jsiiProxy_GitHubProject) validateAddTipParameters(message *string) erro
 	return nil
 }
 
-func (g *jsiiProxy_GitHubProject) validateAnnotateGeneratedParameters(glob *string) error {
+func (g *jsiiProxy_GitHubProject) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
 

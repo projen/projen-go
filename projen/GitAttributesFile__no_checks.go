@@ -16,7 +16,7 @@ func (g *jsiiProxy_GitAttributesFile) validateRemoveAttributesParameters(glob *s
 	return nil
 }
 
-func (g *jsiiProxy_GitAttributesFile) validateSynthesizeContentParameters(_arg IResolver) error {
+func (g *jsiiProxy_GitAttributesFile) validateSynthesizeContentParameters(resolver IResolver) error {
 	return nil
 }
 

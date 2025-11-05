@@ -261,7 +261,7 @@ type ReactTypeScriptProject interface {
 	AddKeywords(keywords ...*string)
 	// Adds patterns to be ignored by npm.
 	// Experimental.
-	AddPackageIgnore(pattern *string)
+	AddPackageIgnore(_pattern *string)
 	// Defines peer dependencies.
 	//
 	// When adding peer dependencies, a devDependency will also be added on the
@@ -292,7 +292,7 @@ type ReactTypeScriptProject interface {
 	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
 	//
 	// Deprecated.
-	AnnotateGenerated(glob *string)
+	AnnotateGenerated(_glob *string)
 	// Projen default Typescript compiler options.
 	// Experimental.
 	DefaultTypeScriptCompilerOptions() *javascript.TypeScriptCompilerOptions
@@ -1267,14 +1267,14 @@ func (r *jsiiProxy_ReactTypeScriptProject) AddKeywords(keywords ...*string) {
 	)
 }
 
-func (r *jsiiProxy_ReactTypeScriptProject) AddPackageIgnore(pattern *string) {
-	if err := r.validateAddPackageIgnoreParameters(pattern); err != nil {
+func (r *jsiiProxy_ReactTypeScriptProject) AddPackageIgnore(_pattern *string) {
+	if err := r.validateAddPackageIgnoreParameters(_pattern); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		r,
 		"addPackageIgnore",
-		[]interface{}{pattern},
+		[]interface{}{_pattern},
 	)
 }
 
@@ -1342,14 +1342,14 @@ func (r *jsiiProxy_ReactTypeScriptProject) AddTip(message *string) {
 	)
 }
 
-func (r *jsiiProxy_ReactTypeScriptProject) AnnotateGenerated(glob *string) {
-	if err := r.validateAnnotateGeneratedParameters(glob); err != nil {
+func (r *jsiiProxy_ReactTypeScriptProject) AnnotateGenerated(_glob *string) {
+	if err := r.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		r,
 		"annotateGenerated",
-		[]interface{}{glob},
+		[]interface{}{_glob},
 	)
 }
 

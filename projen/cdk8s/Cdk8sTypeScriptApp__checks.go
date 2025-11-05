@@ -36,9 +36,9 @@ func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAddGitIgnoreParameters(pattern *s
 	return nil
 }
 
-func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAddPackageIgnoreParameters(pattern *string) error {
-	if pattern == nil {
-		return fmt.Errorf("parameter pattern is required, but nil was provided")
+func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAddPackageIgnoreParameters(_pattern *string) error {
+	if _pattern == nil {
+		return fmt.Errorf("parameter _pattern is required, but nil was provided")
 	}
 
 	return nil
@@ -72,9 +72,9 @@ func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAddTipParameters(message *string)
 	return nil
 }
 
-func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAnnotateGeneratedParameters(glob *string) error {
-	if glob == nil {
-		return fmt.Errorf("parameter glob is required, but nil was provided")
+func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAnnotateGeneratedParameters(_glob *string) error {
+	if _glob == nil {
+		return fmt.Errorf("parameter _glob is required, but nil was provided")
 	}
 
 	return nil

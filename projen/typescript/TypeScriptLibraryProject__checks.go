@@ -36,9 +36,9 @@ func (t *jsiiProxy_TypeScriptLibraryProject) validateAddGitIgnoreParameters(patt
 	return nil
 }
 
-func (t *jsiiProxy_TypeScriptLibraryProject) validateAddPackageIgnoreParameters(pattern *string) error {
-	if pattern == nil {
-		return fmt.Errorf("parameter pattern is required, but nil was provided")
+func (t *jsiiProxy_TypeScriptLibraryProject) validateAddPackageIgnoreParameters(_pattern *string) error {
+	if _pattern == nil {
+		return fmt.Errorf("parameter _pattern is required, but nil was provided")
 	}
 
 	return nil
@@ -72,9 +72,9 @@ func (t *jsiiProxy_TypeScriptLibraryProject) validateAddTipParameters(message *s
 	return nil
 }
 
-func (t *jsiiProxy_TypeScriptLibraryProject) validateAnnotateGeneratedParameters(glob *string) error {
-	if glob == nil {
-		return fmt.Errorf("parameter glob is required, but nil was provided")
+func (t *jsiiProxy_TypeScriptLibraryProject) validateAnnotateGeneratedParameters(_glob *string) error {
+	if _glob == nil {
+		return fmt.Errorf("parameter _glob is required, but nil was provided")
 	}
 
 	return nil

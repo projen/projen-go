@@ -36,9 +36,9 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) validateAddGitIgnoreParameters(patter
 	return nil
 }
 
-func (a *jsiiProxy_AwsCdkConstructLibrary) validateAddPackageIgnoreParameters(pattern *string) error {
-	if pattern == nil {
-		return fmt.Errorf("parameter pattern is required, but nil was provided")
+func (a *jsiiProxy_AwsCdkConstructLibrary) validateAddPackageIgnoreParameters(_pattern *string) error {
+	if _pattern == nil {
+		return fmt.Errorf("parameter _pattern is required, but nil was provided")
 	}
 
 	return nil
@@ -72,9 +72,9 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) validateAddTipParameters(message *str
 	return nil
 }
 
-func (a *jsiiProxy_AwsCdkConstructLibrary) validateAnnotateGeneratedParameters(glob *string) error {
-	if glob == nil {
-		return fmt.Errorf("parameter glob is required, but nil was provided")
+func (a *jsiiProxy_AwsCdkConstructLibrary) validateAnnotateGeneratedParameters(_glob *string) error {
+	if _glob == nil {
+		return fmt.Errorf("parameter _glob is required, but nil was provided")
 	}
 
 	return nil

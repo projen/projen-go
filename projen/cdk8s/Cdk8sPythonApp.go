@@ -189,7 +189,7 @@ type Cdk8sPythonApp interface {
 	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
 	//
 	// Deprecated.
-	AnnotateGenerated(glob *string)
+	AnnotateGenerated(_glob *string)
 	// Called after all components are synthesized.
 	//
 	// Order is *not* guaranteed.
@@ -856,14 +856,14 @@ func (c *jsiiProxy_Cdk8sPythonApp) AddTip(message *string) {
 	)
 }
 
-func (c *jsiiProxy_Cdk8sPythonApp) AnnotateGenerated(glob *string) {
-	if err := c.validateAnnotateGeneratedParameters(glob); err != nil {
+func (c *jsiiProxy_Cdk8sPythonApp) AnnotateGenerated(_glob *string) {
+	if err := c.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		c,
 		"annotateGenerated",
-		[]interface{}{glob},
+		[]interface{}{_glob},
 	)
 }
 

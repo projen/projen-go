@@ -32,7 +32,7 @@ func (a *jsiiProxy_AwsCdkJavaApp) validateAddTipParameters(message *string) erro
 	return nil
 }
 
-func (a *jsiiProxy_AwsCdkJavaApp) validateAnnotateGeneratedParameters(glob *string) error {
+func (a *jsiiProxy_AwsCdkJavaApp) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
 

@@ -639,6 +639,20 @@ type ReactProjectOptions struct {
 	//
 	// Experimental.
 	ArtifactsDirectory *string `field:"optional" json:"artifactsDirectory" yaml:"artifactsDirectory"`
+	// Run security audit on dependencies.
+	//
+	// When enabled, creates an "audit" task that checks for known security vulnerabilities
+	// in dependencies. By default, runs during every build and checks for "high" severity
+	// vulnerabilities or above in all dependencies (including dev dependencies).
+	// Default: false.
+	//
+	// Experimental.
+	AuditDeps *bool `field:"optional" json:"auditDeps" yaml:"auditDeps"`
+	// Security audit options.
+	// Default: - default options.
+	//
+	// Experimental.
+	AuditDepsOptions *javascript.AuditOptions `field:"optional" json:"auditDepsOptions" yaml:"auditDepsOptions"`
 	// Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.

@@ -179,7 +179,7 @@ type JavaProject interface {
 	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
 	//
 	// Deprecated.
-	AnnotateGenerated(glob *string)
+	AnnotateGenerated(_glob *string)
 	// Called after all components are synthesized.
 	//
 	// Order is *not* guaranteed.
@@ -824,14 +824,14 @@ func (j *jsiiProxy_JavaProject) AddTip(message *string) {
 	)
 }
 
-func (j *jsiiProxy_JavaProject) AnnotateGenerated(glob *string) {
-	if err := j.validateAnnotateGeneratedParameters(glob); err != nil {
+func (j *jsiiProxy_JavaProject) AnnotateGenerated(_glob *string) {
+	if err := j.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		j,
 		"annotateGenerated",
-		[]interface{}{glob},
+		[]interface{}{_glob},
 	)
 }
 

@@ -10,9 +10,9 @@ import (
 	"github.com/projen/projen-go/projen"
 )
 
-func (r *jsiiProxy_ReactTypeDef) validateSynthesizeContentParameters(_arg projen.IResolver) error {
-	if _arg == nil {
-		return fmt.Errorf("parameter _arg is required, but nil was provided")
+func (r *jsiiProxy_ReactTypeDef) validateSynthesizeContentParameters(resolver projen.IResolver) error {
+	if resolver == nil {
+		return fmt.Errorf("parameter resolver is required, but nil was provided")
 	}
 
 	return nil

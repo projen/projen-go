@@ -8,9 +8,9 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 )
 
-func (l *jsiiProxy_License) validateSynthesizeContentParameters(_arg IResolver) error {
-	if _arg == nil {
-		return fmt.Errorf("parameter _arg is required, but nil was provided")
+func (l *jsiiProxy_License) validateSynthesizeContentParameters(resolver IResolver) error {
+	if resolver == nil {
+		return fmt.Errorf("parameter resolver is required, but nil was provided")
 	}
 
 	return nil

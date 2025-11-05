@@ -199,7 +199,7 @@ type AwsCdkPythonApp interface {
 	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
 	//
 	// Deprecated.
-	AnnotateGenerated(glob *string)
+	AnnotateGenerated(_glob *string)
 	// Called after all components are synthesized.
 	//
 	// Order is *not* guaranteed.
@@ -906,14 +906,14 @@ func (a *jsiiProxy_AwsCdkPythonApp) AddTip(message *string) {
 	)
 }
 
-func (a *jsiiProxy_AwsCdkPythonApp) AnnotateGenerated(glob *string) {
-	if err := a.validateAnnotateGeneratedParameters(glob); err != nil {
+func (a *jsiiProxy_AwsCdkPythonApp) AnnotateGenerated(_glob *string) {
+	if err := a.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		a,
 		"annotateGenerated",
-		[]interface{}{glob},
+		[]interface{}{_glob},
 	)
 }
 

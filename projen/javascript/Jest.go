@@ -32,7 +32,8 @@ type Jest interface {
 	// Experimental.
 	Node() constructs.Node
 	// Experimental.
-	Project() NodeProject
+	// Returns `NodeProject`, use interface conversion if needed.
+	Project() projen.Project
 	// Experimental.
 	AddIgnorePattern(pattern *string)
 	// Adds one or more moduleNameMapper entries to Jest's configuration.
@@ -126,8 +127,8 @@ func (j *jsiiProxy_Jest) Node() constructs.Node {
 	return returns
 }
 
-func (j *jsiiProxy_Jest) Project() NodeProject {
-	var returns NodeProject
+func (j *jsiiProxy_Jest) Project() projen.Project {
+	var returns projen.Project
 	_jsii_.Get(
 		j,
 		"project",

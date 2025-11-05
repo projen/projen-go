@@ -18,9 +18,9 @@ func (t *jsiiProxy_TextFile) validateAddLineParameters(line *string) error {
 	return nil
 }
 
-func (t *jsiiProxy_TextFile) validateSynthesizeContentParameters(_arg IResolver) error {
-	if _arg == nil {
-		return fmt.Errorf("parameter _arg is required, but nil was provided")
+func (t *jsiiProxy_TextFile) validateSynthesizeContentParameters(resolver IResolver) error {
+	if resolver == nil {
+		return fmt.Errorf("parameter resolver is required, but nil was provided")
 	}
 
 	return nil

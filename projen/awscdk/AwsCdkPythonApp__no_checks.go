@@ -28,7 +28,7 @@ func (a *jsiiProxy_AwsCdkPythonApp) validateAddTipParameters(message *string) er
 	return nil
 }
 
-func (a *jsiiProxy_AwsCdkPythonApp) validateAnnotateGeneratedParameters(glob *string) error {
+func (a *jsiiProxy_AwsCdkPythonApp) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
 
