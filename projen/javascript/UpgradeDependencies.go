@@ -27,6 +27,7 @@ type UpgradeDependencies interface {
 	// Experimental.
 	PostUpgradeTask() projen.Task
 	// Experimental.
+	// Returns `NodeProject`, use interface conversion if needed.
 	Project() projen.Project
 	// The upgrade task.
 	// Experimental.

@@ -7,6 +7,21 @@ import (
 // Options for `UpgradeDependencies`.
 // Experimental.
 type UpgradeDependenciesOptions struct {
+	// Exclude package versions published within the specified number of days.
+	//
+	// This may provide some protection against supply chain attacks, simply by avoiding
+	// newly published packages that may be malicious. It gives the ecosystem more time
+	// to detect malicious packages. However it comes at the cost of updating other
+	// packages slower, which might also contain vulnerabilities or bugs in need of a fix.
+	//
+	// The cooldown period applies to both npm-check-updates discovery
+	// and the package manager update command.
+	// See: https://yarnpkg.com/configuration/yarnrc#npmMinimalAgeGate
+	//
+	// Default: - No cooldown period.
+	//
+	// Experimental.
+	Cooldown *float64 `field:"optional" json:"cooldown" yaml:"cooldown"`
 	// List of package names to exclude during the upgrade.
 	// Default: - Nothing is excluded.
 	//
