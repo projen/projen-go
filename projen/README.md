@@ -285,14 +285,6 @@ projen has an unofficial [VS Code extension](https://marketplace.visualstudio.co
 The projen community can be found within the #projen channel in the [cdk.dev](https://cdk.dev/)
 community Slack workspace.
 
-### Virtual Meetup
-
-* Thursday June 30, 2022
-* 1-2pm America/New_York (EDT)
-* [CFP](https://bit.ly/3NEc0UQ) a Google Form
-* CFP Closes Saturday April 30, 2022
-* Hosted on [Zoom](https://zoom.us/j/92399854777?pwd=OUZybHlobHNoZUs1VVordWhaRTVGdz09#success)
-
 ## Contributions
 
 Contributions of all kinds are welcome! Check out our [contributor's
@@ -303,8 +295,8 @@ For a quick start, check out a development environment:
 ```bash
 $ git clone git@github.com:projen/projen
 $ cd projen
-$ yarn
-$ yarn watch # compile in the background
+$ npm ci
+$ npm run watch # compile in the background
 ```
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
