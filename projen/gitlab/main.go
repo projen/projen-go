@@ -347,6 +347,7 @@ func init() {
 		reflect.TypeOf((*Strategy)(nil)).Elem(),
 		map[string]interface{}{
 			"DEPEND": Strategy_DEPEND,
+			"MIRROR": Strategy_MIRROR,
 		},
 	)
 	_jsii_.RegisterStruct(

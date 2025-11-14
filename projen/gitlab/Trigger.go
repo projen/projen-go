@@ -14,6 +14,9 @@ type Trigger struct {
 	// A list of local files or artifacts from other jobs to define the pipeline.
 	// Experimental.
 	Include *[]*TriggerInclude `field:"optional" json:"include" yaml:"include"`
+	// Input parameters for the downstream pipeline when using spec:inputs.
+	// Experimental.
+	Inputs *map[string]interface{} `field:"optional" json:"inputs" yaml:"inputs"`
 	// Path to the project, e.g. `group/project`, or `group/sub-group/project`.
 	// Experimental.
 	Project *string `field:"optional" json:"project" yaml:"project"`
