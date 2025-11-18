@@ -83,7 +83,7 @@ type MavenPublishOptions struct {
 	// Used in maven settings for credential lookup (e.g. use github when publishing to GitHub).
 	//
 	// Set to `central-ossrh` to publish to Maven Central.
-	// Default: "ossrh" (Maven Central) or "github" when using GitHub Packages.
+	// Default: "central-ossrh" (Maven Central) or "github" when using GitHub Packages.
 	//
 	// Experimental.
 	MavenServerId *string `field:"optional" json:"mavenServerId" yaml:"mavenServerId"`
