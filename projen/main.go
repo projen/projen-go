@@ -17,6 +17,7 @@ func init() {
 			"CLAUDE": AiAgent_CLAUDE,
 			"AMAZON_Q": AiAgent_AMAZON_Q,
 			"KIRO": AiAgent_KIRO,
+			"CODEX": AiAgent_CODEX,
 		},
 	)
 	_jsii_.RegisterClass(

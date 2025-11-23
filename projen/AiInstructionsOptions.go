@@ -5,7 +5,7 @@ package projen
 // Experimental.
 type AiInstructionsOptions struct {
 	// Which AI agents to generate instruction files for.
-	// Default: - All agents: [AiAgent.GITHUB_COPILOT, AiAgent.CURSOR, AiAgent.CLAUDE, AiAgent.AMAZON_Q]
+	// Default: - All agents: [AiAgent.GITHUB_COPILOT, AiAgent.CURSOR, AiAgent.CLAUDE, AiAgent.AMAZON_Q, AiAgent.KIRO, AiAgent.CODEX]
 	//
 	// Experimental.
 	Agents *[]AiAgent `field:"optional" json:"agents" yaml:"agents"`

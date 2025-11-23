@@ -21,5 +21,8 @@ const (
 	// Kiro - .kiro/steering/project.md.
 	// Experimental.
 	AiAgent_KIRO AiAgent = "KIRO"
+	// OpenAI Codex - AGENTS.md.
+	// Experimental.
+	AiAgent_CODEX AiAgent = "CODEX"
 )
 
