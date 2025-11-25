@@ -10,7 +10,23 @@ import (
 	"github.com/aws/constructs-go/constructs/v10"
 )
 
-func validatePoetryPyproject_IsComponentParameters(x interface{}) error {
+func (u *jsiiProxy_Uv) validateAddDependencyParameters(spec *string) error {
+	if spec == nil {
+		return fmt.Errorf("parameter spec is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (u *jsiiProxy_Uv) validateAddDevDependencyParameters(spec *string) error {
+	if spec == nil {
+		return fmt.Errorf("parameter spec is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func validateUv_IsComponentParameters(x interface{}) error {
 	if x == nil {
 		return fmt.Errorf("parameter x is required, but nil was provided")
 	}
@@ -18,7 +34,7 @@ func validatePoetryPyproject_IsComponentParameters(x interface{}) error {
 	return nil
 }
 
-func validatePoetryPyproject_IsConstructParameters(x interface{}) error {
+func validateUv_IsConstructParameters(x interface{}) error {
 	if x == nil {
 		return fmt.Errorf("parameter x is required, but nil was provided")
 	}
@@ -26,7 +42,7 @@ func validatePoetryPyproject_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func validateNewPoetryPyprojectParameters(scope constructs.IConstruct, options *PoetryPyprojectOptions) error {
+func validateNewUvParameters(scope constructs.IConstruct, options *UvOptions) error {
 	if scope == nil {
 		return fmt.Errorf("parameter scope is required, but nil was provided")
 	}

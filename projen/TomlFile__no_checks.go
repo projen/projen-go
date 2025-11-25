@@ -36,7 +36,7 @@ func (j *jsiiProxy_TomlFile) validateSetReadonlyParameters(val *bool) error {
 	return nil
 }
 
-func validateNewTomlFileParameters(project Project, filePath *string, options *TomlFileOptions) error {
+func validateNewTomlFileParameters(scope constructs.IConstruct, filePath *string, options *TomlFileOptions) error {
 	return nil
 }
 

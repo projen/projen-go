@@ -5,5 +5,6 @@ import (
 )
 type Type__projenComponent = projen.Component
 type Type__projenProjenrcFile = projen.ProjenrcFile
+type Type__projenTomlFile = projen.TomlFile
 type Type__githubGitHubProject = github.GitHubProject
 type Type__projenFileBase = projen.FileBase

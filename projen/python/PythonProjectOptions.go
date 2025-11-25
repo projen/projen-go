@@ -216,6 +216,9 @@ type PythonProjectOptions struct {
 	// Additional fields to pass in the setup() function if using setuptools.
 	// Experimental.
 	SetupConfig *map[string]interface{} `field:"optional" json:"setupConfig" yaml:"setupConfig"`
+	// Additional options to set for uv if using uv.
+	// Experimental.
+	UvOptions *UvOptions `field:"optional" json:"uvOptions" yaml:"uvOptions"`
 	// Path to the python executable to use.
 	// Default: "python".
 	//
@@ -325,6 +328,11 @@ type PythonProjectOptions struct {
 	//
 	// Experimental.
 	Setuptools *bool `field:"optional" json:"setuptools" yaml:"setuptools"`
+	// Use uv to manage your project dependencies, virtual environment, and (optional) packaging/publishing.
+	// Default: false.
+	//
+	// Experimental.
+	Uv *bool `field:"optional" json:"uv" yaml:"uv"`
 	// Use venv to manage a virtual environment for installing dependencies inside.
 	// Default: - true, unless poetry is true, then false.
 	//

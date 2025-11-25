@@ -12,7 +12,7 @@ func validatePoetryPyproject_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func validateNewPoetryPyprojectParameters(project projen.Project, options *PoetryPyprojectOptions) error {
+func validateNewPoetryPyprojectParameters(scope constructs.IConstruct, options *PoetryPyprojectOptions) error {
 	return nil
 }
 

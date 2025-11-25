@@ -41,6 +41,9 @@ type SetuptoolsOptions struct {
 	// Additional fields to pass in the setup() function if using setuptools.
 	// Experimental.
 	SetupConfig *map[string]interface{} `field:"optional" json:"setupConfig" yaml:"setupConfig"`
+	// Additional options to set for uv if using uv.
+	// Experimental.
+	UvOptions *UvOptions `field:"optional" json:"uvOptions" yaml:"uvOptions"`
 	// Path to the python executable to use.
 	// Default: "python".
 	//

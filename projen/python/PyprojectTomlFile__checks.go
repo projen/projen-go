@@ -1,6 +1,6 @@
 //go:build !no_runtime_type_checking
 
-package projen
+package python
 
 import (
 	"fmt"
@@ -8,9 +8,10 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 
 	"github.com/aws/constructs-go/constructs/v10"
+	"github.com/projen/projen-go/projen"
 )
 
-func (t *jsiiProxy_TomlFile) validateAddDeletionOverrideParameters(path *string) error {
+func (p *jsiiProxy_PyprojectTomlFile) validateAddDeletionOverrideParameters(path *string) error {
 	if path == nil {
 		return fmt.Errorf("parameter path is required, but nil was provided")
 	}
@@ -18,7 +19,7 @@ func (t *jsiiProxy_TomlFile) validateAddDeletionOverrideParameters(path *string)
 	return nil
 }
 
-func (t *jsiiProxy_TomlFile) validateAddOverrideParameters(path *string, value interface{}) error {
+func (p *jsiiProxy_PyprojectTomlFile) validateAddOverrideParameters(path *string, value interface{}) error {
 	if path == nil {
 		return fmt.Errorf("parameter path is required, but nil was provided")
 	}
@@ -30,7 +31,7 @@ func (t *jsiiProxy_TomlFile) validateAddOverrideParameters(path *string, value i
 	return nil
 }
 
-func (t *jsiiProxy_TomlFile) validateAddToArrayParameters(path *string) error {
+func (p *jsiiProxy_PyprojectTomlFile) validateAddToArrayParameters(path *string) error {
 	if path == nil {
 		return fmt.Errorf("parameter path is required, but nil was provided")
 	}
@@ -38,7 +39,7 @@ func (t *jsiiProxy_TomlFile) validateAddToArrayParameters(path *string) error {
 	return nil
 }
 
-func (t *jsiiProxy_TomlFile) validateSynthesizeContentParameters(resolver IResolver) error {
+func (p *jsiiProxy_PyprojectTomlFile) validateSynthesizeContentParameters(resolver projen.IResolver) error {
 	if resolver == nil {
 		return fmt.Errorf("parameter resolver is required, but nil was provided")
 	}
@@ -46,7 +47,7 @@ func (t *jsiiProxy_TomlFile) validateSynthesizeContentParameters(resolver IResol
 	return nil
 }
 
-func validateTomlFile_IsComponentParameters(x interface{}) error {
+func validatePyprojectTomlFile_IsComponentParameters(x interface{}) error {
 	if x == nil {
 		return fmt.Errorf("parameter x is required, but nil was provided")
 	}
@@ -54,7 +55,7 @@ func validateTomlFile_IsComponentParameters(x interface{}) error {
 	return nil
 }
 
-func validateTomlFile_IsConstructParameters(x interface{}) error {
+func validatePyprojectTomlFile_IsConstructParameters(x interface{}) error {
 	if x == nil {
 		return fmt.Errorf("parameter x is required, but nil was provided")
 	}
@@ -62,7 +63,7 @@ func validateTomlFile_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func (j *jsiiProxy_TomlFile) validateSetExecutableParameters(val *bool) error {
+func (j *jsiiProxy_PyprojectTomlFile) validateSetExecutableParameters(val *bool) error {
 	if val == nil {
 		return fmt.Errorf("parameter val is required, but nil was provided")
 	}
@@ -70,7 +71,7 @@ func (j *jsiiProxy_TomlFile) validateSetExecutableParameters(val *bool) error {
 	return nil
 }
 
-func (j *jsiiProxy_TomlFile) validateSetReadonlyParameters(val *bool) error {
+func (j *jsiiProxy_PyprojectTomlFile) validateSetReadonlyParameters(val *bool) error {
 	if val == nil {
 		return fmt.Errorf("parameter val is required, but nil was provided")
 	}
@@ -78,19 +79,15 @@ func (j *jsiiProxy_TomlFile) validateSetReadonlyParameters(val *bool) error {
 	return nil
 }
 
-func validateNewTomlFileParameters(scope constructs.IConstruct, filePath *string, options *TomlFileOptions) error {
+func validateNewPyprojectTomlFileParameters(scope constructs.IConstruct, config *PyprojectToml) error {
 	if scope == nil {
 		return fmt.Errorf("parameter scope is required, but nil was provided")
 	}
 
-	if filePath == nil {
-		return fmt.Errorf("parameter filePath is required, but nil was provided")
+	if config == nil {
+		return fmt.Errorf("parameter config is required, but nil was provided")
 	}
-
-	if options == nil {
-		return fmt.Errorf("parameter options is required, but nil was provided")
-	}
-	if err := _jsii_.ValidateStruct(options, func() string { return "parameter options" }); err != nil {
+	if err := _jsii_.ValidateStruct(config, func() string { return "parameter config" }); err != nil {
 		return err
 	}
 

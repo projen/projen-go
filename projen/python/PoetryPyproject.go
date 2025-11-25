@@ -16,7 +16,7 @@ import (
 type PoetryPyproject interface {
 	projen.Component
 	// Experimental.
-	File() projen.TomlFile
+	File() PyprojectTomlFile
 	// The tree node.
 	// Experimental.
 	Node() constructs.Node
@@ -43,8 +43,8 @@ type jsiiProxy_PoetryPyproject struct {
 	internal.Type__projenComponent
 }
 
-func (j *jsiiProxy_PoetryPyproject) File() projen.TomlFile {
-	var returns projen.TomlFile
+func (j *jsiiProxy_PoetryPyproject) File() PyprojectTomlFile {
+	var returns PyprojectTomlFile
 	_jsii_.Get(
 		j,
 		"file",
@@ -75,17 +75,17 @@ func (j *jsiiProxy_PoetryPyproject) Project() projen.Project {
 
 
 // Experimental.
-func NewPoetryPyproject(project projen.Project, options *PoetryPyprojectOptions) PoetryPyproject {
+func NewPoetryPyproject(scope constructs.IConstruct, options *PoetryPyprojectOptions) PoetryPyproject {
 	_init_.Initialize()
 
-	if err := validateNewPoetryPyprojectParameters(project, options); err != nil {
+	if err := validateNewPoetryPyprojectParameters(scope, options); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_PoetryPyproject{}
 
 	_jsii_.Create(
 		"projen.python.PoetryPyproject",
-		[]interface{}{project, options},
+		[]interface{}{scope, options},
 		&j,
 	)
 
@@ -93,12 +93,12 @@ func NewPoetryPyproject(project projen.Project, options *PoetryPyprojectOptions)
 }
 
 // Experimental.
-func NewPoetryPyproject_Override(p PoetryPyproject, project projen.Project, options *PoetryPyprojectOptions) {
+func NewPoetryPyproject_Override(p PoetryPyproject, scope constructs.IConstruct, options *PoetryPyprojectOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.python.PoetryPyproject",
-		[]interface{}{project, options},
+		[]interface{}{scope, options},
 		p,
 	)
 }

@@ -7,6 +7,10 @@ import (
 )
 
 func init() {
+	_jsii_.RegisterStruct(
+		"projen.python.BuildSystem",
+		reflect.TypeOf((*BuildSystem)(nil)).Elem(),
+	)
 	_jsii_.RegisterInterface(
 		"projen.python.IPackageProvider",
 		reflect.TypeOf((*IPackageProvider)(nil)).Elem(),
@@ -134,6 +138,10 @@ func init() {
 		"projen.python.PoetryPyprojectOptionsWithoutDeps",
 		reflect.TypeOf((*PoetryPyprojectOptionsWithoutDeps)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.python.ProjectAuthor",
+		reflect.TypeOf((*ProjectAuthor)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.python.Projenrc",
 		reflect.TypeOf((*Projenrc)(nil)).Elem(),
@@ -156,6 +164,75 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.python.ProjenrcOptions",
 		reflect.TypeOf((*ProjenrcOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.python.PyprojectToml",
+		reflect.TypeOf((*PyprojectToml)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.python.PyprojectTomlDependencyGroups",
+		reflect.TypeOf((*PyprojectTomlDependencyGroups)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.python.PyprojectTomlFile",
+		reflect.TypeOf((*PyprojectTomlFile)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "absolutePath", GoGetter: "AbsolutePath"},
+			_jsii_.MemberMethod{JsiiMethod: "addDeletionOverride", GoMethod: "AddDeletionOverride"},
+			_jsii_.MemberMethod{JsiiMethod: "addOverride", GoMethod: "AddOverride"},
+			_jsii_.MemberMethod{JsiiMethod: "addToArray", GoMethod: "AddToArray"},
+			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
+			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
+			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
+			_jsii_.MemberMethod{JsiiMethod: "patch", GoMethod: "Patch"},
+			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberProperty{JsiiProperty: "readonly", GoGetter: "Readonly"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+		},
+		func() interface{} {
+			j := jsiiProxy_PyprojectTomlFile{}
+			_jsii_.InitJsiiProxy(&j.Type__projenTomlFile)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.python.PyprojectTomlProject",
+		reflect.TypeOf((*PyprojectTomlProject)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.python.PyprojectTomlProjectDynamic",
+		reflect.TypeOf((*PyprojectTomlProjectDynamic)(nil)).Elem(),
+		map[string]interface{}{
+			"VERSION": PyprojectTomlProjectDynamic_VERSION,
+			"DESCRIPTION": PyprojectTomlProjectDynamic_DESCRIPTION,
+			"README": PyprojectTomlProjectDynamic_README,
+			"REQUIRES_HYPHEN_PYTHON": PyprojectTomlProjectDynamic_REQUIRES_HYPHEN_PYTHON,
+			"LICENSE": PyprojectTomlProjectDynamic_LICENSE,
+			"LICENSE_HYPHEN_FILES": PyprojectTomlProjectDynamic_LICENSE_HYPHEN_FILES,
+			"AUTHORS": PyprojectTomlProjectDynamic_AUTHORS,
+			"MAINTAINERS": PyprojectTomlProjectDynamic_MAINTAINERS,
+			"KEYWORDS": PyprojectTomlProjectDynamic_KEYWORDS,
+			"CLASSIFIERS": PyprojectTomlProjectDynamic_CLASSIFIERS,
+			"URLS": PyprojectTomlProjectDynamic_URLS,
+			"SCRIPTS": PyprojectTomlProjectDynamic_SCRIPTS,
+			"GUI_HYPHEN_SCRIPTS": PyprojectTomlProjectDynamic_GUI_HYPHEN_SCRIPTS,
+			"ENTRY_HYPHEN_POINTS": PyprojectTomlProjectDynamic_ENTRY_HYPHEN_POINTS,
+			"DEPENDENCIES": PyprojectTomlProjectDynamic_DEPENDENCIES,
+			"OPTIONAL_HYPHEN_DEPENDENCIES": PyprojectTomlProjectDynamic_OPTIONAL_HYPHEN_DEPENDENCIES,
+			"IMPORT_HYPHEN_NAMES": PyprojectTomlProjectDynamic_IMPORT_HYPHEN_NAMES,
+			"IMPORT_HYPHEN_NAMESPACES": PyprojectTomlProjectDynamic_IMPORT_HYPHEN_NAMESPACES,
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.python.PyprojectTomlTool",
+		reflect.TypeOf((*PyprojectTomlTool)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.python.Pytest",
@@ -381,6 +458,39 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.python.SetuptoolsOptions",
 		reflect.TypeOf((*SetuptoolsOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.python.Uv",
+		reflect.TypeOf((*Uv)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addDependency", GoMethod: "AddDependency"},
+			_jsii_.MemberMethod{JsiiMethod: "addDevDependency", GoMethod: "AddDevDependency"},
+			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
+			_jsii_.MemberProperty{JsiiProperty: "installCiTask", GoGetter: "InstallCiTask"},
+			_jsii_.MemberMethod{JsiiMethod: "installDependencies", GoMethod: "InstallDependencies"},
+			_jsii_.MemberProperty{JsiiProperty: "installTask", GoGetter: "InstallTask"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberProperty{JsiiProperty: "publishTask", GoGetter: "PublishTask"},
+			_jsii_.MemberProperty{JsiiProperty: "publishTestTask", GoGetter: "PublishTestTask"},
+			_jsii_.MemberMethod{JsiiMethod: "setupEnvironment", GoMethod: "SetupEnvironment"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+		},
+		func() interface{} {
+			j := jsiiProxy_Uv{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_IPythonDeps)
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_IPythonEnv)
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_IPythonPackaging)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.python.UvOptions",
+		reflect.TypeOf((*UvOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.python.Venv",

@@ -1,16 +1,20 @@
-package projen
+package python
 
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 	_init_ "github.com/projen/projen-go/projen/jsii"
 
 	"github.com/aws/constructs-go/constructs/v10"
+	"github.com/projen/projen-go/projen"
+	"github.com/projen/projen-go/projen/python/internal"
 )
 
-// Represents a TOML file.
+// Represents configuration of a pyproject.toml file.
+// See: https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
+//
 // Experimental.
-type TomlFile interface {
-	ObjectFile
+type PyprojectTomlFile interface {
+	projen.TomlFile
 	// The absolute path of this file.
 	// Experimental.
 	AbsolutePath() *string
@@ -41,7 +45,7 @@ type TomlFile interface {
 	// Experimental.
 	Path() *string
 	// Experimental.
-	Project() Project
+	Project() projen.Project
 	// Indicates if the file should be read-only or read-write.
 	// Experimental.
 	Readonly() *bool
@@ -139,7 +143,7 @@ type TomlFile interface {
 	// ...
 	// ```.
 	// Experimental.
-	Patch(patches ...JsonPatch)
+	Patch(patches ...projen.JsonPatch)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -153,18 +157,18 @@ type TomlFile interface {
 	Synthesize()
 	// Implemented by derived classes and returns the contents of the file to emit.
 	// Experimental.
-	SynthesizeContent(resolver IResolver) *string
+	SynthesizeContent(resolver projen.IResolver) *string
 	// Returns a string representation of this construct.
 	// Experimental.
 	ToString() *string
 }
 
-// The jsii proxy struct for TomlFile
-type jsiiProxy_TomlFile struct {
-	jsiiProxy_ObjectFile
+// The jsii proxy struct for PyprojectTomlFile
+type jsiiProxy_PyprojectTomlFile struct {
+	internal.Type__projenTomlFile
 }
 
-func (j *jsiiProxy_TomlFile) AbsolutePath() *string {
+func (j *jsiiProxy_PyprojectTomlFile) AbsolutePath() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -174,7 +178,7 @@ func (j *jsiiProxy_TomlFile) AbsolutePath() *string {
 	return returns
 }
 
-func (j *jsiiProxy_TomlFile) Changed() *bool {
+func (j *jsiiProxy_PyprojectTomlFile) Changed() *bool {
 	var returns *bool
 	_jsii_.Get(
 		j,
@@ -184,7 +188,7 @@ func (j *jsiiProxy_TomlFile) Changed() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_TomlFile) Executable() *bool {
+func (j *jsiiProxy_PyprojectTomlFile) Executable() *bool {
 	var returns *bool
 	_jsii_.Get(
 		j,
@@ -194,7 +198,7 @@ func (j *jsiiProxy_TomlFile) Executable() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_TomlFile) Marker() *string {
+func (j *jsiiProxy_PyprojectTomlFile) Marker() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -204,7 +208,7 @@ func (j *jsiiProxy_TomlFile) Marker() *string {
 	return returns
 }
 
-func (j *jsiiProxy_TomlFile) Node() constructs.Node {
+func (j *jsiiProxy_PyprojectTomlFile) Node() constructs.Node {
 	var returns constructs.Node
 	_jsii_.Get(
 		j,
@@ -214,7 +218,7 @@ func (j *jsiiProxy_TomlFile) Node() constructs.Node {
 	return returns
 }
 
-func (j *jsiiProxy_TomlFile) OmitEmpty() *bool {
+func (j *jsiiProxy_PyprojectTomlFile) OmitEmpty() *bool {
 	var returns *bool
 	_jsii_.Get(
 		j,
@@ -224,7 +228,7 @@ func (j *jsiiProxy_TomlFile) OmitEmpty() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_TomlFile) Path() *string {
+func (j *jsiiProxy_PyprojectTomlFile) Path() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -234,8 +238,8 @@ func (j *jsiiProxy_TomlFile) Path() *string {
 	return returns
 }
 
-func (j *jsiiProxy_TomlFile) Project() Project {
-	var returns Project
+func (j *jsiiProxy_PyprojectTomlFile) Project() projen.Project {
+	var returns projen.Project
 	_jsii_.Get(
 		j,
 		"project",
@@ -244,7 +248,7 @@ func (j *jsiiProxy_TomlFile) Project() Project {
 	return returns
 }
 
-func (j *jsiiProxy_TomlFile) Readonly() *bool {
+func (j *jsiiProxy_PyprojectTomlFile) Readonly() *bool {
 	var returns *bool
 	_jsii_.Get(
 		j,
@@ -256,17 +260,17 @@ func (j *jsiiProxy_TomlFile) Readonly() *bool {
 
 
 // Experimental.
-func NewTomlFile(scope constructs.IConstruct, filePath *string, options *TomlFileOptions) TomlFile {
+func NewPyprojectTomlFile(scope constructs.IConstruct, config *PyprojectToml) PyprojectTomlFile {
 	_init_.Initialize()
 
-	if err := validateNewTomlFileParameters(scope, filePath, options); err != nil {
+	if err := validateNewPyprojectTomlFileParameters(scope, config); err != nil {
 		panic(err)
 	}
-	j := jsiiProxy_TomlFile{}
+	j := jsiiProxy_PyprojectTomlFile{}
 
 	_jsii_.Create(
-		"projen.TomlFile",
-		[]interface{}{scope, filePath, options},
+		"projen.python.PyprojectTomlFile",
+		[]interface{}{scope, config},
 		&j,
 	)
 
@@ -274,17 +278,17 @@ func NewTomlFile(scope constructs.IConstruct, filePath *string, options *TomlFil
 }
 
 // Experimental.
-func NewTomlFile_Override(t TomlFile, scope constructs.IConstruct, filePath *string, options *TomlFileOptions) {
+func NewPyprojectTomlFile_Override(p PyprojectTomlFile, scope constructs.IConstruct, config *PyprojectToml) {
 	_init_.Initialize()
 
 	_jsii_.Create(
-		"projen.TomlFile",
-		[]interface{}{scope, filePath, options},
-		t,
+		"projen.python.PyprojectTomlFile",
+		[]interface{}{scope, config},
+		p,
 	)
 }
 
-func (j *jsiiProxy_TomlFile)SetExecutable(val *bool) {
+func (j *jsiiProxy_PyprojectTomlFile)SetExecutable(val *bool) {
 	if err := j.validateSetExecutableParameters(val); err != nil {
 		panic(err)
 	}
@@ -295,7 +299,7 @@ func (j *jsiiProxy_TomlFile)SetExecutable(val *bool) {
 	)
 }
 
-func (j *jsiiProxy_TomlFile)SetReadonly(val *bool) {
+func (j *jsiiProxy_PyprojectTomlFile)SetReadonly(val *bool) {
 	if err := j.validateSetReadonlyParameters(val); err != nil {
 		panic(err)
 	}
@@ -308,16 +312,16 @@ func (j *jsiiProxy_TomlFile)SetReadonly(val *bool) {
 
 // Test whether the given construct is a component.
 // Experimental.
-func TomlFile_IsComponent(x interface{}) *bool {
+func PyprojectTomlFile_IsComponent(x interface{}) *bool {
 	_init_.Initialize()
 
-	if err := validateTomlFile_IsComponentParameters(x); err != nil {
+	if err := validatePyprojectTomlFile_IsComponentParameters(x); err != nil {
 		panic(err)
 	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(
-		"projen.TomlFile",
+		"projen.python.PyprojectTomlFile",
 		"isComponent",
 		[]interface{}{x},
 		&returns,
@@ -344,16 +348,16 @@ func TomlFile_IsComponent(x interface{}) *bool {
 //
 // Returns: true if `x` is an object created from a class which extends `Construct`.
 // Experimental.
-func TomlFile_IsConstruct(x interface{}) *bool {
+func PyprojectTomlFile_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
-	if err := validateTomlFile_IsConstructParameters(x); err != nil {
+	if err := validatePyprojectTomlFile_IsConstructParameters(x); err != nil {
 		panic(err)
 	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(
-		"projen.TomlFile",
+		"projen.python.PyprojectTomlFile",
 		"isConstruct",
 		[]interface{}{x},
 		&returns,
@@ -362,30 +366,30 @@ func TomlFile_IsConstruct(x interface{}) *bool {
 	return returns
 }
 
-func (t *jsiiProxy_TomlFile) AddDeletionOverride(path *string) {
-	if err := t.validateAddDeletionOverrideParameters(path); err != nil {
+func (p *jsiiProxy_PyprojectTomlFile) AddDeletionOverride(path *string) {
+	if err := p.validateAddDeletionOverrideParameters(path); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
-		t,
+		p,
 		"addDeletionOverride",
 		[]interface{}{path},
 	)
 }
 
-func (t *jsiiProxy_TomlFile) AddOverride(path *string, value interface{}) {
-	if err := t.validateAddOverrideParameters(path, value); err != nil {
+func (p *jsiiProxy_PyprojectTomlFile) AddOverride(path *string, value interface{}) {
+	if err := p.validateAddOverrideParameters(path, value); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
-		t,
+		p,
 		"addOverride",
 		[]interface{}{path, value},
 	)
 }
 
-func (t *jsiiProxy_TomlFile) AddToArray(path *string, values ...interface{}) {
-	if err := t.validateAddToArrayParameters(path); err != nil {
+func (p *jsiiProxy_PyprojectTomlFile) AddToArray(path *string, values ...interface{}) {
+	if err := p.validateAddToArrayParameters(path); err != nil {
 		panic(err)
 	}
 	args := []interface{}{path}
@@ -394,57 +398,57 @@ func (t *jsiiProxy_TomlFile) AddToArray(path *string, values ...interface{}) {
 	}
 
 	_jsii_.InvokeVoid(
-		t,
+		p,
 		"addToArray",
 		args,
 	)
 }
 
-func (t *jsiiProxy_TomlFile) Patch(patches ...JsonPatch) {
+func (p *jsiiProxy_PyprojectTomlFile) Patch(patches ...projen.JsonPatch) {
 	args := []interface{}{}
 	for _, a := range patches {
 		args = append(args, a)
 	}
 
 	_jsii_.InvokeVoid(
-		t,
+		p,
 		"patch",
 		args,
 	)
 }
 
-func (t *jsiiProxy_TomlFile) PostSynthesize() {
+func (p *jsiiProxy_PyprojectTomlFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
-		t,
+		p,
 		"postSynthesize",
 		nil, // no parameters
 	)
 }
 
-func (t *jsiiProxy_TomlFile) PreSynthesize() {
+func (p *jsiiProxy_PyprojectTomlFile) PreSynthesize() {
 	_jsii_.InvokeVoid(
-		t,
+		p,
 		"preSynthesize",
 		nil, // no parameters
 	)
 }
 
-func (t *jsiiProxy_TomlFile) Synthesize() {
+func (p *jsiiProxy_PyprojectTomlFile) Synthesize() {
 	_jsii_.InvokeVoid(
-		t,
+		p,
 		"synthesize",
 		nil, // no parameters
 	)
 }
 
-func (t *jsiiProxy_TomlFile) SynthesizeContent(resolver IResolver) *string {
-	if err := t.validateSynthesizeContentParameters(resolver); err != nil {
+func (p *jsiiProxy_PyprojectTomlFile) SynthesizeContent(resolver projen.IResolver) *string {
+	if err := p.validateSynthesizeContentParameters(resolver); err != nil {
 		panic(err)
 	}
 	var returns *string
 
 	_jsii_.Invoke(
-		t,
+		p,
 		"synthesizeContent",
 		[]interface{}{resolver},
 		&returns,
@@ -453,11 +457,11 @@ func (t *jsiiProxy_TomlFile) SynthesizeContent(resolver IResolver) *string {
 	return returns
 }
 
-func (t *jsiiProxy_TomlFile) ToString() *string {
+func (p *jsiiProxy_PyprojectTomlFile) ToString() *string {
 	var returns *string
 
 	_jsii_.Invoke(
-		t,
+		p,
 		"toString",
 		nil, // no parameters
 		&returns,

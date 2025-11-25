@@ -48,7 +48,7 @@ type PythonProject interface {
 	// Whether or not the project is being ejected.
 	// Experimental.
 	Ejected() *bool
-	// API for mangaging the Python runtime environment.
+	// API for managing the Python runtime environment.
 	// Experimental.
 	EnvManager() IPythonEnv
 	// All files in this project.
