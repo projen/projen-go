@@ -8,11 +8,34 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 
 	"github.com/projen/projen-go/projen"
+	"github.com/projen/projen-go/projen/javascript/biomeconfig"
 )
 
 func (b *jsiiProxy_Biome) validateAddFilePatternParameters(pattern *string) error {
 	if pattern == nil {
 		return fmt.Errorf("parameter pattern is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (b *jsiiProxy_Biome) validateAddOverrideParameters(override *biomeconfig.OverridePattern) error {
+	if override == nil {
+		return fmt.Errorf("parameter override is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(override, func() string { return "parameter override" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (b *jsiiProxy_Biome) validateExpandLinterRulesParameters(rules *biomeconfig.Rules) error {
+	if rules == nil {
+		return fmt.Errorf("parameter rules is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(rules, func() string { return "parameter rules" }); err != nil {
+		return err
 	}
 
 	return nil

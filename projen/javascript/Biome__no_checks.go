@@ -8,6 +8,14 @@ func (b *jsiiProxy_Biome) validateAddFilePatternParameters(pattern *string) erro
 	return nil
 }
 
+func (b *jsiiProxy_Biome) validateAddOverrideParameters(override *biomeconfig.OverridePattern) error {
+	return nil
+}
+
+func (b *jsiiProxy_Biome) validateExpandLinterRulesParameters(rules *biomeconfig.Rules) error {
+	return nil
+}
+
 func validateBiome_IsComponentParameters(x interface{}) error {
 	return nil
 }

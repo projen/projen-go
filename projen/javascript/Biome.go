@@ -6,6 +6,7 @@ import (
 
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
+	"github.com/projen/projen-go/projen/javascript/biomeconfig"
 	"github.com/projen/projen-go/projen/javascript/internal"
 )
 
@@ -24,8 +25,35 @@ type Biome interface {
 	// Biome task.
 	// Experimental.
 	Task() projen.Task
+	// Add a file pattern to biome.
+	//
+	// Use ! or !! to ignore a file pattern.
+	// See: https://biomejs.dev/guides/configure-biome/#control-files-via-configuration
+	//
 	// Experimental.
 	AddFilePattern(pattern *string)
+	// Add a biome override to set rules for a specific file pattern.
+	// See: https://biomejs.dev/reference/configuration/#overrides
+	//
+	// Experimental.
+	AddOverride(override *biomeconfig.OverridePattern)
+	// Expand the linting rules applied.
+	//
+	// Use `undefined` to remove the rule or group.
+	//
+	// Example:
+	//   biome.expandLintingRules({
+	//     style: undefined,
+	//     suspicious: {
+	//       noExplicitAny: undefined,
+	//       noDuplicateCase: "info",
+	//     }
+	//   })
+	//
+	// See: https://biomejs.dev/reference/configuration/#linterrulesgroup
+	//
+	// Experimental.
+	ExpandLinterRules(rules *biomeconfig.Rules)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -200,6 +228,28 @@ func (b *jsiiProxy_Biome) AddFilePattern(pattern *string) {
 		b,
 		"addFilePattern",
 		[]interface{}{pattern},
+	)
+}
+
+func (b *jsiiProxy_Biome) AddOverride(override *biomeconfig.OverridePattern) {
+	if err := b.validateAddOverrideParameters(override); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		b,
+		"addOverride",
+		[]interface{}{override},
+	)
+}
+
+func (b *jsiiProxy_Biome) ExpandLinterRules(rules *biomeconfig.Rules) {
+	if err := b.validateExpandLinterRulesParameters(rules); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		b,
+		"expandLinterRules",
+		[]interface{}{rules},
 	)
 }
 
