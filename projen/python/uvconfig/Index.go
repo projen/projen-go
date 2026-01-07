@@ -17,7 +17,7 @@ type Index struct {
 	// authenticate = "always"
 	// ```.
 	// Experimental.
-	Authenticate *string `field:"optional" json:"authenticate" yaml:"authenticate"`
+	Authenticate AuthPolicy `field:"optional" json:"authenticate" yaml:"authenticate"`
 	// Cache control configuration for this index.
 	//
 	// When set, these headers will override the server's cache control headers
@@ -64,7 +64,7 @@ type Index struct {
 	// API) or structured as a flat list of distributions (e.g., `--find-links`). In both cases,
 	// indexes can point to either local or remote resources.
 	// Experimental.
-	Format *string `field:"optional" json:"format" yaml:"format"`
+	Format IndexFormat `field:"optional" json:"format" yaml:"format"`
 	// Status codes that uv should ignore when deciding whether to continue searching in the next index after a failure.
 	//
 	// ```toml

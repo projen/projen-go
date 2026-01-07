@@ -5,10 +5,10 @@ package biomeconfig
 type OperatorLinebreak string
 
 const (
-	// after.
+	// The operator is placed after the expression (after).
 	// Experimental.
 	OperatorLinebreak_AFTER OperatorLinebreak = "AFTER"
-	// before.
+	// The operator is placed before the expression (before).
 	// Experimental.
 	OperatorLinebreak_BEFORE OperatorLinebreak = "BEFORE"
 )

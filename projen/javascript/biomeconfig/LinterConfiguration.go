@@ -13,7 +13,8 @@ type LinterConfiguration struct {
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 	// A list of glob patterns.
 	//
-	// The analyzer will handle only those files/folders that will match these patterns.
+	// The analyzer will handle only those files/folders that will
+	// match these patterns.
 	// Experimental.
 	Includes *[]*string `field:"optional" json:"includes" yaml:"includes"`
 	// List of rules.

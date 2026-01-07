@@ -26,7 +26,8 @@ type OverridePattern struct {
 	Html *HtmlConfiguration `field:"optional" json:"html" yaml:"html"`
 	// A list of glob patterns.
 	//
-	// Biome will include files/folders that will match these patterns.
+	// Biome will include files/folders that will
+	// match these patterns.
 	// Experimental.
 	Includes *[]*string `field:"optional" json:"includes" yaml:"includes"`
 	// Specific configuration for the JavaScript language.

@@ -25,7 +25,11 @@ type FormatterConfiguration struct {
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 	// Whether to expand arrays and objects on multiple lines.
 	//
-	// When set to `auto`, object literals are formatted on multiple lines if the first property has a newline, and array literals are formatted on a single line if it fits in the line. When set to `always`, these literals are formatted on multiple lines, regardless of length of the list. When set to `never`, these literals are formatted on a single line if it fits in the line. When formatting `package.json`, Biome will use `always` unless configured otherwise. Defaults to "auto".
+	// When set to `auto`, object literals are formatted on multiple lines if the first property has a newline,
+	// and array literals are formatted on a single line if it fits in the line.
+	// When set to `always`, these literals are formatted on multiple lines, regardless of length of the list.
+	// When set to `never`, these literals are formatted on a single line if it fits in the line.
+	// When formatting `package.json`, Biome will use `always` unless configured otherwise. Defaults to "auto".
 	// Default: auto".
 	//
 	// Experimental.
@@ -35,7 +39,8 @@ type FormatterConfiguration struct {
 	FormatWithErrors *bool `field:"optional" json:"formatWithErrors" yaml:"formatWithErrors"`
 	// A list of glob patterns.
 	//
-	// The formatter will include files/folders that will match these patterns.
+	// The formatter will include files/folders that will
+	// match these patterns.
 	// Experimental.
 	Includes *[]*string `field:"optional" json:"includes" yaml:"includes"`
 	// The indent style.

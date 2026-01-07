@@ -15,7 +15,7 @@ type UvConfiguration struct {
 	//
 	// This option is in preview and may change in any future release.
 	// Experimental.
-	AddBounds *string `field:"optional" json:"addBounds" yaml:"addBounds"`
+	AddBounds AddBoundsKind `field:"optional" json:"addBounds" yaml:"addBounds"`
 	// Allow insecure connections to host.
 	//
 	// Expects to receive either a hostname (e.g., `localhost`), a host-port pair (e.g.,
@@ -233,7 +233,7 @@ type UvConfiguration struct {
 	// preferring older versions that are compatible with a wider range of supported Python
 	// versions or platforms.
 	// Experimental.
-	ForkStrategy *string `field:"optional" json:"forkStrategy" yaml:"forkStrategy"`
+	ForkStrategy ForkStrategy `field:"optional" json:"forkStrategy" yaml:"forkStrategy"`
 	// The indexes to use when resolving dependencies.
 	//
 	// Accepts either a repository compliant with [PEP 503](https://peps.python.org/pep-0503/)
@@ -270,7 +270,7 @@ type UvConfiguration struct {
 	// "dependency confusion" attacks, whereby an attacker can upload a malicious package under the
 	// same name to an alternate index.
 	// Experimental.
-	IndexStrategy *string `field:"optional" json:"indexStrategy" yaml:"indexStrategy"`
+	IndexStrategy IndexStrategy `field:"optional" json:"indexStrategy" yaml:"indexStrategy"`
 	// The URL of the Python package index (by default: <https://pypi.org/simple>).
 	//
 	// Accepts either a repository compliant with [PEP 503](https://peps.python.org/pep-0503/)
@@ -287,7 +287,7 @@ type UvConfiguration struct {
 	// At present, only `--keyring-provider subprocess` is supported, which configures uv to
 	// use the `keyring` CLI to handle authentication.
 	// Experimental.
-	KeyringProvider *string `field:"optional" json:"keyringProvider" yaml:"keyringProvider"`
+	KeyringProvider KeyringProviderType `field:"optional" json:"keyringProvider" yaml:"keyringProvider"`
 	// The method to use when installing packages from the global cache.
 	//
 	// Defaults to `clone` (also known as Copy-on-Write) on macOS, and `hardlink` on Linux and
@@ -300,7 +300,7 @@ type UvConfiguration struct {
 	// Default: clone` (also known as Copy-on-Write) on macOS, and `hardlink` on Linux and.
 	//
 	// Experimental.
-	LinkMode *string `field:"optional" json:"linkMode" yaml:"linkMode"`
+	LinkMode LinkMode `field:"optional" json:"linkMode" yaml:"linkMode"`
 	// Whether the project is managed by uv.
 	//
 	// If `false`, uv will ignore the project when
@@ -383,7 +383,7 @@ type UvConfiguration struct {
 	// along with first-party requirements that contain an explicit pre-release marker in the
 	// declared specifiers (`if-necessary-or-explicit`).
 	// Experimental.
-	Prerelease *string `field:"optional" json:"prerelease" yaml:"prerelease"`
+	Prerelease PrereleaseMode `field:"optional" json:"prerelease" yaml:"prerelease"`
 	// Whether to enable experimental, preview features.
 	// Experimental.
 	Preview *bool `field:"optional" json:"preview" yaml:"preview"`
@@ -402,7 +402,7 @@ type UvConfiguration struct {
 	PypyInstallMirror *string `field:"optional" json:"pypyInstallMirror" yaml:"pypyInstallMirror"`
 	// Whether to allow Python downloads.
 	// Experimental.
-	PythonDownloads *string `field:"optional" json:"pythonDownloads" yaml:"pythonDownloads"`
+	PythonDownloads PythonDownloads `field:"optional" json:"pythonDownloads" yaml:"pythonDownloads"`
 	// URL pointing to JSON of custom Python installations.
 	//
 	// Note that currently, only local paths are supported.
@@ -419,7 +419,7 @@ type UvConfiguration struct {
 	PythonInstallMirror *string `field:"optional" json:"pythonInstallMirror" yaml:"pythonInstallMirror"`
 	// Whether to prefer using Python installations that are already present on the system, or those that are downloaded and installed by uv.
 	// Experimental.
-	PythonPreference *string `field:"optional" json:"pythonPreference" yaml:"pythonPreference"`
+	PythonPreference PythonPreference `field:"optional" json:"pythonPreference" yaml:"pythonPreference"`
 	// Reinstall all packages, regardless of whether they're already installed.
 	//
 	// Implies `refresh`.
@@ -446,7 +446,7 @@ type UvConfiguration struct {
 	//
 	// By default, uv will use the latest compatible version of each package (`highest`).
 	// Experimental.
-	Resolution *string `field:"optional" json:"resolution" yaml:"resolution"`
+	Resolution ResolutionMode `field:"optional" json:"resolution" yaml:"resolution"`
 	// The sources to use when resolving dependencies.
 	//
 	// `tool.uv.sources` enriches the dependency metadata with additional sources, incorporated

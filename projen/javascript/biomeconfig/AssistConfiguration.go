@@ -11,7 +11,8 @@ type AssistConfiguration struct {
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 	// A list of glob patterns.
 	//
-	// Biome will include files/folders that will match these patterns.
+	// Biome will include files/folders that will
+	// match these patterns.
 	// Experimental.
 	Includes *[]*string `field:"optional" json:"includes" yaml:"includes"`
 }

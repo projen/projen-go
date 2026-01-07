@@ -152,6 +152,15 @@ func init() {
 		"projen.javascript.biome_config.JsParserConfiguration",
 		reflect.TypeOf((*JsParserConfiguration)(nil)).Elem(),
 	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.biome_config.JsTrailingCommas",
+		reflect.TypeOf((*JsTrailingCommas)(nil)).Elem(),
+		map[string]interface{}{
+			"ALL": JsTrailingCommas_ALL,
+			"ES5": JsTrailingCommas_ES5,
+			"NONE": JsTrailingCommas_NONE,
+		},
+	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.biome_config.JsonAssistConfiguration",
 		reflect.TypeOf((*JsonAssistConfiguration)(nil)).Elem(),
@@ -171,6 +180,14 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.biome_config.JsonParserConfiguration",
 		reflect.TypeOf((*JsonParserConfiguration)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.biome_config.JsonTrailingCommas",
+		reflect.TypeOf((*JsonTrailingCommas)(nil)).Elem(),
+		map[string]interface{}{
+			"NONE": JsonTrailingCommas_NONE,
+			"ALL": JsonTrailingCommas_ALL,
+		},
 	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.biome_config.JsxRuntime",
@@ -270,23 +287,6 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.biome_config.Source",
 		reflect.TypeOf((*Source)(nil)).Elem(),
-	)
-	_jsii_.RegisterEnum(
-		"projen.javascript.biome_config.TrailingCommas",
-		reflect.TypeOf((*TrailingCommas)(nil)).Elem(),
-		map[string]interface{}{
-			"ALL": TrailingCommas_ALL,
-			"ES5": TrailingCommas_ES5,
-			"NONE": TrailingCommas_NONE,
-		},
-	)
-	_jsii_.RegisterEnum(
-		"projen.javascript.biome_config.TrailingCommas2",
-		reflect.TypeOf((*TrailingCommas2)(nil)).Elem(),
-		map[string]interface{}{
-			"NONE": TrailingCommas2_NONE,
-			"ALL": TrailingCommas2_ALL,
-		},
 	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.biome_config.VcsClientKind",

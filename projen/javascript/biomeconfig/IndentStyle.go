@@ -5,10 +5,10 @@ package biomeconfig
 type IndentStyle string
 
 const (
-	// tab.
+	// Indent with Tab (tab).
 	// Experimental.
 	IndentStyle_TAB IndentStyle = "TAB"
-	// space.
+	// Indent with Space (space).
 	// Experimental.
 	IndentStyle_SPACE IndentStyle = "SPACE"
 )

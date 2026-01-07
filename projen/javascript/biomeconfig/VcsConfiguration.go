@@ -15,14 +15,18 @@ type VcsConfiguration struct {
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 	// The folder where Biome should check for VCS files.
 	//
-	// By default, Biome will use the same folder where `biome.json` was found.
+	// By default, Biome will use the same
+	// folder where `biome.json` was found.
 	//
-	// If Biome can't find the configuration, it will attempt to use the current working directory. If no current working directory can't be found, Biome won't use the VCS integration, and a diagnostic will be emitted
+	// If Biome can't find the configuration, it will attempt to use the current working directory.
+	// If no current working directory can't be found, Biome won't use the VCS integration, and a diagnostic
+	// will be emitted.
 	// Experimental.
 	Root *string `field:"optional" json:"root" yaml:"root"`
 	// Whether Biome should use the VCS ignore file.
 	//
-	// When [true], Biome will ignore the files specified in the ignore file.
+	// When [true], Biome will ignore the files
+	// specified in the ignore file.
 	// Experimental.
 	UseIgnoreFile *bool `field:"optional" json:"useIgnoreFile" yaml:"useIgnoreFile"`
 }

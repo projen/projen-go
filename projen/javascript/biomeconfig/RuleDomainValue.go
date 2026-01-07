@@ -5,13 +5,13 @@ package biomeconfig
 type RuleDomainValue string
 
 const (
-	// all.
+	// Enables all the rules that belong to this domain (all).
 	// Experimental.
 	RuleDomainValue_ALL RuleDomainValue = "ALL"
-	// none.
+	// Disables all the rules that belong to this domain (none).
 	// Experimental.
 	RuleDomainValue_NONE RuleDomainValue = "NONE"
-	// recommended.
+	// Enables only the recommended rules for this domain (recommended).
 	// Experimental.
 	RuleDomainValue_RECOMMENDED RuleDomainValue = "RECOMMENDED"
 )

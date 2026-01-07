@@ -6,10 +6,10 @@ package biomeconfig
 type SelfCloseVoidElements string
 
 const (
-	// never.
+	// The `/` inside void elements is removed by the formatter (never).
 	// Experimental.
 	SelfCloseVoidElements_NEVER SelfCloseVoidElements = "NEVER"
-	// always.
+	// The `/` inside void elements is always added (always).
 	// Experimental.
 	SelfCloseVoidElements_ALWAYS SelfCloseVoidElements = "ALWAYS"
 )
