@@ -666,7 +666,7 @@ type NextJsTypeScriptProjectOptions struct {
 	//
 	// Experimental.
 	AuditDepsOptions *javascript.AuditOptions `field:"optional" json:"auditDepsOptions" yaml:"auditDepsOptions"`
-	// Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
+	// Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configured).
 	//
 	// Throw if set to true but `autoApproveOptions` are not defined.
 	// Default: - true.
@@ -741,7 +741,7 @@ type NextJsTypeScriptProjectOptions struct {
 	// Use tasks and github workflows to handle dependency upgrades.
 	//
 	// Cannot be used in conjunction with `dependabot`.
-	// Default: true.
+	// Default: - `true` for root projects, `false` for subprojects.
 	//
 	// Experimental.
 	DepsUpgrade *bool `field:"optional" json:"depsUpgrade" yaml:"depsUpgrade"`
