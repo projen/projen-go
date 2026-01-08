@@ -183,3 +183,14 @@ func LambdaRuntime_NODEJS_24_X() LambdaRuntime {
 	return returns
 }
 
+func LambdaRuntime_NODEJS_REGIONAL_LATEST() LambdaRuntime {
+	_init_.Initialize()
+	var returns LambdaRuntime
+	_jsii_.StaticGet(
+		"projen.awscdk.LambdaRuntime",
+		"NODEJS_REGIONAL_LATEST",
+		&returns,
+	)
+	return returns
+}
+

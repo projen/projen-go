@@ -34,7 +34,8 @@ type LambdaFunctionOptions struct {
 	// Experimental.
 	EdgeLambda *bool `field:"optional" json:"edgeLambda" yaml:"edgeLambda"`
 	// The node.js version to target.
-	// Default: Runtime.NODEJS_22_X
+	// Default: LambdaRuntime.NODEJS_REGIONAL_LATEST - Uses the latest Node.js runtime
+	// available in the deployment region, determined at CDK synthesis time.
 	//
 	// Experimental.
 	Runtime LambdaRuntime `field:"optional" json:"runtime" yaml:"runtime"`
