@@ -48,6 +48,11 @@ type AwsCdkConstructLibraryOptions struct {
 	// The parent project, if this project is part of a bigger project.
 	// Experimental.
 	Parent projen.Project `field:"optional" json:"parent" yaml:"parent"`
+	// Generate a project tree file (`.projen/tree.json`) that shows all components and their relationships. Useful for understanding your project structure and debugging.
+	// Default: false.
+	//
+	// Experimental.
+	ProjectTree *bool `field:"optional" json:"projectTree" yaml:"projectTree"`
 	// The shell command to use in order to run the projen CLI.
 	//
 	// Can be used to customize in special environments.

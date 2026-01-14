@@ -47,6 +47,11 @@ type ConstructLibraryAwsOptions struct {
 	// The parent project, if this project is part of a bigger project.
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	Parent projen.Project `field:"optional" json:"parent" yaml:"parent"`
+	// Generate a project tree file (`.projen/tree.json`) that shows all components and their relationships. Useful for understanding your project structure and debugging.
+	// Default: false.
+	//
+	// Deprecated: use `AwsCdkConstructLibraryOptions`.
+	ProjectTree *bool `field:"optional" json:"projectTree" yaml:"projectTree"`
 	// The shell command to use in order to run the projen CLI.
 	//
 	// Can be used to customize in special environments.

@@ -7,6 +7,12 @@ import (
 	"github.com/aws/constructs-go/constructs/v10"
 )
 
+// Generates a `.projen/tree.json` file that provides a snapshot of your project's component hierarchy. This file includes metadata about each component such as file paths, types, and the projen version used.
+//
+// The tree file is helpful for:
+// - Understanding how your project is structured
+// - Debugging component relationships
+// - Verifying which versions synthesized the project.
 // Experimental.
 type ProjectTree interface {
 	Component
