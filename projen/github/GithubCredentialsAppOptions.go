@@ -12,6 +12,13 @@ type GithubCredentialsAppOptions struct {
 	//
 	// Experimental.
 	AppIdSecret *string `field:"optional" json:"appIdSecret" yaml:"appIdSecret"`
+	// The GitHub Actions environment the secrets are added to.
+	//
+	// This can be used to add explicit approval steps to access the secrets.
+	// Default: - no environment used.
+	//
+	// Experimental.
+	Environment *string `field:"optional" json:"environment" yaml:"environment"`
 	// The owner of the GitHub App installation.
 	// Default: - if empty, defaults to the current repository owner.
 	//

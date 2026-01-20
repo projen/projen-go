@@ -309,6 +309,7 @@ func init() {
 		"projen.github.GithubCredentials",
 		reflect.TypeOf((*GithubCredentials)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "environment", GoGetter: "Environment"},
 			_jsii_.MemberProperty{JsiiProperty: "setupSteps", GoGetter: "SetupSteps"},
 			_jsii_.MemberProperty{JsiiProperty: "tokenRef", GoGetter: "TokenRef"},
 		},

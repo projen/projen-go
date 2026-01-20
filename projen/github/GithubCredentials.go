@@ -10,6 +10,9 @@ import (
 // Represents a method of providing GitHub API access for projen workflows.
 // Experimental.
 type GithubCredentials interface {
+	// The GitHub Actions environment the credentials have been added to.
+	// Experimental.
+	Environment() *string
 	// Setup steps to obtain GitHub credentials.
 	// Experimental.
 	SetupSteps() *[]*workflows.JobStep
@@ -24,6 +27,16 @@ type GithubCredentials interface {
 // The jsii proxy struct for GithubCredentials
 type jsiiProxy_GithubCredentials struct {
 	_ byte // padding
+}
+
+func (j *jsiiProxy_GithubCredentials) Environment() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"environment",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_GithubCredentials) SetupSteps() *[]*workflows.JobStep {
