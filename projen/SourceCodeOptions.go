@@ -4,6 +4,11 @@ package projen
 // Options for `SourceCodeFile`.
 // Experimental.
 type SourceCodeOptions struct {
+	// Whether the generated file should be marked as executable.
+	// Default: false.
+	//
+	// Experimental.
+	Executable *bool `field:"optional" json:"executable" yaml:"executable"`
 	// Indentation size.
 	// Default: 2.
 	//

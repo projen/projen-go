@@ -12,7 +12,7 @@ import (
 	constructs "github.com/aws/constructs-go/constructs/v10/jsii"
 )
 
-//go:embed projen-0.99.9.tgz
+//go:embed projen-0.99.10.tgz
 var tarball []byte
 
 // Initialize loads the necessary packages in the @jsii/kernel to support the enclosing module.
@@ -22,5 +22,5 @@ func Initialize() {
 	constructs.Initialize()
 
 	// Load this library into the kernel
-	_jsii_.Load("projen", "0.99.9", tarball)
+	_jsii_.Load("projen", "0.99.10", tarball)
 }
