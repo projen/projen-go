@@ -35,3 +35,11 @@ func validateReleaseTrigger_ScheduledParameters(options *ScheduledReleaseOptions
 	return nil
 }
 
+func validateReleaseTrigger_TaggedParameters(options *TagReleaseOptions) error {
+	if err := _jsii_.ValidateStruct(options, func() string { return "parameter options" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+

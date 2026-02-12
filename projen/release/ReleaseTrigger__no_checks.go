@@ -16,3 +16,7 @@ func validateReleaseTrigger_ScheduledParameters(options *ScheduledReleaseOptions
 	return nil
 }
 
+func validateReleaseTrigger_TaggedParameters(options *TagReleaseOptions) error {
+	return nil
+}
+

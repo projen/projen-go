@@ -158,6 +158,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "isManual", GoGetter: "IsManual"},
 			_jsii_.MemberProperty{JsiiProperty: "paths", GoGetter: "Paths"},
 			_jsii_.MemberProperty{JsiiProperty: "schedule", GoGetter: "Schedule"},
+			_jsii_.MemberProperty{JsiiProperty: "tags", GoGetter: "Tags"},
 		},
 		func() interface{} {
 			return &jsiiProxy_ReleaseTrigger{}
@@ -166,5 +167,9 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.release.ScheduledReleaseOptions",
 		reflect.TypeOf((*ScheduledReleaseOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.release.TagReleaseOptions",
+		reflect.TypeOf((*TagReleaseOptions)(nil)).Elem(),
 	)
 }

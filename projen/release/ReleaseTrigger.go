@@ -39,6 +39,9 @@ type ReleaseTrigger interface {
 	//
 	// Experimental.
 	Schedule() *string
+	// Tag patterns for which pushes will trigger a release.
+	// Experimental.
+	Tags() *[]*string
 }
 
 // The jsii proxy struct for ReleaseTrigger
@@ -101,6 +104,16 @@ func (j *jsiiProxy_ReleaseTrigger) Schedule() *string {
 	_jsii_.Get(
 		j,
 		"schedule",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ReleaseTrigger) Tags() *[]*string {
+	var returns *[]*string
+	_jsii_.Get(
+		j,
+		"tags",
 		&returns,
 	)
 	return returns
@@ -176,6 +189,28 @@ func ReleaseTrigger_Scheduled(options *ScheduledReleaseOptions) ReleaseTrigger {
 	_jsii_.StaticInvoke(
 		"projen.release.ReleaseTrigger",
 		"scheduled",
+		[]interface{}{options},
+		&returns,
+	)
+
+	return returns
+}
+
+// Creates a tag-based release trigger.
+//
+// Automated releases will occur on every new tag matching the provided patterns.
+// Experimental.
+func ReleaseTrigger_Tagged(options *TagReleaseOptions) ReleaseTrigger {
+	_init_.Initialize()
+
+	if err := validateReleaseTrigger_TaggedParameters(options); err != nil {
+		panic(err)
+	}
+	var returns ReleaseTrigger
+
+	_jsii_.StaticInvoke(
+		"projen.release.ReleaseTrigger",
+		"tagged",
 		[]interface{}{options},
 		&returns,
 	)
