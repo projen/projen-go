@@ -4,6 +4,11 @@ package biomeconfig
 // A list of rules that belong to this group.
 // Experimental.
 type Source struct {
+	// Remove duplicate CSS classes.
+	//
+	// See https://biomejs.dev/assist/actions/no-duplicate-classes
+	// Experimental.
+	NoDuplicateClasses interface{} `field:"optional" json:"noDuplicateClasses" yaml:"noDuplicateClasses"`
 	// Provides a code action to sort the imports and exports in the file using a built-in or custom order.
 	//
 	// See https://biomejs.dev/assist/actions/organize-imports
@@ -17,6 +22,11 @@ type Source struct {
 	// See https://biomejs.dev/assist/actions/use-sorted-attributes
 	// Experimental.
 	UseSortedAttributes interface{} `field:"optional" json:"useSortedAttributes" yaml:"useSortedAttributes"`
+	// Sort interface members by key.
+	//
+	// See https://biomejs.dev/assist/actions/use-sorted-interface-members
+	// Experimental.
+	UseSortedInterfaceMembers interface{} `field:"optional" json:"useSortedInterfaceMembers" yaml:"useSortedInterfaceMembers"`
 	// Sort the keys of a JSON object in natural order.
 	//
 	// See https://biomejs.dev/assist/actions/use-sorted-keys

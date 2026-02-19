@@ -8,6 +8,9 @@ type CssParserConfiguration struct {
 	// Experimental.
 	AllowWrongLineComments *bool `field:"optional" json:"allowWrongLineComments" yaml:"allowWrongLineComments"`
 	// Enables parsing of CSS Modules specific features.
+	//
+	// Enable this feature only
+	// when your files don't end in `.module.css`.
 	// Experimental.
 	CssModules *bool `field:"optional" json:"cssModules" yaml:"cssModules"`
 	// Enables parsing of Tailwind CSS 4.0 directives and functions.

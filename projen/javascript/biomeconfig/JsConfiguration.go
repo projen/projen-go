@@ -7,6 +7,9 @@ type JsConfiguration struct {
 	// Assist options.
 	// Experimental.
 	Assist *JsAssistConfiguration `field:"optional" json:"assist" yaml:"assist"`
+	// Enables support for embedding snippets.
+	// Experimental.
+	ExperimentalEmbeddedSnippetsEnabled *bool `field:"optional" json:"experimentalEmbeddedSnippetsEnabled" yaml:"experimentalEmbeddedSnippetsEnabled"`
 	// Formatting options.
 	// Experimental.
 	Formatter *JsFormatterConfiguration `field:"optional" json:"formatter" yaml:"formatter"`
