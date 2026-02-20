@@ -1060,7 +1060,7 @@ type AwsCdkConstructLibraryOptions struct {
 	// Experimental.
 	Catalog *cdk.Catalog `field:"optional" json:"catalog" yaml:"catalog"`
 	// Minimum version of the AWS CDK to depend on.
-	// Default: "2.1.0"
+	// Default: "2.189.1"
 	//
 	// Experimental.
 	CdkVersion *string `field:"required" json:"cdkVersion" yaml:"cdkVersion"`
@@ -1115,7 +1115,7 @@ type AwsCdkConstructLibraryOptions struct {
 	CdkVersionPinning *bool `field:"optional" json:"cdkVersionPinning" yaml:"cdkVersionPinning"`
 	// Minimum version of the `constructs` library to depend on.
 	// Default: - for CDK 1.x the default is "3.2.27", for CDK 2.x the default is
-	// "10.0.5".
+	// "10.5.1".
 	//
 	// Experimental.
 	ConstructsVersion *string `field:"optional" json:"constructsVersion" yaml:"constructsVersion"`
