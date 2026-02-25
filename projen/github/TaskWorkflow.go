@@ -101,6 +101,16 @@ type TaskWorkflow interface {
 	// Updates jobs for this workflow Does a complete replace, it does not try to merge the jobs.
 	// Experimental.
 	UpdateJobs(jobs *map[string]interface{})
+	// Applies one or more mixins to this construct.
+	//
+	// Mixins are applied in order. The list of constructs is captured at the
+	// start of the call, so constructs added by a mixin will not be visited.
+	// Use multiple `with()` calls if subsequent mixins should apply to added
+	// constructs.
+	//
+	// Returns: This construct for chaining.
+	// Experimental.
+	With(mixins ...constructs.IMixin) constructs.IConstruct
 }
 
 // The jsii proxy struct for TaskWorkflow
@@ -429,5 +439,23 @@ func (t *jsiiProxy_TaskWorkflow) UpdateJobs(jobs *map[string]interface{}) {
 		"updateJobs",
 		[]interface{}{jobs},
 	)
+}
+
+func (t *jsiiProxy_TaskWorkflow) With(mixins ...constructs.IMixin) constructs.IConstruct {
+	args := []interface{}{}
+	for _, a := range mixins {
+		args = append(args, a)
+	}
+
+	var returns constructs.IConstruct
+
+	_jsii_.Invoke(
+		t,
+		"with",
+		args,
+		&returns,
+	)
+
+	return returns
 }
 

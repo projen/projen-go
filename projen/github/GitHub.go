@@ -66,6 +66,16 @@ type GitHub interface {
 	// Returns `undefined` if the workflow cannot be found.
 	// Experimental.
 	TryFindWorkflow(name *string) GithubWorkflow
+	// Applies one or more mixins to this construct.
+	//
+	// Mixins are applied in order. The list of constructs is captured at the
+	// start of the call, so constructs added by a mixin will not be visited.
+	// Use multiple `with()` calls if subsequent mixins should apply to added
+	// constructs.
+	//
+	// Returns: This construct for chaining.
+	// Experimental.
+	With(mixins ...constructs.IMixin) constructs.IConstruct
 }
 
 // The jsii proxy struct for GitHub
@@ -366,6 +376,24 @@ func (g *jsiiProxy_GitHub) TryFindWorkflow(name *string) GithubWorkflow {
 		g,
 		"tryFindWorkflow",
 		[]interface{}{name},
+		&returns,
+	)
+
+	return returns
+}
+
+func (g *jsiiProxy_GitHub) With(mixins ...constructs.IMixin) constructs.IConstruct {
+	args := []interface{}{}
+	for _, a := range mixins {
+		args = append(args, a)
+	}
+
+	var returns constructs.IConstruct
+
+	_jsii_.Invoke(
+		g,
+		"with",
+		args,
 		&returns,
 	)
 

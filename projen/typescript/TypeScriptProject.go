@@ -358,6 +358,16 @@ type TypeScriptProject interface {
 	// the file was not found.
 	// Experimental.
 	TryRemoveFile(filePath *string) projen.FileBase
+	// Applies one or more mixins to this construct.
+	//
+	// Mixins are applied in order. The list of constructs is captured at the
+	// start of the call, so constructs added by a mixin will not be visited.
+	// Use multiple `with()` calls if subsequent mixins should apply to added
+	// constructs.
+	//
+	// Returns: This construct for chaining.
+	// Experimental.
+	With(mixins ...constructs.IMixin) constructs.IConstruct
 }
 
 // The jsii proxy struct for TypeScriptProject
@@ -1546,6 +1556,24 @@ func (t *jsiiProxy_TypeScriptProject) TryRemoveFile(filePath *string) projen.Fil
 		t,
 		"tryRemoveFile",
 		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+func (t *jsiiProxy_TypeScriptProject) With(mixins ...constructs.IMixin) constructs.IConstruct {
+	args := []interface{}{}
+	for _, a := range mixins {
+		args = append(args, a)
+	}
+
+	var returns constructs.IConstruct
+
+	_jsii_.Invoke(
+		t,
+		"with",
+		args,
 		&returns,
 	)
 

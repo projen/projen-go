@@ -103,6 +103,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "publishToPyPi", GoMethod: "PublishToPyPi"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
 		},
 		func() interface{} {
 			j := jsiiProxy_Publisher{}
@@ -133,6 +134,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "publisher", GoGetter: "Publisher"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
 		},
 		func() interface{} {
 			j := jsiiProxy_Release{}

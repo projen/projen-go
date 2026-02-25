@@ -51,6 +51,16 @@ type Logger interface {
 	// Log a message to stderr with WARN severity.
 	// Experimental.
 	Warn(text ...interface{})
+	// Applies one or more mixins to this construct.
+	//
+	// Mixins are applied in order. The list of constructs is captured at the
+	// start of the call, so constructs added by a mixin will not be visited.
+	// Use multiple `with()` calls if subsequent mixins should apply to added
+	// constructs.
+	//
+	// Returns: This construct for chaining.
+	// Experimental.
+	With(mixins ...constructs.IMixin) constructs.IConstruct
 }
 
 // The jsii proxy struct for Logger
@@ -280,5 +290,23 @@ func (l *jsiiProxy_Logger) Warn(text ...interface{}) {
 		"warn",
 		args,
 	)
+}
+
+func (l *jsiiProxy_Logger) With(mixins ...constructs.IMixin) constructs.IConstruct {
+	args := []interface{}{}
+	for _, a := range mixins {
+		args = append(args, a)
+	}
+
+	var returns constructs.IConstruct
+
+	_jsii_.Invoke(
+		l,
+		"with",
+		args,
+		&returns,
+	)
+
+	return returns
 }
 

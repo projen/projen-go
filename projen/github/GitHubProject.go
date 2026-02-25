@@ -382,6 +382,20 @@ type GitHubProject interface {
 	// the next steps to address this is to abstract workflows so that different
 	// "engines" can be used to implement our CI/CD solutions.
 	TryRemoveFile(filePath *string) projen.FileBase
+	// Applies one or more mixins to this construct.
+	//
+	// Mixins are applied in order. The list of constructs is captured at the
+	// start of the call, so constructs added by a mixin will not be visited.
+	// Use multiple `with()` calls if subsequent mixins should apply to added
+	// constructs.
+	//
+	// Returns: This construct for chaining.
+	// Deprecated: This is a *temporary* class. At the moment, our base project
+	// types such as `NodeProject` and `JavaProject` are derived from this, but we
+	// want to be able to use these project types outside of GitHub as well. One of
+	// the next steps to address this is to abstract workflows so that different
+	// "engines" can be used to implement our CI/CD solutions.
+	With(mixins ...constructs.IMixin) constructs.IConstruct
 }
 
 // The jsii proxy struct for GitHubProject
@@ -1038,6 +1052,24 @@ func (g *jsiiProxy_GitHubProject) TryRemoveFile(filePath *string) projen.FileBas
 		g,
 		"tryRemoveFile",
 		[]interface{}{filePath},
+		&returns,
+	)
+
+	return returns
+}
+
+func (g *jsiiProxy_GitHubProject) With(mixins ...constructs.IMixin) constructs.IConstruct {
+	args := []interface{}{}
+	for _, a := range mixins {
+		args = append(args, a)
+	}
+
+	var returns constructs.IConstruct
+
+	_jsii_.Invoke(
+		g,
+		"with",
+		args,
 		&returns,
 	)
 
