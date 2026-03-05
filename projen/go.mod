@@ -1,8 +1,8 @@
 module github.com/projen/projen-go/projen
 
-go 1.23
+go 1.25
 
 require (
-	github.com/aws/jsii-runtime-go v1.126.0
+	github.com/aws/jsii-runtime-go v1.127.0
 	github.com/aws/constructs-go/constructs/v10 v10.5.1
 )
