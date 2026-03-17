@@ -12,7 +12,7 @@ type PublisherOptions struct {
 	// The artifact is expected to include a subdirectory for each release target:
 	// `go` (GitHub), `dotnet` (NuGet), `java` (Maven), `js` (npm), `python`
 	// (PyPI).
-	// See: https://github.com/aws/publib
+	// See: https://github.com/cdklabs/publib
 	//
 	// Experimental.
 	ArtifactName *string `field:"required" json:"artifactName" yaml:"artifactName"`

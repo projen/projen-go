@@ -39,6 +39,22 @@ type LambdaFunctionOptions struct {
 	//
 	// Experimental.
 	Runtime LambdaRuntime `field:"optional" json:"runtime" yaml:"runtime"`
+	// Whether to create a `lambda.SingletonFunction` instead of a `lambda.Function`.
+	//
+	// Not compatible with `edgeLambda`.
+	// Default: false.
+	//
+	// Experimental.
+	Singleton *bool `field:"optional" json:"singleton" yaml:"singleton"`
+	// UUID to use for singleton lambda uniqueness.
+	//
+	// When specified, the generated singleton construct hardcodes this UUID.
+	//
+	// Only valid when `singleton` is set to `true`.
+	// Default: - no UUID is hardcoded and consumers must provide one.
+	//
+	// Experimental.
+	SingletonUuid *string `field:"optional" json:"singletonUuid" yaml:"singletonUuid"`
 	// AWS CDK dependency manager.
 	// Experimental.
 	CdkDeps AwsCdkDeps `field:"required" json:"cdkDeps" yaml:"cdkDeps"`

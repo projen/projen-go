@@ -1149,5 +1149,10 @@ type AwsCdkConstructLibraryOptions struct {
 	//
 	// Experimental.
 	LambdaOptions *LambdaFunctionCommonOptions `field:"optional" json:"lambdaOptions" yaml:"lambdaOptions"`
+	// Automatically adds an `awscdk.SingletonFunction` for each `.singleton-lambda.ts` handler in your source tree. If this is disabled, you can manually add an `awscdk.AutoDiscover` component to your project.
+	// Default: true.
+	//
+	// Experimental.
+	SingletonLambdaAutoDiscover *bool `field:"optional" json:"singletonLambdaAutoDiscover" yaml:"singletonLambdaAutoDiscover"`
 }
 

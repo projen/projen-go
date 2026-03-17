@@ -45,5 +45,12 @@ type AutoDiscoverOptions struct {
 	//
 	// Experimental.
 	LambdaExtensionAutoDiscover *bool `field:"optional" json:"lambdaExtensionAutoDiscover" yaml:"lambdaExtensionAutoDiscover"`
+	// Auto-discover singleton lambda functions.
+	//
+	// UUID is deterministically derived from the project name and entrypoint path.
+	// Default: true.
+	//
+	// Experimental.
+	SingletonLambdaAutoDiscover *bool `field:"optional" json:"singletonLambdaAutoDiscover" yaml:"singletonLambdaAutoDiscover"`
 }
 

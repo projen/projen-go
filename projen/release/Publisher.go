@@ -12,7 +12,7 @@ import (
 
 // Implements GitHub jobs for publishing modules to package managers.
 //
-// Under the hood, it uses https://github.com/aws/publib
+// Under the hood, it uses https://github.com/cdklabs/publib
 // Experimental.
 type Publisher interface {
 	projen.Component

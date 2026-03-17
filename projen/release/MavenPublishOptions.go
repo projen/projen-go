@@ -49,7 +49,7 @@ type MavenPublishOptions struct {
 	// GitHub secret name which contains the GPG private key or file that includes it.
 	//
 	// This is used to sign your Maven packages. See instructions.
-	// See: https://github.com/aws/publib#maven
+	// See: https://github.com/cdklabs/publib#maven
 	//
 	// Default: "MAVEN_GPG_PRIVATE_KEY_PASSPHRASE" or not set when using GitHub Packages.
 	//
@@ -59,7 +59,7 @@ type MavenPublishOptions struct {
 	//
 	// This is used to sign your Maven
 	// packages. See instructions.
-	// See: https://github.com/aws/publib#maven
+	// See: https://github.com/cdklabs/publib#maven
 	//
 	// Default: "MAVEN_GPG_PRIVATE_KEY" or not set when using GitHub Packages.
 	//

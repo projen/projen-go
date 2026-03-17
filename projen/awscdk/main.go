@@ -968,4 +968,27 @@ func init() {
 		"projen.awscdk.LambdaRuntimeOptions",
 		reflect.TypeOf((*LambdaRuntimeOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterClass(
+		"projen.awscdk.SingletonLambdaAutoDiscover",
+		reflect.TypeOf((*SingletonLambdaAutoDiscover)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "entrypoints", GoGetter: "Entrypoints"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
+		},
+		func() interface{} {
+			j := jsiiProxy_SingletonLambdaAutoDiscover{}
+			_jsii_.InitJsiiProxy(&j.Type__cdkAutoDiscoverBase)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.awscdk.SingletonLambdaAutoDiscoverOptions",
+		reflect.TypeOf((*SingletonLambdaAutoDiscoverOptions)(nil)).Elem(),
+	)
 }
