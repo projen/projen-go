@@ -183,7 +183,7 @@ type TypeScriptLibraryProjectOptions struct {
 	//
 	// Deprecated: use TypeScriptProjectOptions.
 	Vscode *bool `field:"optional" json:"vscode" yaml:"vscode"`
-	// Automatically add the resolved `packageManager` to `devEngines.packageManager` in `package.json`.
+	// Automatically add the resolved `packageManager` to `devEngines.packageManager` in `package.json`, setting `onFail` to `ignore`.
 	// Default: true.
 	//
 	// Deprecated: use TypeScriptProjectOptions.

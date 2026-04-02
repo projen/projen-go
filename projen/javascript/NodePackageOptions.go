@@ -3,7 +3,7 @@ package javascript
 
 // Experimental.
 type NodePackageOptions struct {
-	// Automatically add the resolved `packageManager` to `devEngines.packageManager` in `package.json`.
+	// Automatically add the resolved `packageManager` to `devEngines.packageManager` in `package.json`, setting `onFail` to `ignore`.
 	// Default: true.
 	//
 	// Experimental.
