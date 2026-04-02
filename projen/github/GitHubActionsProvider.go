@@ -24,7 +24,7 @@ type GitHubActionsProvider interface {
 	//   project.github.actions.set("actions/checkout", "actions/checkout@aaaaaa");
 	//
 	//   // But pin usage of `v4` to a different commit
-	//   project.github.actions.set("actions/checkout@v4", "actions/checkout@ffffff");
+	//   project.github.actions.set("actions/checkout@v6", "actions/checkout@ffffff");
 	//
 	// Experimental.
 	Set(action *string, override *string)
