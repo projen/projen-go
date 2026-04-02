@@ -132,6 +132,14 @@ func init() {
 		"projen.javascript.CoverageThreshold",
 		reflect.TypeOf((*CoverageThreshold)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.DevEngineDependency",
+		reflect.TypeOf((*DevEngineDependency)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.DevEngines",
+		reflect.TypeOf((*DevEngines)(nil)).Elem(),
+	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.EmbeddedLanguageFormatting",
 		reflect.TypeOf((*EmbeddedLanguageFormatting)(nil)).Elem(),

@@ -184,6 +184,11 @@ type AwsCdkTypeScriptAppOptions struct {
 	//
 	// Experimental.
 	Vscode *bool `field:"optional" json:"vscode" yaml:"vscode"`
+	// Automatically add the resolved `packageManager` to `devEngines.packageManager` in `package.json`.
+	// Default: true.
+	//
+	// Experimental.
+	AddPackageManagerToDevEngines *bool `field:"optional" json:"addPackageManagerToDevEngines" yaml:"addPackageManagerToDevEngines"`
 	// Allow the project to include `peerDependencies` and `bundledDependencies`.
 	//
 	// This is normally only allowed for libraries. For apps, there's no meaning
@@ -248,6 +253,16 @@ type AwsCdkTypeScriptAppOptions struct {
 	//
 	// Experimental.
 	CodeArtifactOptions *javascript.CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
+	// Automatically delete lockfiles from package managers that are not the active one.
+	//
+	// Only triggered when the lockfile for the configured package
+	// manager already exists.
+	//
+	// This is useful when migrating between package managers to avoid conflicts.
+	// Default: true.
+	//
+	// Experimental.
+	DeleteOrphanedLockFiles *bool `field:"optional" json:"deleteOrphanedLockFiles" yaml:"deleteOrphanedLockFiles"`
 	// Runtime dependencies of this module.
 	//
 	// The recommendation is to only specify the module name here (e.g.
@@ -290,6 +305,15 @@ type AwsCdkTypeScriptAppOptions struct {
 	//
 	// Experimental.
 	DevDeps *[]*string `field:"optional" json:"devDeps" yaml:"devDeps"`
+	// Configure the `devEngines` field in `package.json`.
+	//
+	// The `devEngines.packageManager` field is automatically populated based on
+	// the resolved `packageManager` value. Any fields provided here are merged
+	// with the auto-populated `packageManager` entry.
+	// See: https://docs.npmjs.com/cli/v10/configuring-npm/package-json#devengines
+	//
+	// Experimental.
+	DevEngines *javascript.DevEngines `field:"optional" json:"devEngines" yaml:"devEngines"`
 	// Module entrypoint (`main` in `package.json`).
 	//
 	// Set to an empty string to not include `main` in your package.json
@@ -385,7 +409,7 @@ type AwsCdkTypeScriptAppOptions struct {
 	// Experimental.
 	NpmTrustedPublishing *bool `field:"optional" json:"npmTrustedPublishing" yaml:"npmTrustedPublishing"`
 	// The Node Package Manager used to execute scripts.
-	// Default: NodePackageManager.YARN_CLASSIC
+	// Default: - Detected from the calling process or `YARN_CLASSIC` if detection fails.
 	//
 	// Experimental.
 	PackageManager javascript.NodePackageManager `field:"optional" json:"packageManager" yaml:"packageManager"`
