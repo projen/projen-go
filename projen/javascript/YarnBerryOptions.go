@@ -5,7 +5,7 @@ package javascript
 // Experimental.
 type YarnBerryOptions struct {
 	// A fully specified version to use for yarn (e.g., x.x.x).
-	// Default: - 4.0.1
+	// Default: - 4.13.0
 	//
 	// Experimental.
 	Version *string `field:"optional" json:"version" yaml:"version"`
