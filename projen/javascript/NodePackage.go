@@ -32,7 +32,7 @@ type NodePackage interface {
 	// The package.json file.
 	// Experimental.
 	File() projen.JsonFile
-	// Renders `yarn install` or `npm install` with lockfile update (not frozen).
+	// Renders `pnpm install` or `npm install` with lockfile update (not frozen).
 	// Experimental.
 	InstallAndUpdateLockfileCommand() *string
 	// The task for installing project dependencies (frozen).

@@ -293,7 +293,7 @@ type NodeProject interface {
 	// Returns the shell command to execute in order to run a task.
 	//
 	// This will
-	// typically be `npx projen TASK`.
+	// typically be `pnpm projen TASK`.
 	// Experimental.
 	RunTaskCommand(task projen.Task) *string
 	// Replaces the contents of an npm package.json script.

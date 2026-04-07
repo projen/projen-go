@@ -235,11 +235,11 @@ type ConstructLibraryCdk8sOptions struct {
 	// your `package.json`.
 	//
 	// The recommendation is to only specify the module name here (e.g.
-	// `express`). This will behave similar to `yarn add` or `npm install` in the
+	// `express`). This will behave similar to `pnpm add` or `npm install` in the
 	// sense that it will add the module as a dependency to your `package.json`
 	// file with the latest version (`^`). You can specify semver requirements in
-	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
-	// this will be what you `package.json` will eventually include.
+	// the same syntax passed to `pnpm add` or `npm i` (e.g. `express@^2`) and
+	// this will be what your `package.json` will eventually include.
 	// Experimental.
 	BundledDeps *[]*string `field:"optional" json:"bundledDeps" yaml:"bundledDeps"`
 	// The version of Bun to use if using Bun as a package manager.
@@ -267,11 +267,11 @@ type ConstructLibraryCdk8sOptions struct {
 	// Runtime dependencies of this module.
 	//
 	// The recommendation is to only specify the module name here (e.g.
-	// `express`). This will behave similar to `yarn add` or `npm install` in the
+	// `express`). This will behave similar to `pnpm add` or `npm install` in the
 	// sense that it will add the module as a dependency to your `package.json`
 	// file with the latest version (`^`). You can specify semver requirements in
-	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
-	// this will be what you `package.json` will eventually include.
+	// the same syntax passed to `pnpm add` or `npm i` (e.g. `express@^2`) and
+	// this will be what your `package.json` will eventually include.
 	//
 	// Example:
 	//   [ 'express', 'lodash', 'foo@^2' ]
@@ -293,11 +293,11 @@ type ConstructLibraryCdk8sOptions struct {
 	// module is consumed.
 	//
 	// The recommendation is to only specify the module name here (e.g.
-	// `express`). This will behave similar to `yarn add` or `npm install` in the
+	// `express`). This will behave similar to `pnpm add` or `npm install` in the
 	// sense that it will add the module as a dependency to your `package.json`
 	// file with the latest version (`^`). You can specify semver requirements in
-	// the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
-	// this will be what you `package.json` will eventually include.
+	// the same syntax passed to `pnpm add` or `npm i` (e.g. `express@^2`) and
+	// this will be what your `package.json` will eventually include.
 	//
 	// Example:
 	//   [ 'typescript', '@types/express' ]
