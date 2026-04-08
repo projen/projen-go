@@ -29,6 +29,9 @@ type NodePackage interface {
 	// The module's entrypoint (e.g. `lib/index.js`).
 	// Experimental.
 	Entrypoint() *string
+	// The command prefix to use when executing binary commands for this package manager (e.g. `npx`, `pnpm exec`, `yarn`, `bunx`).
+	// Experimental.
+	ExecCommand() *string
 	// The package.json file.
 	// Experimental.
 	File() projen.JsonFile
@@ -215,6 +218,16 @@ func (j *jsiiProxy_NodePackage) Entrypoint() *string {
 	_jsii_.Get(
 		j,
 		"entrypoint",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NodePackage) ExecCommand() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"execCommand",
 		&returns,
 	)
 	return returns
