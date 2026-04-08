@@ -442,7 +442,7 @@ type ConstructLibraryAwsOptions struct {
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PeerDeps *[]*string `field:"optional" json:"peerDeps" yaml:"peerDeps"`
 	// The version of PNPM to use if using PNPM as a package manager.
-	// Default: "9".
+	// Default: "10.33.0"
 	//
 	// Deprecated: use `AwsCdkConstructLibraryOptions`.
 	PnpmVersion *string `field:"optional" json:"pnpmVersion" yaml:"pnpmVersion"`

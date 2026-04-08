@@ -4,6 +4,8 @@ package projen
 
 import (
 	"fmt"
+
+	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 )
 
 func (d *jsiiProxy_Dependencies) validateAddDependencyParameters(spec *string, type_ DependencyType) error {
@@ -45,6 +47,17 @@ func (d *jsiiProxy_Dependencies) validateIsDependencySatisfiedParameters(name *s
 func (d *jsiiProxy_Dependencies) validateRemoveDependencyParameters(name *string) error {
 	if name == nil {
 		return fmt.Errorf("parameter name is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (d *jsiiProxy_Dependencies) validateRequestDependencyParameters(request *DependencyRequest) error {
+	if request == nil {
+		return fmt.Errorf("parameter request is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(request, func() string { return "parameter request" }); err != nil {
+		return err
 	}
 
 	return nil

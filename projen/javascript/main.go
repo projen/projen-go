@@ -340,6 +340,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 			_jsii_.MemberMethod{JsiiMethod: "tryResolveDependencyVersion", GoMethod: "TryResolveDependencyVersion"},
 			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
+			_jsii_.MemberProperty{JsiiProperty: "yarnVersion", GoGetter: "YarnVersion"},
 		},
 		func() interface{} {
 			j := jsiiProxy_NodePackage{}

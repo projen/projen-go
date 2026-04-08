@@ -20,6 +20,10 @@ func (d *jsiiProxy_Dependencies) validateRemoveDependencyParameters(name *string
 	return nil
 }
 
+func (d *jsiiProxy_Dependencies) validateRequestDependencyParameters(request *DependencyRequest) error {
+	return nil
+}
+
 func (d *jsiiProxy_Dependencies) validateTryGetDependencyParameters(name *string) error {
 	return nil
 }

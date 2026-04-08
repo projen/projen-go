@@ -440,7 +440,7 @@ type TypeScriptLibraryProjectOptions struct {
 	// Deprecated: use TypeScriptProjectOptions.
 	PeerDeps *[]*string `field:"optional" json:"peerDeps" yaml:"peerDeps"`
 	// The version of PNPM to use if using PNPM as a package manager.
-	// Default: "9".
+	// Default: "10.33.0"
 	//
 	// Deprecated: use TypeScriptProjectOptions.
 	PnpmVersion *string `field:"optional" json:"pnpmVersion" yaml:"pnpmVersion"`

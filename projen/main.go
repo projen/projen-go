@@ -105,6 +105,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "removeDependency", GoMethod: "RemoveDependency"},
+			_jsii_.MemberMethod{JsiiMethod: "requestDependency", GoMethod: "RequestDependency"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 			_jsii_.MemberMethod{JsiiMethod: "tryGetDependency", GoMethod: "TryGetDependency"},
@@ -123,6 +124,10 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.DependencyCoordinates",
 		reflect.TypeOf((*DependencyCoordinates)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.DependencyRequest",
+		reflect.TypeOf((*DependencyRequest)(nil)).Elem(),
 	)
 	_jsii_.RegisterEnum(
 		"projen.DependencyType",

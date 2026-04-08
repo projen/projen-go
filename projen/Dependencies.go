@@ -52,6 +52,18 @@ type Dependencies interface {
 	// Removes a dependency.
 	// Experimental.
 	RemoveDependency(name *string, type_ DependencyType)
+	// Request a dependency. Unlike `addDependency`, this merges intelligently with existing dependencies of the same name and type:.
+	//
+	// - If the dep exists with a version that already satisfies the request,
+	//   the version is not changed.
+	// - If the dep doesn't exist, it is added with the requested type/version.
+	// - If the dep exists but the versions don't intersect, an error is thrown.
+	// - If no type is provided, an existing dependency of any type will satisfy
+	//   the request. If none exists, it is added as BUILD.
+	//
+	// Returns: The resulting dependency after merging.
+	// Experimental.
+	RequestDependency(request *DependencyRequest) *Dependency
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -309,6 +321,22 @@ func (d *jsiiProxy_Dependencies) RemoveDependency(name *string, type_ Dependency
 		"removeDependency",
 		[]interface{}{name, type_},
 	)
+}
+
+func (d *jsiiProxy_Dependencies) RequestDependency(request *DependencyRequest) *Dependency {
+	if err := d.validateRequestDependencyParameters(request); err != nil {
+		panic(err)
+	}
+	var returns *Dependency
+
+	_jsii_.Invoke(
+		d,
+		"requestDependency",
+		[]interface{}{request},
+		&returns,
+	)
+
+	return returns
 }
 
 func (d *jsiiProxy_Dependencies) Synthesize() {

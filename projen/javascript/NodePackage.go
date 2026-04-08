@@ -17,6 +17,8 @@ type NodePackage interface {
 	// Experimental.
 	AllowLibraryDependencies() *bool
 	// The version of Bun to use if using Bun as a package manager.
+	//
+	// Returns: `undefined` if the package manager is not Bun.
 	// Experimental.
 	BunVersion() *string
 	// Options for npm packages using AWS CodeArtifact.
@@ -92,6 +94,8 @@ type NodePackage interface {
 	// Experimental.
 	PackageName() *string
 	// The version of PNPM to use if using PNPM as a package manager.
+	//
+	// Returns: `undefined` if the package manager is not PNPM.
 	// Experimental.
 	PnpmVersion() *string
 	// Experimental.
@@ -104,6 +108,11 @@ type NodePackage interface {
 	//
 	// Experimental.
 	ScopedPackagesOptions() *[]*ScopedPackagesOptions
+	// The version of Yarn to use if using Yarn as a package manager.
+	//
+	// Returns: `undefined` if the package manager is not Yarn.
+	// Experimental.
+	YarnVersion() *string
 	// Experimental.
 	AddBin(bins *map[string]*string)
 	// Defines bundled dependencies.
@@ -448,6 +457,16 @@ func (j *jsiiProxy_NodePackage) ScopedPackagesOptions() *[]*ScopedPackagesOption
 	_jsii_.Get(
 		j,
 		"scopedPackagesOptions",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NodePackage) YarnVersion() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"yarnVersion",
 		&returns,
 	)
 	return returns
