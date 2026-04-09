@@ -8,6 +8,16 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 )
 
+func (t *jsiiProxy_Task) validateAddStepsParameters(steps *[]*TaskStep) error {
+	for idx_b7595e, v := range *steps {
+		if err := _jsii_.ValidateStruct(v, func() string { return fmt.Sprintf("parameter steps[%#v]", idx_b7595e) }); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (t *jsiiProxy_Task) validateBuiltinParameters(name *string) error {
 	if name == nil {
 		return fmt.Errorf("parameter name is required, but nil was provided")
@@ -97,6 +107,16 @@ func (t *jsiiProxy_Task) validatePrependSpawnParameters(subtask Task, options *T
 
 	if err := _jsii_.ValidateStruct(options, func() string { return "parameter options" }); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (t *jsiiProxy_Task) validatePrependStepsParameters(steps *[]*TaskStep) error {
+	for idx_b7595e, v := range *steps {
+		if err := _jsii_.ValidateStruct(v, func() string { return fmt.Sprintf("parameter steps[%#v]", idx_b7595e) }); err != nil {
+			return err
+		}
 	}
 
 	return nil

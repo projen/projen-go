@@ -47,6 +47,12 @@ type Task interface {
 	//
 	// Experimental.
 	AddCondition(condition ...*string)
+	// Adds steps to this task.
+	//
+	// This is a generic method that accepts any
+	// task step (exec, spawn, say, builtin).
+	// Experimental.
+	AddSteps(steps ...*TaskStep)
 	// Execute a builtin task.
 	//
 	// Builtin tasks are programs bundled as part of projen itself and used as
@@ -79,6 +85,9 @@ type Task interface {
 	// Adds a spawn instruction at the beginning of the task.
 	// Experimental.
 	PrependSpawn(subtask Task, options *TaskStepOptions)
+	// Adds steps at the beginning of this task.
+	// Experimental.
+	PrependSteps(steps ...*TaskStep)
 	// Experimental.
 	RemoveStep(index *float64)
 	// Reset the task so it no longer has any commands.
@@ -218,6 +227,22 @@ func (t *jsiiProxy_Task) AddCondition(condition ...*string) {
 	)
 }
 
+func (t *jsiiProxy_Task) AddSteps(steps ...*TaskStep) {
+	if err := t.validateAddStepsParameters(&steps); err != nil {
+		panic(err)
+	}
+	args := []interface{}{}
+	for _, a := range steps {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		t,
+		"addSteps",
+		args,
+	)
+}
+
 func (t *jsiiProxy_Task) Builtin(name *string) {
 	if err := t.validateBuiltinParameters(name); err != nil {
 		panic(err)
@@ -316,6 +341,22 @@ func (t *jsiiProxy_Task) PrependSpawn(subtask Task, options *TaskStepOptions) {
 		t,
 		"prependSpawn",
 		[]interface{}{subtask, options},
+	)
+}
+
+func (t *jsiiProxy_Task) PrependSteps(steps ...*TaskStep) {
+	if err := t.validatePrependStepsParameters(&steps); err != nil {
+		panic(err)
+	}
+	args := []interface{}{}
+	for _, a := range steps {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		t,
+		"prependSteps",
+		args,
 	)
 }
 

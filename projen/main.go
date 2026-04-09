@@ -1128,6 +1128,7 @@ func init() {
 		reflect.TypeOf((*Task)(nil)).Elem(),
 		[]_jsii_.Member{
 			_jsii_.MemberMethod{JsiiMethod: "addCondition", GoMethod: "AddCondition"},
+			_jsii_.MemberMethod{JsiiMethod: "addSteps", GoMethod: "AddSteps"},
 			_jsii_.MemberMethod{JsiiMethod: "builtin", GoMethod: "Builtin"},
 			_jsii_.MemberProperty{JsiiProperty: "condition", GoGetter: "Condition"},
 			_jsii_.MemberProperty{JsiiProperty: "cwd", GoGetter: "Cwd"},
@@ -1142,6 +1143,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "prependExec", GoMethod: "PrependExec"},
 			_jsii_.MemberMethod{JsiiMethod: "prependSay", GoMethod: "PrependSay"},
 			_jsii_.MemberMethod{JsiiMethod: "prependSpawn", GoMethod: "PrependSpawn"},
+			_jsii_.MemberMethod{JsiiMethod: "prependSteps", GoMethod: "PrependSteps"},
 			_jsii_.MemberMethod{JsiiMethod: "removeStep", GoMethod: "RemoveStep"},
 			_jsii_.MemberMethod{JsiiMethod: "reset", GoMethod: "Reset"},
 			_jsii_.MemberMethod{JsiiMethod: "say", GoMethod: "Say"},

@@ -4,6 +4,10 @@ package projen
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (t *jsiiProxy_Task) validateAddStepsParameters(steps *[]*TaskStep) error {
+	return nil
+}
+
 func (t *jsiiProxy_Task) validateBuiltinParameters(name *string) error {
 	return nil
 }
@@ -33,6 +37,10 @@ func (t *jsiiProxy_Task) validatePrependSayParameters(message *string, options *
 }
 
 func (t *jsiiProxy_Task) validatePrependSpawnParameters(subtask Task, options *TaskStepOptions) error {
+	return nil
+}
+
+func (t *jsiiProxy_Task) validatePrependStepsParameters(steps *[]*TaskStep) error {
 	return nil
 }
 
