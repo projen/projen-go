@@ -42,5 +42,15 @@ type BuildWorkflowOptions struct {
 	//
 	// Experimental.
 	MutableBuild *bool `field:"optional" json:"mutableBuild" yaml:"mutableBuild"`
+	// Perform a mutable (non-frozen) install during builds.
+	//
+	// This will update the
+	// package lockfile during installs, which is useful when build steps modify
+	// dependencies. Set to `false` to use frozen lockfile installs even when
+	// `mutableBuild` is enabled.
+	// Default: - value of `mutableBuild`.
+	//
+	// Experimental.
+	MutableInstall *bool `field:"optional" json:"mutableInstall" yaml:"mutableInstall"`
 }
 
