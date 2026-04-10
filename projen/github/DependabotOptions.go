@@ -16,6 +16,16 @@ type DependabotOptions struct {
 	//
 	// Experimental.
 	Assignees *[]*string `field:"optional" json:"assignees" yaml:"assignees"`
+	// Defines a cooldown period for dependency version updates.
+	//
+	// During the cooldown, Dependabot will not propose updates for a dependency.
+	// This only applies to version updates, not security updates.
+	// See: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#cooldown-
+	//
+	// Default: - no cooldown.
+	//
+	// Experimental.
+	Cooldown *DependabotCooldown `field:"optional" json:"cooldown" yaml:"cooldown"`
 	// https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#groups.
 	//
 	// You can create groups to package dependency updates together into a single PR.

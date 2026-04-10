@@ -26,6 +26,23 @@ type RenovatebotOptions struct {
 	Labels *[]*string `field:"optional" json:"labels" yaml:"labels"`
 	// Experimental.
 	Marker *bool `field:"optional" json:"marker" yaml:"marker"`
+	// Minimum release age for packages before Renovate will propose an update.
+	//
+	// This is a supply chain security feature to avoid updating to newly published,
+	// potentially malicious versions.
+	// See: https://docs.renovatebot.com/configuration-options/#minimumreleaseage
+	//
+	// Default: - no minimum release age.
+	//
+	// Experimental.
+	MinimumReleaseAge *string `field:"optional" json:"minimumReleaseAge" yaml:"minimumReleaseAge"`
+	// Controls whether a release timestamp is required when using `minimumReleaseAge`.
+	// See: https://docs.renovatebot.com/configuration-options/#minimumreleaseagebehaviour
+	//
+	// Default: RenovatebotMinimumReleaseAgeBehaviour.TIMESTAMP_REQUIRED
+	//
+	// Experimental.
+	MinimumReleaseAgeBehaviour RenovatebotMinimumReleaseAgeBehaviour `field:"optional" json:"minimumReleaseAgeBehaviour" yaml:"minimumReleaseAgeBehaviour"`
 	// Experimental.
 	OverrideConfig interface{} `field:"optional" json:"overrideConfig" yaml:"overrideConfig"`
 	// How often to check for new versions and raise pull requests.

@@ -989,6 +989,14 @@ func init() {
 			return &j
 		},
 	)
+	_jsii_.RegisterEnum(
+		"projen.RenovatebotMinimumReleaseAgeBehaviour",
+		reflect.TypeOf((*RenovatebotMinimumReleaseAgeBehaviour)(nil)).Elem(),
+		map[string]interface{}{
+			"TIMESTAMP_REQUIRED": RenovatebotMinimumReleaseAgeBehaviour_TIMESTAMP_REQUIRED,
+			"TIMESTAMP_OPTIONAL": RenovatebotMinimumReleaseAgeBehaviour_TIMESTAMP_OPTIONAL,
+		},
+	)
 	_jsii_.RegisterStruct(
 		"projen.RenovatebotOptions",
 		reflect.TypeOf((*RenovatebotOptions)(nil)).Elem(),

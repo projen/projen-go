@@ -127,6 +127,10 @@ func init() {
 		reflect.TypeOf((*DependabotAllow)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.github.DependabotCooldown",
+		reflect.TypeOf((*DependabotCooldown)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.github.DependabotGroup",
 		reflect.TypeOf((*DependabotGroup)(nil)).Elem(),
 	)
