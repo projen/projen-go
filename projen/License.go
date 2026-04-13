@@ -43,6 +43,19 @@ type License interface {
 	Readonly() *bool
 	// Experimental.
 	SetReadonly(val *bool)
+	// Returns a unified diff of the old and new file contents with context lines and hunk headers.
+	//
+	// Only available after synthesis.
+	//
+	// This is an expensive operation and should only be used on non time-critical
+	// code paths, like debug output.
+	//
+	// Returns: the diff as an array of lines, or `undefined` if the file was
+	// not changed or has not been synthesized yet.
+	// Default: 3.
+	//
+	// Experimental.
+	Diff(colorize *bool, contextLines *float64) *[]*string
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -259,6 +272,19 @@ func License_IsConstruct(x interface{}) *bool {
 		"projen.License",
 		"isConstruct",
 		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+func (l *jsiiProxy_License) Diff(colorize *bool, contextLines *float64) *[]*string {
+	var returns *[]*string
+
+	_jsii_.Invoke(
+		l,
+		"diff",
+		[]interface{}{colorize, contextLines},
 		&returns,
 	)
 

@@ -59,6 +59,19 @@ type Makefile interface {
 	// Add multiple rules to the Makefile.
 	// Experimental.
 	AddRules(rules ...*Rule) Makefile
+	// Returns a unified diff of the old and new file contents with context lines and hunk headers.
+	//
+	// Only available after synthesis.
+	//
+	// This is an expensive operation and should only be used on non time-critical
+	// code paths, like debug output.
+	//
+	// Returns: the diff as an array of lines, or `undefined` if the file was
+	// not changed or has not been synthesized yet.
+	// Default: 3.
+	//
+	// Experimental.
+	Diff(colorize *bool, contextLines *float64) *[]*string
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -356,6 +369,19 @@ func (m *jsiiProxy_Makefile) AddRules(rules ...*Rule) Makefile {
 		m,
 		"addRules",
 		args,
+		&returns,
+	)
+
+	return returns
+}
+
+func (m *jsiiProxy_Makefile) Diff(colorize *bool, contextLines *float64) *[]*string {
+	var returns *[]*string
+
+	_jsii_.Invoke(
+		m,
+		"diff",
+		[]interface{}{colorize, contextLines},
 		&returns,
 	)
 

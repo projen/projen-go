@@ -152,6 +152,12 @@ type NodePackage interface {
 	// Indicates if a script by the given name is defined.
 	// Deprecated: Use `project.tasks.tryFind(name)`
 	HasScript(name *string) *bool
+	// Runs the install or install:ci task.
+	//
+	// Does not log — the caller is
+	// responsible for informing the user before calling this method.
+	// Experimental.
+	InstallDependencies(_trigger *InstallTrigger)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -716,6 +722,17 @@ func (n *jsiiProxy_NodePackage) HasScript(name *string) *bool {
 	)
 
 	return returns
+}
+
+func (n *jsiiProxy_NodePackage) InstallDependencies(_trigger *InstallTrigger) {
+	if err := n.validateInstallDependenciesParameters(_trigger); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		n,
+		"installDependencies",
+		[]interface{}{_trigger},
+	)
 }
 
 func (n *jsiiProxy_NodePackage) PostSynthesize() {

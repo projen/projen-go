@@ -24,6 +24,10 @@ func (n *jsiiProxy_NodePackage) validateHasScriptParameters(name *string) error 
 	return nil
 }
 
+func (n *jsiiProxy_NodePackage) validateInstallDependenciesParameters(_trigger *InstallTrigger) error {
+	return nil
+}
+
 func (n *jsiiProxy_NodePackage) validateRemoveScriptParameters(name *string) error {
 	return nil
 }

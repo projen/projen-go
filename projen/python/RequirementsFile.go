@@ -53,6 +53,19 @@ type RequirementsFile interface {
 	// Comment lines (start with `#`) are ignored.
 	// Experimental.
 	AddPackages(packages ...*string)
+	// Returns a unified diff of the old and new file contents with context lines and hunk headers.
+	//
+	// Only available after synthesis.
+	//
+	// This is an expensive operation and should only be used on non time-critical
+	// code paths, like debug output.
+	//
+	// Returns: the diff as an array of lines, or `undefined` if the file was
+	// not changed or has not been synthesized yet.
+	// Default: 3.
+	//
+	// Experimental.
+	Diff(colorize *bool, contextLines *float64) *[]*string
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -286,6 +299,19 @@ func (r *jsiiProxy_RequirementsFile) AddPackages(packages ...*string) {
 		"addPackages",
 		args,
 	)
+}
+
+func (r *jsiiProxy_RequirementsFile) Diff(colorize *bool, contextLines *float64) *[]*string {
+	var returns *[]*string
+
+	_jsii_.Invoke(
+		r,
+		"diff",
+		[]interface{}{colorize, contextLines},
+		&returns,
+	)
+
+	return returns
 }
 
 func (r *jsiiProxy_RequirementsFile) PostSynthesize() {

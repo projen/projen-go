@@ -215,6 +215,19 @@ func init() {
 		"projen.javascript.HasteConfig",
 		reflect.TypeOf((*HasteConfig)(nil)).Elem(),
 	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.InstallReason",
+		reflect.TypeOf((*InstallReason)(nil)).Elem(),
+		map[string]interface{}{
+			"NO_NODE_MODULES": InstallReason_NO_NODE_MODULES,
+			"PACKAGE_JSON_CHANGED": InstallReason_PACKAGE_JSON_CHANGED,
+			"DEPS_RESOLVED": InstallReason_DEPS_RESOLVED,
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.InstallTrigger",
+		reflect.TypeOf((*InstallTrigger)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.javascript.Jest",
 		reflect.TypeOf((*Jest)(nil)).Elem(),
@@ -314,6 +327,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "installAndUpdateLockfileCommand", GoGetter: "InstallAndUpdateLockfileCommand"},
 			_jsii_.MemberProperty{JsiiProperty: "installCiTask", GoGetter: "InstallCiTask"},
 			_jsii_.MemberProperty{JsiiProperty: "installCommand", GoGetter: "InstallCommand"},
+			_jsii_.MemberMethod{JsiiMethod: "installDependencies", GoMethod: "InstallDependencies"},
 			_jsii_.MemberProperty{JsiiProperty: "installTask", GoGetter: "InstallTask"},
 			_jsii_.MemberProperty{JsiiProperty: "license", GoGetter: "License"},
 			_jsii_.MemberProperty{JsiiProperty: "lockFile", GoGetter: "LockFile"},

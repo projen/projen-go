@@ -58,6 +58,17 @@ func (n *jsiiProxy_NodePackage) validateHasScriptParameters(name *string) error 
 	return nil
 }
 
+func (n *jsiiProxy_NodePackage) validateInstallDependenciesParameters(_trigger *InstallTrigger) error {
+	if _trigger == nil {
+		return fmt.Errorf("parameter _trigger is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(_trigger, func() string { return "parameter _trigger" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (n *jsiiProxy_NodePackage) validateRemoveScriptParameters(name *string) error {
 	if name == nil {
 		return fmt.Errorf("parameter name is required, but nil was provided")

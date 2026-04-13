@@ -58,6 +58,19 @@ type GitAttributesFile interface {
 	// Add attributes necessary to mark these files as stored in LFS.
 	// Experimental.
 	AddLfsPattern(glob *string)
+	// Returns a unified diff of the old and new file contents with context lines and hunk headers.
+	//
+	// Only available after synthesis.
+	//
+	// This is an expensive operation and should only be used on non time-critical
+	// code paths, like debug output.
+	//
+	// Returns: the diff as an array of lines, or `undefined` if the file was
+	// not changed or has not been synthesized yet.
+	// Default: 3.
+	//
+	// Experimental.
+	Diff(colorize *bool, contextLines *float64) *[]*string
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -330,6 +343,19 @@ func (g *jsiiProxy_GitAttributesFile) AddLfsPattern(glob *string) {
 		"addLfsPattern",
 		[]interface{}{glob},
 	)
+}
+
+func (g *jsiiProxy_GitAttributesFile) Diff(colorize *bool, contextLines *float64) *[]*string {
+	var returns *[]*string
+
+	_jsii_.Invoke(
+		g,
+		"diff",
+		[]interface{}{colorize, contextLines},
+		&returns,
+	)
+
+	return returns
 }
 
 func (g *jsiiProxy_GitAttributesFile) PostSynthesize() {

@@ -113,6 +113,19 @@ type TomlFile interface {
 	// ```.
 	// Experimental.
 	AddToArray(path *string, values ...interface{})
+	// Returns a unified diff of the old and new file contents with context lines and hunk headers.
+	//
+	// Only available after synthesis.
+	//
+	// This is an expensive operation and should only be used on non time-critical
+	// code paths, like debug output.
+	//
+	// Returns: the diff as an array of lines, or `undefined` if the file was
+	// not changed or has not been synthesized yet.
+	// Default: 3.
+	//
+	// Experimental.
+	Diff(colorize *bool, contextLines *float64) *[]*string
 	// Applies an RFC 6902 JSON-patch to the synthesized object file. See https://datatracker.ietf.org/doc/html/rfc6902 for more information.
 	//
 	// For example, with the following object file
@@ -408,6 +421,19 @@ func (t *jsiiProxy_TomlFile) AddToArray(path *string, values ...interface{}) {
 		"addToArray",
 		args,
 	)
+}
+
+func (t *jsiiProxy_TomlFile) Diff(colorize *bool, contextLines *float64) *[]*string {
+	var returns *[]*string
+
+	_jsii_.Invoke(
+		t,
+		"diff",
+		[]interface{}{colorize, contextLines},
+		&returns,
+	)
+
+	return returns
 }
 
 func (t *jsiiProxy_TomlFile) Patch(patches ...JsonPatch) {

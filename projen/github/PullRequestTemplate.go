@@ -49,6 +49,19 @@ type PullRequestTemplate interface {
 	// Adds a line to the text file.
 	// Experimental.
 	AddLine(line *string)
+	// Returns a unified diff of the old and new file contents with context lines and hunk headers.
+	//
+	// Only available after synthesis.
+	//
+	// This is an expensive operation and should only be used on non time-critical
+	// code paths, like debug output.
+	//
+	// Returns: the diff as an array of lines, or `undefined` if the file was
+	// not changed or has not been synthesized yet.
+	// Default: 3.
+	//
+	// Experimental.
+	Diff(colorize *bool, contextLines *float64) *[]*string
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -302,6 +315,19 @@ func (p *jsiiProxy_PullRequestTemplate) AddLine(line *string) {
 		"addLine",
 		[]interface{}{line},
 	)
+}
+
+func (p *jsiiProxy_PullRequestTemplate) Diff(colorize *bool, contextLines *float64) *[]*string {
+	var returns *[]*string
+
+	_jsii_.Invoke(
+		p,
+		"diff",
+		[]interface{}{colorize, contextLines},
+		&returns,
+	)
+
+	return returns
 }
 
 func (p *jsiiProxy_PullRequestTemplate) PostSynthesize() {
