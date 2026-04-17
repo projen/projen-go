@@ -7,6 +7,7 @@ import (
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/build/internal"
+	"github.com/projen/projen-go/projen/github"
 	"github.com/projen/projen-go/projen/github/workflows"
 )
 
@@ -24,6 +25,9 @@ type BuildWorkflow interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
+	// The underlying GitHub Actions workflow.
+	// Experimental.
+	Workflow() github.GithubWorkflow
 	// Adds another job to the build workflow which is executed after the build job succeeded.
 	//
 	// Jobs are executed _only_ if the build did NOT self mutate. If the build
@@ -117,6 +121,16 @@ func (j *jsiiProxy_BuildWorkflow) Project() projen.Project {
 	_jsii_.Get(
 		j,
 		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_BuildWorkflow) Workflow() github.GithubWorkflow {
+	var returns github.GithubWorkflow
+	_jsii_.Get(
+		j,
+		"workflow",
 		&returns,
 	)
 	return returns

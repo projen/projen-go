@@ -3,6 +3,22 @@ package github
 
 // Experimental.
 type GitHubOptions struct {
+	// Enable the dependency-review-action workflow on pull requests.
+	//
+	// Adds a separate workflow that runs `actions/dependency-review-action`
+	// to scan pull requests for newly introduced vulnerable or non-compliant
+	// dependencies.
+	// Default: false.
+	//
+	// Experimental.
+	DependencyReview *bool `field:"optional" json:"dependencyReview" yaml:"dependencyReview"`
+	// Options for the dependency review workflow.
+	//
+	// Only used when `dependencyReview` is `true`.
+	// Default: - default options.
+	//
+	// Experimental.
+	DependencyReviewOptions *DependencyReviewOptions `field:"optional" json:"dependencyReviewOptions" yaml:"dependencyReviewOptions"`
 	// Download files in LFS in workflows.
 	// Default: true if the associated project has `lfsPatterns`, `false` otherwise.
 	//
