@@ -16,6 +16,11 @@ type TaskWorkflowOptions struct {
 	//
 	// Experimental.
 	ArtifactsDirectory *string `field:"optional" json:"artifactsDirectory" yaml:"artifactsDirectory"`
+	// Whether to checkout Git submodules.
+	// Default: - Use the setting on the corresponding GitHub project.
+	//
+	// Experimental.
+	CheckoutSubmodules CheckoutSubmodules `field:"optional" json:"checkoutSubmodules" yaml:"checkoutSubmodules"`
 	// Override for the `with` property of the source code checkout step.
 	// Default: - not set.
 	//

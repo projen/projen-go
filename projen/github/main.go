@@ -80,6 +80,15 @@ func init() {
 		"projen.github.CheckoutOptions",
 		reflect.TypeOf((*CheckoutOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterEnum(
+		"projen.github.CheckoutSubmodules",
+		reflect.TypeOf((*CheckoutSubmodules)(nil)).Elem(),
+		map[string]interface{}{
+			"DISABLED": CheckoutSubmodules_DISABLED,
+			"ENABLED": CheckoutSubmodules_ENABLED,
+			"RECURSIVE": CheckoutSubmodules_RECURSIVE,
+		},
+	)
 	_jsii_.RegisterStruct(
 		"projen.github.CheckoutWith",
 		reflect.TypeOf((*CheckoutWith)(nil)).Elem(),
@@ -234,6 +243,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addDependabot", GoMethod: "AddDependabot"},
 			_jsii_.MemberMethod{JsiiMethod: "addPullRequestTemplate", GoMethod: "AddPullRequestTemplate"},
 			_jsii_.MemberMethod{JsiiMethod: "addWorkflow", GoMethod: "AddWorkflow"},
+			_jsii_.MemberProperty{JsiiProperty: "checkoutSubmodules", GoGetter: "CheckoutSubmodules"},
 			_jsii_.MemberProperty{JsiiProperty: "downloadLfs", GoGetter: "DownloadLfs"},
 			_jsii_.MemberProperty{JsiiProperty: "mergeQueue", GoGetter: "MergeQueue"},
 			_jsii_.MemberProperty{JsiiProperty: "mergify", GoGetter: "Mergify"},

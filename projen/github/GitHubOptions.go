@@ -3,6 +3,11 @@ package github
 
 // Experimental.
 type GitHubOptions struct {
+	// Whether to checkout Git submodules.
+	// Default: CheckoutSubmodules.DISABLED
+	//
+	// Experimental.
+	CheckoutSubmodules CheckoutSubmodules `field:"optional" json:"checkoutSubmodules" yaml:"checkoutSubmodules"`
 	// Enable the dependency-review-action workflow on pull requests.
 	//
 	// Adds a separate workflow that runs `actions/dependency-review-action`

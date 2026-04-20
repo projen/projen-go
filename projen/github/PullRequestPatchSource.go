@@ -30,6 +30,11 @@ type PullRequestPatchSource struct {
 	//
 	// Experimental.
 	Repository *string `field:"optional" json:"repository" yaml:"repository"`
+	// Whether to checkout Git submodules.
+	// Default: CheckoutSubmodules.DISABLED
+	//
+	// Experimental.
+	Submodules CheckoutSubmodules `field:"optional" json:"submodules" yaml:"submodules"`
 	// A GitHub token to use when checking out the repository.
 	//
 	// If the intent is to push changes back to the branch, then you must use a

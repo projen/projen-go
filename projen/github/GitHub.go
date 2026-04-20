@@ -15,6 +15,9 @@ type GitHub interface {
 	// The GitHub Actions provider used to manage the versions of actions used in steps.
 	// Experimental.
 	Actions() GitHubActionsProvider
+	// Whether checking out Git submodules is enabled for this GitHub project.
+	// Experimental.
+	CheckoutSubmodules() CheckoutSubmodules
 	// Whether downloading from LFS is enabled for this GitHub project.
 	// Experimental.
 	DownloadLfs() *bool
@@ -88,6 +91,16 @@ func (j *jsiiProxy_GitHub) Actions() GitHubActionsProvider {
 	_jsii_.Get(
 		j,
 		"actions",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHub) CheckoutSubmodules() CheckoutSubmodules {
+	var returns CheckoutSubmodules
+	_jsii_.Get(
+		j,
+		"checkoutSubmodules",
 		&returns,
 	)
 	return returns
