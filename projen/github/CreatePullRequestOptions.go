@@ -16,6 +16,11 @@ type CreatePullRequestOptions struct {
 	// The name of the workflow that will create the PR.
 	// Experimental.
 	WorkflowName *string `field:"required" json:"workflowName" yaml:"workflowName"`
+	// Paths to add to the commit, mapping to the action's `add-paths` input.
+	// Default: - all paths.
+	//
+	// Experimental.
+	AddPaths *[]*string `field:"optional" json:"addPaths" yaml:"addPaths"`
 	// Assignees to add on the PR.
 	// Default: - no assignees.
 	//
@@ -36,6 +41,11 @@ type CreatePullRequestOptions struct {
 	// Provided credentials must have permissions to create a pull request on the repository.
 	// Experimental.
 	Credentials GithubCredentials `field:"optional" json:"credentials" yaml:"credentials"`
+	// Whether to delete the pull request branch when the pull request is closed, mapping to the action's `delete-branch` input.
+	// Default: false.
+	//
+	// Experimental.
+	DeleteBranch *bool `field:"optional" json:"deleteBranch" yaml:"deleteBranch"`
 	// The git identity used to create the commit.
 	// Default: - default GitHub Actions user.
 	//
