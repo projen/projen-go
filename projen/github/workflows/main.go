@@ -234,6 +234,10 @@ func init() {
 		reflect.TypeOf((*WorkflowCallOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.github.workflows.WorkflowDispatchInput",
+		reflect.TypeOf((*WorkflowDispatchInput)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.github.workflows.WorkflowDispatchOptions",
 		reflect.TypeOf((*WorkflowDispatchOptions)(nil)).Elem(),
 	)
