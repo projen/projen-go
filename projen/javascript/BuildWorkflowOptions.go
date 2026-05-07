@@ -1,6 +1,7 @@
 package javascript
 
 import (
+	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github/workflows"
 )
 
@@ -52,5 +53,13 @@ type BuildWorkflowOptions struct {
 	//
 	// Experimental.
 	MutableInstall *bool `field:"optional" json:"mutableInstall" yaml:"mutableInstall"`
+	// Github Runner selection labels.
+	// Default: ["ubuntu-latest"].
+	//
+	// Experimental.
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 }
 

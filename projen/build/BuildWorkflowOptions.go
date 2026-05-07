@@ -41,6 +41,11 @@ type BuildWorkflowOptions struct {
 	//
 	// Experimental.
 	ArtifactsDirectory *string `field:"optional" json:"artifactsDirectory" yaml:"artifactsDirectory"`
+	// Github Runner selection labels.
+	// Default: - runsOn.
+	//
+	// Experimental.
+	BuildRunsOn *[]*string `field:"optional" json:"buildRunsOn" yaml:"buildRunsOn"`
 	// The container image to use for builds.
 	// Default: - the default workflow container.
 	//
