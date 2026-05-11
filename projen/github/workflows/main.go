@@ -89,6 +89,10 @@ func init() {
 		reflect.TypeOf((*IssuesOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.github.workflows.JavaToolRequirement",
+		reflect.TypeOf((*JavaToolRequirement)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.github.workflows.Job",
 		reflect.TypeOf((*Job)(nil)).Elem(),
 	)
@@ -184,6 +188,10 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.github.workflows.PushOptions",
 		reflect.TypeOf((*PushOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.workflows.PythonToolRequirement",
+		reflect.TypeOf((*PythonToolRequirement)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.github.workflows.RegistryPackageOptions",

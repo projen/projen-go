@@ -14,11 +14,11 @@ type Tools struct {
 	//
 	// Experimental.
 	Go *ToolRequirement `field:"optional" json:"go" yaml:"go"`
-	// Setup java (temurin distribution).
+	// Setup java.
 	// Default: - not installed.
 	//
 	// Experimental.
-	Java *ToolRequirement `field:"optional" json:"java" yaml:"java"`
+	Java *JavaToolRequirement `field:"optional" json:"java" yaml:"java"`
 	// Setup node.js.
 	// Default: - not installed.
 	//
@@ -28,6 +28,6 @@ type Tools struct {
 	// Default: - not installed.
 	//
 	// Experimental.
-	Python *ToolRequirement `field:"optional" json:"python" yaml:"python"`
+	Python *PythonToolRequirement `field:"optional" json:"python" yaml:"python"`
 }
 
