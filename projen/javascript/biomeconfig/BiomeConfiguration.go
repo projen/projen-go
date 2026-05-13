@@ -10,7 +10,7 @@ type BiomeConfiguration struct {
 	// Specific configuration for the Css language.
 	// Experimental.
 	Css *CssConfiguration `field:"optional" json:"css" yaml:"css"`
-	// A list of paths to other JSON files, used to extends the current configuration.
+	// A list of paths to other JSON files, used to extend the current configuration.
 	// Experimental.
 	Extends *[]*string `field:"optional" json:"extends" yaml:"extends"`
 	// The configuration of the filesystem.
