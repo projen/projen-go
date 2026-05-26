@@ -3,6 +3,11 @@ package github
 
 // Experimental.
 type DownloadArtifactWith struct {
+	// IDs of the artifacts to download.
+	//
+	// Either inputs `artifact-ids` or `name` can be used, but not both.
+	// Experimental.
+	ArtifactIds *[]*string `field:"optional" json:"artifactIds" yaml:"artifactIds"`
 	// When multiple artifacts are matched, this changes the behavior of the destination directories If true, the downloaded artifacts will be in the same directory specified by path If false, the downloaded artifacts will be extracted into individual named directories within the specified path.
 	// Default: false.
 	//
