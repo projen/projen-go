@@ -199,6 +199,23 @@ func init() {
 		reflect.TypeOf((*IntegrationTestBaseOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
+		"projen.cdk.JsiiBuild",
+		reflect.TypeOf((*JsiiBuild)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "applyTo", GoMethod: "ApplyTo"},
+			_jsii_.MemberMethod{JsiiMethod: "supports", GoMethod: "Supports"},
+		},
+		func() interface{} {
+			j := jsiiProxy_JsiiBuild{}
+			_jsii_.InitJsiiProxy(&j.Type__constructsIMixin)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.cdk.JsiiBuildOptions",
+		reflect.TypeOf((*JsiiBuildOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
 		"projen.cdk.JsiiDocgen",
 		reflect.TypeOf((*JsiiDocgen)(nil)).Elem(),
 		[]_jsii_.Member{
