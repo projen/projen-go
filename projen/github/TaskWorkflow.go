@@ -72,12 +72,44 @@ type TaskWorkflow interface {
 	// Add jobs to the workflow.
 	// Experimental.
 	AddJobs(jobs *map[string]interface{})
+	// Appends a step to the end of a job's step list.
+	// Experimental.
+	AppendStep(jobId *string, step *workflows.JobStep)
 	// Get a single job from the workflow.
 	// Experimental.
 	GetJob(id *string) interface{}
+	// Gets a single step from a job by step ID.
+	//
+	// The returned object is frozen and read-only. Use `replaceStep` or
+	// `patchStep` to modify a step.
+	//
+	// Returns: A read-only copy of the step.
+	// Experimental.
+	GetStep(jobId *string, stepId *string) *workflows.JobStep
+	// Inserts a step after an existing step, identified by ID.
+	// Experimental.
+	InsertStepAfter(jobId *string, referenceStepId *string, step *workflows.JobStep)
+	// Inserts a step before an existing step, identified by ID.
+	// Experimental.
+	InsertStepBefore(jobId *string, referenceStepId *string, step *workflows.JobStep)
 	// Add events to triggers the workflow.
 	// Experimental.
 	On(events *workflows.Triggers)
+	// Applies a surgical modification to an existing step.
+	//
+	// The provided patch is shallow-merged onto the existing step. Fields not
+	// present in the patch are preserved unchanged. Use `getStep` to read the
+	// current step values before constructing the patch.
+	//
+	// Example:
+	//   // Add an env var without replacing existing ones:
+	//   const step = workflow.getStep("build", "install");
+	//   workflow.patchStep("build", "install", {
+	//     env: { ...step.env, NODE_AUTH_TOKEN: "${{ steps.jfrog.outputs.oidc-token }}" },
+	//   });
+	//
+	// Experimental.
+	PatchStep(jobId *string, stepId *string, patch *workflows.JobStep)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -89,6 +121,12 @@ type TaskWorkflow interface {
 	// Removes a single job to the workflow.
 	// Experimental.
 	RemoveJob(id *string)
+	// Removes a step from a job by step ID.
+	// Experimental.
+	RemoveStep(jobId *string, stepId *string)
+	// Replaces an existing step in a job, preserving its position.
+	// Experimental.
+	ReplaceStep(jobId *string, stepId *string, replacementStep *workflows.JobStep)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -344,6 +382,17 @@ func (t *jsiiProxy_TaskWorkflow) AddJobs(jobs *map[string]interface{}) {
 	)
 }
 
+func (t *jsiiProxy_TaskWorkflow) AppendStep(jobId *string, step *workflows.JobStep) {
+	if err := t.validateAppendStepParameters(jobId, step); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"appendStep",
+		[]interface{}{jobId, step},
+	)
+}
+
 func (t *jsiiProxy_TaskWorkflow) GetJob(id *string) interface{} {
 	if err := t.validateGetJobParameters(id); err != nil {
 		panic(err)
@@ -360,6 +409,44 @@ func (t *jsiiProxy_TaskWorkflow) GetJob(id *string) interface{} {
 	return returns
 }
 
+func (t *jsiiProxy_TaskWorkflow) GetStep(jobId *string, stepId *string) *workflows.JobStep {
+	if err := t.validateGetStepParameters(jobId, stepId); err != nil {
+		panic(err)
+	}
+	var returns *workflows.JobStep
+
+	_jsii_.Invoke(
+		t,
+		"getStep",
+		[]interface{}{jobId, stepId},
+		&returns,
+	)
+
+	return returns
+}
+
+func (t *jsiiProxy_TaskWorkflow) InsertStepAfter(jobId *string, referenceStepId *string, step *workflows.JobStep) {
+	if err := t.validateInsertStepAfterParameters(jobId, referenceStepId, step); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"insertStepAfter",
+		[]interface{}{jobId, referenceStepId, step},
+	)
+}
+
+func (t *jsiiProxy_TaskWorkflow) InsertStepBefore(jobId *string, referenceStepId *string, step *workflows.JobStep) {
+	if err := t.validateInsertStepBeforeParameters(jobId, referenceStepId, step); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"insertStepBefore",
+		[]interface{}{jobId, referenceStepId, step},
+	)
+}
+
 func (t *jsiiProxy_TaskWorkflow) On(events *workflows.Triggers) {
 	if err := t.validateOnParameters(events); err != nil {
 		panic(err)
@@ -368,6 +455,17 @@ func (t *jsiiProxy_TaskWorkflow) On(events *workflows.Triggers) {
 		t,
 		"on",
 		[]interface{}{events},
+	)
+}
+
+func (t *jsiiProxy_TaskWorkflow) PatchStep(jobId *string, stepId *string, patch *workflows.JobStep) {
+	if err := t.validatePatchStepParameters(jobId, stepId, patch); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"patchStep",
+		[]interface{}{jobId, stepId, patch},
 	)
 }
 
@@ -395,6 +493,28 @@ func (t *jsiiProxy_TaskWorkflow) RemoveJob(id *string) {
 		t,
 		"removeJob",
 		[]interface{}{id},
+	)
+}
+
+func (t *jsiiProxy_TaskWorkflow) RemoveStep(jobId *string, stepId *string) {
+	if err := t.validateRemoveStepParameters(jobId, stepId); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"removeStep",
+		[]interface{}{jobId, stepId},
+	)
+}
+
+func (t *jsiiProxy_TaskWorkflow) ReplaceStep(jobId *string, stepId *string, replacementStep *workflows.JobStep) {
+	if err := t.validateReplaceStepParameters(jobId, stepId, replacementStep); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"replaceStep",
+		[]interface{}{jobId, stepId, replacementStep},
 	)
 }
 

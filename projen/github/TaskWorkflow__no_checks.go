@@ -12,7 +12,23 @@ func (t *jsiiProxy_TaskWorkflow) validateAddJobsParameters(jobs *map[string]inte
 	return nil
 }
 
+func (t *jsiiProxy_TaskWorkflow) validateAppendStepParameters(jobId *string, step *workflows.JobStep) error {
+	return nil
+}
+
 func (t *jsiiProxy_TaskWorkflow) validateGetJobParameters(id *string) error {
+	return nil
+}
+
+func (t *jsiiProxy_TaskWorkflow) validateGetStepParameters(jobId *string, stepId *string) error {
+	return nil
+}
+
+func (t *jsiiProxy_TaskWorkflow) validateInsertStepAfterParameters(jobId *string, referenceStepId *string, step *workflows.JobStep) error {
+	return nil
+}
+
+func (t *jsiiProxy_TaskWorkflow) validateInsertStepBeforeParameters(jobId *string, referenceStepId *string, step *workflows.JobStep) error {
 	return nil
 }
 
@@ -20,7 +36,19 @@ func (t *jsiiProxy_TaskWorkflow) validateOnParameters(events *workflows.Triggers
 	return nil
 }
 
+func (t *jsiiProxy_TaskWorkflow) validatePatchStepParameters(jobId *string, stepId *string, patch *workflows.JobStep) error {
+	return nil
+}
+
 func (t *jsiiProxy_TaskWorkflow) validateRemoveJobParameters(id *string) error {
+	return nil
+}
+
+func (t *jsiiProxy_TaskWorkflow) validateRemoveStepParameters(jobId *string, stepId *string) error {
+	return nil
+}
+
+func (t *jsiiProxy_TaskWorkflow) validateReplaceStepParameters(jobId *string, stepId *string, replacementStep *workflows.JobStep) error {
 	return nil
 }
 

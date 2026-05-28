@@ -88,9 +88,74 @@ func (g *jsiiProxy_GithubWorkflow) validateAddJobsParameters(jobs *map[string]in
 	return nil
 }
 
+func (g *jsiiProxy_GithubWorkflow) validateAppendStepParameters(jobId *string, step *workflows.JobStep) error {
+	if jobId == nil {
+		return fmt.Errorf("parameter jobId is required, but nil was provided")
+	}
+
+	if step == nil {
+		return fmt.Errorf("parameter step is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(step, func() string { return "parameter step" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (g *jsiiProxy_GithubWorkflow) validateGetJobParameters(id *string) error {
 	if id == nil {
 		return fmt.Errorf("parameter id is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (g *jsiiProxy_GithubWorkflow) validateGetStepParameters(jobId *string, stepId *string) error {
+	if jobId == nil {
+		return fmt.Errorf("parameter jobId is required, but nil was provided")
+	}
+
+	if stepId == nil {
+		return fmt.Errorf("parameter stepId is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (g *jsiiProxy_GithubWorkflow) validateInsertStepAfterParameters(jobId *string, referenceStepId *string, step *workflows.JobStep) error {
+	if jobId == nil {
+		return fmt.Errorf("parameter jobId is required, but nil was provided")
+	}
+
+	if referenceStepId == nil {
+		return fmt.Errorf("parameter referenceStepId is required, but nil was provided")
+	}
+
+	if step == nil {
+		return fmt.Errorf("parameter step is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(step, func() string { return "parameter step" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (g *jsiiProxy_GithubWorkflow) validateInsertStepBeforeParameters(jobId *string, referenceStepId *string, step *workflows.JobStep) error {
+	if jobId == nil {
+		return fmt.Errorf("parameter jobId is required, but nil was provided")
+	}
+
+	if referenceStepId == nil {
+		return fmt.Errorf("parameter referenceStepId is required, but nil was provided")
+	}
+
+	if step == nil {
+		return fmt.Errorf("parameter step is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(step, func() string { return "parameter step" }); err != nil {
+		return err
 	}
 
 	return nil
@@ -107,9 +172,59 @@ func (g *jsiiProxy_GithubWorkflow) validateOnParameters(events *workflows.Trigge
 	return nil
 }
 
+func (g *jsiiProxy_GithubWorkflow) validatePatchStepParameters(jobId *string, stepId *string, patch *workflows.JobStep) error {
+	if jobId == nil {
+		return fmt.Errorf("parameter jobId is required, but nil was provided")
+	}
+
+	if stepId == nil {
+		return fmt.Errorf("parameter stepId is required, but nil was provided")
+	}
+
+	if patch == nil {
+		return fmt.Errorf("parameter patch is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(patch, func() string { return "parameter patch" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (g *jsiiProxy_GithubWorkflow) validateRemoveJobParameters(id *string) error {
 	if id == nil {
 		return fmt.Errorf("parameter id is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (g *jsiiProxy_GithubWorkflow) validateRemoveStepParameters(jobId *string, stepId *string) error {
+	if jobId == nil {
+		return fmt.Errorf("parameter jobId is required, but nil was provided")
+	}
+
+	if stepId == nil {
+		return fmt.Errorf("parameter stepId is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (g *jsiiProxy_GithubWorkflow) validateReplaceStepParameters(jobId *string, stepId *string, replacementStep *workflows.JobStep) error {
+	if jobId == nil {
+		return fmt.Errorf("parameter jobId is required, but nil was provided")
+	}
+
+	if stepId == nil {
+		return fmt.Errorf("parameter stepId is required, but nil was provided")
+	}
+
+	if replacementStep == nil {
+		return fmt.Errorf("parameter replacementStep is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(replacementStep, func() string { return "parameter replacementStep" }); err != nil {
+		return err
 	}
 
 	return nil

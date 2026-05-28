@@ -73,12 +73,44 @@ type GithubWorkflow interface {
 	// Add jobs to the workflow.
 	// Experimental.
 	AddJobs(jobs *map[string]interface{})
+	// Appends a step to the end of a job's step list.
+	// Experimental.
+	AppendStep(jobId *string, step *workflows.JobStep)
 	// Get a single job from the workflow.
 	// Experimental.
 	GetJob(id *string) interface{}
+	// Gets a single step from a job by step ID.
+	//
+	// The returned object is frozen and read-only. Use `replaceStep` or
+	// `patchStep` to modify a step.
+	//
+	// Returns: A read-only copy of the step.
+	// Experimental.
+	GetStep(jobId *string, stepId *string) *workflows.JobStep
+	// Inserts a step after an existing step, identified by ID.
+	// Experimental.
+	InsertStepAfter(jobId *string, referenceStepId *string, step *workflows.JobStep)
+	// Inserts a step before an existing step, identified by ID.
+	// Experimental.
+	InsertStepBefore(jobId *string, referenceStepId *string, step *workflows.JobStep)
 	// Add events to triggers the workflow.
 	// Experimental.
 	On(events *workflows.Triggers)
+	// Applies a surgical modification to an existing step.
+	//
+	// The provided patch is shallow-merged onto the existing step. Fields not
+	// present in the patch are preserved unchanged. Use `getStep` to read the
+	// current step values before constructing the patch.
+	//
+	// Example:
+	//   // Add an env var without replacing existing ones:
+	//   const step = workflow.getStep("build", "install");
+	//   workflow.patchStep("build", "install", {
+	//     env: { ...step.env, NODE_AUTH_TOKEN: "${{ steps.jfrog.outputs.oidc-token }}" },
+	//   });
+	//
+	// Experimental.
+	PatchStep(jobId *string, stepId *string, patch *workflows.JobStep)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -90,6 +122,12 @@ type GithubWorkflow interface {
 	// Removes a single job to the workflow.
 	// Experimental.
 	RemoveJob(id *string)
+	// Removes a step from a job by step ID.
+	// Experimental.
+	RemoveStep(jobId *string, stepId *string)
+	// Replaces an existing step in a job, preserving its position.
+	// Experimental.
+	ReplaceStep(jobId *string, stepId *string, replacementStep *workflows.JobStep)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -325,6 +363,17 @@ func (g *jsiiProxy_GithubWorkflow) AddJobs(jobs *map[string]interface{}) {
 	)
 }
 
+func (g *jsiiProxy_GithubWorkflow) AppendStep(jobId *string, step *workflows.JobStep) {
+	if err := g.validateAppendStepParameters(jobId, step); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		g,
+		"appendStep",
+		[]interface{}{jobId, step},
+	)
+}
+
 func (g *jsiiProxy_GithubWorkflow) GetJob(id *string) interface{} {
 	if err := g.validateGetJobParameters(id); err != nil {
 		panic(err)
@@ -341,6 +390,44 @@ func (g *jsiiProxy_GithubWorkflow) GetJob(id *string) interface{} {
 	return returns
 }
 
+func (g *jsiiProxy_GithubWorkflow) GetStep(jobId *string, stepId *string) *workflows.JobStep {
+	if err := g.validateGetStepParameters(jobId, stepId); err != nil {
+		panic(err)
+	}
+	var returns *workflows.JobStep
+
+	_jsii_.Invoke(
+		g,
+		"getStep",
+		[]interface{}{jobId, stepId},
+		&returns,
+	)
+
+	return returns
+}
+
+func (g *jsiiProxy_GithubWorkflow) InsertStepAfter(jobId *string, referenceStepId *string, step *workflows.JobStep) {
+	if err := g.validateInsertStepAfterParameters(jobId, referenceStepId, step); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		g,
+		"insertStepAfter",
+		[]interface{}{jobId, referenceStepId, step},
+	)
+}
+
+func (g *jsiiProxy_GithubWorkflow) InsertStepBefore(jobId *string, referenceStepId *string, step *workflows.JobStep) {
+	if err := g.validateInsertStepBeforeParameters(jobId, referenceStepId, step); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		g,
+		"insertStepBefore",
+		[]interface{}{jobId, referenceStepId, step},
+	)
+}
+
 func (g *jsiiProxy_GithubWorkflow) On(events *workflows.Triggers) {
 	if err := g.validateOnParameters(events); err != nil {
 		panic(err)
@@ -349,6 +436,17 @@ func (g *jsiiProxy_GithubWorkflow) On(events *workflows.Triggers) {
 		g,
 		"on",
 		[]interface{}{events},
+	)
+}
+
+func (g *jsiiProxy_GithubWorkflow) PatchStep(jobId *string, stepId *string, patch *workflows.JobStep) {
+	if err := g.validatePatchStepParameters(jobId, stepId, patch); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		g,
+		"patchStep",
+		[]interface{}{jobId, stepId, patch},
 	)
 }
 
@@ -376,6 +474,28 @@ func (g *jsiiProxy_GithubWorkflow) RemoveJob(id *string) {
 		g,
 		"removeJob",
 		[]interface{}{id},
+	)
+}
+
+func (g *jsiiProxy_GithubWorkflow) RemoveStep(jobId *string, stepId *string) {
+	if err := g.validateRemoveStepParameters(jobId, stepId); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		g,
+		"removeStep",
+		[]interface{}{jobId, stepId},
+	)
+}
+
+func (g *jsiiProxy_GithubWorkflow) ReplaceStep(jobId *string, stepId *string, replacementStep *workflows.JobStep) {
+	if err := g.validateReplaceStepParameters(jobId, stepId, replacementStep); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		g,
+		"replaceStep",
+		[]interface{}{jobId, stepId, replacementStep},
 	)
 }
 

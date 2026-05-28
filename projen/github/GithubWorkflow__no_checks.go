@@ -12,7 +12,23 @@ func (g *jsiiProxy_GithubWorkflow) validateAddJobsParameters(jobs *map[string]in
 	return nil
 }
 
+func (g *jsiiProxy_GithubWorkflow) validateAppendStepParameters(jobId *string, step *workflows.JobStep) error {
+	return nil
+}
+
 func (g *jsiiProxy_GithubWorkflow) validateGetJobParameters(id *string) error {
+	return nil
+}
+
+func (g *jsiiProxy_GithubWorkflow) validateGetStepParameters(jobId *string, stepId *string) error {
+	return nil
+}
+
+func (g *jsiiProxy_GithubWorkflow) validateInsertStepAfterParameters(jobId *string, referenceStepId *string, step *workflows.JobStep) error {
+	return nil
+}
+
+func (g *jsiiProxy_GithubWorkflow) validateInsertStepBeforeParameters(jobId *string, referenceStepId *string, step *workflows.JobStep) error {
 	return nil
 }
 
@@ -20,7 +36,19 @@ func (g *jsiiProxy_GithubWorkflow) validateOnParameters(events *workflows.Trigge
 	return nil
 }
 
+func (g *jsiiProxy_GithubWorkflow) validatePatchStepParameters(jobId *string, stepId *string, patch *workflows.JobStep) error {
+	return nil
+}
+
 func (g *jsiiProxy_GithubWorkflow) validateRemoveJobParameters(id *string) error {
+	return nil
+}
+
+func (g *jsiiProxy_GithubWorkflow) validateRemoveStepParameters(jobId *string, stepId *string) error {
+	return nil
+}
+
+func (g *jsiiProxy_GithubWorkflow) validateReplaceStepParameters(jobId *string, stepId *string, replacementStep *workflows.JobStep) error {
 	return nil
 }
 
