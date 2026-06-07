@@ -51,6 +51,9 @@ type OverrideFormatterConfiguration struct {
 	//
 	// Experimental.
 	LineWidth *float64 `field:"optional" json:"lineWidth" yaml:"lineWidth"`
+	// Print trailing commas wherever possible in multi-line comma-separated syntactic structures.
+	// Experimental.
+	TrailingCommas JsTrailingCommas `field:"optional" json:"trailingCommas" yaml:"trailingCommas"`
 	// Whether to add a trailing newline at the end of the file.
 	//
 	// Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
