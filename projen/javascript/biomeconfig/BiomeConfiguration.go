@@ -42,13 +42,13 @@ type BiomeConfiguration struct {
 	Overrides *[]*OverridePattern `field:"optional" json:"overrides" yaml:"overrides"`
 	// List of plugins to load.
 	// Experimental.
-	Plugins *[]*string `field:"optional" json:"plugins" yaml:"plugins"`
+	Plugins *[]interface{} `field:"optional" json:"plugins" yaml:"plugins"`
 	// Indicates whether this configuration file is at the root of a Biome project.
 	//
 	// By default, this is `true`.
 	// Experimental.
 	Root *bool `field:"optional" json:"root" yaml:"root"`
-	// A field for the [JSON schema](https://json-schema.org/) specification.
+	// A field for the JSON schema specification: https://json-schema.org/.
 	// Experimental.
 	Schema *string `field:"optional" json:"schema" yaml:"schema"`
 	// The configuration of the VCS integration.

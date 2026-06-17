@@ -41,6 +41,6 @@ type OverridePattern struct {
 	Linter *OverrideLinterConfiguration `field:"optional" json:"linter" yaml:"linter"`
 	// Specific configuration for additional plugins.
 	// Experimental.
-	Plugins *[]*string `field:"optional" json:"plugins" yaml:"plugins"`
+	Plugins *[]interface{} `field:"optional" json:"plugins" yaml:"plugins"`
 }
 

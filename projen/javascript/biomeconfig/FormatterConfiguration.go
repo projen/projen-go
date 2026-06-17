@@ -21,6 +21,15 @@ type FormatterConfiguration struct {
 	//
 	// Experimental.
 	BracketSpacing *bool `field:"optional" json:"bracketSpacing" yaml:"bracketSpacing"`
+	// Whether to insert spaces inside delimiters (after the opening delimiter and before the closing delimiter), such as parentheses, brackets, angle brackets, and template literal interpolations.
+	//
+	// Spaces are not added before the opening delimiter, and empty delimiters
+	// are not affected. Only applies when the content fits on a single line. The specific
+	// delimiters affected depend on the language. Defaults to false.
+	// Default: false.
+	//
+	// Experimental.
+	DelimiterSpacing *bool `field:"optional" json:"delimiterSpacing" yaml:"delimiterSpacing"`
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 	// Whether to expand arrays and objects on multiple lines.

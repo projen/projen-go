@@ -44,6 +44,9 @@ type Tasks interface {
 	// Returns: The `Task` that was removed, otherwise `undefined`.
 	// Experimental.
 	RemoveTask(name *string) Task
+	// Runs the specified task.
+	// Experimental.
+	RunTask(name *string, args *[]interface{})
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -255,6 +258,17 @@ func (t *jsiiProxy_Tasks) RemoveTask(name *string) Task {
 	)
 
 	return returns
+}
+
+func (t *jsiiProxy_Tasks) RunTask(name *string, args *[]interface{}) {
+	if err := t.validateRunTaskParameters(name, args); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"runTask",
+		[]interface{}{name, args},
+	)
 }
 
 func (t *jsiiProxy_Tasks) Synthesize() {

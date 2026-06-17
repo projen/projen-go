@@ -13,6 +13,9 @@ type Rules struct {
 	Nursery interface{} `field:"optional" json:"nursery" yaml:"nursery"`
 	// Experimental.
 	Performance interface{} `field:"optional" json:"performance" yaml:"performance"`
+	// The rule presets to use.
+	// Experimental.
+	Preset PresetConfig `field:"optional" json:"preset" yaml:"preset"`
 	// It enables the lint rules recommended by Biome.
 	//
 	// `true` by default.

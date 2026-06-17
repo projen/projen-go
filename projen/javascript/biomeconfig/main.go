@@ -152,6 +152,10 @@ func init() {
 		"projen.javascript.biome_config.JsParserConfiguration",
 		reflect.TypeOf((*JsParserConfiguration)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.biome_config.JsResolverConfiguration",
+		reflect.TypeOf((*JsResolverConfiguration)(nil)).Elem(),
+	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.biome_config.JsTrailingCommas",
 		reflect.TypeOf((*JsTrailingCommas)(nil)).Elem(),
@@ -238,6 +242,15 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.biome_config.OverridePattern",
 		reflect.TypeOf((*OverridePattern)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.biome_config.PresetConfig",
+		reflect.TypeOf((*PresetConfig)(nil)).Elem(),
+		map[string]interface{}{
+			"RECOMMENDED": PresetConfig_RECOMMENDED,
+			"ALL": PresetConfig_ALL,
+			"NONE": PresetConfig_NONE,
+		},
 	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.biome_config.QuoteProperties",

@@ -27,5 +27,8 @@ type JsConfiguration struct {
 	// Parsing options.
 	// Experimental.
 	Parser *JsParserConfiguration `field:"optional" json:"parser" yaml:"parser"`
+	// Module/dependency resolver options.
+	// Experimental.
+	Resolver *JsResolverConfiguration `field:"optional" json:"resolver" yaml:"resolver"`
 }
 

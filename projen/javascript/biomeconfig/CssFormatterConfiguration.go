@@ -4,6 +4,15 @@ package biomeconfig
 // Options that changes how the CSS formatter behaves.
 // Experimental.
 type CssFormatterConfiguration struct {
+	// Whether to insert spaces inside delimiters (after the opening delimiter and before the closing delimiter).
+	//
+	// Only applies when the content fits on a single line, and empty
+	// delimiters are not affected. For CSS, affects parentheses (e.g., `rgb( 0, 0, 0 )`) and
+	// square brackets (e.g., `[ data-attr ]`). Defaults to false.
+	// Default: false.
+	//
+	// Experimental.
+	DelimiterSpacing *bool `field:"optional" json:"delimiterSpacing" yaml:"delimiterSpacing"`
 	// Control the formatter for CSS (and its super languages) files.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`

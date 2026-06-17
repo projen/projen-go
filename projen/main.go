@@ -1219,6 +1219,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "removeTask", GoMethod: "RemoveTask"},
+			_jsii_.MemberMethod{JsiiMethod: "runTask", GoMethod: "RunTask"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 			_jsii_.MemberMethod{JsiiMethod: "tryFind", GoMethod: "TryFind"},
