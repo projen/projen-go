@@ -22,6 +22,9 @@ type ReactTypeDef interface {
 	// file has not been synthesized yet.
 	// Deprecated: No longer used.
 	Changed() *bool
+	// Indicates if the file will be committed.
+	// Deprecated: No longer used.
+	Committed() *bool
 	// Indicates if the file should be marked as executable.
 	// Deprecated: No longer used.
 	Executable() *bool
@@ -107,6 +110,16 @@ func (j *jsiiProxy_ReactTypeDef) Changed() *bool {
 	_jsii_.Get(
 		j,
 		"changed",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_ReactTypeDef) Committed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"committed",
 		&returns,
 	)
 	return returns

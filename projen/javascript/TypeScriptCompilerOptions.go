@@ -141,6 +141,15 @@ type TypeScriptCompilerOptions struct {
 	//
 	// Experimental.
 	ForceConsistentCasingInFileNames *bool `field:"optional" json:"forceConsistentCasingInFileNames" yaml:"forceConsistentCasingInFileNames"`
+	// Silence deprecation warnings for options scheduled for removal in a future TypeScript release (for example `moduleResolution: "node10"`, which became an error in TypeScript 6.0).
+	//
+	// Set to the TypeScript version that introduced the deprecation, e.g. `"6.0"`.
+	// See: https://www.typescriptlang.org/tsconfig/#ignoreDeprecations
+	//
+	// Default: undefined.
+	//
+	// Experimental.
+	IgnoreDeprecations *string `field:"optional" json:"ignoreDeprecations" yaml:"ignoreDeprecations"`
 	// This flag works because you can use `import type` to explicitly create an `import` statement which should never be emitted into JavaScript.
 	// See: https://www.typescriptlang.org/tsconfig#importsNotUsedAsValues
 	//

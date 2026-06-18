@@ -2,6 +2,7 @@ package cdk
 
 import (
 	"github.com/projen/projen-go/projen/github/workflows"
+	"github.com/projen/projen-go/projen/javascript"
 	"github.com/projen/projen-go/projen/release"
 )
 
@@ -97,6 +98,26 @@ type JsiiBuildOptions struct {
 	//
 	// Experimental.
 	Stability *string `field:"optional" json:"stability" yaml:"stability"`
+	// The TypescriptConfig that jsii compiles against.
+	//
+	// Provide a dedicated config (e.g. one named `tsconfig.jsii.json`) to keep
+	// jsii compilation separate from the project's editor-facing `tsconfig.json`.
+	// jsii requires a comment-free, strict-valid config, so `JsiiBuild` disables
+	// comments on whichever config it is given.
+	// Default: - the project's tsconfig (i.e. `project.tsconfig`)
+	//
+	// Experimental.
+	Tsconfig javascript.TypescriptConfig `field:"optional" json:"tsconfig" yaml:"tsconfig"`
+	// Level of tsconfig validation jsii should perform on the user-provided tsconfig.
+	//
+	// Only relevant when the project synthesizes its own tsconfig
+	// (i.e. `disableTsconfig` is not set on the TypeScriptProject).
+	// See: https://aws.github.io/jsii/user-guides/lib-author/configuration/#validatetsconfig
+	//
+	// Default: ValidateTsconfig.STRICT
+	//
+	// Experimental.
+	ValidateTsconfig ValidateTsconfig `field:"optional" json:"validateTsconfig" yaml:"validateTsconfig"`
 	// Additional steps to run before packaging in workflows.
 	// Default: [].
 	//

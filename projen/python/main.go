@@ -186,6 +186,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addOverride", GoMethod: "AddOverride"},
 			_jsii_.MemberMethod{JsiiMethod: "addToArray", GoMethod: "AddToArray"},
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
+			_jsii_.MemberProperty{JsiiProperty: "committed", GoGetter: "Committed"},
 			_jsii_.MemberMethod{JsiiMethod: "diff", GoMethod: "Diff"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
@@ -395,6 +396,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "absolutePath", GoGetter: "AbsolutePath"},
 			_jsii_.MemberMethod{JsiiMethod: "addPackages", GoMethod: "AddPackages"},
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
+			_jsii_.MemberProperty{JsiiProperty: "committed", GoGetter: "Committed"},
 			_jsii_.MemberMethod{JsiiMethod: "diff", GoMethod: "Diff"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
@@ -425,6 +427,7 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberProperty{JsiiProperty: "absolutePath", GoGetter: "AbsolutePath"},
 			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
+			_jsii_.MemberProperty{JsiiProperty: "committed", GoGetter: "Committed"},
 			_jsii_.MemberMethod{JsiiMethod: "diff", GoMethod: "Diff"},
 			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
 			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},

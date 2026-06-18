@@ -23,6 +23,9 @@ type GitAttributesFile interface {
 	// file has not been synthesized yet.
 	// Experimental.
 	Changed() *bool
+	// Indicates if the file will be committed.
+	// Experimental.
+	Committed() *bool
 	// The default end of line character for text files.
 	// Experimental.
 	EndOfLine() EndOfLine
@@ -125,6 +128,16 @@ func (j *jsiiProxy_GitAttributesFile) Changed() *bool {
 	_jsii_.Get(
 		j,
 		"changed",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitAttributesFile) Committed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"committed",
 		&returns,
 	)
 	return returns

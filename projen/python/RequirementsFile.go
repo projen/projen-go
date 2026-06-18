@@ -25,6 +25,9 @@ type RequirementsFile interface {
 	// file has not been synthesized yet.
 	// Experimental.
 	Changed() *bool
+	// Indicates if the file will be committed.
+	// Experimental.
+	Committed() *bool
 	// Indicates if the file should be marked as executable.
 	// Experimental.
 	Executable() *bool
@@ -115,6 +118,16 @@ func (j *jsiiProxy_RequirementsFile) Changed() *bool {
 	_jsii_.Get(
 		j,
 		"changed",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_RequirementsFile) Committed() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"committed",
 		&returns,
 	)
 	return returns

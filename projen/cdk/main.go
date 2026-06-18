@@ -375,4 +375,14 @@ func init() {
 			"DEPRECATED": Stability_DEPRECATED,
 		},
 	)
+	_jsii_.RegisterEnum(
+		"projen.cdk.ValidateTsconfig",
+		reflect.TypeOf((*ValidateTsconfig)(nil)).Elem(),
+		map[string]interface{}{
+			"STRICT": ValidateTsconfig_STRICT,
+			"GENERATED": ValidateTsconfig_GENERATED,
+			"MINIMAL": ValidateTsconfig_MINIMAL,
+			"OFF": ValidateTsconfig_OFF,
+		},
+	)
 }
