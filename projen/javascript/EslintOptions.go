@@ -39,18 +39,6 @@ type EslintOptions struct {
 	//
 	// Experimental.
 	IgnorePatterns *[]*string `field:"optional" json:"ignorePatterns" yaml:"ignorePatterns"`
-	// Should we lint .projenrc.js.
-	// Default: true.
-	//
-	// Deprecated: set to `false` to remove any automatic rules and add manually.
-	LintProjenRc *bool `field:"optional" json:"lintProjenRc" yaml:"lintProjenRc"`
-	// Projenrc file to lint.
-	//
-	// Use empty string to disable.
-	// Default: "projenrc.js"
-	//
-	// Deprecated: provide as `devdirs`.
-	LintProjenRcFile *string `field:"optional" json:"lintProjenRcFile" yaml:"lintProjenRcFile"`
 	// Enable prettier for code formatting.
 	// Default: false.
 	//

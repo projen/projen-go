@@ -28,15 +28,7 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAddTaskParameters(name *string, 
 	return nil
 }
 
-func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAddTipParameters(message *string) error {
-	return nil
-}
-
 func (a *jsiiProxy_AwsCdkTypeScriptApp) validateAnnotateGeneratedParameters(_glob *string) error {
-	return nil
-}
-
-func (a *jsiiProxy_AwsCdkTypeScriptApp) validateHasScriptParameters(name *string) error {
 	return nil
 }
 
@@ -61,10 +53,6 @@ func (a *jsiiProxy_AwsCdkTypeScriptApp) validateSetScriptParameters(name *string
 }
 
 func (a *jsiiProxy_AwsCdkTypeScriptApp) validateTryFindFileParameters(filePath *string) error {
-	return nil
-}
-
-func (a *jsiiProxy_AwsCdkTypeScriptApp) validateTryFindJsonFileParameters(filePath *string) error {
 	return nil
 }
 

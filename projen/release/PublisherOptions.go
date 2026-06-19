@@ -43,8 +43,6 @@ type PublisherOptions struct {
 	//
 	// Experimental.
 	FailureIssueLabel *string `field:"optional" json:"failureIssueLabel" yaml:"failureIssueLabel"`
-	// Deprecated: use `publibVersion` instead.
-	JsiiReleaseVersion *string `field:"optional" json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
 	// Version requirement for `publib`.
 	// Default: "latest".
 	//

@@ -111,9 +111,6 @@ type Project interface {
 	// a task with this name.
 	// Experimental.
 	AddTask(name *string, props *TaskOptions) Task
-	// Prints a "tip" message during synthesis.
-	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
-	AddTip(message *string)
 	// Consider a set of files as "generated".
 	//
 	// This method is implemented by
@@ -157,9 +154,6 @@ type Project interface {
 	// Returns: a `FileBase` or undefined if there is no file in that path.
 	// Experimental.
 	TryFindFile(filePath *string) FileBase
-	// Finds a json file by name.
-	// Deprecated: use `tryFindObjectFile`.
-	TryFindJsonFile(filePath *string) JsonFile
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) ObjectFile
@@ -606,17 +600,6 @@ func (p *jsiiProxy_Project) AddTask(name *string, props *TaskOptions) Task {
 	return returns
 }
 
-func (p *jsiiProxy_Project) AddTip(message *string) {
-	if err := p.validateAddTipParameters(message); err != nil {
-		panic(err)
-	}
-	_jsii_.InvokeVoid(
-		p,
-		"addTip",
-		[]interface{}{message},
-	)
-}
-
 func (p *jsiiProxy_Project) AnnotateGenerated(_glob *string) {
 	if err := p.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
@@ -706,22 +689,6 @@ func (p *jsiiProxy_Project) TryFindFile(filePath *string) FileBase {
 	_jsii_.Invoke(
 		p,
 		"tryFindFile",
-		[]interface{}{filePath},
-		&returns,
-	)
-
-	return returns
-}
-
-func (p *jsiiProxy_Project) TryFindJsonFile(filePath *string) JsonFile {
-	if err := p.validateTryFindJsonFileParameters(filePath); err != nil {
-		panic(err)
-	}
-	var returns JsonFile
-
-	_jsii_.Invoke(
-		p,
-		"tryFindJsonFile",
 		[]interface{}{filePath},
 		&returns,
 	)

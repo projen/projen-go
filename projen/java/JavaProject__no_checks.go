@@ -28,10 +28,6 @@ func (j *jsiiProxy_JavaProject) validateAddTestDependencyParameters(spec *string
 	return nil
 }
 
-func (j *jsiiProxy_JavaProject) validateAddTipParameters(message *string) error {
-	return nil
-}
-
 func (j *jsiiProxy_JavaProject) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
@@ -45,10 +41,6 @@ func (j *jsiiProxy_JavaProject) validateRunTaskCommandParameters(task projen.Tas
 }
 
 func (j *jsiiProxy_JavaProject) validateTryFindFileParameters(filePath *string) error {
-	return nil
-}
-
-func (j *jsiiProxy_JavaProject) validateTryFindJsonFileParameters(filePath *string) error {
 	return nil
 }
 

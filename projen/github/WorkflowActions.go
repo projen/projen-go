@@ -87,28 +87,6 @@ func WorkflowActions_CreatePullRequest(options *CreatePullRequestOptions) *[]*wo
 	return returns
 }
 
-// Configures the git identity (user name and email).
-//
-// Returns: Job steps.
-// Deprecated: use `WorkflowSteps.setupGitIdentity` instead
-func WorkflowActions_SetupGitIdentity(id *GitIdentity) *[]*workflows.JobStep {
-	_init_.Initialize()
-
-	if err := validateWorkflowActions_SetupGitIdentityParameters(id); err != nil {
-		panic(err)
-	}
-	var returns *[]*workflows.JobStep
-
-	_jsii_.StaticInvoke(
-		"projen.github.WorkflowActions",
-		"setupGitIdentity",
-		[]interface{}{id},
-		&returns,
-	)
-
-	return returns
-}
-
 // Creates a .patch file from the current git diff and uploads it as an artifact. Use `checkoutWithPatch` to download and apply in another job.
 //
 // If a patch was uploaded, the action can optionally fail the job.

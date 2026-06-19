@@ -29,17 +29,6 @@ func (j *jsiiProxy_CdkFeatureFlags) Flags() *map[string]interface{} {
 }
 
 
-func CdkFeatureFlags_V1() CdkFeatureFlagsV1 {
-	_init_.Initialize()
-	var returns CdkFeatureFlagsV1
-	_jsii_.StaticGet(
-		"projen.awscdk.CdkFeatureFlags",
-		"V1",
-		&returns,
-	)
-	return returns
-}
-
 func CdkFeatureFlags_V2() CdkFeatureFlagsV2 {
 	_init_.Initialize()
 	var returns CdkFeatureFlagsV2

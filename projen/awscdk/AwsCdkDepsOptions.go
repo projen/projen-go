@@ -11,21 +11,6 @@ type AwsCdkDepsOptions struct {
 	//
 	// Experimental.
 	CdkVersion *string `field:"required" json:"cdkVersion" yaml:"cdkVersion"`
-	// Warning: NodeJS only.
-	//
-	// Install the.
-	// Default: - will be included by default for AWS CDK >= 1.0.0 < 2.0.0
-	//
-	// Deprecated: The.
-	CdkAssert *bool `field:"optional" json:"cdkAssert" yaml:"cdkAssert"`
-	// Install the assertions library?
-	//
-	// Only needed for CDK 1.x. If using CDK 2.x then
-	// assertions is already included in 'aws-cdk-lib'.
-	// Default: - will be included by default for AWS CDK >= 1.111.0 < 2.0.0
-	//
-	// Experimental.
-	CdkAssertions *bool `field:"optional" json:"cdkAssertions" yaml:"cdkAssertions"`
 	// Version range of the AWS CDK CLI to depend on.
 	//
 	// Can be either a specific version, or an NPM version range.
@@ -36,24 +21,6 @@ type AwsCdkDepsOptions struct {
 	//
 	// Experimental.
 	CdkCliVersion *string `field:"optional" json:"cdkCliVersion" yaml:"cdkCliVersion"`
-	// Which AWS CDKv1 modules this project requires.
-	// Deprecated: For CDK 2.x use "deps" instead. (or "peerDeps" if you're building a library)
-	CdkDependencies *[]*string `field:"optional" json:"cdkDependencies" yaml:"cdkDependencies"`
-	// If this is enabled (default), all modules declared in `cdkDependencies` will be also added as normal `dependencies` (as well as `peerDependencies`).
-	//
-	// This is to ensure that downstream consumers actually have your CDK dependencies installed
-	// when using npm < 7 or yarn, where peer dependencies are not automatically installed.
-	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
-	// they are present during development.
-	//
-	// Note: this setting only applies to construct library projects.
-	// Default: true.
-	//
-	// Deprecated: Not supported in CDK v2.
-	CdkDependenciesAsDeps *bool `field:"optional" json:"cdkDependenciesAsDeps" yaml:"cdkDependenciesAsDeps"`
-	// AWS CDK modules required for testing.
-	// Deprecated: For CDK 2.x use 'devDeps' (in node.js projects) or 'testDeps' (in java projects) instead
-	CdkTestDependencies *[]*string `field:"optional" json:"cdkTestDependencies" yaml:"cdkTestDependencies"`
 	// Use pinned version instead of caret version for CDK.
 	//
 	// You can use this to prevent mixed versions for your CDK dependencies and to prevent auto-updates.

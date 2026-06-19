@@ -205,11 +205,6 @@ type NodePackageOptions struct {
 	//
 	// Experimental.
 	NpmProvenance *bool `field:"optional" json:"npmProvenance" yaml:"npmProvenance"`
-	// The host name of the npm registry to publish to.
-	//
-	// Cannot be set together with `npmRegistryUrl`.
-	// Deprecated: use `npmRegistryUrl` instead.
-	NpmRegistry *string `field:"optional" json:"npmRegistry" yaml:"npmRegistry"`
 	// The base URL of the npm package registry.
 	//
 	// Must be a URL (e.g. start with "https://" or "http://")
@@ -277,15 +272,6 @@ type NodePackageOptions struct {
 	//
 	// Experimental.
 	ScopedPackagesOptions *[]*ScopedPackagesOptions `field:"optional" json:"scopedPackagesOptions" yaml:"scopedPackagesOptions"`
-	// npm scripts to include.
-	//
-	// If a script has the same name as a standard script,
-	// the standard script will be overwritten.
-	// Also adds the script as a task.
-	// Default: {}.
-	//
-	// Deprecated: use `project.addTask()` or `package.setScript()`
-	Scripts *map[string]*string `field:"optional" json:"scripts" yaml:"scripts"`
 	// Package's Stability.
 	// Experimental.
 	Stability *string `field:"optional" json:"stability" yaml:"stability"`

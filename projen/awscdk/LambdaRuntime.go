@@ -95,28 +95,6 @@ func NewLambdaRuntime_Override(l LambdaRuntime, functionRuntime *string, esbuild
 	)
 }
 
-func LambdaRuntime_NODEJS_10_X() LambdaRuntime {
-	_init_.Initialize()
-	var returns LambdaRuntime
-	_jsii_.StaticGet(
-		"projen.awscdk.LambdaRuntime",
-		"NODEJS_10_X",
-		&returns,
-	)
-	return returns
-}
-
-func LambdaRuntime_NODEJS_12_X() LambdaRuntime {
-	_init_.Initialize()
-	var returns LambdaRuntime
-	_jsii_.StaticGet(
-		"projen.awscdk.LambdaRuntime",
-		"NODEJS_12_X",
-		&returns,
-	)
-	return returns
-}
-
 func LambdaRuntime_NODEJS_14_X() LambdaRuntime {
 	_init_.Initialize()
 	var returns LambdaRuntime

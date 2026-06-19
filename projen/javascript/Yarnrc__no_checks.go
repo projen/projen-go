@@ -12,7 +12,7 @@ func validateYarnrc_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func validateNewYarnrcParameters(project projen.Project, version *string, options *YarnrcOptions) error {
+func validateNewYarnrcParameters(project projen.Project, options *YarnrcOptions) error {
 	return nil
 }
 

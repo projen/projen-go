@@ -6,13 +6,6 @@ type PytestOptions struct {
 	// Stop the testing process after the first N failures.
 	// Experimental.
 	MaxFailures *float64 `field:"optional" json:"maxFailures" yaml:"maxFailures"`
-	// Location of sample tests.
-	//
-	// Typically the same directory where project tests will be located.
-	// Default: "tests".
-	//
-	// Deprecated: Reference `sampleTestdir` on the project instead; to change the directory where tests are discovered from, use `testMatch`.
-	Testdir *string `field:"optional" json:"testdir" yaml:"testdir"`
 	// List of paths to test files or directories.
 	//
 	// Useful when all project tests are in a known location to speed up

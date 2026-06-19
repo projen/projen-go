@@ -8,13 +8,6 @@ type JestOptions struct {
 	//
 	// Experimental.
 	ConfigFilePath *string `field:"optional" json:"configFilePath" yaml:"configFilePath"`
-	// Collect coverage.
-	//
-	// Deprecated.
-	// Default: true.
-	//
-	// Deprecated: use jestConfig.collectCoverage
-	Coverage *bool `field:"optional" json:"coverage" yaml:"coverage"`
 	// Include the `text` coverage reporter, which means that coverage summary is printed at the end of the jest execution.
 	// Default: true.
 	//
@@ -25,11 +18,6 @@ type JestOptions struct {
 	//
 	// Experimental.
 	ExtraCliOptions *[]*string `field:"optional" json:"extraCliOptions" yaml:"extraCliOptions"`
-	// Defines `testPathIgnorePatterns` and `coveragePathIgnorePatterns`.
-	// Default: ["/node_modules/"].
-	//
-	// Deprecated: use jestConfig.coveragePathIgnorePatterns or jestConfig.testPathIgnorePatterns respectively
-	IgnorePatterns *[]*string `field:"optional" json:"ignorePatterns" yaml:"ignorePatterns"`
 	// Jest configuration.
 	// Default: - default jest configuration.
 	//

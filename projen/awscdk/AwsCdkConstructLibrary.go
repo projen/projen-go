@@ -24,8 +24,6 @@ import (
 // Experimental.
 type AwsCdkConstructLibrary interface {
 	cdk.ConstructLibrary
-	// Deprecated: use `package.allowLibraryDependencies`
-	AllowLibraryDependencies() *bool
 	// The build output directory.
 	//
 	// An npm tarball will be created under the `js`
@@ -90,8 +88,6 @@ type AwsCdkConstructLibrary interface {
 	// Whether or not the project is being ejected.
 	// Experimental.
 	Ejected() *bool
-	// Deprecated: use `package.entrypoint`
-	Entrypoint() *string
 	// Experimental.
 	Eslint() javascript.Eslint
 	// All files in this project.
@@ -129,8 +125,6 @@ type AwsCdkConstructLibrary interface {
 	// Logging utilities.
 	// Experimental.
 	Logger() projen.Logger
-	// Deprecated: use `package.addField(x, y)`
-	Manifest() interface{}
 	// Maximum node version supported by this package.
 	//
 	// The value indicates the package is incompatible with newer versions.
@@ -161,9 +155,6 @@ type AwsCdkConstructLibrary interface {
 	// API for managing the node package.
 	// Experimental.
 	Package() javascript.NodePackage
-	// The package manager to use.
-	// Deprecated: use `package.packageManager`
-	PackageManager() javascript.NodePackageManager
 	// Experimental.
 	PackageTask() projen.Task
 	// A parent project.
@@ -180,17 +171,9 @@ type AwsCdkConstructLibrary interface {
 	// Manages the build process of the project.
 	// Experimental.
 	ProjectBuild() projen.ProjectBuild
-	// Deprecated.
-	ProjectType() projen.ProjectType
 	// The command to use in order to run the projen CLI.
 	// Experimental.
 	ProjenCommand() *string
-	// Package publisher.
-	//
-	// This will be `undefined` if the project does not have a
-	// release workflow.
-	// Deprecated: use `release.publisher`.
-	Publisher() release.Publisher
 	// Release management.
 	// Experimental.
 	Release() release.Release
@@ -224,8 +207,6 @@ type AwsCdkConstructLibrary interface {
 	// The upgrade workflow.
 	// Experimental.
 	UpgradeWorkflow() javascript.UpgradeDependencies
-	// Deprecated: use `cdkVersion`.
-	Version() *string
 	// Access all VSCode components.
 	//
 	// This will be `undefined` for subprojects.
@@ -246,17 +227,6 @@ type AwsCdkConstructLibrary interface {
 	// `bundledDependencies` section of your `package.json`.
 	// Experimental.
 	AddBundledDeps(deps ...*string)
-	// Adds dependencies to AWS CDK modules.
-	//
-	// Since this is a library project, dependencies will be added as peer dependencies.
-	// Deprecated: Not supported in v2. For v1, use `project.cdkDeps.addV1Dependencies()`
-	AddCdkDependencies(deps ...*string)
-	// Adds AWS CDK modules as dev dependencies.
-	// Deprecated: Not supported in v2. For v1, use `project.cdkDeps.addV1DevDependencies()`
-	AddCdkTestDependencies(deps ...*string)
-	// DEPRECATED.
-	// Deprecated: use `project.compileTask.exec()`
-	AddCompileCommand(commands ...*string)
 	// Defines normal dependencies.
 	// Experimental.
 	AddDeps(deps ...*string)
@@ -297,12 +267,6 @@ type AwsCdkConstructLibrary interface {
 	// a task with this name.
 	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
-	// DEPRECATED.
-	// Deprecated: use `project.testTask.exec()`
-	AddTestCommand(commands ...*string)
-	// Prints a "tip" message during synthesis.
-	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
-	AddTip(message *string)
 	// Marks the provided file(s) as being generated.
 	//
 	// This is achieved using the
@@ -315,9 +279,6 @@ type AwsCdkConstructLibrary interface {
 	// Projen default Typescript compiler options.
 	// Experimental.
 	DefaultTypeScriptCompilerOptions() *javascript.TypeScriptCompilerOptions
-	// Indicates if a script by the name name is defined.
-	// Deprecated: Use `project.tasks.tryFind(name)`
-	HasScript(name *string) *bool
 	// Called after all components are synthesized.
 	//
 	// Order is *not* guaranteed.
@@ -366,9 +327,6 @@ type AwsCdkConstructLibrary interface {
 	// Returns: a `FileBase` or undefined if there is no file in that path.
 	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
-	// Finds a json file by name.
-	// Deprecated: use `tryFindObjectFile`.
-	TryFindJsonFile(filePath *string) projen.JsonFile
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
@@ -393,16 +351,6 @@ type AwsCdkConstructLibrary interface {
 // The jsii proxy struct for AwsCdkConstructLibrary
 type jsiiProxy_AwsCdkConstructLibrary struct {
 	internal.Type__cdkConstructLibrary
-}
-
-func (j *jsiiProxy_AwsCdkConstructLibrary) AllowLibraryDependencies() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
 }
 
 func (j *jsiiProxy_AwsCdkConstructLibrary) ArtifactsDirectory() *string {
@@ -605,16 +553,6 @@ func (j *jsiiProxy_AwsCdkConstructLibrary) Ejected() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_AwsCdkConstructLibrary) Entrypoint() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"entrypoint",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_AwsCdkConstructLibrary) Eslint() javascript.Eslint {
 	var returns javascript.Eslint
 	_jsii_.Get(
@@ -715,16 +653,6 @@ func (j *jsiiProxy_AwsCdkConstructLibrary) Logger() projen.Logger {
 	return returns
 }
 
-func (j *jsiiProxy_AwsCdkConstructLibrary) Manifest() interface{} {
-	var returns interface{}
-	_jsii_.Get(
-		j,
-		"manifest",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_AwsCdkConstructLibrary) MaxNodeVersion() *string {
 	var returns *string
 	_jsii_.Get(
@@ -815,16 +743,6 @@ func (j *jsiiProxy_AwsCdkConstructLibrary) Package() javascript.NodePackage {
 	return returns
 }
 
-func (j *jsiiProxy_AwsCdkConstructLibrary) PackageManager() javascript.NodePackageManager {
-	var returns javascript.NodePackageManager
-	_jsii_.Get(
-		j,
-		"packageManager",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_AwsCdkConstructLibrary) PackageTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
@@ -885,31 +803,11 @@ func (j *jsiiProxy_AwsCdkConstructLibrary) ProjectBuild() projen.ProjectBuild {
 	return returns
 }
 
-func (j *jsiiProxy_AwsCdkConstructLibrary) ProjectType() projen.ProjectType {
-	var returns projen.ProjectType
-	_jsii_.Get(
-		j,
-		"projectType",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_AwsCdkConstructLibrary) ProjenCommand() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
 		"projenCommand",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_AwsCdkConstructLibrary) Publisher() release.Publisher {
-	var returns release.Publisher
-	_jsii_.Get(
-		j,
-		"publisher",
 		&returns,
 	)
 	return returns
@@ -1030,16 +928,6 @@ func (j *jsiiProxy_AwsCdkConstructLibrary) UpgradeWorkflow() javascript.UpgradeD
 	_jsii_.Get(
 		j,
 		"upgradeWorkflow",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_AwsCdkConstructLibrary) Version() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"version",
 		&returns,
 	)
 	return returns
@@ -1239,45 +1127,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddBundledDeps(deps ...*string) {
 	)
 }
 
-func (a *jsiiProxy_AwsCdkConstructLibrary) AddCdkDependencies(deps ...*string) {
-	args := []interface{}{}
-	for _, a := range deps {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		a,
-		"addCdkDependencies",
-		args,
-	)
-}
-
-func (a *jsiiProxy_AwsCdkConstructLibrary) AddCdkTestDependencies(deps ...*string) {
-	args := []interface{}{}
-	for _, a := range deps {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		a,
-		"addCdkTestDependencies",
-		args,
-	)
-}
-
-func (a *jsiiProxy_AwsCdkConstructLibrary) AddCompileCommand(commands ...*string) {
-	args := []interface{}{}
-	for _, a := range commands {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		a,
-		"addCompileCommand",
-		args,
-	)
-}
-
 func (a *jsiiProxy_AwsCdkConstructLibrary) AddDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -1403,30 +1252,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) AddTask(name *string, props *projen.T
 	return returns
 }
 
-func (a *jsiiProxy_AwsCdkConstructLibrary) AddTestCommand(commands ...*string) {
-	args := []interface{}{}
-	for _, a := range commands {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		a,
-		"addTestCommand",
-		args,
-	)
-}
-
-func (a *jsiiProxy_AwsCdkConstructLibrary) AddTip(message *string) {
-	if err := a.validateAddTipParameters(message); err != nil {
-		panic(err)
-	}
-	_jsii_.InvokeVoid(
-		a,
-		"addTip",
-		[]interface{}{message},
-	)
-}
-
 func (a *jsiiProxy_AwsCdkConstructLibrary) AnnotateGenerated(_glob *string) {
 	if err := a.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
@@ -1445,22 +1270,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) DefaultTypeScriptCompilerOptions() *j
 		a,
 		"defaultTypeScriptCompilerOptions",
 		nil, // no parameters
-		&returns,
-	)
-
-	return returns
-}
-
-func (a *jsiiProxy_AwsCdkConstructLibrary) HasScript(name *string) *bool {
-	if err := a.validateHasScriptParameters(name); err != nil {
-		panic(err)
-	}
-	var returns *bool
-
-	_jsii_.Invoke(
-		a,
-		"hasScript",
-		[]interface{}{name},
 		&returns,
 	)
 
@@ -1583,22 +1392,6 @@ func (a *jsiiProxy_AwsCdkConstructLibrary) TryFindFile(filePath *string) projen.
 	_jsii_.Invoke(
 		a,
 		"tryFindFile",
-		[]interface{}{filePath},
-		&returns,
-	)
-
-	return returns
-}
-
-func (a *jsiiProxy_AwsCdkConstructLibrary) TryFindJsonFile(filePath *string) projen.JsonFile {
-	if err := a.validateTryFindJsonFileParameters(filePath); err != nil {
-		panic(err)
-	}
-	var returns projen.JsonFile
-
-	_jsii_.Invoke(
-		a,
-		"tryFindJsonFile",
 		[]interface{}{filePath},
 		&returns,
 	)

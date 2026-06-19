@@ -24,10 +24,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) validateAddTaskParameters(name *string, prop
 	return nil
 }
 
-func (a *jsiiProxy_AwsCdkPythonApp) validateAddTipParameters(message *string) error {
-	return nil
-}
-
 func (a *jsiiProxy_AwsCdkPythonApp) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
@@ -41,10 +37,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) validateRunTaskCommandParameters(task projen
 }
 
 func (a *jsiiProxy_AwsCdkPythonApp) validateTryFindFileParameters(filePath *string) error {
-	return nil
-}
-
-func (a *jsiiProxy_AwsCdkPythonApp) validateTryFindJsonFileParameters(filePath *string) error {
 	return nil
 }
 

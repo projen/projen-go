@@ -74,9 +74,6 @@ type Task interface {
 	// Experimental.
 	Lock()
 	// Adds a command at the beginning of the task.
-	// Deprecated: use `prependExec()`.
-	Prepend(shell *string, options *TaskStepOptions)
-	// Adds a command at the beginning of the task.
 	// Experimental.
 	PrependExec(shell *string, options *TaskStepOptions)
 	// Says something at the beginning of the task.
@@ -297,17 +294,6 @@ func (t *jsiiProxy_Task) Lock() {
 		t,
 		"lock",
 		nil, // no parameters
-	)
-}
-
-func (t *jsiiProxy_Task) Prepend(shell *string, options *TaskStepOptions) {
-	if err := t.validatePrependParameters(shell, options); err != nil {
-		panic(err)
-	}
-	_jsii_.InvokeVoid(
-		t,
-		"prepend",
-		[]interface{}{shell, options},
 	)
 }
 

@@ -7,7 +7,7 @@ import (
 	"github.com/aws/constructs-go/constructs/v10"
 )
 
-// Defines project tasks.
+// Defines and manages project tasks.
 //
 // Tasks extend the projen CLI by adding subcommands to it. Task definitions are
 // synthesized into `.projen/tasks.json`.
@@ -44,6 +44,8 @@ type Tasks interface {
 	// Returns: The `Task` that was removed, otherwise `undefined`.
 	// Experimental.
 	RemoveTask(name *string) Task
+	// Experimental.
+	ResolveTasksManifest(resolver IResolver) *TasksManifest
 	// Runs the specified task.
 	// Experimental.
 	RunTask(name *string, args *[]interface{})
@@ -254,6 +256,22 @@ func (t *jsiiProxy_Tasks) RemoveTask(name *string) Task {
 		t,
 		"removeTask",
 		[]interface{}{name},
+		&returns,
+	)
+
+	return returns
+}
+
+func (t *jsiiProxy_Tasks) ResolveTasksManifest(resolver IResolver) *TasksManifest {
+	if err := t.validateResolveTasksManifestParameters(resolver); err != nil {
+		panic(err)
+	}
+	var returns *TasksManifest
+
+	_jsii_.Invoke(
+		t,
+		"resolveTasksManifest",
+		[]interface{}{resolver},
 		&returns,
 	)
 

@@ -84,8 +84,6 @@ type AppPermissions struct {
 	Profile AppPermission `field:"optional" json:"profile" yaml:"profile"`
 	// Experimental.
 	PullRequests AppPermission `field:"optional" json:"pullRequests" yaml:"pullRequests"`
-	// Deprecated: removed by GitHub.
-	RepositoryAnnouncementBanners AppPermission `field:"optional" json:"repositoryAnnouncementBanners" yaml:"repositoryAnnouncementBanners"`
 	// Experimental.
 	RepositoryCustomProperties AppPermission `field:"optional" json:"repositoryCustomProperties" yaml:"repositoryCustomProperties"`
 	// Experimental.

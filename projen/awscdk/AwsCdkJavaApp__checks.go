@@ -68,14 +68,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) validateAddTestDependencyParameters(spec *stri
 	return nil
 }
 
-func (a *jsiiProxy_AwsCdkJavaApp) validateAddTipParameters(message *string) error {
-	if message == nil {
-		return fmt.Errorf("parameter message is required, but nil was provided")
-	}
-
-	return nil
-}
-
 func (a *jsiiProxy_AwsCdkJavaApp) validateAnnotateGeneratedParameters(_glob *string) error {
 	if _glob == nil {
 		return fmt.Errorf("parameter _glob is required, but nil was provided")
@@ -101,14 +93,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) validateRunTaskCommandParameters(task projen.T
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) validateTryFindFileParameters(filePath *string) error {
-	if filePath == nil {
-		return fmt.Errorf("parameter filePath is required, but nil was provided")
-	}
-
-	return nil
-}
-
-func (a *jsiiProxy_AwsCdkJavaApp) validateTryFindJsonFileParameters(filePath *string) error {
 	if filePath == nil {
 		return fmt.Errorf("parameter filePath is required, but nil was provided")
 	}

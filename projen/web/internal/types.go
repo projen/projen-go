@@ -7,4 +7,3 @@ import (
 type Type__projenComponent = projen.Component
 type Type__javascriptNodeProject = javascript.NodeProject
 type Type__typescriptTypeScriptAppProject = typescript.TypeScriptAppProject
-type Type__projenFileBase = projen.FileBase

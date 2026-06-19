@@ -16,10 +16,6 @@ func (g *jsiiProxy_GitHubProject) validateAddTaskParameters(name *string, props 
 	return nil
 }
 
-func (g *jsiiProxy_GitHubProject) validateAddTipParameters(message *string) error {
-	return nil
-}
-
 func (g *jsiiProxy_GitHubProject) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
@@ -33,10 +29,6 @@ func (g *jsiiProxy_GitHubProject) validateRunTaskCommandParameters(task projen.T
 }
 
 func (g *jsiiProxy_GitHubProject) validateTryFindFileParameters(filePath *string) error {
-	return nil
-}
-
-func (g *jsiiProxy_GitHubProject) validateTryFindJsonFileParameters(filePath *string) error {
 	return nil
 }
 

@@ -22,8 +22,6 @@ type Publisher interface {
 	BuildJobId() *string
 	// Experimental.
 	Condition() *string
-	// Deprecated: use `publibVersion`.
-	JsiiReleaseVersion() *string
 	// The tree node.
 	// Experimental.
 	Node() constructs.Node
@@ -116,16 +114,6 @@ func (j *jsiiProxy_Publisher) Condition() *string {
 	_jsii_.Get(
 		j,
 		"condition",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_Publisher) JsiiReleaseVersion() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"jsiiReleaseVersion",
 		&returns,
 	)
 	return returns

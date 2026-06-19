@@ -16,6 +16,10 @@ func (t *jsiiProxy_Tasks) validateRemoveTaskParameters(name *string) error {
 	return nil
 }
 
+func (t *jsiiProxy_Tasks) validateResolveTasksManifestParameters(resolver IResolver) error {
+	return nil
+}
+
 func (t *jsiiProxy_Tasks) validateRunTaskParameters(name *string, args *[]interface{}) error {
 	return nil
 }

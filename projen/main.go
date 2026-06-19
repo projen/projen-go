@@ -804,7 +804,6 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addGitIgnore", GoMethod: "AddGitIgnore"},
 			_jsii_.MemberMethod{JsiiMethod: "addPackageIgnore", GoMethod: "AddPackageIgnore"},
 			_jsii_.MemberMethod{JsiiMethod: "addTask", GoMethod: "AddTask"},
-			_jsii_.MemberMethod{JsiiMethod: "addTip", GoMethod: "AddTip"},
 			_jsii_.MemberMethod{JsiiMethod: "annotateGenerated", GoMethod: "AnnotateGenerated"},
 			_jsii_.MemberProperty{JsiiProperty: "buildTask", GoGetter: "BuildTask"},
 			_jsii_.MemberProperty{JsiiProperty: "commitGenerated", GoGetter: "CommitGenerated"},
@@ -838,7 +837,6 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "testTask", GoGetter: "TestTask"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 			_jsii_.MemberMethod{JsiiMethod: "tryFindFile", GoMethod: "TryFindFile"},
-			_jsii_.MemberMethod{JsiiMethod: "tryFindJsonFile", GoMethod: "TryFindJsonFile"},
 			_jsii_.MemberMethod{JsiiMethod: "tryFindObjectFile", GoMethod: "TryFindObjectFile"},
 			_jsii_.MemberMethod{JsiiMethod: "tryRemoveFile", GoMethod: "TryRemoveFile"},
 			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
@@ -874,6 +872,10 @@ func init() {
 		},
 	)
 	_jsii_.RegisterStruct(
+		"projen.ProjectOption",
+		reflect.TypeOf((*ProjectOption)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.ProjectOptions",
 		reflect.TypeOf((*ProjectOptions)(nil)).Elem(),
 	)
@@ -896,14 +898,9 @@ func init() {
 			return &j
 		},
 	)
-	_jsii_.RegisterEnum(
+	_jsii_.RegisterStruct(
 		"projen.ProjectType",
 		reflect.TypeOf((*ProjectType)(nil)).Elem(),
-		map[string]interface{}{
-			"UNKNOWN": ProjectType_UNKNOWN,
-			"LIB": ProjectType_LIB,
-			"APP": ProjectType_APP,
-		},
 	)
 	_jsii_.RegisterClass(
 		"projen.Projects",
@@ -911,25 +908,6 @@ func init() {
 		nil, // no members
 		func() interface{} {
 			return &jsiiProxy_Projects{}
-		},
-	)
-	_jsii_.RegisterClass(
-		"projen.Projenrc",
-		reflect.TypeOf((*Projenrc)(nil)).Elem(),
-		[]_jsii_.Member{
-			_jsii_.MemberProperty{JsiiProperty: "filePath", GoGetter: "FilePath"},
-			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
-			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
-			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
-			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
-			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
-			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
-			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
-		},
-		func() interface{} {
-			j := jsiiProxy_Projenrc{}
-			_jsii_.InitJsiiProxy(&j.jsiiProxy_ProjenrcJson)
-			return &j
 		},
 	)
 	_jsii_.RegisterClass(
@@ -973,10 +951,6 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.ProjenrcJsonOptions",
 		reflect.TypeOf((*ProjenrcJsonOptions)(nil)).Elem(),
-	)
-	_jsii_.RegisterStruct(
-		"projen.ProjenrcOptions",
-		reflect.TypeOf((*ProjenrcOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.ReleasableCommits",
@@ -1106,18 +1080,6 @@ func init() {
 		"projen.SampleReadmeProps",
 		reflect.TypeOf((*SampleReadmeProps)(nil)).Elem(),
 	)
-	_jsii_.RegisterClass(
-		"projen.Semver",
-		reflect.TypeOf((*Semver)(nil)).Elem(),
-		[]_jsii_.Member{
-			_jsii_.MemberProperty{JsiiProperty: "mode", GoGetter: "Mode"},
-			_jsii_.MemberProperty{JsiiProperty: "spec", GoGetter: "Spec"},
-			_jsii_.MemberProperty{JsiiProperty: "version", GoGetter: "Version"},
-		},
-		func() interface{} {
-			return &jsiiProxy_Semver{}
-		},
-	)
 	_jsii_.RegisterStruct(
 		"projen.SnapshotOptions",
 		reflect.TypeOf((*SnapshotOptions)(nil)).Elem(),
@@ -1165,7 +1127,6 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "insertStep", GoMethod: "InsertStep"},
 			_jsii_.MemberMethod{JsiiMethod: "lock", GoMethod: "Lock"},
 			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
-			_jsii_.MemberMethod{JsiiMethod: "prepend", GoMethod: "Prepend"},
 			_jsii_.MemberMethod{JsiiMethod: "prependExec", GoMethod: "PrependExec"},
 			_jsii_.MemberMethod{JsiiMethod: "prependSay", GoMethod: "PrependSay"},
 			_jsii_.MemberMethod{JsiiMethod: "prependSpawn", GoMethod: "PrependSpawn"},
@@ -1188,20 +1149,6 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.TaskOptions",
 		reflect.TypeOf((*TaskOptions)(nil)).Elem(),
-	)
-	_jsii_.RegisterClass(
-		"projen.TaskRuntime",
-		reflect.TypeOf((*TaskRuntime)(nil)).Elem(),
-		[]_jsii_.Member{
-			_jsii_.MemberProperty{JsiiProperty: "manifest", GoGetter: "Manifest"},
-			_jsii_.MemberMethod{JsiiMethod: "runTask", GoMethod: "RunTask"},
-			_jsii_.MemberProperty{JsiiProperty: "tasks", GoGetter: "Tasks"},
-			_jsii_.MemberMethod{JsiiMethod: "tryFindTask", GoMethod: "TryFindTask"},
-			_jsii_.MemberProperty{JsiiProperty: "workdir", GoGetter: "Workdir"},
-		},
-		func() interface{} {
-			return &jsiiProxy_TaskRuntime{}
-		},
 	)
 	_jsii_.RegisterStruct(
 		"projen.TaskSpec",
@@ -1228,6 +1175,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "removeTask", GoMethod: "RemoveTask"},
+			_jsii_.MemberMethod{JsiiMethod: "resolveTasksManifest", GoMethod: "ResolveTasksManifest"},
 			_jsii_.MemberMethod{JsiiMethod: "runTask", GoMethod: "RunTask"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},

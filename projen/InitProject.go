@@ -21,6 +21,6 @@ type InitProject struct {
 	Fqn *string `field:"required" json:"fqn" yaml:"fqn"`
 	// Project metadata.
 	// Experimental.
-	Type ProjectType `field:"required" json:"type" yaml:"type"`
+	Type *ProjectType `field:"required" json:"type" yaml:"type"`
 }
 

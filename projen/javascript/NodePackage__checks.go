@@ -50,14 +50,6 @@ func (n *jsiiProxy_NodePackage) validateAddVersionParameters(version *string) er
 	return nil
 }
 
-func (n *jsiiProxy_NodePackage) validateHasScriptParameters(name *string) error {
-	if name == nil {
-		return fmt.Errorf("parameter name is required, but nil was provided")
-	}
-
-	return nil
-}
-
 func (n *jsiiProxy_NodePackage) validateInstallDependenciesParameters(_trigger *InstallTrigger) error {
 	if _trigger == nil {
 		return fmt.Errorf("parameter _trigger is required, but nil was provided")

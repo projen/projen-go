@@ -6,9 +6,6 @@ package gitlab
 //
 // Experimental.
 type Reports struct {
-	// Path for file(s) that should be parsed as Cobertura XML coverage report.
-	// Deprecated: per {@link https://docs.gitlab.com/ee/update/deprecations.html#artifactsreportscobertura-keyword} use {@link coverageReport } instead
-	Cobertura *[]*string `field:"optional" json:"cobertura" yaml:"cobertura"`
 	// Path to file or list of files with code quality report(s) (such as Code Climate).
 	// Experimental.
 	Codequality *[]*string `field:"optional" json:"codequality" yaml:"codequality"`

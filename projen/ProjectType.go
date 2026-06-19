@@ -1,22 +1,21 @@
 package projen
 
 
-// Which type of project this is.
-// Deprecated: no longer supported at the base project level.
-type ProjectType string
-
-const (
-	// This module may be a either a library or an app.
-	// Deprecated: no longer supported at the base project level.
-	ProjectType_UNKNOWN ProjectType = "UNKNOWN"
-	// This is a library, intended to be published to a package manager and consumed by other projects.
-	// Deprecated: no longer supported at the base project level.
-	ProjectType_LIB ProjectType = "LIB"
-	// This is an app (service, tool, website, etc).
-	//
-	// Its artifacts are intended to
-	// be deployed or published for end-user consumption.
-	// Deprecated: no longer supported at the base project level.
-	ProjectType_APP ProjectType = "APP"
-)
+// Experimental.
+type ProjectType struct {
+	// Experimental.
+	Docsurl *string `field:"required" json:"docsurl" yaml:"docsurl"`
+	// Experimental.
+	Fqn *string `field:"required" json:"fqn" yaml:"fqn"`
+	// Experimental.
+	ModuleName *string `field:"required" json:"moduleName" yaml:"moduleName"`
+	// Experimental.
+	Options *[]*ProjectOption `field:"required" json:"options" yaml:"options"`
+	// Experimental.
+	Pjid *string `field:"required" json:"pjid" yaml:"pjid"`
+	// Experimental.
+	Typename *string `field:"required" json:"typename" yaml:"typename"`
+	// Experimental.
+	Docs *string `field:"optional" json:"docs" yaml:"docs"`
+}
 

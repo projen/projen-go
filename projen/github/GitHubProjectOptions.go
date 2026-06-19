@@ -122,34 +122,11 @@ type GitHubProjectOptions struct {
 	//
 	// Experimental.
 	Gitpod *bool `field:"optional" json:"gitpod" yaml:"gitpod"`
-	// Whether mergify should be enabled on this repository or not.
-	// Default: true.
-	//
-	// Deprecated: use `githubOptions.mergify` instead
-	Mergify *bool `field:"optional" json:"mergify" yaml:"mergify"`
-	// Options for mergify.
-	// Default: - default options.
-	//
-	// Deprecated: use `githubOptions.mergifyOptions` instead
-	MergifyOptions *MergifyOptions `field:"optional" json:"mergifyOptions" yaml:"mergifyOptions"`
-	// Which type of project this is (library/app).
-	// Default: ProjectType.UNKNOWN
-	//
-	// Deprecated: no longer supported at the base project level.
-	ProjectType projen.ProjectType `field:"optional" json:"projectType" yaml:"projectType"`
 	// Choose a method of providing GitHub API access for projen workflows.
 	// Default: - use a personal access token named PROJEN_GITHUB_TOKEN.
 	//
 	// Experimental.
 	ProjenCredentials GithubCredentials `field:"optional" json:"projenCredentials" yaml:"projenCredentials"`
-	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
-	//
-	// This token needs to have the `repo`, `workflows`
-	// and `packages` scope.
-	// Default: "PROJEN_GITHUB_TOKEN".
-	//
-	// Deprecated: use `projenCredentials`.
-	ProjenTokenSecret *string `field:"optional" json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
 	// Example:

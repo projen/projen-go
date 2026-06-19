@@ -9,11 +9,6 @@ type MergifyQueue struct {
 	// The name of the queue.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
-	// The list of conditions that needs to match to queue the pull request.
-	// See: https://docs.mergify.com/configuration/file-format/#queue-rules
-	//
-	// Deprecated: use `queueConditions` instead.
-	Conditions *[]interface{} `field:"optional" json:"conditions" yaml:"conditions"`
 	// The list of conditions to match to get the queued pull request merged.
 	//
 	// This automatically includes the queueConditions.

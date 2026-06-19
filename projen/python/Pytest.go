@@ -17,8 +17,6 @@ type Pytest interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
-	// Deprecated: Use `sampleTestdir` on the project instead.
-	Testdir() *string
 	// Experimental.
 	TestMatch() *[]*string
 	// Called after synthesis.
@@ -67,16 +65,6 @@ func (j *jsiiProxy_Pytest) Project() projen.Project {
 	_jsii_.Get(
 		j,
 		"project",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_Pytest) Testdir() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"testdir",
 		&returns,
 	)
 	return returns

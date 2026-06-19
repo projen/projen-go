@@ -112,8 +112,6 @@ type JavaProject interface {
 	// Manages the build process of the project.
 	// Experimental.
 	ProjectBuild() projen.ProjectBuild
-	// Deprecated.
-	ProjectType() projen.ProjectType
 	// The command to use in order to run the projen CLI.
 	// Experimental.
 	ProjenCommand() *string
@@ -168,9 +166,6 @@ type JavaProject interface {
 	// Adds a test dependency.
 	// Experimental.
 	AddTestDependency(spec *string)
-	// Prints a "tip" message during synthesis.
-	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
-	AddTip(message *string)
 	// Marks the provided file(s) as being generated.
 	//
 	// This is achieved using the
@@ -216,9 +211,6 @@ type JavaProject interface {
 	// Returns: a `FileBase` or undefined if there is no file in that path.
 	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
-	// Finds a json file by name.
-	// Deprecated: use `tryFindObjectFile`.
-	TryFindJsonFile(filePath *string) projen.JsonFile
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
@@ -535,16 +527,6 @@ func (j *jsiiProxy_JavaProject) ProjectBuild() projen.ProjectBuild {
 	return returns
 }
 
-func (j *jsiiProxy_JavaProject) ProjectType() projen.ProjectType {
-	var returns projen.ProjectType
-	_jsii_.Get(
-		j,
-		"projectType",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_JavaProject) ProjenCommand() *string {
 	var returns *string
 	_jsii_.Get(
@@ -823,17 +805,6 @@ func (j *jsiiProxy_JavaProject) AddTestDependency(spec *string) {
 	)
 }
 
-func (j *jsiiProxy_JavaProject) AddTip(message *string) {
-	if err := j.validateAddTipParameters(message); err != nil {
-		panic(err)
-	}
-	_jsii_.InvokeVoid(
-		j,
-		"addTip",
-		[]interface{}{message},
-	)
-}
-
 func (j *jsiiProxy_JavaProject) AnnotateGenerated(_glob *string) {
 	if err := j.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
@@ -923,22 +894,6 @@ func (j *jsiiProxy_JavaProject) TryFindFile(filePath *string) projen.FileBase {
 	_jsii_.Invoke(
 		j,
 		"tryFindFile",
-		[]interface{}{filePath},
-		&returns,
-	)
-
-	return returns
-}
-
-func (j *jsiiProxy_JavaProject) TryFindJsonFile(filePath *string) projen.JsonFile {
-	if err := j.validateTryFindJsonFileParameters(filePath); err != nil {
-		panic(err)
-	}
-	var returns projen.JsonFile
-
-	_jsii_.Invoke(
-		j,
-		"tryFindJsonFile",
 		[]interface{}{filePath},
 		&returns,
 	)

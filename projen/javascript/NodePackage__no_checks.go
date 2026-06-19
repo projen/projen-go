@@ -20,10 +20,6 @@ func (n *jsiiProxy_NodePackage) validateAddVersionParameters(version *string) er
 	return nil
 }
 
-func (n *jsiiProxy_NodePackage) validateHasScriptParameters(name *string) error {
-	return nil
-}
-
 func (n *jsiiProxy_NodePackage) validateInstallDependenciesParameters(_trigger *InstallTrigger) error {
 	return nil
 }

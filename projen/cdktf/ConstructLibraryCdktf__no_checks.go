@@ -28,15 +28,7 @@ func (c *jsiiProxy_ConstructLibraryCdktf) validateAddTaskParameters(name *string
 	return nil
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktf) validateAddTipParameters(message *string) error {
-	return nil
-}
-
 func (c *jsiiProxy_ConstructLibraryCdktf) validateAnnotateGeneratedParameters(_glob *string) error {
-	return nil
-}
-
-func (c *jsiiProxy_ConstructLibraryCdktf) validateHasScriptParameters(name *string) error {
 	return nil
 }
 
@@ -61,10 +53,6 @@ func (c *jsiiProxy_ConstructLibraryCdktf) validateSetScriptParameters(name *stri
 }
 
 func (c *jsiiProxy_ConstructLibraryCdktf) validateTryFindFileParameters(filePath *string) error {
-	return nil
-}
-
-func (c *jsiiProxy_ConstructLibraryCdktf) validateTryFindJsonFileParameters(filePath *string) error {
 	return nil
 }
 

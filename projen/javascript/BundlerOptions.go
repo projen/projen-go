@@ -4,11 +4,6 @@ package javascript
 // Options for `Bundler`.
 // Experimental.
 type BundlerOptions struct {
-	// Install the `bundle` command as a pre-compile phase.
-	// Default: true.
-	//
-	// Deprecated: Use `runBundleTask` instead.
-	AddToPreCompile *bool `field:"optional" json:"addToPreCompile" yaml:"addToPreCompile"`
 	// Output directory for all bundles.
 	// Default: "assets".
 	//

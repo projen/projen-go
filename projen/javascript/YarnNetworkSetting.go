@@ -4,8 +4,6 @@ package javascript
 // https://yarnpkg.com/configuration/yarnrc#networkSettings.
 // Experimental.
 type YarnNetworkSetting struct {
-	// Deprecated: - use httpsCaFilePath in Yarn v4 and newer.
-	CaFilePath *string `field:"optional" json:"caFilePath" yaml:"caFilePath"`
 	// Experimental.
 	EnableNetwork *bool `field:"optional" json:"enableNetwork" yaml:"enableNetwork"`
 	// Experimental.

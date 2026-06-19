@@ -44,22 +44,6 @@ type NpmPublishOptions struct {
 	//
 	// Experimental.
 	CodeArtifactOptions *CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
-	// Tags can be used to provide an alias instead of version numbers.
-	//
-	// For example, a project might choose to have multiple streams of development
-	// and use a different tag for each stream, e.g., stable, beta, dev, canary.
-	//
-	// By default, the `latest` tag is used by npm to identify the current version
-	// of a package, and `npm install <pkg>` (without any `@<version>` or `@<tag>`
-	// specifier) installs the latest tag. Typically, projects only use the
-	// `latest` tag for stable release versions, and use other tags for unstable
-	// versions such as prereleases.
-	//
-	// The `next` tag is used by some projects to identify the upcoming version.
-	// Default: "latest".
-	//
-	// Deprecated: Use `npmDistTag` for each release branch instead.
-	DistTag *string `field:"optional" json:"distTag" yaml:"distTag"`
 	// Should provenance statements be generated when package is published.
 	//
 	// Note that this component is using `publib` to publish packages,

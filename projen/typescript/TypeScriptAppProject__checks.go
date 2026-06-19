@@ -64,25 +64,9 @@ func (t *jsiiProxy_TypeScriptAppProject) validateAddTaskParameters(name *string,
 	return nil
 }
 
-func (t *jsiiProxy_TypeScriptAppProject) validateAddTipParameters(message *string) error {
-	if message == nil {
-		return fmt.Errorf("parameter message is required, but nil was provided")
-	}
-
-	return nil
-}
-
 func (t *jsiiProxy_TypeScriptAppProject) validateAnnotateGeneratedParameters(_glob *string) error {
 	if _glob == nil {
 		return fmt.Errorf("parameter _glob is required, but nil was provided")
-	}
-
-	return nil
-}
-
-func (t *jsiiProxy_TypeScriptAppProject) validateHasScriptParameters(name *string) error {
-	if name == nil {
-		return fmt.Errorf("parameter name is required, but nil was provided")
 	}
 
 	return nil
@@ -133,14 +117,6 @@ func (t *jsiiProxy_TypeScriptAppProject) validateSetScriptParameters(name *strin
 }
 
 func (t *jsiiProxy_TypeScriptAppProject) validateTryFindFileParameters(filePath *string) error {
-	if filePath == nil {
-		return fmt.Errorf("parameter filePath is required, but nil was provided")
-	}
-
-	return nil
-}
-
-func (t *jsiiProxy_TypeScriptAppProject) validateTryFindJsonFileParameters(filePath *string) error {
 	if filePath == nil {
 		return fmt.Errorf("parameter filePath is required, but nil was provided")
 	}

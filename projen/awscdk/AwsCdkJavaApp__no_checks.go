@@ -28,10 +28,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) validateAddTestDependencyParameters(spec *stri
 	return nil
 }
 
-func (a *jsiiProxy_AwsCdkJavaApp) validateAddTipParameters(message *string) error {
-	return nil
-}
-
 func (a *jsiiProxy_AwsCdkJavaApp) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
@@ -45,10 +41,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) validateRunTaskCommandParameters(task projen.T
 }
 
 func (a *jsiiProxy_AwsCdkJavaApp) validateTryFindFileParameters(filePath *string) error {
-	return nil
-}
-
-func (a *jsiiProxy_AwsCdkJavaApp) validateTryFindJsonFileParameters(filePath *string) error {
 	return nil
 }
 

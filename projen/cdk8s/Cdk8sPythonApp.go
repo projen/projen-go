@@ -117,8 +117,6 @@ type Cdk8sPythonApp interface {
 	// Manages the build process of the project.
 	// Experimental.
 	ProjectBuild() projen.ProjectBuild
-	// Deprecated.
-	ProjectType() projen.ProjectType
 	// The command to use in order to run the projen CLI.
 	// Experimental.
 	ProjenCommand() *string
@@ -178,9 +176,6 @@ type Cdk8sPythonApp interface {
 	// a task with this name.
 	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
-	// Prints a "tip" message during synthesis.
-	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
-	AddTip(message *string)
 	// Marks the provided file(s) as being generated.
 	//
 	// This is achieved using the
@@ -226,9 +221,6 @@ type Cdk8sPythonApp interface {
 	// Returns: a `FileBase` or undefined if there is no file in that path.
 	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
-	// Finds a json file by name.
-	// Deprecated: use `tryFindObjectFile`.
-	TryFindJsonFile(filePath *string) projen.JsonFile
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
@@ -555,16 +547,6 @@ func (j *jsiiProxy_Cdk8sPythonApp) ProjectBuild() projen.ProjectBuild {
 	return returns
 }
 
-func (j *jsiiProxy_Cdk8sPythonApp) ProjectType() projen.ProjectType {
-	var returns projen.ProjectType
-	_jsii_.Get(
-		j,
-		"projectType",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_Cdk8sPythonApp) ProjenCommand() *string {
 	var returns *string
 	_jsii_.Get(
@@ -855,17 +837,6 @@ func (c *jsiiProxy_Cdk8sPythonApp) AddTask(name *string, props *projen.TaskOptio
 	return returns
 }
 
-func (c *jsiiProxy_Cdk8sPythonApp) AddTip(message *string) {
-	if err := c.validateAddTipParameters(message); err != nil {
-		panic(err)
-	}
-	_jsii_.InvokeVoid(
-		c,
-		"addTip",
-		[]interface{}{message},
-	)
-}
-
 func (c *jsiiProxy_Cdk8sPythonApp) AnnotateGenerated(_glob *string) {
 	if err := c.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
@@ -955,22 +926,6 @@ func (c *jsiiProxy_Cdk8sPythonApp) TryFindFile(filePath *string) projen.FileBase
 	_jsii_.Invoke(
 		c,
 		"tryFindFile",
-		[]interface{}{filePath},
-		&returns,
-	)
-
-	return returns
-}
-
-func (c *jsiiProxy_Cdk8sPythonApp) TryFindJsonFile(filePath *string) projen.JsonFile {
-	if err := c.validateTryFindJsonFileParameters(filePath); err != nil {
-		panic(err)
-	}
-	var returns projen.JsonFile
-
-	_jsii_.Invoke(
-		c,
-		"tryFindJsonFile",
 		[]interface{}{filePath},
 		&returns,
 	)

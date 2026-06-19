@@ -64,18 +64,6 @@ func (t *jsiiProxy_Task) validateInsertStepParameters(index *float64, steps *[]*
 	return nil
 }
 
-func (t *jsiiProxy_Task) validatePrependParameters(shell *string, options *TaskStepOptions) error {
-	if shell == nil {
-		return fmt.Errorf("parameter shell is required, but nil was provided")
-	}
-
-	if err := _jsii_.ValidateStruct(options, func() string { return "parameter options" }); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (t *jsiiProxy_Task) validatePrependExecParameters(shell *string, options *TaskStepOptions) error {
 	if shell == nil {
 		return fmt.Errorf("parameter shell is required, but nil was provided")

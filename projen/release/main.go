@@ -44,26 +44,6 @@ func init() {
 		reflect.TypeOf((*GoPublishOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
-		"projen.release.JsiiReleaseGo",
-		reflect.TypeOf((*JsiiReleaseGo)(nil)).Elem(),
-	)
-	_jsii_.RegisterStruct(
-		"projen.release.JsiiReleaseMaven",
-		reflect.TypeOf((*JsiiReleaseMaven)(nil)).Elem(),
-	)
-	_jsii_.RegisterStruct(
-		"projen.release.JsiiReleaseNpm",
-		reflect.TypeOf((*JsiiReleaseNpm)(nil)).Elem(),
-	)
-	_jsii_.RegisterStruct(
-		"projen.release.JsiiReleaseNuget",
-		reflect.TypeOf((*JsiiReleaseNuget)(nil)).Elem(),
-	)
-	_jsii_.RegisterStruct(
-		"projen.release.JsiiReleasePyPi",
-		reflect.TypeOf((*JsiiReleasePyPi)(nil)).Elem(),
-	)
-	_jsii_.RegisterStruct(
 		"projen.release.ManualReleaseOptions",
 		reflect.TypeOf((*ManualReleaseOptions)(nil)).Elem(),
 	)
@@ -88,7 +68,6 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "artifactName", GoGetter: "ArtifactName"},
 			_jsii_.MemberProperty{JsiiProperty: "buildJobId", GoGetter: "BuildJobId"},
 			_jsii_.MemberProperty{JsiiProperty: "condition", GoGetter: "Condition"},
-			_jsii_.MemberProperty{JsiiProperty: "jsiiReleaseVersion", GoGetter: "JsiiReleaseVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},

@@ -196,12 +196,6 @@ type GitHubProject interface {
 	// the next steps to address this is to abstract workflows so that different
 	// "engines" can be used to implement our CI/CD solutions.
 	ProjectBuild() projen.ProjectBuild
-	// Deprecated: This is a *temporary* class. At the moment, our base project
-	// types such as `NodeProject` and `JavaProject` are derived from this, but we
-	// want to be able to use these project types outside of GitHub as well. One of
-	// the next steps to address this is to abstract workflows so that different
-	// "engines" can be used to implement our CI/CD solutions.
-	ProjectType() projen.ProjectType
 	// The command to use in order to run the projen CLI.
 	// Deprecated: This is a *temporary* class. At the moment, our base project
 	// types such as `NodeProject` and `JavaProject` are derived from this, but we
@@ -282,9 +276,6 @@ type GitHubProject interface {
 	// the next steps to address this is to abstract workflows so that different
 	// "engines" can be used to implement our CI/CD solutions.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
-	// Prints a "tip" message during synthesis.
-	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
-	AddTip(message *string)
 	// Marks the provided file(s) as being generated.
 	//
 	// This is achieved using the
@@ -362,9 +353,6 @@ type GitHubProject interface {
 	// the next steps to address this is to abstract workflows so that different
 	// "engines" can be used to implement our CI/CD solutions.
 	TryFindFile(filePath *string) projen.FileBase
-	// Finds a json file by name.
-	// Deprecated: use `tryFindObjectFile`.
-	TryFindJsonFile(filePath *string) projen.JsonFile
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Deprecated: This is a *temporary* class. At the moment, our base project
 	// types such as `NodeProject` and `JavaProject` are derived from this, but we
@@ -643,16 +631,6 @@ func (j *jsiiProxy_GitHubProject) ProjectBuild() projen.ProjectBuild {
 	return returns
 }
 
-func (j *jsiiProxy_GitHubProject) ProjectType() projen.ProjectType {
-	var returns projen.ProjectType
-	_jsii_.Get(
-		j,
-		"projectType",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_GitHubProject) ProjenCommand() *string {
 	var returns *string
 	_jsii_.Get(
@@ -903,17 +881,6 @@ func (g *jsiiProxy_GitHubProject) AddTask(name *string, props *projen.TaskOption
 	return returns
 }
 
-func (g *jsiiProxy_GitHubProject) AddTip(message *string) {
-	if err := g.validateAddTipParameters(message); err != nil {
-		panic(err)
-	}
-	_jsii_.InvokeVoid(
-		g,
-		"addTip",
-		[]interface{}{message},
-	)
-}
-
 func (g *jsiiProxy_GitHubProject) AnnotateGenerated(_glob *string) {
 	if err := g.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
@@ -1003,22 +970,6 @@ func (g *jsiiProxy_GitHubProject) TryFindFile(filePath *string) projen.FileBase 
 	_jsii_.Invoke(
 		g,
 		"tryFindFile",
-		[]interface{}{filePath},
-		&returns,
-	)
-
-	return returns
-}
-
-func (g *jsiiProxy_GitHubProject) TryFindJsonFile(filePath *string) projen.JsonFile {
-	if err := g.validateTryFindJsonFileParameters(filePath); err != nil {
-		panic(err)
-	}
-	var returns projen.JsonFile
-
-	_jsii_.Invoke(
-		g,
-		"tryFindJsonFile",
 		[]interface{}{filePath},
 		&returns,
 	)

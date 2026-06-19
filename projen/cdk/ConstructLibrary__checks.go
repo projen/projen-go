@@ -64,25 +64,9 @@ func (c *jsiiProxy_ConstructLibrary) validateAddTaskParameters(name *string, pro
 	return nil
 }
 
-func (c *jsiiProxy_ConstructLibrary) validateAddTipParameters(message *string) error {
-	if message == nil {
-		return fmt.Errorf("parameter message is required, but nil was provided")
-	}
-
-	return nil
-}
-
 func (c *jsiiProxy_ConstructLibrary) validateAnnotateGeneratedParameters(_glob *string) error {
 	if _glob == nil {
 		return fmt.Errorf("parameter _glob is required, but nil was provided")
-	}
-
-	return nil
-}
-
-func (c *jsiiProxy_ConstructLibrary) validateHasScriptParameters(name *string) error {
-	if name == nil {
-		return fmt.Errorf("parameter name is required, but nil was provided")
 	}
 
 	return nil
@@ -133,14 +117,6 @@ func (c *jsiiProxy_ConstructLibrary) validateSetScriptParameters(name *string, c
 }
 
 func (c *jsiiProxy_ConstructLibrary) validateTryFindFileParameters(filePath *string) error {
-	if filePath == nil {
-		return fmt.Errorf("parameter filePath is required, but nil was provided")
-	}
-
-	return nil
-}
-
-func (c *jsiiProxy_ConstructLibrary) validateTryFindJsonFileParameters(filePath *string) error {
 	if filePath == nil {
 		return fmt.Errorf("parameter filePath is required, but nil was provided")
 	}

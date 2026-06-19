@@ -35,8 +35,6 @@ type JobPermissions struct {
 	Pages JobPermission `field:"optional" json:"pages" yaml:"pages"`
 	// Experimental.
 	PullRequests JobPermission `field:"optional" json:"pullRequests" yaml:"pullRequests"`
-	// Deprecated: removed by GitHub.
-	RepositoryProjects JobPermission `field:"optional" json:"repositoryProjects" yaml:"repositoryProjects"`
 	// Experimental.
 	SecurityEvents JobPermission `field:"optional" json:"securityEvents" yaml:"securityEvents"`
 	// Experimental.

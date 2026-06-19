@@ -70,17 +70,17 @@ func (j *jsiiProxy_Yarnrc) Project() projen.Project {
 
 
 // Experimental.
-func NewYarnrc(project projen.Project, version *string, options *YarnrcOptions) Yarnrc {
+func NewYarnrc(project projen.Project, options *YarnrcOptions) Yarnrc {
 	_init_.Initialize()
 
-	if err := validateNewYarnrcParameters(project, version, options); err != nil {
+	if err := validateNewYarnrcParameters(project, options); err != nil {
 		panic(err)
 	}
 	j := jsiiProxy_Yarnrc{}
 
 	_jsii_.Create(
 		"projen.javascript.Yarnrc",
-		[]interface{}{project, version, options},
+		[]interface{}{project, options},
 		&j,
 	)
 
@@ -88,12 +88,12 @@ func NewYarnrc(project projen.Project, version *string, options *YarnrcOptions) 
 }
 
 // Experimental.
-func NewYarnrc_Override(y Yarnrc, project projen.Project, version *string, options *YarnrcOptions) {
+func NewYarnrc_Override(y Yarnrc, project projen.Project, options *YarnrcOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"projen.javascript.Yarnrc",
-		[]interface{}{project, version, options},
+		[]interface{}{project, options},
 		y,
 	)
 }

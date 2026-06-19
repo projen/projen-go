@@ -24,10 +24,6 @@ func (p *jsiiProxy_PythonProject) validateAddTaskParameters(name *string, props 
 	return nil
 }
 
-func (p *jsiiProxy_PythonProject) validateAddTipParameters(message *string) error {
-	return nil
-}
-
 func (p *jsiiProxy_PythonProject) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
@@ -41,10 +37,6 @@ func (p *jsiiProxy_PythonProject) validateRunTaskCommandParameters(task projen.T
 }
 
 func (p *jsiiProxy_PythonProject) validateTryFindFileParameters(filePath *string) error {
-	return nil
-}
-
-func (p *jsiiProxy_PythonProject) validateTryFindJsonFileParameters(filePath *string) error {
 	return nil
 }
 

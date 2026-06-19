@@ -122,11 +122,6 @@ type ReleaseOptions struct {
 	//
 	// Experimental.
 	ReleaseEnvironment *string `field:"optional" json:"releaseEnvironment" yaml:"releaseEnvironment"`
-	// Automatically release new versions every commit to one of branches in `releaseBranches`.
-	// Default: true.
-	//
-	// Deprecated: Use `releaseTrigger: ReleaseTrigger.continuous()` instead
-	ReleaseEveryCommit *bool `field:"optional" json:"releaseEveryCommit" yaml:"releaseEveryCommit"`
 	// Create a github issue on every failed publishing task.
 	// Default: false.
 	//
@@ -139,11 +134,6 @@ type ReleaseOptions struct {
 	//
 	// Experimental.
 	ReleaseFailureIssueLabel *string `field:"optional" json:"releaseFailureIssueLabel" yaml:"releaseFailureIssueLabel"`
-	// CRON schedule to trigger new releases.
-	// Default: - no scheduled releases.
-	//
-	// Deprecated: Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
-	ReleaseSchedule *string `field:"optional" json:"releaseSchedule" yaml:"releaseSchedule"`
 	// Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
 	//
 	// Note: this prefix is used to detect the latest tagged version
@@ -217,13 +207,6 @@ type ReleaseOptions struct {
 	//
 	// Experimental.
 	GithubRelease *bool `field:"optional" json:"githubRelease" yaml:"githubRelease"`
-	// The task to execute in order to create the release artifacts.
-	//
-	// Artifacts are
-	// expected to reside under `artifactsDirectory` (defaults to `dist/`) once
-	// build is complete.
-	// Deprecated: Use `tasks` instead.
-	Task projen.Task `field:"optional" json:"task" yaml:"task"`
 	// The tasks to execute in order to create the release artifacts.
 	//
 	// Artifacts are

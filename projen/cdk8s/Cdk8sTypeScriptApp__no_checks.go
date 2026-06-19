@@ -28,15 +28,7 @@ func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAddTaskParameters(name *string, p
 	return nil
 }
 
-func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAddTipParameters(message *string) error {
-	return nil
-}
-
 func (c *jsiiProxy_Cdk8sTypeScriptApp) validateAnnotateGeneratedParameters(_glob *string) error {
-	return nil
-}
-
-func (c *jsiiProxy_Cdk8sTypeScriptApp) validateHasScriptParameters(name *string) error {
 	return nil
 }
 
@@ -61,10 +53,6 @@ func (c *jsiiProxy_Cdk8sTypeScriptApp) validateSetScriptParameters(name *string,
 }
 
 func (c *jsiiProxy_Cdk8sTypeScriptApp) validateTryFindFileParameters(filePath *string) error {
-	return nil
-}
-
-func (c *jsiiProxy_Cdk8sTypeScriptApp) validateTryFindJsonFileParameters(filePath *string) error {
 	return nil
 }
 

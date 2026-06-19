@@ -18,9 +18,6 @@ type AwsCdkDeps interface {
 	// Will return `^2` if the version was unspecified by the user.
 	// Experimental.
 	CdkCliVersion() *string
-	// Whether CDK dependencies are added as normal dependencies (and peer dependencies).
-	// Deprecated: Not used for CDK 2.x
-	CdkDependenciesAsDeps() *bool
 	// The major version of the AWS CDK (e.g. 1, 2, ...).
 	// Experimental.
 	CdkMajorVersion() *float64
@@ -35,20 +32,6 @@ type AwsCdkDeps interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
-	// Adds dependencies to AWS CDK modules.
-	//
-	// The type of dependency is determined by the `dependencyType` option.
-	//
-	// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
-	// `project.addDeps()` as appropriate.
-	// Experimental.
-	AddV1Dependencies(deps ...*string)
-	// Adds AWS CDK modules as dev dependencies.
-	//
-	// This method is not supported in CDK v2. Use `project.addPeerDeps()` or
-	// `project.addDeps()` as appropriate.
-	// Experimental.
-	AddV1DevDependencies(deps ...*string)
 	// Return a configuration object with information about package naming in various languages.
 	// Experimental.
 	PackageNames() *AwsCdkPackageNames
@@ -88,16 +71,6 @@ func (j *jsiiProxy_AwsCdkDeps) CdkCliVersion() *string {
 	_jsii_.Get(
 		j,
 		"cdkCliVersion",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_AwsCdkDeps) CdkDependenciesAsDeps() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"cdkDependenciesAsDeps",
 		&returns,
 	)
 	return returns
@@ -219,32 +192,6 @@ func AwsCdkDeps_IsConstruct(x interface{}) *bool {
 	)
 
 	return returns
-}
-
-func (a *jsiiProxy_AwsCdkDeps) AddV1Dependencies(deps ...*string) {
-	args := []interface{}{}
-	for _, a := range deps {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		a,
-		"addV1Dependencies",
-		args,
-	)
-}
-
-func (a *jsiiProxy_AwsCdkDeps) AddV1DevDependencies(deps ...*string) {
-	args := []interface{}{}
-	for _, a := range deps {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		a,
-		"addV1DevDependencies",
-		args,
-	)
 }
 
 func (a *jsiiProxy_AwsCdkDeps) PackageNames() *AwsCdkPackageNames {

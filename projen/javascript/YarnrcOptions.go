@@ -121,9 +121,6 @@ type YarnrcOptions struct {
 	// https://yarnpkg.com/configuration/yarnrc#httpTimeout.
 	// Experimental.
 	HttpTimeout *float64 `field:"optional" json:"httpTimeout" yaml:"httpTimeout"`
-	// https://v3.yarnpkg.com/configuration/yarnrc#ignoreCwd.
-	// Deprecated: - removed in Yarn v4 and newer.
-	IgnoreCwd *bool `field:"optional" json:"ignoreCwd" yaml:"ignoreCwd"`
 	// https://yarnpkg.com/configuration/yarnrc#ignorePath.
 	// Experimental.
 	IgnorePath *bool `field:"optional" json:"ignorePath" yaml:"ignorePath"`
@@ -142,9 +139,6 @@ type YarnrcOptions struct {
 	// https://yarnpkg.com/configuration/yarnrc#installStatePath.
 	// Experimental.
 	InstallStatePath *string `field:"optional" json:"installStatePath" yaml:"installStatePath"`
-	// https://v3.yarnpkg.com/configuration/yarnrc#lockfileFilename.
-	// Deprecated: - removed in Yarn v4 and newer.
-	LockfileFilename *string `field:"optional" json:"lockfileFilename" yaml:"lockfileFilename"`
 	// https://yarnpkg.com/configuration/yarnrc#logFilters.
 	// Experimental.
 	LogFilters *[]*YarnLogFilter `field:"optional" json:"logFilters" yaml:"logFilters"`
@@ -205,9 +199,6 @@ type YarnrcOptions struct {
 	// https://yarnpkg.com/configuration/yarnrc#patchFolder.
 	// Experimental.
 	PatchFolder *string `field:"optional" json:"patchFolder" yaml:"patchFolder"`
-	// https://v3.yarnpkg.com/configuration/yarnrc#pnpDataPath.
-	// Deprecated: - removed in Yarn v4 and newer.
-	PnpDataPath *string `field:"optional" json:"pnpDataPath" yaml:"pnpDataPath"`
 	// https://yarnpkg.com/configuration/yarnrc#pnpEnableEsmLoader.
 	// Experimental.
 	PnpEnableEsmLoader *bool `field:"optional" json:"pnpEnableEsmLoader" yaml:"pnpEnableEsmLoader"`
@@ -229,9 +220,6 @@ type YarnrcOptions struct {
 	// https://yarnpkg.com/configuration/yarnrc#pnpUnpluggedFolder.
 	// Experimental.
 	PnpUnpluggedFolder *string `field:"optional" json:"pnpUnpluggedFolder" yaml:"pnpUnpluggedFolder"`
-	// https://v3.yarnpkg.com/configuration/yarnrc#preferAggregateCacheInfo.
-	// Deprecated: - removed in Yarn v4 and newer.
-	PreferAggregateCacheInfo *bool `field:"optional" json:"preferAggregateCacheInfo" yaml:"preferAggregateCacheInfo"`
 	// https://yarnpkg.com/configuration/yarnrc#preferDeferredVersions.
 	// Experimental.
 	PreferDeferredVersions *bool `field:"optional" json:"preferDeferredVersions" yaml:"preferDeferredVersions"`

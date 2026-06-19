@@ -123,34 +123,11 @@ type AwsCdkJavaAppOptions struct {
 	//
 	// Experimental.
 	Gitpod *bool `field:"optional" json:"gitpod" yaml:"gitpod"`
-	// Whether mergify should be enabled on this repository or not.
-	// Default: true.
-	//
-	// Deprecated: use `githubOptions.mergify` instead
-	Mergify *bool `field:"optional" json:"mergify" yaml:"mergify"`
-	// Options for mergify.
-	// Default: - default options.
-	//
-	// Deprecated: use `githubOptions.mergifyOptions` instead
-	MergifyOptions *github.MergifyOptions `field:"optional" json:"mergifyOptions" yaml:"mergifyOptions"`
-	// Which type of project this is (library/app).
-	// Default: ProjectType.UNKNOWN
-	//
-	// Deprecated: no longer supported at the base project level.
-	ProjectType projen.ProjectType `field:"optional" json:"projectType" yaml:"projectType"`
 	// Choose a method of providing GitHub API access for projen workflows.
 	// Default: - use a personal access token named PROJEN_GITHUB_TOKEN.
 	//
 	// Experimental.
 	ProjenCredentials github.GithubCredentials `field:"optional" json:"projenCredentials" yaml:"projenCredentials"`
-	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
-	//
-	// This token needs to have the `repo`, `workflows`
-	// and `packages` scope.
-	// Default: "PROJEN_GITHUB_TOKEN".
-	//
-	// Deprecated: use `projenCredentials`.
-	ProjenTokenSecret *string `field:"optional" json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
 	// Example:
@@ -368,21 +345,6 @@ type AwsCdkJavaAppOptions struct {
 	//
 	// Experimental.
 	CdkVersion *string `field:"required" json:"cdkVersion" yaml:"cdkVersion"`
-	// Warning: NodeJS only.
-	//
-	// Install the.
-	// Default: - will be included by default for AWS CDK >= 1.0.0 < 2.0.0
-	//
-	// Deprecated: The.
-	CdkAssert *bool `field:"optional" json:"cdkAssert" yaml:"cdkAssert"`
-	// Install the assertions library?
-	//
-	// Only needed for CDK 1.x. If using CDK 2.x then
-	// assertions is already included in 'aws-cdk-lib'.
-	// Default: - will be included by default for AWS CDK >= 1.111.0 < 2.0.0
-	//
-	// Experimental.
-	CdkAssertions *bool `field:"optional" json:"cdkAssertions" yaml:"cdkAssertions"`
 	// Version range of the AWS CDK CLI to depend on.
 	//
 	// Can be either a specific version, or an NPM version range.
@@ -393,24 +355,6 @@ type AwsCdkJavaAppOptions struct {
 	//
 	// Experimental.
 	CdkCliVersion *string `field:"optional" json:"cdkCliVersion" yaml:"cdkCliVersion"`
-	// Which AWS CDKv1 modules this project requires.
-	// Deprecated: For CDK 2.x use "deps" instead. (or "peerDeps" if you're building a library)
-	CdkDependencies *[]*string `field:"optional" json:"cdkDependencies" yaml:"cdkDependencies"`
-	// If this is enabled (default), all modules declared in `cdkDependencies` will be also added as normal `dependencies` (as well as `peerDependencies`).
-	//
-	// This is to ensure that downstream consumers actually have your CDK dependencies installed
-	// when using npm < 7 or yarn, where peer dependencies are not automatically installed.
-	// If this is disabled, `cdkDependencies` will be added to `devDependencies` to ensure
-	// they are present during development.
-	//
-	// Note: this setting only applies to construct library projects.
-	// Default: true.
-	//
-	// Deprecated: Not supported in CDK v2.
-	CdkDependenciesAsDeps *bool `field:"optional" json:"cdkDependenciesAsDeps" yaml:"cdkDependenciesAsDeps"`
-	// AWS CDK modules required for testing.
-	// Deprecated: For CDK 2.x use 'devDeps' (in node.js projects) or 'testDeps' (in java projects) instead
-	CdkTestDependencies *[]*string `field:"optional" json:"cdkTestDependencies" yaml:"cdkTestDependencies"`
 	// Use pinned version instead of caret version for CDK.
 	//
 	// You can use this to prevent mixed versions for your CDK dependencies and to prevent auto-updates.

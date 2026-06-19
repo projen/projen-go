@@ -239,17 +239,6 @@ func Version_IsConstruct(x interface{}) *bool {
 	return returns
 }
 
-func Version_STANDARD_VERSION() *string {
-	_init_.Initialize()
-	var returns *string
-	_jsii_.StaticGet(
-		"projen.Version",
-		"STANDARD_VERSION",
-		&returns,
-	)
-	return returns
-}
-
 func (v *jsiiProxy_Version) EnvForBranch(branchOptions *VersionBranchOptions) *map[string]*string {
 	if err := v.validateEnvForBranchParameters(branchOptions); err != nil {
 		panic(err)

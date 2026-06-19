@@ -131,8 +131,6 @@ type AwsCdkJavaApp interface {
 	// Manages the build process of the project.
 	// Experimental.
 	ProjectBuild() projen.ProjectBuild
-	// Deprecated.
-	ProjectType() projen.ProjectType
 	// The command to use in order to run the projen CLI.
 	// Experimental.
 	ProjenCommand() *string
@@ -155,9 +153,6 @@ type AwsCdkJavaApp interface {
 	// This will be `undefined` for subprojects.
 	// Deprecated.
 	Vscode() vscode.VsCode
-	// Adds an AWS CDK module dependencies.
-	// Deprecated: In CDK 2.x all modules are available by default. Alpha modules should be added using the standard 'deps'
-	AddCdkDependency(modules ...*string)
 	// Adds a runtime dependency.
 	// Experimental.
 	AddDependency(spec *string)
@@ -190,9 +185,6 @@ type AwsCdkJavaApp interface {
 	// Adds a test dependency.
 	// Experimental.
 	AddTestDependency(spec *string)
-	// Prints a "tip" message during synthesis.
-	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
-	AddTip(message *string)
 	// Marks the provided file(s) as being generated.
 	//
 	// This is achieved using the
@@ -238,9 +230,6 @@ type AwsCdkJavaApp interface {
 	// Returns: a `FileBase` or undefined if there is no file in that path.
 	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
-	// Finds a json file by name.
-	// Deprecated: use `tryFindObjectFile`.
-	TryFindJsonFile(filePath *string) projen.JsonFile
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
@@ -617,16 +606,6 @@ func (j *jsiiProxy_AwsCdkJavaApp) ProjectBuild() projen.ProjectBuild {
 	return returns
 }
 
-func (j *jsiiProxy_AwsCdkJavaApp) ProjectType() projen.ProjectType {
-	var returns projen.ProjectType
-	_jsii_.Get(
-		j,
-		"projectType",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_AwsCdkJavaApp) ProjenCommand() *string {
 	var returns *string
 	_jsii_.Get(
@@ -816,19 +795,6 @@ func AwsCdkJavaApp_DEFAULT_TASK() *string {
 	return returns
 }
 
-func (a *jsiiProxy_AwsCdkJavaApp) AddCdkDependency(modules ...*string) {
-	args := []interface{}{}
-	for _, a := range modules {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		a,
-		"addCdkDependency",
-		args,
-	)
-}
-
 func (a *jsiiProxy_AwsCdkJavaApp) AddDependency(spec *string) {
 	if err := a.validateAddDependencyParameters(spec); err != nil {
 		panic(err)
@@ -915,17 +881,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) AddTestDependency(spec *string) {
 		a,
 		"addTestDependency",
 		[]interface{}{spec},
-	)
-}
-
-func (a *jsiiProxy_AwsCdkJavaApp) AddTip(message *string) {
-	if err := a.validateAddTipParameters(message); err != nil {
-		panic(err)
-	}
-	_jsii_.InvokeVoid(
-		a,
-		"addTip",
-		[]interface{}{message},
 	)
 }
 
@@ -1018,22 +973,6 @@ func (a *jsiiProxy_AwsCdkJavaApp) TryFindFile(filePath *string) projen.FileBase 
 	_jsii_.Invoke(
 		a,
 		"tryFindFile",
-		[]interface{}{filePath},
-		&returns,
-	)
-
-	return returns
-}
-
-func (a *jsiiProxy_AwsCdkJavaApp) TryFindJsonFile(filePath *string) projen.JsonFile {
-	if err := a.validateTryFindJsonFileParameters(filePath); err != nil {
-		panic(err)
-	}
-	var returns projen.JsonFile
-
-	_jsii_.Invoke(
-		a,
-		"tryFindJsonFile",
 		[]interface{}{filePath},
 		&returns,
 	)

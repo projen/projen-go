@@ -26,13 +26,9 @@ func validateYarnrc_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func validateNewYarnrcParameters(project projen.Project, version *string, options *YarnrcOptions) error {
+func validateNewYarnrcParameters(project projen.Project, options *YarnrcOptions) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")
-	}
-
-	if version == nil {
-		return fmt.Errorf("parameter version is required, but nil was provided")
 	}
 
 	if err := _jsii_.ValidateStruct(options, func() string { return "parameter options" }); err != nil {

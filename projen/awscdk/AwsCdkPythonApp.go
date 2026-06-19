@@ -126,8 +126,6 @@ type AwsCdkPythonApp interface {
 	// Manages the build process of the project.
 	// Experimental.
 	ProjectBuild() projen.ProjectBuild
-	// Deprecated.
-	ProjectType() projen.ProjectType
 	// The command to use in order to run the projen CLI.
 	// Experimental.
 	ProjenCommand() *string
@@ -148,9 +146,6 @@ type AwsCdkPythonApp interface {
 	// Project tasks.
 	// Experimental.
 	Tasks() projen.Tasks
-	// The directory in which the python tests reside.
-	// Deprecated: Use `sampleTestdir` instead.
-	Testdir() *string
 	// Experimental.
 	TestTask() projen.Task
 	// Version of the package for distribution (should follow semver).
@@ -188,9 +183,6 @@ type AwsCdkPythonApp interface {
 	// a task with this name.
 	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
-	// Prints a "tip" message during synthesis.
-	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
-	AddTip(message *string)
 	// Marks the provided file(s) as being generated.
 	//
 	// This is achieved using the
@@ -236,9 +228,6 @@ type AwsCdkPythonApp interface {
 	// Returns: a `FileBase` or undefined if there is no file in that path.
 	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
-	// Finds a json file by name.
-	// Deprecated: use `tryFindObjectFile`.
-	TryFindJsonFile(filePath *string) projen.JsonFile
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
@@ -595,16 +584,6 @@ func (j *jsiiProxy_AwsCdkPythonApp) ProjectBuild() projen.ProjectBuild {
 	return returns
 }
 
-func (j *jsiiProxy_AwsCdkPythonApp) ProjectType() projen.ProjectType {
-	var returns projen.ProjectType
-	_jsii_.Get(
-		j,
-		"projectType",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_AwsCdkPythonApp) ProjenCommand() *string {
 	var returns *string
 	_jsii_.Get(
@@ -660,16 +639,6 @@ func (j *jsiiProxy_AwsCdkPythonApp) Tasks() projen.Tasks {
 	_jsii_.Get(
 		j,
 		"tasks",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_AwsCdkPythonApp) Testdir() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"testdir",
 		&returns,
 	)
 	return returns
@@ -905,17 +874,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) AddTask(name *string, props *projen.TaskOpti
 	return returns
 }
 
-func (a *jsiiProxy_AwsCdkPythonApp) AddTip(message *string) {
-	if err := a.validateAddTipParameters(message); err != nil {
-		panic(err)
-	}
-	_jsii_.InvokeVoid(
-		a,
-		"addTip",
-		[]interface{}{message},
-	)
-}
-
 func (a *jsiiProxy_AwsCdkPythonApp) AnnotateGenerated(_glob *string) {
 	if err := a.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
@@ -1005,22 +963,6 @@ func (a *jsiiProxy_AwsCdkPythonApp) TryFindFile(filePath *string) projen.FileBas
 	_jsii_.Invoke(
 		a,
 		"tryFindFile",
-		[]interface{}{filePath},
-		&returns,
-	)
-
-	return returns
-}
-
-func (a *jsiiProxy_AwsCdkPythonApp) TryFindJsonFile(filePath *string) projen.JsonFile {
-	if err := a.validateTryFindJsonFileParameters(filePath); err != nil {
-		panic(err)
-	}
-	var returns projen.JsonFile
-
-	_jsii_.Invoke(
-		a,
-		"tryFindJsonFile",
 		[]interface{}{filePath},
 		&returns,
 	)

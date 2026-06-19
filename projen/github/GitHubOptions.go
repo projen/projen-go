@@ -56,14 +56,6 @@ type GitHubOptions struct {
 	//
 	// Experimental.
 	ProjenCredentials GithubCredentials `field:"optional" json:"projenCredentials" yaml:"projenCredentials"`
-	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
-	//
-	// This token needs to have the `repo`, `workflows`
-	// and `packages` scope.
-	// Default: "PROJEN_GITHUB_TOKEN".
-	//
-	// Deprecated: - use `projenCredentials`.
-	ProjenTokenSecret *string `field:"optional" json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// Add a workflow that allows backport of PRs to other branches using labels.
 	//
 	// When opening a new PR add a backport label to it,

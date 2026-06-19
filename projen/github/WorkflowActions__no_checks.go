@@ -12,10 +12,6 @@ func validateWorkflowActions_CreatePullRequestParameters(options *CreatePullRequ
 	return nil
 }
 
-func validateWorkflowActions_SetupGitIdentityParameters(id *GitIdentity) error {
-	return nil
-}
-
 func validateWorkflowActions_UploadGitPatchParameters(options *UploadGitPatchOptions) error {
 	return nil
 }

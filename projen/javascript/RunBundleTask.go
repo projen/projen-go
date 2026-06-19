@@ -26,7 +26,6 @@ const (
 	// // to go to the "lib" directory:
 	// const project = new TypeScriptProject({
 	//   name: "test",
-	//   defaultReleaseBranch: "main",
 	//   tsconfig: {
 	//     compilerOptions: {
 	//       outDir: "lib",

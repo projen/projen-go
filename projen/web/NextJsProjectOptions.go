@@ -137,34 +137,11 @@ type NextJsProjectOptions struct {
 	//
 	// Experimental.
 	Gitpod *bool `field:"optional" json:"gitpod" yaml:"gitpod"`
-	// Whether mergify should be enabled on this repository or not.
-	// Default: true.
-	//
-	// Deprecated: use `githubOptions.mergify` instead
-	Mergify *bool `field:"optional" json:"mergify" yaml:"mergify"`
-	// Options for mergify.
-	// Default: - default options.
-	//
-	// Deprecated: use `githubOptions.mergifyOptions` instead
-	MergifyOptions *github.MergifyOptions `field:"optional" json:"mergifyOptions" yaml:"mergifyOptions"`
-	// Which type of project this is (library/app).
-	// Default: ProjectType.UNKNOWN
-	//
-	// Deprecated: no longer supported at the base project level.
-	ProjectType projen.ProjectType `field:"optional" json:"projectType" yaml:"projectType"`
 	// Choose a method of providing GitHub API access for projen workflows.
 	// Default: - use a personal access token named PROJEN_GITHUB_TOKEN.
 	//
 	// Experimental.
 	ProjenCredentials github.GithubCredentials `field:"optional" json:"projenCredentials" yaml:"projenCredentials"`
-	// The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
-	//
-	// This token needs to have the `repo`, `workflows`
-	// and `packages` scope.
-	// Default: "PROJEN_GITHUB_TOKEN".
-	//
-	// Deprecated: use `projenCredentials`.
-	ProjenTokenSecret *string `field:"optional" json:"projenTokenSecret" yaml:"projenTokenSecret"`
 	// The README setup.
 	//
 	// Example:
@@ -397,11 +374,6 @@ type NextJsProjectOptions struct {
 	//
 	// Experimental.
 	NpmProvenance *bool `field:"optional" json:"npmProvenance" yaml:"npmProvenance"`
-	// The host name of the npm registry to publish to.
-	//
-	// Cannot be set together with `npmRegistryUrl`.
-	// Deprecated: use `npmRegistryUrl` instead.
-	NpmRegistry *string `field:"optional" json:"npmRegistry" yaml:"npmRegistry"`
 	// The base URL of the npm package registry.
 	//
 	// Must be a URL (e.g. start with "https://" or "http://")
@@ -469,15 +441,6 @@ type NextJsProjectOptions struct {
 	//
 	// Experimental.
 	ScopedPackagesOptions *[]*javascript.ScopedPackagesOptions `field:"optional" json:"scopedPackagesOptions" yaml:"scopedPackagesOptions"`
-	// npm scripts to include.
-	//
-	// If a script has the same name as a standard script,
-	// the standard script will be overwritten.
-	// Also adds the script as a task.
-	// Default: {}.
-	//
-	// Deprecated: use `project.addTask()` or `package.setScript()`
-	Scripts *map[string]*string `field:"optional" json:"scripts" yaml:"scripts"`
 	// Package's Stability.
 	// Experimental.
 	Stability *string `field:"optional" json:"stability" yaml:"stability"`
@@ -600,11 +563,6 @@ type NextJsProjectOptions struct {
 	//
 	// Experimental.
 	ReleaseEnvironment *string `field:"optional" json:"releaseEnvironment" yaml:"releaseEnvironment"`
-	// Automatically release new versions every commit to one of branches in `releaseBranches`.
-	// Default: true.
-	//
-	// Deprecated: Use `releaseTrigger: ReleaseTrigger.continuous()` instead
-	ReleaseEveryCommit *bool `field:"optional" json:"releaseEveryCommit" yaml:"releaseEveryCommit"`
 	// Create a github issue on every failed publishing task.
 	// Default: false.
 	//
@@ -617,11 +575,6 @@ type NextJsProjectOptions struct {
 	//
 	// Experimental.
 	ReleaseFailureIssueLabel *string `field:"optional" json:"releaseFailureIssueLabel" yaml:"releaseFailureIssueLabel"`
-	// CRON schedule to trigger new releases.
-	// Default: - no scheduled releases.
-	//
-	// Deprecated: Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
-	ReleaseSchedule *string `field:"optional" json:"releaseSchedule" yaml:"releaseSchedule"`
 	// Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
 	//
 	// Note: this prefix is used to detect the latest tagged version
@@ -670,11 +623,6 @@ type NextJsProjectOptions struct {
 	// Github Runner Group selection options.
 	// Experimental.
 	WorkflowRunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"workflowRunsOnGroup" yaml:"workflowRunsOnGroup"`
-	// The name of the main release branch.
-	// Default: "main".
-	//
-	// Experimental.
-	DefaultReleaseBranch *string `field:"required" json:"defaultReleaseBranch" yaml:"defaultReleaseBranch"`
 	// A directory which will contain build artifacts.
 	// Default: "dist".
 	//
@@ -719,11 +667,6 @@ type NextJsProjectOptions struct {
 	// Options for PR build workflow.
 	// Experimental.
 	BuildWorkflowOptions *javascript.BuildWorkflowOptions `field:"optional" json:"buildWorkflowOptions" yaml:"buildWorkflowOptions"`
-	// Build workflow triggers.
-	// Default: "{ pullRequest: {}, workflowDispatch: {} }".
-	//
-	// Deprecated: - Use `buildWorkflowOptions.workflowTriggers`
-	BuildWorkflowTriggers *workflows.Triggers `field:"optional" json:"buildWorkflowTriggers" yaml:"buildWorkflowTriggers"`
 	// Options for `Bundler`.
 	// Experimental.
 	BundlerOptions *javascript.BundlerOptions `field:"optional" json:"bundlerOptions" yaml:"bundlerOptions"`
@@ -754,6 +697,11 @@ type NextJsProjectOptions struct {
 	//
 	// Experimental.
 	CopyrightPeriod *string `field:"optional" json:"copyrightPeriod" yaml:"copyrightPeriod"`
+	// The name of the main release branch.
+	// Default: "main".
+	//
+	// Experimental.
+	DefaultReleaseBranch *string `field:"optional" json:"defaultReleaseBranch" yaml:"defaultReleaseBranch"`
 	// Use dependabot to handle dependency upgrades.
 	//
 	// Cannot be used in conjunction with `depsUpgrade`.
@@ -791,20 +739,6 @@ type NextJsProjectOptions struct {
 	//
 	// Experimental.
 	JestOptions *javascript.JestOptions `field:"optional" json:"jestOptions" yaml:"jestOptions"`
-	// Automatically update files modified during builds to pull-request branches.
-	//
-	// This means
-	// that any files synthesized by projen or e.g. test snapshots will always be up-to-date
-	// before a PR is merged.
-	//
-	// Implies that PR builds do not have anti-tamper checks.
-	// Default: true.
-	//
-	// Deprecated: - Use `buildWorkflowOptions.mutableBuild`
-	MutableBuild *bool `field:"optional" json:"mutableBuild" yaml:"mutableBuild"`
-	// Additional entries to .npmignore.
-	// Deprecated: - use `project.addPackageIgnore`
-	Npmignore *[]*string `field:"optional" json:"npmignore" yaml:"npmignore"`
 	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
 	// Default: true.
 	//
@@ -868,11 +802,6 @@ type NextJsProjectOptions struct {
 	//
 	// Experimental.
 	ReleaseToNpm *bool `field:"optional" json:"releaseToNpm" yaml:"releaseToNpm"`
-	// DEPRECATED: renamed to `release`.
-	// Default: - true if not a subproject.
-	//
-	// Deprecated: see `release`.
-	ReleaseWorkflow *bool `field:"optional" json:"releaseWorkflow" yaml:"releaseWorkflow"`
 	// Workflow steps to use in order to bootstrap this repo.
 	// Default: "yarn install --frozen-lockfile && yarn projen".
 	//

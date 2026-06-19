@@ -24,10 +24,6 @@ func (c *jsiiProxy_Cdk8sPythonApp) validateAddTaskParameters(name *string, props
 	return nil
 }
 
-func (c *jsiiProxy_Cdk8sPythonApp) validateAddTipParameters(message *string) error {
-	return nil
-}
-
 func (c *jsiiProxy_Cdk8sPythonApp) validateAnnotateGeneratedParameters(_glob *string) error {
 	return nil
 }
@@ -41,10 +37,6 @@ func (c *jsiiProxy_Cdk8sPythonApp) validateRunTaskCommandParameters(task projen.
 }
 
 func (c *jsiiProxy_Cdk8sPythonApp) validateTryFindFileParameters(filePath *string) error {
-	return nil
-}
-
-func (c *jsiiProxy_Cdk8sPythonApp) validateTryFindJsonFileParameters(filePath *string) error {
 	return nil
 }
 

@@ -67,14 +67,6 @@ func (j *jsiiProxy_JavaProject) validateAddTestDependencyParameters(spec *string
 	return nil
 }
 
-func (j *jsiiProxy_JavaProject) validateAddTipParameters(message *string) error {
-	if message == nil {
-		return fmt.Errorf("parameter message is required, but nil was provided")
-	}
-
-	return nil
-}
-
 func (j *jsiiProxy_JavaProject) validateAnnotateGeneratedParameters(_glob *string) error {
 	if _glob == nil {
 		return fmt.Errorf("parameter _glob is required, but nil was provided")
@@ -100,14 +92,6 @@ func (j *jsiiProxy_JavaProject) validateRunTaskCommandParameters(task projen.Tas
 }
 
 func (j *jsiiProxy_JavaProject) validateTryFindFileParameters(filePath *string) error {
-	if filePath == nil {
-		return fmt.Errorf("parameter filePath is required, but nil was provided")
-	}
-
-	return nil
-}
-
-func (j *jsiiProxy_JavaProject) validateTryFindJsonFileParameters(filePath *string) error {
 	if filePath == nil {
 		return fmt.Errorf("parameter filePath is required, but nil was provided")
 	}

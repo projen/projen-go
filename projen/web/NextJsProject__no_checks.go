@@ -28,15 +28,7 @@ func (n *jsiiProxy_NextJsProject) validateAddTaskParameters(name *string, props 
 	return nil
 }
 
-func (n *jsiiProxy_NextJsProject) validateAddTipParameters(message *string) error {
-	return nil
-}
-
 func (n *jsiiProxy_NextJsProject) validateAnnotateGeneratedParameters(_glob *string) error {
-	return nil
-}
-
-func (n *jsiiProxy_NextJsProject) validateHasScriptParameters(name *string) error {
 	return nil
 }
 
@@ -61,10 +53,6 @@ func (n *jsiiProxy_NextJsProject) validateSetScriptParameters(name *string, comm
 }
 
 func (n *jsiiProxy_NextJsProject) validateTryFindFileParameters(filePath *string) error {
-	return nil
-}
-
-func (n *jsiiProxy_NextJsProject) validateTryFindJsonFileParameters(filePath *string) error {
 	return nil
 }
 

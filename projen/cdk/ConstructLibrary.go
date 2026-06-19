@@ -18,8 +18,6 @@ import (
 // Experimental.
 type ConstructLibrary interface {
 	JsiiProject
-	// Deprecated: use `package.allowLibraryDependencies`
-	AllowLibraryDependencies() *bool
 	// The build output directory.
 	//
 	// An npm tarball will be created under the `js`
@@ -79,8 +77,6 @@ type ConstructLibrary interface {
 	// Whether or not the project is being ejected.
 	// Experimental.
 	Ejected() *bool
-	// Deprecated: use `package.entrypoint`
-	Entrypoint() *string
 	// Experimental.
 	Eslint() javascript.Eslint
 	// All files in this project.
@@ -118,8 +114,6 @@ type ConstructLibrary interface {
 	// Logging utilities.
 	// Experimental.
 	Logger() projen.Logger
-	// Deprecated: use `package.addField(x, y)`
-	Manifest() interface{}
 	// Maximum node version supported by this package.
 	//
 	// The value indicates the package is incompatible with newer versions.
@@ -150,9 +144,6 @@ type ConstructLibrary interface {
 	// API for managing the node package.
 	// Experimental.
 	Package() javascript.NodePackage
-	// The package manager to use.
-	// Deprecated: use `package.packageManager`
-	PackageManager() javascript.NodePackageManager
 	// Experimental.
 	PackageTask() projen.Task
 	// A parent project.
@@ -169,17 +160,9 @@ type ConstructLibrary interface {
 	// Manages the build process of the project.
 	// Experimental.
 	ProjectBuild() projen.ProjectBuild
-	// Deprecated.
-	ProjectType() projen.ProjectType
 	// The command to use in order to run the projen CLI.
 	// Experimental.
 	ProjenCommand() *string
-	// Package publisher.
-	//
-	// This will be `undefined` if the project does not have a
-	// release workflow.
-	// Deprecated: use `release.publisher`.
-	Publisher() release.Publisher
 	// Release management.
 	// Experimental.
 	Release() release.Release
@@ -233,9 +216,6 @@ type ConstructLibrary interface {
 	// `bundledDependencies` section of your `package.json`.
 	// Experimental.
 	AddBundledDeps(deps ...*string)
-	// DEPRECATED.
-	// Deprecated: use `project.compileTask.exec()`
-	AddCompileCommand(commands ...*string)
 	// Defines normal dependencies.
 	// Experimental.
 	AddDeps(deps ...*string)
@@ -276,12 +256,6 @@ type ConstructLibrary interface {
 	// a task with this name.
 	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
-	// DEPRECATED.
-	// Deprecated: use `project.testTask.exec()`
-	AddTestCommand(commands ...*string)
-	// Prints a "tip" message during synthesis.
-	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
-	AddTip(message *string)
 	// Marks the provided file(s) as being generated.
 	//
 	// This is achieved using the
@@ -294,9 +268,6 @@ type ConstructLibrary interface {
 	// Projen default Typescript compiler options.
 	// Experimental.
 	DefaultTypeScriptCompilerOptions() *javascript.TypeScriptCompilerOptions
-	// Indicates if a script by the name name is defined.
-	// Deprecated: Use `project.tasks.tryFind(name)`
-	HasScript(name *string) *bool
 	// Called after all components are synthesized.
 	//
 	// Order is *not* guaranteed.
@@ -345,9 +316,6 @@ type ConstructLibrary interface {
 	// Returns: a `FileBase` or undefined if there is no file in that path.
 	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
-	// Finds a json file by name.
-	// Deprecated: use `tryFindObjectFile`.
-	TryFindJsonFile(filePath *string) projen.JsonFile
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
@@ -372,16 +340,6 @@ type ConstructLibrary interface {
 // The jsii proxy struct for ConstructLibrary
 type jsiiProxy_ConstructLibrary struct {
 	jsiiProxy_JsiiProject
-}
-
-func (j *jsiiProxy_ConstructLibrary) AllowLibraryDependencies() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
 }
 
 func (j *jsiiProxy_ConstructLibrary) ArtifactsDirectory() *string {
@@ -564,16 +522,6 @@ func (j *jsiiProxy_ConstructLibrary) Ejected() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibrary) Entrypoint() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"entrypoint",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_ConstructLibrary) Eslint() javascript.Eslint {
 	var returns javascript.Eslint
 	_jsii_.Get(
@@ -674,16 +622,6 @@ func (j *jsiiProxy_ConstructLibrary) Logger() projen.Logger {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibrary) Manifest() interface{} {
-	var returns interface{}
-	_jsii_.Get(
-		j,
-		"manifest",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_ConstructLibrary) MaxNodeVersion() *string {
 	var returns *string
 	_jsii_.Get(
@@ -774,16 +712,6 @@ func (j *jsiiProxy_ConstructLibrary) Package() javascript.NodePackage {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibrary) PackageManager() javascript.NodePackageManager {
-	var returns javascript.NodePackageManager
-	_jsii_.Get(
-		j,
-		"packageManager",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_ConstructLibrary) PackageTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
@@ -844,31 +772,11 @@ func (j *jsiiProxy_ConstructLibrary) ProjectBuild() projen.ProjectBuild {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibrary) ProjectType() projen.ProjectType {
-	var returns projen.ProjectType
-	_jsii_.Get(
-		j,
-		"projectType",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_ConstructLibrary) ProjenCommand() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
 		"projenCommand",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_ConstructLibrary) Publisher() release.Publisher {
-	var returns release.Publisher
-	_jsii_.Get(
-		j,
-		"publisher",
 		&returns,
 	)
 	return returns
@@ -1170,19 +1078,6 @@ func (c *jsiiProxy_ConstructLibrary) AddBundledDeps(deps ...*string) {
 	)
 }
 
-func (c *jsiiProxy_ConstructLibrary) AddCompileCommand(commands ...*string) {
-	args := []interface{}{}
-	for _, a := range commands {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		c,
-		"addCompileCommand",
-		args,
-	)
-}
-
 func (c *jsiiProxy_ConstructLibrary) AddDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -1308,30 +1203,6 @@ func (c *jsiiProxy_ConstructLibrary) AddTask(name *string, props *projen.TaskOpt
 	return returns
 }
 
-func (c *jsiiProxy_ConstructLibrary) AddTestCommand(commands ...*string) {
-	args := []interface{}{}
-	for _, a := range commands {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		c,
-		"addTestCommand",
-		args,
-	)
-}
-
-func (c *jsiiProxy_ConstructLibrary) AddTip(message *string) {
-	if err := c.validateAddTipParameters(message); err != nil {
-		panic(err)
-	}
-	_jsii_.InvokeVoid(
-		c,
-		"addTip",
-		[]interface{}{message},
-	)
-}
-
 func (c *jsiiProxy_ConstructLibrary) AnnotateGenerated(_glob *string) {
 	if err := c.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
@@ -1350,22 +1221,6 @@ func (c *jsiiProxy_ConstructLibrary) DefaultTypeScriptCompilerOptions() *javascr
 		c,
 		"defaultTypeScriptCompilerOptions",
 		nil, // no parameters
-		&returns,
-	)
-
-	return returns
-}
-
-func (c *jsiiProxy_ConstructLibrary) HasScript(name *string) *bool {
-	if err := c.validateHasScriptParameters(name); err != nil {
-		panic(err)
-	}
-	var returns *bool
-
-	_jsii_.Invoke(
-		c,
-		"hasScript",
-		[]interface{}{name},
 		&returns,
 	)
 
@@ -1488,22 +1343,6 @@ func (c *jsiiProxy_ConstructLibrary) TryFindFile(filePath *string) projen.FileBa
 	_jsii_.Invoke(
 		c,
 		"tryFindFile",
-		[]interface{}{filePath},
-		&returns,
-	)
-
-	return returns
-}
-
-func (c *jsiiProxy_ConstructLibrary) TryFindJsonFile(filePath *string) projen.JsonFile {
-	if err := c.validateTryFindJsonFileParameters(filePath); err != nil {
-		panic(err)
-	}
-	var returns projen.JsonFile
-
-	_jsii_.Invoke(
-		c,
-		"tryFindJsonFile",
 		[]interface{}{filePath},
 		&returns,
 	)

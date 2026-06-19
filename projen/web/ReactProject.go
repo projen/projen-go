@@ -19,8 +19,6 @@ import (
 // Experimental.
 type ReactProject interface {
 	javascript.NodeProject
-	// Deprecated: use `package.allowLibraryDependencies`
-	AllowLibraryDependencies() *bool
 	// The build output directory.
 	//
 	// An npm tarball will be created under the `js`
@@ -76,8 +74,6 @@ type ReactProject interface {
 	// Whether or not the project is being ejected.
 	// Experimental.
 	Ejected() *bool
-	// Deprecated: use `package.entrypoint`
-	Entrypoint() *string
 	// All files in this project.
 	// Experimental.
 	Files() *[]projen.FileBase
@@ -110,8 +106,6 @@ type ReactProject interface {
 	// Logging utilities.
 	// Experimental.
 	Logger() projen.Logger
-	// Deprecated: use `package.addField(x, y)`
-	Manifest() interface{}
 	// Maximum node version supported by this package.
 	//
 	// The value indicates the package is incompatible with newer versions.
@@ -142,9 +136,6 @@ type ReactProject interface {
 	// API for managing the node package.
 	// Experimental.
 	Package() javascript.NodePackage
-	// The package manager to use.
-	// Deprecated: use `package.packageManager`
-	PackageManager() javascript.NodePackageManager
 	// Experimental.
 	PackageTask() projen.Task
 	// A parent project.
@@ -161,17 +152,9 @@ type ReactProject interface {
 	// Manages the build process of the project.
 	// Experimental.
 	ProjectBuild() projen.ProjectBuild
-	// Deprecated.
-	ProjectType() projen.ProjectType
 	// The command to use in order to run the projen CLI.
 	// Experimental.
 	ProjenCommand() *string
-	// Package publisher.
-	//
-	// This will be `undefined` if the project does not have a
-	// release workflow.
-	// Deprecated: use `release.publisher`.
-	Publisher() release.Publisher
 	// Release management.
 	// Experimental.
 	Release() release.Release
@@ -214,9 +197,6 @@ type ReactProject interface {
 	// `bundledDependencies` section of your `package.json`.
 	// Experimental.
 	AddBundledDeps(deps ...*string)
-	// DEPRECATED.
-	// Deprecated: use `project.compileTask.exec()`
-	AddCompileCommand(commands ...*string)
 	// Defines normal dependencies.
 	// Experimental.
 	AddDeps(deps ...*string)
@@ -257,12 +237,6 @@ type ReactProject interface {
 	// a task with this name.
 	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
-	// DEPRECATED.
-	// Deprecated: use `project.testTask.exec()`
-	AddTestCommand(commands ...*string)
-	// Prints a "tip" message during synthesis.
-	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
-	AddTip(message *string)
 	// Marks the provided file(s) as being generated.
 	//
 	// This is achieved using the
@@ -272,9 +246,6 @@ type ReactProject interface {
 	//
 	// Deprecated.
 	AnnotateGenerated(_glob *string)
-	// Indicates if a script by the name name is defined.
-	// Deprecated: Use `project.tasks.tryFind(name)`
-	HasScript(name *string) *bool
 	// Called after all components are synthesized.
 	//
 	// Order is *not* guaranteed.
@@ -323,9 +294,6 @@ type ReactProject interface {
 	// Returns: a `FileBase` or undefined if there is no file in that path.
 	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
-	// Finds a json file by name.
-	// Deprecated: use `tryFindObjectFile`.
-	TryFindJsonFile(filePath *string) projen.JsonFile
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
@@ -350,16 +318,6 @@ type ReactProject interface {
 // The jsii proxy struct for ReactProject
 type jsiiProxy_ReactProject struct {
 	internal.Type__javascriptNodeProject
-}
-
-func (j *jsiiProxy_ReactProject) AllowLibraryDependencies() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
 }
 
 func (j *jsiiProxy_ReactProject) ArtifactsDirectory() *string {
@@ -522,16 +480,6 @@ func (j *jsiiProxy_ReactProject) Ejected() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_ReactProject) Entrypoint() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"entrypoint",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_ReactProject) Files() *[]projen.FileBase {
 	var returns *[]projen.FileBase
 	_jsii_.Get(
@@ -607,16 +555,6 @@ func (j *jsiiProxy_ReactProject) Logger() projen.Logger {
 	_jsii_.Get(
 		j,
 		"logger",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_ReactProject) Manifest() interface{} {
-	var returns interface{}
-	_jsii_.Get(
-		j,
-		"manifest",
 		&returns,
 	)
 	return returns
@@ -712,16 +650,6 @@ func (j *jsiiProxy_ReactProject) Package() javascript.NodePackage {
 	return returns
 }
 
-func (j *jsiiProxy_ReactProject) PackageManager() javascript.NodePackageManager {
-	var returns javascript.NodePackageManager
-	_jsii_.Get(
-		j,
-		"packageManager",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_ReactProject) PackageTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
@@ -782,31 +710,11 @@ func (j *jsiiProxy_ReactProject) ProjectBuild() projen.ProjectBuild {
 	return returns
 }
 
-func (j *jsiiProxy_ReactProject) ProjectType() projen.ProjectType {
-	var returns projen.ProjectType
-	_jsii_.Get(
-		j,
-		"projectType",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_ReactProject) ProjenCommand() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
 		"projenCommand",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_ReactProject) Publisher() release.Publisher {
-	var returns release.Publisher
-	_jsii_.Get(
-		j,
-		"publisher",
 		&returns,
 	)
 	return returns
@@ -1065,19 +973,6 @@ func (r *jsiiProxy_ReactProject) AddBundledDeps(deps ...*string) {
 	)
 }
 
-func (r *jsiiProxy_ReactProject) AddCompileCommand(commands ...*string) {
-	args := []interface{}{}
-	for _, a := range commands {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		r,
-		"addCompileCommand",
-		args,
-	)
-}
-
 func (r *jsiiProxy_ReactProject) AddDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -1203,30 +1098,6 @@ func (r *jsiiProxy_ReactProject) AddTask(name *string, props *projen.TaskOptions
 	return returns
 }
 
-func (r *jsiiProxy_ReactProject) AddTestCommand(commands ...*string) {
-	args := []interface{}{}
-	for _, a := range commands {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		r,
-		"addTestCommand",
-		args,
-	)
-}
-
-func (r *jsiiProxy_ReactProject) AddTip(message *string) {
-	if err := r.validateAddTipParameters(message); err != nil {
-		panic(err)
-	}
-	_jsii_.InvokeVoid(
-		r,
-		"addTip",
-		[]interface{}{message},
-	)
-}
-
 func (r *jsiiProxy_ReactProject) AnnotateGenerated(_glob *string) {
 	if err := r.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
@@ -1236,22 +1107,6 @@ func (r *jsiiProxy_ReactProject) AnnotateGenerated(_glob *string) {
 		"annotateGenerated",
 		[]interface{}{_glob},
 	)
-}
-
-func (r *jsiiProxy_ReactProject) HasScript(name *string) *bool {
-	if err := r.validateHasScriptParameters(name); err != nil {
-		panic(err)
-	}
-	var returns *bool
-
-	_jsii_.Invoke(
-		r,
-		"hasScript",
-		[]interface{}{name},
-		&returns,
-	)
-
-	return returns
 }
 
 func (r *jsiiProxy_ReactProject) PostSynthesize() {
@@ -1370,22 +1225,6 @@ func (r *jsiiProxy_ReactProject) TryFindFile(filePath *string) projen.FileBase {
 	_jsii_.Invoke(
 		r,
 		"tryFindFile",
-		[]interface{}{filePath},
-		&returns,
-	)
-
-	return returns
-}
-
-func (r *jsiiProxy_ReactProject) TryFindJsonFile(filePath *string) projen.JsonFile {
-	if err := r.validateTryFindJsonFileParameters(filePath); err != nil {
-		panic(err)
-	}
-	var returns projen.JsonFile
-
-	_jsii_.Invoke(
-		r,
-		"tryFindJsonFile",
 		[]interface{}{filePath},
 		&returns,
 	)

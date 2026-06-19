@@ -40,6 +40,14 @@ func (t *jsiiProxy_Tasks) validateRemoveTaskParameters(name *string) error {
 	return nil
 }
 
+func (t *jsiiProxy_Tasks) validateResolveTasksManifestParameters(resolver IResolver) error {
+	if resolver == nil {
+		return fmt.Errorf("parameter resolver is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (t *jsiiProxy_Tasks) validateRunTaskParameters(name *string, args *[]interface{}) error {
 	if name == nil {
 		return fmt.Errorf("parameter name is required, but nil was provided")

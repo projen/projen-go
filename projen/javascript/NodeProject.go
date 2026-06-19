@@ -18,8 +18,6 @@ import (
 // Experimental.
 type NodeProject interface {
 	github.GitHubProject
-	// Deprecated: use `package.allowLibraryDependencies`
-	AllowLibraryDependencies() *bool
 	// The build output directory.
 	//
 	// An npm tarball will be created under the `js`
@@ -75,8 +73,6 @@ type NodeProject interface {
 	// Whether or not the project is being ejected.
 	// Experimental.
 	Ejected() *bool
-	// Deprecated: use `package.entrypoint`
-	Entrypoint() *string
 	// All files in this project.
 	// Experimental.
 	Files() *[]projen.FileBase
@@ -109,8 +105,6 @@ type NodeProject interface {
 	// Logging utilities.
 	// Experimental.
 	Logger() projen.Logger
-	// Deprecated: use `package.addField(x, y)`
-	Manifest() interface{}
 	// Maximum node version supported by this package.
 	//
 	// The value indicates the package is incompatible with newer versions.
@@ -141,9 +135,6 @@ type NodeProject interface {
 	// API for managing the node package.
 	// Experimental.
 	Package() NodePackage
-	// The package manager to use.
-	// Deprecated: use `package.packageManager`
-	PackageManager() NodePackageManager
 	// Experimental.
 	PackageTask() projen.Task
 	// A parent project.
@@ -160,17 +151,9 @@ type NodeProject interface {
 	// Manages the build process of the project.
 	// Experimental.
 	ProjectBuild() projen.ProjectBuild
-	// Deprecated.
-	ProjectType() projen.ProjectType
 	// The command to use in order to run the projen CLI.
 	// Experimental.
 	ProjenCommand() *string
-	// Package publisher.
-	//
-	// This will be `undefined` if the project does not have a
-	// release workflow.
-	// Deprecated: use `release.publisher`.
-	Publisher() release.Publisher
 	// Release management.
 	// Experimental.
 	Release() release.Release
@@ -208,9 +191,6 @@ type NodeProject interface {
 	// `bundledDependencies` section of your `package.json`.
 	// Experimental.
 	AddBundledDeps(deps ...*string)
-	// DEPRECATED.
-	// Deprecated: use `project.compileTask.exec()`
-	AddCompileCommand(commands ...*string)
 	// Defines normal dependencies.
 	// Experimental.
 	AddDeps(deps ...*string)
@@ -251,12 +231,6 @@ type NodeProject interface {
 	// a task with this name.
 	// Experimental.
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
-	// DEPRECATED.
-	// Deprecated: use `project.testTask.exec()`
-	AddTestCommand(commands ...*string)
-	// Prints a "tip" message during synthesis.
-	// Deprecated: - use `project.logger.info(message)` to show messages during synthesis
-	AddTip(message *string)
 	// Marks the provided file(s) as being generated.
 	//
 	// This is achieved using the
@@ -266,9 +240,6 @@ type NodeProject interface {
 	//
 	// Deprecated.
 	AnnotateGenerated(_glob *string)
-	// Indicates if a script by the name name is defined.
-	// Deprecated: Use `project.tasks.tryFind(name)`
-	HasScript(name *string) *bool
 	// Called after all components are synthesized.
 	//
 	// Order is *not* guaranteed.
@@ -317,9 +288,6 @@ type NodeProject interface {
 	// Returns: a `FileBase` or undefined if there is no file in that path.
 	// Experimental.
 	TryFindFile(filePath *string) projen.FileBase
-	// Finds a json file by name.
-	// Deprecated: use `tryFindObjectFile`.
-	TryFindJsonFile(filePath *string) projen.JsonFile
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
 	// Experimental.
 	TryFindObjectFile(filePath *string) projen.ObjectFile
@@ -344,16 +312,6 @@ type NodeProject interface {
 // The jsii proxy struct for NodeProject
 type jsiiProxy_NodeProject struct {
 	internal.Type__githubGitHubProject
-}
-
-func (j *jsiiProxy_NodeProject) AllowLibraryDependencies() *bool {
-	var returns *bool
-	_jsii_.Get(
-		j,
-		"allowLibraryDependencies",
-		&returns,
-	)
-	return returns
 }
 
 func (j *jsiiProxy_NodeProject) ArtifactsDirectory() *string {
@@ -516,16 +474,6 @@ func (j *jsiiProxy_NodeProject) Ejected() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_NodeProject) Entrypoint() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"entrypoint",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_NodeProject) Files() *[]projen.FileBase {
 	var returns *[]projen.FileBase
 	_jsii_.Get(
@@ -601,16 +549,6 @@ func (j *jsiiProxy_NodeProject) Logger() projen.Logger {
 	_jsii_.Get(
 		j,
 		"logger",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NodeProject) Manifest() interface{} {
-	var returns interface{}
-	_jsii_.Get(
-		j,
-		"manifest",
 		&returns,
 	)
 	return returns
@@ -706,16 +644,6 @@ func (j *jsiiProxy_NodeProject) Package() NodePackage {
 	return returns
 }
 
-func (j *jsiiProxy_NodeProject) PackageManager() NodePackageManager {
-	var returns NodePackageManager
-	_jsii_.Get(
-		j,
-		"packageManager",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_NodeProject) PackageTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
@@ -776,31 +704,11 @@ func (j *jsiiProxy_NodeProject) ProjectBuild() projen.ProjectBuild {
 	return returns
 }
 
-func (j *jsiiProxy_NodeProject) ProjectType() projen.ProjectType {
-	var returns projen.ProjectType
-	_jsii_.Get(
-		j,
-		"projectType",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_NodeProject) ProjenCommand() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
 		"projenCommand",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_NodeProject) Publisher() release.Publisher {
-	var returns release.Publisher
-	_jsii_.Get(
-		j,
-		"publisher",
 		&returns,
 	)
 	return returns
@@ -1049,19 +957,6 @@ func (n *jsiiProxy_NodeProject) AddBundledDeps(deps ...*string) {
 	)
 }
 
-func (n *jsiiProxy_NodeProject) AddCompileCommand(commands ...*string) {
-	args := []interface{}{}
-	for _, a := range commands {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		n,
-		"addCompileCommand",
-		args,
-	)
-}
-
 func (n *jsiiProxy_NodeProject) AddDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
@@ -1187,30 +1082,6 @@ func (n *jsiiProxy_NodeProject) AddTask(name *string, props *projen.TaskOptions)
 	return returns
 }
 
-func (n *jsiiProxy_NodeProject) AddTestCommand(commands ...*string) {
-	args := []interface{}{}
-	for _, a := range commands {
-		args = append(args, a)
-	}
-
-	_jsii_.InvokeVoid(
-		n,
-		"addTestCommand",
-		args,
-	)
-}
-
-func (n *jsiiProxy_NodeProject) AddTip(message *string) {
-	if err := n.validateAddTipParameters(message); err != nil {
-		panic(err)
-	}
-	_jsii_.InvokeVoid(
-		n,
-		"addTip",
-		[]interface{}{message},
-	)
-}
-
 func (n *jsiiProxy_NodeProject) AnnotateGenerated(_glob *string) {
 	if err := n.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
@@ -1220,22 +1091,6 @@ func (n *jsiiProxy_NodeProject) AnnotateGenerated(_glob *string) {
 		"annotateGenerated",
 		[]interface{}{_glob},
 	)
-}
-
-func (n *jsiiProxy_NodeProject) HasScript(name *string) *bool {
-	if err := n.validateHasScriptParameters(name); err != nil {
-		panic(err)
-	}
-	var returns *bool
-
-	_jsii_.Invoke(
-		n,
-		"hasScript",
-		[]interface{}{name},
-		&returns,
-	)
-
-	return returns
 }
 
 func (n *jsiiProxy_NodeProject) PostSynthesize() {
@@ -1354,22 +1209,6 @@ func (n *jsiiProxy_NodeProject) TryFindFile(filePath *string) projen.FileBase {
 	_jsii_.Invoke(
 		n,
 		"tryFindFile",
-		[]interface{}{filePath},
-		&returns,
-	)
-
-	return returns
-}
-
-func (n *jsiiProxy_NodeProject) TryFindJsonFile(filePath *string) projen.JsonFile {
-	if err := n.validateTryFindJsonFileParameters(filePath); err != nil {
-		panic(err)
-	}
-	var returns projen.JsonFile
-
-	_jsii_.Invoke(
-		n,
-		"tryFindJsonFile",
 		[]interface{}{filePath},
 		&returns,
 	)

@@ -100,9 +100,6 @@ type NodePackage interface {
 	PnpmVersion() *string
 	// Experimental.
 	Project() projen.Project
-	// The command which executes "projen".
-	// Deprecated: use `project.projenCommand` instead.
-	ProjenCommand() *string
 	// Options for privately hosted scoped packages.
 	// Default: undefined.
 	//
@@ -149,9 +146,6 @@ type NodePackage interface {
 	// Sets the package version.
 	// Experimental.
 	AddVersion(version *string)
-	// Indicates if a script by the given name is defined.
-	// Deprecated: Use `project.tasks.tryFind(name)`
-	HasScript(name *string) *bool
 	// Runs the install or install:ci task.
 	//
 	// Does not log — the caller is
@@ -448,16 +442,6 @@ func (j *jsiiProxy_NodePackage) Project() projen.Project {
 	return returns
 }
 
-func (j *jsiiProxy_NodePackage) ProjenCommand() *string {
-	var returns *string
-	_jsii_.Get(
-		j,
-		"projenCommand",
-		&returns,
-	)
-	return returns
-}
-
 func (j *jsiiProxy_NodePackage) ScopedPackagesOptions() *[]*ScopedPackagesOptions {
 	var returns *[]*ScopedPackagesOptions
 	_jsii_.Get(
@@ -706,22 +690,6 @@ func (n *jsiiProxy_NodePackage) AddVersion(version *string) {
 		"addVersion",
 		[]interface{}{version},
 	)
-}
-
-func (n *jsiiProxy_NodePackage) HasScript(name *string) *bool {
-	if err := n.validateHasScriptParameters(name); err != nil {
-		panic(err)
-	}
-	var returns *bool
-
-	_jsii_.Invoke(
-		n,
-		"hasScript",
-		[]interface{}{name},
-		&returns,
-	)
-
-	return returns
 }
 
 func (n *jsiiProxy_NodePackage) InstallDependencies(_trigger *InstallTrigger) {
