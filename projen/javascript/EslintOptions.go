@@ -44,6 +44,21 @@ type EslintOptions struct {
 	//
 	// Experimental.
 	Prettier *bool `field:"optional" json:"prettier" yaml:"prettier"`
+	// Use the typescript-eslint "project service" for typed linting instead of a single `parserOptions.project`.
+	//
+	// When enabled, typescript-eslint resolves the nearest `tsconfig.json` for
+	// each linted file (the same resolution model used by the TypeScript language
+	// service / `tsserver`). This allows files in different directories (e.g.
+	// `src` and `test`) to be linted against the `tsconfig.json` that actually
+	// includes them, without maintaining a single config that lists every file.
+	//
+	// Requires `@typescript-eslint/*` v8 or newer.
+	// See: https://typescript-eslint.io/blog/project-service/
+	//
+	// Default: false.
+	//
+	// Experimental.
+	ProjectService *bool `field:"optional" json:"projectService" yaml:"projectService"`
 	// The extends array in eslint is order dependent.
 	//
 	// This option allows to sort the extends array in any way seen fit.

@@ -168,6 +168,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addOverride", GoMethod: "AddOverride"},
 			_jsii_.MemberMethod{JsiiMethod: "addPlugins", GoMethod: "AddPlugins"},
 			_jsii_.MemberMethod{JsiiMethod: "addRules", GoMethod: "AddRules"},
+			_jsii_.MemberMethod{JsiiMethod: "allowDefaultProjectFiles", GoMethod: "AllowDefaultProjectFiles"},
 			_jsii_.MemberMethod{JsiiMethod: "allowDevDeps", GoMethod: "AllowDevDeps"},
 			_jsii_.MemberProperty{JsiiProperty: "config", GoGetter: "Config"},
 			_jsii_.MemberProperty{JsiiProperty: "eslintTask", GoGetter: "EslintTask"},

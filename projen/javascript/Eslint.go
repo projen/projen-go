@@ -57,6 +57,15 @@ type Eslint interface {
 	// Add an eslint rule.
 	// Experimental.
 	AddRules(rules *map[string]interface{})
+	// Allow files matching these patterns to be linted with the typescript-eslint "default project" when they are not included by any `tsconfig.json`.
+	//
+	// Only has an effect when the project service is enabled (see
+	// `EslintOptions.projectService`). This is typically used for loose files
+	// that live outside `src`/`test` (e.g. `.projenrc.ts`).
+	// See: https://typescript-eslint.io/packages/parser/#allowdefaultproject
+	//
+	// Experimental.
+	AllowDefaultProjectFiles(patterns ...*string)
 	// Add a glob file pattern which allows importing dev dependencies.
 	// Experimental.
 	AllowDevDeps(pattern *string)
@@ -354,6 +363,19 @@ func (e *jsiiProxy_Eslint) AddRules(rules *map[string]interface{}) {
 		e,
 		"addRules",
 		[]interface{}{rules},
+	)
+}
+
+func (e *jsiiProxy_Eslint) AllowDefaultProjectFiles(patterns ...*string) {
+	args := []interface{}{}
+	for _, a := range patterns {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		e,
+		"allowDefaultProjectFiles",
+		args,
 	)
 }
 

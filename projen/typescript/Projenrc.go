@@ -6,6 +6,7 @@ import (
 
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
+	"github.com/projen/projen-go/projen/javascript"
 	"github.com/projen/projen-go/projen/typescript/internal"
 )
 
@@ -21,6 +22,8 @@ type Projenrc interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
+	// Experimental.
+	Tsconfig() javascript.TypescriptConfig
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -77,6 +80,16 @@ func (j *jsiiProxy_Projenrc) Project() projen.Project {
 	_jsii_.Get(
 		j,
 		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Projenrc) Tsconfig() javascript.TypescriptConfig {
+	var returns javascript.TypescriptConfig
+	_jsii_.Get(
+		j,
+		"tsconfig",
 		&returns,
 	)
 	return returns

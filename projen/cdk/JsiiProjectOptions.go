@@ -818,7 +818,7 @@ type JsiiProjectOptions struct {
 	//
 	// Experimental.
 	DisableTsconfig *bool `field:"optional" json:"disableTsconfig" yaml:"disableTsconfig"`
-	// Do not generate a `tsconfig.dev.json` file.
+	// Do not generate a development tsconfig file.
 	// Default: false.
 	//
 	// Experimental.
@@ -891,8 +891,12 @@ type JsiiProjectOptions struct {
 	//
 	// Experimental.
 	TsconfigDev *javascript.TypescriptConfigOptions `field:"optional" json:"tsconfigDev" yaml:"tsconfigDev"`
-	// The name of the development tsconfig.json file.
-	// Default: "tsconfig.dev.json"
+	// The name (and path) of the development tsconfig file.
+	//
+	// By default this lives inside the test directory (e.g. `test/tsconfig.json`)
+	// so that the TypeScript language service resolves it as the nearest config
+	// for test files.
+	// Default: - "{testdir}/tsconfig.json"
 	//
 	// Experimental.
 	TsconfigDevFile *string `field:"optional" json:"tsconfigDevFile" yaml:"tsconfigDevFile"`
