@@ -1124,6 +1124,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "env", GoMethod: "Env"},
 			_jsii_.MemberProperty{JsiiProperty: "envVars", GoGetter: "EnvVars"},
 			_jsii_.MemberMethod{JsiiMethod: "exec", GoMethod: "Exec"},
+			_jsii_.MemberMethod{JsiiMethod: "execArgs", GoMethod: "ExecArgs"},
 			_jsii_.MemberMethod{JsiiMethod: "insertStep", GoMethod: "InsertStep"},
 			_jsii_.MemberMethod{JsiiMethod: "lock", GoMethod: "Lock"},
 			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},

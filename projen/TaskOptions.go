@@ -40,10 +40,25 @@ type TaskOptions struct {
 	// Experimental.
 	Args *[]*string `field:"optional" json:"args" yaml:"args"`
 	// Shell command to execute as the first command of the task.
+	//
+	// Mutually exclusive with `execArgs`.
 	// Default: - add steps using `task.exec(command)` or `task.spawn(subtask)`
 	//
 	// Experimental.
 	Exec *string `field:"optional" json:"exec" yaml:"exec"`
+	// Shell command to execute as the first command of the task, provided as a list of the program followed by its arguments (an "argv").
+	//
+	// A convenient alternative to `exec`: arguments with spaces or special
+	// characters are passed through as-is, with no quoting needed. The elements
+	// are not run through a shell, so environment variables (`$FOO`) are not
+	// expanded and other shell features are unavailable.
+	// See: TaskStep.execArgs *
+	// Mutually exclusive with `exec`.
+	//
+	// Default: - add steps using `task.execArgs(args)`, `task.exec(command)` or `task.spawn(subtask)`
+	//
+	// Experimental.
+	ExecArgs *[]*string `field:"optional" json:"execArgs" yaml:"execArgs"`
 	// Should the provided `exec` shell command receive args passed to the task.
 	// See: {@link TaskStepOptions.receiveArgs }
 	//

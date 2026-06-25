@@ -50,6 +50,18 @@ func (t *jsiiProxy_Task) validateExecParameters(command *string, options *TaskSt
 	return nil
 }
 
+func (t *jsiiProxy_Task) validateExecArgsParameters(command *[]*string, options *TaskStepOptions) error {
+	if command == nil {
+		return fmt.Errorf("parameter command is required, but nil was provided")
+	}
+
+	if err := _jsii_.ValidateStruct(options, func() string { return "parameter options" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (t *jsiiProxy_Task) validateInsertStepParameters(index *float64, steps *[]*TaskStep) error {
 	if index == nil {
 		return fmt.Errorf("parameter index is required, but nil was provided")

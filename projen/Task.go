@@ -67,6 +67,18 @@ type Task interface {
 	// Executes a shell command.
 	// Experimental.
 	Exec(command *string, options *TaskStepOptions)
+	// Executes a command provided as a list of the program followed by its arguments (an "argv").
+	//
+	// A convenient alternative to `Task.exec`: arguments with spaces or
+	// special characters are passed through as-is, with no quoting needed. The
+	// elements are not run through a shell, so environment variables (`$FOO`) are
+	// not expanded and other shell features are unavailable.
+	//
+	// Example:
+	//   task.execArgs(["echo", "hello world"]);
+	//
+	// Experimental.
+	ExecArgs(command *[]*string, options *TaskStepOptions)
 	// Insert one or more steps at a given index.
 	// Experimental.
 	InsertStep(index *float64, steps ...*TaskStep)
@@ -269,6 +281,17 @@ func (t *jsiiProxy_Task) Exec(command *string, options *TaskStepOptions) {
 	_jsii_.InvokeVoid(
 		t,
 		"exec",
+		[]interface{}{command, options},
+	)
+}
+
+func (t *jsiiProxy_Task) ExecArgs(command *[]*string, options *TaskStepOptions) {
+	if err := t.validateExecArgsParameters(command, options); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"execArgs",
 		[]interface{}{command, options},
 	)
 }
