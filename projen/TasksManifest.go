@@ -16,6 +16,9 @@ type TasksManifest struct {
 	//
 	// Experimental.
 	ManifestVersion *float64 `field:"optional" json:"manifestVersion" yaml:"manifestVersion"`
+	// The default task shell, in `tasks.json` form: a keyword (`"projen"` or `"system"`) or an invocation argument list. See {@link TaskCommonOptions.shell}.
+	// Experimental.
+	Shell interface{} `field:"optional" json:"shell" yaml:"shell"`
 	// All tasks available for this project.
 	// Experimental.
 	Tasks *map[string]*TaskSpec `field:"optional" json:"tasks" yaml:"tasks"`

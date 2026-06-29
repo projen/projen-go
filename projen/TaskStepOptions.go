@@ -59,7 +59,7 @@ type TaskStepOptions struct {
 	// If `true`, args are passed through at the end of the `exec` shell command.\
 	// The position of the args can be changed by including the marker `$@` inside the command string.
 	//
-	// If the marker is explicitly double-quoted ("$@") arguments will be wrapped in single quotes, approximating
+	// If the marker is explicitly double-quoted ("$@") arguments will be wrapped in double quotes, approximating
 	// the whitespace preserving behavior of bash variable expansion.
 	//
 	// If the step spawns a subtask, args are passed to the subtask.
@@ -72,5 +72,12 @@ type TaskStepOptions struct {
 	//
 	// Experimental.
 	ReceiveArgs *bool `field:"optional" json:"receiveArgs" yaml:"receiveArgs"`
+	// The shell used to run this step, overriding the task/project shell.
+	// See: {@link TaskCommonOptions.shell }
+	//
+	// Default: - the task's (or project's) shell.
+	//
+	// Experimental.
+	Shell TaskShell `field:"optional" json:"shell" yaml:"shell"`
 }
 

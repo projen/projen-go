@@ -68,7 +68,7 @@ func ReleasableCommits_EveryCommit(path *string) ReleasableCommits {
 //
 // A new release will be initiated, if the number of returned commits is greater than zero.
 // Must return a newline separate list of commits that should considered releasable.
-// `$LATEST_TAG` will be replaced with the actual latest tag for the given prefix.*
+// `$LATEST_TAG` is available as an environment variable (set to the actual latest tag for the given prefix).
 //
 // Example:
 //   "git log --oneline $LATEST_TAG..HEAD -- ."

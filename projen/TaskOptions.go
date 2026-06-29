@@ -32,6 +32,11 @@ type TaskOptions struct {
 	// Task execution will fail if one of these is not defined.
 	// Experimental.
 	RequiredEnv *[]*string `field:"optional" json:"requiredEnv" yaml:"requiredEnv"`
+	// The shell used to run this task's commands, including its `condition` and `$(...)` environment evaluation. Use {@link TaskShell} to pick a built-in or an explicit invocation. Set at project, task or step level; the nearest declared level wins.
+	// Default: - inherited from the task/project, otherwise the built-in projen shell.
+	//
+	// Experimental.
+	Shell TaskShell `field:"optional" json:"shell" yaml:"shell"`
 	// Should the provided `exec` shell command receive fixed args.
 	// See: {@link TaskStepOptions.args }
 	//

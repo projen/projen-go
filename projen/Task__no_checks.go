@@ -28,7 +28,7 @@ func (t *jsiiProxy_Task) validateInsertStepParameters(index *float64, steps *[]*
 	return nil
 }
 
-func (t *jsiiProxy_Task) validatePrependExecParameters(shell *string, options *TaskStepOptions) error {
+func (t *jsiiProxy_Task) validatePrependExecParameters(command *string, options *TaskStepOptions) error {
 	return nil
 }
 

@@ -2,8 +2,14 @@ package projen
 
 
 // Specification of a single task.
+//
+// The `tasks.json` (manifest) form of a task. {@link TaskCommonOptions} is the
+// form used to define one; they differ only in the rendered `shell` field.
 // Experimental.
 type TaskSpec struct {
+	// Task name.
+	// Experimental.
+	Name *string `field:"required" json:"name" yaml:"name"`
 	// A shell command which determines if the this task should be executed.
 	//
 	// If
@@ -33,9 +39,11 @@ type TaskSpec struct {
 	// Task execution will fail if one of these is not defined.
 	// Experimental.
 	RequiredEnv *[]*string `field:"optional" json:"requiredEnv" yaml:"requiredEnv"`
-	// Task name.
+	// The task shell in `tasks.json` form: a keyword (`"projen"` or `"system"`) or an invocation argument list.
+	// Default: - the built-in projen shell.
+	//
 	// Experimental.
-	Name *string `field:"required" json:"name" yaml:"name"`
+	Shell interface{} `field:"optional" json:"shell" yaml:"shell"`
 	// Task steps.
 	// Experimental.
 	Steps *[]*TaskStep `field:"optional" json:"steps" yaml:"steps"`

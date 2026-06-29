@@ -37,6 +37,15 @@ type Task interface {
 	// Task name.
 	// Experimental.
 	Name() *string
+	// The shell used to run this task's commands, or `undefined` when inheriting the built-in default shell.
+	//
+	// Sets the shell used to run this task's commands.
+	// See: {@link TaskCommonOptions.shell }
+	//
+	// Experimental.
+	Shell() TaskShell
+	// Experimental.
+	SetShell(val TaskShell)
 	// Returns an immutable copy of all the step specifications of the task.
 	// Experimental.
 	Steps() *[]*TaskStep
@@ -87,7 +96,7 @@ type Task interface {
 	Lock()
 	// Adds a command at the beginning of the task.
 	// Experimental.
-	PrependExec(shell *string, options *TaskStepOptions)
+	PrependExec(command *string, options *TaskStepOptions)
 	// Says something at the beginning of the task.
 	// Experimental.
 	PrependSay(message *string, options *TaskStepOptions)
@@ -167,6 +176,16 @@ func (j *jsiiProxy_Task) Name() *string {
 	return returns
 }
 
+func (j *jsiiProxy_Task) Shell() TaskShell {
+	var returns TaskShell
+	_jsii_.Get(
+		j,
+		"shell",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_Task) Steps() *[]*TaskStep {
 	var returns *[]*TaskStep
 	_jsii_.Get(
@@ -219,6 +238,14 @@ func (j *jsiiProxy_Task)SetDescription(val *string) {
 	_jsii_.Set(
 		j,
 		"description",
+		val,
+	)
+}
+
+func (j *jsiiProxy_Task)SetShell(val TaskShell) {
+	_jsii_.Set(
+		j,
+		"shell",
 		val,
 	)
 }
@@ -320,14 +347,14 @@ func (t *jsiiProxy_Task) Lock() {
 	)
 }
 
-func (t *jsiiProxy_Task) PrependExec(shell *string, options *TaskStepOptions) {
-	if err := t.validatePrependExecParameters(shell, options); err != nil {
+func (t *jsiiProxy_Task) PrependExec(command *string, options *TaskStepOptions) {
+	if err := t.validatePrependExecParameters(command, options); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		t,
 		"prependExec",
-		[]interface{}{shell, options},
+		[]interface{}{command, options},
 	)
 }
 

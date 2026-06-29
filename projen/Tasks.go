@@ -25,6 +25,17 @@ type Tasks interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() Project
+	// The default shell used to run all task commands, or `undefined` for the built-in cross-platform projen shell.
+	//
+	// Individual tasks and steps can
+	// override this.
+	// Sets the default shell used to run all task commands.
+	// See: {@link TaskCommonOptions.shell }
+	//
+	// Experimental.
+	Shell() TaskShell
+	// Experimental.
+	SetShell(val TaskShell)
 	// Adds global environment.
 	// Experimental.
 	AddEnvironment(name *string, value *string)
@@ -117,6 +128,16 @@ func (j *jsiiProxy_Tasks) Project() Project {
 	return returns
 }
 
+func (j *jsiiProxy_Tasks) Shell() TaskShell {
+	var returns TaskShell
+	_jsii_.Get(
+		j,
+		"shell",
+		&returns,
+	)
+	return returns
+}
+
 
 // Experimental.
 func NewTasks(project Project) Tasks {
@@ -144,6 +165,14 @@ func NewTasks_Override(t Tasks, project Project) {
 		"projen.Tasks",
 		[]interface{}{project},
 		t,
+	)
+}
+
+func (j *jsiiProxy_Tasks)SetShell(val TaskShell) {
+	_jsii_.Set(
+		j,
+		"shell",
+		val,
 	)
 }
 

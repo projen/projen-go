@@ -1135,6 +1135,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "removeStep", GoMethod: "RemoveStep"},
 			_jsii_.MemberMethod{JsiiMethod: "reset", GoMethod: "Reset"},
 			_jsii_.MemberMethod{JsiiMethod: "say", GoMethod: "Say"},
+			_jsii_.MemberProperty{JsiiProperty: "shell", GoGetter: "Shell"},
 			_jsii_.MemberMethod{JsiiMethod: "spawn", GoMethod: "Spawn"},
 			_jsii_.MemberProperty{JsiiProperty: "steps", GoGetter: "Steps"},
 			_jsii_.MemberMethod{JsiiMethod: "updateStep", GoMethod: "UpdateStep"},
@@ -1150,6 +1151,14 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.TaskOptions",
 		reflect.TypeOf((*TaskOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.TaskShell",
+		reflect.TypeOf((*TaskShell)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_TaskShell{}
+		},
 	)
 	_jsii_.RegisterStruct(
 		"projen.TaskSpec",
@@ -1178,6 +1187,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "removeTask", GoMethod: "RemoveTask"},
 			_jsii_.MemberMethod{JsiiMethod: "resolveTasksManifest", GoMethod: "ResolveTasksManifest"},
 			_jsii_.MemberMethod{JsiiMethod: "runTask", GoMethod: "RunTask"},
+			_jsii_.MemberProperty{JsiiProperty: "shell", GoGetter: "Shell"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 			_jsii_.MemberMethod{JsiiMethod: "tryFind", GoMethod: "TryFind"},
