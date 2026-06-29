@@ -69,7 +69,7 @@ type JestConfigOptions struct {
 	// A list of reporter names that Jest uses when writing coverage reports.
 	//
 	// Any istanbul reporter can be used.
-	// Default: - ["json", "lcov", "text", "clover", "cobertura"].
+	// Default: - ["json", "lcov", "clover", "cobertura", "text"].
 	//
 	// Experimental.
 	CoverageReporters *[]*string `field:"optional" json:"coverageReporters" yaml:"coverageReporters"`
@@ -101,11 +101,23 @@ type JestConfigOptions struct {
 	//
 	// Experimental.
 	ErrorOnDeprecated *bool `field:"optional" json:"errorOnDeprecated" yaml:"errorOnDeprecated"`
+	// Jest will run `.mjs` and `.js` files with nearest package.json's `type` field set to `module` as ECMAScript Modules. If you have any other files that should run with native ESM, you need to specify their file extension here.
+	// Default: - [].
+	//
+	// Experimental.
+	ExtensionsToTreatAsEsm *[]*string `field:"optional" json:"extensionsToTreatAsEsm" yaml:"extensionsToTreatAsEsm"`
 	// Test files run inside a vm, which slows calls to global context properties (e.g. Math). With this option you can specify extra properties to be defined inside the vm for faster lookups.
 	// Default: - undefined.
 	//
-	// Experimental.
+	// Deprecated: Renamed to `sandboxInjectedGlobals` in Jest 28. Use `sandboxInjectedGlobals` instead.
 	ExtraGlobals *[]*string `field:"optional" json:"extraGlobals" yaml:"extraGlobals"`
+	// The fake timers may be useful when a piece of code sets a long timeout that we don't want to wait for in a test.
+	//
+	// This option provides the default configuration of fake timers for all tests.
+	// Default: - {}.
+	//
+	// Experimental.
+	FakeTimers *FakeTimers `field:"optional" json:"fakeTimers" yaml:"fakeTimers"`
 	// Test files are normally ignored from collecting code coverage.
 	//
 	// With this option, you can overwrite this behavior and include otherwise ignored files in code coverage.
@@ -206,6 +218,13 @@ type JestConfigOptions struct {
 	//
 	// Experimental.
 	NotifyMode *string `field:"optional" json:"notifyMode" yaml:"notifyMode"`
+	// Print a warning indicating that there are probable open handles if Jest does not exit cleanly this number of milliseconds after it completes.
+	//
+	// Use `0` to disable the warning.
+	// Default: - 1000.
+	//
+	// Experimental.
+	OpenHandlesTimeout *float64 `field:"optional" json:"openHandlesTimeout" yaml:"openHandlesTimeout"`
 	// A preset that is used as a base for Jest's configuration.
 	//
 	// A preset should point to an npm module
@@ -227,6 +246,11 @@ type JestConfigOptions struct {
 	//
 	// Experimental.
 	Projects *[]interface{} `field:"optional" json:"projects" yaml:"projects"`
+	// The equivalent of the `--randomize` flag to randomize the order of the tests in a file.
+	// Default: - false.
+	//
+	// Experimental.
+	Randomize *bool `field:"optional" json:"randomize" yaml:"randomize"`
 	// Use this configuration option to add custom reporters to Jest.
 	//
 	// A custom reporter is a class
@@ -288,6 +312,19 @@ type JestConfigOptions struct {
 	//
 	// Experimental.
 	Runner *string `field:"optional" json:"runner" yaml:"runner"`
+	// This option allows the use of a custom runtime to execute test files.
+	//
+	// A custom runtime can be
+	// provided by specifying a path to a runtime implementation.
+	// Default: - "jest-runtime".
+	//
+	// Experimental.
+	Runtime *string `field:"optional" json:"runtime" yaml:"runtime"`
+	// Test files run inside a vm, which slows calls to global context properties (e.g. Math). With this option you can specify extra properties to be defined inside the vm for faster lookups.
+	// Default: - undefined.
+	//
+	// Experimental.
+	SandboxInjectedGlobals *[]*string `field:"optional" json:"sandboxInjectedGlobals" yaml:"sandboxInjectedGlobals"`
 	// A list of paths to modules that run some code to configure or set up the testing environment.
 	//
 	// Each setupFile will be run once per test file. Since every test runs in its own environment,
@@ -306,11 +343,21 @@ type JestConfigOptions struct {
 	//
 	// Experimental.
 	SetupFilesAfterEnv *[]*string `field:"optional" json:"setupFilesAfterEnv" yaml:"setupFilesAfterEnv"`
+	// The equivalent of the `--showSeed` flag to print the seed in the test report summary.
+	// Default: - false.
+	//
+	// Experimental.
+	ShowSeed *bool `field:"optional" json:"showSeed" yaml:"showSeed"`
 	// The number of seconds after which a test is considered as slow and reported as such in the results.
 	// Default: - 5.
 	//
 	// Experimental.
 	SlowTestThreshold *float64 `field:"optional" json:"slowTestThreshold" yaml:"slowTestThreshold"`
+	// Allows overriding specific snapshot formatting options documented in the pretty-format readme, with the exceptions of `compareKeys` and `plugins`.
+	// Default: - {escapeString: false, printBasicPrototype: false}.
+	//
+	// Experimental.
+	SnapshotFormat *SnapshotFormatOptions `field:"optional" json:"snapshotFormat" yaml:"snapshotFormat"`
 	// The path to a module that can resolve test<->snapshot path.
 	//
 	// This config option lets you customize
@@ -327,9 +374,9 @@ type JestConfigOptions struct {
 	// The test environment that will be used for testing.
 	//
 	// The default environment in Jest is a
-	// browser-like environment through jsdom. If you are building a node service, you can use the node
-	// option to use a node-like environment instead.
-	// Default: - "jsdom".
+	// Node.js environment. If you are building a web app, you can use a browser-like environment
+	// through jsdom instead.
+	// Default: - "node".
 	//
 	// Experimental.
 	TestEnvironment *string `field:"optional" json:"testEnvironment" yaml:"testEnvironment"`
@@ -377,9 +424,9 @@ type JestConfigOptions struct {
 	TestResultsProcessor *string `field:"optional" json:"testResultsProcessor" yaml:"testResultsProcessor"`
 	// This option allows the use of a custom test runner.
 	//
-	// The default is jasmine2. A custom test runner
+	// The default is jest-circus. A custom test runner
 	// can be provided by specifying a path to a test runner implementation.
-	// Default: - "jasmine2".
+	// Default: - "jest-circus/runner".
 	//
 	// Experimental.
 	TestRunner *string `field:"optional" json:"testRunner" yaml:"testRunner"`
@@ -400,14 +447,14 @@ type JestConfigOptions struct {
 	// It is reflected in properties such as location.href.
 	// Default: - "http://localhost".
 	//
-	// Experimental.
+	// Deprecated: Removed in Jest 28. Use `testEnvironmentOptions.url` instead.
 	TestURL *string `field:"optional" json:"testURL" yaml:"testURL"`
 	// Setting this value to legacy or fake allows the use of fake timers for functions such as setTimeout.
 	//
 	// Fake timers are useful when a piece of code sets a long timeout that we don't want to wait for in a test.
 	// Default: - "real".
 	//
-	// Experimental.
+	// Deprecated: Renamed to `fakeTimers` in Jest 27. Use `fakeTimers` instead.
 	Timers *string `field:"optional" json:"timers" yaml:"timers"`
 	// A map from regular expressions to paths to transformers.
 	//
@@ -441,6 +488,14 @@ type JestConfigOptions struct {
 	//
 	// Experimental.
 	Verbose *bool `field:"optional" json:"verbose" yaml:"verbose"`
+	// Gives one event loop turn to handle `rejectionHandled`, `uncaughtException` or `unhandledRejection`.
+	//
+	// Without this flag Jest may report false-positive errors or fail to report actually unhandled rejections.
+	// This option may add a noticeable overhead for fast test suites.
+	// Default: - false.
+	//
+	// Experimental.
+	WaitForUnhandledRejections *bool `field:"optional" json:"waitForUnhandledRejections" yaml:"waitForUnhandledRejections"`
 	// Whether to use watchman for file crawling.
 	// Default: - true.
 	//
@@ -450,7 +505,7 @@ type JestConfigOptions struct {
 	//
 	// If the file path matches any of the patterns, when it is updated, it will not trigger
 	// a re-run of tests.
-	// Default: - [].
+	// Default: - ["/node_modules/"].
 	//
 	// Experimental.
 	WatchPathIgnorePatterns *[]*string `field:"optional" json:"watchPathIgnorePatterns" yaml:"watchPathIgnorePatterns"`
@@ -458,5 +513,28 @@ type JestConfigOptions struct {
 	//
 	// Experimental.
 	WatchPlugins *[]WatchPlugin `field:"optional" json:"watchPlugins" yaml:"watchPlugins"`
+	// Timeout in milliseconds for a worker process to exit gracefully after all tests have completed.
+	//
+	// If a worker does not exit within this timeout, it is force-killed.
+	// Default: - 500.
+	//
+	// Experimental.
+	WorkerGracefulExitTimeout *float64 `field:"optional" json:"workerGracefulExitTimeout" yaml:"workerGracefulExitTimeout"`
+	// Specifies the memory limit for workers before they are recycled and is primarily a work-around for memory leaks.
+	//
+	// The limit can be specified as a percentage of system memory (e.g. `0.5` or `"50%"`)
+	// or as a fixed byte value (e.g. `"512MB"`).
+	// Default: - undefined.
+	//
+	// Experimental.
+	WorkerIdleMemoryLimit interface{} `field:"optional" json:"workerIdleMemoryLimit" yaml:"workerIdleMemoryLimit"`
+	// Whether to use worker threads for parallelization.
+	//
+	// Child processes are used by default.
+	// Using worker threads may help to improve performance.
+	// Default: - false.
+	//
+	// Experimental.
+	WorkerThreads *bool `field:"optional" json:"workerThreads" yaml:"workerThreads"`
 }
 

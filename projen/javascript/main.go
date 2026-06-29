@@ -203,6 +203,10 @@ func init() {
 		"projen.javascript.EslintOverride",
 		reflect.TypeOf((*EslintOverride)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.FakeTimers",
+		reflect.TypeOf((*FakeTimers)(nil)).Elem(),
+	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.HTMLWhitespaceSensitivity",
 		reflect.TypeOf((*HTMLWhitespaceSensitivity)(nil)).Elem(),
@@ -597,6 +601,10 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.ScopedPackagesOptions",
 		reflect.TypeOf((*ScopedPackagesOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.SnapshotFormatOptions",
+		reflect.TypeOf((*SnapshotFormatOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.SourceMapMode",
