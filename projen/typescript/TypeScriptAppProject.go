@@ -169,6 +169,9 @@ type TypeScriptAppProject interface {
 	// The root project.
 	// Experimental.
 	Root() projen.Project
+	// The TypeScript runner used for executing TypeScript files.
+	// Experimental.
+	Runner() TypeScriptRunner
 	// The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager).
 	// Experimental.
 	RunScriptCommand() *string
@@ -797,6 +800,16 @@ func (j *jsiiProxy_TypeScriptAppProject) Root() projen.Project {
 	_jsii_.Get(
 		j,
 		"root",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_TypeScriptAppProject) Runner() TypeScriptRunner {
+	var returns TypeScriptRunner
+	_jsii_.Get(
+		j,
+		"runner",
 		&returns,
 	)
 	return returns

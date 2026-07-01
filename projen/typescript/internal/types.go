@@ -5,3 +5,4 @@ import (
 )
 type Type__projenProjenrcFile = projen.ProjenrcFile
 type Type__javascriptNodeProject = javascript.NodeProject
+type Type__projenScriptRunner = projen.ScriptRunner

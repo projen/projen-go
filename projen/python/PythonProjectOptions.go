@@ -273,7 +273,7 @@ type PythonProjectOptions struct {
 	// Use projenrc in TypeScript.
 	//
 	// This will create a tsconfig file (default: `tsconfig.projen.json`)
-	// and use `ts-node` in the default task to parse the project source files.
+	// and use a typescript runner in the default task to parse the project source files.
 	// Default: false.
 	//
 	// Experimental.

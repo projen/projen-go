@@ -14,8 +14,6 @@ import (
 //
 // This component can be instantiated in any type of project
 // and has no expectations around the project's main language.
-//
-// Requires that `npx` is available.
 // Experimental.
 type ProjenrcTs interface {
 	projen.ProjenrcFile

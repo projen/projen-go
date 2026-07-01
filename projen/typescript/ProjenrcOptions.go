@@ -13,10 +13,15 @@ type ProjenrcOptions struct {
 	//
 	// Experimental.
 	ProjenCodeDir *string `field:"optional" json:"projenCodeDir" yaml:"projenCodeDir"`
+	// The runner to use for executing TypeScript files.
+	// Default: - the project's runner.
+	//
+	// Experimental.
+	Runner TypeScriptRunner `field:"optional" json:"runner" yaml:"runner"`
 	// Whether to use `SWC` for ts-node.
 	// Default: false.
 	//
-	// Experimental.
+	// Deprecated: Use `runner: TypeScriptRunner.tsNode({ swc: true })` instead.
 	Swc *bool `field:"optional" json:"swc" yaml:"swc"`
 }
 

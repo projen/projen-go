@@ -7,6 +7,10 @@ import (
 )
 
 func init() {
+	_jsii_.RegisterStruct(
+		"projen.typescript.NodeRunnerOptions",
+		reflect.TypeOf((*NodeRunnerOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.typescript.Projenrc",
 		reflect.TypeOf((*Projenrc)(nil)).Elem(),
@@ -87,6 +91,14 @@ func init() {
 			return &jsiiProxy_TsJestTsconfig{}
 		},
 	)
+	_jsii_.RegisterStruct(
+		"projen.typescript.TsNodeRunnerOptions",
+		reflect.TypeOf((*TsNodeRunnerOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.typescript.TsxRunnerOptions",
+		reflect.TypeOf((*TsxRunnerOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.typescript.TypeScriptAppProject",
 		reflect.TypeOf((*TypeScriptAppProject)(nil)).Elem(),
@@ -156,6 +168,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "removeTask", GoMethod: "RemoveTask"},
 			_jsii_.MemberMethod{JsiiMethod: "renderWorkflowSetup", GoMethod: "RenderWorkflowSetup"},
 			_jsii_.MemberProperty{JsiiProperty: "root", GoGetter: "Root"},
+			_jsii_.MemberProperty{JsiiProperty: "runner", GoGetter: "Runner"},
 			_jsii_.MemberProperty{JsiiProperty: "runScriptCommand", GoGetter: "RunScriptCommand"},
 			_jsii_.MemberMethod{JsiiMethod: "runTaskCommand", GoMethod: "RunTaskCommand"},
 			_jsii_.MemberMethod{JsiiMethod: "setScript", GoMethod: "SetScript"},
@@ -254,6 +267,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "removeTask", GoMethod: "RemoveTask"},
 			_jsii_.MemberMethod{JsiiMethod: "renderWorkflowSetup", GoMethod: "RenderWorkflowSetup"},
 			_jsii_.MemberProperty{JsiiProperty: "root", GoGetter: "Root"},
+			_jsii_.MemberProperty{JsiiProperty: "runner", GoGetter: "Runner"},
 			_jsii_.MemberProperty{JsiiProperty: "runScriptCommand", GoGetter: "RunScriptCommand"},
 			_jsii_.MemberMethod{JsiiMethod: "runTaskCommand", GoMethod: "RunTaskCommand"},
 			_jsii_.MemberMethod{JsiiMethod: "setScript", GoMethod: "SetScript"},
@@ -286,6 +300,34 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.typescript.TypeScriptProjectOptions",
 		reflect.TypeOf((*TypeScriptProjectOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.typescript.TypeScriptRunner",
+		reflect.TypeOf((*TypeScriptRunner)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "attach", GoMethod: "Attach"},
+			_jsii_.MemberProperty{JsiiProperty: "attached", GoGetter: "Attached"},
+			_jsii_.MemberMethod{JsiiMethod: "configFor", GoMethod: "ConfigFor"},
+			_jsii_.MemberMethod{JsiiMethod: "copy", GoMethod: "Copy"},
+			_jsii_.MemberMethod{JsiiMethod: "init", GoMethod: "Init"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberMethod{JsiiMethod: "tryAttach", GoMethod: "TryAttach"},
+			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
+		},
+		func() interface{} {
+			j := jsiiProxy_TypeScriptRunner{}
+			_jsii_.InitJsiiProxy(&j.Type__projenScriptRunner)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.typescript.TypeScriptRunnerOptions",
+		reflect.TypeOf((*TypeScriptRunnerOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.typescript.TypedocDocgen",

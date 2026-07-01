@@ -10,7 +10,9 @@ import (
 	"github.com/projen/projen-go/projen/typescript/internal"
 )
 
-// Sets up a typescript project to use TypeScript for projenrc.
+// A projenrc file written in TypeScript.
+//
+// This component is used within TypeScriptProject.
 // Experimental.
 type Projenrc interface {
 	projen.ProjenrcFile

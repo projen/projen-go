@@ -13,10 +13,15 @@ type ProjenrcTsOptions struct {
 	//
 	// Experimental.
 	ProjenCodeDir *string `field:"optional" json:"projenCodeDir" yaml:"projenCodeDir"`
-	// The name of the tsconfig file that will be used by ts-node when compiling projen source files.
-	// Default: "tsconfig.projen.json"
+	// The runner to use for executing TypeScript files.
+	// Default: TypeScriptRunner.tsNode()
 	//
 	// Experimental.
+	Runner TypeScriptRunner `field:"optional" json:"runner" yaml:"runner"`
+	// The name of the tsconfig file that will be used by the runner when compiling projen source files.
+	// Default: "tsconfig.projen.json"
+	//
+	// Deprecated: Use `runner` to configure the tsconfigFileName directly.
 	TsconfigFileName *string `field:"optional" json:"tsconfigFileName" yaml:"tsconfigFileName"`
 }
 

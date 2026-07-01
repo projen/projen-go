@@ -861,6 +861,14 @@ type JsiiProjectOptions struct {
 	// Options for .projenrc.ts.
 	// Experimental.
 	ProjenrcTsOptions *typescript.ProjenrcOptions `field:"optional" json:"projenrcTsOptions" yaml:"projenrcTsOptions"`
+	// The TypeScript runner to use for executing TypeScript files.
+	//
+	// This is a project-level setting that components (e.g. projenrc) will
+	// use as their default runner.
+	// Default: TypeScriptRunner.tsNode()
+	//
+	// Experimental.
+	Runner typescript.TypeScriptRunner `field:"optional" json:"runner" yaml:"runner"`
 	// Generate one-time sample in `src/` and `test/` if there are no files there.
 	// Default: true.
 	//
