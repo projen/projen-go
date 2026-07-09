@@ -3,12 +3,17 @@ package github
 
 // Experimental.
 type MergifyQueue struct {
-	// Template to use as the commit message when using the merge or squash merge method.
-	// Experimental.
-	CommitMessageTemplate *string `field:"required" json:"commitMessageTemplate" yaml:"commitMessageTemplate"`
 	// The name of the queue.
 	// Experimental.
 	Name *string `field:"required" json:"name" yaml:"name"`
+	// When merging with the merge or squash method, configure the title, body, and trailers of the resulting commit.
+	// See: https://docs.mergify.com/workflow/actions/merge/#customizing-the-commit-message
+	//
+	// Experimental.
+	CommitMessageFormat *MergifyCommitMessageFormat `field:"optional" json:"commitMessageFormat" yaml:"commitMessageFormat"`
+	// Template to use as the commit message when using the merge or squash merge method.
+	// Deprecated: Use `commitMessageFormat` instead.
+	CommitMessageTemplate *string `field:"optional" json:"commitMessageTemplate" yaml:"commitMessageTemplate"`
 	// The list of conditions to match to get the queued pull request merged.
 	//
 	// This automatically includes the queueConditions.

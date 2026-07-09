@@ -469,6 +469,10 @@ func init() {
 		},
 	)
 	_jsii_.RegisterStruct(
+		"projen.github.MergifyCommitMessageFormat",
+		reflect.TypeOf((*MergifyCommitMessageFormat)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.github.MergifyConditionalOperator",
 		reflect.TypeOf((*MergifyConditionalOperator)(nil)).Elem(),
 	)
