@@ -312,6 +312,7 @@ func init() {
 		"projen.javascript.NodePackage",
 		reflect.TypeOf((*NodePackage)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addAllowedScripts", GoMethod: "AddAllowedScripts"},
 			_jsii_.MemberMethod{JsiiMethod: "addBin", GoMethod: "AddBin"},
 			_jsii_.MemberMethod{JsiiMethod: "addBundledDeps", GoMethod: "AddBundledDeps"},
 			_jsii_.MemberMethod{JsiiMethod: "addDeps", GoMethod: "AddDeps"},
@@ -350,6 +351,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "removeAllowedScripts", GoMethod: "RemoveAllowedScripts"},
 			_jsii_.MemberMethod{JsiiMethod: "removeScript", GoMethod: "RemoveScript"},
 			_jsii_.MemberProperty{JsiiProperty: "scopedPackagesOptions", GoGetter: "ScopedPackagesOptions"},
 			_jsii_.MemberMethod{JsiiMethod: "setScript", GoMethod: "SetScript"},
@@ -508,6 +510,198 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.PeerDependencyOptions",
 		reflect.TypeOf((*PeerDependencyOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmOptions",
+		reflect.TypeOf((*PnpmOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.javascript.PnpmWorkspaceYaml",
+		reflect.TypeOf((*PnpmWorkspaceYaml)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
+		},
+		func() interface{} {
+			j := jsiiProxy_PnpmWorkspaceYaml{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlOptions",
+		reflect.TypeOf((*PnpmWorkspaceYamlOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchema",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchema)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaAuditConfig",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaAuditConfig)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaAuditLevel",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaAuditLevel)(nil)).Elem(),
+		map[string]interface{}{
+			"LOW": PnpmWorkspaceYamlSchemaAuditLevel_LOW,
+			"MODERATE": PnpmWorkspaceYamlSchemaAuditLevel_MODERATE,
+			"HIGH": PnpmWorkspaceYamlSchemaAuditLevel_HIGH,
+			"CRITICAL": PnpmWorkspaceYamlSchemaAuditLevel_CRITICAL,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaCatalogMode",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaCatalogMode)(nil)).Elem(),
+		map[string]interface{}{
+			"STRICT": PnpmWorkspaceYamlSchemaCatalogMode_STRICT,
+			"PREFER": PnpmWorkspaceYamlSchemaCatalogMode_PREFER,
+			"MANUAL": PnpmWorkspaceYamlSchemaCatalogMode_MANUAL,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaColor",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaColor)(nil)).Elem(),
+		map[string]interface{}{
+			"ALWAYS": PnpmWorkspaceYamlSchemaColor_ALWAYS,
+			"AUTO": PnpmWorkspaceYamlSchemaColor_AUTO,
+			"NEVER": PnpmWorkspaceYamlSchemaColor_NEVER,
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaExecutionEnv",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaExecutionEnv)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaHoistingLimits",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaHoistingLimits)(nil)).Elem(),
+		map[string]interface{}{
+			"NODE": PnpmWorkspaceYamlSchemaHoistingLimits_NODE,
+			"WORKSPACES": PnpmWorkspaceYamlSchemaHoistingLimits_WORKSPACES,
+			"DEPENDENCIES": PnpmWorkspaceYamlSchemaHoistingLimits_DEPENDENCIES,
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.javascript.PnpmWorkspaceYamlSchemaLinkWorkspacePackages",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaLinkWorkspacePackages)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "value", GoGetter: "Value"},
+		},
+		func() interface{} {
+			return &jsiiProxy_PnpmWorkspaceYamlSchemaLinkWorkspacePackages{}
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaLoglevel",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaLoglevel)(nil)).Elem(),
+		map[string]interface{}{
+			"DEBUG": PnpmWorkspaceYamlSchemaLoglevel_DEBUG,
+			"INFO": PnpmWorkspaceYamlSchemaLoglevel_INFO,
+			"WARN": PnpmWorkspaceYamlSchemaLoglevel_WARN,
+			"ERROR": PnpmWorkspaceYamlSchemaLoglevel_ERROR,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaNodeLinker",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaNodeLinker)(nil)).Elem(),
+		map[string]interface{}{
+			"ISOLATED": PnpmWorkspaceYamlSchemaNodeLinker_ISOLATED,
+			"HOISTED": PnpmWorkspaceYamlSchemaNodeLinker_HOISTED,
+			"PNP": PnpmWorkspaceYamlSchemaNodeLinker_PNP,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaPackageImportMethod",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaPackageImportMethod)(nil)).Elem(),
+		map[string]interface{}{
+			"AUTO": PnpmWorkspaceYamlSchemaPackageImportMethod_AUTO,
+			"HARDLINK": PnpmWorkspaceYamlSchemaPackageImportMethod_HARDLINK,
+			"COPY": PnpmWorkspaceYamlSchemaPackageImportMethod_COPY,
+			"CLONE": PnpmWorkspaceYamlSchemaPackageImportMethod_CLONE,
+			"CLONE_HYPHEN_OR_HYPHEN_COPY": PnpmWorkspaceYamlSchemaPackageImportMethod_CLONE_HYPHEN_OR_HYPHEN_COPY,
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaPeerDependencyRules",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaPeerDependencyRules)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaPmOnFail",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaPmOnFail)(nil)).Elem(),
+		map[string]interface{}{
+			"DOWNLOAD": PnpmWorkspaceYamlSchemaPmOnFail_DOWNLOAD,
+			"ERROR": PnpmWorkspaceYamlSchemaPmOnFail_ERROR,
+			"WARN": PnpmWorkspaceYamlSchemaPmOnFail_WARN,
+			"IGNORE": PnpmWorkspaceYamlSchemaPmOnFail_IGNORE,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaReporter",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaReporter)(nil)).Elem(),
+		map[string]interface{}{
+			"SILENT": PnpmWorkspaceYamlSchemaReporter_SILENT,
+			"DEFAULT": PnpmWorkspaceYamlSchemaReporter_DEFAULT,
+			"APPEND_HYPHEN_ONLY": PnpmWorkspaceYamlSchemaReporter_APPEND_HYPHEN_ONLY,
+			"NDJSON": PnpmWorkspaceYamlSchemaReporter_NDJSON,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaResolutionMode",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaResolutionMode)(nil)).Elem(),
+		map[string]interface{}{
+			"HIGHEST": PnpmWorkspaceYamlSchemaResolutionMode_HIGHEST,
+			"TIME_HYPHEN_BASED": PnpmWorkspaceYamlSchemaResolutionMode_TIME_HYPHEN_BASED,
+			"LOWEST_HYPHEN_DIRECT": PnpmWorkspaceYamlSchemaResolutionMode_LOWEST_HYPHEN_DIRECT,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaRuntimeOnFail",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaRuntimeOnFail)(nil)).Elem(),
+		map[string]interface{}{
+			"DOWNLOAD": PnpmWorkspaceYamlSchemaRuntimeOnFail_DOWNLOAD,
+			"ERROR": PnpmWorkspaceYamlSchemaRuntimeOnFail_ERROR,
+			"WARN": PnpmWorkspaceYamlSchemaRuntimeOnFail_WARN,
+			"IGNORE": PnpmWorkspaceYamlSchemaRuntimeOnFail_IGNORE,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaSavePrefix",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaSavePrefix)(nil)).Elem(),
+		map[string]interface{}{
+			"VALUE_CARAT": PnpmWorkspaceYamlSchemaSavePrefix_VALUE_CARAT,
+			"VALUE_TILDE": PnpmWorkspaceYamlSchemaSavePrefix_VALUE_TILDE,
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.javascript.PnpmWorkspaceYamlSchemaSaveWorkspaceProtocol",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaSaveWorkspaceProtocol)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "value", GoGetter: "Value"},
+		},
+		func() interface{} {
+			return &jsiiProxy_PnpmWorkspaceYamlSchemaSaveWorkspaceProtocol{}
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaSupportedArchitectures",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaSupportedArchitectures)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaTrustPolicy",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaTrustPolicy)(nil)).Elem(),
+		map[string]interface{}{
+			"OFF": PnpmWorkspaceYamlSchemaTrustPolicy_OFF,
+			"NO_HYPHEN_DOWNGRADE": PnpmWorkspaceYamlSchemaTrustPolicy_NO_HYPHEN_DOWNGRADE,
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaUpdateConfig",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaUpdateConfig)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.javascript.Prettier",

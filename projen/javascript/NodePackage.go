@@ -110,6 +110,14 @@ type NodePackage interface {
 	// Returns: `undefined` if the package manager is not Yarn.
 	// Experimental.
 	YarnVersion() *string
+	// Allows the given dependency (package) names to run lifecycle install scripts (`preinstall`, `install`, `postinstall`, `prepare`), in addition to any already allowed via the `allowScripts` option or previous calls.
+	//
+	// Useful for project types that want to allowlist a package by default
+	// while still letting consumers add further packages via `allowScripts`.
+	// See: NodePackageOptions.allowScripts
+	//
+	// Experimental.
+	AddAllowedScripts(packages ...*string)
 	// Experimental.
 	AddBin(bins *map[string]*string)
 	// Defines bundled dependencies.
@@ -160,6 +168,11 @@ type NodePackage interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Removes the given dependency (package) names from the `allowScripts` allowlist, whether they were added via the `allowScripts` option, a project type default, or a previous call to `addAllowedScripts`.
+	// See: NodePackageOptions.allowScripts
+	//
+	// Experimental.
+	RemoveAllowedScripts(packages ...*string)
 	// Removes an npm script (always successful).
 	// Experimental.
 	RemoveScript(name *string)
@@ -570,6 +583,19 @@ func NodePackage_Of(project projen.Project) NodePackage {
 	return returns
 }
 
+func (n *jsiiProxy_NodePackage) AddAllowedScripts(packages ...*string) {
+	args := []interface{}{}
+	for _, a := range packages {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		n,
+		"addAllowedScripts",
+		args,
+	)
+}
+
 func (n *jsiiProxy_NodePackage) AddBin(bins *map[string]*string) {
 	if err := n.validateAddBinParameters(bins); err != nil {
 		panic(err)
@@ -716,6 +742,19 @@ func (n *jsiiProxy_NodePackage) PreSynthesize() {
 		n,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (n *jsiiProxy_NodePackage) RemoveAllowedScripts(packages ...*string) {
+	args := []interface{}{}
+	for _, a := range packages {
+		args = append(args, a)
+	}
+
+	_jsii_.InvokeVoid(
+		n,
+		"removeAllowedScripts",
+		args,
 	)
 }
 
