@@ -28,6 +28,14 @@ func (p *jsiiProxy_Pom) validateAddTestDependencyParameters(spec *string) error 
 	return nil
 }
 
+func (p *jsiiProxy_Pom) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (p *jsiiProxy_Pom) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validatePom_IsComponentParameters(x interface{}) error {
 	return nil
 }

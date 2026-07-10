@@ -4,6 +4,14 @@ package awscdk
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (c *jsiiProxy_CdkConfig) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (c *jsiiProxy_CdkConfig) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateCdkConfig_IsComponentParameters(x interface{}) error {
 	return nil
 }

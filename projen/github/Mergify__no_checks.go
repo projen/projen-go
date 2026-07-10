@@ -12,6 +12,14 @@ func (m *jsiiProxy_Mergify) validateAddRuleParameters(rule *MergifyRule) error {
 	return nil
 }
 
+func (m *jsiiProxy_Mergify) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (m *jsiiProxy_Mergify) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateMergify_IsComponentParameters(x interface{}) error {
 	return nil
 }

@@ -12,6 +12,14 @@ func (r *jsiiProxy_Release) validateAddJobsParameters(jobs *map[string]*workflow
 	return nil
 }
 
+func (r *jsiiProxy_Release) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (r *jsiiProxy_Release) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateRelease_IsComponentParameters(x interface{}) error {
 	return nil
 }

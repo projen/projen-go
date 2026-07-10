@@ -7,6 +7,7 @@ import (
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 
+	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github/workflows"
 )
 
@@ -185,6 +186,28 @@ func (t *jsiiProxy_TaskWorkflow) validatePatchStepParameters(jobId *string, step
 		return fmt.Errorf("parameter patch is required, but nil was provided")
 	}
 	if err := _jsii_.ValidateStruct(patch, func() string { return "parameter patch" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (t *jsiiProxy_TaskWorkflow) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (t *jsiiProxy_TaskWorkflow) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
 		return err
 	}
 

@@ -12,6 +12,14 @@ func (g *jsiiProxy_GitAttributesFile) validateAddLfsPatternParameters(glob *stri
 	return nil
 }
 
+func (g *jsiiProxy_GitAttributesFile) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (g *jsiiProxy_GitAttributesFile) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func (g *jsiiProxy_GitAttributesFile) validateRemoveAttributesParameters(glob *string) error {
 	return nil
 }

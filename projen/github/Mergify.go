@@ -21,6 +21,14 @@ type Mergify interface {
 	AddQueue(queue *MergifyQueue)
 	// Experimental.
 	AddRule(rule *MergifyRule)
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -29,6 +37,12 @@ type Mergify interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -180,6 +194,17 @@ func (m *jsiiProxy_Mergify) AddRule(rule *MergifyRule) {
 	)
 }
 
+func (m *jsiiProxy_Mergify) PostProjectCreation(initProject *projen.InitProject) {
+	if err := m.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		m,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (m *jsiiProxy_Mergify) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		m,
@@ -193,6 +218,17 @@ func (m *jsiiProxy_Mergify) PreSynthesize() {
 		m,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (m *jsiiProxy_Mergify) ProjectCreation(initProject *projen.InitProject) {
+	if err := m.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		m,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

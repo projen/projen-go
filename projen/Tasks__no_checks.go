@@ -12,6 +12,14 @@ func (t *jsiiProxy_Tasks) validateAddTaskParameters(name *string, options *TaskO
 	return nil
 }
 
+func (t *jsiiProxy_Tasks) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (t *jsiiProxy_Tasks) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func (t *jsiiProxy_Tasks) validateRemoveTaskParameters(name *string) error {
 	return nil
 }

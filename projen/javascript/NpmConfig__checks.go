@@ -6,6 +6,8 @@ import (
 	"fmt"
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
+
+	"github.com/projen/projen-go/projen"
 )
 
 func (n *jsiiProxy_NpmConfig) validateAddConfigParameters(name *string, value *string) error {
@@ -23,6 +25,28 @@ func (n *jsiiProxy_NpmConfig) validateAddConfigParameters(name *string, value *s
 func (n *jsiiProxy_NpmConfig) validateAddRegistryParameters(url *string) error {
 	if url == nil {
 		return fmt.Errorf("parameter url is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (n *jsiiProxy_NpmConfig) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (n *jsiiProxy_NpmConfig) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
 	}
 
 	return nil

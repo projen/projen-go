@@ -28,6 +28,14 @@ func (n *jsiiProxy_NestedConfiguration) validateAddServicesParameters(services *
 	return nil
 }
 
+func (n *jsiiProxy_NestedConfiguration) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (n *jsiiProxy_NestedConfiguration) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateNestedConfiguration_IsComponentParameters(x interface{}) error {
 	return nil
 }

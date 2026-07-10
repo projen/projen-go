@@ -4,6 +4,14 @@ package web
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (r *jsiiProxy_ReactComponent) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (r *jsiiProxy_ReactComponent) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateReactComponent_IsComponentParameters(x interface{}) error {
 	return nil
 }

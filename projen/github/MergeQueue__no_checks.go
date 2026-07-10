@@ -4,6 +4,14 @@ package github
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (m *jsiiProxy_MergeQueue) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (m *jsiiProxy_MergeQueue) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateMergeQueue_IsComponentParameters(x interface{}) error {
 	return nil
 }

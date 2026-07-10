@@ -23,6 +23,28 @@ func (d *jsiiProxy_DockerCompose) validateAddServiceParameters(serviceName *stri
 	return nil
 }
 
+func (d *jsiiProxy_DockerCompose) validatePostProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (d *jsiiProxy_DockerCompose) validateProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func validateDockerCompose_BindVolumeParameters(sourcePath *string, targetPath *string) error {
 	if sourcePath == nil {
 		return fmt.Errorf("parameter sourcePath is required, but nil was provided")

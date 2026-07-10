@@ -8,6 +8,14 @@ func (a *jsiiProxy_AiInstructions) validateAddAgentSpecificInstructionsParameter
 	return nil
 }
 
+func (a *jsiiProxy_AiInstructions) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (a *jsiiProxy_AiInstructions) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func validateAiInstructions_BestPracticesParameters(project Project) error {
 	return nil
 }

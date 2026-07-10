@@ -160,6 +160,14 @@ type NodePackage interface {
 	// responsible for informing the user before calling this method.
 	// Experimental.
 	InstallDependencies(_trigger *InstallTrigger)
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -168,6 +176,12 @@ type NodePackage interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Removes the given dependency (package) names from the `allowScripts` allowlist, whether they were added via the `allowScripts` option, a project type default, or a previous call to `addAllowedScripts`.
 	// See: NodePackageOptions.allowScripts
 	//
@@ -729,6 +743,17 @@ func (n *jsiiProxy_NodePackage) InstallDependencies(_trigger *InstallTrigger) {
 	)
 }
 
+func (n *jsiiProxy_NodePackage) PostProjectCreation(initProject *projen.InitProject) {
+	if err := n.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		n,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (n *jsiiProxy_NodePackage) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		n,
@@ -742,6 +767,17 @@ func (n *jsiiProxy_NodePackage) PreSynthesize() {
 		n,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (n *jsiiProxy_NodePackage) ProjectCreation(initProject *projen.InitProject) {
+	if err := n.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		n,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

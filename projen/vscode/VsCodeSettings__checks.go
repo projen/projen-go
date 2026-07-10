@@ -4,6 +4,10 @@ package vscode
 
 import (
 	"fmt"
+
+	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
+
+	"github.com/projen/projen-go/projen"
 )
 
 func (v *jsiiProxy_VsCodeSettings) validateAddSettingParameters(setting *string, value interface{}) error {
@@ -34,6 +38,28 @@ func (v *jsiiProxy_VsCodeSettings) validateAddSettingsParameters(settings *map[s
 		// ok
 	default:
 		return fmt.Errorf("parameter languages must be one of the allowed types: *string, *[]*string; received %#v (a %T)", languages, languages)
+	}
+
+	return nil
+}
+
+func (v *jsiiProxy_VsCodeSettings) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (v *jsiiProxy_VsCodeSettings) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
 	}
 
 	return nil

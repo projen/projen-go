@@ -5,6 +5,8 @@ package projen
 import (
 	"fmt"
 
+	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
+
 	"github.com/aws/constructs-go/constructs/v10"
 )
 
@@ -19,6 +21,28 @@ func (s *jsiiProxy_ScriptRunner) validateAttachParameters(scope constructs.ICons
 func (s *jsiiProxy_ScriptRunner) validateConfigForParameters(entrypoint *string) error {
 	if entrypoint == nil {
 		return fmt.Errorf("parameter entrypoint is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (s *jsiiProxy_ScriptRunner) validatePostProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (s *jsiiProxy_ScriptRunner) validateProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
 	}
 
 	return nil

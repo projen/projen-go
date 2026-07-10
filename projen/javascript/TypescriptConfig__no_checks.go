@@ -16,6 +16,14 @@ func (t *jsiiProxy_TypescriptConfig) validateAddIncludeParameters(pattern *strin
 	return nil
 }
 
+func (t *jsiiProxy_TypescriptConfig) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (t *jsiiProxy_TypescriptConfig) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func (t *jsiiProxy_TypescriptConfig) validateRemoveExcludeParameters(pattern *string) error {
 	return nil
 }

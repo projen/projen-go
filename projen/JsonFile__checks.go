@@ -38,6 +38,28 @@ func (j *jsiiProxy_JsonFile) validateAddToArrayParameters(path *string) error {
 	return nil
 }
 
+func (j *jsiiProxy_JsonFile) validatePostProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (j *jsiiProxy_JsonFile) validateProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (j *jsiiProxy_JsonFile) validateSynthesizeContentParameters(resolver IResolver) error {
 	if resolver == nil {
 		return fmt.Errorf("parameter resolver is required, but nil was provided")

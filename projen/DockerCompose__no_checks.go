@@ -8,6 +8,14 @@ func (d *jsiiProxy_DockerCompose) validateAddServiceParameters(serviceName *stri
 	return nil
 }
 
+func (d *jsiiProxy_DockerCompose) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (d *jsiiProxy_DockerCompose) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func validateDockerCompose_BindVolumeParameters(sourcePath *string, targetPath *string) error {
 	return nil
 }

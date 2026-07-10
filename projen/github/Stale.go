@@ -26,6 +26,14 @@ type Stale interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -34,6 +42,12 @@ type Stale interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -163,6 +177,17 @@ func Stale_IsConstruct(x interface{}) *bool {
 	return returns
 }
 
+func (s *jsiiProxy_Stale) PostProjectCreation(initProject *projen.InitProject) {
+	if err := s.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		s,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (s *jsiiProxy_Stale) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		s,
@@ -176,6 +201,17 @@ func (s *jsiiProxy_Stale) PreSynthesize() {
 		s,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (s *jsiiProxy_Stale) ProjectCreation(initProject *projen.InitProject) {
+	if err := s.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		s,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

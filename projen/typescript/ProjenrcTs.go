@@ -28,6 +28,14 @@ type ProjenrcTs interface {
 	// TypeScript configuration file used to compile projen source files.
 	// Experimental.
 	Tsconfig() javascript.TypescriptConfig
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -36,6 +44,12 @@ type ProjenrcTs interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -207,6 +221,17 @@ func ProjenrcTs_Of(project projen.Project) projen.ProjenrcFile {
 	return returns
 }
 
+func (p *jsiiProxy_ProjenrcTs) PostProjectCreation(initProject *projen.InitProject) {
+	if err := p.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		p,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (p *jsiiProxy_ProjenrcTs) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -220,6 +245,17 @@ func (p *jsiiProxy_ProjenrcTs) PreSynthesize() {
 		p,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (p *jsiiProxy_ProjenrcTs) ProjectCreation(initProject *projen.InitProject) {
+	if err := p.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		p,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

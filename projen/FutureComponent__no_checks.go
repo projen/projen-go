@@ -8,6 +8,14 @@ func (f *jsiiProxy_FutureComponent) validateAttachParameters(scope constructs.IC
 	return nil
 }
 
+func (f *jsiiProxy_FutureComponent) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (f *jsiiProxy_FutureComponent) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func (f *jsiiProxy_FutureComponent) validateTryAttachParameters(scope constructs.IConstruct) error {
 	return nil
 }

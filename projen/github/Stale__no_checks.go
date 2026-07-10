@@ -4,6 +4,14 @@ package github
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (s *jsiiProxy_Stale) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (s *jsiiProxy_Stale) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateStale_IsComponentParameters(x interface{}) error {
 	return nil
 }

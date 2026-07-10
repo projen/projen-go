@@ -6,7 +6,31 @@ import (
 	"fmt"
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
+
+	"github.com/projen/projen-go/projen"
 )
+
+func (d *jsiiProxy_DependencyReview) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (d *jsiiProxy_DependencyReview) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
 
 func validateDependencyReview_IsComponentParameters(x interface{}) error {
 	if x == nil {

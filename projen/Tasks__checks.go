@@ -32,6 +32,28 @@ func (t *jsiiProxy_Tasks) validateAddTaskParameters(name *string, options *TaskO
 	return nil
 }
 
+func (t *jsiiProxy_Tasks) validatePostProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (t *jsiiProxy_Tasks) validateProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (t *jsiiProxy_Tasks) validateRemoveTaskParameters(name *string) error {
 	if name == nil {
 		return fmt.Errorf("parameter name is required, but nil was provided")

@@ -16,6 +16,14 @@ func (p *jsiiProxy_PyprojectTomlFile) validateAddToArrayParameters(path *string)
 	return nil
 }
 
+func (p *jsiiProxy_PyprojectTomlFile) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (p *jsiiProxy_PyprojectTomlFile) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func (p *jsiiProxy_PyprojectTomlFile) validateSynthesizeContentParameters(resolver projen.IResolver) error {
 	return nil
 }

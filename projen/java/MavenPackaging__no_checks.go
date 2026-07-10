@@ -4,6 +4,14 @@ package java
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (m *jsiiProxy_MavenPackaging) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (m *jsiiProxy_MavenPackaging) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateMavenPackaging_IsComponentParameters(x interface{}) error {
 	return nil
 }

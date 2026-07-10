@@ -12,6 +12,14 @@ func (s *jsiiProxy_ScriptRunner) validateConfigForParameters(entrypoint *string)
 	return nil
 }
 
+func (s *jsiiProxy_ScriptRunner) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (s *jsiiProxy_ScriptRunner) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func (s *jsiiProxy_ScriptRunner) validateTryAttachParameters(scope constructs.IConstruct) error {
 	return nil
 }

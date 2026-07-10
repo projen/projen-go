@@ -4,6 +4,14 @@ package github
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (t *jsiiProxy_TaskWorkflowJob) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (t *jsiiProxy_TaskWorkflowJob) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateTaskWorkflowJob_IsComponentParameters(x interface{}) error {
 	return nil
 }

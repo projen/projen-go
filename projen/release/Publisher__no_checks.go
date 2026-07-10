@@ -12,6 +12,14 @@ func (p *jsiiProxy_Publisher) validateAddGitHubPrePublishingStepsParameters(step
 	return nil
 }
 
+func (p *jsiiProxy_Publisher) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (p *jsiiProxy_Publisher) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func (p *jsiiProxy_Publisher) validatePublishToGitParameters(options *GitPublishOptions) error {
 	return nil
 }

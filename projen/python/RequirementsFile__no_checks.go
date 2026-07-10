@@ -4,6 +4,14 @@ package python
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (r *jsiiProxy_RequirementsFile) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (r *jsiiProxy_RequirementsFile) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func (r *jsiiProxy_RequirementsFile) validateSynthesizeContentParameters(resolver projen.IResolver) error {
 	return nil
 }

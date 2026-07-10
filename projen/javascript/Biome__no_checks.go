@@ -16,6 +16,14 @@ func (b *jsiiProxy_Biome) validateExpandLinterRulesParameters(rules *biomeconfig
 	return nil
 }
 
+func (b *jsiiProxy_Biome) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (b *jsiiProxy_Biome) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateBiome_IsComponentParameters(x interface{}) error {
 	return nil
 }

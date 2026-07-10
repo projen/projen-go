@@ -24,6 +24,14 @@ func (n *jsiiProxy_NodePackage) validateInstallDependenciesParameters(_trigger *
 	return nil
 }
 
+func (n *jsiiProxy_NodePackage) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (n *jsiiProxy_NodePackage) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func (n *jsiiProxy_NodePackage) validateRemoveScriptParameters(name *string) error {
 	return nil
 }

@@ -4,6 +4,14 @@ package awscdk
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (a *jsiiProxy_AwsCdkDepsJava) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (a *jsiiProxy_AwsCdkDepsJava) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateAwsCdkDepsJava_IsComponentParameters(x interface{}) error {
 	return nil
 }

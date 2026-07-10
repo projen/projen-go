@@ -12,6 +12,14 @@ func (p *jsiiProxy_Poetry) validateAddDevDependencyParameters(spec *string) erro
 	return nil
 }
 
+func (p *jsiiProxy_Poetry) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (p *jsiiProxy_Poetry) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validatePoetry_IsComponentParameters(x interface{}) error {
 	return nil
 }

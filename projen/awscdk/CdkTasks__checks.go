@@ -5,8 +5,32 @@ package awscdk
 import (
 	"fmt"
 
+	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
+
 	"github.com/projen/projen-go/projen"
 )
+
+func (c *jsiiProxy_CdkTasks) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (c *jsiiProxy_CdkTasks) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
 
 func validateCdkTasks_IsComponentParameters(x interface{}) error {
 	if x == nil {

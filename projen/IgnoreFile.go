@@ -79,6 +79,14 @@ type IgnoreFile interface {
 	// Always include the specified file patterns.
 	// Experimental.
 	Include(patterns ...*string)
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -87,6 +95,12 @@ type IgnoreFile interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *InitProject)
 	// Removes patterns previously added from the ignore file.
 	//
 	// If `addPattern()` is called after this, the pattern will be added again.
@@ -388,6 +402,17 @@ func (i *jsiiProxy_IgnoreFile) Include(patterns ...*string) {
 	)
 }
 
+func (i *jsiiProxy_IgnoreFile) PostProjectCreation(initProject *InitProject) {
+	if err := i.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		i,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (i *jsiiProxy_IgnoreFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		i,
@@ -401,6 +426,17 @@ func (i *jsiiProxy_IgnoreFile) PreSynthesize() {
 		i,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (i *jsiiProxy_IgnoreFile) ProjectCreation(initProject *InitProject) {
+	if err := i.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		i,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

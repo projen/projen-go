@@ -22,6 +22,14 @@ type LambdaExtensionAutoDiscover interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -30,6 +38,12 @@ type LambdaExtensionAutoDiscover interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -169,6 +183,17 @@ func LambdaExtensionAutoDiscover_IsConstruct(x interface{}) *bool {
 	return returns
 }
 
+func (l *jsiiProxy_LambdaExtensionAutoDiscover) PostProjectCreation(initProject *projen.InitProject) {
+	if err := l.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		l,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (l *jsiiProxy_LambdaExtensionAutoDiscover) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -182,6 +207,17 @@ func (l *jsiiProxy_LambdaExtensionAutoDiscover) PreSynthesize() {
 		l,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (l *jsiiProxy_LambdaExtensionAutoDiscover) ProjectCreation(initProject *projen.InitProject) {
+	if err := l.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		l,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

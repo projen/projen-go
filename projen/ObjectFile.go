@@ -156,6 +156,14 @@ type ObjectFile interface {
 	// ```.
 	// Experimental.
 	Patch(patches ...JsonPatch)
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -164,6 +172,12 @@ type ObjectFile interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *InitProject)
 	// Writes the file to the project's output directory.
 	// Experimental.
 	Synthesize()
@@ -444,6 +458,17 @@ func (o *jsiiProxy_ObjectFile) Patch(patches ...JsonPatch) {
 	)
 }
 
+func (o *jsiiProxy_ObjectFile) PostProjectCreation(initProject *InitProject) {
+	if err := o.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		o,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (o *jsiiProxy_ObjectFile) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		o,
@@ -457,6 +482,17 @@ func (o *jsiiProxy_ObjectFile) PreSynthesize() {
 		o,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (o *jsiiProxy_ObjectFile) ProjectCreation(initProject *InitProject) {
+	if err := o.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		o,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

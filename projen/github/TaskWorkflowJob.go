@@ -55,6 +55,14 @@ type TaskWorkflowJob interface {
 	TimeoutMinutes() *float64
 	// Experimental.
 	Tools() *workflows.Tools
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -63,6 +71,12 @@ type TaskWorkflowJob interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -372,6 +386,17 @@ func TaskWorkflowJob_IsConstruct(x interface{}) *bool {
 	return returns
 }
 
+func (t *jsiiProxy_TaskWorkflowJob) PostProjectCreation(initProject *projen.InitProject) {
+	if err := t.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (t *jsiiProxy_TaskWorkflowJob) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		t,
@@ -385,6 +410,17 @@ func (t *jsiiProxy_TaskWorkflowJob) PreSynthesize() {
 		t,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (t *jsiiProxy_TaskWorkflowJob) ProjectCreation(initProject *projen.InitProject) {
+	if err := t.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		t,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

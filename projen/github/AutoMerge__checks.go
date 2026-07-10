@@ -6,11 +6,35 @@ import (
 	"fmt"
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
+
+	"github.com/projen/projen-go/projen"
 )
 
 func (a *jsiiProxy_AutoMerge) validateAddConditionsLaterParameters(later IAddConditionsLater) error {
 	if later == nil {
 		return fmt.Errorf("parameter later is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (a *jsiiProxy_AutoMerge) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (a *jsiiProxy_AutoMerge) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
 	}
 
 	return nil

@@ -10,6 +10,28 @@ import (
 	"github.com/aws/constructs-go/constructs/v10"
 )
 
+func (a *jsiiProxy_AiInstructionsFile) validatePostProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (a *jsiiProxy_AiInstructionsFile) validateProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (a *jsiiProxy_AiInstructionsFile) validateSynthesizeContentParameters(resolver IResolver) error {
 	if resolver == nil {
 		return fmt.Errorf("parameter resolver is required, but nil was provided")

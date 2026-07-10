@@ -4,6 +4,14 @@ package projen
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (s *jsiiProxy_SampleDir) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (s *jsiiProxy_SampleDir) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func validateSampleDir_IsComponentParameters(x interface{}) error {
 	return nil
 }

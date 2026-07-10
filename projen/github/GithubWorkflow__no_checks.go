@@ -40,6 +40,14 @@ func (g *jsiiProxy_GithubWorkflow) validatePatchStepParameters(jobId *string, st
 	return nil
 }
 
+func (g *jsiiProxy_GithubWorkflow) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (g *jsiiProxy_GithubWorkflow) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func (g *jsiiProxy_GithubWorkflow) validateRemoveJobParameters(id *string) error {
 	return nil
 }

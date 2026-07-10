@@ -16,6 +16,28 @@ func (a *jsiiProxy_AiInstructions) validateAddAgentSpecificInstructionsParameter
 	return nil
 }
 
+func (a *jsiiProxy_AiInstructions) validatePostProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (a *jsiiProxy_AiInstructions) validateProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func validateAiInstructions_BestPracticesParameters(project Project) error {
 	if project == nil {
 		return fmt.Errorf("parameter project is required, but nil was provided")

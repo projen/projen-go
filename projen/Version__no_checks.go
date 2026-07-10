@@ -8,6 +8,14 @@ func (v *jsiiProxy_Version) validateEnvForBranchParameters(branchOptions *Versio
 	return nil
 }
 
+func (v *jsiiProxy_Version) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (v *jsiiProxy_Version) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func validateVersion_IsComponentParameters(x interface{}) error {
 	return nil
 }

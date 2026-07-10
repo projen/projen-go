@@ -61,6 +61,28 @@ func (n *jsiiProxy_NodePackage) validateInstallDependenciesParameters(_trigger *
 	return nil
 }
 
+func (n *jsiiProxy_NodePackage) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (n *jsiiProxy_NodePackage) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (n *jsiiProxy_NodePackage) validateRemoveScriptParameters(name *string) error {
 	if name == nil {
 		return fmt.Errorf("parameter name is required, but nil was provided")

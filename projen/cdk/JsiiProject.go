@@ -105,7 +105,7 @@ type JsiiProject interface {
 	// It
 	// includes the original set of options passed to the CLI and also the JSII
 	// FQN of the project type.
-	// Experimental.
+	// Deprecated: use the `initProject` argument passed to `Component.projectCreation()` instead.
 	InitProject() *projen.InitProject
 	// The Jest configuration (if enabled).
 	// Experimental.
@@ -309,8 +309,10 @@ type JsiiProject interface {
 	// 2. Delete all generated files
 	// 3. Synthesize all subprojects
 	// 4. Synthesize all components of this project
-	// 5. Call "postSynthesize()" for all components of this project
-	// 6. Call "this.postSynthesize()"
+	// 5. Call "projectCreation()" for all components, only if the project is being created for the first time
+	// 6. Call "postSynthesize()" for all components of this project
+	// 7. Call "this.postSynthesize()"
+	// 8. Call "postProjectCreation()" for all components, only if the project is being created for the first time
 	// Experimental.
 	Synth()
 	// Returns a string representation of this construct.

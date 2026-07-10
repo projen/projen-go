@@ -16,6 +16,14 @@ func (t *jsiiProxy_TypeScriptRunner) validateCopyParameters(overrides *TypeScrip
 	return nil
 }
 
+func (t *jsiiProxy_TypeScriptRunner) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (t *jsiiProxy_TypeScriptRunner) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func (t *jsiiProxy_TypeScriptRunner) validateTryAttachParameters(scope constructs.IConstruct) error {
 	return nil
 }

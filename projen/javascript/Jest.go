@@ -66,6 +66,14 @@ type Jest interface {
 	// Build standard test match patterns for a directory.
 	// Experimental.
 	DiscoverTestMatchPatternsForDirs(dirs *[]*string, options *JestDiscoverTestMatchPatternsForDirsOptions)
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -74,6 +82,12 @@ type Jest interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -378,6 +392,17 @@ func (j *jsiiProxy_Jest) DiscoverTestMatchPatternsForDirs(dirs *[]*string, optio
 	)
 }
 
+func (j *jsiiProxy_Jest) PostProjectCreation(initProject *projen.InitProject) {
+	if err := j.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		j,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (j *jsiiProxy_Jest) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		j,
@@ -391,6 +416,17 @@ func (j *jsiiProxy_Jest) PreSynthesize() {
 		j,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (j *jsiiProxy_Jest) ProjectCreation(initProject *projen.InitProject) {
+	if err := j.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		j,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

@@ -4,6 +4,14 @@ package vscode
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (v *jsiiProxy_VsCode) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (v *jsiiProxy_VsCode) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateVsCode_IsComponentParameters(x interface{}) error {
 	return nil
 }

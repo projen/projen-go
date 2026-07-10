@@ -69,6 +69,9 @@ type Eslint interface {
 	// Add a glob file pattern which allows importing dev dependencies.
 	// Experimental.
 	AllowDevDeps(pattern *string)
+	// Runs eslint once, right after the project is first created, so the generated code is linted (and auto-fixed) immediately.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -77,6 +80,12 @@ type Eslint interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -390,6 +399,17 @@ func (e *jsiiProxy_Eslint) AllowDevDeps(pattern *string) {
 	)
 }
 
+func (e *jsiiProxy_Eslint) PostProjectCreation(initProject *projen.InitProject) {
+	if err := e.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		e,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (e *jsiiProxy_Eslint) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		e,
@@ -403,6 +423,17 @@ func (e *jsiiProxy_Eslint) PreSynthesize() {
 		e,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (e *jsiiProxy_Eslint) ProjectCreation(initProject *projen.InitProject) {
+	if err := e.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		e,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

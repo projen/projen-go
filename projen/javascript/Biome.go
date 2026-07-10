@@ -54,6 +54,9 @@ type Biome interface {
 	//
 	// Experimental.
 	ExpandLinterRules(rules *biomeconfig.Rules)
+	// Runs biome once, right after the project is first created, so the generated code is linted and formatted immediately.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -62,6 +65,12 @@ type Biome interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -263,6 +272,17 @@ func (b *jsiiProxy_Biome) ExpandLinterRules(rules *biomeconfig.Rules) {
 	)
 }
 
+func (b *jsiiProxy_Biome) PostProjectCreation(initProject *projen.InitProject) {
+	if err := b.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		b,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (b *jsiiProxy_Biome) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		b,
@@ -276,6 +296,17 @@ func (b *jsiiProxy_Biome) PreSynthesize() {
 		b,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (b *jsiiProxy_Biome) ProjectCreation(initProject *projen.InitProject) {
+	if err := b.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		b,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

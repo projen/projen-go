@@ -39,6 +39,14 @@ type CdkConfig interface {
 	// Add includes to `cdk.json`.
 	// Experimental.
 	AddIncludes(patterns ...*string)
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -47,6 +55,12 @@ type CdkConfig interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -252,6 +266,17 @@ func (c *jsiiProxy_CdkConfig) AddIncludes(patterns ...*string) {
 	)
 }
 
+func (c *jsiiProxy_CdkConfig) PostProjectCreation(initProject *projen.InitProject) {
+	if err := c.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		c,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (c *jsiiProxy_CdkConfig) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		c,
@@ -265,6 +290,17 @@ func (c *jsiiProxy_CdkConfig) PreSynthesize() {
 		c,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (c *jsiiProxy_CdkConfig) ProjectCreation(initProject *projen.InitProject) {
+	if err := c.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		c,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

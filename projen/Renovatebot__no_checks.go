@@ -4,6 +4,14 @@ package projen
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (r *jsiiProxy_Renovatebot) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (r *jsiiProxy_Renovatebot) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func validateRenovatebot_IsComponentParameters(x interface{}) error {
 	return nil
 }

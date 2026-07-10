@@ -34,6 +34,28 @@ func (t *jsiiProxy_TypescriptConfig) validateAddIncludeParameters(pattern *strin
 	return nil
 }
 
+func (t *jsiiProxy_TypescriptConfig) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (t *jsiiProxy_TypescriptConfig) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (t *jsiiProxy_TypescriptConfig) validateRemoveExcludeParameters(pattern *string) error {
 	if pattern == nil {
 		return fmt.Errorf("parameter pattern is required, but nil was provided")

@@ -4,6 +4,14 @@ package projen
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (a *jsiiProxy_AiInstructionsFile) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (a *jsiiProxy_AiInstructionsFile) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func (a *jsiiProxy_AiInstructionsFile) validateSynthesizeContentParameters(resolver IResolver) error {
 	return nil
 }

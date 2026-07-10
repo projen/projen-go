@@ -16,6 +16,14 @@ func (j *jsiiProxy_JsonFile) validateAddToArrayParameters(path *string) error {
 	return nil
 }
 
+func (j *jsiiProxy_JsonFile) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (j *jsiiProxy_JsonFile) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func (j *jsiiProxy_JsonFile) validateSynthesizeContentParameters(resolver IResolver) error {
 	return nil
 }

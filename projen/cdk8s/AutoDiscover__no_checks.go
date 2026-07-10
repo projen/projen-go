@@ -4,6 +4,14 @@ package cdk8s
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (a *jsiiProxy_AutoDiscover) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (a *jsiiProxy_AutoDiscover) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateAutoDiscover_IsComponentParameters(x interface{}) error {
 	return nil
 }

@@ -19,6 +19,14 @@ type Venv interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -27,6 +35,12 @@ type Venv interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Initializes the virtual environment if it doesn't exist (called during post-synthesis).
 	// Experimental.
 	SetupEnvironment()
@@ -160,6 +174,17 @@ func Venv_IsConstruct(x interface{}) *bool {
 	return returns
 }
 
+func (v *jsiiProxy_Venv) PostProjectCreation(initProject *projen.InitProject) {
+	if err := v.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		v,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (v *jsiiProxy_Venv) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		v,
@@ -173,6 +198,17 @@ func (v *jsiiProxy_Venv) PreSynthesize() {
 		v,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (v *jsiiProxy_Venv) ProjectCreation(initProject *projen.InitProject) {
+	if err := v.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		v,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

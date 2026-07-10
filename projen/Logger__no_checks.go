@@ -8,6 +8,14 @@ func (l *jsiiProxy_Logger) validateLogParameters(level LogLevel) error {
 	return nil
 }
 
+func (l *jsiiProxy_Logger) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (l *jsiiProxy_Logger) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func validateLogger_IsComponentParameters(x interface{}) error {
 	return nil
 }

@@ -28,6 +28,14 @@ func (c *jsiiProxy_CiConfiguration) validateAddServicesParameters(services *[]*S
 	return nil
 }
 
+func (c *jsiiProxy_CiConfiguration) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (c *jsiiProxy_CiConfiguration) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateCiConfiguration_IsComponentParameters(x interface{}) error {
 	return nil
 }

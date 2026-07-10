@@ -4,6 +4,14 @@ package cdk
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (i *jsiiProxy_IntegrationTestAutoDiscoverBase) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (i *jsiiProxy_IntegrationTestAutoDiscoverBase) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateIntegrationTestAutoDiscoverBase_IsComponentParameters(x interface{}) error {
 	return nil
 }

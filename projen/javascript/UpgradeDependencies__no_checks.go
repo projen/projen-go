@@ -8,6 +8,14 @@ func (u *jsiiProxy_UpgradeDependencies) validateAddPostBuildStepsParameters(step
 	return nil
 }
 
+func (u *jsiiProxy_UpgradeDependencies) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (u *jsiiProxy_UpgradeDependencies) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateUpgradeDependencies_IsComponentParameters(x interface{}) error {
 	return nil
 }

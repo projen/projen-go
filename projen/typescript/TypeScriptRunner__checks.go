@@ -8,6 +8,7 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 
 	"github.com/aws/constructs-go/constructs/v10"
+	"github.com/projen/projen-go/projen"
 )
 
 func (t *jsiiProxy_TypeScriptRunner) validateAttachParameters(scope constructs.IConstruct) error {
@@ -28,6 +29,28 @@ func (t *jsiiProxy_TypeScriptRunner) validateConfigForParameters(entrypoint *str
 
 func (t *jsiiProxy_TypeScriptRunner) validateCopyParameters(overrides *TypeScriptRunnerOptions) error {
 	if err := _jsii_.ValidateStruct(overrides, func() string { return "parameter overrides" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (t *jsiiProxy_TypeScriptRunner) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (t *jsiiProxy_TypeScriptRunner) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
 		return err
 	}
 

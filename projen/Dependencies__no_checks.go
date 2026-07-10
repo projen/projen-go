@@ -16,6 +16,14 @@ func (d *jsiiProxy_Dependencies) validateIsDependencySatisfiedParameters(name *s
 	return nil
 }
 
+func (d *jsiiProxy_Dependencies) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (d *jsiiProxy_Dependencies) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func (d *jsiiProxy_Dependencies) validateRemoveDependencyParameters(name *string) error {
 	return nil
 }

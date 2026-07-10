@@ -4,6 +4,14 @@ package javascript
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (p *jsiiProxy_PnpmWorkspaceYaml) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (p *jsiiProxy_PnpmWorkspaceYaml) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validatePnpmWorkspaceYaml_IsComponentParameters(x interface{}) error {
 	return nil
 }

@@ -16,6 +16,14 @@ func (t *jsiiProxy_TomlFile) validateAddToArrayParameters(path *string) error {
 	return nil
 }
 
+func (t *jsiiProxy_TomlFile) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (t *jsiiProxy_TomlFile) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func (t *jsiiProxy_TomlFile) validateSynthesizeContentParameters(resolver IResolver) error {
 	return nil
 }

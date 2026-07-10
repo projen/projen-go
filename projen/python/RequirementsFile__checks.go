@@ -10,6 +10,28 @@ import (
 	"github.com/projen/projen-go/projen"
 )
 
+func (r *jsiiProxy_RequirementsFile) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (r *jsiiProxy_RequirementsFile) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (r *jsiiProxy_RequirementsFile) validateSynthesizeContentParameters(resolver projen.IResolver) error {
 	if resolver == nil {
 		return fmt.Errorf("parameter resolver is required, but nil was provided")

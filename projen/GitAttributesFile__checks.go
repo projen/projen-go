@@ -26,6 +26,28 @@ func (g *jsiiProxy_GitAttributesFile) validateAddLfsPatternParameters(glob *stri
 	return nil
 }
 
+func (g *jsiiProxy_GitAttributesFile) validatePostProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (g *jsiiProxy_GitAttributesFile) validateProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (g *jsiiProxy_GitAttributesFile) validateRemoveAttributesParameters(glob *string) error {
 	if glob == nil {
 		return fmt.Errorf("parameter glob is required, but nil was provided")

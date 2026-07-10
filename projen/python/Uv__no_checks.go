@@ -12,6 +12,14 @@ func (u *jsiiProxy_Uv) validateAddDevDependencyParameters(spec *string) error {
 	return nil
 }
 
+func (u *jsiiProxy_Uv) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (u *jsiiProxy_Uv) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateUv_IsComponentParameters(x interface{}) error {
 	return nil
 }

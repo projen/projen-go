@@ -4,7 +4,31 @@ package projen
 
 import (
 	"fmt"
+
+	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 )
+
+func (p *jsiiProxy_ProjectTree) validatePostProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (p *jsiiProxy_ProjectTree) validateProjectCreationParameters(initProject *InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
 
 func validateProjectTree_IsComponentParameters(x interface{}) error {
 	if x == nil {

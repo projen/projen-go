@@ -42,6 +42,14 @@ type Poetry interface {
 	// Installs dependencies (called during post-synthesis).
 	// Experimental.
 	InstallDependencies()
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -50,6 +58,12 @@ type Poetry interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Initializes the virtual environment if it doesn't exist (called during post-synthesis).
 	// Experimental.
 	SetupEnvironment()
@@ -255,6 +269,17 @@ func (p *jsiiProxy_Poetry) InstallDependencies() {
 	)
 }
 
+func (p *jsiiProxy_Poetry) PostProjectCreation(initProject *projen.InitProject) {
+	if err := p.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		p,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (p *jsiiProxy_Poetry) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -268,6 +293,17 @@ func (p *jsiiProxy_Poetry) PreSynthesize() {
 		p,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (p *jsiiProxy_Poetry) ProjectCreation(initProject *projen.InitProject) {
+	if err := p.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		p,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

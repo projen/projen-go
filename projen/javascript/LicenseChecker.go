@@ -20,6 +20,14 @@ type LicenseChecker interface {
 	Project() projen.Project
 	// Experimental.
 	Task() projen.Task
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -28,6 +36,12 @@ type LicenseChecker interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -167,6 +181,17 @@ func LicenseChecker_IsConstruct(x interface{}) *bool {
 	return returns
 }
 
+func (l *jsiiProxy_LicenseChecker) PostProjectCreation(initProject *projen.InitProject) {
+	if err := l.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		l,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (l *jsiiProxy_LicenseChecker) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		l,
@@ -180,6 +205,17 @@ func (l *jsiiProxy_LicenseChecker) PreSynthesize() {
 		l,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (l *jsiiProxy_LicenseChecker) ProjectCreation(initProject *projen.InitProject) {
+	if err := l.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		l,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

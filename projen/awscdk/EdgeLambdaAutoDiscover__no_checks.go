@@ -4,6 +4,14 @@ package awscdk
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (e *jsiiProxy_EdgeLambdaAutoDiscover) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (e *jsiiProxy_EdgeLambdaAutoDiscover) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateEdgeLambdaAutoDiscover_IsComponentParameters(x interface{}) error {
 	return nil
 }

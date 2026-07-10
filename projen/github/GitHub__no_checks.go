@@ -12,6 +12,14 @@ func (g *jsiiProxy_GitHub) validateAddWorkflowParameters(name *string) error {
 	return nil
 }
 
+func (g *jsiiProxy_GitHub) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (g *jsiiProxy_GitHub) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func (g *jsiiProxy_GitHub) validateTryFindWorkflowParameters(name *string) error {
 	return nil
 }

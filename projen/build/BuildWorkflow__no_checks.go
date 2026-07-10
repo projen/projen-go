@@ -20,6 +20,14 @@ func (b *jsiiProxy_BuildWorkflow) validateAddPostBuildStepsParameters(steps *[]*
 	return nil
 }
 
+func (b *jsiiProxy_BuildWorkflow) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (b *jsiiProxy_BuildWorkflow) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateBuildWorkflow_IsComponentParameters(x interface{}) error {
 	return nil
 }

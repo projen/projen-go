@@ -128,11 +128,7 @@ type GitHubProject interface {
 	// It
 	// includes the original set of options passed to the CLI and also the JSII
 	// FQN of the project type.
-	// Deprecated: This is a *temporary* class. At the moment, our base project
-	// types such as `NodeProject` and `JavaProject` are derived from this, but we
-	// want to be able to use these project types outside of GitHub as well. One of
-	// the next steps to address this is to abstract workflows so that different
-	// "engines" can be used to implement our CI/CD solutions.
+	// Deprecated: use the `initProject` argument passed to `Component.projectCreation()` instead.
 	InitProject() *projen.InitProject
 	// Logging utilities.
 	// Deprecated: This is a *temporary* class. At the moment, our base project
@@ -329,8 +325,10 @@ type GitHubProject interface {
 	// 2. Delete all generated files
 	// 3. Synthesize all subprojects
 	// 4. Synthesize all components of this project
-	// 5. Call "postSynthesize()" for all components of this project
-	// 6. Call "this.postSynthesize()"
+	// 5. Call "projectCreation()" for all components, only if the project is being created for the first time
+	// 6. Call "postSynthesize()" for all components of this project
+	// 7. Call "this.postSynthesize()"
+	// 8. Call "postProjectCreation()" for all components, only if the project is being created for the first time
 	// Deprecated: This is a *temporary* class. At the moment, our base project
 	// types such as `NodeProject` and `JavaProject` are derived from this, but we
 	// want to be able to use these project types outside of GitHub as well. One of

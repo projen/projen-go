@@ -111,6 +111,14 @@ type NestedConfiguration interface {
 	// Add stages to the CI configuration if not already present.
 	// Experimental.
 	AddStages(stages ...*string)
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -119,6 +127,12 @@ type NestedConfiguration interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -527,6 +541,17 @@ func (n *jsiiProxy_NestedConfiguration) AddStages(stages ...*string) {
 	)
 }
 
+func (n *jsiiProxy_NestedConfiguration) PostProjectCreation(initProject *projen.InitProject) {
+	if err := n.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		n,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (n *jsiiProxy_NestedConfiguration) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		n,
@@ -540,6 +565,17 @@ func (n *jsiiProxy_NestedConfiguration) PreSynthesize() {
 		n,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (n *jsiiProxy_NestedConfiguration) ProjectCreation(initProject *projen.InitProject) {
+	if err := n.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		n,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

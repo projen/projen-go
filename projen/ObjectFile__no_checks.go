@@ -16,6 +16,14 @@ func (o *jsiiProxy_ObjectFile) validateAddToArrayParameters(path *string) error 
 	return nil
 }
 
+func (o *jsiiProxy_ObjectFile) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (o *jsiiProxy_ObjectFile) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func (o *jsiiProxy_ObjectFile) validateSynthesizeContentParameters(resolver IResolver) error {
 	return nil
 }

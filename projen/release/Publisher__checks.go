@@ -31,6 +31,28 @@ func (p *jsiiProxy_Publisher) validateAddGitHubPrePublishingStepsParameters(step
 	return nil
 }
 
+func (p *jsiiProxy_Publisher) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (p *jsiiProxy_Publisher) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (p *jsiiProxy_Publisher) validatePublishToGitParameters(options *GitPublishOptions) error {
 	if options == nil {
 		return fmt.Errorf("parameter options is required, but nil was provided")

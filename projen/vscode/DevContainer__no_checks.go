@@ -12,6 +12,14 @@ func (d *jsiiProxy_DevContainer) validateAddFeaturesParameters(features *[]*DevC
 	return nil
 }
 
+func (d *jsiiProxy_DevContainer) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (d *jsiiProxy_DevContainer) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateDevContainer_IsComponentParameters(x interface{}) error {
 	return nil
 }

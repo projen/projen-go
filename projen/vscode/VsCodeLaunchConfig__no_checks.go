@@ -20,6 +20,14 @@ func (v *jsiiProxy_VsCodeLaunchConfig) validateAddPromptStringInputParameters(cf
 	return nil
 }
 
+func (v *jsiiProxy_VsCodeLaunchConfig) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (v *jsiiProxy_VsCodeLaunchConfig) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateVsCodeLaunchConfig_IsComponentParameters(x interface{}) error {
 	return nil
 }

@@ -25,6 +25,14 @@ type ProjectTree interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() Project
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -33,6 +41,12 @@ type ProjectTree interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -183,6 +197,17 @@ func ProjectTree_IsConstruct(x interface{}) *bool {
 	return returns
 }
 
+func (p *jsiiProxy_ProjectTree) PostProjectCreation(initProject *InitProject) {
+	if err := p.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		p,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (p *jsiiProxy_ProjectTree) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		p,
@@ -196,6 +221,17 @@ func (p *jsiiProxy_ProjectTree) PreSynthesize() {
 		p,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (p *jsiiProxy_ProjectTree) ProjectCreation(initProject *InitProject) {
+	if err := p.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		p,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

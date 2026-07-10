@@ -8,6 +8,14 @@ func (p *jsiiProxy_PullRequestTemplate) validateAddLineParameters(line *string) 
 	return nil
 }
 
+func (p *jsiiProxy_PullRequestTemplate) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (p *jsiiProxy_PullRequestTemplate) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func (p *jsiiProxy_PullRequestTemplate) validateSynthesizeContentParameters(resolver projen.IResolver) error {
 	return nil
 }

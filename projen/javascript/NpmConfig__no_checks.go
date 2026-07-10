@@ -12,6 +12,14 @@ func (n *jsiiProxy_NpmConfig) validateAddRegistryParameters(url *string) error {
 	return nil
 }
 
+func (n *jsiiProxy_NpmConfig) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (n *jsiiProxy_NpmConfig) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateNpmConfig_IsComponentParameters(x interface{}) error {
 	return nil
 }

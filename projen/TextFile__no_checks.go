@@ -8,6 +8,14 @@ func (t *jsiiProxy_TextFile) validateAddLineParameters(line *string) error {
 	return nil
 }
 
+func (t *jsiiProxy_TextFile) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (t *jsiiProxy_TextFile) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func (t *jsiiProxy_TextFile) validateSynthesizeContentParameters(resolver IResolver) error {
 	return nil
 }

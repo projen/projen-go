@@ -4,6 +4,14 @@ package java
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (j *jsiiProxy_Junit) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (j *jsiiProxy_Junit) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateJunit_IsComponentParameters(x interface{}) error {
 	return nil
 }

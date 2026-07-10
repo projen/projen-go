@@ -35,6 +35,14 @@ type Bundler interface {
 	// Adds a task to the project which bundles a specific entrypoint and all of its dependencies into a single javascript output file.
 	// Experimental.
 	AddBundle(entrypoint *string, options *AddBundleOptions) *Bundle
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -43,6 +51,12 @@ type Bundler interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -242,6 +256,17 @@ func (b *jsiiProxy_Bundler) AddBundle(entrypoint *string, options *AddBundleOpti
 	return returns
 }
 
+func (b *jsiiProxy_Bundler) PostProjectCreation(initProject *projen.InitProject) {
+	if err := b.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		b,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (b *jsiiProxy_Bundler) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		b,
@@ -255,6 +280,17 @@ func (b *jsiiProxy_Bundler) PreSynthesize() {
 		b,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (b *jsiiProxy_Bundler) ProjectCreation(initProject *projen.InitProject) {
+	if err := b.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		b,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

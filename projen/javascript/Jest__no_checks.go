@@ -40,6 +40,14 @@ func (j *jsiiProxy_Jest) validateDiscoverTestMatchPatternsForDirsParameters(dirs
 	return nil
 }
 
+func (j *jsiiProxy_Jest) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
+func (j *jsiiProxy_Jest) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	return nil
+}
+
 func validateJest_IsComponentParameters(x interface{}) error {
 	return nil
 }

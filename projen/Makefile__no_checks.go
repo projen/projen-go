@@ -16,6 +16,14 @@ func (m *jsiiProxy_Makefile) validateAddRulesParameters(rules *[]*Rule) error {
 	return nil
 }
 
+func (m *jsiiProxy_Makefile) validatePostProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
+func (m *jsiiProxy_Makefile) validateProjectCreationParameters(initProject *InitProject) error {
+	return nil
+}
+
 func (m *jsiiProxy_Makefile) validateSynthesizeContentParameters(resolver IResolver) error {
 	return nil
 }

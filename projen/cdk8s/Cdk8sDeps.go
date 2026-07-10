@@ -30,6 +30,14 @@ type Cdk8sDeps interface {
 	// Return a configuration object with information about package naming in various languages.
 	// Experimental.
 	PackageNames() *Cdk8sPackageNames
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -38,6 +46,12 @@ type Cdk8sDeps interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -192,6 +206,17 @@ func (c *jsiiProxy_Cdk8sDeps) PackageNames() *Cdk8sPackageNames {
 	return returns
 }
 
+func (c *jsiiProxy_Cdk8sDeps) PostProjectCreation(initProject *projen.InitProject) {
+	if err := c.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		c,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (c *jsiiProxy_Cdk8sDeps) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		c,
@@ -205,6 +230,17 @@ func (c *jsiiProxy_Cdk8sDeps) PreSynthesize() {
 		c,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (c *jsiiProxy_Cdk8sDeps) ProjectCreation(initProject *projen.InitProject) {
+	if err := c.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		c,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

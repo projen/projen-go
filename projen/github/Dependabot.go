@@ -36,6 +36,14 @@ type Dependabot interface {
 	// Ignores a dependency from automatic updates.
 	// Experimental.
 	AddIgnore(dependencyName *string, versions ...*string)
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -44,6 +52,12 @@ type Dependabot interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -220,6 +234,17 @@ func (d *jsiiProxy_Dependabot) AddIgnore(dependencyName *string, versions ...*st
 	)
 }
 
+func (d *jsiiProxy_Dependabot) PostProjectCreation(initProject *projen.InitProject) {
+	if err := d.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		d,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (d *jsiiProxy_Dependabot) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		d,
@@ -233,6 +258,17 @@ func (d *jsiiProxy_Dependabot) PreSynthesize() {
 		d,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (d *jsiiProxy_Dependabot) ProjectCreation(initProject *projen.InitProject) {
+	if err := d.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		d,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

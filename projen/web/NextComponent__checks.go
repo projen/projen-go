@@ -7,8 +7,31 @@ import (
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 
+	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/javascript"
 )
+
+func (n *jsiiProxy_NextComponent) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (n *jsiiProxy_NextComponent) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
 
 func validateNextComponent_IsComponentParameters(x interface{}) error {
 	if x == nil {

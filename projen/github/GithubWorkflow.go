@@ -111,6 +111,14 @@ type GithubWorkflow interface {
 	//
 	// Experimental.
 	PatchStep(jobId *string, stepId *string, patch *workflows.JobStep)
+	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// It is also skipped when post-synthesis steps are disabled, e.g. `--no-post` or `PROJEN_DISABLE_POST`.
+	// Use it for one-off setup that can be turned off by the user, like running a task to give the user immediate
+	// feedback on their new project. Order across components is not guaranteed.
+	// Experimental.
+	PostProjectCreation(initProject *projen.InitProject)
 	// Called after synthesis.
 	//
 	// Order is *not* guaranteed.
@@ -119,6 +127,12 @@ type GithubWorkflow interface {
 	// Called before synthesis.
 	// Experimental.
 	PreSynthesize()
+	// Called once, right after `synthesize()`, only when the project is created for the first time.
+	//
+	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
+	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
+	// Experimental.
+	ProjectCreation(initProject *projen.InitProject)
 	// Removes a single job to the workflow.
 	// Experimental.
 	RemoveJob(id *string)
@@ -450,6 +464,17 @@ func (g *jsiiProxy_GithubWorkflow) PatchStep(jobId *string, stepId *string, patc
 	)
 }
 
+func (g *jsiiProxy_GithubWorkflow) PostProjectCreation(initProject *projen.InitProject) {
+	if err := g.validatePostProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		g,
+		"postProjectCreation",
+		[]interface{}{initProject},
+	)
+}
+
 func (g *jsiiProxy_GithubWorkflow) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		g,
@@ -463,6 +488,17 @@ func (g *jsiiProxy_GithubWorkflow) PreSynthesize() {
 		g,
 		"preSynthesize",
 		nil, // no parameters
+	)
+}
+
+func (g *jsiiProxy_GithubWorkflow) ProjectCreation(initProject *projen.InitProject) {
+	if err := g.validateProjectCreationParameters(initProject); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		g,
+		"projectCreation",
+		[]interface{}{initProject},
 	)
 }
 

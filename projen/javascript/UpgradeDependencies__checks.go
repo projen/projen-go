@@ -7,6 +7,7 @@ import (
 
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 
+	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github/workflows"
 )
 
@@ -15,6 +16,28 @@ func (u *jsiiProxy_UpgradeDependencies) validateAddPostBuildStepsParameters(step
 		if err := _jsii_.ValidateStruct(v, func() string { return fmt.Sprintf("parameter steps[%#v]", idx_b7595e) }); err != nil {
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (u *jsiiProxy_UpgradeDependencies) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (u *jsiiProxy_UpgradeDependencies) validateProjectCreationParameters(initProject *projen.InitProject) error {
+	if initProject == nil {
+		return fmt.Errorf("parameter initProject is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(initProject, func() string { return "parameter initProject" }); err != nil {
+		return err
 	}
 
 	return nil
