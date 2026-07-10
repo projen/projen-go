@@ -26,6 +26,8 @@ type UvConfiguration struct {
 	// bypasses SSL verification and could expose you to MITM attacks.
 	// Experimental.
 	AllowInsecureHost *[]*string `field:"optional" json:"allowInsecureHost" yaml:"allowInsecureHost"`
+	// Experimental.
+	Audit *AuditOptions `field:"optional" json:"audit" yaml:"audit"`
 	// Configuration for the uv build backend.
 	//
 	// Note that those settings only apply when using the `uv_build` backend, other build backends
@@ -174,18 +176,34 @@ type UvConfiguration struct {
 	// Package names to exclude, e.g., `werkzeug`, `numpy`.
 	// Experimental.
 	ExcludeDependencies *[]*string `field:"optional" json:"excludeDependencies" yaml:"excludeDependencies"`
-	// Limit candidate packages to those that were uploaded prior to a given point in time.
+	// Limit candidate packages to those that were uploaded prior to the given date.
 	//
-	// Accepts a superset of [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339.html) (e.g.,
-	// `2006-12-02T02:07:43Z`). A full timestamp is required to ensure that the resolver will
-	// behave consistently across timezones.
+	// The date is compared against the upload time of each individual distribution artifact
+	// (i.e., when each file was uploaded to the package index), not the release date of the
+	// package version.
+	//
+	// Accepts RFC 3339 timestamps (e.g., `2006-12-02T02:07:43Z`), a "friendly" duration (e.g.,
+	// `24 hours`, `1 week`, `30 days`), or an ISO 8601 duration (e.g., `PT24H`, `P7D`, `P30D`).
+	//
+	// Durations do not respect semantics of the local time zone and are always resolved to a fixed
+	// number of seconds assuming that a day is 24 hours (e.g., DST transitions are ignored).
+	// Calendar units such as months and years are not allowed.
 	// Experimental.
 	ExcludeNewer *string `field:"optional" json:"excludeNewer" yaml:"excludeNewer"`
 	// Limit candidate packages for specific packages to those that were uploaded prior to the given date.
 	//
-	// Accepts package-date pairs in a dictionary format.
+	// Accepts a dictionary format of `PACKAGE = "DATE"` pairs, where `DATE` is an RFC 3339
+	// timestamp (e.g., `2006-12-02T02:07:43Z`), a "friendly" duration (e.g., `24 hours`, `1 week`,
+	// `30 days`), or a ISO 8601 duration (e.g., `PT24H`, `P7D`, `P30D`).
+	//
+	// Durations do not respect semantics of the local time zone and are always resolved to a fixed
+	// number of seconds assuming that a day is 24 hours (e.g., DST transitions are ignored).
+	// Calendar units such as months and years are not allowed.
+	//
+	// Set a package to `false` to exempt it from the global [`exclude-newer`](#exclude-newer)
+	// constraint entirely.
 	// Experimental.
-	ExcludeNewerPackage *map[string]*string `field:"optional" json:"excludeNewerPackage" yaml:"excludeNewerPackage"`
+	ExcludeNewerPackage *map[string]ExcludeNewerOverride `field:"optional" json:"excludeNewerPackage" yaml:"excludeNewerPackage"`
 	// Additional build dependencies for packages.
 	//
 	// This allows extending the PEP 517 build environment for the project's dependencies with
@@ -234,6 +252,12 @@ type UvConfiguration struct {
 	// versions or platforms.
 	// Experimental.
 	ForkStrategy ForkStrategy `field:"optional" json:"forkStrategy" yaml:"forkStrategy"`
+	// The URL of the HTTP proxy to use.
+	// Experimental.
+	HttpProxy *string `field:"optional" json:"httpProxy" yaml:"httpProxy"`
+	// The URL of the HTTPS proxy to use.
+	// Experimental.
+	HttpsProxy *string `field:"optional" json:"httpsProxy" yaml:"httpsProxy"`
 	// The indexes to use when resolving dependencies.
 	//
 	// Accepts either a repository compliant with [PEP 503](https://peps.python.org/pep-0503/)
@@ -251,7 +275,7 @@ type UvConfiguration struct {
 	// ```toml
 	// [[tool.uv.index]]
 	// name = "pytorch"
-	// url = "https://download.pytorch.org/whl/cu121"
+	// url = "https://download.pytorch.org/whl/cu130"
 	// explicit = true
 	//
 	// [tool.uv.sources]
@@ -290,14 +314,14 @@ type UvConfiguration struct {
 	KeyringProvider KeyringProviderType `field:"optional" json:"keyringProvider" yaml:"keyringProvider"`
 	// The method to use when installing packages from the global cache.
 	//
-	// Defaults to `clone` (also known as Copy-on-Write) on macOS, and `hardlink` on Linux and
+	// Defaults to `clone` (also known as Copy-on-Write) on macOS and Linux, and `hardlink` on
 	// Windows.
 	//
 	// WARNING: The use of symlink link mode is discouraged, as they create tight coupling between
 	// the cache and the target environment. For example, clearing the cache (`uv cache clean`)
 	// will break all installed packages by way of removing the underlying source files. Use
 	// symlinks with caution.
-	// Default: clone` (also known as Copy-on-Write) on macOS, and `hardlink` on Linux and.
+	// Default: clone` (also known as Copy-on-Write) on macOS and Linux, and `hardlink` on.
 	//
 	// Experimental.
 	LinkMode LinkMode `field:"optional" json:"linkMode" yaml:"linkMode"`
@@ -309,13 +333,10 @@ type UvConfiguration struct {
 	Managed *bool `field:"optional" json:"managed" yaml:"managed"`
 	// Whether to load TLS certificates from the platform's native certificate store.
 	//
-	// By default, uv loads certificates from the bundled `webpki-roots` crate. The
-	// `webpki-roots` are a reliable set of trust roots from Mozilla, and including them in uv
-	// improves portability and performance (especially on macOS).
+	// By default, uv uses bundled Mozilla root certificates. When enabled, this loads
+	// certificates from the platform's native certificate store instead.
 	//
-	// However, in some cases, you may want to use the platform's native certificate store,
-	// especially if you're relying on a corporate trust root (e.g., for a mandatory proxy) that's
-	// included in your system's certificate store.
+	// (Deprecated: use `system-certs` instead.)
 	// Experimental.
 	NativeTls *bool `field:"optional" json:"nativeTls" yaml:"nativeTls"`
 	// Don't install pre-built wheels.
@@ -355,9 +376,15 @@ type UvConfiguration struct {
 	// Ignore all registry indexes (e.g., PyPI), instead relying on direct URL dependencies and those provided via `--find-links`.
 	// Experimental.
 	NoIndex *bool `field:"optional" json:"noIndex" yaml:"noIndex"`
+	// A list of hosts to exclude from proxying.
+	// Experimental.
+	NoProxy *[]*string `field:"optional" json:"noProxy" yaml:"noProxy"`
 	// Ignore the `tool.uv.sources` table when resolving dependencies. Used to lock against the standards-compliant, publishable package metadata, as opposed to using any local or Git sources.
 	// Experimental.
 	NoSources *bool `field:"optional" json:"noSources" yaml:"noSources"`
+	// Ignore `tool.uv.sources` for the specified packages.
+	// Experimental.
+	NoSourcesPackage *[]*string `field:"optional" json:"noSourcesPackage" yaml:"noSourcesPackage"`
 	// Disable network access, relying only on locally cached data and locally available files.
 	// Experimental.
 	Offline *bool `field:"optional" json:"offline" yaml:"offline"`
@@ -404,8 +431,6 @@ type UvConfiguration struct {
 	// Experimental.
 	PythonDownloads PythonDownloads `field:"optional" json:"pythonDownloads" yaml:"pythonDownloads"`
 	// URL pointing to JSON of custom Python installations.
-	//
-	// Note that currently, only local paths are supported.
 	// Experimental.
 	PythonDownloadsJsonUrl *string `field:"optional" json:"pythonDownloadsJsonUrl" yaml:"pythonDownloadsJsonUrl"`
 	// Mirror URL for downloading managed Python installations.
@@ -456,6 +481,28 @@ type UvConfiguration struct {
 	// See [Dependencies](https://docs.astral.sh/uv/concepts/projects/dependencies/) for more.
 	// Experimental.
 	Sources *map[string]*[]interface{} `field:"optional" json:"sources" yaml:"sources"`
+	// Whether to load TLS certificates from the platform's native certificate store.
+	//
+	// By default, uv uses bundled Mozilla root certificates. When enabled, this loads
+	// certificates from the platform's native certificate store instead.
+	// Experimental.
+	SystemCerts *bool `field:"optional" json:"systemCerts" yaml:"systemCerts"`
+	// The backend to use when fetching packages in the PyTorch ecosystem.
+	//
+	// When set, uv will ignore the configured index URLs for packages in the PyTorch ecosystem,
+	// and will instead use the defined backend.
+	//
+	// For example, when set to `cpu`, uv will use the CPU-only PyTorch index; when set to `cu126`,
+	// uv will use the PyTorch index for CUDA 12.6.
+	//
+	// The `auto` mode will attempt to detect the appropriate PyTorch index based on the currently
+	// installed CUDA drivers.
+	//
+	// This setting is only respected by `uv pip` commands.
+	//
+	// This option is in preview and may change in any future release.
+	// Experimental.
+	TorchBackend TorchMode `field:"optional" json:"torchBackend" yaml:"torchBackend"`
 	// Configure trusted publishing.
 	//
 	// By default, uv checks for trusted publishing when running in a supported environment, but

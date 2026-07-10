@@ -109,6 +109,9 @@ type BuildBackendSettings struct {
 	// Experimental.
 	Namespace *bool `field:"optional" json:"namespace" yaml:"namespace"`
 	// Glob expressions which files and directories to exclude from the source distribution.
+	//
+	// These exclusions are also applied to wheels to ensure that a wheel built from a source tree
+	// is consistent with a wheel built from a source distribution.
 	// Experimental.
 	SourceExclude *[]*string `field:"optional" json:"sourceExclude" yaml:"sourceExclude"`
 	// Glob expressions which files and directories to additionally include in the source distribution.

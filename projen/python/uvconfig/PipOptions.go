@@ -87,16 +87,32 @@ type PipOptions struct {
 	EmitMarkerExpression *bool `field:"optional" json:"emitMarkerExpression" yaml:"emitMarkerExpression"`
 	// Limit candidate packages to those that were uploaded prior to a given point in time.
 	//
-	// Accepts a superset of [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339.html) (e.g.,
-	// `2006-12-02T02:07:43Z`). A full timestamp is required to ensure that the resolver will
-	// behave consistently across timezones.
+	// The date is compared against the upload time of each individual distribution artifact
+	// (i.e., when each file was uploaded to the package index), not the release date of the
+	// package version.
+	//
+	// Accepts RFC 3339 timestamps (e.g., `2006-12-02T02:07:43Z`), a "friendly" duration (e.g.,
+	// `24 hours`, `1 week`, `30 days`), or an ISO 8601 duration (e.g., `PT24H`, `P7D`, `P30D`).
+	//
+	// Durations do not respect semantics of the local time zone and are always resolved to a fixed
+	// number of seconds assuming that a day is 24 hours (e.g., DST transitions are ignored).
+	// Calendar units such as months and years are not allowed.
 	// Experimental.
 	ExcludeNewer *string `field:"optional" json:"excludeNewer" yaml:"excludeNewer"`
 	// Limit candidate packages for specific packages to those that were uploaded prior to the given date.
 	//
-	// Accepts package-date pairs in a dictionary format.
+	// Accepts a dictionary format of `PACKAGE = "DATE"` pairs, where `DATE` is an RFC 3339
+	// timestamp (e.g., `2006-12-02T02:07:43Z`), a "friendly" duration (e.g., `24 hours`, `1 week`,
+	// `30 days`), or a ISO 8601 duration (e.g., `PT24H`, `P7D`, `P30D`).
+	//
+	// Durations do not respect semantics of the local time zone and are always resolved to a fixed
+	// number of seconds assuming that a day is 24 hours (e.g., DST transitions are ignored).
+	// Calendar units such as months and years are not allowed.
+	//
+	// Set a package to `false` to exempt it from the global [`exclude-newer`](#exclude-newer)
+	// constraint entirely.
 	// Experimental.
-	ExcludeNewerPackage *map[string]*string `field:"optional" json:"excludeNewerPackage" yaml:"excludeNewerPackage"`
+	ExcludeNewerPackage *map[string]ExcludeNewerOverride `field:"optional" json:"excludeNewerPackage" yaml:"excludeNewerPackage"`
 	// Include optional dependencies from the specified extra; may be provided more than once.
 	//
 	// Only applies to `pyproject.toml`, `setup.py`, and `setup.cfg` sources.
@@ -178,14 +194,14 @@ type PipOptions struct {
 	KeyringProvider KeyringProviderType `field:"optional" json:"keyringProvider" yaml:"keyringProvider"`
 	// The method to use when installing packages from the global cache.
 	//
-	// Defaults to `clone` (also known as Copy-on-Write) on macOS, and `hardlink` on Linux and
+	// Defaults to `clone` (also known as Copy-on-Write) on macOS and Linux, and `hardlink` on
 	// Windows.
 	//
 	// WARNING: The use of symlink link mode is discouraged, as they create tight coupling between
 	// the cache and the target environment. For example, clearing the cache (`uv cache clean`)
 	// will break all installed packages by way of removing the underlying source files. Use
 	// symlinks with caution.
-	// Default: clone` (also known as Copy-on-Write) on macOS, and `hardlink` on Linux and.
+	// Default: clone` (also known as Copy-on-Write) on macOS and Linux, and `hardlink` on.
 	//
 	// Experimental.
 	LinkMode LinkMode `field:"optional" json:"linkMode" yaml:"linkMode"`
@@ -243,6 +259,9 @@ type PipOptions struct {
 	// Ignore the `tool.uv.sources` table when resolving dependencies. Used to lock against the standards-compliant, publishable package metadata, as opposed to using any local or Git sources.
 	// Experimental.
 	NoSources *bool `field:"optional" json:"noSources" yaml:"noSources"`
+	// Ignore `tool.uv.sources` for the specified packages.
+	// Experimental.
+	NoSourcesPackage *[]*string `field:"optional" json:"noSourcesPackage" yaml:"noSourcesPackage"`
 	// Include extras in the output file.
 	//
 	// By default, uv strips extras, as any packages pulled in by the extras are already included
@@ -372,6 +391,8 @@ type PipOptions struct {
 	//
 	// The `auto` mode will attempt to detect the appropriate PyTorch index based on the currently
 	// installed CUDA drivers.
+	//
+	// This setting is only respected by `uv pip` commands.
 	//
 	// This option is in preview and may change in any future release.
 	// Experimental.

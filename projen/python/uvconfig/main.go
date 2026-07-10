@@ -25,6 +25,10 @@ func init() {
 			"SPLIT": AnnotationStyle_SPLIT,
 		},
 	)
+	_jsii_.RegisterStruct(
+		"projen.python.uvConfig.AuditOptions",
+		reflect.TypeOf((*AuditOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterEnum(
 		"projen.python.uvConfig.AuthPolicy",
 		reflect.TypeOf((*AuthPolicy)(nil)).Elem(),
@@ -41,6 +45,16 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.python.uvConfig.DependencyGroupSettings",
 		reflect.TypeOf((*DependencyGroupSettings)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.python.uvConfig.ExcludeNewerOverride",
+		reflect.TypeOf((*ExcludeNewerOverride)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "value", GoGetter: "Value"},
+		},
+		func() interface{} {
+			return &jsiiProxy_ExcludeNewerOverride{}
+		},
 	)
 	_jsii_.RegisterEnum(
 		"projen.python.uvConfig.ForkStrategy",
@@ -235,6 +249,10 @@ func init() {
 			"CU91": TorchMode_CU91,
 			"CU90": TorchMode_CU90,
 			"CU80": TorchMode_CU80,
+			"ROCM7_2": TorchMode_ROCM7_2,
+			"ROCM7_1": TorchMode_ROCM7_1,
+			"ROCM7_0": TorchMode_ROCM7_0,
+			"ROCM6_4": TorchMode_ROCM6_4,
 			"ROCM6_3": TorchMode_ROCM6_3,
 			"ROCM6_2_4": TorchMode_ROCM6_2_4,
 			"ROCM6_2": TorchMode_ROCM6_2,

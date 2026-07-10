@@ -94,6 +94,18 @@ const (
 	// Use the PyTorch index for CUDA 8.0. (cu80).
 	// Experimental.
 	TorchMode_CU80 TorchMode = "CU80"
+	// Use the PyTorch index for ROCm 7.2. (rocm7.2).
+	// Experimental.
+	TorchMode_ROCM7_2 TorchMode = "ROCM7_2"
+	// Use the PyTorch index for ROCm 7.1. (rocm7.1).
+	// Experimental.
+	TorchMode_ROCM7_1 TorchMode = "ROCM7_1"
+	// Use the PyTorch index for ROCm 7.0. (rocm7.0).
+	// Experimental.
+	TorchMode_ROCM7_0 TorchMode = "ROCM7_0"
+	// Use the PyTorch index for ROCm 6.4. (rocm6.4).
+	// Experimental.
+	TorchMode_ROCM6_4 TorchMode = "ROCM6_4"
 	// Use the PyTorch index for ROCm 6.3. (rocm6.3).
 	// Experimental.
 	TorchMode_ROCM6_3 TorchMode = "ROCM6_3"

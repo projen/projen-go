@@ -1,10 +1,11 @@
 package python
 
 
-// There are two kinds of metadata: _static_ and _dynamic_.
+// There are three kinds of metadata: _static_, _dynamic_, and _partially dynamic_.
 //
 // - Static metadata is listed in the `[project]` table directly and cannot be specified or changed by a tool.
 // - Dynamic metadata key names are listed inside the `dynamic` key and represents metadata that a tool will later provide.
+// - Partially dynamic metadata is specified in the `[project]` table as a list or table, and also listed in `dynamic`, allowing the build backend to add entries but not modify or remove existing ones.
 // Experimental.
 type PyprojectTomlProject struct {
 	// Valid name consists only of ASCII letters and numbers, period, underscore and hyphen.
@@ -30,7 +31,7 @@ type PyprojectTomlProject struct {
 	Description *string `field:"optional" json:"description" yaml:"description"`
 	// Specifies which keys are intentionally unspecified under `[project]` table so build backend can/will provide such metadata dynamically.
 	//
-	// Each key must be listed only once. It is an error to both list a key in `dynamic` and use the key directly in `[project]`.
+	// Each key must be listed only once. It is an error to both list a key in `dynamic` and use the key directly in `[project]` unless the key is a list or table with arbitrary entries (PEP 808), in which case the build backend may extend it.
 	// One of the most common usage is `version`, which allows build backend to retrieve project version from source code or version control system instead of hardcoding it in `pyproject.toml`.
 	// Experimental.
 	Dynamic *[]PyprojectTomlProjectDynamic `field:"optional" json:"dynamic" yaml:"dynamic"`
@@ -51,9 +52,7 @@ type PyprojectTomlProject struct {
 	// They could be used by search engines to categorize the project.
 	// Experimental.
 	Keywords *[]*string `field:"optional" json:"keywords" yaml:"keywords"`
-	// For now it is a table with either: - `file` key specifying a relative path to a license file, or - `text` key containing full license content.
-	//
-	// Newer tool may accept a single [SPDX license expression](https://spdx.github.io/spdx-spec/v2.2.2/SPDX-license-expressions/) string instead of a table.
+	// A string containing a valid [SPDX license expression](https://spdx.github.io/spdx-spec/v2.2.2/SPDX-license-expressions/) (recommended), or a table with either: - `file` key specifying a relative path to a license file (deprecated per PEP 639), or - `text` key containing full license content (deprecated per PEP 639).
 	// Experimental.
 	License interface{} `field:"optional" json:"license" yaml:"license"`
 	// Relative paths or globs to paths of license files.

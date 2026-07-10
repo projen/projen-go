@@ -12,6 +12,15 @@ type PyprojectTomlTool struct {
 	// Build Python wheels for all platforms.
 	// Experimental.
 	Cibuildwheel interface{} `field:"optional" json:"cibuildwheel" yaml:"cibuildwheel"`
+	// A CLI tool to check and validate Python docstring formatting and completeness.
+	// Experimental.
+	Dfc interface{} `field:"optional" json:"dfc" yaml:"dfc"`
+	// A CLI tool to check and validate Python docstring formatting and completeness.
+	// Experimental.
+	DocstringFormatChecker interface{} `field:"optional" json:"docstringFormatChecker" yaml:"docstringFormatChecker"`
+	// FastAPI web framework configuration.
+	// Experimental.
+	Fastapi interface{} `field:"optional" json:"fastapi" yaml:"fastapi"`
 	// Modern, extensible Python project management.
 	// Experimental.
 	Hatch interface{} `field:"optional" json:"hatch" yaml:"hatch"`
@@ -24,7 +33,10 @@ type PyprojectTomlTool struct {
 	// A modern Python package manager with PEP 621 support.
 	// Experimental.
 	Pdm interface{} `field:"optional" json:"pdm" yaml:"pdm"`
-	// A task runner that works well with pyproject.toml files.
+	// A package manager and task runner.
+	// Experimental.
+	Pixi interface{} `field:"optional" json:"pixi" yaml:"pixi"`
+	// A task runner that works well with `pyproject.toml` files.
 	// Experimental.
 	Poe interface{} `field:"optional" json:"poe" yaml:"poe"`
 	// Python dependency management and packaging made easy.
@@ -36,12 +48,39 @@ type PyprojectTomlTool struct {
 	// Standardized automated testing of Python packages.
 	// Experimental.
 	Pytest interface{} `field:"optional" json:"pytest" yaml:"pytest"`
+	// A CLI tool to run code files instantly without typing complex commands in terminal.
+	// Experimental.
+	Quikrun interface{} `field:"optional" json:"quikrun" yaml:"quikrun"`
 	// Review a repository for best practices.
 	// Experimental.
 	RepoReview interface{} `field:"optional" json:"repoReview" yaml:"repoReview"`
 	// An extremely fast Python linter and formatter, written in Rust.
 	// Experimental.
 	Ruff interface{} `field:"optional" json:"ruff" yaml:"ruff"`
+	// Scheduled jobs in Python's `pyproject.toml`.
+	//
+	// This is a specification for declaring recurring scheduled jobs in Python projects, in `pyproject.toml`.
+	//
+	// It defines how jobs are declared and how providers would run them.
+	//
+	// It does not provide a specific implementation for running scheduled jobs, because that is provider specific.
+	//
+	// For example, a file at `app/jobs.py` could define:
+	//
+	// ```python
+	// def clean_files():
+	// print("Running cleanup...")
+	// ```
+	//
+	// You could define a scheduled job to run that function once per day with:
+	//
+	// ```toml
+	// [tool.scheduled.clean-files]
+	// every = "day"
+	// entrypoint = "app.jobs:clean_files"
+	// ```.
+	// Experimental.
+	Scheduled interface{} `field:"optional" json:"scheduled" yaml:"scheduled"`
 	// Improved build system generator for Python C/C++/Fortran extensions.
 	// Experimental.
 	ScikitBuild interface{} `field:"optional" json:"scikitBuild" yaml:"scikitBuild"`

@@ -42,6 +42,28 @@ type Index struct {
 	// is given the highest priority when resolving packages.
 	// Experimental.
 	Default *bool `field:"optional" json:"default" yaml:"default"`
+	// An index-specific `exclude-newer` cutoff.
+	//
+	// Accepts the same date, timestamp, and duration values as the global `exclude-newer`
+	// setting. Set this to `false` to disable `exclude-newer` for this index entirely.
+	//
+	// When set to a value, packages resolved from this index will use that cutoff instead of the
+	// globally-specified value, unless a package-specific `exclude-newer-package` override is
+	// present.
+	//
+	// This option is in preview and may change in any future release.
+	//
+	// ```toml
+	// [tool.uv]
+	// exclude-newer = "2025-01-01T00:00:00Z"
+	//
+	// [[tool.uv.index]]
+	// name = "internal"
+	// url = "https://internal.example.com/simple"
+	// exclude-newer = "7 days"
+	// ```.
+	// Experimental.
+	ExcludeNewer ExcludeNewerOverride `field:"optional" json:"excludeNewer" yaml:"excludeNewer"`
 	// Mark the index as explicit.
 	//
 	// Explicit indexes will _only_ be used when explicitly requested via a `[tool.uv.sources]`
@@ -50,7 +72,7 @@ type Index struct {
 	// ```toml
 	// [[tool.uv.index]]
 	// name = "pytorch"
-	// url = "https://download.pytorch.org/whl/cu121"
+	// url = "https://download.pytorch.org/whl/cu130"
 	// explicit = true
 	//
 	// [tool.uv.sources]
@@ -83,7 +105,7 @@ type Index struct {
 	// ```toml
 	// [[tool.uv.index]]
 	// name = "pytorch"
-	// url = "https://download.pytorch.org/whl/cu121"
+	// url = "https://download.pytorch.org/whl/cu130"
 	//
 	// [tool.uv.sources]
 	// torch = { index = "pytorch" }
