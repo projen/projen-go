@@ -43,7 +43,7 @@ type BiomeOptions struct {
 	// Experimental.
 	MergeArraysInConfiguration *bool `field:"optional" json:"mergeArraysInConfiguration" yaml:"mergeArraysInConfiguration"`
 	// Version of Biome to use.
-	// Default: "^2".
+	// Default: "^2.5"
 	//
 	// Experimental.
 	Version *string `field:"optional" json:"version" yaml:"version"`
