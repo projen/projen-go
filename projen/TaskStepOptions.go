@@ -54,6 +54,17 @@ type TaskStepOptions struct {
 	//
 	// Experimental.
 	Name *string `field:"optional" json:"name" yaml:"name"`
+	// Capture this step's (trimmed) stdout into an environment variable of this name, visible to all later steps of the task run.
+	//
+	// For `spawn` steps the
+	// spawned subtask's combined stdout is captured.
+	//
+	// Set only when the step runs (a skipped step leaves it unset) and always
+	// overwrites. The step's output still streams live.
+	// Default: - stdout is not captured.
+	//
+	// Experimental.
+	OutputEnv *string `field:"optional" json:"outputEnv" yaml:"outputEnv"`
 	// Should this step receive args passed to the task.
 	//
 	// If `true`, args are passed through at the end of the `exec` shell command.\

@@ -83,6 +83,13 @@ type TaskStep struct {
 	//
 	// Experimental.
 	Name *string `field:"optional" json:"name" yaml:"name"`
+	// Capture this step's standard output and expose it to later steps as an environment variable with this name.
+	// See: {@link TaskStepOptions.outputEnv }
+	//
+	// Default: - stdout is not captured.
+	//
+	// Experimental.
+	OutputEnv *string `field:"optional" json:"outputEnv" yaml:"outputEnv"`
 	// Should this step receive args passed to the task.
 	// See: {@link TaskStepOptions.receiveArgs }
 	//

@@ -20,11 +20,23 @@ type Version interface {
 	// The name of the changelog file (under `artifactsDirectory`).
 	// Experimental.
 	ChangelogFileName() *string
+	// The task that runs the user's `nextVersionCommand`, if configured.
+	//
+	// Spawned
+	// by `bump`; its shell can be overridden via `task.shell`.
+	// Experimental.
+	NextVersionTask() Task
 	// The tree node.
 	// Experimental.
 	Node() constructs.Node
 	// Experimental.
 	Project() Project
+	// The task that prints the releasable commits since the latest tag.
+	//
+	// Spawned
+	// by `bump`; its shell can be overridden via `task.shell`.
+	// Experimental.
+	ReleasableCommitsTask() Task
 	// The name of the file that contains the release tag (under `artifactsDirectory`).
 	// Experimental.
 	ReleaseTagFileName() *string
@@ -117,6 +129,16 @@ func (j *jsiiProxy_Version) ChangelogFileName() *string {
 	return returns
 }
 
+func (j *jsiiProxy_Version) NextVersionTask() Task {
+	var returns Task
+	_jsii_.Get(
+		j,
+		"nextVersionTask",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_Version) Node() constructs.Node {
 	var returns constructs.Node
 	_jsii_.Get(
@@ -132,6 +154,16 @@ func (j *jsiiProxy_Version) Project() Project {
 	_jsii_.Get(
 		j,
 		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Version) ReleasableCommitsTask() Task {
+	var returns Task
+	_jsii_.Get(
+		j,
+		"releasableCommitsTask",
 		&returns,
 	)
 	return returns
