@@ -16,6 +16,9 @@ const (
 	// (cpu).
 	// Experimental.
 	TorchMode_CPU TorchMode = "CPU"
+	// Use the PyTorch index for CUDA 13.2. (cu132).
+	// Experimental.
+	TorchMode_CU132 TorchMode = "CU132"
 	// Use the PyTorch index for CUDA 13.0. (cu130).
 	// Experimental.
 	TorchMode_CU130 TorchMode = "CU130"

@@ -97,8 +97,10 @@ type PipOptions struct {
 	// Durations do not respect semantics of the local time zone and are always resolved to a fixed
 	// number of seconds assuming that a day is 24 hours (e.g., DST transitions are ignored).
 	// Calendar units such as months and years are not allowed.
+	//
+	// Set to `false` to disable `exclude-newer`.
 	// Experimental.
-	ExcludeNewer *string `field:"optional" json:"excludeNewer" yaml:"excludeNewer"`
+	ExcludeNewer ExcludeNewerOverride `field:"optional" json:"excludeNewer" yaml:"excludeNewer"`
 	// Limit candidate packages for specific packages to those that were uploaded prior to the given date.
 	//
 	// Accepts a dictionary format of `PACKAGE = "DATE"` pairs, where `DATE` is an RFC 3339
@@ -219,9 +221,9 @@ type PipOptions struct {
 	NoBinary *[]*string `field:"optional" json:"noBinary" yaml:"noBinary"`
 	// Don't build source distributions.
 	//
-	// When enabled, resolving will not run arbitrary Python code. The cached wheels of
-	// already-built source distributions will be reused, but operations that require building
-	// distributions will exit with an error.
+	// When enabled, uv will reuse cached wheels from previously built source distributions, but
+	// operations that require building a source distribution will exit with an error. uv may
+	// still build editable requirements, and their build backends may run arbitrary Python code.
 	//
 	// Alias for `--only-binary :all:`.
 	// Experimental.
@@ -277,9 +279,10 @@ type PipOptions struct {
 	NoStripMarkers *bool `field:"optional" json:"noStripMarkers" yaml:"noStripMarkers"`
 	// Only use pre-built wheels; don't build source distributions.
 	//
-	// When enabled, resolving will not run code from the given packages. The cached wheels of already-built
-	// source distributions will be reused, but operations that require building distributions will
-	// exit with an error.
+	// When enabled, uv will reuse cached wheels from previously built source distributions, but
+	// operations that require building a source distribution for the given packages will exit
+	// with an error. uv may still build editable requirements, and their build backends may run
+	// arbitrary Python code.
 	//
 	// Multiple packages may be provided. Disable binaries for all packages with `:all:`.
 	// Clear previously specified packages with `:none:`.

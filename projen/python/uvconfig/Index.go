@@ -87,7 +87,7 @@ type Index struct {
 	// indexes can point to either local or remote resources.
 	// Experimental.
 	Format IndexFormat `field:"optional" json:"format" yaml:"format"`
-	// Status codes that uv should ignore when deciding whether to continue searching in the next index after a failure.
+	// Status codes that uv should ignore when deciding whether to continue resolution after a request to this index fails.
 	//
 	// ```toml
 	// [[tool.uv.index]]

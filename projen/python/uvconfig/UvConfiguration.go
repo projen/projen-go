@@ -173,9 +173,28 @@ type UvConfiguration struct {
 	// A list of environment markers, e.g., `python_version >= '3.6'`.
 	// Experimental.
 	Environments *[]*string `field:"optional" json:"environments" yaml:"environments"`
-	// Package names to exclude, e.g., `werkzeug`, `numpy`.
+	// Dependencies to exclude when resolving the project's dependencies.
+	//
+	// Excludes are used to prevent a package from being selected during resolution,
+	// regardless of whether it's requested by any other package. When a package is excluded,
+	// it will be omitted from the dependency list entirely.
+	//
+	// Including a package as an exclusion will prevent it from being installed, even if
+	// it's requested by transitive dependencies. This can be useful for removing optional
+	// dependencies or working around packages with broken dependencies.
+	//
+	// Exclusions can be limited to the dependencies declared by a specific package version by
+	// using a table with `package` and `dependencies`. The `package` table identifies the package
+	// whose dependencies will be excluded by `name` and, optionally, `version`. If `version` is
+	// omitted, the exclusions apply to all versions of that package. A version-specific entry
+	// takes precedence over an all-versions entry.
+	//
+	// !!! note
+	// In `uv lock`, `uv sync`, and `uv run`, uv will only read `exclude-dependencies` from
+	// the `pyproject.toml` at the workspace root, and will ignore any declarations in other
+	// workspace members or `uv.toml` files.
 	// Experimental.
-	ExcludeDependencies *[]*string `field:"optional" json:"excludeDependencies" yaml:"excludeDependencies"`
+	ExcludeDependencies *[]interface{} `field:"optional" json:"excludeDependencies" yaml:"excludeDependencies"`
 	// Limit candidate packages to those that were uploaded prior to the given date.
 	//
 	// The date is compared against the upload time of each individual distribution artifact
@@ -188,8 +207,10 @@ type UvConfiguration struct {
 	// Durations do not respect semantics of the local time zone and are always resolved to a fixed
 	// number of seconds assuming that a day is 24 hours (e.g., DST transitions are ignored).
 	// Calendar units such as months and years are not allowed.
+	//
+	// Set to `false` to disable `exclude-newer`.
 	// Experimental.
-	ExcludeNewer *string `field:"optional" json:"excludeNewer" yaml:"excludeNewer"`
+	ExcludeNewer ExcludeNewerOverride `field:"optional" json:"excludeNewer" yaml:"excludeNewer"`
 	// Limit candidate packages for specific packages to those that were uploaded prior to the given date.
 	//
 	// Accepts a dictionary format of `PACKAGE = "DATE"` pairs, where `DATE` is an RFC 3339
@@ -350,9 +371,9 @@ type UvConfiguration struct {
 	NoBinaryPackage *[]*string `field:"optional" json:"noBinaryPackage" yaml:"noBinaryPackage"`
 	// Don't build source distributions.
 	//
-	// When enabled, resolving will not run arbitrary Python code. The cached wheels of
-	// already-built source distributions will be reused, but operations that require building
-	// distributions will exit with an error.
+	// When enabled, uv will reuse cached wheels from previously built source distributions, but
+	// operations that require building a source distribution will exit with an error. uv may
+	// still build editable requirements, and their build backends may run arbitrary Python code.
 	// Experimental.
 	NoBuild *bool `field:"optional" json:"noBuild" yaml:"noBuild"`
 	// Disable isolation when building source distributions.
@@ -388,9 +409,36 @@ type UvConfiguration struct {
 	// Disable network access, relying only on locally cached data and locally available files.
 	// Experimental.
 	Offline *bool `field:"optional" json:"offline" yaml:"offline"`
-	// PEP 508-style requirements, e.g., `ruff==0.5.0`, or `ruff @ https://...`.
+	// Overrides to apply when resolving the project's dependencies.
+	//
+	// Overrides are used to force selection of a specific version of a package, regardless of the
+	// version requested by any other package, and regardless of whether choosing that version
+	// would typically constitute an invalid resolution.
+	//
+	// While constraints are _additive_, in that they're combined with the requirements of the
+	// constituent packages, overrides are _absolute_, in that they completely replace the
+	// requirements of any constituent packages.
+	//
+	// Including a package as an override will _not_ trigger installation of the package on its
+	// own; instead, the package must be requested elsewhere in the project's first-party or
+	// transitive dependencies.
+	//
+	// Overrides can be limited to the dependencies declared by a specific package version by
+	// using a table with `package` and `dependencies`. The `package` table identifies the package
+	// whose dependencies will be overridden by `name` and, optionally, `version`. If `version` is
+	// omitted, the overrides apply to all versions of that package. Requirements in `dependencies`
+	// replace dependencies with the same name and add dependencies that are not declared by the
+	// package. Dependencies not listed in `dependencies` are left unchanged.
+	//
+	// Scoped overrides currently support registry version specifiers only. Direct URL and path
+	// sources, including Git sources, and explicit indexes are not supported.
+	//
+	// !!! note
+	// In `uv lock`, `uv sync`, and `uv run`, uv will only read `override-dependencies` from
+	// the `pyproject.toml` at the workspace root, and will ignore any declarations in other
+	// workspace members or `uv.toml` files.
 	// Experimental.
-	OverrideDependencies *[]*string `field:"optional" json:"overrideDependencies" yaml:"overrideDependencies"`
+	OverrideDependencies *[]interface{} `field:"optional" json:"overrideDependencies" yaml:"overrideDependencies"`
 	// Whether the project should be considered a Python package, or a non-package ("virtual") project.
 	//
 	// Packages are built and installed into the virtual environment in editable mode and thus
@@ -411,9 +459,16 @@ type UvConfiguration struct {
 	// declared specifiers (`if-necessary-or-explicit`).
 	// Experimental.
 	Prerelease PrereleaseMode `field:"optional" json:"prerelease" yaml:"prerelease"`
-	// Whether to enable experimental, preview features.
+	// Whether to enable all experimental, preview features.
+	//
+	// Use `preview-features` instead.
 	// Experimental.
 	Preview *bool `field:"optional" json:"preview" yaml:"preview"`
+	// Whether to enable specific or all experimental preview features.
+	//
+	// Unknown feature names are ignored with a warning.
+	// Experimental.
+	PreviewFeatures interface{} `field:"optional" json:"previewFeatures" yaml:"previewFeatures"`
 	// The URL for publishing packages to the Python package index (by default: <https://upload.pypi.org/legacy/>).
 	// Experimental.
 	PublishUrl *string `field:"optional" json:"publishUrl" yaml:"publishUrl"`

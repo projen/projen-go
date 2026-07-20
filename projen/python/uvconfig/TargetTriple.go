@@ -219,9 +219,16 @@ const (
 	TargetTriple_X86_UNDERSCORE_64_HYPHEN_LINUX_HYPHEN_ANDROID TargetTriple = "X86_UNDERSCORE_64_HYPHEN_LINUX_HYPHEN_ANDROID"
 	// A wasm32 target using the Pyodide 2024 platform.
 	//
-	// Meant for use with Python 3.12. (wasm32-pyodide2024)
+	// Meant for use with Python 3.12.
+	// See <https://pyodide.org/en/stable/development/abi/312.html> (wasm32-pyodide2024)
 	// Experimental.
 	TargetTriple_WASM32_HYPHEN_PYODIDE2024 TargetTriple = "WASM32_HYPHEN_PYODIDE2024"
+	// A wasm32 target using the Pyodide 2025 platform.
+	//
+	// Meant for use with Python 3.13.
+	// See <https://pyodide.org/en/stable/development/abi/313.html> (wasm32-pyodide2025)
+	// Experimental.
+	TargetTriple_WASM32_HYPHEN_PYODIDE2025 TargetTriple = "WASM32_HYPHEN_PYODIDE2025"
 	// An ARM64 target for iOS device.
 	//
 	// By default, iOS 13.0 is used, but respects the `IPHONEOS_DEPLOYMENT_TARGET`
