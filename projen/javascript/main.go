@@ -691,6 +691,7 @@ func init() {
 		map[string]interface{}{
 			"VALUE_CARAT": PnpmWorkspaceYamlSchemaSavePrefix_VALUE_CARAT,
 			"VALUE_TILDE": PnpmWorkspaceYamlSchemaSavePrefix_VALUE_TILDE,
+			"VALUE_EQUALS": PnpmWorkspaceYamlSchemaSavePrefix_VALUE_EQUALS,
 		},
 	)
 	_jsii_.RegisterClass(

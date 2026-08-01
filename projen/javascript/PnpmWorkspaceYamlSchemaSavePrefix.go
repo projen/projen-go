@@ -12,5 +12,8 @@ const (
 	// ~.
 	// Experimental.
 	PnpmWorkspaceYamlSchemaSavePrefix_VALUE_TILDE PnpmWorkspaceYamlSchemaSavePrefix = "VALUE_TILDE"
+	// =.
+	// Experimental.
+	PnpmWorkspaceYamlSchemaSavePrefix_VALUE_EQUALS PnpmWorkspaceYamlSchemaSavePrefix = "VALUE_EQUALS"
 )
 
