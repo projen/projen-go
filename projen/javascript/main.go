@@ -558,6 +558,10 @@ func init() {
 		reflect.TypeOf((*PnpmWorkspaceYamlSchema)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaAudit",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaAudit)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.javascript.PnpmWorkspaceYamlSchemaAuditConfig",
 		reflect.TypeOf((*PnpmWorkspaceYamlSchemaAuditConfig)(nil)).Elem(),
 	)
@@ -715,6 +719,10 @@ func init() {
 			"OFF": PnpmWorkspaceYamlSchemaTrustPolicy_OFF,
 			"NO_HYPHEN_DOWNGRADE": PnpmWorkspaceYamlSchemaTrustPolicy_NO_HYPHEN_DOWNGRADE,
 		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaUpdate",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaUpdate)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.PnpmWorkspaceYamlSchemaUpdateConfig",

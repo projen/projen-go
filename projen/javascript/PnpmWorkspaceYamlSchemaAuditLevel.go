@@ -1,9 +1,7 @@
 package javascript
 
 
-// Controls the level of issues reported by `pnpm audit`.
-//
-// When set to 'low', all vulnerabilities are reported. When set to 'moderate', 'high', or 'critical', only vulnerabilities with that severity or higher are reported.
+// Only print advisories with severity greater than or equal to this level.
 // Experimental.
 type PnpmWorkspaceYamlSchemaAuditLevel string
 

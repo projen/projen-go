@@ -21,6 +21,8 @@ type PnpmWorkspaceYamlSchema struct {
 	// Experimental.
 	AllowUnusedPatches *bool `field:"optional" json:"allowUnusedPatches" yaml:"allowUnusedPatches"`
 	// Experimental.
+	Audit *PnpmWorkspaceYamlSchemaAudit `field:"optional" json:"audit" yaml:"audit"`
+	// Experimental.
 	AuditConfig *PnpmWorkspaceYamlSchemaAuditConfig `field:"optional" json:"auditConfig" yaml:"auditConfig"`
 	// Controls the level of issues reported by `pnpm audit`.
 	//
@@ -490,6 +492,8 @@ type PnpmWorkspaceYamlSchema struct {
 	// If set explicitly to false, then installing as a non-root user will fail.
 	// Experimental.
 	UnsafePerm *bool `field:"optional" json:"unsafePerm" yaml:"unsafePerm"`
+	// Experimental.
+	Update *PnpmWorkspaceYamlSchemaUpdate `field:"optional" json:"update" yaml:"update"`
 	// Experimental.
 	UpdateConfig *PnpmWorkspaceYamlSchemaUpdateConfig `field:"optional" json:"updateConfig" yaml:"updateConfig"`
 	// When true, pnpm will check for updates to the installed packages and notify the user.
