@@ -728,6 +728,35 @@ func init() {
 		"projen.javascript.PnpmWorkspaceYamlSchemaUpdateConfig",
 		reflect.TypeOf((*PnpmWorkspaceYamlSchemaUpdateConfig)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaVersioning",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaVersioning)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaVersioningChangelog",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaVersioningChangelog)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaVersioningChangelogStorage",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaVersioningChangelogStorage)(nil)).Elem(),
+		map[string]interface{}{
+			"REGISTRY": PnpmWorkspaceYamlSchemaVersioningChangelogStorage_REGISTRY,
+			"REPOSITORY": PnpmWorkspaceYamlSchemaVersioningChangelogStorage_REPOSITORY,
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaVersioningEpics",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaVersioningEpics)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaVersioningMaxBump",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaVersioningMaxBump)(nil)).Elem(),
+		map[string]interface{}{
+			"PATCH": PnpmWorkspaceYamlSchemaVersioningMaxBump_PATCH,
+			"MINOR": PnpmWorkspaceYamlSchemaVersioningMaxBump_MINOR,
+			"MAJOR": PnpmWorkspaceYamlSchemaVersioningMaxBump_MAJOR,
+		},
+	)
 	_jsii_.RegisterClass(
 		"projen.javascript.Prettier",
 		reflect.TypeOf((*Prettier)(nil)).Elem(),

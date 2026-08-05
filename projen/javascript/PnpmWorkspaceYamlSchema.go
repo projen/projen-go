@@ -514,6 +514,9 @@ type PnpmWorkspaceYamlSchema struct {
 	// By default, if a file in the store has been modified, the content of this file is checked before linking it to a project's node_modules.
 	// Experimental.
 	VerifyStoreIntegrity *bool `field:"optional" json:"verifyStoreIntegrity" yaml:"verifyStoreIntegrity"`
+	// Versioning settings for pnpm's native workspace release management, used by `pnpm change` and recursive `pnpm version`.
+	// Experimental.
+	Versioning *PnpmWorkspaceYamlSchemaVersioning `field:"optional" json:"versioning" yaml:"versioning"`
 	// The directory with links to the store.
 	// Experimental.
 	VirtualStoreDir *string `field:"optional" json:"virtualStoreDir" yaml:"virtualStoreDir"`
