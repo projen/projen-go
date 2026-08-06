@@ -259,6 +259,26 @@ type ReactProjectOptions struct {
 	//
 	// Experimental.
 	CodeArtifactOptions *javascript.CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
+	// Add a `dedupe` task that deduplicates project dependencies.
+	//
+	// Deduplication prevents multiple versions of the same package from being
+	// installed, if a single version can satisfy all requested version ranges.
+	// This prevents version proliferation and reduces the size of the dependency
+	// tree.
+	//
+	// The behavior depends on the package manager:
+	// - npm: runs `npm dedupe` after every mutating install.
+	// - pnpm: runs `pnpm dedupe` after every mutating install.
+	// - Yarn Berry: runs `yarn dedupe` after every mutating install. If
+	//   `yarnBerryOptions.dedupePackages` is set, only the listed packages are
+	//   deduplicated.
+	// - Yarn Classic: `yarn install` already deduplicates, so the task only
+	//   prints an informational message.
+	// - Bun: not supported, enabling this option throws an error.
+	// Default: - false, unless `yarnBerryOptions.dedupePackages` is set
+	//
+	// Experimental.
+	DedupeDeps *bool `field:"optional" json:"dedupeDeps" yaml:"dedupeDeps"`
 	// Automatically delete lockfiles from package managers that are not the active one.
 	//
 	// Only triggered when the lockfile for the configured package

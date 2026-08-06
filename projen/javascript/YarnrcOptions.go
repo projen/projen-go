@@ -4,12 +4,21 @@ package javascript
 // Configuration for .yarnrc.yml in Yarn Berry v4.
 // Experimental.
 type YarnrcOptions struct {
+	// https://yarnpkg.com/configuration/yarnrc#approvedGitRepositories.
+	// Experimental.
+	ApprovedGitRepositories *[]*string `field:"optional" json:"approvedGitRepositories" yaml:"approvedGitRepositories"`
 	// https://yarnpkg.com/configuration/yarnrc#cacheFolder.
 	// Experimental.
 	CacheFolder *string `field:"optional" json:"cacheFolder" yaml:"cacheFolder"`
 	// https://yarnpkg.com/configuration/yarnrc#cacheMigrationMode.
 	// Experimental.
 	CacheMigrationMode YarnCacheMigrationMode `field:"optional" json:"cacheMigrationMode" yaml:"cacheMigrationMode"`
+	// https://yarnpkg.com/configuration/yarnrc#catalog.
+	// Experimental.
+	Catalog *map[string]*string `field:"optional" json:"catalog" yaml:"catalog"`
+	// https://yarnpkg.com/configuration/yarnrc#catalogs.
+	// Experimental.
+	Catalogs *map[string]*map[string]*string `field:"optional" json:"catalogs" yaml:"catalogs"`
 	// https://yarnpkg.com/configuration/yarnrc#changesetBaseRefs.
 	// Experimental.
 	ChangesetBaseRefs *[]*string `field:"optional" json:"changesetBaseRefs" yaml:"changesetBaseRefs"`
@@ -43,9 +52,13 @@ type YarnrcOptions struct {
 	// https://yarnpkg.com/configuration/yarnrc#enableColors.
 	// Experimental.
 	EnableColors *bool `field:"optional" json:"enableColors" yaml:"enableColors"`
-	// https://yarnpkg.com/configuration/yarnrc#enableConstraintsCheck.
-	// Experimental.
+	// https://yarnpkg.com/configuration/yarnrc#enableConstraintsChecks.
+	// Deprecated: use {@link YarnrcOptions.enableConstraintsChecks } instead. Yarn
+	// calls this setting `enableConstraintsChecks` (note the trailing `s`).
 	EnableConstraintsCheck *bool `field:"optional" json:"enableConstraintsCheck" yaml:"enableConstraintsCheck"`
+	// https://yarnpkg.com/configuration/yarnrc#enableConstraintsChecks.
+	// Experimental.
+	EnableConstraintsChecks *bool `field:"optional" json:"enableConstraintsChecks" yaml:"enableConstraintsChecks"`
 	// https://yarnpkg.com/configuration/yarnrc#enableGlobalCache.
 	// Experimental.
 	EnableGlobalCache *bool `field:"optional" json:"enableGlobalCache" yaml:"enableGlobalCache"`
@@ -157,9 +170,15 @@ type YarnrcOptions struct {
 	// https://yarnpkg.com/configuration/yarnrc#nmSelfReferences.
 	// Experimental.
 	NmSelfReferences *bool `field:"optional" json:"nmSelfReferences" yaml:"nmSelfReferences"`
+	// https://yarnpkg.com/configuration/yarnrc#nodeExperimentalPackageMap.
+	// Experimental.
+	NodeExperimentalPackageMap *bool `field:"optional" json:"nodeExperimentalPackageMap" yaml:"nodeExperimentalPackageMap"`
 	// https://yarnpkg.com/configuration/yarnrc#nodeLinker.
 	// Experimental.
 	NodeLinker YarnNodeLinker `field:"optional" json:"nodeLinker" yaml:"nodeLinker"`
+	// https://yarnpkg.com/configuration/yarnrc#nodePackageMapType.
+	// Experimental.
+	NodePackageMapType YarnNodePackageMapType `field:"optional" json:"nodePackageMapType" yaml:"nodePackageMapType"`
 	// https://yarnpkg.com/configuration/yarnrc#npmAlwaysAuth.
 	// Experimental.
 	NpmAlwaysAuth *bool `field:"optional" json:"npmAlwaysAuth" yaml:"npmAlwaysAuth"`
@@ -178,9 +197,18 @@ type YarnrcOptions struct {
 	// https://yarnpkg.com/configuration/yarnrc#npmAuthToken.
 	// Experimental.
 	NpmAuthToken *string `field:"optional" json:"npmAuthToken" yaml:"npmAuthToken"`
+	// https://yarnpkg.com/configuration/yarnrc#npmMinimalAgeGate.
+	// Experimental.
+	NpmMinimalAgeGate *string `field:"optional" json:"npmMinimalAgeGate" yaml:"npmMinimalAgeGate"`
+	// https://yarnpkg.com/configuration/yarnrc#npmPreapprovedPackages.
+	// Experimental.
+	NpmPreapprovedPackages *[]*string `field:"optional" json:"npmPreapprovedPackages" yaml:"npmPreapprovedPackages"`
 	// https://yarnpkg.com/configuration/yarnrc#npmPublishAccess.
 	// Experimental.
 	NpmPublishAccess YarnNpmPublishAccess `field:"optional" json:"npmPublishAccess" yaml:"npmPublishAccess"`
+	// https://yarnpkg.com/configuration/yarnrc#npmPublishProvenance.
+	// Experimental.
+	NpmPublishProvenance *bool `field:"optional" json:"npmPublishProvenance" yaml:"npmPublishProvenance"`
 	// https://yarnpkg.com/configuration/yarnrc#npmPublishRegistry.
 	// Experimental.
 	NpmPublishRegistry *string `field:"optional" json:"npmPublishRegistry" yaml:"npmPublishRegistry"`
@@ -214,6 +242,9 @@ type YarnrcOptions struct {
 	// https://yarnpkg.com/configuration/yarnrc#pnpMode.
 	// Experimental.
 	PnpMode YarnPnpMode `field:"optional" json:"pnpMode" yaml:"pnpMode"`
+	// https://yarnpkg.com/configuration/yarnrc#pnpmStoreFolder.
+	// Experimental.
+	PnpmStoreFolder *string `field:"optional" json:"pnpmStoreFolder" yaml:"pnpmStoreFolder"`
 	// https://yarnpkg.com/configuration/yarnrc#pnpShebang.
 	// Experimental.
 	PnpShebang *string `field:"optional" json:"pnpShebang" yaml:"pnpShebang"`
@@ -244,6 +275,9 @@ type YarnrcOptions struct {
 	// https://yarnpkg.com/configuration/yarnrc#taskPoolConcurrency.
 	// Experimental.
 	TaskPoolConcurrency *string `field:"optional" json:"taskPoolConcurrency" yaml:"taskPoolConcurrency"`
+	// https://yarnpkg.com/configuration/yarnrc#taskPoolMode.
+	// Experimental.
+	TaskPoolMode YarnTaskPoolMode `field:"optional" json:"taskPoolMode" yaml:"taskPoolMode"`
 	// https://yarnpkg.com/configuration/yarnrc#telemetryInterval.
 	// Experimental.
 	TelemetryInterval *float64 `field:"optional" json:"telemetryInterval" yaml:"telemetryInterval"`
@@ -262,8 +296,9 @@ type YarnrcOptions struct {
 	// https://yarnpkg.com/configuration/yarnrc#winLinkType.
 	// Experimental.
 	WinLinkType YarnWinLinkType `field:"optional" json:"winLinkType" yaml:"winLinkType"`
-	// https://yarnpkg.com/configuration/yarnrc#workerPoolMode.
-	// Experimental.
+	// https://yarnpkg.com/configuration/yarnrc#taskPoolMode.
+	// Deprecated: use {@link YarnrcOptions.taskPoolMode } instead. Yarn calls this
+	// setting `taskPoolMode`; there is no `workerPoolMode` setting.
 	WorkerPoolMode YarnWorkerPoolMode `field:"optional" json:"workerPoolMode" yaml:"workerPoolMode"`
 	// https://yarnpkg.com/configuration/yarnrc#yarnPath.
 	// Experimental.

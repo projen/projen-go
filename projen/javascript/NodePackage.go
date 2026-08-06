@@ -28,6 +28,9 @@ type NodePackage interface {
 	//
 	// Experimental.
 	CodeArtifactOptions() *CodeArtifactOptions
+	// The task for deduplicating project dependencies, if configured.
+	// Experimental.
+	DedupeTask() projen.Task
 	// The module's entrypoint (e.g. `lib/index.js`).
 	// Experimental.
 	Entrypoint() *string
@@ -37,13 +40,17 @@ type NodePackage interface {
 	// The package.json file.
 	// Experimental.
 	File() projen.JsonFile
-	// Renders `pnpm install` or `npm install` with lockfile update (not frozen).
+	// Returns the package manager's mutable install command with lockfile update, e.g. `npm install` or `pnpm install`.
+	//
+	// Prefer using `NodePackage.installTask`. The raw command string is intended for bootstrapping.
 	// Experimental.
 	InstallAndUpdateLockfileCommand() *string
 	// The task for installing project dependencies (frozen).
 	// Experimental.
 	InstallCiTask() projen.Task
-	// Returns the command to execute in order to install all dependencies (always frozen).
+	// Returns the package manager's immutable install command with a frozen lockfile, e.g. `npm ci` or `pnpm ci`.
+	//
+	// Prefer using `NodePackage.installCiTask`. The raw command string is intended for bootstrapping.
 	// Experimental.
 	InstallCommand() *string
 	// The task for installing project dependencies (non-frozen).
@@ -244,6 +251,16 @@ func (j *jsiiProxy_NodePackage) CodeArtifactOptions() *CodeArtifactOptions {
 	_jsii_.Get(
 		j,
 		"codeArtifactOptions",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_NodePackage) DedupeTask() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"dedupeTask",
 		&returns,
 	)
 	return returns

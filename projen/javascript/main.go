@@ -336,6 +336,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "allowLibraryDependencies", GoGetter: "AllowLibraryDependencies"},
 			_jsii_.MemberProperty{JsiiProperty: "bunVersion", GoGetter: "BunVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "codeArtifactOptions", GoGetter: "CodeArtifactOptions"},
+			_jsii_.MemberProperty{JsiiProperty: "dedupeTask", GoGetter: "DedupeTask"},
 			_jsii_.MemberProperty{JsiiProperty: "entrypoint", GoGetter: "Entrypoint"},
 			_jsii_.MemberProperty{JsiiProperty: "execCommand", GoGetter: "ExecCommand"},
 			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
@@ -1113,6 +1114,14 @@ func init() {
 		},
 	)
 	_jsii_.RegisterEnum(
+		"projen.javascript.YarnNodePackageMapType",
+		reflect.TypeOf((*YarnNodePackageMapType)(nil)).Elem(),
+		map[string]interface{}{
+			"STANDARD": YarnNodePackageMapType_STANDARD,
+			"LOOSE": YarnNodePackageMapType_LOOSE,
+		},
+	)
+	_jsii_.RegisterEnum(
 		"projen.javascript.YarnNpmPublishAccess",
 		reflect.TypeOf((*YarnNpmPublishAccess)(nil)).Elem(),
 		map[string]interface{}{
@@ -1167,6 +1176,14 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.YarnSupportedArchitectures",
 		reflect.TypeOf((*YarnSupportedArchitectures)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.YarnTaskPoolMode",
+		reflect.TypeOf((*YarnTaskPoolMode)(nil)).Elem(),
+		map[string]interface{}{
+			"ASYNC": YarnTaskPoolMode_ASYNC,
+			"WORKERS": YarnTaskPoolMode_WORKERS,
+		},
 	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.YarnWinLinkType",

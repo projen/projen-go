@@ -1,13 +1,17 @@
 package javascript
 
 
-// Experimental.
+// https://yarnpkg.com/configuration/yarnrc#taskPoolMode.
+// Deprecated: use {@link YarnTaskPoolMode } instead. Yarn calls this setting
+// `taskPoolMode`; there is no `workerPoolMode` setting.
 type YarnWorkerPoolMode string
 
 const (
-	// Experimental.
+	// Deprecated: use {@link YarnTaskPoolMode } instead. Yarn calls this setting
+	// `taskPoolMode`; there is no `workerPoolMode` setting.
 	YarnWorkerPoolMode_ASYNC YarnWorkerPoolMode = "ASYNC"
-	// Experimental.
+	// Deprecated: use {@link YarnTaskPoolMode } instead. Yarn calls this setting
+	// `taskPoolMode`; there is no `workerPoolMode` setting.
 	YarnWorkerPoolMode_WORKERS YarnWorkerPoolMode = "WORKERS"
 )
 
