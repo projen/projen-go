@@ -3,77 +3,66 @@ package biomeconfig
 
 // Experimental.
 type JsonFormatterConfiguration struct {
-	// Whether to insert spaces around brackets in object literals.
+	// Whether to insert spaces inside braces in object literals.
 	//
-	// Defaults to true.
-	// Default: true.
-	//
+	// If unset, inherits the global
+	// bracket spacing setting.
 	// Experimental.
 	BracketSpacing *bool `field:"optional" json:"bracketSpacing" yaml:"bracketSpacing"`
-	// Whether to insert spaces inside delimiters (after the opening delimiter and before the closing delimiter).
+	// Controls spaces inside JSON square brackets when their content fits on one line.
 	//
-	// Only applies when the content fits on a single line, and empty
-	// brackets are not affected. For JSON, affects square brackets (e.g., `[ 1, 2, 3 ]`).
-	// Defaults to false.
-	// Default: false.
+	// When
+	// enabled, `[1, 2, 3]` becomes `[ 1, 2, 3 ]`. Empty brackets are unchanged.
 	//
+	// If unset, inherits the global delimiter spacing setting.
 	// Experimental.
 	DelimiterSpacing *bool `field:"optional" json:"delimiterSpacing" yaml:"delimiterSpacing"`
-	// Control the formatter for JSON (and its super languages) files.
+	// Controls the formatter for JSON and languages that extend it.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
-	// Whether to expand arrays and objects on multiple lines.
+	// Uses the same `auto`, `always`, and `never` behavior as the global expansion setting.
 	//
-	// When set to `auto`, object literals are formatted on multiple lines if the first property has a newline,
-	// and array literals are formatted on a single line if it fits in the line.
-	// When set to `always`, these literals are formatted on multiple lines, regardless of length of the list.
-	// When set to `never`, these literals are formatted on a single line if it fits in the line.
-	// When formatting `package.json`, Biome will use `always` unless configured otherwise. Defaults to "auto".
-	// Default: auto".
+	// If unset, inherits the global expansion setting.
 	//
+	// When formatting `package.json`, Biome uses `always` unless configured otherwise.
 	// Experimental.
 	Expand Expand `field:"optional" json:"expand" yaml:"expand"`
-	// The indent style applied to JSON (and its super languages) files.
+	// The indent style applied to JSON and languages that extend it.
+	//
+	// If unset, inherits the global
+	// indentation style.
 	// Experimental.
 	IndentStyle IndentStyle `field:"optional" json:"indentStyle" yaml:"indentStyle"`
-	// The size of the indentation applied to JSON (and its super languages) files.
+	// The indentation width applied to JSON and languages that extend it.
 	//
-	// Default to 2.
-	// Default: 2.
-	//
+	// If unset, inherits the
+	// global indentation width.
 	// Experimental.
 	IndentWidth *float64 `field:"optional" json:"indentWidth" yaml:"indentWidth"`
-	// The type of line ending applied to JSON (and its super languages) files.
+	// The line ending applied to JSON and languages that extend it.
 	//
-	// `auto` uses CRLF on Windows and LF on other platforms.
+	// If unset, inherits the global
+	// line ending.
 	// Experimental.
 	LineEnding LineEnding `field:"optional" json:"lineEnding" yaml:"lineEnding"`
-	// What's the max width of a line applied to JSON (and its super languages) files.
+	// The maximum line width applied to JSON and languages that extend it.
 	//
-	// Defaults to 80.
-	// Default: 80.
-	//
+	// If unset, inherits the
+	// global line width.
 	// Experimental.
 	LineWidth *float64 `field:"optional" json:"lineWidth" yaml:"lineWidth"`
-	// Print trailing commas wherever possible in multi-line comma-separated syntactic structures.
+	// Prints trailing commas wherever possible in multiline comma-separated structures.
 	//
-	// Defaults to "none".
-	// Default: none".
+	// Defaults
+	// to `none`.
+	// Default: none`.
 	//
 	// Experimental.
 	TrailingCommas JsonTrailingCommas `field:"optional" json:"trailingCommas" yaml:"trailingCommas"`
 	// Whether to add a trailing newline at the end of the file.
 	//
-	// Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
-	// - https://thoughtbot.com/blog/no-newline-at-end-of-file
-	// - https://callmeryan.medium.com/no-newline-at-end-of-file-navigating-gits-warning-for-android-developers-af14e73dd804
-	// - https://unix.stackexchange.com/questions/345548/how-to-cat-files-together-adding-missing-newlines-at-end-of-some-files
-	//
-	// Disable the option at your own risk.
-	//
-	// Defaults to true.
-	// Default: true.
-	//
+	// If unset, inherits the global
+	// trailing newline setting.
 	// Experimental.
 	TrailingNewline *bool `field:"optional" json:"trailingNewline" yaml:"trailingNewline"`
 }

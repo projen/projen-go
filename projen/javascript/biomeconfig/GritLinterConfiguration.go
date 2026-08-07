@@ -1,9 +1,10 @@
 package biomeconfig
 
 
+// Options that change how the GritQL linter behaves.
 // Experimental.
 type GritLinterConfiguration struct {
-	// Control the linter for Grit files.
+	// Controls the linter for GritQL files.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 }

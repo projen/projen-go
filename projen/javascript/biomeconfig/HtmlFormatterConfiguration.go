@@ -1,80 +1,72 @@
 package biomeconfig
 
 
-// Options that changes how the HTML formatter behaves.
+// Options that change how the HTML formatter behaves.
 // Experimental.
 type HtmlFormatterConfiguration struct {
 	// The attribute position style in HTML elements.
 	//
-	// Defaults to auto.
-	// Default: auto.
-	//
+	// If unset, inherits the global attribute
+	// position setting.
 	// Experimental.
 	AttributePosition AttributePosition `field:"optional" json:"attributePosition" yaml:"attributePosition"`
-	// Whether to hug the closing bracket of multiline HTML tags to the end of the last line, rather than being alone on the following line.
+	// Whether to place the closing bracket of a multiline HTML tag at the end of the last line instead of on its own line.
 	//
-	// Defaults to false.
-	// Default: false.
-	//
+	// If unset, inherits the global `bracketSameLine` setting.
 	// Experimental.
 	BracketSameLine *bool `field:"optional" json:"bracketSameLine" yaml:"bracketSameLine"`
-	// Control the formatter for HTML (and its super languages) files.
+	// Controls the formatter for HTML and languages that extend it.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
-	// Whether to indent the `<script>` and `<style>` tags for HTML (and its super languages).
+	// Whether to indent `<script>` and `<style>` tags in HTML and languages that extend it.
 	//
-	// Defaults to false.
-	// Default: false.
+	// Defaults to `false`.
+	// Default: false`.
 	//
 	// Experimental.
 	IndentScriptAndStyle *bool `field:"optional" json:"indentScriptAndStyle" yaml:"indentScriptAndStyle"`
-	// The indent style applied to HTML (and its super languages) files.
+	// The indent style applied to HTML and languages that extend it.
+	//
+	// If unset, inherits the global
+	// indentation style.
 	// Experimental.
 	IndentStyle IndentStyle `field:"optional" json:"indentStyle" yaml:"indentStyle"`
-	// The size of the indentation applied to HTML (and its super languages) files.
+	// The indentation width applied to HTML and languages that extend it.
 	//
-	// Default to 2.
-	// Default: 2.
-	//
+	// If unset, inherits the
+	// global indentation width.
 	// Experimental.
 	IndentWidth *float64 `field:"optional" json:"indentWidth" yaml:"indentWidth"`
-	// The type of line ending applied to HTML (and its super languages) files.
+	// The line ending applied to HTML and languages that extend it.
 	//
-	// `auto` uses CRLF on Windows and LF on other platforms.
+	// If unset, inherits the global
+	// line ending.
 	// Experimental.
 	LineEnding LineEnding `field:"optional" json:"lineEnding" yaml:"lineEnding"`
-	// What's the max width of a line applied to HTML (and its super languages) files.
+	// The maximum line width for HTML and languages that extend it.
 	//
-	// Defaults to 80.
-	// Default: 80.
-	//
+	// If unset, inherits the global
+	// line width.
 	// Experimental.
 	LineWidth *float64 `field:"optional" json:"lineWidth" yaml:"lineWidth"`
-	// Whether void elements should be self-closed.
+	// Controls whether void elements are self-closed.
 	//
-	// Defaults to never.
-	// Default: never.
+	// Defaults to `never`.
+	// Default: never`.
 	//
 	// Experimental.
 	SelfCloseVoidElements SelfCloseVoidElements `field:"optional" json:"selfCloseVoidElements" yaml:"selfCloseVoidElements"`
 	// Whether to add a trailing newline at the end of the file.
 	//
-	// Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
-	// - https://thoughtbot.com/blog/no-newline-at-end-of-file
-	// - https://callmeryan.medium.com/no-newline-at-end-of-file-navigating-gits-warning-for-android-developers-af14e73dd804
-	// - https://unix.stackexchange.com/questions/345548/how-to-cat-files-together-adding-missing-newlines-at-end-of-some-files
-	//
-	// Disable the option at your own risk.
-	//
-	// Defaults to true.
-	// Default: true.
-	//
+	// Unlike other language-specific
+	// trailing newline settings, this option defaults to `true` instead of inheriting the global
+	// setting.
 	// Experimental.
 	TrailingNewline *bool `field:"optional" json:"trailingNewline" yaml:"trailingNewline"`
-	// Whether to account for whitespace sensitivity when formatting HTML (and its super languages).
+	// Whether to account for whitespace sensitivity when formatting HTML and languages that extend it.
 	//
-	// Defaults to "css".
-	// Default: css".
+	// Defaults to `css`.
+	// Default: css`.
 	//
 	// Experimental.
 	WhitespaceSensitivity WhitespaceSensitivity `field:"optional" json:"whitespaceSensitivity" yaml:"whitespaceSensitivity"`

@@ -1,43 +1,37 @@
 package biomeconfig
 
 
+// Options that change how the GritQL formatter behaves.
 // Experimental.
 type GritFormatterConfiguration struct {
-	// Control the formatter for Grit files.
+	// Controls the formatter for GritQL files.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
-	// The indent style applied to Grit files.
+	// The indent style applied to GritQL files.
+	//
+	// If unset, inherits the global indentation style.
 	// Experimental.
 	IndentStyle IndentStyle `field:"optional" json:"indentStyle" yaml:"indentStyle"`
-	// The size of the indentation applied to Grit files.
+	// The indentation width applied to GritQL files.
 	//
-	// Default to 2.
-	// Default: 2.
-	//
+	// If unset, inherits the global indentation
+	// width.
 	// Experimental.
 	IndentWidth *float64 `field:"optional" json:"indentWidth" yaml:"indentWidth"`
-	// The type of line ending applied to Grit files.
+	// The line ending applied to GritQL files.
+	//
+	// If unset, inherits the global line ending.
 	// Experimental.
 	LineEnding LineEnding `field:"optional" json:"lineEnding" yaml:"lineEnding"`
-	// What's the max width of a line applied to Grit files.
+	// The maximum line width for GritQL files.
 	//
-	// Defaults to 80.
-	// Default: 80.
-	//
+	// If unset, inherits the global line width.
 	// Experimental.
 	LineWidth *float64 `field:"optional" json:"lineWidth" yaml:"lineWidth"`
 	// Whether to add a trailing newline at the end of the file.
 	//
-	// Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
-	// - https://thoughtbot.com/blog/no-newline-at-end-of-file
-	// - https://callmeryan.medium.com/no-newline-at-end-of-file-navigating-gits-warning-for-android-developers-af14e73dd804
-	// - https://unix.stackexchange.com/questions/345548/how-to-cat-files-together-adding-missing-newlines-at-end-of-some-files
-	//
-	// Disable the option at your own risk.
-	//
-	// Defaults to true.
-	// Default: true.
-	//
+	// If unset, inherits the global
+	// trailing newline setting.
 	// Experimental.
 	TrailingNewline *bool `field:"optional" json:"trailingNewline" yaml:"trailingNewline"`
 }

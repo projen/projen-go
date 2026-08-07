@@ -1,10 +1,10 @@
 package biomeconfig
 
 
-// Options that changes how the GraphQL linter behaves.
+// Options that change how GraphQL assist behaves.
 // Experimental.
 type GraphqlAssistConfiguration struct {
-	// Control the formatter for GraphQL files.
+	// Controls assist actions for GraphQL files.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 }

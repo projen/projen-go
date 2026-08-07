@@ -1,7 +1,7 @@
 package biomeconfig
 
 
-// Options that changes how the JavaScript parser behaves.
+// Options that change how the JavaScript parser behaves.
 // Experimental.
 type JsParserConfiguration struct {
 	// Enables parsing of Grit metavariables.
@@ -11,9 +11,7 @@ type JsParserConfiguration struct {
 	//
 	// Experimental.
 	GritMetavariables *bool `field:"optional" json:"gritMetavariables" yaml:"gritMetavariables"`
-	// When enabled, files like `.js`/`.mjs`/`.cjs` may contain JSX syntax.
-	//
-	// Defaults to `true`.
+	// When enabled, files such as `.js`, `.mjs`, and `.cjs` may contain JSX syntax. Defaults to `true`.
 	// Default: true`.
 	//
 	// Experimental.

@@ -1,32 +1,30 @@
 package biomeconfig
 
 
-// Set of properties to integrate Biome with a VCS software.
+// Settings for integrating Biome with version control.
 // Experimental.
 type VcsConfiguration struct {
-	// The kind of client.
+	// The version control client.
 	// Experimental.
 	ClientKind VcsClientKind `field:"optional" json:"clientKind" yaml:"clientKind"`
-	// The main branch of the project.
+	// The project's default branch.
 	// Experimental.
 	DefaultBranch *string `field:"optional" json:"defaultBranch" yaml:"defaultBranch"`
-	// Whether Biome should integrate itself with the VCS client.
+	// Whether Biome should integrate with the version control client.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
-	// The folder where Biome should check for VCS files.
+	// Sets the directory where Biome checks for version control files.
 	//
-	// By default, Biome will use the same
-	// folder where `biome.json` was found.
+	// Defaults to the directory containing `biome.json` or `biome.jsonc`. If no configuration is
+	// found, Biome uses the current working directory.
 	//
-	// If Biome can't find the configuration, it will attempt to use the current working directory.
-	// If no current working directory can't be found, Biome won't use the VCS integration, and a diagnostic
-	// will be emitted.
+	// If neither directory is available, Biome disables version control integration and emits a
+	// diagnostic.
+	// Default: the directory containing `biome.json` or `biome.jsonc`. If no configuration is
+	//
 	// Experimental.
 	Root *string `field:"optional" json:"root" yaml:"root"`
-	// Whether Biome should use VCS ignore files.
-	//
-	// When [true], Biome will ignore files
-	// specified in `.gitignore`, `.ignore`, and Git's local exclude file.
+	// When `true`, Biome ignores files listed in `.gitignore`, `.ignore`, and Git's local exclude file.
 	// Experimental.
 	UseIgnoreFile *bool `field:"optional" json:"useIgnoreFile" yaml:"useIgnoreFile"`
 }

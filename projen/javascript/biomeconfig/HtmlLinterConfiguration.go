@@ -1,10 +1,10 @@
 package biomeconfig
 
 
-// Options that changes how the HTML linter behaves.
+// Options that change how the HTML linter behaves.
 // Experimental.
 type HtmlLinterConfiguration struct {
-	// Control the linter for HTML (and its super languages) files.
+	// Controls the linter for HTML and languages that extend it.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 }

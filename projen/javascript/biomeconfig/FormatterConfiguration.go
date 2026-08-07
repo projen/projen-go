@@ -4,46 +4,59 @@ package biomeconfig
 // Generic options applied to all files.
 // Experimental.
 type FormatterConfiguration struct {
-	// The attribute position style in HTML-ish languages.
+	// The attribute position style in HTML-like languages.
 	//
-	// Defaults to auto.
-	// Default: auto.
+	// Defaults to `auto`.
+	// Default: auto`.
 	//
 	// Experimental.
 	AttributePosition AttributePosition `field:"optional" json:"attributePosition" yaml:"attributePosition"`
-	// Put the `>` of a multi-line HTML or JSX element at the end of the last line instead of being alone on the next line (does not apply to self closing elements).
+	// Places the `>` of a multiline HTML or JSX element at the end of the last line instead of on the next line.
+	//
+	// Self-closing elements are unaffected. Defaults to `false`.
+	// Default: false`.
+	//
 	// Experimental.
 	BracketSameLine *bool `field:"optional" json:"bracketSameLine" yaml:"bracketSameLine"`
-	// Whether to insert spaces around brackets in object literals.
+	// Whether to insert spaces inside braces in object literals.
 	//
-	// Defaults to true.
-	// Default: true.
+	// Defaults to `true`.
+	// Default: true`.
 	//
 	// Experimental.
 	BracketSpacing *bool `field:"optional" json:"bracketSpacing" yaml:"bracketSpacing"`
-	// Whether to insert spaces inside delimiters (after the opening delimiter and before the closing delimiter), such as parentheses, brackets, angle brackets, and template literal interpolations.
+	// Controls spaces immediately inside supported delimiters when their content fits on one line.
 	//
-	// Spaces are not added before the opening delimiter, and empty delimiters
-	// are not affected. Only applies when the content fits on a single line. The specific
-	// delimiters affected depend on the language. Defaults to false.
-	// Default: false.
+	// It doesn't add spaces before opening delimiters or inside empty delimiters.
+	//
+	// The affected delimiters vary by language. Defaults to `false`.
+	// Default: false`.
 	//
 	// Experimental.
 	DelimiterSpacing *bool `field:"optional" json:"delimiterSpacing" yaml:"delimiterSpacing"`
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
-	// Whether to expand arrays and objects on multiple lines.
+	// Controls whether arrays and objects are formatted on one line or multiple lines.
 	//
-	// When set to `auto`, object literals are formatted on multiple lines if the first property has a newline,
-	// and array literals are formatted on a single line if it fits in the line.
-	// When set to `always`, these literals are formatted on multiple lines, regardless of length of the list.
-	// When set to `never`, these literals are formatted on a single line if it fits in the line.
-	// When formatting `package.json`, Biome will use `always` unless configured otherwise. Defaults to "auto".
-	// Default: auto".
+	// `auto` formats objects on multiple lines if the first property has a newline, and arrays on
+	// one line if they fit.
+	//
+	// `always` formats arrays and objects on multiple lines.
+	//
+	// `never` formats arrays and objects on one line if they fit.
+	//
+	// Defaults to `auto`.
+	//
+	// When formatting `package.json`, Biome uses `always` unless configured otherwise.
+	// Default: auto`.
 	//
 	// Experimental.
 	Expand Expand `field:"optional" json:"expand" yaml:"expand"`
-	// Whether formatting should be allowed to proceed if a given file has syntax errors.
+	// Allows formatting files that contain syntax errors when set to `true`.
+	//
+	// Defaults to `false`.
+	// Default: false`.
+	//
 	// Experimental.
 	FormatWithErrors *bool `field:"optional" json:"formatWithErrors" yaml:"formatWithErrors"`
 	// A list of glob patterns.
@@ -52,39 +65,45 @@ type FormatterConfiguration struct {
 	// match these patterns.
 	// Experimental.
 	Includes *[]*string `field:"optional" json:"includes" yaml:"includes"`
-	// The indent style.
+	// Uses tabs or spaces for indentation.
+	//
+	// Defaults to `tab`.
+	// Default: tab`.
+	//
 	// Experimental.
 	IndentStyle IndentStyle `field:"optional" json:"indentStyle" yaml:"indentStyle"`
-	// The size of the indentation, 2 by default.
+	// The indentation width.
+	//
+	// Defaults to `2`.
+	// Default: 2`.
+	//
 	// Experimental.
 	IndentWidth *float64 `field:"optional" json:"indentWidth" yaml:"indentWidth"`
-	// The type of line ending.
+	// Selects the line ending.
+	//
+	// `auto` uses the platform convention. Defaults to `lf`.
+	// Default: lf`.
+	//
 	// Experimental.
 	LineEnding LineEnding `field:"optional" json:"lineEnding" yaml:"lineEnding"`
-	// What's the max width of a line.
+	// The maximum line width.
 	//
-	// Defaults to 80.
-	// Default: 80.
+	// Defaults to `80`.
+	// Default: 80`.
 	//
 	// Experimental.
 	LineWidth *float64 `field:"optional" json:"lineWidth" yaml:"lineWidth"`
 	// Whether to add a trailing newline at the end of the file.
 	//
-	// Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
-	// - https://thoughtbot.com/blog/no-newline-at-end-of-file
-	// - https://callmeryan.medium.com/no-newline-at-end-of-file-navigating-gits-warning-for-android-developers-af14e73dd804
-	// - https://unix.stackexchange.com/questions/345548/how-to-cat-files-together-adding-missing-newlines-at-end-of-some-files
-	//
-	// Disable the option at your own risk.
-	//
-	// Defaults to true.
-	// Default: true.
+	// Defaults to `true`; disabling
+	// this option can cause compatibility problems with other tools.
+	// Default: true`; disabling.
 	//
 	// Experimental.
 	TrailingNewline *bool `field:"optional" json:"trailingNewline" yaml:"trailingNewline"`
-	// Use any `.editorconfig` files to configure the formatter. Configuration in `biome.json` will override `.editorconfig` configuration.
+	// Uses `.editorconfig` files to configure the formatter. Settings in `biome.json` or `biome.jsonc` override `.editorconfig` settings. Defaults to `false`.
+	// Default: false`.
 	//
-	// Default: `false`.
 	// Experimental.
 	UseEditorconfig *bool `field:"optional" json:"useEditorconfig" yaml:"useEditorconfig"`
 }

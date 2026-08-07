@@ -26,7 +26,9 @@ type JsResolverConfiguration struct {
 	// - Biome only reads top-level `catalog` / `catalogs` mappings and scalar
 	// string entries.
 	//
-	// Default: `false`.
+	// Defaults to `false`.
+	// Default: false`.
+	//
 	// Experimental.
 	ExperimentalPnpmCatalogs *bool `field:"optional" json:"experimentalPnpmCatalogs" yaml:"experimentalPnpmCatalogs"`
 }

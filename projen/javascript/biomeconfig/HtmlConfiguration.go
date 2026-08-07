@@ -4,9 +4,10 @@ package biomeconfig
 // Options applied to HTML files.
 // Experimental.
 type HtmlConfiguration struct {
+	// HTML assist options.
 	// Experimental.
 	Assist *HtmlAssistConfiguration `field:"optional" json:"assist" yaml:"assist"`
-	// Enables full support for HTML, Vue, Svelte and Astro files.
+	// Enables full support for HTML, Vue, Svelte, and Astro files.
 	// Experimental.
 	ExperimentalFullSupportEnabled *bool `field:"optional" json:"experimentalFullSupportEnabled" yaml:"experimentalFullSupportEnabled"`
 	// HTML formatter options.

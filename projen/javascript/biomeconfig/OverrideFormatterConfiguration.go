@@ -16,26 +16,27 @@ type OverrideFormatterConfiguration struct {
 	//
 	// Experimental.
 	BracketSpacing *bool `field:"optional" json:"bracketSpacing" yaml:"bracketSpacing"`
-	// Whether to insert spaces inside delimiters (after the opening delimiter and before the closing delimiter), such as parentheses, brackets, angle brackets, and template literal interpolations.
+	// Controls spaces immediately inside supported delimiters when their content fits on one line.
 	//
-	// Spaces are not added before the opening delimiter, and empty delimiters
-	// are not affected. Only applies when the content fits on a single line. The specific
-	// delimiters affected depend on the language. Defaults to false.
-	// Default: false.
+	// It doesn't add spaces before opening delimiters or inside empty delimiters.
 	//
+	// The affected delimiters vary by language. If unset, uses the configured formatter setting.
 	// Experimental.
 	DelimiterSpacing *bool `field:"optional" json:"delimiterSpacing" yaml:"delimiterSpacing"`
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
-	// Whether to expand arrays and objects on multiple lines.
+	// Controls whether arrays and objects are formatted on one line or multiple lines.
 	//
-	// When set to `auto`, object literals are formatted on multiple lines if the first property has a newline,
-	// and array literals are formatted on a single line if it fits in the line.
-	// When set to `always`, these literals are formatted on multiple lines, regardless of length of the list.
-	// When set to `never`, these literals are formatted on a single line if it fits in the line.
-	// When formatting `package.json`, Biome will use `always` unless configured otherwise. Defaults to "auto".
-	// Default: auto".
+	// `auto` formats objects on multiple lines if the first property has a newline, and arrays on
+	// one line if they fit.
 	//
+	// `always` formats arrays and objects on multiple lines.
+	//
+	// `never` formats arrays and objects on one line if they fit.
+	//
+	// If unset, uses the configured formatter setting.
+	//
+	// When formatting `package.json`, Biome uses `always` unless configured otherwise.
 	// Experimental.
 	Expand Expand `field:"optional" json:"expand" yaml:"expand"`
 	// Stores whether formatting should be allowed to proceed if a given file has syntax errors.

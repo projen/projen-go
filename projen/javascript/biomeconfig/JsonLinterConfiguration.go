@@ -4,7 +4,7 @@ package biomeconfig
 // Linter options specific to the JSON linter.
 // Experimental.
 type JsonLinterConfiguration struct {
-	// Control the linter for JSON (and its super languages) files.
+	// Controls the linter for JSON and languages that extend it.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 }

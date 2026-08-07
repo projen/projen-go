@@ -4,7 +4,7 @@ package biomeconfig
 // Assist options specific to the JSON linter.
 // Experimental.
 type JsonAssistConfiguration struct {
-	// Control the assist for JSON (and its super languages) files.
+	// Controls assist actions for JSON and languages that extend it.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 }

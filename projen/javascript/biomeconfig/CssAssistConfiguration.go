@@ -1,10 +1,10 @@
 package biomeconfig
 
 
-// Options that changes how the CSS assist behaves.
+// Options that change how CSS assist behaves.
 // Experimental.
 type CssAssistConfiguration struct {
-	// Control the assist for CSS files.
+	// Controls assist actions for CSS files.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 }

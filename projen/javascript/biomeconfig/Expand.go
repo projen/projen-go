@@ -7,8 +7,8 @@ type Expand string
 const (
 	// Objects are expanded when the first property has a leading newline.
 	//
-	// Arrays are always
-	// expanded if they are shorter than the line width. (auto)
+	// Arrays remain on one
+	// line if they fit. (auto)
 	// Experimental.
 	Expand_AUTO Expand = "AUTO"
 	// Objects and arrays are always expanded.
@@ -16,7 +16,7 @@ const (
 	// (always).
 	// Experimental.
 	Expand_ALWAYS Expand = "ALWAYS"
-	// Objects and arrays are never expanded, if they are shorter than the line width.
+	// Objects and arrays remain on one line if they fit.
 	//
 	// (never).
 	// Experimental.

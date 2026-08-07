@@ -1,10 +1,10 @@
 package biomeconfig
 
 
-// Options that changes how the HTML assist behaves.
+// Options that change how HTML assist behaves.
 // Experimental.
 type HtmlAssistConfiguration struct {
-	// Control the assist for HTML (and its super languages) files.
+	// Controls assist actions for HTML and languages that extend it.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 }

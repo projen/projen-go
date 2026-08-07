@@ -1,7 +1,7 @@
 package biomeconfig
 
 
-// Integration with the git client as VCS.
+// Integration with Git as the version control client.
 // Experimental.
 type VcsClientKind string
 

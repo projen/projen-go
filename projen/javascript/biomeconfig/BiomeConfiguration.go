@@ -1,43 +1,43 @@
 package biomeconfig
 
 
-// The configuration that is contained inside the file `biome.json`.
+// The configuration contained in `biome.json`.
 // Experimental.
 type BiomeConfiguration struct {
-	// Specific configuration for assists.
+	// The assist configuration.
 	// Experimental.
 	Assist *AssistConfiguration `field:"optional" json:"assist" yaml:"assist"`
-	// Specific configuration for the Css language.
+	// Configuration specific to CSS.
 	// Experimental.
 	Css *CssConfiguration `field:"optional" json:"css" yaml:"css"`
 	// A list of paths to other JSON files, used to extend the current configuration.
 	// Experimental.
 	Extends *[]*string `field:"optional" json:"extends" yaml:"extends"`
-	// The configuration of the filesystem.
+	// The file handling configuration.
 	// Experimental.
 	Files *FilesConfiguration `field:"optional" json:"files" yaml:"files"`
-	// The configuration of the formatter.
+	// The formatter configuration.
 	// Experimental.
 	Formatter *FormatterConfiguration `field:"optional" json:"formatter" yaml:"formatter"`
-	// Specific configuration for the GraphQL language.
+	// Configuration specific to GraphQL.
 	// Experimental.
 	Graphql *GraphqlConfiguration `field:"optional" json:"graphql" yaml:"graphql"`
-	// Specific configuration for the GraphQL language.
+	// Configuration specific to GritQL.
 	// Experimental.
 	Grit *GritConfiguration `field:"optional" json:"grit" yaml:"grit"`
-	// Specific configuration for the HTML language.
+	// Configuration specific to HTML.
 	// Experimental.
 	Html *HtmlConfiguration `field:"optional" json:"html" yaml:"html"`
-	// Specific configuration for the JavaScript language.
+	// Configuration specific to JavaScript.
 	// Experimental.
 	Javascript *JsConfiguration `field:"optional" json:"javascript" yaml:"javascript"`
-	// Specific configuration for the Json language.
+	// Configuration specific to JSON.
 	// Experimental.
 	Json *JsonConfiguration `field:"optional" json:"json" yaml:"json"`
-	// The configuration for the linter.
+	// The linter configuration.
 	// Experimental.
 	Linter *LinterConfiguration `field:"optional" json:"linter" yaml:"linter"`
-	// A list of granular patterns that should be applied only to a sub set of files.
+	// A list of granular patterns applied only to a subset of files.
 	// Experimental.
 	Overrides *[]*OverridePattern `field:"optional" json:"overrides" yaml:"overrides"`
 	// List of plugins to load.
@@ -51,7 +51,7 @@ type BiomeConfiguration struct {
 	// A field for the JSON schema specification: https://json-schema.org/.
 	// Experimental.
 	Schema *string `field:"optional" json:"schema" yaml:"schema"`
-	// The configuration of the VCS integration.
+	// The version control integration configuration.
 	// Experimental.
 	Vcs *VcsConfiguration `field:"optional" json:"vcs" yaml:"vcs"`
 }
