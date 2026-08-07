@@ -22,7 +22,8 @@ import (
 // A multi-language (jsii) construct library which vends constructs designed to
 // use within the CDK for Terraform (CDKTF), with a friendly workflow and
 // automatic publishing to the construct catalog.
-// Experimental.
+// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 type ConstructLibraryCdktf interface {
 	cdk.ConstructLibrary
 	// The build output directory.
@@ -30,80 +31,104 @@ type ConstructLibraryCdktf interface {
 	// An npm tarball will be created under the `js`
 	// subdirectory. For example, if this is set to `dist` (the default), the npm
 	// tarball will be placed under `dist/js/boom-boom-1.2.3.tg`.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	ArtifactsDirectory() *string
 	// The location of the npm tarball after build (`${artifactsDirectory}/js`).
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	ArtifactsJavascriptDirectory() *string
 	// Auto approve set up for this project.
-	// Deprecated.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AutoApprove() github.AutoApprove
 	// Component that sets up mergify for merging approved pull requests.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AutoMerge() github.AutoMerge
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Biome() javascript.Biome
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	BuildTask() projen.Task
 	// The PR build GitHub workflow.
 	//
 	// `undefined` if `buildWorkflow` is disabled.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	BuildWorkflow() build.BuildWorkflow
 	// The job ID of the build workflow.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	BuildWorkflowJobId() *string
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Bundler() javascript.Bundler
 	// Whether to commit the managed files by default.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	CommitGenerated() *bool
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	CompileTask() projen.Task
 	// Returns all the components within this project.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Components() *[]projen.Component
 	// This is the "default" task, the one that executes "projen".
 	//
 	// Undefined if
 	// the project is being ejected.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	DefaultTask() projen.Task
 	// Project dependencies.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Deps() projen.Dependencies
 	// Access for .devcontainer.json (used for GitHub Codespaces).
 	//
 	// This will be `undefined` if devContainer boolean is false.
-	// Deprecated.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	DevContainer() vscode.DevContainer
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Docgen() *bool
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	DocsDirectory() *string
 	// Whether or not the project is being ejected.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Ejected() *bool
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Eslint() javascript.Eslint
 	// All files in this project.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Files() *[]projen.FileBase
 	// The .gitattributes file for this repository.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Gitattributes() projen.GitAttributesFile
 	// Access all github components.
 	//
 	// This will be `undefined` for subprojects.
-	// Deprecated.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Github() github.GitHub
 	// .gitignore.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Gitignore() projen.IgnoreFile
 	// Access for Gitpod.
 	//
 	// This will be `undefined` if gitpod boolean is false.
-	// Deprecated.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Gitpod() projen.Gitpod
 	// The options used when this project is bootstrapped via `projen new`.
 	//
@@ -113,158 +138,206 @@ type ConstructLibraryCdktf interface {
 	// Deprecated: use the `initProject` argument passed to `Component.projectCreation()` instead.
 	InitProject() *projen.InitProject
 	// The Jest configuration (if enabled).
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Jest() javascript.Jest
 	// The directory in which compiled .js files reside.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Libdir() *string
 	// Logging utilities.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Logger() projen.Logger
 	// Maximum node version supported by this package.
 	//
 	// The value indicates the package is incompatible with newer versions.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	MaxNodeVersion() *string
 	// The minimum node version required by this package to function.
 	//
 	// This value indicates the package is incompatible with older versions.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	MinNodeVersion() *string
 	// Project name.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Name() *string
 	// The tree node.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Node() constructs.Node
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	NodeVersion() *string
 	// The .npmignore file.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Npmignore() projen.IgnoreFile
 	// The .npmrc file.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Npmrc() javascript.NpmConfig
 	// Absolute output directory of this project.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Outdir() *string
 	// API for managing the node package.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Package() javascript.NodePackage
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	PackageTask() projen.Task
 	// A parent project.
 	//
 	// If undefined, this is the root project.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Parent() projen.Project
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	PostCompileTask() projen.Task
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	PreCompileTask() projen.Task
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Prettier() javascript.Prettier
 	// Manages the build process of the project.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	ProjectBuild() projen.ProjectBuild
 	// The command to use in order to run the projen CLI.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	ProjenCommand() *string
 	// Release management.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Release() release.Release
 	// The root project.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Root() projen.Project
 	// The TypeScript runner used for executing TypeScript files.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Runner() typescript.TypeScriptRunner
 	// The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager).
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	RunScriptCommand() *string
 	// The directory in which the .ts sources reside.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Srcdir() *string
 	// Returns all the subprojects within this project.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Subprojects() *[]projen.Project
 	// Project tasks.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Tasks() projen.Tasks
 	// The directory in which tests reside.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Testdir() *string
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	TestTask() projen.Task
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Tsconfig() javascript.TypescriptConfig
 	// A typescript configuration file which covers all files (sources, tests, projen).
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	TsconfigDev() javascript.TypescriptConfig
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	TsconfigEslint() javascript.TypescriptConfig
 	// The upgrade workflow.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	UpgradeWorkflow() javascript.UpgradeDependencies
 	// Access all VSCode components.
 	//
 	// This will be `undefined` for subprojects.
-	// Deprecated.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Vscode() vscode.VsCode
 	// The "watch" task.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	WatchTask() projen.Task
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	WorkflowBootstrapSteps() *[]*workflows.JobStep
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	WorkflowPackageCache() *bool
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AddBins(bins *map[string]*string)
 	// Defines bundled dependencies.
 	//
 	// Bundled dependencies will be added as normal dependencies as well as to the
 	// `bundledDependencies` section of your `package.json`.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AddBundledDeps(deps ...*string)
 	// Defines normal dependencies.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AddDeps(deps ...*string)
 	// Defines development/test dependencies.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AddDevDeps(deps ...*string)
 	// Exclude the matching files from pre-synth cleanup.
 	//
 	// Can be used when, for example, some
 	// source files include the projen marker and we don't want them to be erased during synth.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AddExcludeFromCleanup(globs ...*string)
 	// Directly set fields in `package.json`.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AddFields(fields *map[string]interface{})
 	// Adds a .gitignore pattern.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AddGitIgnore(pattern *string)
 	// Adds keywords to package.json (deduplicated).
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AddKeywords(keywords ...*string)
 	// Adds patterns to be ignored by npm.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AddPackageIgnore(_pattern *string)
 	// Defines peer dependencies.
 	//
 	// When adding peer dependencies, a devDependency will also be added on the
 	// pinned version of the declared peer. This will ensure that you are testing
 	// your code against the minimum version required from your consumers.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AddPeerDeps(deps ...*string)
 	// Replaces the contents of multiple npm package.json scripts.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AddScripts(scripts *map[string]*string)
 	// Adds a new task to this project.
 	//
 	// This will fail if the project already has
 	// a task with this name.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AddTask(name *string, props *projen.TaskOptions) projen.Task
 	// Marks the provided file(s) as being generated.
 	//
@@ -273,40 +346,49 @@ type ConstructLibraryCdktf interface {
 	// repository statistics and language breakdown.
 	// See: https://github.com/github/linguist/blob/master/docs/overrides.md
 	//
-	// Deprecated.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	AnnotateGenerated(_glob *string)
 	// Projen default Typescript compiler options.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	DefaultTypeScriptCompilerOptions() *javascript.TypeScriptCompilerOptions
 	// Called after all components are synthesized.
 	//
 	// Order is *not* guaranteed.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	PostSynthesize()
 	// Called before all components are synthesized.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	PreSynthesize()
 	// Removes the npm script (always successful).
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	RemoveScript(name *string)
 	// Removes a task from a project.
 	//
 	// Returns: The `Task` that was removed, otherwise `undefined`.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	RemoveTask(name *string) projen.Task
 	// Returns the set of workflow steps which should be executed to bootstrap a workflow.
 	//
 	// Returns: Job steps.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep
 	// Returns the shell command to execute in order to run a task.
 	//
 	// This will
 	// typically be `pnpm projen TASK`.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	RunTaskCommand(task projen.Task) *string
 	// Replaces the contents of an npm package.json script.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	SetScript(name *string, command *string)
 	// Synthesize all project files into `outdir`.
 	//
@@ -318,24 +400,29 @@ type ConstructLibraryCdktf interface {
 	// 6. Call "postSynthesize()" for all components of this project
 	// 7. Call "this.postSynthesize()"
 	// 8. Call "postProjectCreation()" for all components, only if the project is being created for the first time
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	Synth()
 	// Returns a string representation of this construct.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	ToString() *string
 	// Finds a file at the specified relative path within this project and all its subprojects.
 	//
 	// Returns: a `FileBase` or undefined if there is no file in that path.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	TryFindFile(filePath *string) projen.FileBase
 	// Finds an object file (like JsonFile, YamlFile, etc.) by name.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	TryFindObjectFile(filePath *string) projen.ObjectFile
 	// Finds a file at the specified relative path within this project and removes it.
 	//
 	// Returns: a `FileBase` if the file was found and removed, or undefined if
 	// the file was not found.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	TryRemoveFile(filePath *string) projen.FileBase
 	// Applies one or more mixins to this construct.
 	//
@@ -345,7 +432,8 @@ type ConstructLibraryCdktf interface {
 	// constructs.
 	//
 	// Returns: This construct for chaining.
-	// Experimental.
+	// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+	// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 	With(mixins ...constructs.IMixin) constructs.IConstruct
 }
 
@@ -965,7 +1053,8 @@ func (j *jsiiProxy_ConstructLibraryCdktf) WorkflowPackageCache() *bool {
 }
 
 
-// Experimental.
+// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 func NewConstructLibraryCdktf(options *ConstructLibraryCdktfOptions) ConstructLibraryCdktf {
 	_init_.Initialize()
 
@@ -983,7 +1072,8 @@ func NewConstructLibraryCdktf(options *ConstructLibraryCdktfOptions) ConstructLi
 	return &j
 }
 
-// Experimental.
+// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 func NewConstructLibraryCdktf_Override(c ConstructLibraryCdktf, options *ConstructLibraryCdktfOptions) {
 	_init_.Initialize()
 
@@ -1011,7 +1101,8 @@ func NewConstructLibraryCdktf_Override(c ConstructLibraryCdktf, options *Constru
 // this type-testing method instead.
 //
 // Returns: true if `x` is an object created from a class which extends `Construct`.
-// Experimental.
+// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 func ConstructLibraryCdktf_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
@@ -1031,7 +1122,8 @@ func ConstructLibraryCdktf_IsConstruct(x interface{}) *bool {
 }
 
 // Test whether the given construct is a project.
-// Experimental.
+// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 func ConstructLibraryCdktf_IsProject(x interface{}) *bool {
 	_init_.Initialize()
 
@@ -1053,7 +1145,8 @@ func ConstructLibraryCdktf_IsProject(x interface{}) *bool {
 // Find the closest ancestor project for given construct.
 //
 // When given a project, this it the project itself.
-// Experimental.
+// Deprecated: CDKTF has been archived by HashiCorp. Use ConstructLibraryCdktn from the cdktn module instead.
+// CDKTN is a community-driven fork that continues active development. Learn more at https://cdktn.io/
 func ConstructLibraryCdktf_Of(construct constructs.IConstruct) projen.Project {
 	_init_.Initialize()
 

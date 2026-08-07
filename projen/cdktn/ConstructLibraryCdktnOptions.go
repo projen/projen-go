@@ -1,0 +1,1106 @@
+package cdktn
+
+import (
+	"github.com/projen/projen-go/projen"
+	"github.com/projen/projen-go/projen/cdk"
+	"github.com/projen/projen-go/projen/github"
+	"github.com/projen/projen-go/projen/github/workflows"
+	"github.com/projen/projen-go/projen/javascript"
+	"github.com/projen/projen-go/projen/release"
+	"github.com/projen/projen-go/projen/typescript"
+)
+
+// Experimental.
+type ConstructLibraryCdktnOptions struct {
+	// This is the name of your project.
+	// Default: $BASEDIR.
+	//
+	// Experimental.
+	Name *string `field:"required" json:"name" yaml:"name"`
+	// Whether to commit the managed files by default.
+	// Default: true.
+	//
+	// Experimental.
+	CommitGenerated *bool `field:"optional" json:"commitGenerated" yaml:"commitGenerated"`
+	// Configuration options for .gitignore file.
+	// Experimental.
+	GitIgnoreOptions *projen.IgnoreFileOptions `field:"optional" json:"gitIgnoreOptions" yaml:"gitIgnoreOptions"`
+	// Configuration options for git.
+	// Experimental.
+	GitOptions *projen.GitOptions `field:"optional" json:"gitOptions" yaml:"gitOptions"`
+	// Configure logging options such as verbosity.
+	// Default: {}.
+	//
+	// Experimental.
+	Logging *projen.LoggerOptions `field:"optional" json:"logging" yaml:"logging"`
+	// The root directory of the project.
+	//
+	// Relative to this directory, all files are synthesized.
+	//
+	// If this project has a parent, this directory is relative to the parent
+	// directory and it cannot be the same as the parent or any of it's other
+	// subprojects.
+	// Default: "."
+	//
+	// Experimental.
+	Outdir *string `field:"optional" json:"outdir" yaml:"outdir"`
+	// The parent project, if this project is part of a bigger project.
+	// Experimental.
+	Parent projen.Project `field:"optional" json:"parent" yaml:"parent"`
+	// Generate a project tree file (`.projen/tree.json`) that shows all components and their relationships. Useful for understanding your project structure and debugging.
+	// Default: false.
+	//
+	// Experimental.
+	ProjectTree *bool `field:"optional" json:"projectTree" yaml:"projectTree"`
+	// The shell command to use in order to run the projen CLI.
+	//
+	// Can be used to customize in special environments.
+	// Default: "npx projen".
+	//
+	// Experimental.
+	ProjenCommand *string `field:"optional" json:"projenCommand" yaml:"projenCommand"`
+	// Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
+	// Default: false.
+	//
+	// Experimental.
+	ProjenrcJson *bool `field:"optional" json:"projenrcJson" yaml:"projenrcJson"`
+	// Options for .projenrc.json.
+	// Default: - default options.
+	//
+	// Experimental.
+	ProjenrcJsonOptions *projen.ProjenrcJsonOptions `field:"optional" json:"projenrcJsonOptions" yaml:"projenrcJsonOptions"`
+	// Use renovatebot to handle dependency upgrades.
+	// Default: false.
+	//
+	// Experimental.
+	Renovatebot *bool `field:"optional" json:"renovatebot" yaml:"renovatebot"`
+	// Options for renovatebot.
+	// Default: - default options.
+	//
+	// Experimental.
+	RenovatebotOptions *projen.RenovatebotOptions `field:"optional" json:"renovatebotOptions" yaml:"renovatebotOptions"`
+	// Enable and configure the 'auto approve' workflow.
+	// Default: - auto approve is disabled.
+	//
+	// Experimental.
+	AutoApproveOptions *github.AutoApproveOptions `field:"optional" json:"autoApproveOptions" yaml:"autoApproveOptions"`
+	// Enable automatic merging on GitHub.
+	//
+	// Has no effect if `github.mergify`
+	// is set to false.
+	// Default: true.
+	//
+	// Experimental.
+	AutoMerge *bool `field:"optional" json:"autoMerge" yaml:"autoMerge"`
+	// Configure options for automatic merging on GitHub.
+	//
+	// Has no effect if
+	// `github.mergify` or `autoMerge` is set to false.
+	// Default: - see defaults in `AutoMergeOptions`.
+	//
+	// Experimental.
+	AutoMergeOptions *github.AutoMergeOptions `field:"optional" json:"autoMergeOptions" yaml:"autoMergeOptions"`
+	// Add a `clobber` task which resets the repo to origin.
+	// Default: - true, but false for subprojects.
+	//
+	// Experimental.
+	Clobber *bool `field:"optional" json:"clobber" yaml:"clobber"`
+	// Add a VSCode development environment (used for GitHub Codespaces).
+	// Default: false.
+	//
+	// Experimental.
+	DevContainer *bool `field:"optional" json:"devContainer" yaml:"devContainer"`
+	// Enable GitHub integration.
+	//
+	// Enabled by default for root projects. Disabled for non-root projects.
+	// Default: true.
+	//
+	// Experimental.
+	Github *bool `field:"optional" json:"github" yaml:"github"`
+	// Options for GitHub integration.
+	// Default: - see GitHubOptions.
+	//
+	// Experimental.
+	GithubOptions *github.GitHubOptions `field:"optional" json:"githubOptions" yaml:"githubOptions"`
+	// Add a Gitpod development environment.
+	// Default: false.
+	//
+	// Experimental.
+	Gitpod *bool `field:"optional" json:"gitpod" yaml:"gitpod"`
+	// Choose a method of providing GitHub API access for projen workflows.
+	// Default: - use a personal access token named PROJEN_GITHUB_TOKEN.
+	//
+	// Experimental.
+	ProjenCredentials github.GithubCredentials `field:"optional" json:"projenCredentials" yaml:"projenCredentials"`
+	// The README setup.
+	//
+	// Example:
+	//   "{ filename: 'readme.md', contents: '# title' }"
+	//
+	// Default: - { filename: 'README.md', contents: '# replace this' }
+	//
+	// Experimental.
+	Readme *projen.SampleReadmeProps `field:"optional" json:"readme" yaml:"readme"`
+	// Auto-close of stale issues and pull request.
+	//
+	// See `staleOptions` for options.
+	// Default: false.
+	//
+	// Experimental.
+	Stale *bool `field:"optional" json:"stale" yaml:"stale"`
+	// Auto-close stale issues and pull requests.
+	//
+	// To disable set `stale` to `false`.
+	// Default: - see defaults in `StaleOptions`.
+	//
+	// Experimental.
+	StaleOptions *github.StaleOptions `field:"optional" json:"staleOptions" yaml:"staleOptions"`
+	// Enable VSCode integration.
+	//
+	// Enabled by default for root projects. Disabled for non-root projects.
+	// Default: true.
+	//
+	// Experimental.
+	Vscode *bool `field:"optional" json:"vscode" yaml:"vscode"`
+	// Automatically add the resolved `packageManager` to `devEngines.packageManager` in `package.json`, setting `onFail` to `ignore`.
+	// Default: true.
+	//
+	// Experimental.
+	AddPackageManagerToDevEngines *bool `field:"optional" json:"addPackageManagerToDevEngines" yaml:"addPackageManagerToDevEngines"`
+	// Allow the project to include `peerDependencies` and `bundledDependencies`.
+	//
+	// This is normally only allowed for libraries. For apps, there's no meaning
+	// for specifying these.
+	// Default: true.
+	//
+	// Experimental.
+	AllowLibraryDependencies *bool `field:"optional" json:"allowLibraryDependencies" yaml:"allowLibraryDependencies"`
+	// List of dependency (package) names that are allowed to run lifecycle install scripts (`preinstall`, `install`, `postinstall`, `prepare`) during dependency installation.
+	//
+	// These scripts can execute arbitrary code, making them a common
+	// supply-chain attack vector. Package managers are moving toward
+	// blocking them by default and requiring an explicit allowlist.
+	// Configuring `allowScripts` sets up that allowlist so scripts only run
+	// for the packages you have explicitly reviewed and trust.
+	//
+	// Support for this setting depends on the configured `packageManager`:
+	//
+	// - `NPM`: written to the native `allowScripts` field in `package.json`
+	//   (requires npm >= 11.16; see https://docs.npmjs.com/cli/v11/commands/npm-approve-scripts).
+	// - `BUN`: written to the native `trustedDependencies` field in
+	//   `package.json` (see https://bun.com/docs/pm/lifecycle).
+	// - `PNPM`: written to the `onlyBuiltDependencies` setting in
+	//   `pnpm-workspace.yaml` (see https://pnpm.io/settings#onlybuiltdependencies).
+	// - `YARN2`, `YARN_BERRY`: written to the native
+	//   `dependenciesMeta.<pkg>.built` allowlist in `package.json`, combined
+	//   with `enableScripts: false` in `.yarnrc.yml` (see
+	//   https://yarnpkg.com/features/security#postinstalls). If you set
+	//   `yarnBerryOptions.yarnRcOptions.enableScripts` explicitly, that value
+	//   is respected instead of being overridden.
+	// - `YARN`, `YARN_CLASSIC`: not supported. Yarn Classic has no native
+	//   mechanism to allowlist install scripts for specific dependencies.
+	//   Setting this option with one of these package managers throws an
+	//   error at synthesis time.
+	// Default: - all install scripts are allowed to run (package manager default).
+	//
+	// Experimental.
+	AllowScripts *[]*string `field:"optional" json:"allowScripts" yaml:"allowScripts"`
+	// Author's e-mail.
+	// Experimental.
+	AuthorEmail *string `field:"optional" json:"authorEmail" yaml:"authorEmail"`
+	// Author's name.
+	// Experimental.
+	AuthorName *string `field:"optional" json:"authorName" yaml:"authorName"`
+	// Is the author an organization.
+	// Experimental.
+	AuthorOrganization *bool `field:"optional" json:"authorOrganization" yaml:"authorOrganization"`
+	// Author's URL / Website.
+	// Experimental.
+	AuthorUrl *string `field:"optional" json:"authorUrl" yaml:"authorUrl"`
+	// Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
+	// Default: true.
+	//
+	// Experimental.
+	AutoDetectBin *bool `field:"optional" json:"autoDetectBin" yaml:"autoDetectBin"`
+	// Binary programs vended with your module.
+	//
+	// You can use this option to add/customize how binaries are represented in
+	// your `package.json`, but unless `autoDetectBin` is `false`, every
+	// executable file under `bin` will automatically be added to this section.
+	// Experimental.
+	Bin *map[string]*string `field:"optional" json:"bin" yaml:"bin"`
+	// The email address to which issues should be reported.
+	// Experimental.
+	BugsEmail *string `field:"optional" json:"bugsEmail" yaml:"bugsEmail"`
+	// The url to your project's issue tracker.
+	// Experimental.
+	BugsUrl *string `field:"optional" json:"bugsUrl" yaml:"bugsUrl"`
+	// List of dependencies to bundle into this module.
+	//
+	// These modules will be
+	// added both to the `dependencies` section and `bundledDependencies` section of
+	// your `package.json`.
+	//
+	// The recommendation is to only specify the module name here (e.g.
+	// `express`). This will behave similar to `pnpm add` or `npm install` in the
+	// sense that it will add the module as a dependency to your `package.json`
+	// file with the latest version (`^`). You can specify semver requirements in
+	// the same syntax passed to `pnpm add` or `npm i` (e.g. `express@^2`) and
+	// this will be what your `package.json` will eventually include.
+	// Experimental.
+	BundledDeps *[]*string `field:"optional" json:"bundledDeps" yaml:"bundledDeps"`
+	// The version of Bun to use if using Bun as a package manager.
+	// Default: "latest".
+	//
+	// Experimental.
+	BunVersion *string `field:"optional" json:"bunVersion" yaml:"bunVersion"`
+	// Options for npm packages using AWS CodeArtifact.
+	//
+	// This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact.
+	// Default: - undefined.
+	//
+	// Experimental.
+	CodeArtifactOptions *javascript.CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
+	// Add a `dedupe` task that deduplicates project dependencies.
+	//
+	// Deduplication prevents multiple versions of the same package from being
+	// installed, if a single version can satisfy all requested version ranges.
+	// This prevents version proliferation and reduces the size of the dependency
+	// tree.
+	//
+	// The behavior depends on the package manager:
+	// - npm: runs `npm dedupe` after every mutating install.
+	// - pnpm: runs `pnpm dedupe` after every mutating install.
+	// - Yarn Berry: runs `yarn dedupe` after every mutating install. If
+	//   `yarnBerryOptions.dedupePackages` is set, only the listed packages are
+	//   deduplicated.
+	// - Yarn Classic: `yarn install` already deduplicates, so the task only
+	//   prints an informational message.
+	// - Bun: not supported, enabling this option throws an error.
+	// Default: - false, unless `yarnBerryOptions.dedupePackages` is set
+	//
+	// Experimental.
+	DedupeDeps *bool `field:"optional" json:"dedupeDeps" yaml:"dedupeDeps"`
+	// Automatically delete lockfiles from package managers that are not the active one.
+	//
+	// Only triggered when the lockfile for the configured package
+	// manager already exists.
+	//
+	// This is useful when migrating between package managers to avoid conflicts.
+	// Default: true.
+	//
+	// Experimental.
+	DeleteOrphanedLockFiles *bool `field:"optional" json:"deleteOrphanedLockFiles" yaml:"deleteOrphanedLockFiles"`
+	// Runtime dependencies of this module.
+	//
+	// The recommendation is to only specify the module name here (e.g.
+	// `express`). This will behave similar to `pnpm add` or `npm install` in the
+	// sense that it will add the module as a dependency to your `package.json`
+	// file with the latest version (`^`). You can specify semver requirements in
+	// the same syntax passed to `pnpm add` or `npm i` (e.g. `express@^2`) and
+	// this will be what your `package.json` will eventually include.
+	//
+	// Example:
+	//   [ 'express', 'lodash', 'foo@^2' ]
+	//
+	// Default: [].
+	//
+	// Experimental.
+	Deps *[]*string `field:"optional" json:"deps" yaml:"deps"`
+	// The description is just a string that helps people understand the purpose of the package.
+	//
+	// It can be used when searching for packages in a package manager as well.
+	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
+	// Experimental.
+	Description *string `field:"optional" json:"description" yaml:"description"`
+	// Build dependencies for this module.
+	//
+	// These dependencies will only be
+	// available in your build environment but will not be fetched when this
+	// module is consumed.
+	//
+	// The recommendation is to only specify the module name here (e.g.
+	// `express`). This will behave similar to `pnpm add` or `npm install` in the
+	// sense that it will add the module as a dependency to your `package.json`
+	// file with the latest version (`^`). You can specify semver requirements in
+	// the same syntax passed to `pnpm add` or `npm i` (e.g. `express@^2`) and
+	// this will be what your `package.json` will eventually include.
+	//
+	// Example:
+	//   [ 'typescript', '@types/express' ]
+	//
+	// Default: [].
+	//
+	// Experimental.
+	DevDeps *[]*string `field:"optional" json:"devDeps" yaml:"devDeps"`
+	// Configure the `devEngines` field in `package.json`.
+	//
+	// The `devEngines.packageManager` field is automatically populated based on
+	// the resolved `packageManager` value. Any fields provided here are merged
+	// with the auto-populated `packageManager` entry.
+	// See: https://docs.npmjs.com/cli/v10/configuring-npm/package-json#devengines
+	//
+	// Experimental.
+	DevEngines *javascript.DevEngines `field:"optional" json:"devEngines" yaml:"devEngines"`
+	// Module entrypoint (`main` in `package.json`).
+	//
+	// Set to an empty string to not include `main` in your package.json
+	// Default: "lib/index.js"
+	//
+	// Experimental.
+	Entrypoint *string `field:"optional" json:"entrypoint" yaml:"entrypoint"`
+	// Package's Homepage / Website.
+	// Experimental.
+	Homepage *string `field:"optional" json:"homepage" yaml:"homepage"`
+	// Keywords to include in `package.json`.
+	// Experimental.
+	Keywords *[]*string `field:"optional" json:"keywords" yaml:"keywords"`
+	// License's SPDX identifier.
+	//
+	// See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
+	// Use the `licensed` option if you want to no license to be specified.
+	// Default: "Apache-2.0"
+	//
+	// Experimental.
+	License *string `field:"optional" json:"license" yaml:"license"`
+	// Indicates if a license should be added.
+	// Default: true.
+	//
+	// Experimental.
+	Licensed *bool `field:"optional" json:"licensed" yaml:"licensed"`
+	// The maximum node version supported by this package. Most projects should not use this option.
+	//
+	// The value indicates that the package is incompatible with any newer versions of node.
+	// This requirement is enforced via the engines field.
+	//
+	// You will normally not need to set this option.
+	// Consider this option only if your package is known to not function with newer versions of node.
+	// Default: - no maximum version is enforced.
+	//
+	// Experimental.
+	MaxNodeVersion *string `field:"optional" json:"maxNodeVersion" yaml:"maxNodeVersion"`
+	// The minimum node version required by this package to function. Most projects should not use this option.
+	//
+	// The value indicates that the package is incompatible with any older versions of node.
+	// This requirement is enforced via the engines field.
+	//
+	// You will normally not need to set this option, even if your package is incompatible with EOL versions of node.
+	// Consider this option only if your package depends on a specific feature, that is not available in other LTS versions.
+	// Setting this option has very high impact on the consumers of your package,
+	// as package managers will actively prevent usage with node versions you have marked as incompatible.
+	//
+	// To change the node version of your CI/CD workflows, use `workflowNodeVersion`.
+	// Default: - no minimum version is enforced.
+	//
+	// Experimental.
+	MinNodeVersion *string `field:"optional" json:"minNodeVersion" yaml:"minNodeVersion"`
+	// Access level of the npm package.
+	// Default: - for scoped packages (e.g. `foo@bar`), the default is
+	// `NpmAccess.RESTRICTED`, for non-scoped packages, the default is
+	// `NpmAccess.PUBLIC`.
+	//
+	// Experimental.
+	NpmAccess javascript.NpmAccess `field:"optional" json:"npmAccess" yaml:"npmAccess"`
+	// Should provenance statements be generated when the package is published.
+	//
+	// A supported package manager is required to publish a package with npm provenance statements and
+	// you will need to use a supported CI/CD provider.
+	//
+	// Note that the projen `Release` and `Publisher` components are using `publib` to publish packages,
+	// which is using npm internally and supports provenance statements independently of the package manager used.
+	// See: https://docs.npmjs.com/generating-provenance-statements
+	//
+	// Default: - true for public packages, false otherwise.
+	//
+	// Experimental.
+	NpmProvenance *bool `field:"optional" json:"npmProvenance" yaml:"npmProvenance"`
+	// The base URL of the npm package registry.
+	//
+	// Must be a URL (e.g. start with "https://" or "http://")
+	// Default: "https://registry.npmjs.org"
+	//
+	// Experimental.
+	NpmRegistryUrl *string `field:"optional" json:"npmRegistryUrl" yaml:"npmRegistryUrl"`
+	// GitHub secret which contains the NPM token to use when publishing packages.
+	// Default: "NPM_TOKEN".
+	//
+	// Experimental.
+	NpmTokenSecret *string `field:"optional" json:"npmTokenSecret" yaml:"npmTokenSecret"`
+	// Use trusted publishing for publishing to npmjs.com Needs to be pre-configured on npm.js to work.
+	// Default: - false.
+	//
+	// Experimental.
+	NpmTrustedPublishing *bool `field:"optional" json:"npmTrustedPublishing" yaml:"npmTrustedPublishing"`
+	// The Node Package Manager used to execute scripts.
+	// Default: - Detected from the calling process or `YARN_CLASSIC` if detection fails.
+	//
+	// Experimental.
+	PackageManager javascript.NodePackageManager `field:"optional" json:"packageManager" yaml:"packageManager"`
+	// The "name" in package.json.
+	// Default: - defaults to project name.
+	//
+	// Experimental.
+	PackageName *string `field:"optional" json:"packageName" yaml:"packageName"`
+	// Options for `peerDeps`.
+	// Experimental.
+	PeerDependencyOptions *javascript.PeerDependencyOptions `field:"optional" json:"peerDependencyOptions" yaml:"peerDependencyOptions"`
+	// Peer dependencies for this module.
+	//
+	// Dependencies listed here are required to
+	// be installed (and satisfied) by the _consumer_ of this library. Using peer
+	// dependencies allows you to ensure that only a single module of a certain
+	// library exists in the `node_modules` tree of your consumers.
+	//
+	// Note that prior to npm@7, peer dependencies are _not_ automatically
+	// installed, which means that adding peer dependencies to a library will be a
+	// breaking change for your customers.
+	//
+	// Unless `peerDependencyOptions.pinnedDevDependency` is disabled (it is
+	// enabled by default), projen will automatically add a dev dependency with a
+	// pinned version for each peer dependency. This will ensure that you build &
+	// test your module against the lowest peer version required.
+	// Default: [].
+	//
+	// Experimental.
+	PeerDeps *[]*string `field:"optional" json:"peerDeps" yaml:"peerDeps"`
+	// Options for pnpm.
+	// Default: - all default options.
+	//
+	// Experimental.
+	PnpmOptions *javascript.PnpmOptions `field:"optional" json:"pnpmOptions" yaml:"pnpmOptions"`
+	// The version of PNPM to use if using PNPM as a package manager.
+	// Default: "10.33.0"
+	//
+	// Experimental.
+	PnpmVersion *string `field:"optional" json:"pnpmVersion" yaml:"pnpmVersion"`
+	// The repository is the location where the actual code for your package lives.
+	//
+	// See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
+	// Experimental.
+	Repository *string `field:"optional" json:"repository" yaml:"repository"`
+	// If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
+	// Experimental.
+	RepositoryDirectory *string `field:"optional" json:"repositoryDirectory" yaml:"repositoryDirectory"`
+	// Options for privately hosted scoped packages.
+	// Default: - fetch all scoped packages from the public npm registry.
+	//
+	// Experimental.
+	ScopedPackagesOptions *[]*javascript.ScopedPackagesOptions `field:"optional" json:"scopedPackagesOptions" yaml:"scopedPackagesOptions"`
+	// Package's Stability.
+	// Experimental.
+	Stability *string `field:"optional" json:"stability" yaml:"stability"`
+	// Options for Yarn Berry.
+	// Default: - Yarn Berry v4 with all default options.
+	//
+	// Experimental.
+	YarnBerryOptions *javascript.YarnBerryOptions `field:"optional" json:"yarnBerryOptions" yaml:"yarnBerryOptions"`
+	// The `commit-and-tag-version` compatible package used to bump the package version, as a dependency string.
+	//
+	// This can be any compatible package version, including the deprecated `standard-version@9`.
+	// Default: - A recent version of "commit-and-tag-version".
+	//
+	// Experimental.
+	BumpPackage *string `field:"optional" json:"bumpPackage" yaml:"bumpPackage"`
+	// Version requirement of `publib` which is used to publish modules to npm.
+	// Default: "latest".
+	//
+	// Experimental.
+	JsiiReleaseVersion *string `field:"optional" json:"jsiiReleaseVersion" yaml:"jsiiReleaseVersion"`
+	// Major version to release from the default branch.
+	//
+	// If this is specified, we bump the latest version of this major version line.
+	// If not specified, we bump the global latest version.
+	// Default: - Major version is not enforced.
+	//
+	// Experimental.
+	MajorVersion *float64 `field:"optional" json:"majorVersion" yaml:"majorVersion"`
+	// Minimal Major version to release.
+	//
+	// This can be useful to set to 1, as breaking changes before the 1.x major
+	// release are not incrementing the major version number.
+	//
+	// Can not be set together with `majorVersion`.
+	// Default: - No minimum version is being enforced.
+	//
+	// Experimental.
+	MinMajorVersion *float64 `field:"optional" json:"minMajorVersion" yaml:"minMajorVersion"`
+	// A shell command to control the next version to release.
+	//
+	// If present, this shell command will be run before the bump is executed, and
+	// it determines what version to release. It will be executed in the following
+	// environment:
+	//
+	// - Working directory: the project directory.
+	// - `$VERSION`: the current version. Looks like `1.2.3`.
+	// - `$LATEST_TAG`: the most recent tag. Looks like `prefix-v1.2.3`, or may be unset.
+	// - `$SUGGESTED_BUMP`: the suggested bump action based on commits. One of `major|minor|patch|none`.
+	//
+	// The command should print one of the following to `stdout`:
+	//
+	// - Nothing: the next version number will be determined based on commit history.
+	// - `x.y.z`: the next version number will be `x.y.z`.
+	// - `major|minor|patch`: the next version number will be the current version number
+	//   with the indicated component bumped.
+	//
+	// This setting cannot be specified together with `minMajorVersion`; the invoked
+	// script can be used to achieve the effects of `minMajorVersion`.
+	// Default: - The next version will be determined based on the commit history and project settings.
+	//
+	// Experimental.
+	NextVersionCommand *string `field:"optional" json:"nextVersionCommand" yaml:"nextVersionCommand"`
+	// The npmDistTag to use when publishing from the default branch.
+	//
+	// To set the npm dist-tag for release branches, set the `npmDistTag` property
+	// for each branch.
+	// Default: "latest".
+	//
+	// Experimental.
+	NpmDistTag *string `field:"optional" json:"npmDistTag" yaml:"npmDistTag"`
+	// Steps to execute after build as part of the release workflow.
+	// Default: [].
+	//
+	// Experimental.
+	PostBuildSteps *[]*workflows.JobStep `field:"optional" json:"postBuildSteps" yaml:"postBuildSteps"`
+	// Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
+	// Default: - normal semantic versions.
+	//
+	// Experimental.
+	Prerelease *string `field:"optional" json:"prerelease" yaml:"prerelease"`
+	// Instead of actually publishing to package managers, just print the publishing command.
+	// Default: false.
+	//
+	// Experimental.
+	PublishDryRun *bool `field:"optional" json:"publishDryRun" yaml:"publishDryRun"`
+	// Define publishing tasks that can be executed manually as well as workflows.
+	//
+	// Normally, publishing only happens within automated workflows. Enable this
+	// in order to create a publishing task for each publishing activity.
+	// Default: false.
+	//
+	// Experimental.
+	PublishTasks *bool `field:"optional" json:"publishTasks" yaml:"publishTasks"`
+	// Find commits that should be considered releasable Used to decide if a release is required.
+	// Default: ReleasableCommits.everyCommit()
+	//
+	// Experimental.
+	ReleasableCommits projen.ReleasableCommits `field:"optional" json:"releasableCommits" yaml:"releasableCommits"`
+	// Defines additional release branches.
+	//
+	// A workflow will be created for each
+	// release branch which will publish releases from commits in this branch.
+	// Each release branch _must_ be assigned a major version number which is used
+	// to enforce that versions published from that branch always use that major
+	// version. If multiple branches are used, the `majorVersion` field must also
+	// be provided for the default branch.
+	// Default: - no additional branches are used for release. you can use
+	// `addBranch()` to add additional branches.
+	//
+	// Experimental.
+	ReleaseBranches *map[string]*release.BranchOptions `field:"optional" json:"releaseBranches" yaml:"releaseBranches"`
+	// The GitHub Actions environment used for the release.
+	//
+	// This can be used to add an explicit approval step to the release
+	// or limit who can initiate a release through environment protection rules.
+	//
+	// When multiple artifacts are released, the environment can be overwritten
+	// on a per artifact basis.
+	// Default: - no environment used, unless set at the artifact level.
+	//
+	// Experimental.
+	ReleaseEnvironment *string `field:"optional" json:"releaseEnvironment" yaml:"releaseEnvironment"`
+	// Create a github issue on every failed publishing task.
+	// Default: false.
+	//
+	// Experimental.
+	ReleaseFailureIssue *bool `field:"optional" json:"releaseFailureIssue" yaml:"releaseFailureIssue"`
+	// The label to apply to issues indicating publish failures.
+	//
+	// Only applies if `releaseFailureIssue` is true.
+	// Default: "failed-release".
+	//
+	// Experimental.
+	ReleaseFailureIssueLabel *string `field:"optional" json:"releaseFailureIssueLabel" yaml:"releaseFailureIssueLabel"`
+	// Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
+	//
+	// Note: this prefix is used to detect the latest tagged version
+	// when bumping, so if you change this on a project with an existing version
+	// history, you may need to manually tag your latest release
+	// with the new prefix.
+	// Default: "v".
+	//
+	// Experimental.
+	ReleaseTagPrefix *string `field:"optional" json:"releaseTagPrefix" yaml:"releaseTagPrefix"`
+	// The release trigger to use.
+	// Default: - Continuous releases (`ReleaseTrigger.continuous()`)
+	//
+	// Experimental.
+	ReleaseTrigger release.ReleaseTrigger `field:"optional" json:"releaseTrigger" yaml:"releaseTrigger"`
+	// Build environment variables for release workflows.
+	// Default: {}.
+	//
+	// Experimental.
+	ReleaseWorkflowEnv *map[string]*string `field:"optional" json:"releaseWorkflowEnv" yaml:"releaseWorkflowEnv"`
+	// The name of the default release workflow.
+	// Default: "release".
+	//
+	// Experimental.
+	ReleaseWorkflowName *string `field:"optional" json:"releaseWorkflowName" yaml:"releaseWorkflowName"`
+	// A set of workflow steps to execute in order to setup the workflow container.
+	// Experimental.
+	ReleaseWorkflowSetupSteps *[]*workflows.JobStep `field:"optional" json:"releaseWorkflowSetupSteps" yaml:"releaseWorkflowSetupSteps"`
+	// Custom configuration used when creating changelog with commit-and-tag-version package.
+	//
+	// Given values either append to default configuration or overwrite values in it.
+	// Default: - standard configuration applicable for GitHub repositories.
+	//
+	// Experimental.
+	VersionrcOptions *map[string]interface{} `field:"optional" json:"versionrcOptions" yaml:"versionrcOptions"`
+	// Container image to use for GitHub workflows.
+	// Default: - default image.
+	//
+	// Experimental.
+	WorkflowContainerImage *string `field:"optional" json:"workflowContainerImage" yaml:"workflowContainerImage"`
+	// Github Runner selection labels.
+	// Default: ["ubuntu-latest"].
+	//
+	// Experimental.
+	WorkflowRunsOn *[]*string `field:"optional" json:"workflowRunsOn" yaml:"workflowRunsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	WorkflowRunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"workflowRunsOnGroup" yaml:"workflowRunsOnGroup"`
+	// A directory which will contain build artifacts.
+	// Default: "dist".
+	//
+	// Experimental.
+	ArtifactsDirectory *string `field:"optional" json:"artifactsDirectory" yaml:"artifactsDirectory"`
+	// Run security audit on dependencies.
+	//
+	// When enabled, creates an "audit" task that checks for known security vulnerabilities
+	// in dependencies. By default, runs during every build and checks for "high" severity
+	// vulnerabilities or above in all dependencies (including dev dependencies).
+	// Default: false.
+	//
+	// Experimental.
+	AuditDeps *bool `field:"optional" json:"auditDeps" yaml:"auditDeps"`
+	// Security audit options.
+	// Default: - default options.
+	//
+	// Experimental.
+	AuditDepsOptions *javascript.AuditOptions `field:"optional" json:"auditDepsOptions" yaml:"auditDepsOptions"`
+	// Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configured).
+	//
+	// Throw if set to true but `autoApproveOptions` are not defined.
+	// Default: - true.
+	//
+	// Experimental.
+	AutoApproveUpgrades *bool `field:"optional" json:"autoApproveUpgrades" yaml:"autoApproveUpgrades"`
+	// Setup Biome.
+	// Default: false.
+	//
+	// Experimental.
+	Biome *bool `field:"optional" json:"biome" yaml:"biome"`
+	// Biome options.
+	// Default: - default options.
+	//
+	// Experimental.
+	BiomeOptions *javascript.BiomeOptions `field:"optional" json:"biomeOptions" yaml:"biomeOptions"`
+	// Define a GitHub workflow for building PRs.
+	// Default: - true if not a subproject.
+	//
+	// Experimental.
+	BuildWorkflow *bool `field:"optional" json:"buildWorkflow" yaml:"buildWorkflow"`
+	// Options for PR build workflow.
+	// Experimental.
+	BuildWorkflowOptions *javascript.BuildWorkflowOptions `field:"optional" json:"buildWorkflowOptions" yaml:"buildWorkflowOptions"`
+	// Options for `Bundler`.
+	// Experimental.
+	BundlerOptions *javascript.BundlerOptions `field:"optional" json:"bundlerOptions" yaml:"bundlerOptions"`
+	// Configure which licenses should be deemed acceptable for use by dependencies.
+	//
+	// This setting will cause the build to fail, if any prohibited or not allowed licenses ares encountered.
+	// Default: - no license checks are run during the build and all licenses will be accepted.
+	//
+	// Experimental.
+	CheckLicenses *javascript.LicenseCheckerOptions `field:"optional" json:"checkLicenses" yaml:"checkLicenses"`
+	// Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v5 By default, OIDC auth is used. Alternatively a token can be provided via `codeCovTokenSecret`.
+	// Default: false.
+	//
+	// Experimental.
+	CodeCov *bool `field:"optional" json:"codeCov" yaml:"codeCov"`
+	// Define the secret name for a specified https://codecov.io/ token.
+	// Default: - OIDC auth is used.
+	//
+	// Experimental.
+	CodeCovTokenSecret *string `field:"optional" json:"codeCovTokenSecret" yaml:"codeCovTokenSecret"`
+	// License copyright owner.
+	//
+	// This value is only used if the selected license text contains the
+	// `$copyright_owner` placeholder. For example, it has no effect on the
+	// MPL-2.0 license text.
+	// Default: - defaults to the value of authorName or "" if `authorName` is undefined.
+	//
+	// Experimental.
+	CopyrightOwner *string `field:"optional" json:"copyrightOwner" yaml:"copyrightOwner"`
+	// The copyright years to put in the LICENSE file.
+	//
+	// This value is only used if the selected license text contains the
+	// `$copyright_period` placeholder. For example, it has no effect on the
+	// MPL-2.0 license text.
+	// Default: - current year.
+	//
+	// Experimental.
+	CopyrightPeriod *string `field:"optional" json:"copyrightPeriod" yaml:"copyrightPeriod"`
+	// The name of the main release branch.
+	// Default: "main".
+	//
+	// Experimental.
+	DefaultReleaseBranch *string `field:"optional" json:"defaultReleaseBranch" yaml:"defaultReleaseBranch"`
+	// Use dependabot to handle dependency upgrades.
+	//
+	// Cannot be used in conjunction with `depsUpgrade`.
+	// Default: false.
+	//
+	// Experimental.
+	Dependabot *bool `field:"optional" json:"dependabot" yaml:"dependabot"`
+	// Options for dependabot.
+	// Default: - default options.
+	//
+	// Experimental.
+	DependabotOptions *github.DependabotOptions `field:"optional" json:"dependabotOptions" yaml:"dependabotOptions"`
+	// Use tasks and github workflows to handle dependency upgrades.
+	//
+	// Cannot be used in conjunction with `dependabot`.
+	// Default: - `true` for root projects, `false` for subprojects.
+	//
+	// Experimental.
+	DepsUpgrade *bool `field:"optional" json:"depsUpgrade" yaml:"depsUpgrade"`
+	// Options for `UpgradeDependencies`.
+	// Default: - default options.
+	//
+	// Experimental.
+	DepsUpgradeOptions *javascript.UpgradeDependenciesOptions `field:"optional" json:"depsUpgradeOptions" yaml:"depsUpgradeOptions"`
+	// Additional entries to .gitignore.
+	// Experimental.
+	Gitignore *[]*string `field:"optional" json:"gitignore" yaml:"gitignore"`
+	// Setup jest unit tests.
+	// Default: true.
+	//
+	// Experimental.
+	Jest *bool `field:"optional" json:"jest" yaml:"jest"`
+	// Jest options.
+	// Default: - default options.
+	//
+	// Experimental.
+	JestOptions *javascript.JestOptions `field:"optional" json:"jestOptions" yaml:"jestOptions"`
+	// Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
+	// Default: true.
+	//
+	// Experimental.
+	NpmignoreEnabled *bool `field:"optional" json:"npmignoreEnabled" yaml:"npmignoreEnabled"`
+	// Configuration options for .npmignore file.
+	// Experimental.
+	NpmIgnoreOptions *projen.IgnoreFileOptions `field:"optional" json:"npmIgnoreOptions" yaml:"npmIgnoreOptions"`
+	// Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
+	// Default: true.
+	//
+	// Experimental.
+	Package *bool `field:"optional" json:"package" yaml:"package"`
+	// Setup prettier.
+	// Default: false.
+	//
+	// Experimental.
+	Prettier *bool `field:"optional" json:"prettier" yaml:"prettier"`
+	// Prettier options.
+	// Default: - default options.
+	//
+	// Experimental.
+	PrettierOptions *javascript.PrettierOptions `field:"optional" json:"prettierOptions" yaml:"prettierOptions"`
+	// Indicates of "projen" should be installed as a devDependency.
+	// Default: - true if not a subproject.
+	//
+	// Experimental.
+	ProjenDevDependency *bool `field:"optional" json:"projenDevDependency" yaml:"projenDevDependency"`
+	// Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation.
+	// Default: - true if projenrcJson is false.
+	//
+	// Experimental.
+	ProjenrcJs *bool `field:"optional" json:"projenrcJs" yaml:"projenrcJs"`
+	// Options for .projenrc.js.
+	// Default: - default options.
+	//
+	// Experimental.
+	ProjenrcJsOptions *javascript.ProjenrcOptions `field:"optional" json:"projenrcJsOptions" yaml:"projenrcJsOptions"`
+	// Version of projen to install.
+	// Default: - Defaults to the latest version.
+	//
+	// Experimental.
+	ProjenVersion *string `field:"optional" json:"projenVersion" yaml:"projenVersion"`
+	// Include a GitHub pull request template.
+	// Default: true.
+	//
+	// Experimental.
+	PullRequestTemplate *bool `field:"optional" json:"pullRequestTemplate" yaml:"pullRequestTemplate"`
+	// The contents of the pull request template.
+	// Default: - default content.
+	//
+	// Experimental.
+	PullRequestTemplateContents *[]*string `field:"optional" json:"pullRequestTemplateContents" yaml:"pullRequestTemplateContents"`
+	// Add release management to this project.
+	// Default: - true (false for subprojects).
+	//
+	// Experimental.
+	Release *bool `field:"optional" json:"release" yaml:"release"`
+	// Automatically release to npm when new versions are introduced.
+	// Default: false.
+	//
+	// Experimental.
+	ReleaseToNpm *bool `field:"optional" json:"releaseToNpm" yaml:"releaseToNpm"`
+	// Workflow steps to use in order to bootstrap this repo.
+	// Default: "yarn install --frozen-lockfile && yarn projen".
+	//
+	// Experimental.
+	WorkflowBootstrapSteps *[]*workflows.JobStep `field:"optional" json:"workflowBootstrapSteps" yaml:"workflowBootstrapSteps"`
+	// The git identity to use in workflows.
+	// Default: - default GitHub Actions user.
+	//
+	// Experimental.
+	WorkflowGitIdentity *github.GitIdentity `field:"optional" json:"workflowGitIdentity" yaml:"workflowGitIdentity"`
+	// The node version used in GitHub Actions workflows.
+	//
+	// Always use this option if your GitHub Actions workflows require a specific to run.
+	// Default: - `minNodeVersion` if set, otherwise `lts/*`.
+	//
+	// Experimental.
+	WorkflowNodeVersion *string `field:"optional" json:"workflowNodeVersion" yaml:"workflowNodeVersion"`
+	// Enable Node.js package cache in GitHub workflows.
+	// Default: false.
+	//
+	// Experimental.
+	WorkflowPackageCache *bool `field:"optional" json:"workflowPackageCache" yaml:"workflowPackageCache"`
+	// Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler).
+	// Default: false.
+	//
+	// Experimental.
+	DisableTsconfig *bool `field:"optional" json:"disableTsconfig" yaml:"disableTsconfig"`
+	// Do not generate a development tsconfig file.
+	// Default: false.
+	//
+	// Experimental.
+	DisableTsconfigDev *bool `field:"optional" json:"disableTsconfigDev" yaml:"disableTsconfigDev"`
+	// Docgen by Typedoc.
+	// Default: false.
+	//
+	// Experimental.
+	Docgen *bool `field:"optional" json:"docgen" yaml:"docgen"`
+	// Docs directory.
+	// Default: "docs".
+	//
+	// Experimental.
+	DocsDirectory *string `field:"optional" json:"docsDirectory" yaml:"docsDirectory"`
+	// The .d.ts file that includes the type declarations for this module.
+	// Default: - .d.ts file derived from the project's entrypoint (usually lib/index.d.ts)
+	//
+	// Experimental.
+	EntrypointTypes *string `field:"optional" json:"entrypointTypes" yaml:"entrypointTypes"`
+	// Setup eslint.
+	// Default: - true, unless biome is enabled.
+	//
+	// Experimental.
+	Eslint *bool `field:"optional" json:"eslint" yaml:"eslint"`
+	// Eslint options.
+	// Default: - opinionated default options.
+	//
+	// Experimental.
+	EslintOptions *javascript.EslintOptions `field:"optional" json:"eslintOptions" yaml:"eslintOptions"`
+	// Typescript  artifacts output directory.
+	// Default: "lib".
+	//
+	// Experimental.
+	Libdir *string `field:"optional" json:"libdir" yaml:"libdir"`
+	// Use TypeScript for your projenrc file (`.projenrc.ts`).
+	// Default: false.
+	//
+	// Experimental.
+	ProjenrcTs *bool `field:"optional" json:"projenrcTs" yaml:"projenrcTs"`
+	// Options for .projenrc.ts.
+	// Experimental.
+	ProjenrcTsOptions *typescript.ProjenrcOptions `field:"optional" json:"projenrcTsOptions" yaml:"projenrcTsOptions"`
+	// The TypeScript runner to use for executing TypeScript files.
+	//
+	// This is a project-level setting that components (e.g. projenrc) will
+	// use as their default runner.
+	// Default: TypeScriptRunner.tsNode()
+	//
+	// Experimental.
+	Runner typescript.TypeScriptRunner `field:"optional" json:"runner" yaml:"runner"`
+	// Generate one-time sample in `src/` and `test/` if there are no files there.
+	// Default: true.
+	//
+	// Experimental.
+	SampleCode *bool `field:"optional" json:"sampleCode" yaml:"sampleCode"`
+	// Typescript sources directory.
+	// Default: "src".
+	//
+	// Experimental.
+	Srcdir *string `field:"optional" json:"srcdir" yaml:"srcdir"`
+	// Jest tests directory. Tests files should be named `xxx.test.ts`.
+	//
+	// If this directory is under `srcdir` (e.g. `src/test`, `src/__tests__`),
+	// then tests are going to be compiled into `lib/` and executed as javascript.
+	// If the test directory is outside of `src`, then we configure jest to
+	// compile the code in-memory.
+	// Default: "test".
+	//
+	// Experimental.
+	Testdir *string `field:"optional" json:"testdir" yaml:"testdir"`
+	// Custom TSConfig.
+	// Default: - default options.
+	//
+	// Experimental.
+	Tsconfig *javascript.TypescriptConfigOptions `field:"optional" json:"tsconfig" yaml:"tsconfig"`
+	// Custom tsconfig options for the development tsconfig.json file (used for testing).
+	// Default: - use the production tsconfig options.
+	//
+	// Experimental.
+	TsconfigDev *javascript.TypescriptConfigOptions `field:"optional" json:"tsconfigDev" yaml:"tsconfigDev"`
+	// The name (and path) of the development tsconfig file.
+	//
+	// By default this lives inside the test directory (e.g. `test/tsconfig.json`)
+	// so that the TypeScript language service resolves it as the nearest config
+	// for test files.
+	// Default: - "{testdir}/tsconfig.json"
+	//
+	// Experimental.
+	TsconfigDevFile *string `field:"optional" json:"tsconfigDevFile" yaml:"tsconfigDevFile"`
+	// Options for ts-jest.
+	// Experimental.
+	TsJestOptions *typescript.TsJestOptions `field:"optional" json:"tsJestOptions" yaml:"tsJestOptions"`
+	// TypeScript version to use.
+	//
+	// NOTE: Typescript is not semantically versioned and should remain on the
+	// same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
+	// Default: "latest".
+	//
+	// Experimental.
+	TypescriptVersion *string `field:"optional" json:"typescriptVersion" yaml:"typescriptVersion"`
+	// The name of the library author.
+	// Default: $GIT_USER_NAME.
+	//
+	// Experimental.
+	Author *string `field:"required" json:"author" yaml:"author"`
+	// Email or URL of the library author.
+	// Default: $GIT_USER_EMAIL.
+	//
+	// Experimental.
+	AuthorAddress *string `field:"required" json:"authorAddress" yaml:"authorAddress"`
+	// Git repository URL.
+	// Default: $GIT_REMOTE.
+	//
+	// Experimental.
+	RepositoryUrl *string `field:"required" json:"repositoryUrl" yaml:"repositoryUrl"`
+	// Automatically run API compatibility test against the latest version published to npm after compilation.
+	//
+	// - You can manually run compatibility tests using `yarn compat` if this feature is disabled.
+	// - You can ignore compatibility failures by adding lines to a ".compatignore" file.
+	// Default: false.
+	//
+	// Experimental.
+	Compat *bool `field:"optional" json:"compat" yaml:"compat"`
+	// Name of the ignore file for API compatibility tests.
+	// Default: ".compatignore"
+	//
+	// Experimental.
+	CompatIgnore *string `field:"optional" json:"compatIgnore" yaml:"compatIgnore"`
+	// Emit a compressed version of the assembly.
+	// Default: false.
+	//
+	// Experimental.
+	CompressAssembly *bool `field:"optional" json:"compressAssembly" yaml:"compressAssembly"`
+	// File path for generated docs.
+	// Default: "API.md"
+	//
+	// Experimental.
+	DocgenFilePath *string `field:"optional" json:"docgenFilePath" yaml:"docgenFilePath"`
+	// Accepts a list of glob patterns.
+	//
+	// Files matching any of those patterns will be excluded from the TypeScript compiler input.
+	//
+	// By default, jsii will include all *.ts files (except .d.ts files) in the TypeScript compiler input.
+	// This can be problematic for example when the package's build or test procedure generates .ts files
+	// that cannot be compiled with jsii's compiler settings.
+	// Experimental.
+	ExcludeTypescript *[]*string `field:"optional" json:"excludeTypescript" yaml:"excludeTypescript"`
+	// Version of the jsii compiler to use.
+	//
+	// Set to "*" if you want to manually manage the version of jsii in your
+	// project by managing updates to `package.json` on your own.
+	//
+	// NOTE: The jsii compiler releases since 5.0.0 are not semantically versioned
+	// and should remain on the same minor, so we recommend using a `~` dependency
+	// (e.g. `~5.0.0`).
+	// Default: "~5.9.0"
+	//
+	// Experimental.
+	JsiiVersion *string `field:"optional" json:"jsiiVersion" yaml:"jsiiVersion"`
+	// Publish Go bindings to a git repository.
+	// Default: - no publishing.
+	//
+	// Experimental.
+	PublishToGo *cdk.JsiiGoTarget `field:"optional" json:"publishToGo" yaml:"publishToGo"`
+	// Publish to maven.
+	// Default: - no publishing.
+	//
+	// Experimental.
+	PublishToMaven *cdk.JsiiJavaTarget `field:"optional" json:"publishToMaven" yaml:"publishToMaven"`
+	// Publish to NuGet.
+	// Default: - no publishing.
+	//
+	// Experimental.
+	PublishToNuget *cdk.JsiiDotNetTarget `field:"optional" json:"publishToNuget" yaml:"publishToNuget"`
+	// Publish to pypi.
+	// Default: - no publishing.
+	//
+	// Experimental.
+	PublishToPypi *cdk.JsiiPythonTarget `field:"optional" json:"publishToPypi" yaml:"publishToPypi"`
+	// Default: "."
+	//
+	// Experimental.
+	Rootdir *string `field:"optional" json:"rootdir" yaml:"rootdir"`
+	// Level of tsconfig validation jsii should perform on the user-provided tsconfig.
+	//
+	// Only relevant when the project synthesizes its own tsconfig
+	// (i.e. `disableTsconfig` is not set on the TypeScriptProject).
+	// See: https://aws.github.io/jsii/user-guides/lib-author/configuration/#validatetsconfig
+	//
+	// Default: ValidateTsconfig.STRICT
+	//
+	// Experimental.
+	ValidateTsconfig cdk.ValidateTsconfig `field:"optional" json:"validateTsconfig" yaml:"validateTsconfig"`
+	// Libraries will be picked up by the construct catalog when they are published to npm as jsii modules and will be published under:.
+	//
+	// https://awscdk.io/packages/[@SCOPE/]PACKAGE@VERSION
+	//
+	// The catalog will also post a tweet to https://twitter.com/awscdkio with the
+	// package name, description and the above link. You can disable these tweets
+	// through `{ announce: false }`.
+	//
+	// You can also add a Twitter handle through `{ twitter: 'xx' }` which will be
+	// mentioned in the tweet.
+	// See: https://github.com/construct-catalog/catalog
+	//
+	// Default: - new version will be announced.
+	//
+	// Experimental.
+	Catalog *cdk.Catalog `field:"optional" json:"catalog" yaml:"catalog"`
+	// Minimum target version this library is tested against.
+	// Default: "^0.24.0"
+	//
+	// Experimental.
+	CdktnVersion *string `field:"required" json:"cdktnVersion" yaml:"cdktnVersion"`
+	// Construct version to use.
+	// Default: "^10.7.0"
+	//
+	// Experimental.
+	ConstructsVersion *string `field:"optional" json:"constructsVersion" yaml:"constructsVersion"`
+}
+
