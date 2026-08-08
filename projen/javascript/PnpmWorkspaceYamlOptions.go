@@ -123,6 +123,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// If true, pnpm will fail if no packages match the filter.
 	// Experimental.
 	FailIfNoMatch *bool `field:"optional" json:"failIfNoMatch" yaml:"failIfNoMatch"`
+	// A warning message is displayed if the download speed of a tarball from the registry falls below the specified threshold (in KiB/s).
+	//
+	// Added in pnpm v10.18.0.
+	// Experimental.
+	FetchMinSpeedKiBps *float64 `field:"optional" json:"fetchMinSpeedKiBps" yaml:"fetchMinSpeedKiBps"`
 	// How many times to retry if pnpm fails to fetch from the registry.
 	// Experimental.
 	FetchRetries *float64 `field:"optional" json:"fetchRetries" yaml:"fetchRetries"`
@@ -138,6 +143,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// The maximum amount of time to wait for HTTP requests to complete.
 	// Experimental.
 	FetchTimeout *float64 `field:"optional" json:"fetchTimeout" yaml:"fetchTimeout"`
+	// A warning message is displayed if a metadata request to the registry takes longer than the specified threshold (in milliseconds).
+	//
+	// Added in pnpm v10.18.0.
+	// Experimental.
+	FetchWarnTimeoutMs *float64 `field:"optional" json:"fetchWarnTimeoutMs" yaml:"fetchWarnTimeoutMs"`
 	// By default, pnpm deploy will try creating a dedicated lockfile from a shared lockfile for deployment.
 	//
 	// If this setting is set to true, the legacy deploy behavior will be used.
@@ -177,6 +187,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// When true, packages from the workspaces are symlinked to either <workspace_root>/node_modules/.pnpm/node_modules or to <workspace_root>/node_modules depending on other hoisting settings (hoistPattern and publicHoistPattern).
 	// Experimental.
 	HoistWorkspacePackages *bool `field:"optional" json:"hoistWorkspacePackages" yaml:"hoistWorkspacePackages"`
+	// A proxy to use for outgoing HTTP requests.
+	//
+	// If the HTTP_PROXY or http_proxy environment variables are set, proxy settings will be honored by the underlying request library.
+	// Experimental.
+	HttpProxy *string `field:"optional" json:"httpProxy" yaml:"httpProxy"`
 	// A proxy to use for outgoing HTTPS requests.
 	//
 	// If the HTTPS_PROXY, https_proxy, HTTP_PROXY or http_proxy environment variables are set, their values will be used instead.
@@ -276,6 +291,9 @@ type PnpmWorkspaceYamlOptions struct {
 	// The directory in which dependencies will be installed (instead of node_modules).
 	// Experimental.
 	ModulesDir *string `field:"optional" json:"modulesDir" yaml:"modulesDir"`
+	// Defines named registry aliases that can be used as a prefix when installing packages, e.g. `pnpm add work:@corp/lib@^2.0.0` resolves `@corp/lib@^2.0.0` against the configured URL. Built-in aliases `gh:` (https://npm.pkg.github.com/) and `npmjs:` (https://registry.npmjs.org/) work without any configuration and can be overridden. An alias must start with a letter and contain only letters, digits, `.`, `_`, and `-`. Added in pnpm 11.1.0.
+	// Experimental.
+	NamedRegistries *map[string]*string `field:"optional" json:"namedRegistries" yaml:"namedRegistries"`
 	// Controls the maximum number of HTTP(S) requests to process simultaneously.
 	// Experimental.
 	NetworkConcurrency *float64 `field:"optional" json:"networkConcurrency" yaml:"networkConcurrency"`
@@ -296,7 +314,7 @@ type PnpmWorkspaceYamlOptions struct {
 	NodeVersion *string `field:"optional" json:"nodeVersion" yaml:"nodeVersion"`
 	// A comma-separated string of domain extensions that a proxy should not be used for.
 	// Experimental.
-	Noproxy *string `field:"optional" json:"noproxy" yaml:"noproxy"`
+	NoProxy *string `field:"optional" json:"noProxy" yaml:"noProxy"`
 	// The location of the npm binary that pnpm uses for some actions, like publishing.
 	// Experimental.
 	NpmPath *string `field:"optional" json:"npmPath" yaml:"npmPath"`
@@ -372,7 +390,7 @@ type PnpmWorkspaceYamlOptions struct {
 	// When publishing from a supported cloud CI/CD system, the package will be publicly linked to where it was built and published from.
 	// Experimental.
 	Provenance *bool `field:"optional" json:"provenance" yaml:"provenance"`
-	// A proxy to use for outgoing http requests.
+	// npm's legacy proxy setting, used as the fallback for both httpsProxy and httpProxy.
 	//
 	// If the HTTP_PROXY or http_proxy environment variables are set, proxy settings will be honored by the underlying request library.
 	// Experimental.
