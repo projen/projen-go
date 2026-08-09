@@ -238,8 +238,20 @@ func init() {
 		reflect.TypeOf((*WatchOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.github.workflows.WorkflowCallInput",
+		reflect.TypeOf((*WorkflowCallInput)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.github.workflows.WorkflowCallOptions",
 		reflect.TypeOf((*WorkflowCallOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.workflows.WorkflowCallOutput",
+		reflect.TypeOf((*WorkflowCallOutput)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.workflows.WorkflowCallSecret",
+		reflect.TypeOf((*WorkflowCallSecret)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.github.workflows.WorkflowDispatchInput",
