@@ -337,6 +337,9 @@ type PnpmWorkspaceYamlOptions struct {
 	// Used to override any dependency in the dependency graph.
 	// Experimental.
 	Overrides interface{} `field:"optional" json:"overrides" yaml:"overrides"`
+	// Per-workspace-project pnpm settings that replace project-specific .npmrc files.
+	// Experimental.
+	PackageConfigs interface{} `field:"optional" json:"packageConfigs" yaml:"packageConfigs"`
 	// Used to extend the existing package definitions with additional information.
 	// Experimental.
 	PackageExtensions interface{} `field:"optional" json:"packageExtensions" yaml:"packageExtensions"`
