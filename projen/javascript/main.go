@@ -637,6 +637,14 @@ func init() {
 		},
 	)
 	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaNodePackageMapType",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaNodePackageMapType)(nil)).Elem(),
+		map[string]interface{}{
+			"STANDARD": PnpmWorkspaceYamlSchemaNodePackageMapType_STANDARD,
+			"LOOSE": PnpmWorkspaceYamlSchemaNodePackageMapType_LOOSE,
+		},
+	)
+	_jsii_.RegisterEnum(
 		"projen.javascript.PnpmWorkspaceYamlSchemaPackageImportMethod",
 		reflect.TypeOf((*PnpmWorkspaceYamlSchemaPackageImportMethod)(nil)).Elem(),
 		map[string]interface{}{

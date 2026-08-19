@@ -52,6 +52,11 @@ type PnpmWorkspaceYamlSchema struct {
 	// Controlling if and how dependencies are added to the default catalog.
 	// Experimental.
 	CatalogMode PnpmWorkspaceYamlSchemaCatalogMode `field:"optional" json:"catalogMode" yaml:"catalogMode"`
+	// When set to true, pnpm will remove unused catalog entries during installation.
+	//
+	// `cleanupUnusedCatalogs` is the deprecated spelling of this setting and continues to work; when both are set, `catalogPrune` wins.
+	// Experimental.
+	CatalogPrune *bool `field:"optional" json:"catalogPrune" yaml:"catalogPrune"`
 	// Define arbitrarily named catalogs.
 	// Experimental.
 	Catalogs *map[string]*map[string]*string `field:"optional" json:"catalogs" yaml:"catalogs"`
@@ -273,6 +278,9 @@ type PnpmWorkspaceYamlSchema struct {
 	// The exclusion works by `package name` and applies to all versions of that package.
 	// Experimental.
 	MinimumReleaseAgeExclude *[]*string `field:"optional" json:"minimumReleaseAgeExclude" yaml:"minimumReleaseAgeExclude"`
+	// When set to true, pnpm add, pnpm update, and pnpm remove prune the entries of minimumReleaseAgeExclude in pnpm-workspace.yaml that the freshly written lockfile no longer resolves: a version that is gone is dropped (an entry is removed once none of its versions remain), and an entry for a package that is no longer in the lockfile is removed too. Name patterns (@myorg/*) are always kept.
+	// Experimental.
+	MinimumReleaseAgeExcludePrune *bool `field:"optional" json:"minimumReleaseAgeExcludePrune" yaml:"minimumReleaseAgeExcludePrune"`
 	// When `true`, pnpm skips the `minimumReleaseAge` check for a package whose registry metadata does not include the time field (some private registries and mirrors omit it).
 	//
 	// Set to `false` to fail resolution in that case instead of installing the package.
@@ -301,12 +309,18 @@ type PnpmWorkspaceYamlSchema struct {
 	// Configure custom Node.js download mirrors in `pnpm-workspace.yaml`. The keys are release channels (`release`, `rc`, `nightly`, `v8-canary`, etc.) and the values are base URLs.
 	// Experimental.
 	NodeDownloadMirrors *map[string]*string `field:"optional" json:"nodeDownloadMirrors" yaml:"nodeDownloadMirrors"`
+	// When true, pnpm injects the generated node_modules/.package-map.json into pnpm-managed Node.js script environments by adding Node's --experimental-package-map option to NODE_OPTIONS. see https://pnpm.io/settings/node-modules#nodeexperimentalpackagemap.
+	// Experimental.
+	NodeExperimentalPackageMap *bool `field:"optional" json:"nodeExperimentalPackageMap" yaml:"nodeExperimentalPackageMap"`
 	// Defines what linker should be used for installing Node packages.
 	// Experimental.
 	NodeLinker PnpmWorkspaceYamlSchemaNodeLinker `field:"optional" json:"nodeLinker" yaml:"nodeLinker"`
 	// Options to pass through to Node.js via the NODE_OPTIONS environment variable.
 	// Experimental.
 	NodeOptions *string `field:"optional" json:"nodeOptions" yaml:"nodeOptions"`
+	// Controls how node_modules/.package-map.json is generated. standard - only declared dependencies are available through the package map. loose - also maps packages that are reachable through the installed node_modules layout, which can allow undeclared hoisted dependencies to resolve.
+	// Experimental.
+	NodePackageMapType PnpmWorkspaceYamlSchemaNodePackageMapType `field:"optional" json:"nodePackageMapType" yaml:"nodePackageMapType"`
 	// The Node.js version to use when checking a package's engines setting.
 	// Experimental.
 	NodeVersion *string `field:"optional" json:"nodeVersion" yaml:"nodeVersion"`
