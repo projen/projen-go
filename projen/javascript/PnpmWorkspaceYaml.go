@@ -15,6 +15,9 @@ import (
 // Experimental.
 type PnpmWorkspaceYaml interface {
 	projen.Component
+	// The underlying `pnpm-workspace.yaml` file.
+	// Experimental.
+	File() projen.YamlFile
 	// The tree node.
 	// Experimental.
 	Node() constructs.Node
@@ -63,6 +66,16 @@ type PnpmWorkspaceYaml interface {
 // The jsii proxy struct for PnpmWorkspaceYaml
 type jsiiProxy_PnpmWorkspaceYaml struct {
 	internal.Type__projenComponent
+}
+
+func (j *jsiiProxy_PnpmWorkspaceYaml) File() projen.YamlFile {
+	var returns projen.YamlFile
+	_jsii_.Get(
+		j,
+		"file",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_PnpmWorkspaceYaml) Node() constructs.Node {
