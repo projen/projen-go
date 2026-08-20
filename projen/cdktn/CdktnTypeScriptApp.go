@@ -7,7 +7,6 @@ import (
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/build"
-	"github.com/projen/projen-go/projen/cdk"
 	"github.com/projen/projen-go/projen/cdktn/internal"
 	"github.com/projen/projen-go/projen/github"
 	"github.com/projen/projen-go/projen/github/workflows"
@@ -17,16 +16,16 @@ import (
 	"github.com/projen/projen-go/projen/vscode"
 )
 
-// CDKTN construct library project.
+// CDKTN app in TypeScript.
 //
-// A multi-language (jsii) construct library which vends constructs designed to
-// use within CDK Terrain (CDKTN), a community-driven fork of CDKTF.
-// Provides a friendly workflow and automatic publishing to the construct catalog.
-//
+// CDKTN (CDK Terrain) is a community-driven fork of CDK for Terraform (CDKTF).
 // Learn more at https://cdktn.io/
 // Experimental.
-type ConstructLibraryCdktn interface {
-	cdk.ConstructLibrary
+type CdktnTypeScriptApp interface {
+	typescript.TypeScriptAppProject
+	// The CDKTN app entrypoint.
+	// Experimental.
+	AppEntrypoint() *string
 	// The build output directory.
 	//
 	// An npm tarball will be created under the `js`
@@ -57,11 +56,14 @@ type ConstructLibraryCdktn interface {
 	BuildWorkflowJobId() *string
 	// Experimental.
 	Bundler() javascript.Bundler
+	// cdktf.json configuration.
+	// Experimental.
+	CdktnConfig() CdktnConfig
 	// Experimental.
 	CdktnDeps() CdktnDeps
-	// The target CDKTN version for this library.
+	// Common CDKTN tasks.
 	// Experimental.
-	CdktnVersion() *string
+	CdktnTasks() CdktnTasks
 	// Whether to commit the managed files by default.
 	// Experimental.
 	CommitGenerated() *bool
@@ -356,12 +358,22 @@ type ConstructLibraryCdktn interface {
 	With(mixins ...constructs.IMixin) constructs.IConstruct
 }
 
-// The jsii proxy struct for ConstructLibraryCdktn
-type jsiiProxy_ConstructLibraryCdktn struct {
-	internal.Type__cdkConstructLibrary
+// The jsii proxy struct for CdktnTypeScriptApp
+type jsiiProxy_CdktnTypeScriptApp struct {
+	internal.Type__typescriptTypeScriptAppProject
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) ArtifactsDirectory() *string {
+func (j *jsiiProxy_CdktnTypeScriptApp) AppEntrypoint() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"appEntrypoint",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_CdktnTypeScriptApp) ArtifactsDirectory() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -371,7 +383,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) ArtifactsDirectory() *string {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) ArtifactsJavascriptDirectory() *string {
+func (j *jsiiProxy_CdktnTypeScriptApp) ArtifactsJavascriptDirectory() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -381,7 +393,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) ArtifactsJavascriptDirectory() *string
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) AutoApprove() github.AutoApprove {
+func (j *jsiiProxy_CdktnTypeScriptApp) AutoApprove() github.AutoApprove {
 	var returns github.AutoApprove
 	_jsii_.Get(
 		j,
@@ -391,7 +403,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) AutoApprove() github.AutoApprove {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) AutoMerge() github.AutoMerge {
+func (j *jsiiProxy_CdktnTypeScriptApp) AutoMerge() github.AutoMerge {
 	var returns github.AutoMerge
 	_jsii_.Get(
 		j,
@@ -401,7 +413,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) AutoMerge() github.AutoMerge {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Biome() javascript.Biome {
+func (j *jsiiProxy_CdktnTypeScriptApp) Biome() javascript.Biome {
 	var returns javascript.Biome
 	_jsii_.Get(
 		j,
@@ -411,7 +423,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Biome() javascript.Biome {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) BuildTask() projen.Task {
+func (j *jsiiProxy_CdktnTypeScriptApp) BuildTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
 		j,
@@ -421,7 +433,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) BuildTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) BuildWorkflow() build.BuildWorkflow {
+func (j *jsiiProxy_CdktnTypeScriptApp) BuildWorkflow() build.BuildWorkflow {
 	var returns build.BuildWorkflow
 	_jsii_.Get(
 		j,
@@ -431,7 +443,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) BuildWorkflow() build.BuildWorkflow {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) BuildWorkflowJobId() *string {
+func (j *jsiiProxy_CdktnTypeScriptApp) BuildWorkflowJobId() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -441,7 +453,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) BuildWorkflowJobId() *string {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Bundler() javascript.Bundler {
+func (j *jsiiProxy_CdktnTypeScriptApp) Bundler() javascript.Bundler {
 	var returns javascript.Bundler
 	_jsii_.Get(
 		j,
@@ -451,7 +463,17 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Bundler() javascript.Bundler {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) CdktnDeps() CdktnDeps {
+func (j *jsiiProxy_CdktnTypeScriptApp) CdktnConfig() CdktnConfig {
+	var returns CdktnConfig
+	_jsii_.Get(
+		j,
+		"cdktnConfig",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_CdktnTypeScriptApp) CdktnDeps() CdktnDeps {
 	var returns CdktnDeps
 	_jsii_.Get(
 		j,
@@ -461,17 +483,17 @@ func (j *jsiiProxy_ConstructLibraryCdktn) CdktnDeps() CdktnDeps {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) CdktnVersion() *string {
-	var returns *string
+func (j *jsiiProxy_CdktnTypeScriptApp) CdktnTasks() CdktnTasks {
+	var returns CdktnTasks
 	_jsii_.Get(
 		j,
-		"cdktnVersion",
+		"cdktnTasks",
 		&returns,
 	)
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) CommitGenerated() *bool {
+func (j *jsiiProxy_CdktnTypeScriptApp) CommitGenerated() *bool {
 	var returns *bool
 	_jsii_.Get(
 		j,
@@ -481,7 +503,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) CommitGenerated() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) CompileTask() projen.Task {
+func (j *jsiiProxy_CdktnTypeScriptApp) CompileTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
 		j,
@@ -491,7 +513,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) CompileTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Components() *[]projen.Component {
+func (j *jsiiProxy_CdktnTypeScriptApp) Components() *[]projen.Component {
 	var returns *[]projen.Component
 	_jsii_.Get(
 		j,
@@ -501,7 +523,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Components() *[]projen.Component {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) DefaultTask() projen.Task {
+func (j *jsiiProxy_CdktnTypeScriptApp) DefaultTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
 		j,
@@ -511,7 +533,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) DefaultTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Deps() projen.Dependencies {
+func (j *jsiiProxy_CdktnTypeScriptApp) Deps() projen.Dependencies {
 	var returns projen.Dependencies
 	_jsii_.Get(
 		j,
@@ -521,7 +543,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Deps() projen.Dependencies {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) DevContainer() vscode.DevContainer {
+func (j *jsiiProxy_CdktnTypeScriptApp) DevContainer() vscode.DevContainer {
 	var returns vscode.DevContainer
 	_jsii_.Get(
 		j,
@@ -531,7 +553,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) DevContainer() vscode.DevContainer {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Docgen() *bool {
+func (j *jsiiProxy_CdktnTypeScriptApp) Docgen() *bool {
 	var returns *bool
 	_jsii_.Get(
 		j,
@@ -541,7 +563,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Docgen() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) DocsDirectory() *string {
+func (j *jsiiProxy_CdktnTypeScriptApp) DocsDirectory() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -551,7 +573,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) DocsDirectory() *string {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Ejected() *bool {
+func (j *jsiiProxy_CdktnTypeScriptApp) Ejected() *bool {
 	var returns *bool
 	_jsii_.Get(
 		j,
@@ -561,7 +583,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Ejected() *bool {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Eslint() javascript.Eslint {
+func (j *jsiiProxy_CdktnTypeScriptApp) Eslint() javascript.Eslint {
 	var returns javascript.Eslint
 	_jsii_.Get(
 		j,
@@ -571,7 +593,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Eslint() javascript.Eslint {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Files() *[]projen.FileBase {
+func (j *jsiiProxy_CdktnTypeScriptApp) Files() *[]projen.FileBase {
 	var returns *[]projen.FileBase
 	_jsii_.Get(
 		j,
@@ -581,7 +603,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Files() *[]projen.FileBase {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Gitattributes() projen.GitAttributesFile {
+func (j *jsiiProxy_CdktnTypeScriptApp) Gitattributes() projen.GitAttributesFile {
 	var returns projen.GitAttributesFile
 	_jsii_.Get(
 		j,
@@ -591,7 +613,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Gitattributes() projen.GitAttributesFi
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Github() github.GitHub {
+func (j *jsiiProxy_CdktnTypeScriptApp) Github() github.GitHub {
 	var returns github.GitHub
 	_jsii_.Get(
 		j,
@@ -601,7 +623,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Github() github.GitHub {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Gitignore() projen.IgnoreFile {
+func (j *jsiiProxy_CdktnTypeScriptApp) Gitignore() projen.IgnoreFile {
 	var returns projen.IgnoreFile
 	_jsii_.Get(
 		j,
@@ -611,7 +633,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Gitignore() projen.IgnoreFile {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Gitpod() projen.Gitpod {
+func (j *jsiiProxy_CdktnTypeScriptApp) Gitpod() projen.Gitpod {
 	var returns projen.Gitpod
 	_jsii_.Get(
 		j,
@@ -621,7 +643,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Gitpod() projen.Gitpod {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) InitProject() *projen.InitProject {
+func (j *jsiiProxy_CdktnTypeScriptApp) InitProject() *projen.InitProject {
 	var returns *projen.InitProject
 	_jsii_.Get(
 		j,
@@ -631,7 +653,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) InitProject() *projen.InitProject {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Jest() javascript.Jest {
+func (j *jsiiProxy_CdktnTypeScriptApp) Jest() javascript.Jest {
 	var returns javascript.Jest
 	_jsii_.Get(
 		j,
@@ -641,7 +663,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Jest() javascript.Jest {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Libdir() *string {
+func (j *jsiiProxy_CdktnTypeScriptApp) Libdir() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -651,7 +673,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Libdir() *string {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Logger() projen.Logger {
+func (j *jsiiProxy_CdktnTypeScriptApp) Logger() projen.Logger {
 	var returns projen.Logger
 	_jsii_.Get(
 		j,
@@ -661,7 +683,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Logger() projen.Logger {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) MaxNodeVersion() *string {
+func (j *jsiiProxy_CdktnTypeScriptApp) MaxNodeVersion() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -671,7 +693,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) MaxNodeVersion() *string {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) MinNodeVersion() *string {
+func (j *jsiiProxy_CdktnTypeScriptApp) MinNodeVersion() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -681,7 +703,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) MinNodeVersion() *string {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Name() *string {
+func (j *jsiiProxy_CdktnTypeScriptApp) Name() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -691,7 +713,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Name() *string {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Node() constructs.Node {
+func (j *jsiiProxy_CdktnTypeScriptApp) Node() constructs.Node {
 	var returns constructs.Node
 	_jsii_.Get(
 		j,
@@ -701,7 +723,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Node() constructs.Node {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) NodeVersion() *string {
+func (j *jsiiProxy_CdktnTypeScriptApp) NodeVersion() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -711,7 +733,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) NodeVersion() *string {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Npmignore() projen.IgnoreFile {
+func (j *jsiiProxy_CdktnTypeScriptApp) Npmignore() projen.IgnoreFile {
 	var returns projen.IgnoreFile
 	_jsii_.Get(
 		j,
@@ -721,7 +743,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Npmignore() projen.IgnoreFile {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Npmrc() javascript.NpmConfig {
+func (j *jsiiProxy_CdktnTypeScriptApp) Npmrc() javascript.NpmConfig {
 	var returns javascript.NpmConfig
 	_jsii_.Get(
 		j,
@@ -731,7 +753,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Npmrc() javascript.NpmConfig {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Outdir() *string {
+func (j *jsiiProxy_CdktnTypeScriptApp) Outdir() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -741,7 +763,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Outdir() *string {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Package() javascript.NodePackage {
+func (j *jsiiProxy_CdktnTypeScriptApp) Package() javascript.NodePackage {
 	var returns javascript.NodePackage
 	_jsii_.Get(
 		j,
@@ -751,7 +773,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Package() javascript.NodePackage {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) PackageTask() projen.Task {
+func (j *jsiiProxy_CdktnTypeScriptApp) PackageTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
 		j,
@@ -761,7 +783,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) PackageTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Parent() projen.Project {
+func (j *jsiiProxy_CdktnTypeScriptApp) Parent() projen.Project {
 	var returns projen.Project
 	_jsii_.Get(
 		j,
@@ -771,7 +793,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Parent() projen.Project {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) PostCompileTask() projen.Task {
+func (j *jsiiProxy_CdktnTypeScriptApp) PostCompileTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
 		j,
@@ -781,7 +803,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) PostCompileTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) PreCompileTask() projen.Task {
+func (j *jsiiProxy_CdktnTypeScriptApp) PreCompileTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
 		j,
@@ -791,7 +813,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) PreCompileTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Prettier() javascript.Prettier {
+func (j *jsiiProxy_CdktnTypeScriptApp) Prettier() javascript.Prettier {
 	var returns javascript.Prettier
 	_jsii_.Get(
 		j,
@@ -801,7 +823,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Prettier() javascript.Prettier {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) ProjectBuild() projen.ProjectBuild {
+func (j *jsiiProxy_CdktnTypeScriptApp) ProjectBuild() projen.ProjectBuild {
 	var returns projen.ProjectBuild
 	_jsii_.Get(
 		j,
@@ -811,7 +833,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) ProjectBuild() projen.ProjectBuild {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) ProjenCommand() *string {
+func (j *jsiiProxy_CdktnTypeScriptApp) ProjenCommand() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -821,7 +843,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) ProjenCommand() *string {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Release() release.Release {
+func (j *jsiiProxy_CdktnTypeScriptApp) Release() release.Release {
 	var returns release.Release
 	_jsii_.Get(
 		j,
@@ -831,7 +853,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Release() release.Release {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Root() projen.Project {
+func (j *jsiiProxy_CdktnTypeScriptApp) Root() projen.Project {
 	var returns projen.Project
 	_jsii_.Get(
 		j,
@@ -841,7 +863,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Root() projen.Project {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Runner() typescript.TypeScriptRunner {
+func (j *jsiiProxy_CdktnTypeScriptApp) Runner() typescript.TypeScriptRunner {
 	var returns typescript.TypeScriptRunner
 	_jsii_.Get(
 		j,
@@ -851,7 +873,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Runner() typescript.TypeScriptRunner {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) RunScriptCommand() *string {
+func (j *jsiiProxy_CdktnTypeScriptApp) RunScriptCommand() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -861,7 +883,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) RunScriptCommand() *string {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Srcdir() *string {
+func (j *jsiiProxy_CdktnTypeScriptApp) Srcdir() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -871,7 +893,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Srcdir() *string {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Subprojects() *[]projen.Project {
+func (j *jsiiProxy_CdktnTypeScriptApp) Subprojects() *[]projen.Project {
 	var returns *[]projen.Project
 	_jsii_.Get(
 		j,
@@ -881,7 +903,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Subprojects() *[]projen.Project {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Tasks() projen.Tasks {
+func (j *jsiiProxy_CdktnTypeScriptApp) Tasks() projen.Tasks {
 	var returns projen.Tasks
 	_jsii_.Get(
 		j,
@@ -891,7 +913,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Tasks() projen.Tasks {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Testdir() *string {
+func (j *jsiiProxy_CdktnTypeScriptApp) Testdir() *string {
 	var returns *string
 	_jsii_.Get(
 		j,
@@ -901,7 +923,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Testdir() *string {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) TestTask() projen.Task {
+func (j *jsiiProxy_CdktnTypeScriptApp) TestTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
 		j,
@@ -911,7 +933,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) TestTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Tsconfig() javascript.TypescriptConfig {
+func (j *jsiiProxy_CdktnTypeScriptApp) Tsconfig() javascript.TypescriptConfig {
 	var returns javascript.TypescriptConfig
 	_jsii_.Get(
 		j,
@@ -921,7 +943,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Tsconfig() javascript.TypescriptConfig
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) TsconfigDev() javascript.TypescriptConfig {
+func (j *jsiiProxy_CdktnTypeScriptApp) TsconfigDev() javascript.TypescriptConfig {
 	var returns javascript.TypescriptConfig
 	_jsii_.Get(
 		j,
@@ -931,7 +953,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) TsconfigDev() javascript.TypescriptCon
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) TsconfigEslint() javascript.TypescriptConfig {
+func (j *jsiiProxy_CdktnTypeScriptApp) TsconfigEslint() javascript.TypescriptConfig {
 	var returns javascript.TypescriptConfig
 	_jsii_.Get(
 		j,
@@ -941,7 +963,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) TsconfigEslint() javascript.Typescript
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) UpgradeWorkflow() javascript.UpgradeDependencies {
+func (j *jsiiProxy_CdktnTypeScriptApp) UpgradeWorkflow() javascript.UpgradeDependencies {
 	var returns javascript.UpgradeDependencies
 	_jsii_.Get(
 		j,
@@ -951,7 +973,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) UpgradeWorkflow() javascript.UpgradeDe
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) Vscode() vscode.VsCode {
+func (j *jsiiProxy_CdktnTypeScriptApp) Vscode() vscode.VsCode {
 	var returns vscode.VsCode
 	_jsii_.Get(
 		j,
@@ -961,7 +983,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) Vscode() vscode.VsCode {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) WatchTask() projen.Task {
+func (j *jsiiProxy_CdktnTypeScriptApp) WatchTask() projen.Task {
 	var returns projen.Task
 	_jsii_.Get(
 		j,
@@ -971,7 +993,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) WatchTask() projen.Task {
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) WorkflowBootstrapSteps() *[]*workflows.JobStep {
+func (j *jsiiProxy_CdktnTypeScriptApp) WorkflowBootstrapSteps() *[]*workflows.JobStep {
 	var returns *[]*workflows.JobStep
 	_jsii_.Get(
 		j,
@@ -981,7 +1003,7 @@ func (j *jsiiProxy_ConstructLibraryCdktn) WorkflowBootstrapSteps() *[]*workflows
 	return returns
 }
 
-func (j *jsiiProxy_ConstructLibraryCdktn) WorkflowPackageCache() *bool {
+func (j *jsiiProxy_CdktnTypeScriptApp) WorkflowPackageCache() *bool {
 	var returns *bool
 	_jsii_.Get(
 		j,
@@ -993,16 +1015,16 @@ func (j *jsiiProxy_ConstructLibraryCdktn) WorkflowPackageCache() *bool {
 
 
 // Experimental.
-func NewConstructLibraryCdktn(options *ConstructLibraryCdktnOptions) ConstructLibraryCdktn {
+func NewCdktnTypeScriptApp(options *CdktnTypeScriptAppOptions) CdktnTypeScriptApp {
 	_init_.Initialize()
 
-	if err := validateNewConstructLibraryCdktnParameters(options); err != nil {
+	if err := validateNewCdktnTypeScriptAppParameters(options); err != nil {
 		panic(err)
 	}
-	j := jsiiProxy_ConstructLibraryCdktn{}
+	j := jsiiProxy_CdktnTypeScriptApp{}
 
 	_jsii_.Create(
-		"projen.cdktn.ConstructLibraryCdktn",
+		"projen.cdktn.CdktnTypeScriptApp",
 		[]interface{}{options},
 		&j,
 	)
@@ -1011,11 +1033,11 @@ func NewConstructLibraryCdktn(options *ConstructLibraryCdktnOptions) ConstructLi
 }
 
 // Experimental.
-func NewConstructLibraryCdktn_Override(c ConstructLibraryCdktn, options *ConstructLibraryCdktnOptions) {
+func NewCdktnTypeScriptApp_Override(c CdktnTypeScriptApp, options *CdktnTypeScriptAppOptions) {
 	_init_.Initialize()
 
 	_jsii_.Create(
-		"projen.cdktn.ConstructLibraryCdktn",
+		"projen.cdktn.CdktnTypeScriptApp",
 		[]interface{}{options},
 		c,
 	)
@@ -1039,16 +1061,16 @@ func NewConstructLibraryCdktn_Override(c ConstructLibraryCdktn, options *Constru
 //
 // Returns: true if `x` is an object created from a class which extends `Construct`.
 // Experimental.
-func ConstructLibraryCdktn_IsConstruct(x interface{}) *bool {
+func CdktnTypeScriptApp_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
-	if err := validateConstructLibraryCdktn_IsConstructParameters(x); err != nil {
+	if err := validateCdktnTypeScriptApp_IsConstructParameters(x); err != nil {
 		panic(err)
 	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(
-		"projen.cdktn.ConstructLibraryCdktn",
+		"projen.cdktn.CdktnTypeScriptApp",
 		"isConstruct",
 		[]interface{}{x},
 		&returns,
@@ -1059,16 +1081,16 @@ func ConstructLibraryCdktn_IsConstruct(x interface{}) *bool {
 
 // Test whether the given construct is a project.
 // Experimental.
-func ConstructLibraryCdktn_IsProject(x interface{}) *bool {
+func CdktnTypeScriptApp_IsProject(x interface{}) *bool {
 	_init_.Initialize()
 
-	if err := validateConstructLibraryCdktn_IsProjectParameters(x); err != nil {
+	if err := validateCdktnTypeScriptApp_IsProjectParameters(x); err != nil {
 		panic(err)
 	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(
-		"projen.cdktn.ConstructLibraryCdktn",
+		"projen.cdktn.CdktnTypeScriptApp",
 		"isProject",
 		[]interface{}{x},
 		&returns,
@@ -1081,16 +1103,16 @@ func ConstructLibraryCdktn_IsProject(x interface{}) *bool {
 //
 // When given a project, this it the project itself.
 // Experimental.
-func ConstructLibraryCdktn_Of(construct constructs.IConstruct) projen.Project {
+func CdktnTypeScriptApp_Of(construct constructs.IConstruct) projen.Project {
 	_init_.Initialize()
 
-	if err := validateConstructLibraryCdktn_OfParameters(construct); err != nil {
+	if err := validateCdktnTypeScriptApp_OfParameters(construct); err != nil {
 		panic(err)
 	}
 	var returns projen.Project
 
 	_jsii_.StaticInvoke(
-		"projen.cdktn.ConstructLibraryCdktn",
+		"projen.cdktn.CdktnTypeScriptApp",
 		"of",
 		[]interface{}{construct},
 		&returns,
@@ -1099,29 +1121,29 @@ func ConstructLibraryCdktn_Of(construct constructs.IConstruct) projen.Project {
 	return returns
 }
 
-func ConstructLibraryCdktn_DEFAULT_TASK() *string {
+func CdktnTypeScriptApp_DEFAULT_TASK() *string {
 	_init_.Initialize()
 	var returns *string
 	_jsii_.StaticGet(
-		"projen.cdktn.ConstructLibraryCdktn",
+		"projen.cdktn.CdktnTypeScriptApp",
 		"DEFAULT_TASK",
 		&returns,
 	)
 	return returns
 }
 
-func ConstructLibraryCdktn_DEFAULT_TS_JEST_TRANFORM_PATTERN() *string {
+func CdktnTypeScriptApp_DEFAULT_TS_JEST_TRANFORM_PATTERN() *string {
 	_init_.Initialize()
 	var returns *string
 	_jsii_.StaticGet(
-		"projen.cdktn.ConstructLibraryCdktn",
+		"projen.cdktn.CdktnTypeScriptApp",
 		"DEFAULT_TS_JEST_TRANFORM_PATTERN",
 		&returns,
 	)
 	return returns
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) AddBins(bins *map[string]*string) {
+func (c *jsiiProxy_CdktnTypeScriptApp) AddBins(bins *map[string]*string) {
 	if err := c.validateAddBinsParameters(bins); err != nil {
 		panic(err)
 	}
@@ -1132,7 +1154,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) AddBins(bins *map[string]*string) {
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) AddBundledDeps(deps ...*string) {
+func (c *jsiiProxy_CdktnTypeScriptApp) AddBundledDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
 		args = append(args, a)
@@ -1145,7 +1167,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) AddBundledDeps(deps ...*string) {
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) AddDeps(deps ...*string) {
+func (c *jsiiProxy_CdktnTypeScriptApp) AddDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
 		args = append(args, a)
@@ -1158,7 +1180,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) AddDeps(deps ...*string) {
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) AddDevDeps(deps ...*string) {
+func (c *jsiiProxy_CdktnTypeScriptApp) AddDevDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
 		args = append(args, a)
@@ -1171,7 +1193,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) AddDevDeps(deps ...*string) {
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) AddExcludeFromCleanup(globs ...*string) {
+func (c *jsiiProxy_CdktnTypeScriptApp) AddExcludeFromCleanup(globs ...*string) {
 	args := []interface{}{}
 	for _, a := range globs {
 		args = append(args, a)
@@ -1184,7 +1206,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) AddExcludeFromCleanup(globs ...*string
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) AddFields(fields *map[string]interface{}) {
+func (c *jsiiProxy_CdktnTypeScriptApp) AddFields(fields *map[string]interface{}) {
 	if err := c.validateAddFieldsParameters(fields); err != nil {
 		panic(err)
 	}
@@ -1195,7 +1217,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) AddFields(fields *map[string]interface
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) AddGitIgnore(pattern *string) {
+func (c *jsiiProxy_CdktnTypeScriptApp) AddGitIgnore(pattern *string) {
 	if err := c.validateAddGitIgnoreParameters(pattern); err != nil {
 		panic(err)
 	}
@@ -1206,7 +1228,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) AddGitIgnore(pattern *string) {
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) AddKeywords(keywords ...*string) {
+func (c *jsiiProxy_CdktnTypeScriptApp) AddKeywords(keywords ...*string) {
 	args := []interface{}{}
 	for _, a := range keywords {
 		args = append(args, a)
@@ -1219,7 +1241,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) AddKeywords(keywords ...*string) {
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) AddPackageIgnore(_pattern *string) {
+func (c *jsiiProxy_CdktnTypeScriptApp) AddPackageIgnore(_pattern *string) {
 	if err := c.validateAddPackageIgnoreParameters(_pattern); err != nil {
 		panic(err)
 	}
@@ -1230,7 +1252,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) AddPackageIgnore(_pattern *string) {
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) AddPeerDeps(deps ...*string) {
+func (c *jsiiProxy_CdktnTypeScriptApp) AddPeerDeps(deps ...*string) {
 	args := []interface{}{}
 	for _, a := range deps {
 		args = append(args, a)
@@ -1243,7 +1265,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) AddPeerDeps(deps ...*string) {
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) AddScripts(scripts *map[string]*string) {
+func (c *jsiiProxy_CdktnTypeScriptApp) AddScripts(scripts *map[string]*string) {
 	if err := c.validateAddScriptsParameters(scripts); err != nil {
 		panic(err)
 	}
@@ -1254,7 +1276,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) AddScripts(scripts *map[string]*string
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) AddTask(name *string, props *projen.TaskOptions) projen.Task {
+func (c *jsiiProxy_CdktnTypeScriptApp) AddTask(name *string, props *projen.TaskOptions) projen.Task {
 	if err := c.validateAddTaskParameters(name, props); err != nil {
 		panic(err)
 	}
@@ -1270,7 +1292,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) AddTask(name *string, props *projen.Ta
 	return returns
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) AnnotateGenerated(_glob *string) {
+func (c *jsiiProxy_CdktnTypeScriptApp) AnnotateGenerated(_glob *string) {
 	if err := c.validateAnnotateGeneratedParameters(_glob); err != nil {
 		panic(err)
 	}
@@ -1281,7 +1303,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) AnnotateGenerated(_glob *string) {
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) DefaultTypeScriptCompilerOptions() *javascript.TypeScriptCompilerOptions {
+func (c *jsiiProxy_CdktnTypeScriptApp) DefaultTypeScriptCompilerOptions() *javascript.TypeScriptCompilerOptions {
 	var returns *javascript.TypeScriptCompilerOptions
 
 	_jsii_.Invoke(
@@ -1294,7 +1316,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) DefaultTypeScriptCompilerOptions() *ja
 	return returns
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) PostSynthesize() {
+func (c *jsiiProxy_CdktnTypeScriptApp) PostSynthesize() {
 	_jsii_.InvokeVoid(
 		c,
 		"postSynthesize",
@@ -1302,7 +1324,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) PostSynthesize() {
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) PreSynthesize() {
+func (c *jsiiProxy_CdktnTypeScriptApp) PreSynthesize() {
 	_jsii_.InvokeVoid(
 		c,
 		"preSynthesize",
@@ -1310,7 +1332,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) PreSynthesize() {
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) RemoveScript(name *string) {
+func (c *jsiiProxy_CdktnTypeScriptApp) RemoveScript(name *string) {
 	if err := c.validateRemoveScriptParameters(name); err != nil {
 		panic(err)
 	}
@@ -1321,7 +1343,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) RemoveScript(name *string) {
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) RemoveTask(name *string) projen.Task {
+func (c *jsiiProxy_CdktnTypeScriptApp) RemoveTask(name *string) projen.Task {
 	if err := c.validateRemoveTaskParameters(name); err != nil {
 		panic(err)
 	}
@@ -1337,7 +1359,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) RemoveTask(name *string) projen.Task {
 	return returns
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
+func (c *jsiiProxy_CdktnTypeScriptApp) RenderWorkflowSetup(options *javascript.RenderWorkflowSetupOptions) *[]*workflows.JobStep {
 	if err := c.validateRenderWorkflowSetupParameters(options); err != nil {
 		panic(err)
 	}
@@ -1353,7 +1375,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) RenderWorkflowSetup(options *javascrip
 	return returns
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) RunTaskCommand(task projen.Task) *string {
+func (c *jsiiProxy_CdktnTypeScriptApp) RunTaskCommand(task projen.Task) *string {
 	if err := c.validateRunTaskCommandParameters(task); err != nil {
 		panic(err)
 	}
@@ -1369,7 +1391,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) RunTaskCommand(task projen.Task) *stri
 	return returns
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) SetScript(name *string, command *string) {
+func (c *jsiiProxy_CdktnTypeScriptApp) SetScript(name *string, command *string) {
 	if err := c.validateSetScriptParameters(name, command); err != nil {
 		panic(err)
 	}
@@ -1380,7 +1402,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) SetScript(name *string, command *strin
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) Synth() {
+func (c *jsiiProxy_CdktnTypeScriptApp) Synth() {
 	_jsii_.InvokeVoid(
 		c,
 		"synth",
@@ -1388,7 +1410,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) Synth() {
 	)
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) ToString() *string {
+func (c *jsiiProxy_CdktnTypeScriptApp) ToString() *string {
 	var returns *string
 
 	_jsii_.Invoke(
@@ -1401,7 +1423,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) ToString() *string {
 	return returns
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) TryFindFile(filePath *string) projen.FileBase {
+func (c *jsiiProxy_CdktnTypeScriptApp) TryFindFile(filePath *string) projen.FileBase {
 	if err := c.validateTryFindFileParameters(filePath); err != nil {
 		panic(err)
 	}
@@ -1417,7 +1439,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) TryFindFile(filePath *string) projen.F
 	return returns
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) TryFindObjectFile(filePath *string) projen.ObjectFile {
+func (c *jsiiProxy_CdktnTypeScriptApp) TryFindObjectFile(filePath *string) projen.ObjectFile {
 	if err := c.validateTryFindObjectFileParameters(filePath); err != nil {
 		panic(err)
 	}
@@ -1433,7 +1455,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) TryFindObjectFile(filePath *string) pr
 	return returns
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) TryRemoveFile(filePath *string) projen.FileBase {
+func (c *jsiiProxy_CdktnTypeScriptApp) TryRemoveFile(filePath *string) projen.FileBase {
 	if err := c.validateTryRemoveFileParameters(filePath); err != nil {
 		panic(err)
 	}
@@ -1449,7 +1471,7 @@ func (c *jsiiProxy_ConstructLibraryCdktn) TryRemoveFile(filePath *string) projen
 	return returns
 }
 
-func (c *jsiiProxy_ConstructLibraryCdktn) With(mixins ...constructs.IMixin) constructs.IConstruct {
+func (c *jsiiProxy_CdktnTypeScriptApp) With(mixins ...constructs.IMixin) constructs.IConstruct {
 	args := []interface{}{}
 	for _, a := range mixins {
 		args = append(args, a)

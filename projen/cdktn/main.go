@@ -8,6 +8,204 @@ import (
 
 func init() {
 	_jsii_.RegisterClass(
+		"projen.cdktn.CdktnConfig",
+		reflect.TypeOf((*CdktnConfig)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addTerraformModules", GoMethod: "AddTerraformModules"},
+			_jsii_.MemberMethod{JsiiMethod: "addTerraformProviders", GoMethod: "AddTerraformProviders"},
+			_jsii_.MemberProperty{JsiiProperty: "cdktnOut", GoGetter: "CdktnOut"},
+			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postProjectCreation", GoMethod: "PostProjectCreation"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "projectCreation", GoMethod: "ProjectCreation"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
+		},
+		func() interface{} {
+			j := jsiiProxy_CdktnConfig{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.cdktn.CdktnConfigCommonOptions",
+		reflect.TypeOf((*CdktnConfigCommonOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.cdktn.CdktnConfigOptions",
+		reflect.TypeOf((*CdktnConfigOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.cdktn.CdktnDeps",
+		reflect.TypeOf((*CdktnDeps)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "cdktnCliVersion", GoGetter: "CdktnCliVersion"},
+			_jsii_.MemberProperty{JsiiProperty: "cdktnMinimumVersion", GoGetter: "CdktnMinimumVersion"},
+			_jsii_.MemberProperty{JsiiProperty: "cdktnVersion", GoGetter: "CdktnVersion"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postProjectCreation", GoMethod: "PostProjectCreation"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "projectCreation", GoMethod: "ProjectCreation"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
+		},
+		func() interface{} {
+			j := jsiiProxy_CdktnDeps{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.cdktn.CdktnDepsCommonOptions",
+		reflect.TypeOf((*CdktnDepsCommonOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.cdktn.CdktnDepsOptions",
+		reflect.TypeOf((*CdktnDepsOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.cdktn.CdktnTasks",
+		reflect.TypeOf((*CdktnTasks)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "deploy", GoGetter: "Deploy"},
+			_jsii_.MemberProperty{JsiiProperty: "destroy", GoGetter: "Destroy"},
+			_jsii_.MemberProperty{JsiiProperty: "diff", GoGetter: "Diff"},
+			_jsii_.MemberProperty{JsiiProperty: "get", GoGetter: "Get"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberProperty{JsiiProperty: "plan", GoGetter: "Plan"},
+			_jsii_.MemberMethod{JsiiMethod: "postProjectCreation", GoMethod: "PostProjectCreation"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "projectCreation", GoMethod: "ProjectCreation"},
+			_jsii_.MemberProperty{JsiiProperty: "synth", GoGetter: "Synth"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "synthSilent", GoGetter: "SynthSilent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberProperty{JsiiProperty: "watch", GoGetter: "Watch"},
+			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
+		},
+		func() interface{} {
+			j := jsiiProxy_CdktnTasks{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterClass(
+		"projen.cdktn.CdktnTypeScriptApp",
+		reflect.TypeOf((*CdktnTypeScriptApp)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addBins", GoMethod: "AddBins"},
+			_jsii_.MemberMethod{JsiiMethod: "addBundledDeps", GoMethod: "AddBundledDeps"},
+			_jsii_.MemberMethod{JsiiMethod: "addDeps", GoMethod: "AddDeps"},
+			_jsii_.MemberMethod{JsiiMethod: "addDevDeps", GoMethod: "AddDevDeps"},
+			_jsii_.MemberMethod{JsiiMethod: "addExcludeFromCleanup", GoMethod: "AddExcludeFromCleanup"},
+			_jsii_.MemberMethod{JsiiMethod: "addFields", GoMethod: "AddFields"},
+			_jsii_.MemberMethod{JsiiMethod: "addGitIgnore", GoMethod: "AddGitIgnore"},
+			_jsii_.MemberMethod{JsiiMethod: "addKeywords", GoMethod: "AddKeywords"},
+			_jsii_.MemberMethod{JsiiMethod: "addPackageIgnore", GoMethod: "AddPackageIgnore"},
+			_jsii_.MemberMethod{JsiiMethod: "addPeerDeps", GoMethod: "AddPeerDeps"},
+			_jsii_.MemberMethod{JsiiMethod: "addScripts", GoMethod: "AddScripts"},
+			_jsii_.MemberMethod{JsiiMethod: "addTask", GoMethod: "AddTask"},
+			_jsii_.MemberMethod{JsiiMethod: "annotateGenerated", GoMethod: "AnnotateGenerated"},
+			_jsii_.MemberProperty{JsiiProperty: "appEntrypoint", GoGetter: "AppEntrypoint"},
+			_jsii_.MemberProperty{JsiiProperty: "artifactsDirectory", GoGetter: "ArtifactsDirectory"},
+			_jsii_.MemberProperty{JsiiProperty: "artifactsJavascriptDirectory", GoGetter: "ArtifactsJavascriptDirectory"},
+			_jsii_.MemberProperty{JsiiProperty: "autoApprove", GoGetter: "AutoApprove"},
+			_jsii_.MemberProperty{JsiiProperty: "autoMerge", GoGetter: "AutoMerge"},
+			_jsii_.MemberProperty{JsiiProperty: "biome", GoGetter: "Biome"},
+			_jsii_.MemberProperty{JsiiProperty: "buildTask", GoGetter: "BuildTask"},
+			_jsii_.MemberProperty{JsiiProperty: "buildWorkflow", GoGetter: "BuildWorkflow"},
+			_jsii_.MemberProperty{JsiiProperty: "buildWorkflowJobId", GoGetter: "BuildWorkflowJobId"},
+			_jsii_.MemberProperty{JsiiProperty: "bundler", GoGetter: "Bundler"},
+			_jsii_.MemberProperty{JsiiProperty: "cdktnConfig", GoGetter: "CdktnConfig"},
+			_jsii_.MemberProperty{JsiiProperty: "cdktnDeps", GoGetter: "CdktnDeps"},
+			_jsii_.MemberProperty{JsiiProperty: "cdktnTasks", GoGetter: "CdktnTasks"},
+			_jsii_.MemberProperty{JsiiProperty: "commitGenerated", GoGetter: "CommitGenerated"},
+			_jsii_.MemberProperty{JsiiProperty: "compileTask", GoGetter: "CompileTask"},
+			_jsii_.MemberProperty{JsiiProperty: "components", GoGetter: "Components"},
+			_jsii_.MemberProperty{JsiiProperty: "defaultTask", GoGetter: "DefaultTask"},
+			_jsii_.MemberMethod{JsiiMethod: "defaultTypeScriptCompilerOptions", GoMethod: "DefaultTypeScriptCompilerOptions"},
+			_jsii_.MemberProperty{JsiiProperty: "deps", GoGetter: "Deps"},
+			_jsii_.MemberProperty{JsiiProperty: "devContainer", GoGetter: "DevContainer"},
+			_jsii_.MemberProperty{JsiiProperty: "docgen", GoGetter: "Docgen"},
+			_jsii_.MemberProperty{JsiiProperty: "docsDirectory", GoGetter: "DocsDirectory"},
+			_jsii_.MemberProperty{JsiiProperty: "ejected", GoGetter: "Ejected"},
+			_jsii_.MemberProperty{JsiiProperty: "eslint", GoGetter: "Eslint"},
+			_jsii_.MemberProperty{JsiiProperty: "files", GoGetter: "Files"},
+			_jsii_.MemberProperty{JsiiProperty: "gitattributes", GoGetter: "Gitattributes"},
+			_jsii_.MemberProperty{JsiiProperty: "github", GoGetter: "Github"},
+			_jsii_.MemberProperty{JsiiProperty: "gitignore", GoGetter: "Gitignore"},
+			_jsii_.MemberProperty{JsiiProperty: "gitpod", GoGetter: "Gitpod"},
+			_jsii_.MemberProperty{JsiiProperty: "initProject", GoGetter: "InitProject"},
+			_jsii_.MemberProperty{JsiiProperty: "jest", GoGetter: "Jest"},
+			_jsii_.MemberProperty{JsiiProperty: "libdir", GoGetter: "Libdir"},
+			_jsii_.MemberProperty{JsiiProperty: "logger", GoGetter: "Logger"},
+			_jsii_.MemberProperty{JsiiProperty: "maxNodeVersion", GoGetter: "MaxNodeVersion"},
+			_jsii_.MemberProperty{JsiiProperty: "minNodeVersion", GoGetter: "MinNodeVersion"},
+			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberProperty{JsiiProperty: "nodeVersion", GoGetter: "NodeVersion"},
+			_jsii_.MemberProperty{JsiiProperty: "npmignore", GoGetter: "Npmignore"},
+			_jsii_.MemberProperty{JsiiProperty: "npmrc", GoGetter: "Npmrc"},
+			_jsii_.MemberProperty{JsiiProperty: "outdir", GoGetter: "Outdir"},
+			_jsii_.MemberProperty{JsiiProperty: "package", GoGetter: "Package"},
+			_jsii_.MemberProperty{JsiiProperty: "packageTask", GoGetter: "PackageTask"},
+			_jsii_.MemberProperty{JsiiProperty: "parent", GoGetter: "Parent"},
+			_jsii_.MemberProperty{JsiiProperty: "postCompileTask", GoGetter: "PostCompileTask"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "preCompileTask", GoGetter: "PreCompileTask"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "prettier", GoGetter: "Prettier"},
+			_jsii_.MemberProperty{JsiiProperty: "projectBuild", GoGetter: "ProjectBuild"},
+			_jsii_.MemberProperty{JsiiProperty: "projenCommand", GoGetter: "ProjenCommand"},
+			_jsii_.MemberProperty{JsiiProperty: "release", GoGetter: "Release"},
+			_jsii_.MemberMethod{JsiiMethod: "removeScript", GoMethod: "RemoveScript"},
+			_jsii_.MemberMethod{JsiiMethod: "removeTask", GoMethod: "RemoveTask"},
+			_jsii_.MemberMethod{JsiiMethod: "renderWorkflowSetup", GoMethod: "RenderWorkflowSetup"},
+			_jsii_.MemberProperty{JsiiProperty: "root", GoGetter: "Root"},
+			_jsii_.MemberProperty{JsiiProperty: "runner", GoGetter: "Runner"},
+			_jsii_.MemberProperty{JsiiProperty: "runScriptCommand", GoGetter: "RunScriptCommand"},
+			_jsii_.MemberMethod{JsiiMethod: "runTaskCommand", GoMethod: "RunTaskCommand"},
+			_jsii_.MemberMethod{JsiiMethod: "setScript", GoMethod: "SetScript"},
+			_jsii_.MemberProperty{JsiiProperty: "srcdir", GoGetter: "Srcdir"},
+			_jsii_.MemberProperty{JsiiProperty: "subprojects", GoGetter: "Subprojects"},
+			_jsii_.MemberMethod{JsiiMethod: "synth", GoMethod: "Synth"},
+			_jsii_.MemberProperty{JsiiProperty: "tasks", GoGetter: "Tasks"},
+			_jsii_.MemberProperty{JsiiProperty: "testdir", GoGetter: "Testdir"},
+			_jsii_.MemberProperty{JsiiProperty: "testTask", GoGetter: "TestTask"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberMethod{JsiiMethod: "tryFindFile", GoMethod: "TryFindFile"},
+			_jsii_.MemberMethod{JsiiMethod: "tryFindObjectFile", GoMethod: "TryFindObjectFile"},
+			_jsii_.MemberMethod{JsiiMethod: "tryRemoveFile", GoMethod: "TryRemoveFile"},
+			_jsii_.MemberProperty{JsiiProperty: "tsconfig", GoGetter: "Tsconfig"},
+			_jsii_.MemberProperty{JsiiProperty: "tsconfigDev", GoGetter: "TsconfigDev"},
+			_jsii_.MemberProperty{JsiiProperty: "tsconfigEslint", GoGetter: "TsconfigEslint"},
+			_jsii_.MemberProperty{JsiiProperty: "upgradeWorkflow", GoGetter: "UpgradeWorkflow"},
+			_jsii_.MemberProperty{JsiiProperty: "vscode", GoGetter: "Vscode"},
+			_jsii_.MemberProperty{JsiiProperty: "watchTask", GoGetter: "WatchTask"},
+			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
+			_jsii_.MemberProperty{JsiiProperty: "workflowBootstrapSteps", GoGetter: "WorkflowBootstrapSteps"},
+			_jsii_.MemberProperty{JsiiProperty: "workflowPackageCache", GoGetter: "WorkflowPackageCache"},
+		},
+		func() interface{} {
+			j := jsiiProxy_CdktnTypeScriptApp{}
+			_jsii_.InitJsiiProxy(&j.Type__typescriptTypeScriptAppProject)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.cdktn.CdktnTypeScriptAppOptions",
+		reflect.TypeOf((*CdktnTypeScriptAppOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
 		"projen.cdktn.ConstructLibraryCdktn",
 		reflect.TypeOf((*ConstructLibraryCdktn)(nil)).Elem(),
 		[]_jsii_.Member{
@@ -33,6 +231,8 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "buildWorkflow", GoGetter: "BuildWorkflow"},
 			_jsii_.MemberProperty{JsiiProperty: "buildWorkflowJobId", GoGetter: "BuildWorkflowJobId"},
 			_jsii_.MemberProperty{JsiiProperty: "bundler", GoGetter: "Bundler"},
+			_jsii_.MemberProperty{JsiiProperty: "cdktnDeps", GoGetter: "CdktnDeps"},
+			_jsii_.MemberProperty{JsiiProperty: "cdktnVersion", GoGetter: "CdktnVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "commitGenerated", GoGetter: "CommitGenerated"},
 			_jsii_.MemberProperty{JsiiProperty: "compileTask", GoGetter: "CompileTask"},
 			_jsii_.MemberProperty{JsiiProperty: "components", GoGetter: "Components"},

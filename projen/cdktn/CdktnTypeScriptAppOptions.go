@@ -2,7 +2,6 @@ package cdktn
 
 import (
 	"github.com/projen/projen-go/projen"
-	"github.com/projen/projen-go/projen/cdk"
 	"github.com/projen/projen-go/projen/github"
 	"github.com/projen/projen-go/projen/github/workflows"
 	"github.com/projen/projen-go/projen/javascript"
@@ -10,9 +9,8 @@ import (
 	"github.com/projen/projen-go/projen/typescript"
 )
 
-// Options for `ConstructLibraryCdktn`.
 // Experimental.
-type ConstructLibraryCdktnOptions struct {
+type CdktnTypeScriptAppOptions struct {
 	// This is the name of your project.
 	// Default: $BASEDIR.
 	//
@@ -984,115 +982,6 @@ type ConstructLibraryCdktnOptions struct {
 	//
 	// Experimental.
 	TypescriptVersion *string `field:"optional" json:"typescriptVersion" yaml:"typescriptVersion"`
-	// The name of the library author.
-	// Default: $GIT_USER_NAME.
-	//
-	// Experimental.
-	Author *string `field:"required" json:"author" yaml:"author"`
-	// Email or URL of the library author.
-	// Default: $GIT_USER_EMAIL.
-	//
-	// Experimental.
-	AuthorAddress *string `field:"required" json:"authorAddress" yaml:"authorAddress"`
-	// Git repository URL.
-	// Default: $GIT_REMOTE.
-	//
-	// Experimental.
-	RepositoryUrl *string `field:"required" json:"repositoryUrl" yaml:"repositoryUrl"`
-	// Automatically run API compatibility test against the latest version published to npm after compilation.
-	//
-	// - You can manually run compatibility tests using `yarn compat` if this feature is disabled.
-	// - You can ignore compatibility failures by adding lines to a ".compatignore" file.
-	// Default: false.
-	//
-	// Experimental.
-	Compat *bool `field:"optional" json:"compat" yaml:"compat"`
-	// Name of the ignore file for API compatibility tests.
-	// Default: ".compatignore"
-	//
-	// Experimental.
-	CompatIgnore *string `field:"optional" json:"compatIgnore" yaml:"compatIgnore"`
-	// Emit a compressed version of the assembly.
-	// Default: false.
-	//
-	// Experimental.
-	CompressAssembly *bool `field:"optional" json:"compressAssembly" yaml:"compressAssembly"`
-	// File path for generated docs.
-	// Default: "API.md"
-	//
-	// Experimental.
-	DocgenFilePath *string `field:"optional" json:"docgenFilePath" yaml:"docgenFilePath"`
-	// Accepts a list of glob patterns.
-	//
-	// Files matching any of those patterns will be excluded from the TypeScript compiler input.
-	//
-	// By default, jsii will include all *.ts files (except .d.ts files) in the TypeScript compiler input.
-	// This can be problematic for example when the package's build or test procedure generates .ts files
-	// that cannot be compiled with jsii's compiler settings.
-	// Experimental.
-	ExcludeTypescript *[]*string `field:"optional" json:"excludeTypescript" yaml:"excludeTypescript"`
-	// Version of the jsii compiler to use.
-	//
-	// Set to "*" if you want to manually manage the version of jsii in your
-	// project by managing updates to `package.json` on your own.
-	//
-	// NOTE: The jsii compiler releases since 5.0.0 are not semantically versioned
-	// and should remain on the same minor, so we recommend using a `~` dependency
-	// (e.g. `~5.0.0`).
-	// Default: "~5.9.0"
-	//
-	// Experimental.
-	JsiiVersion *string `field:"optional" json:"jsiiVersion" yaml:"jsiiVersion"`
-	// Publish Go bindings to a git repository.
-	// Default: - no publishing.
-	//
-	// Experimental.
-	PublishToGo *cdk.JsiiGoTarget `field:"optional" json:"publishToGo" yaml:"publishToGo"`
-	// Publish to maven.
-	// Default: - no publishing.
-	//
-	// Experimental.
-	PublishToMaven *cdk.JsiiJavaTarget `field:"optional" json:"publishToMaven" yaml:"publishToMaven"`
-	// Publish to NuGet.
-	// Default: - no publishing.
-	//
-	// Experimental.
-	PublishToNuget *cdk.JsiiDotNetTarget `field:"optional" json:"publishToNuget" yaml:"publishToNuget"`
-	// Publish to pypi.
-	// Default: - no publishing.
-	//
-	// Experimental.
-	PublishToPypi *cdk.JsiiPythonTarget `field:"optional" json:"publishToPypi" yaml:"publishToPypi"`
-	// Default: "."
-	//
-	// Experimental.
-	Rootdir *string `field:"optional" json:"rootdir" yaml:"rootdir"`
-	// Level of tsconfig validation jsii should perform on the user-provided tsconfig.
-	//
-	// Only relevant when the project synthesizes its own tsconfig
-	// (i.e. `disableTsconfig` is not set on the TypeScriptProject).
-	// See: https://aws.github.io/jsii/user-guides/lib-author/configuration/#validatetsconfig
-	//
-	// Default: ValidateTsconfig.STRICT
-	//
-	// Experimental.
-	ValidateTsconfig cdk.ValidateTsconfig `field:"optional" json:"validateTsconfig" yaml:"validateTsconfig"`
-	// Libraries will be picked up by the construct catalog when they are published to npm as jsii modules and will be published under:.
-	//
-	// https://awscdk.io/packages/[@SCOPE/]PACKAGE@VERSION
-	//
-	// The catalog will also post a tweet to https://twitter.com/awscdkio with the
-	// package name, description and the above link. You can disable these tweets
-	// through `{ announce: false }`.
-	//
-	// You can also add a Twitter handle through `{ twitter: 'xx' }` which will be
-	// mentioned in the tweet.
-	// See: https://github.com/construct-catalog/catalog
-	//
-	// Default: - new version will be announced.
-	//
-	// Experimental.
-	Catalog *cdk.Catalog `field:"optional" json:"catalog" yaml:"catalog"`
 	// Minimum version of the CDKTN to depend on.
 	// Default: "^0.24.0"
 	//
@@ -1119,5 +1008,43 @@ type ConstructLibraryCdktnOptions struct {
 	//
 	// Experimental.
 	ConstructsVersion *string `field:"optional" json:"constructsVersion" yaml:"constructsVersion"`
+	// CDKTN output directory.
+	// Default: "cdktf.out"
+	//
+	// Experimental.
+	CdktnOut *string `field:"optional" json:"cdktnOut" yaml:"cdktnOut"`
+	// Additional context to include in `cdktf.json`.
+	// Default: - no additional context.
+	//
+	// Experimental.
+	Context *map[string]interface{} `field:"optional" json:"context" yaml:"context"`
+	// CDK project identifier.
+	// Default: - Automatically generated.
+	//
+	// Experimental.
+	ProjectId *string `field:"optional" json:"projectId" yaml:"projectId"`
+	// Whether report crashing to a remote server.
+	// Default: true.
+	//
+	// Experimental.
+	SendCrashReports *bool `field:"optional" json:"sendCrashReports" yaml:"sendCrashReports"`
+	// Terraform modules to build.
+	// Default: [].
+	//
+	// Experimental.
+	TerraformModules *[]*string `field:"optional" json:"terraformModules" yaml:"terraformModules"`
+	// Terraform providers to build.
+	// Default: [].
+	//
+	// Experimental.
+	TerraformProviders *[]*string `field:"optional" json:"terraformProviders" yaml:"terraformProviders"`
+	// The command line to execute in order to synthesize the CDKTN application (language specific).
+	// Experimental.
+	App *string `field:"optional" json:"app" yaml:"app"`
+	// The CDKTN app's entrypoint (relative to the source directory, which is "src" by default).
+	// Default: "main.ts"
+	//
+	// Experimental.
+	AppEntrypoint *string `field:"optional" json:"appEntrypoint" yaml:"appEntrypoint"`
 }
 
