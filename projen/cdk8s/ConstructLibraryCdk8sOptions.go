@@ -722,7 +722,10 @@ type ConstructLibraryCdk8sOptions struct {
 	//
 	// Experimental.
 	CheckLicenses *javascript.LicenseCheckerOptions `field:"optional" json:"checkLicenses" yaml:"checkLicenses"`
-	// Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v5 By default, OIDC auth is used. Alternatively a token can be provided via `codeCovTokenSecret`.
+	// Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/.
+	//
+	// Uses codecov/codecov-action. By default, OIDC auth is used.
+	// Alternatively a token can be provided via `codeCovTokenSecret`.
 	// Default: false.
 	//
 	// Experimental.
