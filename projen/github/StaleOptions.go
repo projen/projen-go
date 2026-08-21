@@ -7,6 +7,14 @@ import (
 // Options for `Stale`.
 // Experimental.
 type StaleOptions struct {
+	// Github Runner selection labels.
+	// Default: ["ubuntu-latest"].
+	//
+	// Experimental.
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 	// How to handle stale issues.
 	// Default: - By default, stale issues with no activity will be marked as
 	// stale after 60 days and closed within 7 days.
@@ -19,13 +27,5 @@ type StaleOptions struct {
 	//
 	// Experimental.
 	PullRequest *StaleBehavior `field:"optional" json:"pullRequest" yaml:"pullRequest"`
-	// Github Runner selection labels.
-	// Default: ["ubuntu-latest"].
-	//
-	// Experimental.
-	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
-	// Github Runner Group selection options.
-	// Experimental.
-	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 }
 

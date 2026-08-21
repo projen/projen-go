@@ -7,6 +7,14 @@ import (
 // Options for 'AutoApprove'.
 // Experimental.
 type AutoApproveOptions struct {
+	// Github Runner selection labels.
+	// Default: ["ubuntu-latest"].
+	//
+	// Experimental.
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 	// Only pull requests authored by these Github usernames will be auto-approved.
 	// Default: ['github-bot'].
 	//
@@ -17,14 +25,6 @@ type AutoApproveOptions struct {
 	//
 	// Experimental.
 	Label *string `field:"optional" json:"label" yaml:"label"`
-	// Github Runner selection labels.
-	// Default: ["ubuntu-latest"].
-	//
-	// Experimental.
-	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
-	// Github Runner Group selection options.
-	// Experimental.
-	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 	// A GitHub secret name which contains a GitHub Access Token with write permissions for the `pull_request` scope.
 	//
 	// This token is used to approve pull requests.

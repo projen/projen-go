@@ -1,5 +1,8 @@
 package github
 
+import (
+	"github.com/projen/projen-go/projen"
+)
 
 // Experimental.
 type GitHubOptions struct {
@@ -81,6 +84,14 @@ type GitHubOptions struct {
 	//
 	// Experimental.
 	PullRequestLintOptions *PullRequestLintOptions `field:"optional" json:"pullRequestLintOptions" yaml:"pullRequestLintOptions"`
+	// Github Runner selection labels.
+	// Default: ["ubuntu-latest"].
+	//
+	// Experimental.
+	WorkflowRunsOn *[]*string `field:"optional" json:"workflowRunsOn" yaml:"workflowRunsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	WorkflowRunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"workflowRunsOnGroup" yaml:"workflowRunsOnGroup"`
 	// Enables GitHub workflows.
 	//
 	// If this is set to `false`, workflows will not be created.

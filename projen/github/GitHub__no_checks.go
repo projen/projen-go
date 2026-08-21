@@ -20,6 +20,10 @@ func (g *jsiiProxy_GitHub) validateProjectCreationParameters(initProject *projen
 	return nil
 }
 
+func (g *jsiiProxy_GitHub) validateRunsOnConfigParameters(options *projen.RunsOnOptions) error {
+	return nil
+}
+
 func (g *jsiiProxy_GitHub) validateTryFindWorkflowParameters(name *string) error {
 	return nil
 }

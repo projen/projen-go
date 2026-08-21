@@ -48,6 +48,14 @@ func (g *jsiiProxy_GitHub) validateProjectCreationParameters(initProject *projen
 	return nil
 }
 
+func (g *jsiiProxy_GitHub) validateRunsOnConfigParameters(options *projen.RunsOnOptions) error {
+	if err := _jsii_.ValidateStruct(options, func() string { return "parameter options" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (g *jsiiProxy_GitHub) validateTryFindWorkflowParameters(name *string) error {
 	if name == nil {
 		return fmt.Errorf("parameter name is required, but nil was provided")

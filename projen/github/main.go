@@ -264,6 +264,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
 			_jsii_.MemberMethod{JsiiMethod: "projectCreation", GoMethod: "ProjectCreation"},
 			_jsii_.MemberProperty{JsiiProperty: "projenCredentials", GoGetter: "ProjenCredentials"},
+			_jsii_.MemberMethod{JsiiMethod: "runsOnConfig", GoMethod: "RunsOnConfig"},
 			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 			_jsii_.MemberMethod{JsiiMethod: "tryFindWorkflow", GoMethod: "TryFindWorkflow"},

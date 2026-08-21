@@ -7,6 +7,14 @@ import (
 // Options for PullRequestLint.
 // Experimental.
 type PullRequestLintOptions struct {
+	// Github Runner selection labels.
+	// Default: ["ubuntu-latest"].
+	//
+	// Experimental.
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 	// Require a contributor statement to be included in the PR description.
 	//
 	// For example confirming that the contribution has been made by the contributor and complies with the project's license.
@@ -21,14 +29,6 @@ type PullRequestLintOptions struct {
 	//
 	// Experimental.
 	ContributorStatementOptions *ContributorStatementOptions `field:"optional" json:"contributorStatementOptions" yaml:"contributorStatementOptions"`
-	// Github Runner selection labels.
-	// Default: ["ubuntu-latest"].
-	//
-	// Experimental.
-	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
-	// Github Runner Group selection options.
-	// Experimental.
-	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 	// Validate that pull request titles follow Conventional Commits.
 	// See: https://www.conventionalcommits.org/
 	//

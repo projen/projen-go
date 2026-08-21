@@ -72,6 +72,9 @@ type GitHub interface {
 	// Use it for deterministic, one-off file generation. Order across components is not guaranteed.
 	// Experimental.
 	ProjectCreation(initProject *projen.InitProject)
+	// Resolves the `runsOn`/`runsOnGroup` config for a job, falling back to the project's global runner selection (`workflowRunsOn`/`workflowRunsOnGroup`) when `options` does not specify one.
+	// Experimental.
+	RunsOnConfig(options *projen.RunsOnOptions) *projen.RunsOnConfig
 	// Synthesizes files to the project output directory.
 	// Experimental.
 	Synthesize()
@@ -392,6 +395,22 @@ func (g *jsiiProxy_GitHub) ProjectCreation(initProject *projen.InitProject) {
 		"projectCreation",
 		[]interface{}{initProject},
 	)
+}
+
+func (g *jsiiProxy_GitHub) RunsOnConfig(options *projen.RunsOnOptions) *projen.RunsOnConfig {
+	if err := g.validateRunsOnConfigParameters(options); err != nil {
+		panic(err)
+	}
+	var returns *projen.RunsOnConfig
+
+	_jsii_.Invoke(
+		g,
+		"runsOnConfig",
+		[]interface{}{options},
+		&returns,
+	)
+
+	return returns
 }
 
 func (g *jsiiProxy_GitHub) Synthesize() {

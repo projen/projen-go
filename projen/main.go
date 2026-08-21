@@ -1092,6 +1092,14 @@ func init() {
 		"projen.RunScriptConfig",
 		reflect.TypeOf((*RunScriptConfig)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.RunsOnConfig",
+		reflect.TypeOf((*RunsOnConfig)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.RunsOnOptions",
+		reflect.TypeOf((*RunsOnOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"projen.SampleDir",
 		reflect.TypeOf((*SampleDir)(nil)).Elem(),

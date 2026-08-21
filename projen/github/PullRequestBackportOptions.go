@@ -1,8 +1,19 @@
 package github
 
+import (
+	"github.com/projen/projen-go/projen"
+)
 
 // Experimental.
 type PullRequestBackportOptions struct {
+	// Github Runner selection labels.
+	// Default: ["ubuntu-latest"].
+	//
+	// Experimental.
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 	// Automatically approve backport PRs if the 'auto approve' workflow is available.
 	// Default: true.
 	//

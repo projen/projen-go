@@ -1,9 +1,20 @@
 package github
 
+import (
+	"github.com/projen/projen-go/projen"
+)
 
 // Options for 'AutoQueue'.
 // Experimental.
 type AutoQueueOptions struct {
+	// Github Runner selection labels.
+	// Default: ["ubuntu-latest"].
+	//
+	// Experimental.
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 	// Only pull requests authored by these Github usernames will have auto-queue enabled.
 	// Default: - pull requests from all users are eligible for auto-queuing.
 	//
@@ -30,11 +41,6 @@ type AutoQueueOptions struct {
 	//
 	// Experimental.
 	ProjenCredentials GithubCredentials `field:"optional" json:"projenCredentials" yaml:"projenCredentials"`
-	// Github Runner selection labels.
-	// Default: ["ubuntu-latest"].
-	//
-	// Experimental.
-	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
 	// The branch names that we should auto-queue for.
 	//
 	// This set of branches should be a subset of `MergeQueueOptions.targetBranches`.

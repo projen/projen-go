@@ -677,10 +677,10 @@ type NextJsProjectOptions struct {
 	// Github Runner selection labels.
 	// Default: ["ubuntu-latest"].
 	//
-	// Experimental.
+	// Deprecated: use `githubOptions.workflowRunsOn` on the project, or `runsOn` on `ReleaseOptions`
 	WorkflowRunsOn *[]*string `field:"optional" json:"workflowRunsOn" yaml:"workflowRunsOn"`
 	// Github Runner Group selection options.
-	// Experimental.
+	// Deprecated: use `githubOptions.workflowRunsOnGroup` on the project, or `runsOnGroup` on `ReleaseOptions`
 	WorkflowRunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"workflowRunsOnGroup" yaml:"workflowRunsOnGroup"`
 	// A directory which will contain build artifacts.
 	// Default: "dist".

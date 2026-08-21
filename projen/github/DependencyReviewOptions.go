@@ -7,6 +7,14 @@ import (
 // Options for the DependencyReview component.
 // Experimental.
 type DependencyReviewOptions struct {
+	// Github Runner selection labels.
+	// Default: ["ubuntu-latest"].
+	//
+	// Experimental.
+	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
+	// Github Runner Group selection options.
+	// Experimental.
+	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 	// GitHub Advisory Database IDs that can be skipped during detection.
 	// Default: - no advisories are skipped.
 	//
@@ -47,14 +55,6 @@ type DependencyReviewOptions struct {
 	//
 	// Experimental.
 	LicenseCheck *bool `field:"optional" json:"licenseCheck" yaml:"licenseCheck"`
-	// Github Runner selection labels.
-	// Default: ["ubuntu-latest"].
-	//
-	// Experimental.
-	RunsOn *[]*string `field:"optional" json:"runsOn" yaml:"runsOn"`
-	// Github Runner Group selection options.
-	// Experimental.
-	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 	// Show OpenSSF Scorecard scores for dependencies.
 	// Default: true.
 	//
