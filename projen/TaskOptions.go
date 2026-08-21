@@ -46,6 +46,10 @@ type TaskOptions struct {
 	Args *[]*string `field:"optional" json:"args" yaml:"args"`
 	// Shell command to execute as the first command of the task.
 	//
+	// A single shell string, so only pass trusted input: an interpolated value is
+	// interpreted by the shell too. Use `execArgs` for arguments you did not write
+	// literally.
+	//
 	// Mutually exclusive with `execArgs`.
 	// Default: - add steps using `task.exec(command)` or `task.spawn(subtask)`
 	//

@@ -50,6 +50,10 @@ type AwsCdkJavaAppOptions struct {
 	ProjectTree *bool `field:"optional" json:"projectTree" yaml:"projectTree"`
 	// The shell command to use in order to run the projen CLI.
 	//
+	// Inserted verbatim into task steps, workflows and IDE configuration, and run
+	// by each of their shells - locally, in CI and in dev containers. Keep it a
+	// plain unquoted command, since shell syntax in it executes in all of them.
+	//
 	// Can be used to customize in special environments.
 	// Default: "npx projen".
 	//
@@ -302,6 +306,10 @@ type AwsCdkJavaAppOptions struct {
 	// This command will be called when
 	// running `cdk synth` or when `cdk watch` identifies a change in your source
 	// code before redeployment.
+	//
+	// The CDK CLI runs it through a shell on every synthesis, on the machine of
+	// anyone who checks out the project, so shell syntax in it is interpreted and
+	// the command should be one you would run yourself.
 	// Default: - no build command.
 	//
 	// Experimental.

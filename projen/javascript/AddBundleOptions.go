@@ -74,6 +74,10 @@ type AddBundleOptions struct {
 	// For example, `{ 'process.env.DEBUG': 'true' }`.
 	//
 	// Another example, `{ 'process.env.API_KEY': JSON.stringify('xxx-xxxx-xxx') }`.
+	//
+	// Each entry is passed to esbuild as a single `--define:` argument, exactly as
+	// given: no shell parses it, so values are not unquoted along the way and a
+	// string replacement keeps the quotes it needs (`JSON.stringify('xxx')`).
 	// Default: - no replacements are made.
 	//
 	// Experimental.
@@ -92,7 +96,11 @@ type AddBundleOptions struct {
 	//     "--log-limit": "0",
 	//   },
 	// });
-	// ```.
+	// ```
+	//
+	// Each entry is passed to esbuild as a single argument, exactly as given: no
+	// shell parses it, so values must not be quoted (a value containing spaces is
+	// passed through as one argument on its own).
 	// Default: - no additional esbuild arguments are passed.
 	//
 	// Experimental.

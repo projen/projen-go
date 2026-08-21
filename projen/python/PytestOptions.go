@@ -12,8 +12,10 @@ type PytestOptions struct {
 	// test collection and to avoid picking up undesired tests by accident.
 	//
 	// Leave empty to discover all test_*.py or *_test.py files, per Pytest default.
+	// Glob patterns are supported, including `**` for recursive matching.
 	//
-	// The array will be concatenated and passed as a single argument to pytest.
+	// The entries form pytest's `testpaths` setting, which is parsed like a shell
+	// word list, so a path containing spaces has to be quoted: `["'my tests'"]`.
 	//
 	// Example:
 	//   ["tests/unit", "tests/qa"]
@@ -23,7 +25,7 @@ type PytestOptions struct {
 	// Experimental.
 	TestMatch *[]*string `field:"optional" json:"testMatch" yaml:"testMatch"`
 	// Pytest version.
-	// Default: "7.4.3"
+	// Default: "8.3.5"
 	//
 	// Experimental.
 	Version *string `field:"optional" json:"version" yaml:"version"`

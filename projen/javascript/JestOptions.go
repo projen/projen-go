@@ -14,6 +14,16 @@ type JestOptions struct {
 	// Experimental.
 	CoverageText *bool `field:"optional" json:"coverageText" yaml:"coverageText"`
 	// Additional options to pass to the Jest CLI invocation.
+	//
+	// Each element is passed to jest as a single argument, exactly as given: no
+	// shell parses these, so a flag and its value need separate elements
+	// (`["--reporters", "jest-junit"]`, not `["--reporters jest-junit"]`) and
+	// values must not be quoted (`["--testPathIgnorePatterns=/node_modules/"]`,
+	// not `["--testPathIgnorePatterns='/node_modules/'"]`).
+	//
+	// Example:
+	//   ["--runInBand", "--testNamePattern=a test name with spaces"]
+	//
 	// Default: - no extra options.
 	//
 	// Experimental.

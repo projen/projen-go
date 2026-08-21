@@ -17,6 +17,11 @@ type ManualReleaseOptions struct {
 	ChangelogPath *string `field:"optional" json:"changelogPath" yaml:"changelogPath"`
 	// Override git-push command.
 	//
+	// Runs as a shell command in the `publish:git` task - where release
+	// credentials are in scope - replacing the default
+	// `git push --follow-tags origin <branch>`. Shell syntax is interpreted, so
+	// keep it a literal command.
+	//
 	// Set to an empty string to disable pushing.
 	// Experimental.
 	GitPushCommand *string `field:"optional" json:"gitPushCommand" yaml:"gitPushCommand"`

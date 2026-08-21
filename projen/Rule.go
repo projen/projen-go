@@ -20,6 +20,8 @@ type Rule struct {
 	// Experimental.
 	Prerequisites *[]*string `field:"optional" json:"prerequisites" yaml:"prerequisites"`
 	// Commands that are run (using prerequisites as inputs) to create a target.
+	//
+	// Each entry is a shell command, run by make in its own shell.
 	// Default: [].
 	//
 	// Experimental.

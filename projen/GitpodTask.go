@@ -16,6 +16,8 @@ type GitpodTask struct {
 	// Experimental.
 	Command *string `field:"required" json:"command" yaml:"command"`
 	// In case you need to run something even before init, that is a requirement for both init and command, you can use the before property.
+	//
+	// A shell command, chained with the other task commands using `&&`.
 	// Experimental.
 	Before *string `field:"optional" json:"before" yaml:"before"`
 	// The init property can be used to specify shell commands that should only be executed after a workspace was freshly cloned and needs to be initialized somehow.
@@ -43,6 +45,8 @@ type GitpodTask struct {
 	//
 	// It is meant to run additional long running
 	// processes that could be useful, e.g. running test suites.
+	//
+	// A shell command, chained with the other task commands using `&&`.
 	// Experimental.
 	Prebuild *string `field:"optional" json:"prebuild" yaml:"prebuild"`
 }
