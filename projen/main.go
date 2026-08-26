@@ -1025,6 +1025,44 @@ func init() {
 		reflect.TypeOf((*ProjenrcJsonOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
+		"projen.PropertiesFile",
+		reflect.TypeOf((*PropertiesFile)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "absolutePath", GoGetter: "AbsolutePath"},
+			_jsii_.MemberMethod{JsiiMethod: "addDeletionOverride", GoMethod: "AddDeletionOverride"},
+			_jsii_.MemberMethod{JsiiMethod: "addOverride", GoMethod: "AddOverride"},
+			_jsii_.MemberMethod{JsiiMethod: "addToArray", GoMethod: "AddToArray"},
+			_jsii_.MemberProperty{JsiiProperty: "changed", GoGetter: "Changed"},
+			_jsii_.MemberProperty{JsiiProperty: "committed", GoGetter: "Committed"},
+			_jsii_.MemberMethod{JsiiMethod: "diff", GoMethod: "Diff"},
+			_jsii_.MemberProperty{JsiiProperty: "executable", GoGetter: "Executable"},
+			_jsii_.MemberProperty{JsiiProperty: "marker", GoGetter: "Marker"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberProperty{JsiiProperty: "omitEmpty", GoGetter: "OmitEmpty"},
+			_jsii_.MemberMethod{JsiiMethod: "patch", GoMethod: "Patch"},
+			_jsii_.MemberProperty{JsiiProperty: "path", GoGetter: "Path"},
+			_jsii_.MemberMethod{JsiiMethod: "postProjectCreation", GoMethod: "PostProjectCreation"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "projectCreation", GoMethod: "ProjectCreation"},
+			_jsii_.MemberProperty{JsiiProperty: "readonly", GoGetter: "Readonly"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesizeContent", GoMethod: "SynthesizeContent"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
+		},
+		func() interface{} {
+			j := jsiiProxy_PropertiesFile{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_ObjectFile)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.PropertiesFileOptions",
+		reflect.TypeOf((*PropertiesFileOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
 		"projen.ReleasableCommits",
 		reflect.TypeOf((*ReleasableCommits)(nil)).Elem(),
 		[]_jsii_.Member{
