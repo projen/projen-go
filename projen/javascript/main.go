@@ -319,6 +319,52 @@ func init() {
 		reflect.TypeOf((*LicenseCheckerOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
+		"projen.javascript.NodeConfigFile",
+		reflect.TypeOf((*NodeConfigFile)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "config", GoGetter: "Config"},
+			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postProjectCreation", GoMethod: "PostProjectCreation"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "projectCreation", GoMethod: "ProjectCreation"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
+		},
+		func() interface{} {
+			j := jsiiProxy_NodeConfigFile{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.NodeConfigFileOptions",
+		reflect.TypeOf((*NodeConfigFileOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.NodeConfigSchema",
+		reflect.TypeOf((*NodeConfigSchema)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.NodeConfigSchemaNodeOptions",
+		reflect.TypeOf((*NodeConfigSchemaNodeOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.NodeConfigSchemaPermission",
+		reflect.TypeOf((*NodeConfigSchemaPermission)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.NodeConfigSchemaTest",
+		reflect.TypeOf((*NodeConfigSchemaTest)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.NodeConfigSchemaWatch",
+		reflect.TypeOf((*NodeConfigSchemaWatch)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
 		"projen.javascript.NodePackage",
 		reflect.TypeOf((*NodePackage)(nil)).Elem(),
 		[]_jsii_.Member{
