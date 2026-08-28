@@ -983,6 +983,13 @@ type ConstructLibraryCdktnOptions struct {
 	// Options for ts-jest.
 	// Experimental.
 	TsJestOptions *typescript.TsJestOptions `field:"optional" json:"tsJestOptions" yaml:"tsJestOptions"`
+	// Type-check the test suite as part of the `test` task.
+	//
+	// Adds a `tsc --noEmit` step against the development tsconfig.
+	// Default: false.
+	//
+	// Experimental.
+	TypecheckTests *bool `field:"optional" json:"typecheckTests" yaml:"typecheckTests"`
 	// TypeScript version to use.
 	//
 	// NOTE: Typescript is not semantically versioned and should remain on the
