@@ -9,6 +9,8 @@ type NodeConfigFileOptions struct {
 	// Experimental.
 	NodeOptions *NodeConfigSchemaNodeOptions `field:"optional" json:"nodeOptions" yaml:"nodeOptions"`
 	// Experimental.
+	NodeVersion *float64 `field:"optional" json:"nodeVersion" yaml:"nodeVersion"`
+	// Experimental.
 	Permission *NodeConfigSchemaPermission `field:"optional" json:"permission" yaml:"permission"`
 	// Experimental.
 	Schema *string `field:"optional" json:"schema" yaml:"schema"`

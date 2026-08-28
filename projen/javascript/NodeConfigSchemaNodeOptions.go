@@ -12,6 +12,9 @@ type NodeConfigSchemaNodeOptions struct {
 	// allow use of child process when any permissions are set.
 	// Experimental.
 	AllowChildProcess *bool `field:"optional" json:"allowChildProcess" yaml:"allowChildProcess"`
+	// allow use of FFI when any permissions are set.
+	// Experimental.
+	AllowFfi *bool `field:"optional" json:"allowFfi" yaml:"allowFfi"`
 	// allow permissions to read the filesystem.
 	// Experimental.
 	AllowFsRead *[]*string `field:"optional" json:"allowFsRead" yaml:"allowFsRead"`
@@ -21,6 +24,12 @@ type NodeConfigSchemaNodeOptions struct {
 	// allow use of inspector when any permissions are set.
 	// Experimental.
 	AllowInspector *bool `field:"optional" json:"allowInspector" yaml:"allowInspector"`
+	// allow use of network when any permissions are set.
+	// Experimental.
+	AllowNet *bool `field:"optional" json:"allowNet" yaml:"allowNet"`
+	// allow use of OpenSSL STORE loaders when any permissions are set.
+	// Experimental.
+	AllowOpensslStore *bool `field:"optional" json:"allowOpensslStore" yaml:"allowOpensslStore"`
 	// allow wasi when any permissions are set.
 	// Experimental.
 	AllowWasi *bool `field:"optional" json:"allowWasi" yaml:"allowWasi"`
@@ -94,6 +103,9 @@ type NodeConfigSchemaNodeOptions struct {
 	// experimental EventSource API.
 	// Experimental.
 	ExperimentalEventsource *bool `field:"optional" json:"experimentalEventsource" yaml:"experimentalEventsource"`
+	// experimental node:ffi module.
+	// Experimental.
+	ExperimentalFfi *bool `field:"optional" json:"experimentalFfi" yaml:"experimentalFfi"`
 	// expose experimental Navigator API on the global scope.
 	// Experimental.
 	ExperimentalGlobalNavigator *bool `field:"optional" json:"experimentalGlobalNavigator" yaml:"experimentalGlobalNavigator"`
@@ -105,7 +117,7 @@ type NodeConfigSchemaNodeOptions struct {
 	ExperimentalLoader *[]*string `field:"optional" json:"experimentalLoader" yaml:"experimentalLoader"`
 	// Print pending top-level await.
 	//
-	// If --require-module is true, evaluate asynchronous graphs loaded by `require()` but do not run the microtasks, in order to to find and print top-level await in the graph.
+	// If --require-module is true, evaluate asynchronous graphs loaded by `require()` but do not run the microtasks, in order to find and print top-level await in the graph.
 	// Experimental.
 	ExperimentalPrintRequiredTla *bool `field:"optional" json:"experimentalPrintRequiredTla" yaml:"experimentalPrintRequiredTla"`
 	// experimental await keyword support in REPL.
@@ -119,9 +131,9 @@ type NodeConfigSchemaNodeOptions struct {
 	// experimental node:sqlite module.
 	// Experimental.
 	ExperimentalSqlite *bool `field:"optional" json:"experimentalSqlite" yaml:"experimentalSqlite"`
-	// enable transformation of TypeScript-onlysyntax into JavaScript code.
+	// experimental iterable streams API (node:stream/iter).
 	// Experimental.
-	ExperimentalTransformTypes *bool `field:"optional" json:"experimentalTransformTypes" yaml:"experimentalTransformTypes"`
+	ExperimentalStreamIter *bool `field:"optional" json:"experimentalStreamIter" yaml:"experimentalStreamIter"`
 	// experimental ES Module support in vm module.
 	// Experimental.
 	ExperimentalVmModules *bool `field:"optional" json:"experimentalVmModules" yaml:"experimentalVmModules"`
@@ -235,6 +247,9 @@ type NodeConfigSchemaNodeOptions struct {
 	// enable the permission system.
 	// Experimental.
 	Permission *bool `field:"optional" json:"permission" yaml:"permission"`
+	// enable audit only for the permission system.
+	// Experimental.
+	PermissionAudit *bool `field:"optional" json:"permissionAudit" yaml:"permissionAudit"`
 	// preserve symbolic links when resolving.
 	// Experimental.
 	PreserveSymlinks *bool `field:"optional" json:"preserveSymlinks" yaml:"preserveSymlinks"`

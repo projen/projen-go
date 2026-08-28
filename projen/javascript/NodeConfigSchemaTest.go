@@ -9,6 +9,7 @@ type NodeConfigSchemaTest struct {
 	// enable module mocking in the test runner.
 	// Experimental.
 	ExperimentalTestModuleMocks *bool `field:"optional" json:"experimentalTestModuleMocks" yaml:"experimentalTestModuleMocks"`
+	// launch test runner on startup.
 	// Experimental.
 	Test *bool `field:"optional" json:"test" yaml:"test"`
 	// specify test runner concurrency.

@@ -7,7 +7,7 @@ type NodeRunnerOptions struct {
 	// Whether to also enable `--experimental-transform-types`.
 	// Default: false.
 	//
-	// Experimental.
+	// Deprecated: This flag has been removed from Node.js 26
 	ExperimentalTransformTypes *bool `field:"optional" json:"experimentalTransformTypes" yaml:"experimentalTransformTypes"`
 	// Path to the tsconfig file for type-checking.
 	//
