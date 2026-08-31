@@ -515,6 +515,14 @@ type NextJsProjectOptions struct {
 	//
 	// Experimental.
 	BumpPackage *string `field:"optional" json:"bumpPackage" yaml:"bumpPackage"`
+	// Whether GitHub should explicitly mark the release from the default branch as the latest release.
+	//
+	// Set to `true` to mark the release as latest, or `false` to explicitly not
+	// mark it as latest.
+	// Default: - GitHub determines the latest release based on date and semantic version.
+	//
+	// Experimental.
+	GithubReleaseLatest *bool `field:"optional" json:"githubReleaseLatest" yaml:"githubReleaseLatest"`
 	// Version requirement of `publib` which is used to publish modules to npm.
 	// Default: "latest".
 	//

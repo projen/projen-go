@@ -18,6 +18,14 @@ type BranchOptions struct {
 	//
 	// Experimental.
 	Environment *string `field:"optional" json:"environment" yaml:"environment"`
+	// Whether GitHub should explicitly mark the release from this branch as the latest release.
+	//
+	// Set to `true` to mark the release as latest, or `false` to explicitly not
+	// mark it as latest.
+	// Default: - GitHub determines the latest release based on date and semantic version.
+	//
+	// Experimental.
+	GithubReleaseLatest *bool `field:"optional" json:"githubReleaseLatest" yaml:"githubReleaseLatest"`
 	// The minimum major version to release.
 	// Experimental.
 	MinMajorVersion *float64 `field:"optional" json:"minMajorVersion" yaml:"minMajorVersion"`

@@ -63,6 +63,9 @@ type Publisher interface {
 	// Experimental.
 	PublishToGit(options *GitPublishOptions) projen.Task
 	// Creates a GitHub Release.
+	//
+	// Tolerates a release that already exists, so that re-running a release is
+	// a no-op rather than a failure.
 	// Experimental.
 	PublishToGitHubReleases(options *GitHubReleasesPublishOptions)
 	// Adds a go publishing job.

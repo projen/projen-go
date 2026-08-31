@@ -60,5 +60,13 @@ type GitHubReleasesPublishOptions struct {
 	//
 	// Experimental.
 	VersionFile *string `field:"required" json:"versionFile" yaml:"versionFile"`
+	// Whether GitHub should explicitly mark the release as the latest release.
+	//
+	// Set to `true` to mark the release as latest, or `false` to explicitly not
+	// mark it as latest. A branch-specific setting takes precedence.
+	// Default: - GitHub determines the latest release based on date and semantic version.
+	//
+	// Experimental.
+	Latest *bool `field:"optional" json:"latest" yaml:"latest"`
 }
 
