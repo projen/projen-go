@@ -264,6 +264,15 @@ type ReactTypeScriptProjectOptions struct {
 	//
 	// Experimental.
 	CodeArtifactOptions *javascript.CodeArtifactOptions `field:"optional" json:"codeArtifactOptions" yaml:"codeArtifactOptions"`
+	// Configuration values available to package scripts at runtime.
+	//
+	// Values should be JSON-serializable.
+	// See: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#config
+	//
+	// Default: - no package configuration.
+	//
+	// Experimental.
+	Config *map[string]interface{} `field:"optional" json:"config" yaml:"config"`
 	// Add a `dedupe` task that deduplicates project dependencies.
 	//
 	// Deduplication prevents multiple versions of the same package from being
