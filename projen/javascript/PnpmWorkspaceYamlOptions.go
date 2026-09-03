@@ -68,6 +68,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// The maximum number of child processes to allocate simultaneously to build node_modules.
 	// Experimental.
 	ChildConcurrency *float64 `field:"optional" json:"childConcurrency" yaml:"childConcurrency"`
+	// Explicitly tells pnpm whether the current environment is a Continuous Integration system, overriding pnpm's automatic CI detection.
+	//
+	// Added in pnpm v10.12.1.
+	// Experimental.
+	Ci *bool `field:"optional" json:"ci" yaml:"ci"`
 	// When set to `true`, pnpm will remove unused catalog entries during installation.
 	// Experimental.
 	CleanupUnusedCatalogs *bool `field:"optional" json:"cleanupUnusedCatalogs" yaml:"cleanupUnusedCatalogs"`
@@ -158,6 +163,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// If this setting is set to true, the legacy deploy behavior will be used.
 	// Experimental.
 	ForceLegacyDeploy *bool `field:"optional" json:"forceLegacyDeploy" yaml:"forceLegacyDeploy"`
+	// Makes pnpm install work against a read-only package store (such as a Nix store or OCI image layer).
+	//
+	// When enabled, pnpm opens the store's SQLite database in immutable mode and never writes to the store. Works best together with --offline and --frozen-lockfile; incompatible with --force. Added in pnpm v11.7.0.
+	// Experimental.
+	FrozenStore *bool `field:"optional" json:"frozenStore" yaml:"frozenStore"`
 	// When set to true, the generated lockfile name after installation will be named based on the current branch name to completely avoid merge conflicts.
 	// Experimental.
 	GitBranchLockfile *bool `field:"optional" json:"gitBranchLockfile" yaml:"gitBranchLockfile"`
@@ -178,6 +188,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// A global pnpmfile is used by all projects during installation.
 	// Experimental.
 	GlobalPnpmfile *string `field:"optional" json:"globalPnpmfile" yaml:"globalPnpmfile"`
+	// Controls which globally installed packages get project-aware shims, which are global commands that run the version specified by the current project instead of the globally installed one.
+	//
+	// A boolean disables (false) or resets to the defaults (true), while an object maps package names to a policy: "auto" (or true) to switch automatically when publisher-authenticated, "prompt" to confirm on each use, "always" to switch unconditionally, or false to disable. Object entries merge with the built-in defaults ({"node": "auto", "deno": "auto", "bun": "auto"}). Added in pnpm v12.0.0-rc.2.
+	// Experimental.
+	GlobalShims interface{} `field:"optional" json:"globalShims" yaml:"globalShims"`
 	// When true, all dependencies are hoisted to node_modules/.pnpm/node_modules.
 	// Experimental.
 	Hoist *bool `field:"optional" json:"hoist" yaml:"hoist"`
@@ -542,6 +557,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// Specifies which exact Node.js version should be used for the project's runtime.
 	// Experimental.
 	UseNodeVersion *string `field:"optional" json:"useNodeVersion" yaml:"useNodeVersion"`
+	// Deprecated.
+	//
+	// Only allows installation with a store server. If no store server is running, installation will fail.
+	// Experimental.
+	UseRunningStoreServer *bool `field:"optional" json:"useRunningStoreServer" yaml:"useRunningStoreServer"`
 	// When true, all the output is written to stderr.
 	// Experimental.
 	UseStderr *bool `field:"optional" json:"useStderr" yaml:"useStderr"`
@@ -565,6 +585,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// This is useful for pre-populating a store (e.g., in Nix builds) without creating unnecessary project-level artifacts. pnpm fetch uses this mode internally.
 	// Experimental.
 	VirtualStoreOnly *bool `field:"optional" json:"virtualStoreOnly" yaml:"virtualStoreOnly"`
+	// Determines where the virtual store is located.
+	//
+	// When set to project, a separate virtual store is created in each project's node_modules/.pnpm. When set to global, a single store is shared by every project on the machine, with each project's node_modules holding only symlinks into it. Added in pnpm v11.23.0.
+	// Experimental.
+	VirtualStoreType PnpmWorkspaceYamlSchemaVirtualStoreType `field:"optional" json:"virtualStoreType" yaml:"virtualStoreType"`
 	// Set the maximum number of tasks to run simultaneously.
 	//
 	// For unlimited concurrency use Infinity. You can set the value to <= 0 and it will use amount of CPU cores of the host minus the absolute value of the provided number as: max(1, (number of cores) - abs(workspaceConcurrency)).

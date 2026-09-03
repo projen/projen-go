@@ -8,9 +8,9 @@ package javascript
 type PnpmWorkspaceYamlSchemaHoistingLimits string
 
 const (
-	// node.
+	// none.
 	// Experimental.
-	PnpmWorkspaceYamlSchemaHoistingLimits_NODE PnpmWorkspaceYamlSchemaHoistingLimits = "NODE"
+	PnpmWorkspaceYamlSchemaHoistingLimits_NONE PnpmWorkspaceYamlSchemaHoistingLimits = "NONE"
 	// workspaces.
 	// Experimental.
 	PnpmWorkspaceYamlSchemaHoistingLimits_WORKSPACES PnpmWorkspaceYamlSchemaHoistingLimits = "WORKSPACES"

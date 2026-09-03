@@ -649,7 +649,7 @@ func init() {
 		"projen.javascript.PnpmWorkspaceYamlSchemaHoistingLimits",
 		reflect.TypeOf((*PnpmWorkspaceYamlSchemaHoistingLimits)(nil)).Elem(),
 		map[string]interface{}{
-			"NODE": PnpmWorkspaceYamlSchemaHoistingLimits_NODE,
+			"NONE": PnpmWorkspaceYamlSchemaHoistingLimits_NONE,
 			"WORKSPACES": PnpmWorkspaceYamlSchemaHoistingLimits_WORKSPACES,
 			"DEPENDENCIES": PnpmWorkspaceYamlSchemaHoistingLimits_DEPENDENCIES,
 		},
@@ -811,6 +811,14 @@ func init() {
 			"PATCH": PnpmWorkspaceYamlSchemaVersioningMaxBump_PATCH,
 			"MINOR": PnpmWorkspaceYamlSchemaVersioningMaxBump_MINOR,
 			"MAJOR": PnpmWorkspaceYamlSchemaVersioningMaxBump_MAJOR,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaVirtualStoreType",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaVirtualStoreType)(nil)).Elem(),
+		map[string]interface{}{
+			"PROJECT": PnpmWorkspaceYamlSchemaVirtualStoreType_PROJECT,
+			"GLOBAL": PnpmWorkspaceYamlSchemaVirtualStoreType_GLOBAL,
 		},
 	)
 	_jsii_.RegisterClass(
