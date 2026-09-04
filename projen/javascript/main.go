@@ -768,6 +768,10 @@ func init() {
 		"projen.javascript.PnpmWorkspaceYamlSchemaSupportedArchitectures",
 		reflect.TypeOf((*PnpmWorkspaceYamlSchemaSupportedArchitectures)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaTasks",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaTasks)(nil)).Elem(),
+	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.PnpmWorkspaceYamlSchemaTrustPolicy",
 		reflect.TypeOf((*PnpmWorkspaceYamlSchemaTrustPolicy)(nil)).Elem(),

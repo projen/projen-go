@@ -484,9 +484,14 @@ type PnpmWorkspaceYamlOptions struct {
 	// Experimental.
 	ShellEmulator *bool `field:"optional" json:"shellEmulator" yaml:"shellEmulator"`
 	// Use and cache the results of (pre/post)install hooks.
+	//
+	// When a pre/post install script modify the contents of a package (e.g. build output), pnpm saves the modified package in the global store. On future installs on the same machine, pnpm reuses this cached, prebuilt version.
+	// An object is the canonical way to declare the remote tier; `sideEffectsCache: true` is the shorthand for reading and writing.
 	// Experimental.
-	SideEffectsCache *bool `field:"optional" json:"sideEffectsCache" yaml:"sideEffectsCache"`
+	SideEffectsCache interface{} `field:"optional" json:"sideEffectsCache" yaml:"sideEffectsCache"`
 	// Only use the side effects cache if present, do not create it for new packages.
+	//
+	// The older spelling of sideEffectsCache: { read: true, write: false }.
 	// Experimental.
 	SideEffectsCacheReadonly *bool `field:"optional" json:"sideEffectsCacheReadonly" yaml:"sideEffectsCacheReadonly"`
 	// The location where all the packages are saved on the disk.
@@ -521,6 +526,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// If you pnpm add a package and you don't provide a specific version, then it will install the package at the version registered under the tag from this setting.
 	// Experimental.
 	Tag *string `field:"optional" json:"tag" yaml:"tag"`
+	// Configure dependency relationships and per-task concurrency limits for recursive runs (`pnpm -r run <script>`).
+	//
+	// A task is a script in one workspace project; it becomes ready after every task it depends on completes successfully. A task with no entry under tasks defaults to depending on the same task in its workspace dependencies, but once a task has an entry, an omitted dependsOn is the same as `dependsOn: []`.
+	// Experimental.
+	Tasks *map[string]*PnpmWorkspaceYamlSchemaTasks `field:"optional" json:"tasks" yaml:"tasks"`
 	// A new trustLockfile setting controls whether pnpm install re-applies the `minimumReleaseAge` / `trustPolicy: 'no-downgrade'` checks to every entry in the loaded lockfile.
 	//
 	// When true, the install treats the lockfile as already-trusted and skips the verification pass — useful for closed-source projects where every commit comes from a trusted author. The default is false, so verification stays on by default.
