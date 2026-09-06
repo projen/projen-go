@@ -5,7 +5,7 @@ package biomeconfig
 type OverrideLinterConfiguration struct {
 	// List of rules.
 	// Experimental.
-	Domains *map[string]RuleDomainValue `field:"optional" json:"domains" yaml:"domains"`
+	Domains *RuleDomains `field:"optional" json:"domains" yaml:"domains"`
 	// if `false`, it disables the feature and the linter won't be executed.
 	//
 	// `true` by default.

@@ -278,6 +278,10 @@ func init() {
 		},
 	)
 	_jsii_.RegisterStruct(
+		"projen.javascript.biome_config.RuleDomains",
+		reflect.TypeOf((*RuleDomains)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.javascript.biome_config.Rules",
 		reflect.TypeOf((*Rules)(nil)).Elem(),
 	)

@@ -5,7 +5,7 @@ package biomeconfig
 type LinterConfiguration struct {
 	// An object where the keys are the names of the domains, and the values are `all`, `recommended`, or `none`.
 	// Experimental.
-	Domains *map[string]RuleDomainValue `field:"optional" json:"domains" yaml:"domains"`
+	Domains *RuleDomains `field:"optional" json:"domains" yaml:"domains"`
 	// if `false`, it disables the feature and the linter won't be executed.
 	//
 	// `true` by default.
