@@ -25,6 +25,15 @@ type LicenseCheckerOptions struct {
 	//
 	// Experimental.
 	Development *bool `field:"optional" json:"development" yaml:"development"`
+	// Exclude packages marked as private from the check.
+	//
+	// Private packages are local to the repository and not published, so their
+	// licenses typically don't need to be checked. This also applies to the project
+	// itself.
+	// Default: true.
+	//
+	// Experimental.
+	ExcludePrivatePackages *bool `field:"optional" json:"excludePrivatePackages" yaml:"excludePrivatePackages"`
 	// Check production dependencies.
 	// Default: true.
 	//
