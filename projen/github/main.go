@@ -8,6 +8,14 @@ import (
 
 func init() {
 	_jsii_.RegisterClass(
+		"projen.github.ActionRefs",
+		reflect.TypeOf((*ActionRefs)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_ActionRefs{}
+		},
+	)
+	_jsii_.RegisterClass(
 		"projen.github.AutoApprove",
 		reflect.TypeOf((*AutoApprove)(nil)).Elem(),
 		[]_jsii_.Member{
