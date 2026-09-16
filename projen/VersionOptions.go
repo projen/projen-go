@@ -17,7 +17,7 @@ type VersionOptions struct {
 	// The `commit-and-tag-version` compatible package used to bump the package version, as a dependency string.
 	//
 	// This can be any compatible package version, including the deprecated `standard-version@9`.
-	// Default: "commit-and-tag-version@12".
+	// Default: "commit-and-tag-version@13".
 	//
 	// Experimental.
 	BumpPackage *string `field:"optional" json:"bumpPackage" yaml:"bumpPackage"`
