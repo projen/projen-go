@@ -41,6 +41,15 @@ type UpgradeDependenciesOptions struct {
 	//
 	// Experimental.
 	IncludeDeprecatedVersions *bool `field:"optional" json:"includeDeprecatedVersions" yaml:"includeDeprecatedVersions"`
+	// Description of dependency upgrade pull requests.
+	//
+	// Also included in the commit message. Trailing whitespace is removed and a
+	// period is appended if there is no final period. Empty or whitespace-only
+	// strings produce a single period before the workflow details.
+	// Default: "Upgrades project dependencies."
+	//
+	// Experimental.
+	PullRequestDescription *string `field:"optional" json:"pullRequestDescription" yaml:"pullRequestDescription"`
 	// Title of the pull request to use (should be all lower-case).
 	// Default: "upgrade dependencies".
 	//
