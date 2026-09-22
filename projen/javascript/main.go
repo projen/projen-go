@@ -136,6 +136,16 @@ func init() {
 		"projen.javascript.CoverageThreshold",
 		reflect.TypeOf((*CoverageThreshold)(nil)).Elem(),
 	)
+	_jsii_.RegisterClass(
+		"projen.javascript.Destination",
+		reflect.TypeOf((*Destination)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "value", GoGetter: "Value"},
+		},
+		func() interface{} {
+			return &jsiiProxy_Destination{}
+		},
+	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.DevEngineDependency",
 		reflect.TypeOf((*DevEngineDependency)(nil)).Elem(),
@@ -365,6 +375,36 @@ func init() {
 		reflect.TypeOf((*NodeConfigSchemaWatch)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
+		"projen.javascript.NodeNativeTestRunner",
+		reflect.TypeOf((*NodeNativeTestRunner)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addReporter", GoMethod: "AddReporter"},
+			_jsii_.MemberMethod{JsiiMethod: "addTestMatch", GoMethod: "AddTestMatch"},
+			_jsii_.MemberProperty{JsiiProperty: "configFile", GoGetter: "ConfigFile"},
+			_jsii_.MemberMethod{JsiiMethod: "listReporters", GoMethod: "ListReporters"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postProjectCreation", GoMethod: "PostProjectCreation"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "projectCreation", GoMethod: "ProjectCreation"},
+			_jsii_.MemberMethod{JsiiMethod: "removeReporter", GoMethod: "RemoveReporter"},
+			_jsii_.MemberMethod{JsiiMethod: "removeTestMatch", GoMethod: "RemoveTestMatch"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
+		},
+		func() interface{} {
+			j := jsiiProxy_NodeNativeTestRunner{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.NodeNativeTestRunnerOptions",
+		reflect.TypeOf((*NodeNativeTestRunnerOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
 		"projen.javascript.NodePackage",
 		reflect.TypeOf((*NodePackage)(nil)).Elem(),
 		[]_jsii_.Member{
@@ -533,6 +573,18 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.NodeProjectOptions",
 		reflect.TypeOf((*NodeProjectOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.NodeReporter",
+		reflect.TypeOf((*NodeReporter)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.NodeTestUpdateSnapshot",
+		reflect.TypeOf((*NodeTestUpdateSnapshot)(nil)).Elem(),
+		map[string]interface{}{
+			"ALWAYS": NodeTestUpdateSnapshot_ALWAYS,
+			"NEVER": NodeTestUpdateSnapshot_NEVER,
+		},
 	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.NpmAccess",
