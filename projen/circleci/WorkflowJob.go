@@ -16,9 +16,11 @@ type WorkflowJob struct {
 	// The initial default name is org-global. Each context name must be unique.
 	// Experimental.
 	Context *[]*string `field:"optional" json:"context" yaml:"context"`
-	// Job Filters can have the key branches or tags.
+	// Branch/tag filters or an expression string that determines whether this job runs.
+	// See: https://circleci.com/docs/reference/configuration-reference/#expression-based-job-filters
+	//
 	// Experimental.
-	Filters *Filter `field:"optional" json:"filters" yaml:"filters"`
+	Filters interface{} `field:"optional" json:"filters" yaml:"filters"`
 	// Experimental.
 	Matrix *Matrix `field:"optional" json:"matrix" yaml:"matrix"`
 	// A replacement for the job name.

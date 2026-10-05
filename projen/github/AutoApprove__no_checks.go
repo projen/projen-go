@@ -4,6 +4,10 @@ package github
 
 // Building without runtime type checking enabled, so all the below just return nil
 
+func (a *jsiiProxy_AutoApprove) validateAddSourceParameters(source PullRequestSource) error {
+	return nil
+}
+
 func (a *jsiiProxy_AutoApprove) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
 	return nil
 }

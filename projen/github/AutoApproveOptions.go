@@ -16,11 +16,24 @@ type AutoApproveOptions struct {
 	// Experimental.
 	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
 	// Only pull requests authored by these Github usernames will be auto-approved.
-	// Default: ['github-bot'].
+	//
+	// An empty list approves pull requests from any user.
+	// Default: ['github-actions[bot]'].
+	//
+	// Deprecated: Use `sources` with `PullRequestSource.fromUsers({ logins })` instead.
+	AllowedUsernames *[]*string `field:"optional" json:"allowedUsernames" yaml:"allowedUsernames"`
+	// The credentials used to approve pull requests.
+	//
+	// Github forbids an identity to approve its own pull request.
+	// These credentials must belong to a different identity than the one creating the pull requests.
+	// Use `environment` on the credentials to restrict which branches can access them.
+	// Default: - the workflow's `GITHUB_TOKEN`.
 	//
 	// Experimental.
-	AllowedUsernames *[]*string `field:"optional" json:"allowedUsernames" yaml:"allowedUsernames"`
+	Credentials GithubCredentials `field:"optional" json:"credentials" yaml:"credentials"`
 	// Only pull requests with this label will be auto-approved.
+	//
+	// This is required in addition to matching one of the `sources`.
 	// Default: 'auto-approve'.
 	//
 	// Experimental.
@@ -36,7 +49,15 @@ type AutoApproveOptions struct {
 	// `NodeProjectOptions`, then you must use a different token here.
 	// Default: "GITHUB_TOKEN".
 	//
-	// Experimental.
+	// Deprecated: Use `credentials` with `GithubCredentials.fromPersonalAccessToken({ secret })` instead.
 	Secret *string `field:"optional" json:"secret" yaml:"secret"`
+	// Only pull requests from one of these sources will be auto-approved.
+	//
+	// Components that create pull requests can add more sources with `AutoApprove.addSource()`.
+	// Providing sources, either here or with `addSource()`, replaces the default source.
+	// Default: [PullRequestSource.fromUsers({ logins: ["github-actions[bot]"] })]
+	//
+	// Experimental.
+	Sources *[]PullRequestSource `field:"optional" json:"sources" yaml:"sources"`
 }
 

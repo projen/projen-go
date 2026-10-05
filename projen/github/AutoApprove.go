@@ -20,6 +20,11 @@ type AutoApprove interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
+	// Auto-approve pull requests from this source, in addition to the configured sources.
+	//
+	// Adding a source replaces the default source.
+	// Experimental.
+	AddSource(source PullRequestSource)
 	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
 	//
 	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
@@ -179,6 +184,17 @@ func AutoApprove_IsConstruct(x interface{}) *bool {
 	)
 
 	return returns
+}
+
+func (a *jsiiProxy_AutoApprove) AddSource(source PullRequestSource) {
+	if err := a.validateAddSourceParameters(source); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		a,
+		"addSource",
+		[]interface{}{source},
+	)
 }
 
 func (a *jsiiProxy_AutoApprove) PostProjectCreation(initProject *projen.InitProject) {

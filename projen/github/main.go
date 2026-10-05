@@ -19,6 +19,7 @@ func init() {
 		"projen.github.AutoApprove",
 		reflect.TypeOf((*AutoApprove)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addSource", GoMethod: "AddSource"},
 			_jsii_.MemberProperty{JsiiProperty: "label", GoGetter: "Label"},
 			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postProjectCreation", GoMethod: "PostProjectCreation"},
@@ -572,6 +573,22 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.github.PullRequestPatchSource",
 		reflect.TypeOf((*PullRequestPatchSource)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.github.PullRequestSource",
+		reflect.TypeOf((*PullRequestSource)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_PullRequestSource{}
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.PullRequestSourceBranchOptions",
+		reflect.TypeOf((*PullRequestSourceBranchOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.PullRequestSourceUsersOptions",
+		reflect.TypeOf((*PullRequestSourceUsersOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"projen.github.PullRequestTemplate",

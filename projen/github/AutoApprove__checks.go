@@ -10,6 +10,14 @@ import (
 	"github.com/projen/projen-go/projen"
 )
 
+func (a *jsiiProxy_AutoApprove) validateAddSourceParameters(source PullRequestSource) error {
+	if source == nil {
+		return fmt.Errorf("parameter source is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (a *jsiiProxy_AutoApprove) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
 	if initProject == nil {
 		return fmt.Errorf("parameter initProject is required, but nil was provided")
