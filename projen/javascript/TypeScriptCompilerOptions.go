@@ -121,6 +121,15 @@ type TypeScriptCompilerOptions struct {
 	//
 	// Experimental.
 	EmitDecoratorMetadata *bool `field:"optional" json:"emitDecoratorMetadata" yaml:"emitDecoratorMetadata"`
+	// Report errors for most TypeScript-specific syntax that has runtime behavior.
+	//
+	// Requires TypeScript 5.8 or later.
+	// See: https://www.typescriptlang.org/tsconfig/erasableSyntaxOnly.html
+	//
+	// Default: undefined.
+	//
+	// Experimental.
+	ErasableSyntaxOnly *bool `field:"optional" json:"erasableSyntaxOnly" yaml:"erasableSyntaxOnly"`
 	// Emit __importStar and __importDefault helpers for runtime babel ecosystem compatibility and enable --allowSyntheticDefaultImports for typesystem compatibility.
 	// Default: false.
 	//
