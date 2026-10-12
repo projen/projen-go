@@ -299,6 +299,13 @@ type TypeScriptCompilerOptions struct {
 	// paths lets you declare how TypeScript should resolve an import in your require/imports.
 	// Experimental.
 	Paths *map[string]*[]*string `field:"optional" json:"paths" yaml:"paths"`
+	// Preserve `const enum` declarations in generated code.
+	// See: https://www.typescriptlang.org/tsconfig/preserveConstEnums.html
+	//
+	// Default: undefined.
+	//
+	// Experimental.
+	PreserveConstEnums *bool `field:"optional" json:"preserveConstEnums" yaml:"preserveConstEnums"`
 	// Allows importing modules with a ‘.json’ extension, which is a common practice in node projects. This includes generating a type for the import based on the static JSON shape.
 	// Default: true.
 	//
