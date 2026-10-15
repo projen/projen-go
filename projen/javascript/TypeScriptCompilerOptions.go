@@ -187,6 +187,15 @@ type TypeScriptCompilerOptions struct {
 	//
 	// Experimental.
 	InlineSources *bool `field:"optional" json:"inlineSources" yaml:"inlineSources"`
+	// Require sufficient annotation on exports so other tools can trivially generate declaration files.
+	//
+	// Requires TypeScript 5.5 or later.
+	// See: https://www.typescriptlang.org/tsconfig/#isolatedDeclarations
+	//
+	// Default: undefined.
+	//
+	// Experimental.
+	IsolatedDeclarations *bool `field:"optional" json:"isolatedDeclarations" yaml:"isolatedDeclarations"`
 	// Perform additional checks to ensure that separate compilation (such as with transpileModule or.
 	// Default: false.
 	//
