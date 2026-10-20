@@ -79,6 +79,13 @@ type TypeScriptCompilerOptions struct {
 	//
 	// Experimental.
 	CheckJs *bool `field:"optional" json:"checkJs" yaml:"checkJs"`
+	// Enable constraints required for a TypeScript project to be referenced by other projects.
+	// See: https://www.typescriptlang.org/tsconfig/composite.html
+	//
+	// Default: - not set.
+	//
+	// Experimental.
+	Composite *bool `field:"optional" json:"composite" yaml:"composite"`
 	// List of additional conditions that should succeed when TypeScript resolves from an `exports` or `imports` field of a `package.json`.
 	// See: https://www.typescriptlang.org/tsconfig#customConditions
 	//

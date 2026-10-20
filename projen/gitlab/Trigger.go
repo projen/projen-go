@@ -11,6 +11,9 @@ type Trigger struct {
 	// The branch name that a downstream pipeline will use.
 	// Experimental.
 	Branch *string `field:"optional" json:"branch" yaml:"branch"`
+	// Specify what to forward to the downstream pipeline.
+	// Experimental.
+	Forward *TriggerForward `field:"optional" json:"forward" yaml:"forward"`
 	// A list of local files or artifacts from other jobs to define the pipeline.
 	// Experimental.
 	Include *[]*TriggerInclude `field:"optional" json:"include" yaml:"include"`

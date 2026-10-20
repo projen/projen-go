@@ -364,6 +364,10 @@ func init() {
 		reflect.TypeOf((*Trigger)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.gitlab.TriggerForward",
+		reflect.TypeOf((*TriggerForward)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.gitlab.TriggerInclude",
 		reflect.TypeOf((*TriggerInclude)(nil)).Elem(),
 	)
