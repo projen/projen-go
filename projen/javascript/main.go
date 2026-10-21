@@ -1096,6 +1096,10 @@ func init() {
 		"projen.javascript.TypescriptConfigOptions",
 		reflect.TypeOf((*TypescriptConfigOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.TypescriptConfigReference",
+		reflect.TypeOf((*TypescriptConfigReference)(nil)).Elem(),
+	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.UpdateSnapshot",
 		reflect.TypeOf((*UpdateSnapshot)(nil)).Elem(),

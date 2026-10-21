@@ -23,5 +23,15 @@ type TypescriptConfigOptions struct {
 	//
 	// Experimental.
 	Include *[]*string `field:"optional" json:"include" yaml:"include"`
+	// Explicit TypeScript project references.
+	//
+	// References are not inherited through `extends`. An empty array is preserved.
+	// Referenced projects must enable `composite` in their compiler options.
+	// See: https://www.typescriptlang.org/docs/handbook/project-references.html
+	//
+	// Default: - no project references.
+	//
+	// Experimental.
+	References *[]*TypescriptConfigReference `field:"optional" json:"references" yaml:"references"`
 }
 
