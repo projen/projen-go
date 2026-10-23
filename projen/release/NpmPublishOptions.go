@@ -86,5 +86,22 @@ type NpmPublishOptions struct {
 	//
 	// Experimental.
 	TrustedPublishing *bool `field:"optional" json:"trustedPublishing" yaml:"trustedPublishing"`
+	// Wait until the published package version is available from the registry before the publish job completes.
+	//
+	// The registry may not serve a version right after it was published (e.g. npmjs scans packages first).
+	// Enable this when packages that depend on the published package are released right after.
+	// Default: false.
+	//
+	// Experimental.
+	VerifyPublished *bool `field:"optional" json:"verifyPublished" yaml:"verifyPublished"`
+	// How long to wait, in seconds, for the published package version to be available.
+	//
+	// The publish job fails if it is not available in time.
+	//
+	// Requires `verifyPublished` to be enabled.
+	// Default: 3600.
+	//
+	// Experimental.
+	VerifyPublishedTimeoutSeconds *float64 `field:"optional" json:"verifyPublishedTimeoutSeconds" yaml:"verifyPublishedTimeoutSeconds"`
 }
 

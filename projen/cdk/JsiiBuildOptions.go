@@ -68,6 +68,18 @@ type JsiiBuildOptions struct {
 	//
 	// Experimental.
 	NpmTrustedPublishing *bool `field:"optional" json:"npmTrustedPublishing" yaml:"npmTrustedPublishing"`
+	// Wait until the published package version is available from the npm registry before the publish job completes.
+	// Default: false.
+	//
+	// Experimental.
+	NpmVerifyPublished *bool `field:"optional" json:"npmVerifyPublished" yaml:"npmVerifyPublished"`
+	// How long to wait, in seconds, for the published package version to be available.
+	//
+	// Requires `npmVerifyPublished` to be enabled.
+	// Default: 3600.
+	//
+	// Experimental.
+	NpmVerifyPublishedTimeoutSeconds *float64 `field:"optional" json:"npmVerifyPublishedTimeoutSeconds" yaml:"npmVerifyPublishedTimeoutSeconds"`
 	// Publish Go bindings to a git repository.
 	// Default: - no publishing.
 	//
