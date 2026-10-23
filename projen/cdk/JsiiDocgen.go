@@ -18,6 +18,9 @@ type JsiiDocgen interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
+	// The task that generates API documentation.
+	// Experimental.
+	Task() projen.Task
 	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
 	//
 	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
@@ -78,6 +81,16 @@ func (j *jsiiProxy_JsiiDocgen) Project() projen.Project {
 	_jsii_.Get(
 		j,
 		"project",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_JsiiDocgen) Task() projen.Task {
+	var returns projen.Task
+	_jsii_.Get(
+		j,
+		"task",
 		&returns,
 	)
 	return returns
@@ -163,6 +176,26 @@ func JsiiDocgen_IsConstruct(x interface{}) *bool {
 		"projen.cdk.JsiiDocgen",
 		"isConstruct",
 		[]interface{}{x},
+		&returns,
+	)
+
+	return returns
+}
+
+// Returns the JsiiDocgen component of a project or undefined if there is none.
+// Experimental.
+func JsiiDocgen_Of(project projen.Project) JsiiDocgen {
+	_init_.Initialize()
+
+	if err := validateJsiiDocgen_OfParameters(project); err != nil {
+		panic(err)
+	}
+	var returns JsiiDocgen
+
+	_jsii_.StaticInvoke(
+		"projen.cdk.JsiiDocgen",
+		"of",
+		[]interface{}{project},
 		&returns,
 	)
 

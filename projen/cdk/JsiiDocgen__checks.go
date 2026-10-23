@@ -49,6 +49,14 @@ func validateJsiiDocgen_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
+func validateJsiiDocgen_OfParameters(project projen.Project) error {
+	if project == nil {
+		return fmt.Errorf("parameter project is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewJsiiDocgenParameters(scope constructs.IConstruct, options *JsiiDocgenOptions) error {
 	if scope == nil {
 		return fmt.Errorf("parameter scope is required, but nil was provided")

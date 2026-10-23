@@ -20,6 +20,10 @@ func validateJsiiDocgen_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
+func validateJsiiDocgen_OfParameters(project projen.Project) error {
+	return nil
+}
+
 func validateNewJsiiDocgenParameters(scope constructs.IConstruct, options *JsiiDocgenOptions) error {
 	return nil
 }
