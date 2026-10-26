@@ -4,7 +4,7 @@ package biomeconfig
 // Options that change how the GraphQL linter behaves.
 // Experimental.
 type GraphqlLinterConfiguration struct {
-	// Controls the linter for GraphQL files.
+	// Enables or disables the linter for GraphQL.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 }

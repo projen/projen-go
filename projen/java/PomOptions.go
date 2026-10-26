@@ -1,5 +1,8 @@
 package java
 
+import (
+	"github.com/projen/projen-go/projen"
+)
 
 // Options for `Pom`.
 // Experimental.
@@ -69,6 +72,15 @@ type PomOptions struct {
 	//
 	// Experimental.
 	ParentPom *ParentPom `field:"optional" json:"parentPom" yaml:"parentPom"`
+	// Sorts the top-level build plugins in the generated POM.
+	//
+	// The comparator receives `groupId/artifactId` identifiers without versions.
+	// Returning zero preserves the existing relative order.
+	// This does not change Maven lifecycle phase bindings.
+	// Default: - preserve the existing dependency order.
+	//
+	// Experimental.
+	SortPlugins projen.ICompareString `field:"optional" json:"sortPlugins" yaml:"sortPlugins"`
 	// The URL, like the name, is not required.
 	//
 	// This is a nice gesture for

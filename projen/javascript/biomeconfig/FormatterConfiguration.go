@@ -1,7 +1,7 @@
 package biomeconfig
 
 
-// Generic options applied to all files.
+// Configures formatting for selected files.
 // Experimental.
 type FormatterConfiguration struct {
 	// The attribute position style in HTML-like languages.
@@ -11,16 +11,20 @@ type FormatterConfiguration struct {
 	//
 	// Experimental.
 	AttributePosition AttributePosition `field:"optional" json:"attributePosition" yaml:"attributePosition"`
-	// Places the `>` of a multiline HTML or JSX element at the end of the last line instead of on the next line.
+	// Controls the placement of the closing bracket for multiline HTML and JSX opening tags.
 	//
-	// Self-closing elements are unaffected. Defaults to `false`.
+	// Biome
+	// places the bracket at the end of the last attribute line when enabled and on its own line when
+	// disabled. This also affects self-closing HTML elements, but self-closing JSX elements are
+	// unaffected. Defaults to `false`.
 	// Default: false`.
 	//
 	// Experimental.
 	BracketSameLine *bool `field:"optional" json:"bracketSameLine" yaml:"bracketSameLine"`
-	// Whether to insert spaces inside braces in object literals.
+	// Controls spaces inside braces in supported single-line structures.
 	//
-	// Defaults to `true`.
+	// The affected structures
+	// vary by language. Defaults to `true`.
 	// Default: true`.
 	//
 	// Experimental.
@@ -34,6 +38,11 @@ type FormatterConfiguration struct {
 	//
 	// Experimental.
 	DelimiterSpacing *bool `field:"optional" json:"delimiterSpacing" yaml:"delimiterSpacing"`
+	// Enables or disables the formatter.
+	//
+	// Defaults to `true`.
+	// Default: true`.
+	//
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 	// Controls whether arrays and objects are formatted on one line or multiple lines.
@@ -59,10 +68,11 @@ type FormatterConfiguration struct {
 	//
 	// Experimental.
 	FormatWithErrors *bool `field:"optional" json:"formatWithErrors" yaml:"formatWithErrors"`
-	// A list of glob patterns.
+	// A list of glob patterns selecting files to format.
 	//
-	// The formatter will include files/folders that will
-	// match these patterns.
+	// If omitted, all files selected by
+	// `files.includes` remain eligible for formatting. An empty list selects no files. This option
+	// can only narrow the files selected by `files.includes`.
 	// Experimental.
 	Includes *[]*string `field:"optional" json:"includes" yaml:"includes"`
 	// Uses tabs or spaces for indentation.
@@ -72,8 +82,11 @@ type FormatterConfiguration struct {
 	//
 	// Experimental.
 	IndentStyle IndentStyle `field:"optional" json:"indentStyle" yaml:"indentStyle"`
-	// The indentation width.
+	// Sets the indentation width.
 	//
+	// With space indentation, this is the number of spaces emitted per
+	// indentation level. With tab indentation, Biome emits one tab per level and uses this value as
+	// the tab's display width when calculating line length. Accepted values are `0` through `24`.
 	// Defaults to `2`.
 	// Default: 2`.
 	//
@@ -86,22 +99,24 @@ type FormatterConfiguration struct {
 	//
 	// Experimental.
 	LineEnding LineEnding `field:"optional" json:"lineEnding" yaml:"lineEnding"`
-	// The maximum line width.
+	// Sets the preferred maximum line width used when deciding where to wrap code.
 	//
-	// Defaults to `80`.
+	// Some content,
+	// such as long unbreakable strings, may still exceed this width. Accepted values are `1` through
+	// `320`. Defaults to `80`.
 	// Default: 80`.
 	//
 	// Experimental.
 	LineWidth *float64 `field:"optional" json:"lineWidth" yaml:"lineWidth"`
 	// Whether to add a trailing newline at the end of the file.
 	//
-	// Defaults to `true`; disabling
+	// Defaults to `true`. Disabling
 	// this option can cause compatibility problems with other tools.
-	// Default: true`; disabling.
+	// Default: true`. Disabling
 	//
 	// Experimental.
 	TrailingNewline *bool `field:"optional" json:"trailingNewline" yaml:"trailingNewline"`
-	// Uses `.editorconfig` files to configure the formatter. Settings in `biome.json` or `biome.jsonc` override `.editorconfig` settings. Defaults to `false`.
+	// Controls whether Biome loads formatter settings from an `.editorconfig` file. Biome reads `indent_style`, `indent_size`, `end_of_line`, and `insert_final_newline`. Settings in `biome.json` or `biome.jsonc` take precedence. Biome loads only one `.editorconfig`. Nested cascading configurations and the EditorConfig `root` property are not supported. Defaults to `false`.
 	// Default: false`.
 	//
 	// Experimental.

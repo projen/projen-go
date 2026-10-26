@@ -5,10 +5,14 @@ package biomeconfig
 type ArrowParentheses string
 
 const (
-	// always.
+	// Always prints parentheses around arrow-function parameters.
+	//
+	// (always).
 	// Experimental.
 	ArrowParentheses_ALWAYS ArrowParentheses = "ALWAYS"
-	// asNeeded.
+	// Omits parentheses when an arrow function has one parameter and the syntax permits it.
+	//
+	// (asNeeded).
 	// Experimental.
 	ArrowParentheses_AS_NEEDED ArrowParentheses = "AS_NEEDED"
 )

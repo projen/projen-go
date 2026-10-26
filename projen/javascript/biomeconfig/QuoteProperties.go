@@ -5,10 +5,14 @@ package biomeconfig
 type QuoteProperties string
 
 const (
-	// asNeeded.
+	// Removes quotes when the property name is valid without them.
+	//
+	// (asNeeded).
 	// Experimental.
 	QuoteProperties_AS_NEEDED QuoteProperties = "AS_NEEDED"
-	// preserve.
+	// Preserves quotes around property names that were quoted in the input.
+	//
+	// (preserve).
 	// Experimental.
 	QuoteProperties_PRESERVE QuoteProperties = "PRESERVE"
 )

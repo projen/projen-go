@@ -2,6 +2,9 @@ package biomeconfig
 
 
 // Options applied to GritQL files.
+//
+// Language-specific settings take precedence over corresponding global settings. Global settings
+// apply when their language-specific counterparts are omitted, unless stated otherwise.
 // Experimental.
 type GritConfiguration struct {
 	// GritQL assist options.

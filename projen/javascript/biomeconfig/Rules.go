@@ -13,12 +13,22 @@ type Rules struct {
 	Nursery interface{} `field:"optional" json:"nursery" yaml:"nursery"`
 	// Experimental.
 	Performance interface{} `field:"optional" json:"performance" yaml:"performance"`
-	// The rule presets to use.
+	// Selects the baseline set of lint rules.
+	//
+	// `recommended` enables Biome's recommended
+	// non-nursery rules, `all` enables all non-nursery rules, and `none` starts with no
+	// rules enabled. Group-level settings and explicit rule settings override this
+	// preset. Defaults to `recommended`.
+	// Default: recommended`.
+	//
 	// Experimental.
 	Preset PresetConfig `field:"optional" json:"preset" yaml:"preset"`
-	// It enables the lint rules recommended by Biome.
+	// Enables or disables Biome's recommended non-nursery rules. Defaults to `true`.
 	//
-	// `true` by default.
+	// **Deprecated:** This option will be removed in the next major version. Use
+	// `linter.rules.preset` instead, or run `biome migrate` to update the configuration.
+	// Default: true`.
+	//
 	// Experimental.
 	Recommended *bool `field:"optional" json:"recommended" yaml:"recommended"`
 	// Experimental.

@@ -17,7 +17,7 @@ type JsonFormatterConfiguration struct {
 	// If unset, inherits the global delimiter spacing setting.
 	// Experimental.
 	DelimiterSpacing *bool `field:"optional" json:"delimiterSpacing" yaml:"delimiterSpacing"`
-	// Controls the formatter for JSON and languages that extend it.
+	// Enables or disables the formatter for JSON and languages that extend it.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 	// Uses the same `auto`, `always`, and `never` behavior as the global expansion setting.
@@ -45,16 +45,18 @@ type JsonFormatterConfiguration struct {
 	// line ending.
 	// Experimental.
 	LineEnding LineEnding `field:"optional" json:"lineEnding" yaml:"lineEnding"`
-	// The maximum line width applied to JSON and languages that extend it.
+	// The preferred maximum line width applied to JSON and languages that extend it.
 	//
-	// If unset, inherits the
-	// global line width.
+	// If unset,
+	// inherits the global line width.
 	// Experimental.
 	LineWidth *float64 `field:"optional" json:"lineWidth" yaml:"lineWidth"`
-	// Prints trailing commas wherever possible in multiline comma-separated structures.
+	// Controls trailing commas in multiline JSON arrays and objects.
 	//
-	// Defaults
-	// to `none`.
+	// `none` removes trailing
+	// commas, while `all` adds them wherever the JSON formatter supports them. Use `all` only for
+	// JSON variants that allow trailing commas, and ensure `json.parser.allowTrailingCommas` is
+	// enabled or automatically detected for those files. Defaults to `none`.
 	// Default: none`.
 	//
 	// Experimental.

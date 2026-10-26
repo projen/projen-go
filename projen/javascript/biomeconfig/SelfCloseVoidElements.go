@@ -1,15 +1,15 @@
 package biomeconfig
 
 
-// Controls whether void-elements should be self closed.
+// Controls whether HTML void elements such as `<img>` and `<input>` include a slash before `>`.
 // Experimental.
 type SelfCloseVoidElements string
 
 const (
-	// The `/` inside void elements is removed by the formatter (never).
+	// Removes the slash, for example `<img src="image.png">`. (never).
 	// Experimental.
 	SelfCloseVoidElements_NEVER SelfCloseVoidElements = "NEVER"
-	// The `/` inside void elements is always added (always).
+	// Adds the slash, for example `<img src="image.png" />`. (always).
 	// Experimental.
 	SelfCloseVoidElements_ALWAYS SelfCloseVoidElements = "ALWAYS"
 )

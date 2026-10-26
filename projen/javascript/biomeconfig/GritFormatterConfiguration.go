@@ -4,7 +4,7 @@ package biomeconfig
 // Options that change how the GritQL formatter behaves.
 // Experimental.
 type GritFormatterConfiguration struct {
-	// Controls the formatter for GritQL files.
+	// Enables or disables the formatter for GritQL.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 	// The indent style applied to GritQL files.
@@ -23,7 +23,7 @@ type GritFormatterConfiguration struct {
 	// If unset, inherits the global line ending.
 	// Experimental.
 	LineEnding LineEnding `field:"optional" json:"lineEnding" yaml:"lineEnding"`
-	// The maximum line width for GritQL files.
+	// The preferred maximum line width for GritQL files.
 	//
 	// If unset, inherits the global line width.
 	// Experimental.

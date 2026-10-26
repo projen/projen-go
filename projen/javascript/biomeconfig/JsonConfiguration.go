@@ -1,7 +1,10 @@
 package biomeconfig
 
 
-// Options applied to JSON files.
+// Options applied to JSON, JSONC, and recognized JSON-based configuration files.
+//
+// Language-specific settings take precedence over corresponding global settings. Global settings
+// apply when their language-specific counterparts are omitted, unless stated otherwise.
 // Experimental.
 type JsonConfiguration struct {
 	// Assist options.

@@ -1,7 +1,7 @@
 package biomeconfig
 
 
-// The configuration contained in `biome.json`.
+// The configuration contained in `biome.json` or `biome.jsonc`.
 // Experimental.
 type BiomeConfiguration struct {
 	// The assist configuration.
@@ -10,13 +10,19 @@ type BiomeConfiguration struct {
 	// Configuration specific to CSS.
 	// Experimental.
 	Css *CssConfiguration `field:"optional" json:"css" yaml:"css"`
-	// A list of paths to other JSON files, used to extend the current configuration.
+	// Extends the current configuration with settings from one or more other Biome configurations.
+	//
+	// Use `"//"` in a nested configuration to extend the root configuration at any nesting depth.
+	// Use an array to extend configurations by relative path or installed package specifier.
+	//
+	// Biome merges configurations from left to right. Later configurations take precedence for
+	// single-value options, list entries are combined, and the current file is applied last.
 	// Experimental.
-	Extends *[]*string `field:"optional" json:"extends" yaml:"extends"`
-	// The file handling configuration.
+	Extends interface{} `field:"optional" json:"extends" yaml:"extends"`
+	// Configures which files Biome can discover and process.
 	// Experimental.
 	Files *FilesConfiguration `field:"optional" json:"files" yaml:"files"`
-	// The formatter configuration.
+	// Configures formatting for selected files.
 	// Experimental.
 	Formatter *FormatterConfiguration `field:"optional" json:"formatter" yaml:"formatter"`
 	// Configuration specific to GraphQL.
@@ -37,22 +43,45 @@ type BiomeConfiguration struct {
 	// The linter configuration.
 	// Experimental.
 	Linter *LinterConfiguration `field:"optional" json:"linter" yaml:"linter"`
-	// A list of granular patterns applied only to a subset of files.
+	// Configuration specific to Markdown.
+	// Experimental.
+	Markdown *MarkdownConfiguration `field:"optional" json:"markdown" yaml:"markdown"`
+	// Configures settings for files selected by each override.
+	//
+	// When multiple overrides configure
+	// the same single-value setting, the last matching override takes precedence.
 	// Experimental.
 	Overrides *[]*OverridePattern `field:"optional" json:"overrides" yaml:"overrides"`
-	// List of plugins to load.
+	// A list of GritQL plugins to load.
 	// Experimental.
 	Plugins *[]interface{} `field:"optional" json:"plugins" yaml:"plugins"`
-	// Indicates whether this configuration file is at the root of a Biome project.
+	// Marks whether this file is the root configuration for a Biome project.
 	//
-	// By default, this is `true`.
+	// The root configuration
+	// establishes the project's base settings, while `false` marks a configuration found inside the
+	// project as nested rather than a second project root.
+	//
+	// Defaults to `true`. Biome implicitly treats `root` as `false` when a nested configuration uses
+	// `"extends": "//"`. All other nested configurations must explicitly set `root` to `false`.
+	// Default: true`. Biome implicitly treats `root` as `false` when a nested configuration uses
+	//
 	// Experimental.
 	Root *bool `field:"optional" json:"root" yaml:"root"`
-	// A field for the JSON schema specification: https://json-schema.org/.
+	// The JSON Schema used to validate the configuration and provide editor completion.
+	//
+	// Biome
+	// emits a diagnostic when a `biomejs.dev` schema URL specifies a version that differs from the
+	// running CLI version.
 	// Experimental.
 	Schema *string `field:"optional" json:"schema" yaml:"schema"`
+	// Configures how Biome recognizes Tailwind class strings.
+	// Experimental.
+	Tailwind *TailwindConfiguration `field:"optional" json:"tailwind" yaml:"tailwind"`
 	// The version control integration configuration.
 	// Experimental.
 	Vcs *VcsConfiguration `field:"optional" json:"vcs" yaml:"vcs"`
+	// Configuration specific to YAML.
+	// Experimental.
+	Yaml *YamlConfiguration `field:"optional" json:"yaml" yaml:"yaml"`
 }
 

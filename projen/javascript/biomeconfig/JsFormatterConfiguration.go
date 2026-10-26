@@ -1,12 +1,14 @@
 package biomeconfig
 
 
-// Formatting options specific to the JavaScript files.
+// Formatting options specific to JavaScript and languages that extend it.
 // Experimental.
 type JsFormatterConfiguration struct {
-	// Whether to add parentheses around arrow function parameters.
+	// Controls parentheses around arrow-function parameters.
 	//
-	// Defaults to `always`.
+	// `always` always prints parentheses,
+	// while `asNeeded` omits them when an arrow function has one parameter and the syntax permits
+	// it. Defaults to `always`.
 	// Default: always`.
 	//
 	// Experimental.
@@ -17,31 +19,35 @@ type JsFormatterConfiguration struct {
 	// position setting.
 	// Experimental.
 	AttributePosition AttributePosition `field:"optional" json:"attributePosition" yaml:"attributePosition"`
-	// Whether to hug the closing bracket of multiline HTML/JSX tags to the end of the last line, rather than being alone on the following line.
+	// Controls the placement of the closing bracket for multiline JSX opening tags.
 	//
-	// If unset, inherits the global bracket
-	// placement setting.
+	// Biome places
+	// the bracket at the end of the last attribute line when enabled and on its own line after the
+	// last attribute when disabled. Self-closing JSX elements are unaffected. If unset, inherits
+	// the global bracket placement setting.
 	// Experimental.
 	BracketSameLine *bool `field:"optional" json:"bracketSameLine" yaml:"bracketSameLine"`
-	// Whether to insert spaces inside braces in object literals.
+	// Controls spaces inside the braces of single-line object literals.
 	//
-	// If unset, inherits the global
-	// bracket spacing setting.
+	// Biome formats `{value: 1}`
+	// when disabled and `{ value: 1 }` when enabled. If unset, inherits the global bracket spacing
+	// setting.
 	// Experimental.
 	BracketSpacing *bool `field:"optional" json:"bracketSpacing" yaml:"bracketSpacing"`
 	// Controls spaces immediately inside supported JavaScript and TypeScript delimiters when their content fits on one line.
 	//
-	// It doesn't add spaces before opening delimiters or inside empty
-	// delimiters.
+	// This affects parentheses, square brackets, template
+	// interpolations, TypeScript angle brackets, and JSX expression braces. Empty delimiters are
+	// unchanged.
 	//
-	// It affects parentheses, square brackets, template interpolations, TypeScript angle brackets,
-	// JSX expression braces, and logical NOT. In operator chains, only the final operator receives
-	// a following space.
+	// It also controls spacing after logical NOT operators. In a chain of logical NOT operators,
+	// only the final operator receives a following space. Biome doesn't add spaces before opening
+	// delimiters.
 	//
 	// If unset, inherits the global delimiter spacing setting.
 	// Experimental.
 	DelimiterSpacing *bool `field:"optional" json:"delimiterSpacing" yaml:"delimiterSpacing"`
-	// Controls the formatter for JavaScript and languages that extend it.
+	// Enables or disables the formatter for JavaScript and languages that extend it.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 	// Uses the same `auto`, `always`, and `never` behavior as the global expansion setting.
@@ -61,7 +67,7 @@ type JsFormatterConfiguration struct {
 	// inherits the global indentation width.
 	// Experimental.
 	IndentWidth *float64 `field:"optional" json:"indentWidth" yaml:"indentWidth"`
-	// The type of quotes used in JSX.
+	// Selects the preferred quote style for JSX attribute values.
 	//
 	// Defaults to `double`.
 	// Default: double`.
@@ -74,10 +80,10 @@ type JsFormatterConfiguration struct {
 	// global line ending.
 	// Experimental.
 	LineEnding LineEnding `field:"optional" json:"lineEnding" yaml:"lineEnding"`
-	// The maximum line width applied to JavaScript and languages that extend it.
+	// The preferred maximum line width applied to JavaScript and languages that extend it.
 	//
-	// If unset,
-	// inherits the global line width.
+	// If
+	// unset, inherits the global line width.
 	// Experimental.
 	LineWidth *float64 `field:"optional" json:"lineWidth" yaml:"lineWidth"`
 	// When breaking binary expressions into multiple lines, whether to break them before or after the binary operator.
@@ -87,17 +93,20 @@ type JsFormatterConfiguration struct {
 	//
 	// Experimental.
 	OperatorLinebreak OperatorLinebreak `field:"optional" json:"operatorLinebreak" yaml:"operatorLinebreak"`
-	// Controls when object properties are quoted.
+	// Controls whether quotes around object property names are preserved.
 	//
-	// Defaults to `asNeeded` in configuration
+	// `asNeeded` removes
+	// quotes when the property name is valid without them, while `preserve` keeps quotes around
+	// property names that were quoted in the input. Defaults to `asNeeded` in configuration
 	// (`as-needed` on the CLI).
 	// Default: asNeeded` in configuration.
 	//
 	// Experimental.
 	QuoteProperties QuoteProperties `field:"optional" json:"quoteProperties" yaml:"quoteProperties"`
-	// The type of quotes used in JavaScript code.
+	// Selects the preferred quote style for JavaScript and TypeScript string literals.
 	//
-	// Defaults to `double`.
+	// Biome may
+	// use the alternate quote when that avoids additional escaping. Defaults to `double`.
 	// Default: double`.
 	//
 	// Experimental.
@@ -109,10 +118,13 @@ type JsFormatterConfiguration struct {
 	//
 	// Experimental.
 	Semicolons Semicolons `field:"optional" json:"semicolons" yaml:"semicolons"`
-	// Prints trailing commas wherever possible in multiline comma-separated structures.
+	// Controls trailing commas in multiline comma-separated structures.
 	//
-	// Defaults
-	// to `all`.
+	// `all` adds trailing commas
+	// wherever syntax permits, including function parameters and calls. `es5` adds them only in
+	// constructs supported by ES5, such as array and object literals, and excludes function
+	// parameters, function calls, and TypeScript type parameters. `none` removes trailing commas.
+	// Defaults to `all`.
 	// Default: all`.
 	//
 	// Experimental.

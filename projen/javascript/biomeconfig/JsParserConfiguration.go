@@ -4,21 +4,17 @@ package biomeconfig
 // Options that change how the JavaScript parser behaves.
 // Experimental.
 type JsParserConfiguration struct {
-	// Enables parsing of Grit metavariables.
-	//
-	// Defaults to `false`.
-	// Default: false`.
-	//
-	// Experimental.
-	GritMetavariables *bool `field:"optional" json:"gritMetavariables" yaml:"gritMetavariables"`
-	// When enabled, files such as `.js`, `.mjs`, and `.cjs` may contain JSX syntax. Defaults to `true`.
+	// Controls whether `.js`, `.mjs`, and `.cjs` files may contain JSX syntax. Disabling this option causes JSX in those files to raise a diagnostic. Defaults to `true`.
 	// Default: true`.
 	//
 	// Experimental.
 	JsxEverywhere *bool `field:"optional" json:"jsxEverywhere" yaml:"jsxEverywhere"`
-	// It enables the experimental and unsafe parsing of parameter decorators.
+	// Enables parsing decorators on class parameters.
 	//
-	// These decorators belong to an old proposal, and they are subject to change.
+	// This syntax belongs to an old experimental
+	// proposal and may change. Defaults to `false`.
+	// Default: false`.
+	//
 	// Experimental.
 	UnsafeParameterDecoratorsEnabled *bool `field:"optional" json:"unsafeParameterDecoratorsEnabled" yaml:"unsafeParameterDecoratorsEnabled"`
 }

@@ -215,6 +215,22 @@ func init() {
 		"projen.javascript.biome_config.LinterConfiguration",
 		reflect.TypeOf((*LinterConfiguration)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.biome_config.MarkdownConfiguration",
+		reflect.TypeOf((*MarkdownConfiguration)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.biome_config.MarkdownFormatterConfiguration",
+		reflect.TypeOf((*MarkdownFormatterConfiguration)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.biome_config.MarkdownLinterConfiguration",
+		reflect.TypeOf((*MarkdownLinterConfiguration)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.biome_config.MarkdownParserConfiguration",
+		reflect.TypeOf((*MarkdownParserConfiguration)(nil)).Elem(),
+	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.biome_config.OperatorLinebreak",
 		reflect.TypeOf((*OperatorLinebreak)(nil)).Elem(),
@@ -250,6 +266,15 @@ func init() {
 			"RECOMMENDED": PresetConfig_RECOMMENDED,
 			"ALL": PresetConfig_ALL,
 			"NONE": PresetConfig_NONE,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.biome_config.ProseWrap",
+		reflect.TypeOf((*ProseWrap)(nil)).Elem(),
+		map[string]interface{}{
+			"PRESERVE": ProseWrap_PRESERVE,
+			"ALWAYS": ProseWrap_ALWAYS,
+			"NEVER": ProseWrap_NEVER,
 		},
 	)
 	_jsii_.RegisterEnum(
@@ -305,6 +330,10 @@ func init() {
 		"projen.javascript.biome_config.Source",
 		reflect.TypeOf((*Source)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.biome_config.TailwindConfiguration",
+		reflect.TypeOf((*TailwindConfiguration)(nil)).Elem(),
+	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.biome_config.VcsClientKind",
 		reflect.TypeOf((*VcsClientKind)(nil)).Elem(),
@@ -324,5 +353,17 @@ func init() {
 			"STRICT": WhitespaceSensitivity_STRICT,
 			"IGNORE": WhitespaceSensitivity_IGNORE,
 		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.biome_config.YamlConfiguration",
+		reflect.TypeOf((*YamlConfiguration)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.biome_config.YamlFormatterConfiguration",
+		reflect.TypeOf((*YamlFormatterConfiguration)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.biome_config.YamlLinterConfiguration",
+		reflect.TypeOf((*YamlLinterConfiguration)(nil)).Elem(),
 	)
 }

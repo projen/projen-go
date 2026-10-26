@@ -3,44 +3,50 @@ package biomeconfig
 
 // Experimental.
 type OverridePattern struct {
-	// Specific configuration for the Json language.
+	// Assist settings for matched files.
 	// Experimental.
 	Assist *OverrideAssistConfiguration `field:"optional" json:"assist" yaml:"assist"`
-	// Specific configuration for the CSS language.
+	// CSS-specific settings for matched files.
 	// Experimental.
 	Css *CssConfiguration `field:"optional" json:"css" yaml:"css"`
-	// Specific configuration for the filesystem.
+	// File-handling settings for matched files.
 	// Experimental.
 	Files *OverrideFilesConfiguration `field:"optional" json:"files" yaml:"files"`
-	// Specific configuration for the Json language.
+	// Formatter settings for matched files.
 	// Experimental.
 	Formatter *OverrideFormatterConfiguration `field:"optional" json:"formatter" yaml:"formatter"`
-	// Specific configuration for the Graphql language.
+	// GraphQL-specific settings for matched files.
 	// Experimental.
 	Graphql *GraphqlConfiguration `field:"optional" json:"graphql" yaml:"graphql"`
-	// Specific configuration for the GritQL language.
+	// GritQL-specific settings for matched files.
 	// Experimental.
 	Grit *GritConfiguration `field:"optional" json:"grit" yaml:"grit"`
-	// Specific configuration for the GritQL language.
+	// HTML-specific settings for matched files.
 	// Experimental.
 	Html *HtmlConfiguration `field:"optional" json:"html" yaml:"html"`
-	// A list of glob patterns.
+	// A list of glob patterns selecting the files to which this override applies.
 	//
-	// Biome will include files/folders that will
-	// match these patterns.
+	// If omitted, the
+	// override applies to every file. An empty list applies to no files.
 	// Experimental.
 	Includes *[]*string `field:"optional" json:"includes" yaml:"includes"`
-	// Specific configuration for the JavaScript language.
+	// JavaScript-specific settings for matched files.
 	// Experimental.
 	Javascript *JsConfiguration `field:"optional" json:"javascript" yaml:"javascript"`
-	// Specific configuration for the Json language.
+	// JSON-specific settings for matched files.
 	// Experimental.
 	Json *JsonConfiguration `field:"optional" json:"json" yaml:"json"`
-	// Specific configuration for the Json language.
+	// Linter settings for matched files.
 	// Experimental.
 	Linter *OverrideLinterConfiguration `field:"optional" json:"linter" yaml:"linter"`
-	// Specific configuration for additional plugins.
+	// Specific configuration for the Markdown language.
+	// Experimental.
+	Markdown *MarkdownConfiguration `field:"optional" json:"markdown" yaml:"markdown"`
+	// Additional plugins for matched files.
 	// Experimental.
 	Plugins *[]interface{} `field:"optional" json:"plugins" yaml:"plugins"`
+	// Specific configuration for the YAML language.
+	// Experimental.
+	Yaml *YamlConfiguration `field:"optional" json:"yaml" yaml:"yaml"`
 }
 

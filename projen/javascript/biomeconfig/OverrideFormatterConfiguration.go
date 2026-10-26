@@ -3,17 +3,21 @@ package biomeconfig
 
 // Experimental.
 type OverrideFormatterConfiguration struct {
-	// The attribute position style.
+	// The attribute position style in HTML-like languages.
 	// Experimental.
 	AttributePosition AttributePosition `field:"optional" json:"attributePosition" yaml:"attributePosition"`
-	// Put the `>` of a multi-line HTML or JSX element at the end of the last line instead of being alone on the next line (does not apply to self closing elements).
+	// Controls the placement of the closing bracket for multiline HTML and JSX opening tags.
+	//
+	// Biome
+	// places the bracket at the end of the last attribute line when enabled and on its own line when
+	// disabled. This also affects self-closing HTML elements, but self-closing JSX elements are
+	// unaffected.
 	// Experimental.
 	BracketSameLine *bool `field:"optional" json:"bracketSameLine" yaml:"bracketSameLine"`
-	// Whether to insert spaces around brackets in object literals.
+	// Controls spaces inside braces in supported single-line structures.
 	//
-	// Defaults to true.
-	// Default: true.
-	//
+	// The affected structures
+	// vary by language.
 	// Experimental.
 	BracketSpacing *bool `field:"optional" json:"bracketSpacing" yaml:"bracketSpacing"`
 	// Controls spaces immediately inside supported delimiters when their content fits on one line.
@@ -23,6 +27,7 @@ type OverrideFormatterConfiguration struct {
 	// The affected delimiters vary by language. If unset, uses the configured formatter setting.
 	// Experimental.
 	DelimiterSpacing *bool `field:"optional" json:"delimiterSpacing" yaml:"delimiterSpacing"`
+	// Enables or disables the formatter for matched files.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 	// Controls whether arrays and objects are formatted on one line or multiple lines.
@@ -39,43 +44,44 @@ type OverrideFormatterConfiguration struct {
 	// When formatting `package.json`, Biome uses `always` unless configured otherwise.
 	// Experimental.
 	Expand Expand `field:"optional" json:"expand" yaml:"expand"`
-	// Stores whether formatting should be allowed to proceed if a given file has syntax errors.
+	// Allows formatting matched files that contain syntax errors.
 	// Experimental.
 	FormatWithErrors *bool `field:"optional" json:"formatWithErrors" yaml:"formatWithErrors"`
-	// The size of the indentation, 2 by default (deprecated, use `indent-width`).
+	// The indentation width.
+	//
+	// Deprecated, use `indentWidth` instead.
 	// Experimental.
 	IndentSize *float64 `field:"optional" json:"indentSize" yaml:"indentSize"`
-	// The indent style.
+	// Uses tabs or spaces for indentation.
 	// Experimental.
 	IndentStyle IndentStyle `field:"optional" json:"indentStyle" yaml:"indentStyle"`
-	// The size of the indentation, 2 by default.
+	// Sets the indentation width.
+	//
+	// With space indentation, this is the number of spaces emitted per
+	// indentation level. With tab indentation, Biome emits one tab per level and uses this value as
+	// the tab's display width when calculating line length. Accepted values are `0` through `24`.
 	// Experimental.
 	IndentWidth *float64 `field:"optional" json:"indentWidth" yaml:"indentWidth"`
-	// The type of line ending.
+	// The line ending.
 	// Experimental.
 	LineEnding LineEnding `field:"optional" json:"lineEnding" yaml:"lineEnding"`
-	// What's the max width of a line.
+	// Sets the preferred maximum line width used when deciding where to wrap code.
 	//
-	// Defaults to 80.
-	// Default: 80.
-	//
+	// Some content,
+	// such as long unbreakable strings, may still exceed this width. Accepted values are `1` through
+	// `320`.
 	// Experimental.
 	LineWidth *float64 `field:"optional" json:"lineWidth" yaml:"lineWidth"`
-	// Print trailing commas wherever possible in multi-line comma-separated syntactic structures.
+	// Prints trailing commas wherever possible in multiline comma-separated structures.
+	//
+	// This is a
+	// legacy override option. Prefer `javascript.formatter.trailingCommas`.
 	// Experimental.
 	TrailingCommas JsTrailingCommas `field:"optional" json:"trailingCommas" yaml:"trailingCommas"`
-	// Whether to add a trailing newline at the end of the file.
+	// Whether to add a trailing newline at the end of matched files.
 	//
-	// Setting this option to `false` is **highly discouraged** because it could cause many problems with other tools:
-	// - https://thoughtbot.com/blog/no-newline-at-end-of-file
-	// - https://callmeryan.medium.com/no-newline-at-end-of-file-navigating-gits-warning-for-android-developers-af14e73dd804
-	// - https://unix.stackexchange.com/questions/345548/how-to-cat-files-together-adding-missing-newlines-at-end-of-some-files
-	//
-	// Disable the option at your own risk.
-	//
-	// Defaults to true.
-	// Default: true.
-	//
+	// Disabling this option can
+	// cause compatibility problems with other tools.
 	// Experimental.
 	TrailingNewline *bool `field:"optional" json:"trailingNewline" yaml:"trailingNewline"`
 }

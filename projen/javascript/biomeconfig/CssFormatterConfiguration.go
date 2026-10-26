@@ -12,7 +12,7 @@ type CssFormatterConfiguration struct {
 	// If unset, inherits the global delimiter spacing setting.
 	// Experimental.
 	DelimiterSpacing *bool `field:"optional" json:"delimiterSpacing" yaml:"delimiterSpacing"`
-	// Controls the formatter for CSS and languages that extend it.
+	// Enables or disables the formatter for CSS and languages that extend it.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
 	// The indent style applied to CSS and languages that extend it.
@@ -33,14 +33,16 @@ type CssFormatterConfiguration struct {
 	// line ending.
 	// Experimental.
 	LineEnding LineEnding `field:"optional" json:"lineEnding" yaml:"lineEnding"`
-	// The maximum line width for CSS and languages that extend it.
+	// The preferred maximum line width for CSS and languages that extend it.
 	//
-	// If unset, inherits the global
-	// line width.
+	// If unset, inherits
+	// the global line width.
 	// Experimental.
 	LineWidth *float64 `field:"optional" json:"lineWidth" yaml:"lineWidth"`
-	// The type of quotes used in CSS code.
+	// Selects the preferred quote style for CSS strings.
 	//
+	// Biome may use the alternate quote when
+	// that avoids additional escaping. Quotes in `@charset` rules are currently preserved.
 	// Defaults to `double`.
 	// Default: double`.
 	//

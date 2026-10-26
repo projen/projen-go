@@ -3,21 +3,28 @@ package biomeconfig
 
 // Experimental.
 type LinterConfiguration struct {
-	// An object where the keys are the names of the domains, and the values are `all`, `recommended`, or `none`.
+	// Configures rules associated with a framework, library, project-wide analysis, or type analysis.
+	//
+	// Keys are domain names and values are `all`, `recommended`, or `none`.
+	// Enabling rules from the `project` or `types` domains activates project and dependency
+	// scanning. The `types` domain also enables type-aware resolution.
 	// Experimental.
 	Domains *RuleDomains `field:"optional" json:"domains" yaml:"domains"`
-	// if `false`, it disables the feature and the linter won't be executed.
+	// Enables or disables the linter.
 	//
-	// `true` by default.
+	// Defaults to `true`.
+	// Default: true`.
+	//
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
-	// A list of glob patterns.
+	// A list of glob patterns selecting files to lint.
 	//
-	// The analyzer will handle only those files/folders that will
-	// match these patterns.
+	// If omitted, all files selected by
+	// `files.includes` remain eligible for linting. An empty list selects no files. This option can
+	// only narrow the files selected by `files.includes`.
 	// Experimental.
 	Includes *[]*string `field:"optional" json:"includes" yaml:"includes"`
-	// List of rules.
+	// The lint-rule configuration.
 	// Experimental.
 	Rules *Rules `field:"optional" json:"rules" yaml:"rules"`
 }

@@ -3,14 +3,26 @@ package biomeconfig
 
 // Experimental.
 type Actions struct {
-	// The actions preset to use.
+	// Selects the baseline set of assist actions.
+	//
+	// `recommended` enables Biome's
+	// recommended actions, `all` enables all actions, and `none` starts with no actions
+	// enabled. Group presets and explicit action settings override this preset.
+	// Defaults to `recommended`.
+	// Default: recommended`.
+	//
 	// Experimental.
 	Preset PresetConfig `field:"optional" json:"preset" yaml:"preset"`
-	// It enables the assist actions recommended by Biome.
+	// Enables or disables Biome's recommended assist actions across all action groups.
 	//
-	// `true` by default.
+	// Defaults to `true`.
+	// Default: true`.
+	//
 	// Experimental.
 	Recommended *bool `field:"optional" json:"recommended" yaml:"recommended"`
+	// Configures source-level actions such as organizing imports and sorting declarations.
+	//
+	// These actions are exposed through editor source actions and through CLI checking and application.
 	// Experimental.
 	Source *Source `field:"optional" json:"source" yaml:"source"`
 }

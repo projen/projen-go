@@ -10,15 +10,22 @@ type HtmlFormatterConfiguration struct {
 	// position setting.
 	// Experimental.
 	AttributePosition AttributePosition `field:"optional" json:"attributePosition" yaml:"attributePosition"`
-	// Whether to place the closing bracket of a multiline HTML tag at the end of the last line instead of on its own line.
+	// Controls the placement of the closing bracket for multiline HTML opening tags.
 	//
-	// If unset, inherits the global `bracketSameLine` setting.
+	// Biome places
+	// the bracket at the end of the last attribute line when enabled and on its own line after the
+	// last attribute when disabled. This option also affects self-closing HTML elements. If unset,
+	// inherits the global `bracketSameLine` setting.
 	// Experimental.
 	BracketSameLine *bool `field:"optional" json:"bracketSameLine" yaml:"bracketSameLine"`
-	// Controls the formatter for HTML and languages that extend it.
+	// Enables or disables the formatter for HTML and languages that extend it.
+	//
+	// The formatter is
+	// experimental and disabled by default. Formatting complete HTML, Vue, Svelte, and Astro files
+	// requires `html.experimentalFullSupportEnabled` to be `true`.
 	// Experimental.
 	Enabled *bool `field:"optional" json:"enabled" yaml:"enabled"`
-	// Whether to indent `<script>` and `<style>` tags in HTML and languages that extend it.
+	// Controls whether the content of `<script>` and `<style>` tags is indented by one level in HTML, Vue, Svelte, and Astro files.
 	//
 	// Defaults to `false`.
 	// Default: false`.
@@ -43,10 +50,10 @@ type HtmlFormatterConfiguration struct {
 	// line ending.
 	// Experimental.
 	LineEnding LineEnding `field:"optional" json:"lineEnding" yaml:"lineEnding"`
-	// The maximum line width for HTML and languages that extend it.
+	// The preferred maximum line width for HTML and languages that extend it.
 	//
-	// If unset, inherits the global
-	// line width.
+	// If unset, inherits
+	// the global line width.
 	// Experimental.
 	LineWidth *float64 `field:"optional" json:"lineWidth" yaml:"lineWidth"`
 	// Controls whether void elements are self-closed.
@@ -63,9 +70,10 @@ type HtmlFormatterConfiguration struct {
 	// setting.
 	// Experimental.
 	TrailingNewline *bool `field:"optional" json:"trailingNewline" yaml:"trailingNewline"`
-	// Whether to account for whitespace sensitivity when formatting HTML and languages that extend it.
+	// Controls how the formatter treats whitespace around text and child elements in HTML, Vue, Svelte, and Astro markup.
 	//
-	// Defaults to `css`.
+	// The `ignore` setting should be used only when whitespace cannot
+	// affect rendered output. Defaults to `css`.
 	// Default: css`.
 	//
 	// Experimental.

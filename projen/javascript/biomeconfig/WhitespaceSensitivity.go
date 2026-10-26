@@ -1,7 +1,7 @@
 package biomeconfig
 
 
-// Whitespace sensitivity for HTML formatting.
+// Controls how the formatter treats whitespace around text and child elements in HTML, Vue, Svelte, and Astro markup.
 //
 // The following two cases won't produce the same output:
 //
@@ -28,15 +28,15 @@ package biomeconfig
 type WhitespaceSensitivity string
 
 const (
-	// The formatter considers whitespace significant for elements that have an "inline" display style by default in browser's user agent style sheets.
+	// Treats whitespace as significant for elements that browsers display inline by default.
 	//
 	// (css).
 	// Experimental.
 	WhitespaceSensitivity_CSS WhitespaceSensitivity = "CSS"
-	// Leading and trailing whitespace in content is considered significant for all elements.
+	// Treats leading and trailing whitespace as significant for every element.
 	//
-	// The formatter should leave at least one whitespace character if whitespace is present.
-	// Otherwise, if there is no whitespace, it should not add any after `>` or before `<`. In other words, if there's no whitespace, the text content should hug the tags.
+	// Existing whitespace
+	// is preserved as at least one character and absent whitespace is not added.
 	//
 	// Example of text hugging the tags:
 	// ```html
@@ -46,9 +46,10 @@ const (
 	// ``` (strict).
 	// Experimental.
 	WhitespaceSensitivity_STRICT WhitespaceSensitivity = "STRICT"
-	// Whitespace is considered insignificant.
+	// Treats whitespace as insignificant, allowing the formatter to add or remove it.
 	//
-	// The formatter is free to remove or add whitespace as it sees fit. (ignore)
+	// Use this only
+	// when whitespace cannot affect rendered output. (ignore)
 	// Experimental.
 	WhitespaceSensitivity_IGNORE WhitespaceSensitivity = "IGNORE"
 )

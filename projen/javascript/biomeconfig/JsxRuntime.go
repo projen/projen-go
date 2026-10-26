@@ -1,17 +1,17 @@
 package biomeconfig
 
 
-// Indicates the type of runtime or transformation used for interpreting JSX.
+// How Biome's analyzer accounts for imports used by JSX.
 // Experimental.
 type JsxRuntime string
 
 const (
-	// Indicates a modern or native JSX environment, that doesn't require special handling by Biome.
+	// An automatic or native JSX environment that doesn't require an in-scope factory import.
 	//
 	// (transparent).
 	// Experimental.
 	JsxRuntime_TRANSPARENT JsxRuntime = "TRANSPARENT"
-	// Indicates a classic React environment that requires the `React` import.
+	// A classic React environment that requires the React import, or custom JSX factory imports configured in `tsconfig.json`.
 	//
 	// Corresponds to the `react` value for the `jsx` option in TypeScript's
 	// `tsconfig.json`.
