@@ -41,6 +41,13 @@ type CdkConfigCommonOptions struct {
 	//
 	// Experimental.
 	RequireApproval ApprovalLevel `field:"optional" json:"requireApproval" yaml:"requireApproval"`
+	// Enable AWS CDK library version reporting.
+	// See: https://docs.aws.amazon.com/cdk/v2/guide/usage-data.html
+	//
+	// Default: - use the AWS CDK default.
+	//
+	// Experimental.
+	VersionReporting *bool `field:"optional" json:"versionReporting" yaml:"versionReporting"`
 	// Glob patterns to exclude from `cdk watch`.
 	// Default: [].
 	//
