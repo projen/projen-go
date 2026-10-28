@@ -337,6 +337,13 @@ type TypeScriptCompilerOptions struct {
 	//
 	// Experimental.
 	ResolvePackageJsonImports *bool `field:"optional" json:"resolvePackageJsonImports" yaml:"resolvePackageJsonImports"`
+	// Rewrite `.ts`, `.tsx`, `.mts`, and `.cts` extensions in relative import paths to their JavaScript equivalents in emitted files. Requires TypeScript 5.7 or later.
+	// See: https://www.typescriptlang.org/tsconfig/rewriteRelativeImportExtensions.html
+	//
+	// Default: undefined.
+	//
+	// Experimental.
+	RewriteRelativeImportExtensions *bool `field:"optional" json:"rewriteRelativeImportExtensions" yaml:"rewriteRelativeImportExtensions"`
 	// Specifies the root directory of input files.
 	//
 	// Only use to control the output directory structure with `outDir`.

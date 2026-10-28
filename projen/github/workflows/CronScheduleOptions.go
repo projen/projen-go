@@ -8,5 +8,12 @@ type CronScheduleOptions struct {
 	//
 	// Experimental.
 	Cron *string `field:"required" json:"cron" yaml:"cron"`
+	// IANA time zone name used to evaluate the cron expression, e.g. `America/New_York`.
+	// See: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
+	//
+	// Default: - UTC.
+	//
+	// Experimental.
+	Timezone *string `field:"optional" json:"timezone" yaml:"timezone"`
 }
 

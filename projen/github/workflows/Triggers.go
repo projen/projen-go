@@ -124,11 +124,11 @@ type Triggers struct {
 	// You can use the GitHub API to trigger a webhook event called repository_dispatch when you want to trigger a workflow for activity that happens outside of GitHub.
 	// Experimental.
 	RepositoryDispatch *RepositoryDispatchOptions `field:"optional" json:"repositoryDispatch" yaml:"repositoryDispatch"`
-	// You can schedule a workflow to run at specific UTC times using POSIX cron syntax.
+	// You can schedule a workflow to run at specific times using POSIX cron syntax.
 	//
-	// Scheduled workflows run on the latest commit on the default or
-	// base branch. The shortest interval you can run scheduled workflows is
-	// once every 5 minutes.
+	// Times are in UTC unless a `timezone` is set. Scheduled workflows
+	// run on the latest commit on the default or base branch. The shortest
+	// interval you can run scheduled workflows is once every 5 minutes.
 	// See: https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07
 	//
 	// Experimental.
