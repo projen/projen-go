@@ -26,6 +26,8 @@ type RuleDomains struct {
 	// Experimental.
 	Tailwind RuleDomainValue `field:"optional" json:"tailwind" yaml:"tailwind"`
 	// Experimental.
+	TanstackQuery RuleDomainValue `field:"optional" json:"tanstackQuery" yaml:"tanstackQuery"`
+	// Experimental.
 	Test RuleDomainValue `field:"optional" json:"test" yaml:"test"`
 	// Experimental.
 	Turborepo RuleDomainValue `field:"optional" json:"turborepo" yaml:"turborepo"`
