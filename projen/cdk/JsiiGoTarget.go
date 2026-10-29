@@ -90,6 +90,9 @@ type JsiiGoTarget struct {
 	GitUserName *string `field:"optional" json:"gitUserName" yaml:"gitUserName"`
 	// The name of the target repository in which this module will be published (e.g. github.com/owner/repo).
 	//
+	// A repository separate from the source repository is recommended. To publish
+	// to the source repository, set `publishToSourceRepository` to `true`.
+	//
 	// The module itself will always be published under a subdirectory named according
 	// to the `packageName` of the module (e.g. github.com/foo/bar/pkg).
 	//
@@ -106,6 +109,15 @@ type JsiiGoTarget struct {
 	//
 	// Experimental.
 	PackageName *string `field:"optional" json:"packageName" yaml:"packageName"`
+	// Set when `moduleName` is the repository this project lives in.
+	//
+	// A separate target repository for Go is recommended. If the source repository
+	// is used instead, set this to `true` to adjust gitignore so Git can select the
+	// embedded jsii tarballs.
+	// Default: false.
+	//
+	// Experimental.
+	PublishToSourceRepository *bool `field:"optional" json:"publishToSourceRepository" yaml:"publishToSourceRepository"`
 	// A suffix appended at the end of the module version (e.g `"-devprefix"`).
 	// Default: - none.
 	//

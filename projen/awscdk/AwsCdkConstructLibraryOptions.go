@@ -1109,6 +1109,9 @@ type AwsCdkConstructLibraryOptions struct {
 	// Experimental.
 	JsiiVersion *string `field:"optional" json:"jsiiVersion" yaml:"jsiiVersion"`
 	// Publish Go bindings to a git repository.
+	//
+	// A separate repository is recommended. If `moduleName` refers to the source
+	// repository, set `publishToSourceRepository` to `true`.
 	// Default: - no publishing.
 	//
 	// Experimental.
