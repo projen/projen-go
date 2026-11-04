@@ -15,6 +15,13 @@ type PullRequestLintOptions struct {
 	// Github Runner Group selection options.
 	// Experimental.
 	RunsOnGroup *projen.GroupRunnerOptions `field:"optional" json:"runsOnGroup" yaml:"runsOnGroup"`
+	// Add a job that combines the results of all checks into a single status check.
+	//
+	// Use this job as the required status check, so it does not need updating when checks are added or removed.
+	// Default: true.
+	//
+	// Experimental.
+	ConsolidatedStatusCheck *bool `field:"optional" json:"consolidatedStatusCheck" yaml:"consolidatedStatusCheck"`
 	// Require a contributor statement to be included in the PR description.
 	//
 	// For example confirming that the contribution has been made by the contributor and complies with the project's license.
@@ -41,5 +48,10 @@ type PullRequestLintOptions struct {
 	//
 	// Experimental.
 	SemanticTitleOptions *SemanticTitleOptions `field:"optional" json:"semanticTitleOptions" yaml:"semanticTitleOptions"`
+	// The pull request event that triggers the workflow.
+	// Default: PullRequestLintTrigger.PULL_REQUEST_TARGET
+	//
+	// Experimental.
+	Trigger PullRequestLintTrigger `field:"optional" json:"trigger" yaml:"trigger"`
 }
 

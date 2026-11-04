@@ -7,11 +7,12 @@ import (
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/projen/projen-go/projen"
 	"github.com/projen/projen-go/projen/github/internal"
+	"github.com/projen/projen-go/projen/github/workflows"
 )
 
 // Configure validations to run on GitHub pull requests.
 //
-// Only generates a file if at least one linter is configured.
+// Only generates a file if at least one check is configured.
 // Experimental.
 type PullRequestLint interface {
 	projen.Component
@@ -20,6 +21,11 @@ type PullRequestLint interface {
 	Node() constructs.Node
 	// Experimental.
 	Project() projen.Project
+	// Adds a job to the pull request lint workflow that is part of the consolidated status check.
+	//
+	// The job also runs for merge groups. Skip it there with a job condition, a skipped job counts as passing.
+	// Experimental.
+	AddCheck(id *string, job *workflows.Job)
 	// Called once, right after `postSynthesize()`, only when the project is created for the first time.
 	//
 	// It does not run on later `projen` invocations. It only fires for `projen new` (or `Projects.createProject`).
@@ -169,6 +175,17 @@ func PullRequestLint_IsConstruct(x interface{}) *bool {
 	)
 
 	return returns
+}
+
+func (p *jsiiProxy_PullRequestLint) AddCheck(id *string, job *workflows.Job) {
+	if err := p.validateAddCheckParameters(id, job); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		p,
+		"addCheck",
+		[]interface{}{id, job},
+	)
 }
 
 func (p *jsiiProxy_PullRequestLint) PostProjectCreation(initProject *projen.InitProject) {

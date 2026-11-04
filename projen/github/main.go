@@ -550,6 +550,7 @@ func init() {
 		"projen.github.PullRequestLint",
 		reflect.TypeOf((*PullRequestLint)(nil)).Elem(),
 		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addCheck", GoMethod: "AddCheck"},
 			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
 			_jsii_.MemberMethod{JsiiMethod: "postProjectCreation", GoMethod: "PostProjectCreation"},
 			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
@@ -569,6 +570,14 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.github.PullRequestLintOptions",
 		reflect.TypeOf((*PullRequestLintOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.github.PullRequestLintTrigger",
+		reflect.TypeOf((*PullRequestLintTrigger)(nil)).Elem(),
+		map[string]interface{}{
+			"PULL_REQUEST_TARGET": PullRequestLintTrigger_PULL_REQUEST_TARGET,
+			"PULL_REQUEST": PullRequestLintTrigger_PULL_REQUEST,
+		},
 	)
 	_jsii_.RegisterStruct(
 		"projen.github.PullRequestPatchSource",

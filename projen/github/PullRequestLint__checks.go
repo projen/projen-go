@@ -8,7 +8,23 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 
 	"github.com/projen/projen-go/projen"
+	"github.com/projen/projen-go/projen/github/workflows"
 )
+
+func (p *jsiiProxy_PullRequestLint) validateAddCheckParameters(id *string, job *workflows.Job) error {
+	if id == nil {
+		return fmt.Errorf("parameter id is required, but nil was provided")
+	}
+
+	if job == nil {
+		return fmt.Errorf("parameter job is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(job, func() string { return "parameter job" }); err != nil {
+		return err
+	}
+
+	return nil
+}
 
 func (p *jsiiProxy_PullRequestLint) validatePostProjectCreationParameters(initProject *projen.InitProject) error {
 	if initProject == nil {
