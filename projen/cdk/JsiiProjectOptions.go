@@ -468,6 +468,19 @@ type JsiiProjectOptions struct {
 	//
 	// Experimental.
 	PackageName *string `field:"optional" json:"packageName" yaml:"packageName"`
+	// Additional information about how peer dependencies are used, rendered as `peerDependenciesMeta` in `package.json`. For example, this can mark peer dependencies as optional.
+	//
+	// Each key must also be declared as a peer dependency.
+	//
+	// Example:
+	//   { "aws-cdk-lib": { optional: true } }
+	//
+	// See: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#peerdependenciesmeta
+	//
+	// Default: - no `peerDependenciesMeta`.
+	//
+	// Experimental.
+	PeerDependenciesMeta *map[string]*javascript.PeerDependencyMeta `field:"optional" json:"peerDependenciesMeta" yaml:"peerDependenciesMeta"`
 	// Options for `peerDeps`.
 	// Experimental.
 	PeerDependencyOptions *javascript.PeerDependencyOptions `field:"optional" json:"peerDependencyOptions" yaml:"peerDependencyOptions"`
@@ -1092,6 +1105,8 @@ type JsiiProjectOptions struct {
 	// By default, jsii will include all *.ts files (except .d.ts files) in the TypeScript compiler input.
 	// This can be problematic for example when the package's build or test procedure generates .ts files
 	// that cannot be compiled with jsii's compiler settings.
+	//
+	// When ESLint is enabled, these patterns are also added to its ignore patterns.
 	// Experimental.
 	ExcludeTypescript *[]*string `field:"optional" json:"excludeTypescript" yaml:"excludeTypescript"`
 	// Version of the jsii compiler to use.

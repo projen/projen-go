@@ -151,6 +151,11 @@ type NodePackage interface {
 	// Defines resolutions for dependencies to change the normally resolved version of a dependency to something else.
 	// Experimental.
 	AddPackageResolutions(resolutions ...*string)
+	// Adds `peerDependenciesMeta` information for a peer dependency, e.g. to mark it as optional.
+	//
+	// The dependency must also be declared as a peer dependency.
+	// Experimental.
+	AddPeerDependencyMeta(name *string, meta *PeerDependencyMeta)
 	// Defines peer dependencies.
 	//
 	// When adding peer dependencies, a devDependency will also be added on the
@@ -722,6 +727,17 @@ func (n *jsiiProxy_NodePackage) AddPackageResolutions(resolutions ...*string) {
 		n,
 		"addPackageResolutions",
 		args,
+	)
+}
+
+func (n *jsiiProxy_NodePackage) AddPeerDependencyMeta(name *string, meta *PeerDependencyMeta) {
+	if err := n.validateAddPeerDependencyMetaParameters(name, meta); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		n,
+		"addPeerDependencyMeta",
+		[]interface{}{name, meta},
 	)
 }
 

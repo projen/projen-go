@@ -42,6 +42,21 @@ func (n *jsiiProxy_NodePackage) validateAddFieldParameters(name *string, value i
 	return nil
 }
 
+func (n *jsiiProxy_NodePackage) validateAddPeerDependencyMetaParameters(name *string, meta *PeerDependencyMeta) error {
+	if name == nil {
+		return fmt.Errorf("parameter name is required, but nil was provided")
+	}
+
+	if meta == nil {
+		return fmt.Errorf("parameter meta is required, but nil was provided")
+	}
+	if err := _jsii_.ValidateStruct(meta, func() string { return "parameter meta" }); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (n *jsiiProxy_NodePackage) validateAddVersionParameters(version *string) error {
 	if version == nil {
 		return fmt.Errorf("parameter version is required, but nil was provided")

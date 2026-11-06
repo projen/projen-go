@@ -16,6 +16,10 @@ func (n *jsiiProxy_NodePackage) validateAddFieldParameters(name *string, value i
 	return nil
 }
 
+func (n *jsiiProxy_NodePackage) validateAddPeerDependencyMetaParameters(name *string, meta *PeerDependencyMeta) error {
+	return nil
+}
+
 func (n *jsiiProxy_NodePackage) validateAddVersionParameters(version *string) error {
 	return nil
 }

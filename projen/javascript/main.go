@@ -417,6 +417,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addField", GoMethod: "AddField"},
 			_jsii_.MemberMethod{JsiiMethod: "addKeywords", GoMethod: "AddKeywords"},
 			_jsii_.MemberMethod{JsiiMethod: "addPackageResolutions", GoMethod: "AddPackageResolutions"},
+			_jsii_.MemberMethod{JsiiMethod: "addPeerDependencyMeta", GoMethod: "AddPeerDependencyMeta"},
 			_jsii_.MemberMethod{JsiiMethod: "addPeerDeps", GoMethod: "AddPeerDeps"},
 			_jsii_.MemberMethod{JsiiMethod: "addVersion", GoMethod: "AddVersion"},
 			_jsii_.MemberProperty{JsiiProperty: "allowLibraryDependencies", GoGetter: "AllowLibraryDependencies"},
@@ -619,6 +620,10 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.NpmConfigOptions",
 		reflect.TypeOf((*NpmConfigOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PeerDependencyMeta",
+		reflect.TypeOf((*PeerDependencyMeta)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.PeerDependencyOptions",
