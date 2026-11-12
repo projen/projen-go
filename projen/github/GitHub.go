@@ -21,6 +21,9 @@ type GitHub interface {
 	// Whether downloading from LFS is enabled for this GitHub project.
 	// Experimental.
 	DownloadLfs() *bool
+	// The `Kodiak` component configured on this repository This is `undefined` if Kodiak is not enabled for this repository.
+	// Experimental.
+	Kodiak() Kodiak
 	// The `MergeQueue` component configured on this repository This is `undefined` if merge queues are not enabled for this repository.
 	// Experimental.
 	MergeQueue() MergeQueue
@@ -128,6 +131,16 @@ func (j *jsiiProxy_GitHub) DownloadLfs() *bool {
 	_jsii_.Get(
 		j,
 		"downloadLfs",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_GitHub) Kodiak() Kodiak {
+	var returns Kodiak
+	_jsii_.Get(
+		j,
+		"kodiak",
 		&returns,
 	)
 	return returns

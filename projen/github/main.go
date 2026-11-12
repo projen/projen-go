@@ -264,6 +264,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addWorkflow", GoMethod: "AddWorkflow"},
 			_jsii_.MemberProperty{JsiiProperty: "checkoutSubmodules", GoGetter: "CheckoutSubmodules"},
 			_jsii_.MemberProperty{JsiiProperty: "downloadLfs", GoGetter: "DownloadLfs"},
+			_jsii_.MemberProperty{JsiiProperty: "kodiak", GoGetter: "Kodiak"},
 			_jsii_.MemberProperty{JsiiProperty: "mergeQueue", GoGetter: "MergeQueue"},
 			_jsii_.MemberProperty{JsiiProperty: "mergify", GoGetter: "Mergify"},
 			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
@@ -440,6 +441,55 @@ func init() {
 		func() interface{} {
 			return &jsiiProxy_IAddConditionsLater{}
 		},
+	)
+	_jsii_.RegisterClass(
+		"projen.github.Kodiak",
+		reflect.TypeOf((*Kodiak)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberMethod{JsiiMethod: "postProjectCreation", GoMethod: "PostProjectCreation"},
+			_jsii_.MemberMethod{JsiiMethod: "postSynthesize", GoMethod: "PostSynthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "preSynthesize", GoMethod: "PreSynthesize"},
+			_jsii_.MemberProperty{JsiiProperty: "project", GoGetter: "Project"},
+			_jsii_.MemberMethod{JsiiMethod: "projectCreation", GoMethod: "ProjectCreation"},
+			_jsii_.MemberMethod{JsiiMethod: "synthesize", GoMethod: "Synthesize"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
+		},
+		func() interface{} {
+			j := jsiiProxy_Kodiak{}
+			_jsii_.InitJsiiProxy(&j.Type__projenComponent)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.KodiakApproveOptions",
+		reflect.TypeOf((*KodiakApproveOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.KodiakAutomergeDependencies",
+		reflect.TypeOf((*KodiakAutomergeDependencies)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.github.KodiakDependencyVersion",
+		reflect.TypeOf((*KodiakDependencyVersion)(nil)).Elem(),
+		map[string]interface{}{
+			"MAJOR": KodiakDependencyVersion_MAJOR,
+			"MINOR": KodiakDependencyVersion_MINOR,
+			"PATCH": KodiakDependencyVersion_PATCH,
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.KodiakMergeOptions",
+		reflect.TypeOf((*KodiakMergeOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.KodiakOptions",
+		reflect.TypeOf((*KodiakOptions)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.github.KodiakUpdateOptions",
+		reflect.TypeOf((*KodiakUpdateOptions)(nil)).Elem(),
 	)
 	_jsii_.RegisterEnum(
 		"projen.github.MergeMethod",

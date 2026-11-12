@@ -32,6 +32,16 @@ type GitHubOptions struct {
 	//
 	// Experimental.
 	DownloadLfs *bool `field:"optional" json:"downloadLfs" yaml:"downloadLfs"`
+	// Whether Kodiak (`.kodiak.toml`) should be enabled on this repository.
+	// Default: false.
+	//
+	// Experimental.
+	Kodiak *bool `field:"optional" json:"kodiak" yaml:"kodiak"`
+	// Options for Kodiak.
+	// Default: - default options.
+	//
+	// Experimental.
+	KodiakOptions *KodiakOptions `field:"optional" json:"kodiakOptions" yaml:"kodiakOptions"`
 	// Whether a merge queue should be used on this repository to merge pull requests.
 	//
 	// Requires additional configuration of the repositories branch protection rules.
