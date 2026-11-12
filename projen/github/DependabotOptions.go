@@ -45,7 +45,8 @@ type DependabotOptions struct {
 	// This is required since projen updates may cause changes in committed files
 	// and anti-tamper checks will fail.
 	//
-	// Projen upgrades are covered through the `ProjenUpgrade` class.
+	// Projen upgrades are covered through the `UpgradeDependencies` component,
+	// which cannot be enabled together with Dependabot.
 	// Default: true.
 	//
 	// Experimental.
