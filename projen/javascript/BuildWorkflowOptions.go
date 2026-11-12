@@ -2,6 +2,7 @@ package javascript
 
 import (
 	"github.com/projen/projen-go/projen"
+	"github.com/projen/projen-go/projen/build"
 	"github.com/projen/projen-go/projen/github/workflows"
 )
 
@@ -33,16 +34,25 @@ type BuildWorkflowOptions struct {
 	//
 	// Experimental.
 	WorkflowTriggers *workflows.Triggers `field:"optional" json:"workflowTriggers" yaml:"workflowTriggers"`
-	// Automatically update files modified during builds to pull-request branches.
+	// Automatically push files modified during builds to pull request branches.
 	//
 	// This means that any files synthesized by projen or e.g. test snapshots will
 	// always be up-to-date before a PR is merged.
 	//
-	// Implies that PR builds do not have anti-tamper checks.
+	// A build that modifies files still fails. A separate `self-mutation`
+	// workflow then pushes the changes to the pull request branch using the
+	// projen credentials, which starts a new build.
 	// Default: true.
 	//
 	// Experimental.
 	MutableBuild *bool `field:"optional" json:"mutableBuild" yaml:"mutableBuild"`
+	// Options for pushing files modified during builds back to pull request branches.
+	//
+	// Only used if `mutableBuild` is enabled.
+	// Default: - default options.
+	//
+	// Experimental.
+	MutableBuildOptions *build.MutableBuildOptions `field:"optional" json:"mutableBuildOptions" yaml:"mutableBuildOptions"`
 	// Perform a mutable (non-frozen) install during builds.
 	//
 	// This will update the

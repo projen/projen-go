@@ -50,4 +50,8 @@ func init() {
 		"projen.build.BuildWorkflowOptions",
 		reflect.TypeOf((*BuildWorkflowOptions)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"projen.build.MutableBuildOptions",
+		reflect.TypeOf((*MutableBuildOptions)(nil)).Elem(),
+	)
 }

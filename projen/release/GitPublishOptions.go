@@ -43,5 +43,12 @@ type GitPublishOptions struct {
 	// The location of an .md file that includes the project-level changelog.
 	// Experimental.
 	ProjectChangelogFile *string `field:"optional" json:"projectChangelogFile" yaml:"projectChangelogFile"`
+	// Format of the commit message used when updating the project-level changelog.
+	//
+	// `{{currentTag}}` is replaced with the release version.
+	// Default: "chore(release): {{currentTag}}".
+	//
+	// Experimental.
+	ReleaseCommitMessageFormat *string `field:"optional" json:"releaseCommitMessageFormat" yaml:"releaseCommitMessageFormat"`
 }
 
