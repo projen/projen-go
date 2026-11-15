@@ -15,17 +15,18 @@ const (
 	// (allow).
 	// Experimental.
 	PrereleaseMode_ALLOW PrereleaseMode = "ALLOW"
-	// Allow pre-release versions if all versions of a package are pre-release.
+	// Prefer stable versions, falling back to pre-release versions when necessary.
 	//
 	// (if-necessary).
 	// Experimental.
 	PrereleaseMode_IF_HYPHEN_NECESSARY PrereleaseMode = "IF_HYPHEN_NECESSARY"
-	// Allow pre-release versions for first-party packages with explicit pre-release markers in their version requirements.
+	// Prefer stable versions for first-party packages with explicit pre-release specifiers, falling back to pre-release versions when necessary.
 	//
-	// (explicit).
+	// Disallow pre-release versions for all
+	// other packages. (explicit)
 	// Experimental.
 	PrereleaseMode_EXPLICIT PrereleaseMode = "EXPLICIT"
-	// Allow pre-release versions if all versions of a package are pre-release, or if the package has an explicit pre-release marker in its version requirements.
+	// Deprecated alias for `if-necessary`.
 	//
 	// (if-necessary-or-explicit).
 	// Experimental.

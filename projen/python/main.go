@@ -181,10 +181,6 @@ func init() {
 		"projen.python.PyprojectToml",
 		reflect.TypeOf((*PyprojectToml)(nil)).Elem(),
 	)
-	_jsii_.RegisterStruct(
-		"projen.python.PyprojectTomlDependencyGroups",
-		reflect.TypeOf((*PyprojectTomlDependencyGroups)(nil)).Elem(),
-	)
 	_jsii_.RegisterClass(
 		"projen.python.PyprojectTomlFile",
 		reflect.TypeOf((*PyprojectTomlFile)(nil)).Elem(),

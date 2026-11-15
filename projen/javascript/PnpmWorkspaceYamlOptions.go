@@ -6,6 +6,9 @@ package javascript
 //
 // Experimental.
 type PnpmWorkspaceYamlOptions struct {
+	// When true, every peer dependency of a dependency also makes the matching.
+	// Experimental.
+	AddMissingPeerTypes *bool `field:"optional" json:"addMissingPeerTypes" yaml:"addMissingPeerTypes"`
 	// A map of package matchers to explicitly allow (`true`) or disallow (`false`) script execution.
 	//
 	// This field replaces `onlyBuiltDependencies` and `ignoredBuiltDependencies` (which are also deprecated by this new setting), providing a single source of truth.
@@ -31,6 +34,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// When set to 'low', all vulnerabilities are reported. When set to 'moderate', 'high', or 'critical', only vulnerabilities with that severity or higher are reported.
 	// Experimental.
 	AuditLevel PnpmWorkspaceYamlSchemaAuditLevel `field:"optional" json:"auditLevel" yaml:"auditLevel"`
+	// When set to true, pnpm install and pnpm add deduplicate compatible dependency versions during installation.
+	//
+	// If a dependency appears at multiple versions and one version satisfies every range in the workspace, pnpm picks that version for all of them. Frozen installs (--frozen-lockfile) leave the lockfile unchanged; deduplication only runs when the lockfile is being written. Added in pnpm v12.6.0.
+	// Experimental.
+	AutoDedupe *bool `field:"optional" json:"autoDedupe" yaml:"autoDedupe"`
 	// When true, any missing non-optional peer dependencies are automatically installed.
 	// Experimental.
 	AutoInstallPeers *bool `field:"optional" json:"autoInstallPeers" yaml:"autoInstallPeers"`
@@ -39,6 +47,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// Only direct dependencies are allowed to use exotic sources.
 	// Experimental.
 	BlockExoticSubdeps *bool `field:"optional" json:"blockExoticSubdeps" yaml:"blockExoticSubdeps"`
+	// Sets the release-age and trust policy pnpm applies when installing config dependencies and the pnpm version pinned by the packageManager field, before the regular configuration is loaded.
+	//
+	// Added in pnpm v12.15.0.
+	// Experimental.
+	BootConfig *PnpmWorkspaceYamlSchemaBootConfig `field:"optional" json:"bootConfig" yaml:"bootConfig"`
 	// The Certificate Authority signing certificate that is trusted for SSL connections to the registry.
 	// Experimental.
 	Ca *string `field:"optional" json:"ca" yaml:"ca"`
@@ -48,6 +61,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// A path to a file containing one or multiple Certificate Authority signing certificates.
 	// Experimental.
 	Cafile *string `field:"optional" json:"cafile" yaml:"cafile"`
+	// Cargo (Rust) dependencies support: when enabled, `pnpm install` resolves and installs the workspace's Cargo dependencies next to the npm packages.
+	//
+	// Multi-ecosystem support is experimental. Added in: v12.4.0 (pnpm v12 only).
+	// Experimental.
+	Cargo *PnpmWorkspaceYamlSchemaCargo `field:"optional" json:"cargo" yaml:"cargo"`
 	// Define dependency version ranges as reusable constants, for later reference in package.json files. This (singular) field creates a catalog named default.
 	// Experimental.
 	Catalog *map[string]*string `field:"optional" json:"catalog" yaml:"catalog"`
@@ -65,6 +83,9 @@ type PnpmWorkspaceYamlOptions struct {
 	// A client certificate to pass when accessing the registry.
 	// Experimental.
 	Cert *string `field:"optional" json:"cert" yaml:"cert"`
+	// Glob patterns of changed files to ignore when filtering for the projects changed since a commit or branch.
+	// Experimental.
+	ChangedFilesIgnorePattern *[]*string `field:"optional" json:"changedFilesIgnorePattern" yaml:"changedFilesIgnorePattern"`
 	// The maximum number of child processes to allocate simultaneously to build node_modules.
 	// Experimental.
 	ChildConcurrency *float64 `field:"optional" json:"childConcurrency" yaml:"childConcurrency"`
@@ -79,11 +100,19 @@ type PnpmWorkspaceYamlOptions struct {
 	// Controls colors in the output.
 	// Experimental.
 	Color PnpmWorkspaceYamlSchemaColor `field:"optional" json:"color" yaml:"color"`
+	// Machine-wide concurrency limits for named groups of tasks (assigned via `tasks.<name>.concurrencyGroup`). At most the given number of tasks in a group run at once across pnpm processes sharing the same stateDir, including pnpm pipeline. A missing or zero group limit does not restrict execution. Added in pnpm v12.5.0.
+	// Experimental.
+	ConcurrencyGroups *map[string]*float64 `field:"optional" json:"concurrencyGroups" yaml:"concurrencyGroups"`
 	// Config dependencies allow you to share and centralize configuration files, settings, and hooks across multiple projects.
 	//
 	// They are installed before all regular dependencies ('dependencies', 'devDependencies', 'optionalDependencies'), making them ideal for setting up custom hooks, patches, and catalog entries.
 	// Experimental.
 	ConfigDependencies interface{} `field:"optional" json:"configDependencies" yaml:"configDependencies"`
+	// Controls whether pnpm asks for confirmation before removing and reinstalling a modules directory that is incompatible with the current install settings.
+	//
+	// Confirmation is disabled in CI. Supported by pnpm v11.
+	// Experimental.
+	ConfirmModulesPurge *bool `field:"optional" json:"confirmModulesPurge" yaml:"confirmModulesPurge"`
 	// If set to true, all build scripts (e.g. preinstall, install, postinstall) from dependencies will run automatically, without requiring approval.
 	// Experimental.
 	DangerouslyAllowAllBuilds *bool `field:"optional" json:"dangerouslyAllowAllBuilds" yaml:"dangerouslyAllowAllBuilds"`
@@ -158,11 +187,19 @@ type PnpmWorkspaceYamlOptions struct {
 	// Added in pnpm v10.18.0.
 	// Experimental.
 	FetchWarnTimeoutMs *float64 `field:"optional" json:"fetchWarnTimeoutMs" yaml:"fetchWarnTimeoutMs"`
+	// When true, pnpm install --force also installs optional dependencies whose os, cpu, or libc do not match the host.
+	//
+	// When false, --force refetches every package but still skips optional dependencies built for other platforms. pnpm v11 behaved as if this setting were true; prefer supportedArchitectures to install optional dependencies for other platforms on purpose. Added in pnpm v12.7.0.
+	// Experimental.
+	ForceIgnoresPlatform *bool `field:"optional" json:"forceIgnoresPlatform" yaml:"forceIgnoresPlatform"`
 	// By default, pnpm deploy will try creating a dedicated lockfile from a shared lockfile for deployment.
 	//
 	// If this setting is set to true, the legacy deploy behavior will be used.
 	// Experimental.
 	ForceLegacyDeploy *bool `field:"optional" json:"forceLegacyDeploy" yaml:"forceLegacyDeploy"`
+	// When true, installation fails if the lockfile is missing or needs to be updated.
+	// Experimental.
+	FrozenLockfile *bool `field:"optional" json:"frozenLockfile" yaml:"frozenLockfile"`
 	// Makes pnpm install work against a read-only package store (such as a Nix store or OCI image layer).
 	//
 	// When enabled, pnpm opens the store's SQLite database in immutable mode and never writes to the store. Works best together with --offline and --frozen-lockfile; incompatible with --force. Added in pnpm v11.7.0.
@@ -252,6 +289,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// Adding a new dependency to the root workspace package fails, unless the --ignore-workspace-root-check or -w flag is used.
 	// Experimental.
 	IgnoreWorkspaceRootCheck *bool `field:"optional" json:"ignoreWorkspaceRootCheck" yaml:"ignoreWorkspaceRootCheck"`
+	// Delegates settings to other YAML files and to config dependencies.
+	//
+	// Added in pnpm v12.15.0.
+	// Experimental.
+	Include *map[string]*[]*string `field:"optional" json:"include" yaml:"include"`
 	// When executing commands recursively in a workspace, execute them on the root workspace project as well.
 	// Experimental.
 	IncludeWorkspaceRoot *bool `field:"optional" json:"includeWorkspaceRoot" yaml:"includeWorkspaceRoot"`
@@ -261,6 +303,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// A client key to pass when accessing the registry.
 	// Experimental.
 	Key *string `field:"optional" json:"key" yaml:"key"`
+	// When true, `{<dir>}` filter selectors use the legacy behavior: the selector names a directory and matches every project in the subtree below it.
+	//
+	// By default `{<dir>}` is matched as a glob pattern, so `{packages/*}` selects the projects one level below packages/ and a `**` reaches deeper. Only applies to user-written selectors; the workspace-root selectors pnpm generates are always matched as globs.
+	// Experimental.
+	LegacyDirFiltering *bool `field:"optional" json:"legacyDirFiltering" yaml:"legacyDirFiltering"`
 	// If this is enabled, locally available packages are linked to node_modules instead of being downloaded from the registry.
 	// Experimental.
 	LinkWorkspacePackages PnpmWorkspaceYamlSchemaLinkWorkspacePackages `field:"optional" json:"linkWorkspacePackages" yaml:"linkWorkspacePackages"`
@@ -269,19 +316,27 @@ type PnpmWorkspaceYamlOptions struct {
 	LocalAddress *string `field:"optional" json:"localAddress" yaml:"localAddress"`
 	// When set to false, pnpm won't read or generate a pnpm-lock.yaml file.
 	// Experimental.
-	Lockfile *bool `field:"optional" json:"lockfile" yaml:"lockfile"`
+	Lockfile interface{} `field:"optional" json:"lockfile" yaml:"lockfile"`
 	// Add the full URL to the package's tarball to every entry in pnpm-lock.yaml.
 	// Experimental.
 	LockfileIncludeTarballUrl *bool `field:"optional" json:"lockfileIncludeTarballUrl" yaml:"lockfileIncludeTarballUrl"`
 	// Any logs at or higher than the given level will be shown.
 	// Experimental.
 	Loglevel PnpmWorkspaceYamlSchemaLoglevel `field:"optional" json:"loglevel" yaml:"loglevel"`
+	// On macOS, exclude newly created pnpm directories from Time Machine backups by marking them with the com.apple.metadata:com_apple_backup_excludeItem extended attribute. Read from the global configuration file or the PNPM_CONFIG_MACOS_BACKUP_* environment variables; ignored in project pnpm-workspace.yaml files. Added in pnpm v12.6.0.
+	// Experimental.
+	MacosBackup *PnpmWorkspaceYamlSchemaMacosBackup `field:"optional" json:"macosBackup" yaml:"macosBackup"`
 	// When enabled, pnpm will automatically download and run the version of pnpm specified in the packageManager field of package.json.
 	// Experimental.
 	ManagePackageManagerVersions *bool `field:"optional" json:"managePackageManagerVersions" yaml:"managePackageManagerVersions"`
 	// The maximum number of connections to use per origin (protocol/host/port combination).
 	// Experimental.
 	Maxsockets *float64 `field:"optional" json:"maxsockets" yaml:"maxsockets"`
+	// Caps the total number of bytes the files of one package may unpack to.
+	//
+	// Added in pnpm v12.15.0.
+	// Experimental.
+	MaxTarballUnpackedSize *float64 `field:"optional" json:"maxTarballUnpackedSize" yaml:"maxTarballUnpackedSize"`
 	// This configuration matches the current branch name to determine whether to merge all git branch lockfile files.
 	// Experimental.
 	MergeGitBranchLockfilesBranchPattern *[]interface{} `field:"optional" json:"mergeGitBranchLockfilesBranchPattern" yaml:"mergeGitBranchLockfilesBranchPattern"`
@@ -326,16 +381,21 @@ type PnpmWorkspaceYamlOptions struct {
 	// Configure custom Node.js download mirrors in `pnpm-workspace.yaml`. The keys are release channels (`release`, `rc`, `nightly`, `v8-canary`, etc.) and the values are base URLs.
 	// Experimental.
 	NodeDownloadMirrors *map[string]*string `field:"optional" json:"nodeDownloadMirrors" yaml:"nodeDownloadMirrors"`
-	// When true, pnpm injects the generated node_modules/.package-map.json into pnpm-managed Node.js script environments by adding Node's --experimental-package-map option to NODE_OPTIONS. see https://pnpm.io/settings/node-modules#nodeexperimentalpackagemap.
+	// When true, pnpm injects the generated node_modules/.package-map.json into pnpm-managed Node.js script environments by adding Node's --experimental-package-map option to NODE_OPTIONS. see https://pnpm.io/settings/node-modules#nodeexperimentalpackagemap. Deprecated since pnpm v12.13.0: use nodePackageMap.mode instead. true is the same as mode: load and false the same as mode: off; nodePackageMap wins when both are set in the same place.
 	// Experimental.
 	NodeExperimentalPackageMap *bool `field:"optional" json:"nodeExperimentalPackageMap" yaml:"nodeExperimentalPackageMap"`
 	// Defines what linker should be used for installing Node packages.
+	//
+	// loaded is an experimental linker that loads packages directly from the content-addressable store, without placing them in node_modules; it also accepts an object with type: loaded and an optional excluded list. Configuration sources replace the whole nodeLinker value: a higher-priority scalar, or an object without excluded, clears exclusions from lower-priority sources. The environment variable PNPM_CONFIG_NODE_LINKER and --config.node-linker accept the object as JSON.
 	// Experimental.
-	NodeLinker PnpmWorkspaceYamlSchemaNodeLinker `field:"optional" json:"nodeLinker" yaml:"nodeLinker"`
+	NodeLinker interface{} `field:"optional" json:"nodeLinker" yaml:"nodeLinker"`
 	// Options to pass through to Node.js via the NODE_OPTIONS environment variable.
 	// Experimental.
 	NodeOptions *string `field:"optional" json:"nodeOptions" yaml:"nodeOptions"`
-	// Controls how node_modules/.package-map.json is generated. standard - only declared dependencies are available through the package map. loose - also maps packages that are reachable through the installed node_modules layout, which can allow undeclared hoisted dependencies to resolve.
+	// Groups the package-map settings, which control node_modules/.package-map.json during isolated and hoisted installs. Replaces nodeExperimentalPackageMap and nodePackageMapType, which still work; nodePackageMap takes precedence when both are set in the same place. Added in pnpm v12.13.0.
+	// Experimental.
+	NodePackageMap *PnpmWorkspaceYamlSchemaNodePackageMap `field:"optional" json:"nodePackageMap" yaml:"nodePackageMap"`
+	// Controls how node_modules/.package-map.json is generated. standard - only declared dependencies are available through the package map. loose - also maps packages that are reachable through the installed node_modules layout, which can allow undeclared hoisted dependencies to resolve. Deprecated since pnpm v12.13.0: use nodePackageMap.type instead; nodePackageMap wins when both are set in the same place.
 	// Experimental.
 	NodePackageMapType PnpmWorkspaceYamlSchemaNodePackageMapType `field:"optional" json:"nodePackageMapType" yaml:"nodePackageMapType"`
 	// The Node.js version to use when checking a package's engines setting.
@@ -399,6 +459,16 @@ type PnpmWorkspaceYamlOptions struct {
 	// If the suffix is longer, it is replaced with a hash.
 	// Experimental.
 	PeersSuffixMaxLength *float64 `field:"optional" json:"peersSuffixMaxLength" yaml:"peersSuffixMaxLength"`
+	// The git ref the affected selection of `pnpm pipeline` resolves its merge base against.
+	//
+	// Overridden by the `--base <ref>` option.
+	// Experimental.
+	PipelineBase *string `field:"optional" json:"pipelineBase" yaml:"pipelineBase"`
+	// Named sets of task names, keyed by pipeline name, run by `pnpm pipeline [name]`.
+	//
+	// A pipeline is a set, not a sequence: the order in which its tasks run comes from `tasks.<name>.dependsOn`. The pipeline named `default` runs when no name is given. Added in pnpm v12.4.0 (experimental, pnpm v12 only).
+	// Experimental.
+	Pipelines *map[string]*[]*string `field:"optional" json:"pipelines" yaml:"pipelines"`
 	// Overrides the `onFail` behavior of both the `packageManager` field and `devEngines.packageManager` when the running pnpm version does not match the declared one.
 	// Experimental.
 	PmOnFail PnpmWorkspaceYamlSchemaPmOnFail `field:"optional" json:"pmOnFail" yaml:"pmOnFail"`
@@ -419,6 +489,16 @@ type PnpmWorkspaceYamlOptions struct {
 	// If this is enabled, local packages from the workspace are preferred over packages from the registry, even if there is a newer version of the package in the registry.
 	// Experimental.
 	PreferWorkspacePackages *bool `field:"optional" json:"preferWorkspacePackages" yaml:"preferWorkspacePackages"`
+	// Controls whether dependency and download progress lines are printed during installation.
+	//
+	// When set to false (or --no-progress is passed), progress output is suppressed. Warnings, lifecycle script output, and the dependency summary are still printed. Added in pnpm v12.6.0.
+	// Experimental.
+	Progress *bool `field:"optional" json:"progress" yaml:"progress"`
+	// When true, a project gets a missing optional peer dependency only if the project's own dependencies already install a version of it.
+	//
+	// The workspace root's dependencies also count if resolvePeersFromWorkspaceRoot is true; a version that only another workspace project's dependencies install does not. dedupePeerDependents keeps deduplicating everything else, and this setting has no effect when dedupePeerDependents is false, because optional peers are already resolved only from the project's own dependencies then. Changing this setting changes the lockfile. Added in pnpm v12.19.0.
+	// Experimental.
+	ProjectScopedOptionalPeers *bool `field:"optional" json:"projectScopedOptionalPeers" yaml:"projectScopedOptionalPeers"`
 	// When publishing from a supported cloud CI/CD system, the package will be publicly linked to where it was built and published from.
 	// Experimental.
 	Provenance *bool `field:"optional" json:"provenance" yaml:"provenance"`
@@ -433,18 +513,31 @@ type PnpmWorkspaceYamlOptions struct {
 	// The primary branch of the repository which is used for publishing the latest changes.
 	// Experimental.
 	PublishBranch *string `field:"optional" json:"publishBranch" yaml:"publishBranch"`
+	// After uploading a package, wait up to this many milliseconds for the published version and its tarball to become available from the registry.
+	//
+	// If they are not available in time, the command fails. 0 disables the check. When publishing recursively, pnpm confirms that a package is available before it publishes the packages that depend on it. Added in pnpm v12.7.0.
+	// Experimental.
+	PublishWaitTimeout *float64 `field:"optional" json:"publishWaitTimeout" yaml:"publishWaitTimeout"`
 	// If this is enabled, the primary behaviour of pnpm install becomes that of pnpm install -r, meaning the install is performed on all workspace or subdirectory packages.
 	// Experimental.
 	RecursiveInstall *bool `field:"optional" json:"recursiveInstall" yaml:"recursiveInstall"`
-	// Configure registries for scoped packages in `pnpm-workspace.yaml`. The `default` key sets the main registry (equivalent to the `registry` `.npmrc` setting). Scoped keys configure registries for specific package scopes.
+	// Configures the registries packages resolve from, in one of two shapes.
+	//
+	// The declaration shape keys each registry by its URL and states everything about it in one place: which scopes and bare-specifier prefix are routed to it, how it lays out tarball URLs, and whether its abbreviated metadata carries the `time` field. The older shape maps the `default` registry and `@`-prefixed scopes straight to registry URLs. The two shapes cannot be mixed.
+	// https://pnpm.io/settings#registries
 	// Experimental.
-	Registries *map[string]*string `field:"optional" json:"registries" yaml:"registries"`
+	Registries interface{} `field:"optional" json:"registries" yaml:"registries"`
 	// The base URL of the npm package registry (trailing slash included).
 	// Experimental.
 	Registry *string `field:"optional" json:"registry" yaml:"registry"`
 	// Set this to true if the registry that you are using returns the "time" field in the abbreviated metadata.
 	// Experimental.
 	RegistrySupportsTimeField *bool `field:"optional" json:"registrySupportsTimeField" yaml:"registrySupportsTimeField"`
+	// The server that shares task results and dependency builds between machines, and the keys every shared artifact is signed and verified with.
+	//
+	// Read by both sideEffectsCache.remote and the task cache of pnpm pipeline. Only org may be set in pnpm-workspace.yaml; the fields naming the server and its trust material (url, team, trustedKeys, publish, privateKey, keyId, builderId, imageDigest, architectureBaseline, buildEnv) are read from the global configuration file or the PNPM_REMOTE_CACHE_* environment variables instead, and setting them here fails with ERR_PNPM_WORKSPACE_REMOTE_CACHE_TRUST. Added in pnpm v12.12.0.
+	// Experimental.
+	RemoteCache *PnpmWorkspaceYamlSchemaRemoteCache `field:"optional" json:"remoteCache" yaml:"remoteCache"`
 	// Allows you to customize the output style of the logs.
 	//
 	// https://pnpm.io/cli/install#--reportername
@@ -459,6 +552,9 @@ type PnpmWorkspaceYamlOptions struct {
 	// When enabled, dependencies of the root workspace project are used to resolve peer dependencies of any projects in the workspace.
 	// Experimental.
 	ResolvePeersFromWorkspaceRoot *bool `field:"optional" json:"resolvePeersFromWorkspaceRoot" yaml:"resolvePeersFromWorkspaceRoot"`
+	// Controls whether pnpm installs runtime entries declared in `devEngines.runtime`. Set to false when the runtime is provisioned separately, such as in a CI matrix.
+	// Experimental.
+	Runtime *bool `field:"optional" json:"runtime" yaml:"runtime"`
 	// Overrides the `onFail` field of `devEngines.runtime` (and `engines.runtime`) in the root project's `package.json`. This is useful when you want a different local behavior than what is written in the manifest — for instance, forcing pnpm to download the declared runtime even when the manifest sets `onFail: "warn"`.
 	// Experimental.
 	RuntimeOnFail PnpmWorkspaceYamlSchemaRuntimeOnFail `field:"optional" json:"runtimeOnFail" yaml:"runtimeOnFail"`
@@ -468,6 +564,9 @@ type PnpmWorkspaceYamlOptions struct {
 	// Configure how versions of packages installed to a package.json file get prefixed.
 	// Experimental.
 	SavePrefix PnpmWorkspaceYamlSchemaSavePrefix `field:"optional" json:"savePrefix" yaml:"savePrefix"`
+	// When set to true, pnpm add saves available.
+	// Experimental.
+	SaveTypes *bool `field:"optional" json:"saveTypes" yaml:"saveTypes"`
 	// This setting controls how dependencies that are linked from the workspace are added to package.json.
 	// Experimental.
 	SaveWorkspaceProtocol PnpmWorkspaceYamlSchemaSaveWorkspaceProtocol `field:"optional" json:"saveWorkspaceProtocol" yaml:"saveWorkspaceProtocol"`
@@ -494,12 +593,22 @@ type PnpmWorkspaceYamlOptions struct {
 	// The older spelling of sideEffectsCache: { read: true, write: false }.
 	// Experimental.
 	SideEffectsCacheReadonly *bool `field:"optional" json:"sideEffectsCacheReadonly" yaml:"sideEffectsCacheReadonly"`
+	// Agent skills that approved dependencies ship.
+	//
+	// Added in pnpm v12.11.0.
+	// Experimental.
+	Skills *PnpmWorkspaceYamlSchemaSkills `field:"optional" json:"skills" yaml:"skills"`
 	// The location where all the packages are saved on the disk.
 	// Experimental.
 	StateDir *string `field:"optional" json:"stateDir" yaml:"stateDir"`
 	// The location where all the packages are saved on the disk.
 	// Experimental.
 	StoreDir *string `field:"optional" json:"storeDir" yaml:"storeDir"`
+	// How the store records which files each package has.
+	//
+	// sqlite - one index.db database; SQLite's locking only works between processes on one machine, so this format is for a store on a local disk. files - one file per package in the store's index directory, for a store on a network filesystem that several machines use at once, such as a store shared by CI jobs; each entry is written to a temporary file and renamed into place, so concurrent jobs need no locks. The format belongs to the store: once the index directory exists, every pnpm process uses it whatever its own setting says, and the packages recorded in an existing index.db are not carried over when switching. pnpm v11 reads only index.db. Added in pnpm v12.13.0.
+	// Experimental.
+	StoreIndexFormat PnpmWorkspaceYamlSchemaStoreIndexFormat `field:"optional" json:"storeIndexFormat" yaml:"storeIndexFormat"`
 	// When strictDepBuilds is enabled, the installation will exit with a non-zero exit code if any dependencies have unreviewed build scripts (aka postinstall scripts).
 	// Experimental.
 	StrictDepBuilds *bool `field:"optional" json:"strictDepBuilds" yaml:"strictDepBuilds"`
@@ -513,8 +622,10 @@ type PnpmWorkspaceYamlOptions struct {
 	// Experimental.
 	StrictStorePkgContentCheck *bool `field:"optional" json:"strictStorePkgContentCheck" yaml:"strictStorePkgContentCheck"`
 	// Specifies architectures for which you'd like to install optional dependencies, even if they don't match the architecture of the system running the install.
+	//
+	// Either a mapping of os, cpu, and libc lists, or a list of exact platform tags to prepare.
 	// Experimental.
-	SupportedArchitectures *PnpmWorkspaceYamlSchemaSupportedArchitectures `field:"optional" json:"supportedArchitectures" yaml:"supportedArchitectures"`
+	SupportedArchitectures interface{} `field:"optional" json:"supportedArchitectures" yaml:"supportedArchitectures"`
 	// When symlink is set to false, pnpm creates a virtual store directory without any symlinks.
 	//
 	// It is a useful setting together with nodeLinker=pnp.
@@ -531,6 +642,11 @@ type PnpmWorkspaceYamlOptions struct {
 	// A task is a script in one workspace project; it becomes ready after every task it depends on completes successfully. A task with no entry under tasks defaults to depending on the same task in its workspace dependencies, but once a task has an entry, an omitted dependsOn is the same as `dependsOn: []`.
 	// Experimental.
 	Tasks *map[string]*PnpmWorkspaceYamlSchemaTasks `field:"optional" json:"tasks" yaml:"tasks"`
+	// Glob patterns of test files.
+	//
+	// When the changed files of a project all match them, the "changed since" filter leaves out the projects that depend on it.
+	// Experimental.
+	TestPattern *[]*string `field:"optional" json:"testPattern" yaml:"testPattern"`
 	// A new trustLockfile setting controls whether pnpm install re-applies the `minimumReleaseAge` / `trustPolicy: 'no-downgrade'` checks to every entry in the loaded lockfile.
 	//
 	// When true, the install treats the lockfile as already-trusted and skips the verification pass — useful for closed-source projects where every commit comes from a trusted author. The default is false, so verification stays on by default.
@@ -544,6 +660,9 @@ type PnpmWorkspaceYamlOptions struct {
 	// You can now list one or more specific packages or versions that pnpm should allow to install, even if those packages don't satisfy the trust policy requirement.
 	// Experimental.
 	TrustPolicyExclude *[]*string `field:"optional" json:"trustPolicyExclude" yaml:"trustPolicyExclude"`
+	// When set to `true`, `pnpm add`, `pnpm update`, and `pnpm remove` prune the entries of [`trustPolicyExclude`](#trustpolicyexclude) in `pnpm-workspace.yaml` that the freshly written lockfile no longer resolves: a version that is gone is dropped (an entry is removed once none of its versions remain), and an entry for a package that is no longer in the lockfile is removed too. Name patterns (`@myorg/*`) are always kept.
+	// Experimental.
+	TrustPolicyExcludePrune *bool `field:"optional" json:"trustPolicyExcludePrune" yaml:"trustPolicyExcludePrune"`
 	// Allows ignoring the trust policy check for packages published more than the specified number of minutes ago.
 	//
 	// This is useful when enabling strict trust policies, as it allows older versions of packages (which may lack a process for publishing with signatures or provenance) to be installed without manual exclusion, assuming they are safe due to their age.
@@ -577,7 +696,7 @@ type PnpmWorkspaceYamlOptions struct {
 	UseStderr *bool `field:"optional" json:"useStderr" yaml:"useStderr"`
 	// This setting allows the checking of the state of dependencies before running scripts.
 	// Experimental.
-	VerifyDepsBeforeRun interface{} `field:"optional" json:"verifyDepsBeforeRun" yaml:"verifyDepsBeforeRun"`
+	VerifyDepsBeforeRun PnpmWorkspaceYamlSchemaVerifyDepsBeforeRun `field:"optional" json:"verifyDepsBeforeRun" yaml:"verifyDepsBeforeRun"`
 	// By default, if a file in the store has been modified, the content of this file is checked before linking it to a project's node_modules.
 	// Experimental.
 	VerifyStoreIntegrity *bool `field:"optional" json:"verifyStoreIntegrity" yaml:"verifyStoreIntegrity"`
@@ -597,7 +716,7 @@ type PnpmWorkspaceYamlOptions struct {
 	VirtualStoreOnly *bool `field:"optional" json:"virtualStoreOnly" yaml:"virtualStoreOnly"`
 	// Determines where the virtual store is located.
 	//
-	// When set to project, a separate virtual store is created in each project's node_modules/.pnpm. When set to global, a single store is shared by every project on the machine, with each project's node_modules holding only symlinks into it. Added in pnpm v11.23.0.
+	// When set to project, a separate virtual store is created in each project's node_modules/.pnpm. When set to global, a single store is shared by every project on the machine, with each project's node_modules holding only symlinks into it. The value may also be an environment variable placeholder such as ${PNPM_VIRTUAL_STORE_TYPE:-global}. Added in pnpm v11.23.0.
 	// Experimental.
 	VirtualStoreType PnpmWorkspaceYamlSchemaVirtualStoreType `field:"optional" json:"virtualStoreType" yaml:"virtualStoreType"`
 	// Set the maximum number of tasks to run simultaneously.

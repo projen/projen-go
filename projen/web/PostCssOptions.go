@@ -12,8 +12,5 @@ type PostCssOptions struct {
 	//
 	// Experimental.
 	Tailwind *bool `field:"optional" json:"tailwind" yaml:"tailwind"`
-	// Tailwind CSS options.
-	// Experimental.
-	TailwindOptions *TailwindConfigOptions `field:"optional" json:"tailwindOptions" yaml:"tailwindOptions"`
 }
 

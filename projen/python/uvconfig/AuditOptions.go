@@ -16,5 +16,11 @@ type AuditOptions struct {
 	// available, the vulnerability will be reported again.
 	// Experimental.
 	IgnoreUntilFixed *[]*string `field:"optional" json:"ignoreUntilFixed" yaml:"ignoreUntilFixed"`
+	// Whether to run the automatic malware check during sync operations.
+	// Experimental.
+	MalwareCheck *bool `field:"optional" json:"malwareCheck" yaml:"malwareCheck"`
+	// The vulnerability service URL to use for automatic malware checks.
+	// Experimental.
+	MalwareCheckUrl *string `field:"optional" json:"malwareCheckUrl" yaml:"malwareCheckUrl"`
 }
 

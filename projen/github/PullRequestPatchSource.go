@@ -3,6 +3,13 @@ package github
 
 // Experimental.
 type PullRequestPatchSource struct {
+	// Allow checking out code from a fork pull request in a `workflow_run` workflow.
+	//
+	// Only enable this if the workflow never executes the checked out code.
+	// Default: false.
+	//
+	// Experimental.
+	AllowUnsafePrCheckout *bool `field:"optional" json:"allowUnsafePrCheckout" yaml:"allowUnsafePrCheckout"`
 	// Number of commits to fetch.
 	//
 	// 0 indicates all history for all branches and tags.

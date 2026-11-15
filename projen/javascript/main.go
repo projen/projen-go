@@ -359,6 +359,10 @@ func init() {
 		reflect.TypeOf((*NodeConfigSchema)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"projen.javascript.NodeConfigSchemaBench",
+		reflect.TypeOf((*NodeConfigSchemaBench)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"projen.javascript.NodeConfigSchemaNodeOptions",
 		reflect.TypeOf((*NodeConfigSchemaNodeOptions)(nil)).Elem(),
 	)
@@ -680,6 +684,22 @@ func init() {
 			"CRITICAL": PnpmWorkspaceYamlSchemaAuditLevel_CRITICAL,
 		},
 	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaBootConfig",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaBootConfig)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaBootConfigTrustPolicy",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaBootConfigTrustPolicy)(nil)).Elem(),
+		map[string]interface{}{
+			"OFF": PnpmWorkspaceYamlSchemaBootConfigTrustPolicy_OFF,
+			"NO_HYPHEN_DOWNGRADE": PnpmWorkspaceYamlSchemaBootConfigTrustPolicy_NO_HYPHEN_DOWNGRADE,
+		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaCargo",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaCargo)(nil)).Elem(),
+	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.PnpmWorkspaceYamlSchemaCatalogMode",
 		reflect.TypeOf((*PnpmWorkspaceYamlSchemaCatalogMode)(nil)).Elem(),
@@ -731,13 +751,21 @@ func init() {
 			"ERROR": PnpmWorkspaceYamlSchemaLoglevel_ERROR,
 		},
 	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaMacosBackup",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaMacosBackup)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaNodePackageMap",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaNodePackageMap)(nil)).Elem(),
+	)
 	_jsii_.RegisterEnum(
-		"projen.javascript.PnpmWorkspaceYamlSchemaNodeLinker",
-		reflect.TypeOf((*PnpmWorkspaceYamlSchemaNodeLinker)(nil)).Elem(),
+		"projen.javascript.PnpmWorkspaceYamlSchemaNodePackageMapMode",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaNodePackageMapMode)(nil)).Elem(),
 		map[string]interface{}{
-			"ISOLATED": PnpmWorkspaceYamlSchemaNodeLinker_ISOLATED,
-			"HOISTED": PnpmWorkspaceYamlSchemaNodeLinker_HOISTED,
-			"PNP": PnpmWorkspaceYamlSchemaNodeLinker_PNP,
+			"OFF": PnpmWorkspaceYamlSchemaNodePackageMapMode_OFF,
+			"WRITE_HYPHEN_ONLY": PnpmWorkspaceYamlSchemaNodePackageMapMode_WRITE_HYPHEN_ONLY,
+			"LOAD": PnpmWorkspaceYamlSchemaNodePackageMapMode_LOAD,
 		},
 	)
 	_jsii_.RegisterEnum(
@@ -772,6 +800,10 @@ func init() {
 			"WARN": PnpmWorkspaceYamlSchemaPmOnFail_WARN,
 			"IGNORE": PnpmWorkspaceYamlSchemaPmOnFail_IGNORE,
 		},
+	)
+	_jsii_.RegisterStruct(
+		"projen.javascript.PnpmWorkspaceYamlSchemaRemoteCache",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaRemoteCache)(nil)).Elem(),
 	)
 	_jsii_.RegisterEnum(
 		"projen.javascript.PnpmWorkspaceYamlSchemaReporter",
@@ -822,8 +854,16 @@ func init() {
 		},
 	)
 	_jsii_.RegisterStruct(
-		"projen.javascript.PnpmWorkspaceYamlSchemaSupportedArchitectures",
-		reflect.TypeOf((*PnpmWorkspaceYamlSchemaSupportedArchitectures)(nil)).Elem(),
+		"projen.javascript.PnpmWorkspaceYamlSchemaSkills",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaSkills)(nil)).Elem(),
+	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaStoreIndexFormat",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaStoreIndexFormat)(nil)).Elem(),
+		map[string]interface{}{
+			"SQLITE": PnpmWorkspaceYamlSchemaStoreIndexFormat_SQLITE,
+			"FILES": PnpmWorkspaceYamlSchemaStoreIndexFormat_FILES,
+		},
 	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.PnpmWorkspaceYamlSchemaTasks",
@@ -844,6 +884,16 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.PnpmWorkspaceYamlSchemaUpdateConfig",
 		reflect.TypeOf((*PnpmWorkspaceYamlSchemaUpdateConfig)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.javascript.PnpmWorkspaceYamlSchemaVerifyDepsBeforeRun",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaVerifyDepsBeforeRun)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "value", GoGetter: "Value"},
+		},
+		func() interface{} {
+			return &jsiiProxy_PnpmWorkspaceYamlSchemaVerifyDepsBeforeRun{}
+		},
 	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.PnpmWorkspaceYamlSchemaVersioning",

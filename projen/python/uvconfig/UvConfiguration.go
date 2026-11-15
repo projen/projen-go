@@ -34,9 +34,24 @@ type UvConfiguration struct {
 	// (such as hatchling) have their own configuration.
 	// Experimental.
 	BuildBackend *BuildBackendSettings `field:"optional" json:"buildBackend" yaml:"buildBackend"`
-	// PEP 508-style requirements, e.g., `ruff==0.5.0`, or `ruff @ https://...`.
+	// Constraints to apply when solving build dependencies.
+	//
+	// Build constraints are used to restrict the versions of build dependencies that are selected
+	// when building a package during resolution or installation.
+	//
+	// Including a package as a constraint will _not_ trigger installation of the package during
+	// a build; instead, the package must be requested elsewhere in the project's build dependency
+	// graph.
+	//
+	// !!! note
+	// In `uv lock`, `uv sync`, and `uv run`, uv will only read `build-constraint-dependencies` from
+	// the `pyproject.toml` at the workspace root, and will ignore any declarations in other
+	// workspace members or `uv.toml` files.
+	//
+	// Hashes can be included to verify downloaded build dependency archives. To provide hashes,
+	// use a table with `requirement` and `hashes`. uv records these hashes in `uv.lock`.
 	// Experimental.
-	BuildConstraintDependencies *[]*string `field:"optional" json:"buildConstraintDependencies" yaml:"buildConstraintDependencies"`
+	BuildConstraintDependencies *[]interface{} `field:"optional" json:"buildConstraintDependencies" yaml:"buildConstraintDependencies"`
 	// Path to the cache directory.
 	// Experimental.
 	CacheDir *string `field:"optional" json:"cacheDir" yaml:"cacheDir"`
@@ -273,6 +288,15 @@ type UvConfiguration struct {
 	// versions or platforms.
 	// Experimental.
 	ForkStrategy ForkStrategy `field:"optional" json:"forkStrategy" yaml:"forkStrategy"`
+	// Mirror URL to use for downloading managed GraalPy installations.
+	//
+	// By default, managed GraalPy installations are downloaded from [GitHub](https://github.com/oracle/graalpython/releases).
+	// This variable can be set to a mirror URL to use a different source for GraalPy installations.
+	// The provided URL will replace `https://github.com/oracle/graalpython/releases/download` in, e.g., `https://github.com/oracle/graalpython/releases/download/graal-24.2.2/graalpy-24.2.2-macos-aarch64.tar.gz`.
+	//
+	// Distributions can be read from a local directory by using the `file://` URL scheme.
+	// Experimental.
+	GraalpyInstallMirror *string `field:"optional" json:"graalpyInstallMirror" yaml:"graalpyInstallMirror"`
 	// The URL of the HTTP proxy to use.
 	// Experimental.
 	HttpProxy *string `field:"optional" json:"httpProxy" yaml:"httpProxy"`
@@ -352,6 +376,25 @@ type UvConfiguration struct {
 	// `uv run` is invoked.
 	// Experimental.
 	Managed *bool `field:"optional" json:"managed" yaml:"managed"`
+	// The minimum libc versions to support when resolving for Linux.
+	//
+	// During universal resolution, wheels must support the configured libc versions to satisfy
+	// `required-environments`. For example, `{ glibc = "2.31" }` accepts `manylinux_2_17` wheels
+	// as coverage, but not `manylinux_2_34` wheels. Both are retained in the lockfile so installation
+	// can select the best wheel for the current machine. An omitted libc is not required.
+	//
+	// Use `required-environments` to specify the Linux architectures to support. Each configured
+	// libc version needs compatible wheels for those environments. Generic Linux wheels do not
+	// constrain libc and can satisfy either implementation. Packages with a usable source
+	// distribution can still be selected.
+	//
+	// This setting is respected by `uv lock` and `uv pip compile --universal`.
+	//
+	// This option is in preview and may change in any future release. Use
+	// `--preview-features minimum-libc-version` or configure
+	// `preview-features = ["minimum-libc-version"]` to disable the warning.
+	// Experimental.
+	MinimumLibcVersion *MinimumLibcVersion `field:"optional" json:"minimumLibcVersion" yaml:"minimumLibcVersion"`
 	// Whether to load TLS certificates from the platform's native certificate store.
 	//
 	// By default, uv uses bundled Mozilla root certificates. When enabled, this loads
@@ -372,8 +415,9 @@ type UvConfiguration struct {
 	// Don't build source distributions.
 	//
 	// When enabled, uv will reuse cached wheels from previously built source distributions, but
-	// operations that require building a source distribution will exit with an error. uv may
-	// still build editable requirements, and their build backends may run arbitrary Python code.
+	// operations that require building a source distribution will exit with an error. First-party
+	// packages, such as projects in the workspace, will still be built. uv will also still build
+	// editable requirements, and their build backends may run arbitrary Python code.
 	// Experimental.
 	NoBuild *bool `field:"optional" json:"noBuild" yaml:"noBuild"`
 	// Disable isolation when building source distributions.
@@ -389,6 +433,8 @@ type UvConfiguration struct {
 	// Experimental.
 	NoBuildIsolationPackage *[]*string `field:"optional" json:"noBuildIsolationPackage" yaml:"noBuildIsolationPackage"`
 	// Don't build source distributions for a specific package.
+	//
+	// First-party packages, such as projects in the workspace, will still be built.
 	// Experimental.
 	NoBuildPackage *[]*string `field:"optional" json:"noBuildPackage" yaml:"noBuildPackage"`
 	// Avoid reading from or writing to the cache, instead using a temporary directory for the duration of the operation.
@@ -454,11 +500,17 @@ type UvConfiguration struct {
 	Pip *PipOptions `field:"optional" json:"pip" yaml:"pip"`
 	// The strategy to use when considering pre-release versions.
 	//
-	// By default, uv will accept pre-releases for packages that _only_ publish pre-releases,
-	// along with first-party requirements that contain an explicit pre-release marker in the
-	// declared specifiers (`if-necessary-or-explicit`).
+	// By default, uv will prefer stable candidates, falling back to pre-releases only after every
+	// stable candidate that satisfies the active constraints is rejected
+	// (`if-necessary`).
 	// Experimental.
 	Prerelease PrereleaseMode `field:"optional" json:"prerelease" yaml:"prerelease"`
+	// The strategy to use when considering pre-release versions for specific packages.
+	//
+	// Package-specific modes take precedence over the global [`prerelease`](#prerelease) mode.
+	// Accepts a dictionary mapping package names to any supported pre-release mode.
+	// Experimental.
+	PrereleasePackage *map[string]PrereleaseMode `field:"optional" json:"prereleasePackage" yaml:"prereleasePackage"`
 	// Whether to enable all experimental, preview features.
 	//
 	// Use `preview-features` instead.
@@ -472,6 +524,15 @@ type UvConfiguration struct {
 	// The URL for publishing packages to the Python package index (by default: <https://upload.pypi.org/legacy/>).
 	// Experimental.
 	PublishUrl *string `field:"optional" json:"publishUrl" yaml:"publishUrl"`
+	// Mirror URL to use for downloading managed Pyodide installations.
+	//
+	// By default, managed Pyodide installations are downloaded from [GitHub](https://github.com/pyodide/pyodide/releases).
+	// This variable can be set to a mirror URL to use a different source for Pyodide installations.
+	// The provided URL will replace `https://github.com/pyodide/pyodide/releases/download` in, e.g., `https://github.com/pyodide/pyodide/releases/download/0.29.5/xbuildenv-0.29.5.tar.gz`.
+	//
+	// Distributions can be read from a local directory by using the `file://` URL scheme.
+	// Experimental.
+	PyodideInstallMirror *string `field:"optional" json:"pyodideInstallMirror" yaml:"pyodideInstallMirror"`
 	// Mirror URL to use for downloading managed PyPy installations.
 	//
 	// By default, managed PyPy installations are downloaded from [downloads.python.org](https://downloads.python.org/).
@@ -511,6 +572,20 @@ type UvConfiguration struct {
 	// `refresh-package`.
 	// Experimental.
 	ReinstallPackage *[]*string `field:"optional" json:"reinstallPackage" yaml:"reinstallPackage"`
+	// Require hashes for all build dependencies.
+	//
+	// uv checks hashes provided in `build-constraint-dependencies` when downloading build
+	// dependencies. Enable this setting to require a hash for every build dependency, including
+	// transitive dependencies. You can also provide hashes as URL fragments in
+	// `build-system.requires`. Hashes returned by a build backend do not count.
+	//
+	// Hashes are not required for the `uv_build` backend bundled in uv. When build isolation is
+	// disabled, build dependencies must already be installed and their hashes are not checked.
+	// Already-installed packages and previously built wheels are not checked.
+	//
+	// This setting also applies to `uv pip` commands, where it can be overridden in `[tool.uv.pip]`.
+	// Experimental.
+	RequireBuildHashes *bool `field:"optional" json:"requireBuildHashes" yaml:"requireBuildHashes"`
 	// A list of environment markers, e.g., `sys_platform == 'darwin'.
 	// Experimental.
 	RequiredEnvironments *[]*string `field:"optional" json:"requiredEnvironments" yaml:"requiredEnvironments"`

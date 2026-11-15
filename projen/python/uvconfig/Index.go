@@ -87,6 +87,21 @@ type Index struct {
 	// indexes can point to either local or remote resources.
 	// Experimental.
 	Format IndexFormat `field:"optional" json:"format" yaml:"format"`
+	// The hash algorithm that must be used for distributions resolved from this index.
+	//
+	// If a distribution does not advertise a hash using this algorithm, lockfile generation
+	// will fail.
+	//
+	// This option is in preview and may change in any future release.
+	//
+	// ```toml
+	// [[tool.uv.index]]
+	// name = "my-index"
+	// url = "https://<omitted>/simple"
+	// hash-algorithm = "sha256"
+	// ```.
+	// Experimental.
+	HashAlgorithm IndexHashAlgorithm `field:"optional" json:"hashAlgorithm" yaml:"hashAlgorithm"`
 	// Status codes that uv should ignore when deciding whether to continue resolution after a request to this index fails.
 	//
 	// ```toml

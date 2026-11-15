@@ -39,6 +39,24 @@ type NodeConfigSchemaNodeOptions struct {
 	// Improve AsyncLocalStorage performance with AsyncContextFrame.
 	// Experimental.
 	AsyncContextFrame *bool `field:"optional" json:"asyncContextFrame" yaml:"asyncContextFrame"`
+	// configures the type of benchmark isolation used in the benchmark runner.
+	// Experimental.
+	BenchIsolation *string `field:"optional" json:"benchIsolation" yaml:"benchIsolation"`
+	// run benchmarks whose name matches this regular expression.
+	// Experimental.
+	BenchNamePattern *string `field:"optional" json:"benchNamePattern" yaml:"benchNamePattern"`
+	// report benchmark output using the given reporter.
+	// Experimental.
+	BenchReporter *[]*string `field:"optional" json:"benchReporter" yaml:"benchReporter"`
+	// report the given benchmark reporter to the given destination.
+	// Experimental.
+	BenchReporterDestination *[]*string `field:"optional" json:"benchReporterDestination" yaml:"benchReporterDestination"`
+	// specify the number of measured benchmark samples.
+	// Experimental.
+	BenchSamples *float64 `field:"optional" json:"benchSamples" yaml:"benchSamples"`
+	// specify the number of unreported benchmark warmup samples.
+	// Experimental.
+	BenchWarmup *float64 `field:"optional" json:"benchWarmup" yaml:"benchWarmup"`
 	// additional user conditions for conditional exports and imports.
 	// Experimental.
 	Conditions *[]*string `field:"optional" json:"conditions" yaml:"conditions"`
@@ -97,6 +115,9 @@ type NodeConfigSchemaNodeOptions struct {
 	// experimental import support for addons.
 	// Experimental.
 	ExperimentalAddonModules *bool `field:"optional" json:"experimentalAddonModules" yaml:"experimentalAddonModules"`
+	// experimental node:bench module and benchmark runner.
+	// Experimental.
+	ExperimentalBench *bool `field:"optional" json:"experimentalBench" yaml:"experimentalBench"`
 	// when ambiguous modules fail to evaluate because they contain ES module syntax, try again to evaluate them as ES modules.
 	// Experimental.
 	ExperimentalDetectModule *bool `field:"optional" json:"experimentalDetectModule" yaml:"experimentalDetectModule"`
@@ -450,7 +471,9 @@ type NodeConfigSchemaNodeOptions struct {
 	// parse proxy settings from HTTP_PROXY/HTTPS_PROXY/NO_PROXYenvironment variables and apply the setting in global HTTP/HTTPS clients.
 	// Experimental.
 	UseEnvProxy *bool `field:"optional" json:"useEnvProxy" yaml:"useEnvProxy"`
-	// Map the Node.js static code to large pages. Options are 'off' (the default value, meaning do not map), 'on' (map and ignore failure, reporting it to stderr), or 'silent' (map and silently ignore failure).
+	// This option is no longer supported and a no-op.
+	//
+	// Options are 'off' (default), 'on' (report a warning to stderr), or 'silent' (same as 'off').
 	// Experimental.
 	UseLargepages *string `field:"optional" json:"useLargepages" yaml:"useLargepages"`
 	// use OpenSSL's default CA store.

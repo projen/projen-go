@@ -12,6 +12,9 @@ type PyprojectTomlTool struct {
 	// Build Python wheels for all platforms.
 	// Experimental.
 	Cibuildwheel interface{} `field:"optional" json:"cibuildwheel" yaml:"cibuildwheel"`
+	// Measures how hard Python code is for humans to understand.
+	// Experimental.
+	Complexipy interface{} `field:"optional" json:"complexipy" yaml:"complexipy"`
 	// A CLI tool to check and validate Python docstring formatting and completeness.
 	// Experimental.
 	Dfc interface{} `field:"optional" json:"dfc" yaml:"dfc"`
@@ -24,6 +27,11 @@ type PyprojectTomlTool struct {
 	// Modern, extensible Python project management.
 	// Experimental.
 	Hatch interface{} `field:"optional" json:"hatch" yaml:"hatch"`
+	// Architecture linter for Python: layers, bounded contexts and package shapes.
+	//
+	// https://sircypkowskyy.github.io/inwards/guides/configuration/
+	// Experimental.
+	Inwards interface{} `field:"optional" json:"inwards" yaml:"inwards"`
 	// Build and publish crates with pyo3, cffi and uniffi bindings as well as rust binaries as python packages.
 	// Experimental.
 	Maturin interface{} `field:"optional" json:"maturin" yaml:"maturin"`
@@ -90,6 +98,9 @@ type PyprojectTomlTool struct {
 	// Manage Python package versions using SCM (e.g. Git).
 	// Experimental.
 	SetuptoolsScm interface{} `field:"optional" json:"setuptoolsScm" yaml:"setuptoolsScm"`
+	// Ruff companion linter with extra checks that make Python easier to read and review.
+	// Experimental.
+	Simplint interface{} `field:"optional" json:"simplint" yaml:"simplint"`
 	// The complementary task runner for python.
 	// Experimental.
 	Taskipy interface{} `field:"optional" json:"taskipy" yaml:"taskipy"`
@@ -107,5 +118,29 @@ type PyprojectTomlTool struct {
 	// An extremely fast Python package installer and resolver, written in Rust.
 	// Experimental.
 	Uv interface{} `field:"optional" json:"uv" yaml:"uv"`
+	// **Workers** lets you define your project's background programs in one place: the `pyproject.toml` file.
+	//
+	// These programs are called **workers**. They keep running to do work, like sending emails or processing files.
+	//
+	// A **provider** is a service or tool that runs your application. Providers can support this format to read your configuration and start your workers.
+	//
+	// Each worker needs a name and a **command** to run.
+	//
+	// ```toml
+	// [tool.workers.my-background-worker]
+	// command = "python -m app.worker"
+	//
+	// [tool.workers.my-tasks-worker]
+	// command = "celery -A app.celery worker"
+	//
+	// [tool.workers.some-important-reports]
+	// command = "sheppy work"
+	// ```
+	//
+	// You choose the worker names: `my-background-worker`, `my-tasks-worker`, and `some-important-reports` in this example.
+	//
+	// The provider runs each worker's command in a separate process.
+	// Experimental.
+	Workers interface{} `field:"optional" json:"workers" yaml:"workers"`
 }
 

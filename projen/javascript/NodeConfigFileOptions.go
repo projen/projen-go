@@ -7,6 +7,8 @@ package javascript
 // Experimental.
 type NodeConfigFileOptions struct {
 	// Experimental.
+	Bench *NodeConfigSchemaBench `field:"optional" json:"bench" yaml:"bench"`
+	// Experimental.
 	NodeOptions *NodeConfigSchemaNodeOptions `field:"optional" json:"nodeOptions" yaml:"nodeOptions"`
 	// Experimental.
 	NodeVersion *float64 `field:"optional" json:"nodeVersion" yaml:"nodeVersion"`

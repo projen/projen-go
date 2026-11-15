@@ -13,6 +13,16 @@ type JestOptions struct {
 	//
 	// Experimental.
 	CoverageText *bool `field:"optional" json:"coverageText" yaml:"coverageText"`
+	// Run Jest with Node's `--experimental-vm-modules` flag, set through the `NODE_OPTIONS` environment variable of the Jest task steps.
+	//
+	// Jest needs it to load ES modules, including ESM-only dependencies required
+	// from CommonJS code. The flag replaces any `NODE_OPTIONS` set outside the task.
+	// See: https://jestjs.io/docs/ecmascript-modules
+	//
+	// Default: false.
+	//
+	// Experimental.
+	ExperimentalVmModules *bool `field:"optional" json:"experimentalVmModules" yaml:"experimentalVmModules"`
 	// Additional options to pass to the Jest CLI invocation.
 	//
 	// Each element is passed to jest as a single argument, exactly as given: no

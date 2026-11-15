@@ -304,9 +304,9 @@ type PipOptions struct {
 	Prefix *string `field:"optional" json:"prefix" yaml:"prefix"`
 	// The strategy to use when considering pre-release versions.
 	//
-	// By default, uv will accept pre-releases for packages that _only_ publish pre-releases,
-	// along with first-party requirements that contain an explicit pre-release marker in the
-	// declared specifiers (`if-necessary-or-explicit`).
+	// By default, uv will prefer stable candidates, falling back to pre-releases only after every
+	// stable candidate that satisfies the active constraints is rejected
+	// (`if-necessary`).
 	// Experimental.
 	Prerelease PrereleaseMode `field:"optional" json:"prerelease" yaml:"prerelease"`
 	// The Python interpreter into which packages should be installed.
@@ -347,6 +347,12 @@ type PipOptions struct {
 	// `refresh-package`.
 	// Experimental.
 	ReinstallPackage *[]*string `field:"optional" json:"reinstallPackage" yaml:"reinstallPackage"`
+	// Require hashes for all build dependencies in `uv pip` commands.
+	//
+	// Overrides `require-build-hashes` in `[tool.uv]`. This does not require hashes for runtime
+	// dependencies; use `require-hashes` for those.
+	// Experimental.
+	RequireBuildHashes *bool `field:"optional" json:"requireBuildHashes" yaml:"requireBuildHashes"`
 	// Require a matching hash for each requirement.
 	//
 	// Hash-checking mode is all or nothing. If enabled, _all_ requirements must be provided

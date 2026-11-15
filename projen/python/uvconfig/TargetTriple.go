@@ -70,6 +70,21 @@ const (
 	// (x86_64-unknown-linux-musl).
 	// Experimental.
 	TargetTriple_X86_UNDERSCORE_64_HYPHEN_UNKNOWN_HYPHEN_LINUX_HYPHEN_MUSL TargetTriple = "X86_UNDERSCORE_64_HYPHEN_UNKNOWN_HYPHEN_LINUX_HYPHEN_MUSL"
+	// An s390x Linux target.
+	//
+	// Equivalent to `s390x-manylinux_2_28`. (s390x-unknown-linux-gnu)
+	// Experimental.
+	TargetTriple_S390X_HYPHEN_UNKNOWN_HYPHEN_LINUX_HYPHEN_GNU TargetTriple = "S390X_HYPHEN_UNKNOWN_HYPHEN_LINUX_HYPHEN_GNU"
+	// A little-endian `PowerPC64` Linux target.
+	//
+	// Equivalent to `ppc64le-manylinux_2_28`. (powerpc64le-unknown-linux-gnu)
+	// Experimental.
+	TargetTriple_POWERPC64LE_HYPHEN_UNKNOWN_HYPHEN_LINUX_HYPHEN_GNU TargetTriple = "POWERPC64LE_HYPHEN_UNKNOWN_HYPHEN_LINUX_HYPHEN_GNU"
+	// A `LoongArch64` Linux target.
+	//
+	// Equivalent to `loongarch64-manylinux_2_36`. (loongarch64-unknown-linux-gnu)
+	// Experimental.
+	TargetTriple_LOONGARCH64_HYPHEN_UNKNOWN_HYPHEN_LINUX_HYPHEN_GNU TargetTriple = "LOONGARCH64_HYPHEN_UNKNOWN_HYPHEN_LINUX_HYPHEN_GNU"
 	// A RISCV64 Linux target.
 	//
 	// (riscv64-unknown-linux).
@@ -205,6 +220,161 @@ const (
 	// (aarch64-manylinux_2_40).
 	// Experimental.
 	TargetTriple_AARCH64_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_40 TargetTriple = "AARCH64_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_40"
+	// An s390x target for the `manylinux2014` platform.
+	//
+	// Equivalent to `s390x-manylinux_2_17`. (s390x-manylinux2014)
+	// Experimental.
+	TargetTriple_S390X_HYPHEN_MANYLINUX2014 TargetTriple = "S390X_HYPHEN_MANYLINUX2014"
+	// An s390x target for the `manylinux_2_17` platform.
+	//
+	// (s390x-manylinux_2_17).
+	// Experimental.
+	TargetTriple_S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_17 TargetTriple = "S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_17"
+	// An s390x target for the `manylinux_2_28` platform.
+	//
+	// (s390x-manylinux_2_28).
+	// Experimental.
+	TargetTriple_S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_28 TargetTriple = "S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_28"
+	// An s390x target for the `manylinux_2_31` platform.
+	//
+	// (s390x-manylinux_2_31).
+	// Experimental.
+	TargetTriple_S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_31 TargetTriple = "S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_31"
+	// An s390x target for the `manylinux_2_32` platform.
+	//
+	// (s390x-manylinux_2_32).
+	// Experimental.
+	TargetTriple_S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_32 TargetTriple = "S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_32"
+	// An s390x target for the `manylinux_2_33` platform.
+	//
+	// (s390x-manylinux_2_33).
+	// Experimental.
+	TargetTriple_S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_33 TargetTriple = "S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_33"
+	// An s390x target for the `manylinux_2_34` platform.
+	//
+	// (s390x-manylinux_2_34).
+	// Experimental.
+	TargetTriple_S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_34 TargetTriple = "S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_34"
+	// An s390x target for the `manylinux_2_35` platform.
+	//
+	// (s390x-manylinux_2_35).
+	// Experimental.
+	TargetTriple_S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_35 TargetTriple = "S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_35"
+	// An s390x target for the `manylinux_2_36` platform.
+	//
+	// (s390x-manylinux_2_36).
+	// Experimental.
+	TargetTriple_S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_36 TargetTriple = "S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_36"
+	// An s390x target for the `manylinux_2_37` platform.
+	//
+	// (s390x-manylinux_2_37).
+	// Experimental.
+	TargetTriple_S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_37 TargetTriple = "S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_37"
+	// An s390x target for the `manylinux_2_38` platform.
+	//
+	// (s390x-manylinux_2_38).
+	// Experimental.
+	TargetTriple_S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_38 TargetTriple = "S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_38"
+	// An s390x target for the `manylinux_2_39` platform.
+	//
+	// (s390x-manylinux_2_39).
+	// Experimental.
+	TargetTriple_S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_39 TargetTriple = "S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_39"
+	// An s390x target for the `manylinux_2_40` platform.
+	//
+	// (s390x-manylinux_2_40).
+	// Experimental.
+	TargetTriple_S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_40 TargetTriple = "S390X_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_40"
+	// A little-endian `PowerPC64` target for the `manylinux2014` platform.
+	//
+	// Equivalent to `ppc64le-manylinux_2_17`. (ppc64le-manylinux2014)
+	// Experimental.
+	TargetTriple_PPC64LE_HYPHEN_MANYLINUX2014 TargetTriple = "PPC64LE_HYPHEN_MANYLINUX2014"
+	// A little-endian `PowerPC64` target for the `manylinux_2_17` platform.
+	//
+	// (ppc64le-manylinux_2_17).
+	// Experimental.
+	TargetTriple_PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_17 TargetTriple = "PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_17"
+	// A little-endian `PowerPC64` target for the `manylinux_2_28` platform.
+	//
+	// (ppc64le-manylinux_2_28).
+	// Experimental.
+	TargetTriple_PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_28 TargetTriple = "PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_28"
+	// A little-endian `PowerPC64` target for the `manylinux_2_31` platform.
+	//
+	// (ppc64le-manylinux_2_31).
+	// Experimental.
+	TargetTriple_PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_31 TargetTriple = "PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_31"
+	// A little-endian `PowerPC64` target for the `manylinux_2_32` platform.
+	//
+	// (ppc64le-manylinux_2_32).
+	// Experimental.
+	TargetTriple_PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_32 TargetTriple = "PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_32"
+	// A little-endian `PowerPC64` target for the `manylinux_2_33` platform.
+	//
+	// (ppc64le-manylinux_2_33).
+	// Experimental.
+	TargetTriple_PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_33 TargetTriple = "PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_33"
+	// A little-endian `PowerPC64` target for the `manylinux_2_34` platform.
+	//
+	// (ppc64le-manylinux_2_34).
+	// Experimental.
+	TargetTriple_PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_34 TargetTriple = "PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_34"
+	// A little-endian `PowerPC64` target for the `manylinux_2_35` platform.
+	//
+	// (ppc64le-manylinux_2_35).
+	// Experimental.
+	TargetTriple_PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_35 TargetTriple = "PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_35"
+	// A little-endian `PowerPC64` target for the `manylinux_2_36` platform.
+	//
+	// (ppc64le-manylinux_2_36).
+	// Experimental.
+	TargetTriple_PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_36 TargetTriple = "PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_36"
+	// A little-endian `PowerPC64` target for the `manylinux_2_37` platform.
+	//
+	// (ppc64le-manylinux_2_37).
+	// Experimental.
+	TargetTriple_PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_37 TargetTriple = "PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_37"
+	// A little-endian `PowerPC64` target for the `manylinux_2_38` platform.
+	//
+	// (ppc64le-manylinux_2_38).
+	// Experimental.
+	TargetTriple_PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_38 TargetTriple = "PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_38"
+	// A little-endian `PowerPC64` target for the `manylinux_2_39` platform.
+	//
+	// (ppc64le-manylinux_2_39).
+	// Experimental.
+	TargetTriple_PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_39 TargetTriple = "PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_39"
+	// A little-endian `PowerPC64` target for the `manylinux_2_40` platform.
+	//
+	// (ppc64le-manylinux_2_40).
+	// Experimental.
+	TargetTriple_PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_40 TargetTriple = "PPC64LE_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_40"
+	// A `LoongArch64` target for the `manylinux_2_36` platform.
+	//
+	// (loongarch64-manylinux_2_36).
+	// Experimental.
+	TargetTriple_LOONGARCH64_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_36 TargetTriple = "LOONGARCH64_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_36"
+	// A `LoongArch64` target for the `manylinux_2_37` platform.
+	//
+	// (loongarch64-manylinux_2_37).
+	// Experimental.
+	TargetTriple_LOONGARCH64_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_37 TargetTriple = "LOONGARCH64_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_37"
+	// A `LoongArch64` target for the `manylinux_2_38` platform.
+	//
+	// (loongarch64-manylinux_2_38).
+	// Experimental.
+	TargetTriple_LOONGARCH64_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_38 TargetTriple = "LOONGARCH64_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_38"
+	// A `LoongArch64` target for the `manylinux_2_39` platform.
+	//
+	// (loongarch64-manylinux_2_39).
+	// Experimental.
+	TargetTriple_LOONGARCH64_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_39 TargetTriple = "LOONGARCH64_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_39"
+	// A `LoongArch64` target for the `manylinux_2_40` platform.
+	//
+	// (loongarch64-manylinux_2_40).
+	// Experimental.
+	TargetTriple_LOONGARCH64_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_40 TargetTriple = "LOONGARCH64_HYPHEN_MANYLINUX_UNDERSCORE_2_UNDERSCORE_40"
 	// An ARM64 Android target.
 	//
 	// By default uses Android API level 24, but respects

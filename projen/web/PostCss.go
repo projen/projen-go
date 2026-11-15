@@ -15,8 +15,6 @@ type PostCss interface {
 	File() projen.JsonFile
 	// Experimental.
 	FileName() *string
-	// Experimental.
-	Tailwind() TailwindConfig
 }
 
 // The jsii proxy struct for PostCss
@@ -39,16 +37,6 @@ func (j *jsiiProxy_PostCss) FileName() *string {
 	_jsii_.Get(
 		j,
 		"fileName",
-		&returns,
-	)
-	return returns
-}
-
-func (j *jsiiProxy_PostCss) Tailwind() TailwindConfig {
-	var returns TailwindConfig
-	_jsii_.Get(
-		j,
-		"tailwind",
 		&returns,
 	)
 	return returns

@@ -240,7 +240,6 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberProperty{JsiiProperty: "file", GoGetter: "File"},
 			_jsii_.MemberProperty{JsiiProperty: "fileName", GoGetter: "FileName"},
-			_jsii_.MemberProperty{JsiiProperty: "tailwind", GoGetter: "Tailwind"},
 		},
 		func() interface{} {
 			return &jsiiProxy_PostCss{}

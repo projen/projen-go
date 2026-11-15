@@ -66,7 +66,7 @@ type Source struct {
 	// Organize package.json fields according to established conventions. See https://biomejs.dev/assist/actions/use-sorted-package-json.
 	// Experimental.
 	UseSortedPackageJson interface{} `field:"optional" json:"useSortedPackageJson" yaml:"useSortedPackageJson"`
-	// Sort CSS properties and nested rules into a consistent order.
+	// Sort CSS properties into a consistent order.
 	//
 	// See https://biomejs.dev/assist/actions/use-sorted-properties
 	// Experimental.
