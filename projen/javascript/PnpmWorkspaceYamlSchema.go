@@ -40,6 +40,11 @@ type PnpmWorkspaceYamlSchema struct {
 	// When true, any missing non-optional peer dependencies are automatically installed.
 	// Experimental.
 	AutoInstallPeers *bool `field:"optional" json:"autoInstallPeers" yaml:"autoInstallPeers"`
+	// When set to true, pnpm joins conflicting peer dependency ranges with || and installs the highest version that satisfies any of them.
+	//
+	// For example, if one dependency requires react@^16.0.0 and another requires react@^17.0.0, pnpm installs the highest react@17. Only semver ranges can be joined; conflicting paths, aliases, or tags leave the peer dependency missing, and identical non-semver specifiers are preserved.
+	// Experimental.
+	AutoInstallPeersFromHighestMatch *bool `field:"optional" json:"autoInstallPeersFromHighestMatch" yaml:"autoInstallPeersFromHighestMatch"`
 	// When set to true, it prevents the resolution of exotic protocols (like git+ssh: or direct https: tarballs) in transitive dependencies.
 	//
 	// Only direct dependencies are allowed to use exotic sources.
@@ -315,6 +320,9 @@ type PnpmWorkspaceYamlSchema struct {
 	// When set to false, pnpm won't read or generate a pnpm-lock.yaml file.
 	// Experimental.
 	Lockfile interface{} `field:"optional" json:"lockfile" yaml:"lockfile"`
+	// The directory in which pnpm-lock.yaml is written, instead of the directory of pnpm-workspace.yaml. A lockfileDir that points at the default lockfile directory installs the same way as leaving it unset.
+	// Experimental.
+	LockfileDir *string `field:"optional" json:"lockfileDir" yaml:"lockfileDir"`
 	// Add the full URL to the package's tarball to every entry in pnpm-lock.yaml.
 	// Experimental.
 	LockfileIncludeTarballUrl *bool `field:"optional" json:"lockfileIncludeTarballUrl" yaml:"lockfileIncludeTarballUrl"`
@@ -473,6 +481,11 @@ type PnpmWorkspaceYamlSchema struct {
 	// The location of the local pnpmfile.
 	// Experimental.
 	Pnpmfile *string `field:"optional" json:"pnpmfile" yaml:"pnpmfile"`
+	// URL of a pnpr server for install acceleration.
+	//
+	// When set, pnpm install offloads dependency resolution to the remote server: pnpm sends its workspace manifests and registry configuration, the server resolves the dependency graph and returns the lockfile, while tarballs are downloaded directly from their registries. If the server refuses a setting the install uses, or cannot return the lockfile format pnpm reads, pnpm prints a warning and resolves locally. May also be set with the --config.pnprServer=<url> command-line option or the PNPM_CONFIG_PNPR_SERVER environment variable.
+	// Experimental.
+	PnprServer *string `field:"optional" json:"pnprServer" yaml:"pnprServer"`
 	// When set to true and the available pnpm-lock.yaml satisfies the package.json dependencies directive, a headless installation is performed.
 	// Experimental.
 	PreferFrozenLockfile *bool `field:"optional" json:"preferFrozenLockfile" yaml:"preferFrozenLockfile"`
