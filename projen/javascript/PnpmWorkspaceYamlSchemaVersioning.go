@@ -18,6 +18,11 @@ type PnpmWorkspaceYamlSchemaVersioning struct {
 	// Workspace projects permanently excluded from versioning and dependent propagation.
 	// Experimental.
 	Ignore *[]*string `field:"optional" json:"ignore" yaml:"ignore"`
+	// When false, pnpm change leaves private packages out of the packages it offers, and naming one on the command line fails.
+	//
+	// A private package can still be bumped as a dependent. Added in pnpm v12.23.0.
+	// Experimental.
+	IncludePrivatePackages *bool `field:"optional" json:"includePrivatePackages" yaml:"includePrivatePackages"`
 	// Maps a workspace project to a release lane.
 	//
 	// Unlisted projects are on the reserved `main` lane and release stable versions.

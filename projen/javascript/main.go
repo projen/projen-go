@@ -666,6 +666,14 @@ func init() {
 		"projen.javascript.PnpmWorkspaceYamlSchema",
 		reflect.TypeOf((*PnpmWorkspaceYamlSchema)(nil)).Elem(),
 	)
+	_jsii_.RegisterEnum(
+		"projen.javascript.PnpmWorkspaceYamlSchemaAccess",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaAccess)(nil)).Elem(),
+		map[string]interface{}{
+			"PUBLIC": PnpmWorkspaceYamlSchemaAccess_PUBLIC,
+			"RESTRICTED": PnpmWorkspaceYamlSchemaAccess_RESTRICTED,
+		},
+	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.PnpmWorkspaceYamlSchemaAudit",
 		reflect.TypeOf((*PnpmWorkspaceYamlSchemaAudit)(nil)).Elem(),
@@ -754,6 +762,16 @@ func init() {
 	_jsii_.RegisterStruct(
 		"projen.javascript.PnpmWorkspaceYamlSchemaMacosBackup",
 		reflect.TypeOf((*PnpmWorkspaceYamlSchemaMacosBackup)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"projen.javascript.PnpmWorkspaceYamlSchemaNoProxy",
+		reflect.TypeOf((*PnpmWorkspaceYamlSchemaNoProxy)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "value", GoGetter: "Value"},
+		},
+		func() interface{} {
+			return &jsiiProxy_PnpmWorkspaceYamlSchemaNoProxy{}
+		},
 	)
 	_jsii_.RegisterStruct(
 		"projen.javascript.PnpmWorkspaceYamlSchemaNodePackageMap",

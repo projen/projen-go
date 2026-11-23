@@ -17,7 +17,7 @@ type DockerComposeProps struct {
 	// Default: - no version is provided.
 	//
 	// Deprecated: - The top level `version` field is obsolete per the Compose Specification.
-	// {@link https://github.com/compose-spec/compose-spec/blob/master/spec.md#version-and-name-top-level-elements Compose Specification}
+	// {@link https://github.com/compose-spec/compose-spec/blob/master/spec.md#version-and-name-top-level-elements | Compose Specification}
 	SchemaVersion *string `field:"optional" json:"schemaVersion" yaml:"schemaVersion"`
 	// Service descriptions.
 	// Experimental.

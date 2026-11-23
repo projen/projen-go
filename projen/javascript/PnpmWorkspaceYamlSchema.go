@@ -1,9 +1,17 @@
 package javascript
 
+import (
+	"time"
+)
 
 // JSON schema for pnpm-workspace.yaml files.
 // Experimental.
 type PnpmWorkspaceYamlSchema struct {
+	// Sets the default for pnpm publish --access.
+	//
+	// When set, it takes precedence over publishConfig.access. Configure it in pnpm-workspace.yaml or the global config.yaml, or with PNPM_CONFIG_ACCESS. Read from configuration since pnpm v12.23.0.
+	// Experimental.
+	Access PnpmWorkspaceYamlSchemaAccess `field:"optional" json:"access" yaml:"access"`
 	// When true, every peer dependency of a dependency also makes the matching.
 	// Experimental.
 	AddMissingPeerTypes *bool `field:"optional" json:"addMissingPeerTypes" yaml:"addMissingPeerTypes"`
@@ -348,7 +356,7 @@ type PnpmWorkspaceYamlSchema struct {
 	MergeGitBranchLockfilesBranchPattern *[]interface{} `field:"optional" json:"mergeGitBranchLockfilesBranchPattern" yaml:"mergeGitBranchLockfilesBranchPattern"`
 	// minimumReleaseAge defines the minimum number of minutes that must pass after a version is published before pnpm will install it.
 	//
-	// This applies to all dependencies, including transitive ones.
+	// This applies to all dependencies, including transitive ones. The age is counted back from referenceTime when that setting is set.
 	// Experimental.
 	MinimumReleaseAge *float64 `field:"optional" json:"minimumReleaseAge" yaml:"minimumReleaseAge"`
 	// If you set `minimumReleaseAge` but need certain dependencies to always install the newest version immediately, you can list them under `minimumReleaseAgeExclude`.
@@ -392,7 +400,7 @@ type PnpmWorkspaceYamlSchema struct {
 	NodeExperimentalPackageMap *bool `field:"optional" json:"nodeExperimentalPackageMap" yaml:"nodeExperimentalPackageMap"`
 	// Defines what linker should be used for installing Node packages.
 	//
-	// loaded is an experimental linker that loads packages directly from the content-addressable store, without placing them in node_modules; it also accepts an object with type: loaded and an optional excluded list. Configuration sources replace the whole nodeLinker value: a higher-priority scalar, or an object without excluded, clears exclusions from lower-priority sources. The environment variable PNPM_CONFIG_NODE_LINKER and --config.node-linker accept the object as JSON.
+	// Scalar values remain supported. The object form selects a linker with type and groups linker-specific options with it: isolated accepts hoist, hoisted accepts hoistingLimits, and loaded accepts excluded. Configuration sources replace the selected linker; options from a higher-priority object override the same options from lower-priority sources. PNPM_CONFIG_NODE_LINKER and --config.node-linker accept the object as JSON.
 	// Experimental.
 	NodeLinker interface{} `field:"optional" json:"nodeLinker" yaml:"nodeLinker"`
 	// Options to pass through to Node.js via the NODE_OPTIONS environment variable.
@@ -407,9 +415,11 @@ type PnpmWorkspaceYamlSchema struct {
 	// The Node.js version to use when checking a package's engines setting.
 	// Experimental.
 	NodeVersion *string `field:"optional" json:"nodeVersion" yaml:"nodeVersion"`
-	// A comma-separated string of domain extensions that a proxy should not be used for.
+	// A comma-separated string of domain extensions that a proxy should not be used for, or a boolean.
+	//
+	// A null value leaves the setting unset. Since pnpm v12.23.0, any other type fails validation.
 	// Experimental.
-	NoProxy *string `field:"optional" json:"noProxy" yaml:"noProxy"`
+	NoProxy PnpmWorkspaceYamlSchemaNoProxy `field:"optional" json:"noProxy" yaml:"noProxy"`
 	// The location of the npm binary that pnpm uses for some actions, like publishing.
 	// Experimental.
 	NpmPath *string `field:"optional" json:"npmPath" yaml:"npmPath"`
@@ -522,6 +532,8 @@ type PnpmWorkspaceYamlSchema struct {
 	// Experimental.
 	PublicHoistPattern *[]*string `field:"optional" json:"publicHoistPattern" yaml:"publicHoistPattern"`
 	// The primary branch of the repository which is used for publishing the latest changes.
+	//
+	// Since pnpm v12.23.0, an empty value allows both master and main.
 	// Experimental.
 	PublishBranch *string `field:"optional" json:"publishBranch" yaml:"publishBranch"`
 	// After uploading a package, wait up to this many milliseconds for the published version and its tarball to become available from the registry.
@@ -532,6 +544,11 @@ type PnpmWorkspaceYamlSchema struct {
 	// If this is enabled, the primary behaviour of pnpm install becomes that of pnpm install -r, meaning the install is performed on all workspace or subdirectory packages.
 	// Experimental.
 	RecursiveInstall *bool `field:"optional" json:"recursiveInstall" yaml:"recursiveInstall"`
+	// The reference time, as an RFC 3339 timestamp, used to evaluate time-dependent settings.
+	//
+	// minimumReleaseAge and trustPolicyIgnoreAfter count back from this time during resolution and lockfile verification. When unset, pnpm uses the current time. Set it in pnpm-workspace.yaml or with PNPM_CONFIG_REFERENCE_TIME; the global config.yaml does not apply it. A value that is not a timestamp, or is more than 10 minutes in the future, fails the command. Added in pnpm v12.23.0.
+	// Experimental.
+	ReferenceTime *time.Time `field:"optional" json:"referenceTime" yaml:"referenceTime"`
 	// Configures the registries packages resolve from, in one of two shapes.
 	//
 	// The declaration shape keys each registry by its URL and states everything about it in one place: which scopes and bare-specifier prefix are routed to it, how it lays out tarball URLs, and whether its abbreviated metadata carries the `time` field. The older shape maps the `default` registry and `@`-prefixed scopes straight to registry URLs. The two shapes cannot be mixed.
@@ -646,6 +663,8 @@ type PnpmWorkspaceYamlSchema struct {
 	// Experimental.
 	SyncInjectedDepsAfterScripts *[]*string `field:"optional" json:"syncInjectedDepsAfterScripts" yaml:"syncInjectedDepsAfterScripts"`
 	// If you pnpm add a package and you don't provide a specific version, then it will install the package at the version registered under the tag from this setting.
+	//
+	// Since pnpm v12.23.0, pnpm publish also reads it from pnpm-workspace.yaml, the global config.yaml, or PNPM_CONFIG_TAG when --tag is not passed.
 	// Experimental.
 	Tag *string `field:"optional" json:"tag" yaml:"tag"`
 	// Configure dependency relationships and per-task concurrency limits for recursive runs (`pnpm -r run <script>`).
@@ -676,7 +695,7 @@ type PnpmWorkspaceYamlSchema struct {
 	TrustPolicyExcludePrune *bool `field:"optional" json:"trustPolicyExcludePrune" yaml:"trustPolicyExcludePrune"`
 	// Allows ignoring the trust policy check for packages published more than the specified number of minutes ago.
 	//
-	// This is useful when enabling strict trust policies, as it allows older versions of packages (which may lack a process for publishing with signatures or provenance) to be installed without manual exclusion, assuming they are safe due to their age.
+	// This is useful when enabling strict trust policies, as it allows older versions of packages (which may lack a process for publishing with signatures or provenance) to be installed without manual exclusion, assuming they are safe due to their age. The age is counted back from referenceTime when that setting is set.
 	// Experimental.
 	TrustPolicyIgnoreAfter *float64 `field:"optional" json:"trustPolicyIgnoreAfter" yaml:"trustPolicyIgnoreAfter"`
 	// Set to true to enable UID/GID switching when running package scripts.
@@ -730,6 +749,11 @@ type PnpmWorkspaceYamlSchema struct {
 	// When set to project, a separate virtual store is created in each project's node_modules/.pnpm. When set to global, a single store is shared by every project on the machine, with each project's node_modules holding only symlinks into it. The value may also be an environment variable placeholder such as ${PNPM_VIRTUAL_STORE_TYPE:-global}. Added in pnpm v11.23.0.
 	// Experimental.
 	VirtualStoreType PnpmWorkspaceYamlSchemaVirtualStoreType `field:"optional" json:"virtualStoreType" yaml:"virtualStoreType"`
+	// When true, an install that resolves the whole dependency graph warns about every entry in overrides that matched no dependency.
+	//
+	// Only overrides declared in pnpm-workspace.yaml are checked; entries added by a config dependency or an updateConfig hook are not. Added in pnpm v12.23.0.
+	// Experimental.
+	WarnUnusedOverrides *bool `field:"optional" json:"warnUnusedOverrides" yaml:"warnUnusedOverrides"`
 	// Set the maximum number of tasks to run simultaneously.
 	//
 	// For unlimited concurrency use Infinity. You can set the value to <= 0 and it will use amount of CPU cores of the host minus the absolute value of the provided number as: max(1, (number of cores) - abs(workspaceConcurrency)).
